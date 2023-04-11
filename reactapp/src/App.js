@@ -7,7 +7,7 @@ import Homepage from './components/User/Homepage/Homepage';
 function App() {
   return (
     <>
-      <p>/learn react/i</p>
+      {/* <p>/learn react/i</p> */}
       <Router >
             <Routes>
               <Route path="/signup" element={<Signup />} />

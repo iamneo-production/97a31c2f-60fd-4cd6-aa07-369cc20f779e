@@ -17,6 +17,7 @@ const Login = () => {
     e.preventDefault()
     try {
       const data = await authService.login(FormData)
+      console.log(data)
       localStorage.setItem('token', data.token)
     } catch (err) { 
       console.log(err)
