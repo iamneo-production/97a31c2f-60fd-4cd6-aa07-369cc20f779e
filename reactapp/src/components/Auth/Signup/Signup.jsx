@@ -1,5 +1,4 @@
-import React from 'react'
-import { useState } from 'react'
+import React,{ useState } from 'react'
 import authService from "../../../api/authService"
 import { Link,Navigate } from 'react-router-dom'
 
@@ -61,14 +60,13 @@ const Signup = () => {
         </div>
         <div>
             <label htmlFor="confirmPassword">Confirm Password:</label>
-            <input type="password" data-testid="confirmPassword" name="Confirmpassword" value={formData.confirmPassword} onChange={handleInputChange} />
+            <input type="password" data-testid="confirmPassword" name="confirmPassword" value={formData.confirmPassword} onChange={handleInputChange} />
         </div>
                 
             <button type="submit" data-testid="submitButton">Submit</button>
             <br />
             Allready a user? <Link to="/login" data-testid='signinLink'>signup</Link>
             {redirect && <Navigate to="/login" />}
-            /learn react/i
     </form>
   )
 }
