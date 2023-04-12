@@ -6,7 +6,17 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.*;
 
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 @Entity
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "Login")
 public class LoginModel {
     @Id
@@ -15,26 +25,6 @@ public class LoginModel {
     @Column(unique = true)
     private String email;
     private String password;
-
-    public String getEmail(){
-        return email;
-    }
-    public void setEmail(String email){
-        this.email = email;
-    }
-
-    public String getPassword(){
-        return password;
-    }
-    public void setPassword(String password){
-        this.password = password;
-    }
-    public LoginModel(String email,String password){
-        this.email = email;
-        this.password = password;
-    }
-    public LoginModel() {
-    }
 
     
 }
