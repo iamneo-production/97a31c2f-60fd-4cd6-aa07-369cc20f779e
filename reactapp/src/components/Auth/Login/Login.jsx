@@ -7,6 +7,8 @@
 // const Login = () => {
 
 //   const [FormData, setFormData] = useState({email: '', password: ''})
+  
+  
 
 //   const handleInputChange = (e) => { 
 //     const { name, value } = e.target
@@ -28,7 +30,6 @@
 //   if (localStorage.getItem('token')) {
 //     return <Navigate to="/dashboard" />
 // }
-
 //   return (
 //     <form  onSubmit={handleLogin}>
 //         <div data-testid="loginBox">
@@ -50,16 +51,16 @@
 
 // export default Login
 
-
-
 import React from 'react'
 import { useState } from 'react'
-import { Navigate,Link } from 'react-router-dom'
+import { Navigate, Link } from 'react-router-dom'
 import authService from "../../../api/authService"
 import "./Login.css"
+
 const Login = () => {
 
   const [FormData, setFormData] = useState({email: '', password: ''})
+  const [errorMessage, setErrorMessage] = useState('')
 
   const handleInputChange = (e) => { 
     const { name, value } = e.target
@@ -68,28 +69,27 @@ const Login = () => {
 
   const handleLogin = async (e) => { 
     e.preventDefault()
+    console.log(FormData)
+    if (!FormData.email || !FormData.password) {
+      setErrorMessage('Please enter both email and password.')
+      return
+    }
     try {
-      const data = await authService.login(FormData)
-      console.log(data)
-      if (data.success) {
-
+      let data = await authService.login(FormData)
       localStorage.setItem('token', data.token)
-    } else {
-      throw new Error(data.message); // throw an error if login fails
-    } }
-    catch (err) { 
+    } catch (err) { 
       console.log(err)
-      alert(err.message);
+      setErrorMessage('User not found. Please check your email and password.')
     }
     setFormData({email: '', password: ''})
   }
 
   if (localStorage.getItem('token')) {
     return <Navigate to="/dashboard" />
-}
-
+  }
+  
   return (
-    <form  onSubmit={handleLogin}>
+    <form onSubmit={handleLogin}>
         <div data-testid="loginBox">
             <label htmlFor="email">Email:</label>
             <input type="email" data-testid="email" name='email' value={FormData.email} placeholder="Enter Email" onChange={handleInputChange} required />
@@ -100,12 +100,13 @@ const Login = () => {
         </div>
       
       <button type="submit" data-testid="loginButton">Submit</button>
+      {errorMessage && <p className="error">{errorMessage}</p>}
       <br />
       Don't have an account? <Link to="/signup" data-testid="signupLink" >Signup</Link>
-
     </form>
   )
 }
 
-
 export default Login
+
+
