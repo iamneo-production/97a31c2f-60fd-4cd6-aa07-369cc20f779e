@@ -1,4 +1,4 @@
-package com.examly.springapp.services.authenticationService;
+package com.examly.springapp.service.authenticationService;
 
 import java.util.HashMap;
 import java.util.List;
@@ -14,9 +14,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.examly.springapp.model.ERole;
-import com.examly.springapp.model.LoginModel;
-import com.examly.springapp.model.UserModel;
+import com.examly.springapp.models.ERole;
+import com.examly.springapp.models.LoginModel;
+import com.examly.springapp.models.UserModel;
 import com.examly.springapp.repository.UserRepository;
 import com.examly.springapp.security.securityConfig.JwtUtils;
 import com.examly.springapp.security.securityServices.UserDetailsImpl;
@@ -89,10 +89,11 @@ public class AuthServiceImpl implements AuthService {
 		
 		HashMap<String, Object> outResponse = new HashMap<>();
 		outResponse.put("token", jwt);
-		outResponse.put("type", "Bearer");
-		outResponse.put("username", userDetails.getUsername());
+		outResponse.put("id", userModel.getId());
+		outResponse.put("username", userModel.getUsername());
 		outResponse.put("email", userModel.getEmail());
 		outResponse.put("roles", roles);
+		outResponse.put("status", 200);
 		return ResponseEntity.ok( outResponse );	
     }
 

@@ -1,9 +1,9 @@
-package com.examly.springapp.services.authenticationService;
+package com.examly.springapp.service.authenticationService;
 
 import org.springframework.http.ResponseEntity;
 
-import com.examly.springapp.model.LoginModel;
-import com.examly.springapp.model.UserModel;
+import com.examly.springapp.models.LoginModel;
+import com.examly.springapp.models.UserModel;
 
 public interface AuthService {
 

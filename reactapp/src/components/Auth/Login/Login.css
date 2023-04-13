@@ -1,0 +1,56 @@
+/* back ground image for login and signup page*/
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: space-around;
+    background-image: url('https://img.freepik.com/premium-vector/network-connection-background-abstract-style_23-2148875738.jpg');
+    background-size: full;
+    background-position: center;
+  }
+
+  /* increasing the box size giving the color  to the text for showing email and password*/
+  label {
+    color: wheat;
+    margin: 10px 0;
+    font-size: 1.2rem;
+  }
+
+    /* increasing the box size*/
+    /* arraging in a order format like user after space giving*/ 
+  input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin: 5px 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* adding background color to the button */
+  button {
+    background-color:rgba(15, 2, 92, 0.279);
+    color: rgb(82, 218, 32);
+    border: none;
+    padding: 10px;
+    border-radius: 2px;
+    margin: 10px 0;
+    cursor: pointer;
+    font-size: 1.2rem;
+    width: 100%;
+  }
+  
+  button:hover {
+    background-color: #801c00;
+  }
+  
+/* custom error message */
+
+.text-danger{
+    color: red;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 10px 0;
+}

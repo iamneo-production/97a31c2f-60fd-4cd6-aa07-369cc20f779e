@@ -1,15 +1,17 @@
 package com.examly.springapp.repository;
+import com.examly.springapp.models.*;
+import org.springframework.data.jpa.repository.*;
+import org.springframework.stereotype.*;
+import java.util.*;
 
-import java.util.Optional;
+@Repository
+public interface UserRepository extends JpaRepository<UserModel,Integer> {
 
-import org.springframework.data.jpa.repository.JpaRepository;
-
-import com.examly.springapp.model.UserModel;
-
-public interface UserRepository extends JpaRepository<UserModel, String> {
-    
+    List<UserModel> findAll(); 
+    UserModel findUserById(String id);
+    Optional<UserModel> findByEmail(String email);
+    Optional<UserModel> findByUsername(String userName);
     Boolean existsByEmail(String email);
-	Optional<UserModel> findByUsername(String userName);
-	Optional<UserModel> findByEmail(String email);
-	
+    UserModel deleteByEmail(String email);
+
 }

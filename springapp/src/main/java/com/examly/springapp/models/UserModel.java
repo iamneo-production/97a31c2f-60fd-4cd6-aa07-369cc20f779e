@@ -1,9 +1,8 @@
-package com.examly.springapp.model;
-
+package com.examly.springapp.models;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,15 +14,17 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name="user")
 public class UserModel {
-
+    
     @Id
-	private String email;
-	private String username;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String email;
+    private String username;
+    private String password;
 	private String mobileNumber;
-	private String password;
 	@Enumerated(EnumType.STRING)
     private ERole userRole;
-    
-    
 }
+
