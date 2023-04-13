@@ -22,11 +22,13 @@ div {
   
 }
 
+
+/* coloring the text login,username,mobile number,etc*/
 label {
   display: inline-block;
   width: 150px;
   font-size: 18px;
-  color: rgb(245, 213, 11);
+  color: wheat;
 }
 
 /* arriging thr format in the order */
