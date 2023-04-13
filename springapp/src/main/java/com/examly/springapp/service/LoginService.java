@@ -10,8 +10,13 @@ import java.util.*;
 
 @Service
 public class LoginService {   
+    @Autowired
     private LoginRepository loginRepository;
+
+    @Autowired
     private UserRepository userRepository;
+
+    @Autowired
     private AdminRepository adminRepository;
 
     public LoginService(LoginRepository loginRepository, UserRepository userRepository,AdminRepository adminRepository){

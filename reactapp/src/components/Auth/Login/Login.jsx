@@ -7,8 +7,6 @@
 // const Login = () => {
 
 //   const [FormData, setFormData] = useState({email: '', password: ''})
-  
-  
 
 //   const handleInputChange = (e) => { 
 //     const { name, value } = e.target
@@ -30,6 +28,7 @@
 //   if (localStorage.getItem('token')) {
 //     return <Navigate to="/dashboard" />
 // }
+
 //   return (
 //     <form  onSubmit={handleLogin}>
 //         <div data-testid="loginBox">
@@ -51,66 +50,62 @@
 
 // export default Login
 
+
+
 import React from 'react'
 import { useState } from 'react'
-import { Navigate, Link } from 'react-router-dom'
+import { Navigate,Link } from 'react-router-dom'
 import authService from "../../../api/authService"
 import "./Login.css"
-
 const Login = () => {
 
   const [FormData, setFormData] = useState({email: '', password: ''})
-  const [errorMessage, setErrorMessage] = useState('')
 
   const handleInputChange = (e) => { 
     const { name, value } = e.target
-    setState({...state, inputs: {...state.inputs, [name]: value} })
+    setFormData({ ...FormData, [name]: value })
   }
 
   const handleLogin = async (e) => { 
     e.preventDefault()
-    console.log(FormData)
-    if (!FormData.email || !FormData.password) {
-      setErrorMessage('Please enter both email and password.')
-      return
-    }
     try {
-      let data = await authService.login(FormData)
+      const data = await authService.login(FormData)
+      console.log(data)
+      if (data.success) {
+
       localStorage.setItem('token', data.token)
-    } catch (err) { 
+    } else {
+      throw new Error(data.message); // throw an error if login fails
+    } }
+    catch (err) { 
       console.log(err)
-      setErrorMessage('User not found. Please check your email and password.')
+      alert(err.message);
     }
-   
+    setFormData({email: '', password: ''})
   }
 
   if (localStorage.getItem('token')) {
     return <Navigate to="/dashboard" />
-  }
-  
+}
+
   return (
-    <form onSubmit={handleLogin}>
+    <form  onSubmit={handleLogin}>
         <div data-testid="loginBox">
             <label htmlFor="email">Email:</label>
             <input type="email" data-testid="email" name='email' value={FormData.email} placeholder="Enter Email" onChange={handleInputChange} required />
         </div>
-        {state.errors.email.required && <div className='text-danger' >Email is required.</div>}
-      
         <div>
             <label htmlFor="password">Password:</label>
             <input type="password" data-testid="password" name="password" value={FormData.password}  placeholder="Enter Password" onChange={handleInputChange} required />
         </div>
-        {state.errors.password.required && <div className='text-danger' >Password is required.</div>}
       
-      { errors && <div className='text-danger' >{errors}</div>}
       <button type="submit" data-testid="loginButton">Submit</button>
-      {errorMessage && <p className="error">{errorMessage}</p>}
       <br />
       Don't have an account? <Link to="/signup" data-testid="signupLink" >Signup</Link>
+
     </form>
   )
 }
 
+
 export default Login
-
-
