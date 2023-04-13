@@ -11,8 +11,13 @@ import javax.lang.model.type.NullType;
 @Service
 public class UserService {
 
+    @Autowired
     private UserRepository userRepository;
+
+    @Autowired
     private AdminRepository adminRepository;
+
+    @Autowired
     private AdmissionRepo admissionR;
 
     public UserService(UserRepository userRepository,AdminRepository adminRepository
@@ -47,7 +52,10 @@ public class UserService {
 
     public AdmissionModel getAdmission(Integer admissionid){
         Optional<AdmissionModel> admissionModel = admissionR.findById(admissionid);
-        return admissionModel.get();
+        if(admissionModel.isPresent()){
+            return  admissionModel.get();
+        }
+        return null;
     }
     public String deleteAdmission(Integer id){
         Optional<AdmissionModel> admissionmodel=admissionR.findById(id);

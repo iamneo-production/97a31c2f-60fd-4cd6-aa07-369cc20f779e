@@ -11,8 +11,13 @@ import javax.lang.model.type.NullType;
 @Service
 
 public class AdminService {
+    @Autowired
     private StudentRepository studentRepository;
+
+    @Autowired
     private CourseRepository courseRepository;
+
+    @Autowired
     private InstituteRepository instituteRepository;
 
     public AdminService(StudentRepository studentRepository,CourseRepository courseRepository,InstituteRepository instituteRepository){

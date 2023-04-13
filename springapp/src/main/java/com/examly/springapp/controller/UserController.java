@@ -23,7 +23,6 @@ import javax.security.auth.spi.LoginModule;
 
 @RestController
 @RequestMapping("/")
-// @ResponseBody
 public class UserController {
     private UserService  userService;
     public UserController(UserService userService){
@@ -37,8 +36,7 @@ public class UserController {
     }
     @GetMapping("user/viewAdmission")
     public AdmissionModel viewAdmission(@RequestParam("id") Integer admissionid){         
-         AdmissionModel admissionmodel = userService.getAdmission(admissionid);
-    return admissionmodel;
+         return userService.getAdmission(admissionid);
     }
 
     @DeleteMapping("user/deleteAdmission/{id}")
@@ -53,8 +51,7 @@ public class UserController {
 
     @GetMapping("user/viewStatus")
     public AdmissionModel viewStatus(@RequestParam("id") Integer admissionid){         
-         AdmissionModel admissionmodel = userService.getAdmission(admissionid);
-    return admissionmodel;
+         return userService.getAdmission(admissionid);
     }
 
 

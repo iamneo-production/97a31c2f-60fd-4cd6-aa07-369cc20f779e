@@ -1,45 +1,44 @@
 /* It is arraing the order in the middle of the form*/
 form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: wheat;
-    padding: 20px;
-    background-color: #f5f5f5;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
-    /*background-image: url('https://images.unsplash.com/photo-1509822929063-6b6cfc9b42f2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bG9naW58ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60');*/
-    width: 400px;
-    margin: 0 auto;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: wheat;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+  /*background-image: url('https://images.unsplash.com/photo-1509822929063-6b6cfc9b42f2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bG9naW58ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60');*/
+  width: 400px;
+  margin: 0 auto;
+}
 
-  /* spacing providing */
-  div {
-    color: black;
-    margin: 10px 0;
-    font-size: 1.2rem;
-    
-  }
+/* spacing providing */
+div {
+  color: black;
+  margin: 10px 0;
+  font-size: 1.2rem;
   
-  label {
-    display: inline-block;
-    width: 150px;
-    font-size: 18px;
-    color: black;
-  }
-  
-  /* arriging thr format in the order */
-  input[type='text'],
-  input[type='email'],
-  input[type='password'],
-  select {
-    color: black;
-    width: 250px;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-  }
-  
-  
+}
+
+label {
+  display: inline-block;
+  width: 150px;
+  font-size: 18px;
+  color: rgb(245, 213, 11);
+}
+
+/* arriging thr format in the order */
+input[type='text'],
+input[type='email'],
+input[type='password'],
+select {
+  color: black;
+  width: 250px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+

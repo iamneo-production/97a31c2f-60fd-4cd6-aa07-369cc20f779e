@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody; 
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.*;
-import com.examly.springapp.repository.*;
 import com.examly.springapp.service.*;
 import com.examly.springapp.models.*;
 
@@ -18,17 +17,12 @@ import org.springframework.beans.factory.annotation.*;
 import org.springframework.http.*;
 import java.util.*;
 
-import javax.security.auth.spi.LoginModule;
-
 
 @RestController
 @RequestMapping("/")
-// @ResponseBody
 public class AdminController {
+    @Autowired
     private AdminService  adminService;
-    public AdminController(AdminService adminService){
-        this.adminService =  adminService;
-    }
 
     @PostMapping("admin/addStudent")
     public String saveNewUser(@RequestBody StudentModel studentModel){
@@ -48,8 +42,7 @@ public class AdminController {
 
     @GetMapping("admin/viewStudent")
     public StudentModel viewStudent(@RequestParam("id") Integer studentid){         
-         StudentModel studentmodel = adminService.getStudent(studentid);
-    return studentmodel;
+         return adminService.getStudent(studentid);
     }
 
     @PostMapping("admin/addCourse")

@@ -24,15 +24,10 @@ import javax.security.auth.spi.LoginModule;
 // @ResponseBody
 public class AuthController {
 
+	@Autowired
     private LoginService loginService;
-    private UserService  userService;
+	@Autowired
     private AuthService  authService;
-
-    public AuthController(LoginService loginService,UserService userService,AuthService authService ){
-        this.loginService = loginService;
-        this.userService =  userService;
-        this.authService = authService;
-    }
 
 	@CrossOrigin
     @GetMapping("/login")
@@ -61,7 +56,6 @@ public class AuthController {
 	@CrossOrigin
 	@PostMapping("/user/login")
 	public ResponseEntity<?> authenticateUser(@RequestBody LoginModel loginModel) {
-		System.out.println("login model " + loginModel.getEmail() + loginModel.getPassword());
 		return authService.login(loginModel);
 	}
 
