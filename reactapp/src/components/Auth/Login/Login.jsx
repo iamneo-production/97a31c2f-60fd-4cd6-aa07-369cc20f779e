@@ -64,7 +64,7 @@ const Login = () => {
 
   const handleInputChange = (e) => { 
     const { name, value } = e.target
-    setFormData({ ...FormData, [name]: value })
+    setState({...state, inputs: {...state.inputs, [name]: value} })
   }
 
   const handleLogin = async (e) => { 
@@ -81,7 +81,7 @@ const Login = () => {
       console.log(err)
       setErrorMessage('User not found. Please check your email and password.')
     }
-    setFormData({email: '', password: ''})
+   
   }
 
   if (localStorage.getItem('token')) {
@@ -94,11 +94,15 @@ const Login = () => {
             <label htmlFor="email">Email:</label>
             <input type="email" data-testid="email" name='email' value={FormData.email} placeholder="Enter Email" onChange={handleInputChange} required />
         </div>
+        {state.errors.email.required && <div className='text-danger' >Email is required.</div>}
+      
         <div>
             <label htmlFor="password">Password:</label>
             <input type="password" data-testid="password" name="password" value={FormData.password}  placeholder="Enter Password" onChange={handleInputChange} required />
         </div>
+        {state.errors.password.required && <div className='text-danger' >Password is required.</div>}
       
+      { errors && <div className='text-danger' >{errors}</div>}
       <button type="submit" data-testid="loginButton">Submit</button>
       {errorMessage && <p className="error">{errorMessage}</p>}
       <br />

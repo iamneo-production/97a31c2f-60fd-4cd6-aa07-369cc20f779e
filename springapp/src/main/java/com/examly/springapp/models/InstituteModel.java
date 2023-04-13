@@ -30,5 +30,4 @@ public class InstituteModel {
     @Column(unique = true)
     private String email;
     
-
 }

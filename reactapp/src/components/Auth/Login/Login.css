@@ -11,7 +11,6 @@ form {
     background-position: center;
   }
 
-
   /* increasing the box size giving the color  to the text for showing email and password*/
   label {
     color: wheat;
@@ -47,3 +46,11 @@ form {
     background-color: #801c00;
   }
   
+/* custom error message */
+
+.text-danger{
+    color: red;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 10px 0;
+}
