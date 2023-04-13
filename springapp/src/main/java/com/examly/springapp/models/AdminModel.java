@@ -27,6 +27,6 @@ public class AdminModel {
     private String email;
     private String password;
     private String mobileNumber;
-    private String userRole;
-
+    @Enumerated(EnumType.STRING)
+    private ERole userRole;
 }

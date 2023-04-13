@@ -4,8 +4,8 @@ import { Link,Navigate } from 'react-router-dom'
 import "./Signup.css"
 
 const Signup = () => {
+
     const[redirect, setRedirect] = useState(false)
-    
     const initialState = {
         email: '',
         mobileNumber: '',
@@ -26,7 +26,8 @@ const Signup = () => {
         try {
             const data = await authService.register(formData)
             console.log(data);
-            setRedirect(true)
+            if (data.status === 200) 
+                setRedirect(true)
         }catch(err){
             console.log(err)
         }
@@ -38,7 +39,7 @@ const Signup = () => {
         <div>
             <label htmlFor="userType">User Type:</label>
             <select data-testid="userType" name="userType" value={formData.userRole} onChange={handleInputChange}>
-                <option value="user">User</option>
+                <option value="user" >User</option>
                 <option value="admin">Admin</option>
             </select>
         </div>
@@ -66,7 +67,7 @@ const Signup = () => {
                 
             <button type="submit" data-testid="submitButton">Submit</button>
             <br />
-            All Ready a User? <Link to="/login" data-testid='signinLink'>signup</Link>
+            All Ready a User? <Link to="/login" data-testid='signinLink'>Login</Link>
             {redirect && <Navigate to="/login" />}
     </form>
   )

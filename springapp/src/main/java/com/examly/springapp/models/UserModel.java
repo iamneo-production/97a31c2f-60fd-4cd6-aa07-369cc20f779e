@@ -1,7 +1,4 @@
 package com.examly.springapp.models;
-import java.lang.annotation.Inherited;
-import java.sql.Date;
-import javax.annotation.processing.Generated;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -19,13 +16,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Table(name="user")
 public class UserModel {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String email;
     private String username;
     private String password;
-    private String mobileNumber;
-    private String userRole;
+	private String mobileNumber;
+	@Enumerated(EnumType.STRING)
+    private ERole userRole;
 }
 

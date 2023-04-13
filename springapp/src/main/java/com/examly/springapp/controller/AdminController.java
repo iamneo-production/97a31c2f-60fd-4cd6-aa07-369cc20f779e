@@ -1,4 +1,3 @@
-
 package com.examly.springapp.controller;
 
 import org.springframework.web.bind.annotation.DeleteMapping; 
@@ -71,8 +70,7 @@ public class AdminController {
 
     @GetMapping("admin/viewCourse")
     public CourseModel viewCourse(@RequestParam("id") Integer courseid){         
-         CourseModel  coursemodel = adminService.getCourse(courseid);
-    return coursemodel;
+         return adminService.getCourse(courseid);
     }
 
     @CrossOrigin
