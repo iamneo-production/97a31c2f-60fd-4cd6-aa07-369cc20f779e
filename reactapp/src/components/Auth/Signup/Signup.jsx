@@ -66,7 +66,7 @@ const Signup = () => {
                 
             <button type="submit" data-testid="submitButton">Submit</button>
             <br />
-            All Ready a User? <Link to="/login" data-testid='signinLink'>signup</Link>
+            All Ready a User? <Link to="/login" data-testid='signinLink'>Login</Link>
             {redirect && <Navigate to="/login" />}
     </form>
   )
