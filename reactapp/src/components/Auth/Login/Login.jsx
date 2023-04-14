@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
-import { Navigate,Link } from 'react-router-dom'
+import { Navigate, Link } from 'react-router-dom'
 import authService from "../../../api/authService"
 import "./Login.css"
 import { useDispatch } from 'react-redux'
@@ -61,6 +61,7 @@ const Login = () => {
           if (data.status === 200) {
             dispatch(setToken({ token: data.token,role:data.roles[0] }))
             localStorage.setItem( 'token', data.token)
+            localStorage.setItem( 'role', data.roles[0])
             setState({ ...state, success: true })
             setState(initialState)
           } else {
@@ -72,7 +73,13 @@ const Login = () => {
   }
 
   if (localStorage.getItem('token')) {
-    return <Navigate to="/dashboard" />
+    const role = localStorage.getItem('role')
+    console.log(localStorage)
+    if (role === 'Admin') {
+      return <Navigate to="/admin/dashboard" />
+    } else {
+      return <Navigate to="/user/dashboard" />
+    }
   }
 
   return (
