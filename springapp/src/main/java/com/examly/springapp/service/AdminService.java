@@ -1,19 +1,30 @@
 package com.examly.springapp.service;
+import org.springframework.web.bind.annotation.*;
 import com.examly.springapp.repository.*;
 import com.examly.springapp.models.*;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.*;
 import java.util.*;
+import javax.lang.model.type.NullType;
 
 @Service
-public class AdminService {
 
+public class AdminService {
     @Autowired
     private StudentRepository studentRepository;
+
     @Autowired
     private CourseRepository courseRepository;
+
     @Autowired
     private InstituteRepository instituteRepository;
+
+    public AdminService(StudentRepository studentRepository,CourseRepository courseRepository,InstituteRepository instituteRepository){
+        this.studentRepository = studentRepository;
+        this.courseRepository = courseRepository;
+        this.instituteRepository = instituteRepository; 
+    }
 
     public void addStudent(StudentModel studentModel){
         studentRepository.save(studentModel);
