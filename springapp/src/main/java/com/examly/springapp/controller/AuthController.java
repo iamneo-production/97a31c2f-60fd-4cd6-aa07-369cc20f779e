@@ -1,8 +1,6 @@
 package com.examly.springapp.controller;
-import org.springframework.web.bind.annotation.PostMapping; 
-import org.springframework.web.bind.annotation.RequestBody; 
-import org.springframework.web.bind.annotation.*;
 
+import org.springframework.web.bind.annotation.*;
 import com.examly.springapp.models.*;
 import com.examly.springapp.service.authenticationService.*;
 
