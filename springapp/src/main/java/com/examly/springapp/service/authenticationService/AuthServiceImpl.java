@@ -21,6 +21,8 @@ import com.examly.springapp.repository.UserRepository;
 import com.examly.springapp.security.securityConfig.JwtUtils;
 import com.examly.springapp.security.securityServices.UserDetailsImpl;
 
+import com.examly.springapp.service.authenticationService.*;
+
 @Service
 public class AuthServiceImpl implements AuthService {
 
@@ -44,14 +46,13 @@ public class AuthServiceImpl implements AuthService {
 			return ResponseEntity.badRequest()
 								 .body("Error: Email is already in use!");
 		}
-		UserModel user = UserModel.builder()
-				.email(userModel.getEmail())
-				.username(userModel.getUsername())
-				.mobileNumber(userModel.getMobileNumber())
-				.userRole(ERole.user)
-				.password(encoder.encode(userModel.getPassword()))
-				.build();
-		
+		UserModel user = new UserModel();
+		user.setEmail(userModel.getEmail());
+		user.setUsername(userModel.getUsername());
+		user.setMobileNumber(userModel.getMobileNumber());
+		user.setUserRole(ERole.User);
+		user.setPassword(encoder.encode(userModel.getPassword()));
+				
 		return ResponseEntity.ok(userRepository.save(user));
     }
 
@@ -61,13 +62,14 @@ public class AuthServiceImpl implements AuthService {
 			return ResponseEntity.badRequest()
 								 .body("Error: Email is already in use!");
 		}
-		UserModel user = UserModel.builder()
-				.email(userModel.getEmail())
-				.username(userModel.getUsername())
-				.mobileNumber(userModel.getMobileNumber())
-				.userRole(ERole.admin)
-				.password(encoder.encode(userModel.getPassword()))
-				.build();
+
+		
+		UserModel user = new UserModel();
+		user.setEmail(userModel.getEmail());
+		user.setUsername(userModel.getUsername());
+		user.setMobileNumber(userModel.getMobileNumber());
+		user.setUserRole(ERole.Admin);
+		user.setPassword(encoder.encode(userModel.getPassword()));
 
 		return ResponseEntity.ok(userRepository.save(user));
     }

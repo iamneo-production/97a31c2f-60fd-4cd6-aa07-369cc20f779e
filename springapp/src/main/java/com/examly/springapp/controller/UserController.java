@@ -7,15 +7,23 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping; 
 import org.springframework.web.bind.annotation.RequestBody; 
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.*;
+import com.examly.springapp.repository.*;
 import com.examly.springapp.service.*;
 import com.examly.springapp.models.*;
+
+import org.springframework.http.*;
+import org.springframework.stereotype.*;
 import org.springframework.beans.factory.annotation.*;
+import org.springframework.http.*;
+import java.util.*;
+
+import javax.security.auth.spi.LoginModule;
+
 
 @RestController
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@RequestMapping("/")
 public class UserController {
-
-    @Autowired
     private UserService  userService;
     public UserController(UserService userService){
         this.userService =  userService;
@@ -28,7 +36,7 @@ public class UserController {
     }
     @GetMapping("user/viewAdmission")
     public AdmissionModel viewAdmission(@RequestParam("id") Integer admissionid){         
-        return userService.getAdmission(admissionid);
+         return userService.getAdmission(admissionid);
     }
 
     @DeleteMapping("user/deleteAdmission/{id}")
@@ -43,7 +51,7 @@ public class UserController {
 
     @GetMapping("user/viewStatus")
     public AdmissionModel viewStatus(@RequestParam("id") Integer admissionid){         
-        return userService.getAdmission(admissionid);
+         return userService.getAdmission(admissionid);
     }
 
 

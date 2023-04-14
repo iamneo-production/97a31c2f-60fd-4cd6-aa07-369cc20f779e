@@ -1,4 +1,4 @@
-const baseUrl = "https://8080-fcffeccfcdbefebcbbfafccddecaeebaeccc.project.examly.io";
+const baseUrl = "https://8080-deacebeebcbbfafccddecaeebaeccc.project.examly.io";
 
 const register = async (data) => { 
     const formatData = {
@@ -9,7 +9,7 @@ const register = async (data) => {
         mobileNumber: data.mobileNumber,
     } 
     console.log(formatData);
-    if (formatData.userRole === "admin")
+    if (formatData.userRole === "Admin")
         return fetch(`${baseUrl}/admin/signup`, {
             method: "POST",
             headers: {

@@ -1,5 +1,8 @@
+
 package com.examly.springapp.models;
+import java.lang.annotation.Inherited;
 import java.sql.Date;
+import javax.annotation.processing.Generated;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -16,8 +19,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "Student")
-public class StudentModel {
 
+public class StudentModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer studentId;

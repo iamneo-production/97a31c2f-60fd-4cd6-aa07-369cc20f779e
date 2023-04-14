@@ -7,11 +7,9 @@ import org.springframework.stereotype.*;
 import org.springframework.beans.factory.annotation.*;
 import java.util.*;
 
-@Repository
-public interface InstituteRepository extends JpaRepository<InstituteModel,Integer> {
+public interface LoginRepository extends JpaRepository<LoginModel,Long> {
 
-    List<InstituteModel> findAll(); 
-    Optional<InstituteModel> findByInstituteId(Integer id);
-    void deleteById(Integer id);
+    List<LoginModel> findAll(); 
+    List<LoginModel> findById(String id);
+    
 }
-

@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.examly.springapp.SpringappApplicationTests
--------------------------------------------------------------------------------
-Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.584 s - in com.examly.springapp.SpringappApplicationTests
