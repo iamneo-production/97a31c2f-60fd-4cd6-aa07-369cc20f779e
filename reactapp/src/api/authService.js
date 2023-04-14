@@ -9,7 +9,7 @@ const register = async (data) => {
         mobileNumber: data.mobileNumber,
     } 
     console.log(formatData);
-    if (formatData.userRole === "Admin")
+    if (formatData.userRole === "admin")
         return fetch(`${baseUrl}/admin/signup`, {
             method: "POST",
             headers: {
