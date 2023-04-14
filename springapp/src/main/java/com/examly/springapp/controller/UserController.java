@@ -1,15 +1,21 @@
 package com.examly.springapp.controller;
-
 import org.springframework.web.bind.annotation.*;
+import com.examly.springapp.repository.*;
 import com.examly.springapp.service.*;
 import com.examly.springapp.models.*;
+import org.springframework.http.*;
+import org.springframework.stereotype.*;
 import org.springframework.beans.factory.annotation.*;
+import org.springframework.http.*;
+import java.util.*;
+
+import javax.security.auth.spi.LoginModule;
+
 
 @RestController
+@RequestMapping("/")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UserController {
-
-    @Autowired
     private UserService  userService;
     public UserController(UserService userService){
         this.userService =  userService;
@@ -22,7 +28,7 @@ public class UserController {
     }
     @GetMapping("user/viewAdmission")
     public AdmissionModel viewAdmission(@RequestParam("id") Integer admissionid){         
-        return userService.getAdmission(admissionid);
+         return userService.getAdmission(admissionid);
     }
 
     @DeleteMapping("user/deleteAdmission/{id}")
@@ -37,7 +43,7 @@ public class UserController {
 
     @GetMapping("user/viewStatus")
     public AdmissionModel viewStatus(@RequestParam("id") Integer admissionid){         
-        return userService.getAdmission(admissionid);
+         return userService.getAdmission(admissionid);
     }
 
 

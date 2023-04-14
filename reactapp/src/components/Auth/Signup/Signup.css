@@ -44,3 +44,12 @@ select {
   border: 1px solid #ccc;
 }
 
+<<<<<<< HEAD
+=======
+/* the error message confrim password is worng */
+.error {
+  color: red;
+}
+
+
+>>>>>>> 0d7d74c1120e16825b0f0004f1a80e8638eee0b6

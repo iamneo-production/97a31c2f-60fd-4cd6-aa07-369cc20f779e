@@ -1,18 +1,23 @@
 package com.examly.springapp.controller;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.examly.springapp.service.*;
 import com.examly.springapp.models.*;
+
+import org.springframework.http.*;
+import org.springframework.stereotype.*;
+import org.springframework.beans.factory.annotation.*;
+import org.springframework.http.*;
 import java.util.*;
 
+
 @RestController
+@RequestMapping("/")
+
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class AdminController {
-
     @Autowired
     private AdminService  adminService;
-    
+
     @PostMapping("admin/addStudent")
     public String saveNewUser(@RequestBody StudentModel studentModel){
         adminService.addStudent(studentModel);
@@ -31,7 +36,7 @@ public class AdminController {
 
     @GetMapping("admin/viewStudent")
     public StudentModel viewStudent(@RequestParam("id") Integer studentid){         
-        return adminService.getStudent(studentid);
+         return adminService.getStudent(studentid);
     }
 
     @PostMapping("admin/addCourse")
@@ -52,10 +57,10 @@ public class AdminController {
 
     @GetMapping("admin/viewCourse")
     public CourseModel viewCourse(@RequestParam("id") Integer courseid){         
-        return adminService.getCourse(courseid);
+         return adminService.getCourse(courseid);
     }
 
-    @PostMapping("/admins/addInstitute")
+    @PostMapping("admin/addInstitute")
     public String saveNewUser(@RequestBody InstituteModel instituteModel){
         adminService.addInstitute(instituteModel);
         return "Institute added";
@@ -66,12 +71,14 @@ public class AdminController {
         return adminService.deleteInstitute(instituteid);
     }
 
-    @PutMapping("admins/editInstitute")
+
+    @PutMapping("admin/editInstitute")
     private String editInstitute(@RequestParam("instituteId") Integer instituteid ){
         return adminService.editInstitute(instituteid);
     }
 
-    @GetMapping("admins/viewInstitutes")
+
+    @GetMapping("admin/viewInstitutes")
     public List<InstituteModel> viewInstitutes(){         
          return adminService.getInstitutes();
     }
