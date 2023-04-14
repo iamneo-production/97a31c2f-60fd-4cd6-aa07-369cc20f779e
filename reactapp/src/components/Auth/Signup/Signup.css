@@ -44,3 +44,9 @@ select {
   border: 1px solid #ccc;
 }
 
+/* the error message confrim password is worng */
+.error {
+  color: red;
+}
+
+

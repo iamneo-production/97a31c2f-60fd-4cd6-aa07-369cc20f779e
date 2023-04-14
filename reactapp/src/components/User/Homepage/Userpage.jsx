@@ -14,7 +14,7 @@ const Homepage = () => {
     return <Navigate to="/login" />  }
   return (
       <>
-      <div>Homepage</div>
+      <div>User has </div>
       <p>you logged in</p>
       <button data-testid="logout" name='logout' onClick={handleLogout} >logout</button>
       {redirectCheck && <Navigate to="/login" />}
