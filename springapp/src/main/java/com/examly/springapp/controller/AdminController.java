@@ -60,7 +60,7 @@ public class AdminController {
          return adminService.getCourse(courseid);
     }
 
-    @PostMapping("admin/addInstitute")
+    @PostMapping("admins/addInstitute")
     public String saveNewUser(@RequestBody InstituteModel instituteModel){
         adminService.addInstitute(instituteModel);
         return "Institute added";
@@ -72,13 +72,13 @@ public class AdminController {
     }
 
 
-    @PutMapping("admin/editInstitute")
+    @PutMapping("admins/editInstitute")
     private String editInstitute(@RequestParam("instituteId") Integer instituteid ){
         return adminService.editInstitute(instituteid);
     }
 
 
-    @GetMapping("admin/viewInstitutes")
+    @GetMapping("admins/viewInstitutes")
     public List<InstituteModel> viewInstitutes(){         
          return adminService.getInstitutes();
     }
