@@ -1,10 +1,8 @@
-import React from 'react'
-import { useState } from 'react'
+import React,{ useState } from 'react'
 import { Navigate,Link } from 'react-router-dom'
 import authService from "../../../api/authService"
 import "./Login.css"
-import { useDispatch } from 'react-redux'
-import { setToken } from '../../../features/auth/authSlice'
+
 
 const Login = () => {
 
@@ -23,7 +21,6 @@ const Login = () => {
   const [state, setState] = useState(initialState.inputs);
   const [errors, setErrors] = useState(initialState.errors)
   const [loader, setLoader] = useState(false)
-  const dispatch = useDispatch();
 
   const handleInputChange = (e) => { 
     const { name, value } = e.target
@@ -33,23 +30,23 @@ const Login = () => {
   const handleLogin = async (e) => { 
     e.preventDefault()
 
-    let errors = initialState.errors;
+    let error = initialState.errors;
     if (state.email === '') {
-      errors = {
-          ...errors,
+      error = {
+          ...error,
           email: { required: true },
       };
-      errors.hasError = true;
+      error.hasError = true;
   }
   if (state.password === '') {
-      errors = {
-          ...errors,
+      error = {
+          ...error,
           password: { required: true },
       };
-      errors.hasError = true;
+      error.hasError = true;
     }
     
-    setErrors(errors)
+    setErrors(error)
 
     if (!errors.hasError) {
       setLoader(true)
@@ -57,7 +54,6 @@ const Login = () => {
         .then((data) => {
           console.log(data,"data");
           if (data.status === 200) {
-            dispatch(setToken({ token: data.token,role:data.roles[0] }))
             localStorage.setItem('token', data.token)
             localStorage.setItem('role', data.roles[0])
             setLoader(false)
