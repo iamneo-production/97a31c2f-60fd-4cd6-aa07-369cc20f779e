@@ -21,7 +21,6 @@ import com.examly.springapp.repository.UserRepository;
 import com.examly.springapp.security.securityConfig.JwtUtils;
 import com.examly.springapp.security.securityServices.UserDetailsImpl;
 
-import com.examly.springapp.service.authenticationService.*;
 
 @Service
 public class AuthServiceImpl implements AuthService {
@@ -43,8 +42,9 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public ResponseEntity<?> saveUser(UserModel userModel) {
         if (userRepository.existsByEmail(userModel.getEmail())) {
-			return ResponseEntity.badRequest()
-								 .body("Error: Email is already in use!");
+			HashMap<String, Object> outResponse = new HashMap<>();
+			outResponse.put("message", "Email is already in use!");
+			return ResponseEntity.badRequest().body(outResponse);
 		}
 		UserModel user = new UserModel();
 		user.setEmail(userModel.getEmail());
@@ -59,8 +59,9 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public ResponseEntity<?> saveAdmin(UserModel userModel) {
         if (userRepository.existsByEmail(userModel.getEmail())) {
-			return ResponseEntity.badRequest()
-								 .body("Error: Email is already in use!");
+			HashMap<String, Object> outResponse = new HashMap<>();
+			outResponse.put("message", "Email is already in use!");
+			return ResponseEntity.badRequest().body(outResponse);
 		}
 
 		

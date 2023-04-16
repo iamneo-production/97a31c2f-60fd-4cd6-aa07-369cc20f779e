@@ -22,13 +22,11 @@ div {
   
 }
 
-
-/* coloring the text login,username,mobile number,etc*/
 label {
   display: inline-block;
   width: 150px;
   font-size: 18px;
-  color: wheat;
+  color: black;
 }
 
 /* arriging thr format in the order */
@@ -44,12 +42,11 @@ select {
   border: 1px solid #ccc;
 }
 
-<<<<<<< HEAD
-=======
-/* the error message confrim password is worng */
-.error {
-  color: red;
+
+/* custom error message */
+.error{
+color: red;
+font-size: 1.2rem;
+font-weight: bold;
+margin: 10px 0;
 }
-
-
->>>>>>> 0d7d74c1120e16825b0f0004f1a80e8638eee0b6

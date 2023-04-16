@@ -1,177 +1,113 @@
-import React, { useState } from 'react';
-import authService from '../../../api/authService';
-import { Link, Navigate } from 'react-router-dom';
-import './Signup.css';
+import React,{ useState } from 'react'
+import authService from "../../../api/authService"
+import { Link,Navigate } from 'react-router-dom'
+import "./Signup.css"
+import Validation from './Validation'
 
 const Signup = () => {
-  const [redirect, setRedirect] = useState(false);
-  const initialState = {
-    email: '',
-    mobileNumber: '',
-    password: '',
-    username: '',
-    userType: 'User',
-    confirmPassword: '',
-  };
-  const [formData, setFormData] = useState(initialState);
-  const [error, setError] = useState('');
 
-<<<<<<< HEAD
-    const[redirect, setRedirect] = useState(false)
     const initialState = {
-        email: '',
-        mobileNumber: '',
-        password: '',
-        username: '',
-        userType: 'User',
-        confirmPassword: ''
+        form: {
+            email: '',
+            mobileNumber: '',
+            password: '',
+            username: '',
+            userType: 'User',
+            confirmPassword: ''
+        },
+        errors: {
+            hasError: false,
+            email: { required: false, message: '' },
+            password: { required: false, message: '' },
+            username: { required: false, message: '' },
+            mobileNumber: { required: false, message: '' },
+            confirmPassword: { required: false, message: '' },
+            custom: { required: false, message: '' },
+        }
     }
-    const [formData, setFormData] = useState(initialState);
-=======
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
->>>>>>> 0d7d74c1120e16825b0f0004f1a80e8638eee0b6
+    const [formData, setFormData] = useState(initialState.form);
+    const [errors, setErrors] = useState(initialState.errors)
+    const [loader, setLoader] = useState(false)
+    const[redirect, setRedirect] = useState(false)
+    
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const { email, password, confirmPassword } = formData;
-    if (password !== confirmPassword) {
-      setError('Confirm password is wrong');
-      return;
+    const handleInputChange = (e) => { 
+        const { name, value } = e.target
+        setFormData({ ...formData, [name]: value })
     }
-    try {
-      console.log(formData);
-      const data = await authService.register(formData);
-      console.log(data);
-      if (data.status === 200) setRedirect(true);
-    } catch (err) {
-      console.log(err);
-      setError(err.response.data.message);
-    }
-  };
 
-  return (
+    const handleSubmit = async (e) => { 
+        e.preventDefault()
+        let errorObj = initialState.errors;
+        errorObj = Validation(formData, errorObj)
+        setErrors(errorObj)
+        if (!errorObj.hasError) {
+            setLoader(true)
+            authService.register(formData)
+                .then((data) => { 
+                    console.log(data, "data");
+                    if (data.id) {
+                        setRedirect(true)
+                        setLoader(false)
+                    }
+                    else {
+                        errorObj.custom.required = true
+                        errorObj.custom.message = data.message
+                        setLoader(false)
+                    }
+                })
+        }
+    }
+
+    return (
     <form onSubmit={handleSubmit}>
-<<<<<<< HEAD
             
         <div>
             <label htmlFor="userType">User Type:</label>
             <select data-testid="userType" name="userType" value={formData.userRole} onChange={handleInputChange}>
-                <option value="user" >User</option>
-                <option value="admin">Admin</option>
+                <option value="User" >User</option>
+                <option value="Admin">Admin</option>
             </select>
         </div>
         
         <div>
             <label htmlFor="email">Email:</label>
-            <input type="email" data-testid="email" name='email' value={formData.email} placeholder="Email" onChange={handleInputChange} />
+            <input type="email" data-testid="email" name='email' value={formData.email} placeholder="Enter Email" onChange={handleInputChange} />
         </div>
+            {errors.email.required && <div className="error">{errors.email.message}</div>}
+            
         <div>
             <label htmlFor="username">Username:</label>
-            <input type="text" data-testid="username" name='username' value={formData.username} placeholder="User Name" onChange={handleInputChange} />
+            <input type="text" data-testid="username" name='username' value={formData.username} placeholder="Enter User Name" onChange={handleInputChange} />
         </div>
+            {errors.username.required && <div className="error">{ errors.username.message }</div>}
+            
         <div>
             <label htmlFor="mobileNumber">Mobile Number:</label>
-            <input type="text" data-testid="mobileNumber" name="mobileNumber" value={formData.mobileNumber} placeholder="Mobile Number" onChange={handleInputChange} />
+            <input type="text" data-testid="mobileNumber" name="mobileNumber" value={formData.mobileNumber} placeholder="Enter phoneNumber" onChange={handleInputChange} />
         </div>
+            {errors.mobileNumber.required && <div className="error">{ errors.mobileNumber.message }</div>}    
+        
         <div>
             <label htmlFor="password">Password:</label>
-            <input type="password" data-testid="password" name="password" value={formData.password} placeholder="Password" onChange={handleInputChange} />
+            <input type="password" data-testid="password" name="password" value={formData.password} placeholder="Enter Password" onChange={handleInputChange} />
         </div>
+            {errors.password.required && <div className="error">{ errors.password.message }</div>}    
+            
         <div>
             <label htmlFor="confirmPassword">Confirm Password:</label>
-            <input type="password" data-testid="confirmPassword" name="confirmPassword" value={formData.confirmPassword} placeholder="Confirm Password" onChange={handleInputChange} />
+            <input type="password" data-testid="confirmPassword" name="confirmPassword" value={formData.confirmPassword}  placeholder="Enter Confirm Password" onChange={handleInputChange} />
         </div>
-                
+            {errors.confirmPassword.required && <div className="error">{ errors.confirmPassword.message }</div>}
+
+            {loader && <div className="loader"></div>}
+            {errors.custom.required && <div className="error">{errors.custom.message}</div>}
             <button type="submit" data-testid="submitButton">Submit</button>
             <br />
-            All Ready a User? <Link to="/login" data-testid='signinLink'>Login</Link>
+            All Ready a user? <Link to="/login" data-testid='signinLink'>Login</Link>
             {redirect && <Navigate to="/login" />}
-=======
-      {error && <div className="error">{error}</div>}
-      <div>
-        <label htmlFor="userType">User Type:</label>
-        <select
-          data-testid="userType"
-          name="userType"
-          value={formData.userRole}
-          onChange={handleInputChange}
-        >
-          <option value="user">User</option>
-          <option value="admin">Admin</option>
-        </select>
-      </div>
-
-      <div>
-        <label htmlFor="email">Email:</label>
-        <input
-          type="email"
-          data-testid="email"
-          name="email"
-          value={formData.email}
-          placeholder="Email"
-          onChange={handleInputChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="username">Username:</label>
-        <input
-          type="text"
-          data-testid="username"
-          name="username"
-          value={formData.username}
-          placeholder="User Name"
-          onChange={handleInputChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="mobileNumber">Mobile Number:</label>
-        <input
-          type="text"
-          data-testid="mobileNumber"
-          name="mobileNumber"
-          value={formData.mobileNumber}
-          placeholder="Mobile Number"
-          onChange={handleInputChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="password">Password:</label>
-        <input
-          type="password"
-          data-testid="password"
-          name="password"
-          value={formData.password}
-          placeholder="Password"
-          onChange={handleInputChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="confirmPassword">Confirm Password:</label>
-        <input
-          type="password"
-          data-testid="confirmPassword"
-          name="confirmPassword"
-          value={formData.confirmPassword}
-          placeholder="Confirm Password"
-          onChange={handleInputChange}
-        />
-      </div>
-
-      <button type="submit" data-testid="submitButton">
-        Submit
-      </button>
-      <br />
-      Already a User?{' '}
-      <Link to="/login" data-testid="signinLink">
-        Login
-      </Link>
-      {redirect && <Navigate to="/login" />}
->>>>>>> 0d7d74c1120e16825b0f0004f1a80e8638eee0b6
     </form>
-  );
-};
+  )
+}
 
-export default Signup;
+export default Signup

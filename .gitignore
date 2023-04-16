@@ -3,3 +3,5 @@ done
 puppeteer/
 junit/
 target/
+.vscode/
+react/
