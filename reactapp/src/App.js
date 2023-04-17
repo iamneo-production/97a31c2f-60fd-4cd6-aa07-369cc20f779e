@@ -1,11 +1,9 @@
-import logo from './logo.svg';
 import './App.css';
-import Login from './components/Auth/Login/Login';
 import Signup from './components/Auth/Signup/Signup';
+import Login from './components/Auth/Login/Login';
 import { BrowserRouter as Router,Route,Routes } from 'react-router-dom';
-import Userpage from './components/User/Homepage/Userpage';
-import Adminpage from './components/User/Homepage/Adminpage';
-
+import AdminHomePage from './components/Admin/AdminHomePage/AdminHomePage';
+import Homepage from './components/User/Homepage/Homepage';
 
 function App() {
   return (

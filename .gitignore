@@ -1,2 +1,7 @@
 node_modules/
 done
+puppeteer/
+junit/
+target/
+.vscode/
+react/

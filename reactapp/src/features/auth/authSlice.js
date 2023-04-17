@@ -4,7 +4,7 @@ const initialState = {
     token: "",
     email: "",
     id: "",
-    role: "",
+    role: "guest",
     username: "",
 }
 
