@@ -56,13 +56,12 @@ public class AdminController {
     }
 
     @GetMapping("admin/viewCourse")
-    public CourseModel viewCourse(@RequestParam("id") Integer courseid){         
-         return adminService.getCourse(courseid);
+    public List<CourseModel> viewCourse(){         
+         return adminService.getCourse();
     }
 
     @PostMapping("admin/addInstitute")
     public String saveNewUser(@RequestBody InstituteModel instituteModel){
-        System.out.println("In controller"+instituteModel.getInstituteId());
         adminService.addInstitute(instituteModel);
         return "Institute added";
     }

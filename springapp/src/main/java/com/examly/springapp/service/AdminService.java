@@ -86,8 +86,12 @@ public class AdminService {
         return null;
     }
 
+    public List<CourseModel> getCourse(){
+        return courseRepository.findAll();
+      }
+
+
     public void addInstitute(InstituteModel instituteModel){
-        System.out.println("show error"+instituteModel.getInstituteId());
         instituteRepository.save(instituteModel);
     }  
 
