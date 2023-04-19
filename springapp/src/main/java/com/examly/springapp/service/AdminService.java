@@ -87,6 +87,7 @@ public class AdminService {
     }
 
     public void addInstitute(InstituteModel instituteModel){
+        System.out.println("show error"+instituteModel.getInstituteId());
         instituteRepository.save(instituteModel);
     }  
 

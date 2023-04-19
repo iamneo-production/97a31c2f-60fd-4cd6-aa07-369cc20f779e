@@ -34,17 +34,4 @@ public class AuthController {
 	}
 
 
-	@PostMapping("/admin/addInstitute")
-	public ResponseEntity<?> addInstitute() {
-		return ResponseEntity.ok("added institute");
-	}
-	@PutMapping("/admin/editInstitute")
-	public ResponseEntity<?> editInstitute() {
-		return ResponseEntity.ok("edited institute");
-	}
-	@GetMapping("/admin/viewInstitutes")
-	public ResponseEntity<?> viewInstitute() {
-		return ResponseEntity.ok("viewed institute");
-	}
-
 }
