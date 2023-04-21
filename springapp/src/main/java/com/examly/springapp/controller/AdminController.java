@@ -39,6 +39,8 @@ public class AdminController {
          return adminService.getStudent(studentid);
     }
 
+
+
     @PostMapping("admin/addCourse")
     public String saveNewUser(@RequestBody CourseModel courseModel){
         adminService.addCourse(courseModel);
