@@ -50,7 +50,7 @@ public class AuthServiceImpl implements AuthService {
 		user.setEmail(userModel.getEmail());
 		user.setUsername(userModel.getUsername());
 		user.setMobileNumber(userModel.getMobileNumber());
-		user.setUserRole(ERole.User);
+		user.setUserRole(ERole.user);
 		user.setPassword(encoder.encode(userModel.getPassword()));
 				
 		return ResponseEntity.ok(userRepository.save(user));
@@ -69,7 +69,7 @@ public class AuthServiceImpl implements AuthService {
 		user.setEmail(userModel.getEmail());
 		user.setUsername(userModel.getUsername());
 		user.setMobileNumber(userModel.getMobileNumber());
-		user.setUserRole(ERole.Admin);
+		user.setUserRole(ERole.admin);
 		user.setPassword(encoder.encode(userModel.getPassword()));
 
 		return ResponseEntity.ok(userRepository.save(user));
