@@ -1,40 +1,43 @@
-import React from 'react'
+import React,{ useState } from 'react'
 import { Navigate } from 'react-router-dom'
-import { useState } from 'react'
-import { AuthGuard } from '../../../utils/AuthGuard'
+import "./Adminpage.css"
+import "./Institutepage.jsx"
+const Homepage = () => {
+  
+  const [redirectCheck, setRedirectCheck] = useState(false)
+  const [currentPage, setCurrentPage] = useState('home');
 
-const AdminHomePage = () => {
+  const handleLogout = () => { 
+    localStorage.removeItem('token')
+    setRedirectCheck(true)
+  }
+  
+  const handleNavigation = (page) => {
+    setCurrentPage(page);
+  }
 
-    const [redirectCheck, setRedirectCheck] = useState(false)
-    const [currentPage, setCurrentPage] = useState('home');
-
-    const handleNavigation = (page) => {
-        setCurrentPage(page);
-      }
-
-    const handleLogout = () => { 
-        localStorage.removeItem('token')
-        localStorage.removeItem('role')
-        setRedirectCheck(true)
-    }
-
-
- 
-    return (
-        <>
-          <nav>
-            <ul>
-              <li onClick={() => handleNavigation('home')}>Home</li>
-              <li onClick={() => handleNavigation('add-institute')}>Add Institute</li>
-              <li onClick={() => handleNavigation('add-course')}>Add Course</li>
-              <li onClick={() => handleNavigation('add-student')}>Add Student</li>
-            </ul>
-          </nav>
-      <AuthGuard>
-          <div>AdminHomePage</div>
-          <button data-testid="logout" name='logout' onClick={handleLogout} >logout</button>
-          {redirectCheck && <Navigate to="/login" />}
-      </AuthGuard>
+  if (!localStorage.getItem('token')) { 
+    return <Navigate to="/login" />  
+  }
+  
+  return (
+    <>
+      <nav>
+        <ul>
+          <li onClick={() => handleNavigation('home')}>Home</li>
+          <li onClick={() => handleNavigation('add-institute')}>Add Institute</li>
+          <li onClick={() => handleNavigation('add-course')}>Add Course</li>
+          <li onClick={() => handleNavigation('add-student')}>Add Student</li>
+        </ul>
+      </nav>
+      
+      {currentPage === 'home' && (
+        <div>
+          <p>Admin has logged in</p>
+          <button data-testid="logout" name='logout' onClick={handleLogout}>Logout</button>
+        </div>
+      )}
+      
       {currentPage === 'add-institute' && (
         <div>
           <h2>Add Institute</h2>
@@ -76,6 +79,4 @@ const AdminHomePage = () => {
   )
 }
 
-export default AdminHomePage
-
-
+export default Homepage

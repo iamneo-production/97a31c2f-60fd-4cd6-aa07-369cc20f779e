@@ -28,8 +28,8 @@ public class StudentModel {
     private Date studentDOB;
     private String address;
     private String mobile;
-    private Integer SSLC;
-    private Integer HSC;
-    private Integer Diploma;
+    private Integer sslc;
+    private Integer hsc;
+    private Integer diploma;
     private String eligibility;    
 }

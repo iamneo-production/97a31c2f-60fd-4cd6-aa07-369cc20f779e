@@ -1,0 +1,45 @@
+/* Userpage.css
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  width: 40%;
+  margin-bottom: 1rem;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #0077b6;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+input[type="text"] {
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #0077b6;
+  margin-right: 0.5rem;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+p {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+} */
