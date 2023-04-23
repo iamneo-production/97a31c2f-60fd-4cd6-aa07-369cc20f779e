@@ -1,19 +1,16 @@
 import React,{ useState } from 'react'
-import { Navigate } from 'react-router-dom'
+import { UseLogout } from '../../../hooks/UseLogout'
 import "./Userpage.css"
 
 const Homepage = () => {
   
-  const [redirectCheck, setRedirectCheck] = useState(false)
   const [searchValue, setSearchValue] = useState('');
 
+  const { logout } = UseLogout()
   const handleLogout = () => { 
-    localStorage.removeItem('token')
-    setRedirectCheck(true)
+      logout()
   }
-  
-  if (!localStorage.getItem('token')) { 
-    return <Navigate to="/login" />  }
+
     return (
       <div>
         <div>
@@ -28,7 +25,6 @@ const Homepage = () => {
         <div>
           <p>User has  logged in</p>
         </div>
-        {redirectCheck && <Navigate to="/login" />}
       </div>
     );
   }
