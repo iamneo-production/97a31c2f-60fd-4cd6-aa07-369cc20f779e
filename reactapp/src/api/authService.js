@@ -1,44 +1,66 @@
-const baseUrl = "https://8080-deacebeebcbbfafccddecaeebaeccc.project.examly.io";
-const register = async (data) => { 
-    const formatData = {
-        email: data.email,
-        password: data.password,
-        userRole: data.userType,
-        username: data.username,
-        mobileNumber: data.mobileNumber,
-    } 
-    console.log(formatData);
-    if (formatData.userRole === "Admin") {
-        const response = await fetch(`${baseUrl}/admin/signup`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(formatData),
-        });
-        return response.json();
-    }
-    else {
-        const response = await fetch(`${baseUrl}/user/signup`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
-        });
-        return response.json();
-    }
-}
+// Define the base URL for the API requests
+const baseUrl = "https://8080-fcffeccfcdbefebcbbfafccddecaeebaeccc.project.examly.io";
 
-const login = async (data) => { 
-    const response = await fetch(`${baseUrl}/user/login`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
+// Define a function to register a user
+const register = async (data) => {
+  // Format the user data
+  const formatData = {
+    email: data.email,
+    password: data.password,
+    userRole: data.userType,
+    username: data.username,
+    mobileNumber: data.mobileNumber,
+  };
+    console.log("formated Data",formatData);
+  
+  // Send a POST request to the appropriate endpoint based on user role
+  if (formatData.userRole === "admin") {
+    const response = await fetch(`${baseUrl}/admin/signup`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formatData),
     });
-    return response.json();
-}
+    return response.json(); // Return the response as a JSON object
+  }
+  else {
+    const response = await fetch(`${baseUrl}/user/signup`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    return response.json(); // Return the response as a JSON object
+  }
+};
 
-export default { register, login };
+// Define a function to log in a user or admin 
+const login = async (data) => {
+  // Send a POST request to the login endpoint
+  const response = await fetch(`${baseUrl}/user/login`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+  return response.json(); // Return the response as a JSON object
+};
+
+// Define a function to get token details for a user
+const tokenDetails = async (token) => {
+  // Send a GET request to the token details endpoint with the token in the header
+  const response = await fetch(`${baseUrl}/details`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer " + token
+    }
+  });
+  return response.json(); // Return the response as a JSON object
+};
+
+// Export the functions as an object
+export default { register, login, tokenDetails };
