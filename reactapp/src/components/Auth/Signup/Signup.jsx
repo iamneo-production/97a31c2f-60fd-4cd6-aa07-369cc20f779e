@@ -12,7 +12,7 @@ const Signup = () => {
             mobileNumber: '',
             password: '',
             username: '',
-            userType: 'User',
+            userType: 'user',
             confirmPassword: ''
         },
         errors: {
@@ -25,39 +25,45 @@ const Signup = () => {
             custom: { required: false, message: '' },
         }
     }
-    const [formData, setFormData] = useState(initialState.form);
-    const [errors, setErrors] = useState(initialState.errors)
-    const [loader, setLoader] = useState(false)
-    const[redirect, setRedirect] = useState(false)
     
+    // Setting initial state using hooks
+    const [formData, setFormData] = useState(initialState.form);
+    const [errors, setErrors] = useState(initialState.errors);
+    const [loader, setLoader] = useState(false);
+    const [redirect, setRedirect] = useState(false);
 
-    const handleInputChange = (e) => { 
-        const { name, value } = e.target
-        setFormData({ ...formData, [name]: value })
-    }
+    // Event handler for input change
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+    };
 
-    const handleSubmit = async (e) => { 
-        e.preventDefault()
+    // Event handler for form submission
+    const handleSubmit = async (e) => {
+        e.preventDefault();
         let errorObj = initialState.errors;
-        errorObj = Validation(formData, errorObj)
-        setErrors(errorObj)
+        // Validating form data
+        errorObj = Validation(formData, errorObj);
+        setErrors(errorObj);
+        // If there are no errors, submit the form
         if (!errorObj.hasError) {
-            setLoader(true)
+            setLoader(true);
             authService.register(formData)
-                .then((data) => { 
-                    console.log(data, "data");
+                .then((data) => {
+                    console.log("data for register", data);
                     if (data.id) {
-                        setRedirect(true)
-                        setLoader(false)
+                        console.log("success registered");
+                        setRedirect(true);
+                        setLoader(false);
                     }
                     else {
-                        errorObj.custom.required = true
-                        errorObj.custom.message = data.message
-                        setLoader(false)
+                        errorObj.custom.required = true;
+                        errorObj.custom.message = data.message;
+                        setLoader(false);
                     }
-                })
+                });
         }
-    }
+    };
 
     return (
     <form onSubmit={handleSubmit}>
