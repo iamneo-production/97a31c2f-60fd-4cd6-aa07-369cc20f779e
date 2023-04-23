@@ -68,7 +68,7 @@ const Login = () => {
   if (localStorage.getItem('token')) {
     const role = localStorage.getItem('role')
     console.log(localStorage)
-    if (role === 'Admin') {
+    if (role === 'admin') {
       return <Navigate to="/admin/dashboard" />
     } else {
       return <Navigate to="/user/dashboard" />

@@ -29,5 +29,5 @@ public class InstituteModel {
     private String mobile;
     @Column(unique = true)
     private String email;
-    
+    private String imageUrl;
 }

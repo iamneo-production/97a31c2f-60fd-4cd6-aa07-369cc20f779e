@@ -65,8 +65,8 @@ const Signup = () => {
         <div>
             <label htmlFor="userType">User Type:</label>
             <select data-testid="userType" name="userType" value={formData.userRole} onChange={handleInputChange}>
-                <option value="User" >User</option>
-                <option value="Admin">Admin</option>
+                <option value="user" >User</option>
+                <option value="admin">Admin</option>
             </select>
         </div>
         
