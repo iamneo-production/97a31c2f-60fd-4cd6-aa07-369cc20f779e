@@ -1,5 +1,6 @@
 package com.examly.springapp.service.authenticationService;
 
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -64,7 +65,6 @@ public class AuthServiceImpl implements AuthService {
 			return ResponseEntity.badRequest().body(outResponse);
 		}
 
-		
 		UserModel user = new UserModel();
 		user.setEmail(userModel.getEmail());
 		user.setUsername(userModel.getUsername());
@@ -100,6 +100,19 @@ public class AuthServiceImpl implements AuthService {
 		return ResponseEntity.ok( outResponse );	
     }
 
+	@Override
+	public ResponseEntity<?> getUserDetails(Principal principal) {
+		UserModel userModel = userRepository.findByEmail(principal.getName())
+				.orElseThrow(() -> new UsernameNotFoundException(USER_NAME_NOT_FOUND_EXCEPTION));
+		
+		HashMap<String, Object> outResponse = new HashMap<>();
+		outResponse.put("id", userModel.getId());
+		outResponse.put("username", userModel.getUsername());
+		outResponse.put("email", userModel.getEmail());
+		outResponse.put("roles", userModel.getUserRole());
+		outResponse.put("status", 200);
+		return ResponseEntity.ok( outResponse );
+	} 
     
     
 }

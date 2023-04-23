@@ -1,4 +1,4 @@
-const baseUrl = "https://8080-deacebeebcbbfafccddecaeebaeccc.project.examly.io";
+const baseUrl = "https://8080-fcffeccfcdbefebcbbfafccddecaeebaeccc.project.examly.io";
 const register = async (data) => { 
     const formatData = {
         email: data.email,

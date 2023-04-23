@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.*;
 import com.examly.springapp.models.*;
 import com.examly.springapp.service.authenticationService.AuthService;
 import org.springframework.http.*;
+import java.security.Principal;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @RestController
@@ -11,8 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class AuthController {
 
     @Autowired
-	private AuthService  authService;
-
+	private AuthService authService;
+	
     @PostMapping("/admin/signup")
 	private ResponseEntity<?> saveAdmin(@RequestBody UserModel userModel  ) {
 		return authService.saveAdmin(userModel);
@@ -33,5 +34,9 @@ public class AuthController {
 		return authService.login(loginModel);
 	}
 
+	@GetMapping("/details")
+	public ResponseEntity<?> getUserDetails(Principal principal) {
+		return authService.getUserDetails(principal);
+    }
 
 }
