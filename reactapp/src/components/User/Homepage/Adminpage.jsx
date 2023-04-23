@@ -1,25 +1,19 @@
 import React,{ useState } from 'react'
-import { Navigate } from 'react-router-dom'
 import "./Adminpage.css"
 import "./Institutepage.jsx"
 const Homepage = () => {
   
-  const [redirectCheck, setRedirectCheck] = useState(false)
   const [currentPage, setCurrentPage] = useState('home');
 
+  const { logout } = UseLogout()
   const handleLogout = () => { 
-    localStorage.removeItem('token')
-    setRedirectCheck(true)
+      logout()
   }
   
   const handleNavigation = (page) => {
     setCurrentPage(page);
   }
 
-  if (!localStorage.getItem('token')) { 
-    return <Navigate to="/login" />  
-  }
-  
   return (
     <>
       <nav>
@@ -74,7 +68,6 @@ const Homepage = () => {
         </div>
       )}
       
-      {redirectCheck && <Navigate to="/login" />}
     </>
   )
 }

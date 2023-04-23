@@ -1,24 +1,18 @@
-import React from 'react'
-import { Navigate } from 'react-router-dom'
-import { useState } from 'react'
-import { AuthGuard } from '../../../utils/AuthGuard'
+import React,{ useState } from 'react'
+import { UseLogout } from '../../../hooks/UseLogout'
 
 const AdminHomePage = () => {
 
-    const [redirectCheck, setRedirectCheck] = useState(false)
     const [currentPage, setCurrentPage] = useState('home');
 
     const handleNavigation = (page) => {
         setCurrentPage(page);
       }
 
-    const handleLogout = () => { 
-        localStorage.removeItem('token')
-        localStorage.removeItem('role')
-        setRedirectCheck(true)
-    }
-
-
+      const { logout } = UseLogout()
+      const handleLogout = () => { 
+          logout()
+      }
  
     return (
         <>
@@ -30,11 +24,10 @@ const AdminHomePage = () => {
               <li onClick={() => handleNavigation('add-student')}>Add Student</li>
             </ul>
           </nav>
-      <AuthGuard>
+      
           <div>AdminHomePage</div>
           <button data-testid="logout" name='logout' onClick={handleLogout} >logout</button>
-          {redirectCheck && <Navigate to="/login" />}
-      </AuthGuard>
+
       {currentPage === 'add-institute' && (
         <div>
           <h2>Add Institute</h2>
@@ -71,7 +64,6 @@ const AdminHomePage = () => {
         </div>
       )}
       
-      {redirectCheck && <Navigate to="/login" />}
     </>
   )
 }
