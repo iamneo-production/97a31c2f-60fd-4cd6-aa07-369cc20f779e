@@ -1,10 +1,9 @@
-import React from 'react'
-import { Navigate } from 'react-router-dom'
-import { useState } from 'react'
-import { AuthGuard } from '../../../utils/AuthGuard'
+import React,{ useState } from 'react'
+import { UseLogout } from '../../../hooks/UseLogout'
 
 const AdminHomePage = () => {
 
+<<<<<<< HEAD
     const [redirectCheck, setRedirectCheck] = useState(false)
     const [currentPage, setCurrentPage] = useState('home');
 
@@ -17,8 +16,21 @@ const AdminHomePage = () => {
         localStorage.removeItem('role')
         setRedirectCheck(true)
     }
+=======
+    const [currentPage, setCurrentPage] = useState('home');
+>>>>>>> 9577f7929f3f2617104907e4bdf98410925a3a7a
 
+    const handleNavigation = (page) => {
+        setCurrentPage(page);
+      }
 
+<<<<<<< HEAD
+=======
+      const { logout } = UseLogout()
+      const handleLogout = () => { 
+          logout()
+      }
+>>>>>>> 9577f7929f3f2617104907e4bdf98410925a3a7a
  
     return (
         <>
@@ -30,11 +42,18 @@ const AdminHomePage = () => {
               <li onClick={() => handleNavigation('add-student')}>Add Student</li>
             </ul>
           </nav>
+<<<<<<< HEAD
       <AuthGuard>
           <div>AdminHomePage</div>
           <button data-testid="logout" name='logout' onClick={handleLogout} >logout</button>
           {redirectCheck && <Navigate to="/login" />}
       </AuthGuard>
+=======
+      
+          <div>AdminHomePage</div>
+          <button data-testid="logout" name='logout' onClick={handleLogout} >logout</button>
+
+>>>>>>> 9577f7929f3f2617104907e4bdf98410925a3a7a
       {currentPage === 'add-institute' && (
         <div>
           <h2>Add Institute</h2>
@@ -71,7 +90,10 @@ const AdminHomePage = () => {
         </div>
       )}
       
+<<<<<<< HEAD
       {redirectCheck && <Navigate to="/login" />}
+=======
+>>>>>>> 9577f7929f3f2617104907e4bdf98410925a3a7a
     </>
   )
 }

@@ -1,25 +1,39 @@
 import React,{ useState } from 'react'
+<<<<<<< HEAD
 import { Navigate } from 'react-router-dom'
+=======
+>>>>>>> 9577f7929f3f2617104907e4bdf98410925a3a7a
 import "./Adminpage.css"
 import "./Institutepage.jsx"
 const Homepage = () => {
   
+<<<<<<< HEAD
   const [redirectCheck, setRedirectCheck] = useState(false)
   const [currentPage, setCurrentPage] = useState('home');
 
   const handleLogout = () => { 
     localStorage.removeItem('token')
     setRedirectCheck(true)
+=======
+  const [currentPage, setCurrentPage] = useState('home');
+
+  const { logout } = UseLogout()
+  const handleLogout = () => { 
+      logout()
+>>>>>>> 9577f7929f3f2617104907e4bdf98410925a3a7a
   }
   
   const handleNavigation = (page) => {
     setCurrentPage(page);
   }
 
+<<<<<<< HEAD
   if (!localStorage.getItem('token')) { 
     return <Navigate to="/login" />  
   }
   
+=======
+>>>>>>> 9577f7929f3f2617104907e4bdf98410925a3a7a
   return (
     <>
       <nav>
@@ -74,7 +88,10 @@ const Homepage = () => {
         </div>
       )}
       
+<<<<<<< HEAD
       {redirectCheck && <Navigate to="/login" />}
+=======
+>>>>>>> 9577f7929f3f2617104907e4bdf98410925a3a7a
     </>
   )
 }

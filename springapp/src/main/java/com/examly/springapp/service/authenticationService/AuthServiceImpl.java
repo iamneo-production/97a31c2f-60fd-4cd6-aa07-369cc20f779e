@@ -96,17 +96,12 @@ public class AuthServiceImpl implements AuthService {
 		// Generate JWT token and set the user details and roles to the response
 		String jwt = jwtUtils.generateJwtToken(authentication) ;
 		
-		UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
-		List<String> roles = userDetails.getAuthorities().stream()
-				.map(item -> item.getAuthority())
-				.collect(Collectors.toList());
-		
 		HashMap<String, Object> outResponse = new HashMap<>();
 		outResponse.put("token", jwt);
 		outResponse.put("id", userModel.getId());
 		outResponse.put("username", userModel.getUsername());
 		outResponse.put("email", userModel.getEmail());
-		outResponse.put("roles", roles);
+		outResponse.put("roles", userModel.getUserRole());
 		outResponse.put("status", 200);
 
 		// Return response with token and user details
