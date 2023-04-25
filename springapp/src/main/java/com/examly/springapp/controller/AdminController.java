@@ -30,9 +30,10 @@ public class AdminController {
     }
 
     @PutMapping("admin/editStudent/{id}")
-    private String editStudent(@PathVariable("id") Integer studentid ){
-        return adminService.editStudent(studentid);
-    }
+    private String editStudent(@PathVariable("id") Integer studentid, @RequestBody StudentModel updatedStudent ){
+    return adminService.editStudent(studentid, updatedStudent);
+}
+
 
     @GetMapping("admin/viewStudent")
     public StudentModel viewStudent(@RequestParam("id") Integer studentid){         
@@ -45,40 +46,42 @@ public class AdminController {
         return "Course added";
     }
 
-    @DeleteMapping("admin/deleteCourse")
-    private String deleteCourse(@PathVariable("id") Integer courseid ){
-        return adminService.deleteCourse(courseid);
-    }
+    @DeleteMapping("admin/deleteCourse/{id}")
+private String deleteCourse(@PathVariable("id") Integer courseId ){
+    return adminService.deleteCourse(courseId);
+}
 
-    @PutMapping("admin/editCourse/{id}")
-    private String editCourse(@PathVariable("id") Integer courseid ){
-        return adminService.editCourse(courseid);
-    }
+
+   @PutMapping("admin/editCourse/{id}")
+private String editCourse(@PathVariable("id") Integer courseId, @RequestBody CourseModel courseModel ){
+    return adminService.editCourse(courseId, courseModel);
+}
+
 
     @GetMapping("admin/viewCourse")
-    public CourseModel viewCourse(@RequestParam("id") Integer courseid){         
-         return adminService.getCourse(courseid);
+    public List<CourseModel> viewCourse(){         
+         return adminService.getCourse();
     }
 
-    @PostMapping("admins/addInstitute")
+    @PostMapping("admin/addInstitute")
     public String saveNewUser(@RequestBody InstituteModel instituteModel){
         adminService.addInstitute(instituteModel);
         return "Institute added";
     }
 
-    @DeleteMapping("admin/deleteInstitutes")
-    private String deleteInstitute(@PathVariable("id") Integer instituteid ){
-        return adminService.deleteInstitute(instituteid);
+    @DeleteMapping("admin/deleteInstitute/{id}")
+private String deleteInstitute(@PathVariable("id") Integer instituteId) {
+    return adminService.deleteInstitute(instituteId);
+}
+
+    @PutMapping("admin/editInstitute/{instituteId}")
+    private String editInstitute(@PathVariable("instituteId") Integer instituteId, @RequestBody InstituteModel updatedInstitute){
+    return adminService.editInstitute(instituteId, updatedInstitute);
     }
 
 
-    @PutMapping("admins/editInstitute")
-    private String editInstitute(@RequestParam("instituteId") Integer instituteid ){
-        return adminService.editInstitute(instituteid);
-    }
 
-
-    @GetMapping("admins/viewInstitutes")
+    @GetMapping("admin/viewInstitutes")
     public List<InstituteModel> viewInstitutes(){         
          return adminService.getInstitutes();
     }

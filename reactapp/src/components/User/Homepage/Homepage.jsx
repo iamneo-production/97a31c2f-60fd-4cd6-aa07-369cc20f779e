@@ -1,25 +1,31 @@
 import React,{ useState } from 'react'
-import { Navigate } from 'react-router-dom'
+import { UseLogout } from '../../../hooks/UseLogout'
+import "./Userpage.css"
 
 const Homepage = () => {
   
-  const [redirectCheck, setRedirectCheck] = useState(false)
+  const [searchValue, setSearchValue] = useState('');
 
+  const { logout } = UseLogout()
   const handleLogout = () => { 
-    localStorage.removeItem('token')
-    setRedirectCheck(true)
+      logout()
   }
-  
-  if (!localStorage.getItem('token')) { 
-    return <Navigate to="/login" />  }
-  return (
-      <>
-      <div>Homepage</div>
-      <p>you logged in</p>
-      <button data-testid="logout" name='logout' onClick={handleLogout} >logout</button>
-      {redirectCheck && <Navigate to="/login" />}
-      </>
-  )
-}
 
-export default Homepage
+    return (
+      <div>
+        <div>
+          <button data-testid="logout" name='logout' onClick={handleLogout} >Logout</button>
+          <button data-testid="institute" name='institute'>Institute</button>
+          <button data-testid="enrolled-courses" name='enrolled-courses'>Enrolled Courses</button>
+        </div>
+        <div>
+          <input type="text" placeholder="Search" value={searchValue} onChange={(e) => setSearchValue(e.target.value)} />
+          <button data-testid="search-button" name='search-button'>Search</button>
+        </div>
+        <div>
+          <p>User has  logged in</p>
+        </div>
+      </div>
+    );
+  }
+  export default Homepage;

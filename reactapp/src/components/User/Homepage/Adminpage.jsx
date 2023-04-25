@@ -1,33 +1,37 @@
 import React,{ useState } from 'react'
-import { UseLogout } from '../../../hooks/UseLogout'
+import "./Adminpage.css"
+import "./Institutepage.jsx"
+const Homepage = () => {
+  
+  const [currentPage, setCurrentPage] = useState('home');
 
-const AdminHomePage = () => {
+  const { logout } = UseLogout()
+  const handleLogout = () => { 
+      logout()
+  }
+  
+  const handleNavigation = (page) => {
+    setCurrentPage(page);
+  }
 
-    const [currentPage, setCurrentPage] = useState('home');
-
-    const handleNavigation = (page) => {
-        setCurrentPage(page);
-      }
-
-      const { logout } = UseLogout()
-      const handleLogout = () => { 
-          logout()
-      }
- 
-    return (
-        <>
-          <nav>
-            <ul>
-              <li onClick={() => handleNavigation('home')}>Home</li>
-              <li onClick={() => handleNavigation('add-institute')}>Add Institute</li>
-              <li onClick={() => handleNavigation('add-course')}>Add Course</li>
-              <li onClick={() => handleNavigation('add-student')}>Add Student</li>
-            </ul>
-          </nav>
+  return (
+    <>
+      <nav>
+        <ul>
+          <li onClick={() => handleNavigation('home')}>Home</li>
+          <li onClick={() => handleNavigation('add-institute')}>Add Institute</li>
+          <li onClick={() => handleNavigation('add-course')}>Add Course</li>
+          <li onClick={() => handleNavigation('add-student')}>Add Student</li>
+        </ul>
+      </nav>
       
-          <div>AdminHomePage</div>
-          <button data-testid="logout" name='logout' onClick={handleLogout} >logout</button>
-
+      {currentPage === 'home' && (
+        <div>
+          <p>Admin has logged in</p>
+          <button data-testid="logout" name='logout' onClick={handleLogout}>Logout</button>
+        </div>
+      )}
+      
       {currentPage === 'add-institute' && (
         <div>
           <h2>Add Institute</h2>
@@ -68,6 +72,4 @@ const AdminHomePage = () => {
   )
 }
 
-export default AdminHomePage
-
-
+export default Homepage

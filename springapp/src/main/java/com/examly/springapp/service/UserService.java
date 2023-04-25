@@ -32,7 +32,7 @@ public class UserService {
         if (userRepository.existsByEmail(userModel.getEmail())) {
 			return "Email is already exists";
 		}
-        if(userModel.getUserRole().equals(ERole.User)){
+        if(userModel.getUserRole().equals(ERole.user)){
             userRepository.save(userModel);
             return "User added"; 
         } else {
