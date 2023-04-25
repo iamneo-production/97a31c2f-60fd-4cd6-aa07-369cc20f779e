@@ -47,15 +47,17 @@ public class AdminController {
         return "Course added";
     }
 
-    @DeleteMapping("admin/deleteCourse")
-    private String deleteCourse(@PathVariable("id") Integer courseid ){
-        return adminService.deleteCourse(courseid);
-    }
+    @DeleteMapping("admin/deleteCourse/{id}")
+private String deleteCourse(@PathVariable("id") Integer courseId ){
+    return adminService.deleteCourse(courseId);
+}
 
-    @PutMapping("admin/editCourse/{id}")
-    private String editCourse(@PathVariable("id") Integer courseid ){
-        return adminService.editCourse(courseid);
-    }
+
+   @PutMapping("admin/editCourse/{id}")
+private String editCourse(@PathVariable("id") Integer courseId, @RequestBody CourseModel courseModel ){
+    return adminService.editCourse(courseId, courseModel);
+}
+
 
     @GetMapping("admin/viewCourse")
     public List<CourseModel> viewCourse(){         

@@ -60,14 +60,20 @@ public class AdminService {
         courseRepository.save(courseModel);
     }  
 
-    public String editCourse(Integer courseId){
-        Optional<CourseModel> coursemodel = courseRepository.findBycourseId(courseId);
-        if(coursemodel.isPresent()){
-            courseRepository.save(coursemodel.get());
-            return "Course edited";
-        }
-        return "Course not found";
-    } 
+   public String editCourse(Integer courseId, CourseModel courseModelFromRequest){
+    Optional<CourseModel> coursemodel = courseRepository.findBycourseId(courseId);
+    if(coursemodel.isPresent()){
+        CourseModel course = coursemodel.get();
+        course.setCourseId(courseModelFromRequest.getCourseId());
+        course.setCourseName(courseModelFromRequest.getCourseName()); 
+        course.setCourseDescription(courseModelFromRequest.getCourseDescription()); 
+        course.setCourseDuration(courseModelFromRequest.getCourseDuration());
+        courseRepository.save(course);
+        return "Course edited";
+    }
+    return "Course not found";
+}
+
 
     public String deleteCourse(Integer id){
         Optional<CourseModel> coursemodel=courseRepository.findById(id);
