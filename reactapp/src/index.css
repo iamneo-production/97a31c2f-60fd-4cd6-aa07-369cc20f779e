@@ -11,8 +11,6 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-<<<<<<< HEAD
-=======
 
 .loader {
   border: 16px solid #f3f3f3; /* Light grey */
@@ -27,4 +25,3 @@ code {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
->>>>>>> 9577f7929f3f2617104907e4bdf98410925a3a7a

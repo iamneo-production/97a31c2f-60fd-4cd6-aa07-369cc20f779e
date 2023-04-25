@@ -19,22 +19,6 @@ function App() {
   }
 
   return (
-<<<<<<< HEAD
-    <>
-    <Router >
-          <Routes>
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/login" element={<Login /> } />
-            <Route path="/" element={<Login />} />
-            <Route path="/user/dashboard" element={ <Homepage/> } />
-            <Route path="/admin/dashboard" element={ <AdminHomePage/> } />
-            {/* <Route path="/admin/institute/" element={ <Institutepage/> } /> */}
-
-
-          </Routes>
-    </Router>
-    </>
-=======
     <Router>
       <Routes>
         <Route path="/signup" element={!user ? <Signup /> : <Navigate to={redirectPath} />} />
@@ -47,7 +31,6 @@ function App() {
         <Route path="*" element={<>404 no such page go to home page</>} />
       </Routes>
     </Router>
->>>>>>> 9577f7929f3f2617104907e4bdf98410925a3a7a
   );
 }
 

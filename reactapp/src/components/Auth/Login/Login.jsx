@@ -56,19 +56,9 @@ const Login = () => {
     // Setting errors in state
     setErrors(error)
 
-<<<<<<< HEAD
-  if (localStorage.getItem('token')) {
-    const role = localStorage.getItem('role')
-    console.log(localStorage)
-    if (role === 'admin') {
-      return <Navigate to="/admin/dashboard" />
-    } else {
-      return <Navigate to="/user/dashboard" />
-=======
     // Calling login function
     if (!errors.hasError) {
         login(state)
->>>>>>> 9577f7929f3f2617104907e4bdf98410925a3a7a
     }
   }
 
