@@ -69,8 +69,8 @@ private String editCourse(@PathVariable("id") Integer courseId, @RequestBody Cou
         return "Institute added";
     }
 
-    @DeleteMapping("admin/deleteInstitute/{id}")
-private String deleteInstitute(@PathVariable("id") Integer instituteId) {
+    @DeleteMapping("admin/deleteInstitutes")
+private String deleteInstitute(@RequestParam("id") Integer instituteId) {
     return adminService.deleteInstitute(instituteId);
 }
 

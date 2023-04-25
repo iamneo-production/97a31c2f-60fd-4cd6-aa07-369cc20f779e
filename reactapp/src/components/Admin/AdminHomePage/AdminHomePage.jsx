@@ -132,24 +132,11 @@ const Adminacademy = () => {
   };
 
   const handleDelete = async (id) => {
-    // deleteAcademy(id);
-    const url =`${baseUrl}/admin/deleteInstitutes/${id}`
-    console.log(url)
-    const response = await fetch(`${baseUrl}/admin/deleteInstitutes/${id}`, {
-      method: 'DELETE',
-      headers: {
-        'Content-type': 'application/json',
-        'Authorization': `Bearer ${localStorage.token}`,
-      }
-    });
-    console.log(response);
-    fetchAcademyData();
+    deleteAcademy(id);
   };
 
   const deleteAcademy = async (id) => {
-    const url =`${baseUrl}/admin/deleteInstitutes/${id}`
-    console.log(url)
-    const response = await fetch(`${baseUrl}/admin/deleteInstitutes/${id}`, {
+    const response = await fetch(`${baseUrl}/admin/deleteInstitutes?id=${id}`, {
       method: 'DELETE',
       headers: {
         'Content-type': 'application/json',
@@ -259,7 +246,7 @@ const AcademyForm = ({ handleCallBack, pageState, refreshData }) => {
   };
 
   const editAcademy = async (id) => {
-    const request = await fetch(`${baseUrl}/admin/editInstitute?instituteId=${id}`, {
+    const request = await fetch(`${baseUrl}/admin/editInstitute/${id}`, {
       method: 'PUT',
       headers: {
         'Authorization': `Bearer ${localStorage.token}`,
