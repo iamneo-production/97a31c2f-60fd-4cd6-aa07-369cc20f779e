@@ -52,10 +52,11 @@ public class AdminController {
         return adminService.deleteCourse(courseid);
     }
 
-    @PutMapping("admin/editCourse/{id}")
-    private String editCourse(@PathVariable("id") Integer courseid ){
-        return adminService.editCourse(courseid);
-    }
+   @PutMapping("admin/editCourse/{id}")
+private String editCourse(@PathVariable("id") Integer courseId, @RequestBody CourseModel courseModel ){
+    return adminService.editCourse(courseId, courseModel);
+}
+
 
     @GetMapping("admin/viewCourse")
     public List<CourseModel> viewCourse(){         
