@@ -1,7 +1,9 @@
 import { createContext, useEffect, useReducer } from "react";
 import authService from "../api/authService";
+
 // Create a context for authentication information
 export const AuthContext = createContext();
+
 // Define a reducer function to handle changes to the authentication state
 export const authReducer = (state, action) => {
   switch (action.type) {
