@@ -31,8 +31,6 @@ function App() {
         <Route path="*" element={<>404 no such page go to home page</>} />
       </Routes>
     </Router>
-
   );
 }
-
 export default App;
