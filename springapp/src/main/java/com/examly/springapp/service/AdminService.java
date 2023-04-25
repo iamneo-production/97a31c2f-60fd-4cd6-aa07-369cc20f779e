@@ -29,15 +29,26 @@ public class AdminService {
     public void addStudent(StudentModel studentModel){
         studentRepository.save(studentModel);
     }  
-    
-    public String editStudent(int studentId){
-        Optional<StudentModel> stu = studentRepository.findByStudentId(studentId);
-        if(stu.isPresent()){
-            studentRepository.save(stu.get());
-            return "Student details edited";
-        }
-        return "Student not found";
-    } 
+
+    public String editStudent(int studentId, StudentModel updatedStudent){
+    Optional<StudentModel> stu = studentRepository.findByStudentId(studentId);
+    if(stu.isPresent()){
+        StudentModel student = stu.get();
+        
+        student.setStudentName(updatedStudent.getStudentName());
+        student.setStudentDOB(updatedStudent.getStudentDOB());
+        student.setAddress(updatedStudent.getAddress());
+        student.setMobile(updatedStudent.getMobile());
+        student.setSslc(updatedStudent.getSslc());
+        student.setHsc(updatedStudent.getHsc());
+        student.setDiploma(updatedStudent.getDiploma());
+        student.setEligibility(updatedStudent.getEligibility());
+        studentRepository.save(student);
+        return "Student details edited";
+    }
+    return "Student not found";
+} 
+
 
     public String deleteStudent(Integer id){
         Optional<StudentModel> studentmodel=studentRepository.findById(id);
@@ -56,6 +67,9 @@ public class AdminService {
         return null;
     }
     
+     public List<StudentModel> getStudent(){
+      return studentRepository.findAll();
+    }
     public void addCourse(CourseModel courseModel){
         courseRepository.save(courseModel);
     }  
@@ -101,14 +115,22 @@ public class AdminService {
         instituteRepository.save(instituteModel);
     }  
 
-    public String editInstitute(Integer instituteId){
-        Optional<InstituteModel> institutemodel = instituteRepository.findByInstituteId(instituteId);
-        if(institutemodel.isPresent()){
-            instituteRepository.save(institutemodel.get());
-            return "Institute edited";
-        }
-        return "Institute not found";
-    } 
+     public String editInstitute(Integer instituteId, InstituteModel updatedInstitute){
+    Optional<InstituteModel> institutemodel = instituteRepository.findByInstituteId(instituteId);
+    if(institutemodel.isPresent()){
+        InstituteModel institute = institutemodel.get();
+        institute.setInstituteId(updatedInstitute.getInstituteId());
+        institute.setInstituteName(updatedInstitute.getInstituteName());
+        institute.setInstituteDescription(updatedInstitute.getInstituteDescription());
+        institute.setInstituteAddress(updatedInstitute.getInstituteAddress());
+        institute.setMobile(updatedInstitute.getMobile());
+        institute.setEmail(updatedInstitute.getEmail());
+        institute.setImageUrl(updatedInstitute.getImageUrl());
+        instituteRepository.save(institute);
+        return "Institute edited";
+    }
+    return "Institute not found";
+}
 
     public String deleteInstitute(Integer id){
         Optional<InstituteModel> institutemodel= instituteRepository.findByInstituteId(id);
