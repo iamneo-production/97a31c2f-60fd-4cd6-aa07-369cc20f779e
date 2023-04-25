@@ -7,7 +7,7 @@ import org.springframework.stereotype.*;
 import org.springframework.beans.factory.annotation.*;
 import java.util.*;
 
-    @Repository
+   @Repository
 public interface CourseRepository extends JpaRepository<CourseModel,Integer> {
 
     List<CourseModel> findAll(); 
