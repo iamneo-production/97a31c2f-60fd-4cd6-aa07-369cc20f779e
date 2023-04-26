@@ -1,6 +1,6 @@
 import React,{ useState } from 'react'
 import '../Course/Course.css';
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { addCourse} from "../../../api/courseApi.js";
 
 const Course = () => {
@@ -32,6 +32,7 @@ const Course = () => {
     setCourseTiming('');
     setCourseEnrolled('');
     setCourseDescription('');
+    // navigate('/admin/dashboard');
   };
 
   return (
@@ -98,6 +99,7 @@ const Course = () => {
             data-testid="courseDescription"
           />
         </div>
+        
         <button type="submit" id="addCourse">Add Course</button>
       </form>
     </div>

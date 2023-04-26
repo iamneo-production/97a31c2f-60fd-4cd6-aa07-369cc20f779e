@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import '../Course/Course.css';
 import { getCourses,addCourse,deleteCourse,editCourse } from "../../../api/courseApi.js";
 
 
@@ -61,7 +60,7 @@ function Viewcourse() {
                 <div className="course-card-text">Course Description: {course.courseDescription}</div>
               </div>
               <div className="course-card-footer">
-                <NavLink exact to={`/admin/editCourse/${course.courseId}`} className="nav-link" id="editcourse"  activeClassName="active">
+                <NavLink exact="true" to={`/admin/editCourse/${course.courseId}`} className="nav-link" id="editcourse"  activeclassname="active">
                   <i className="fa-regular fa-pen-to-square" style={{ color: '#050505' }}></i>
                 </NavLink>
                  <span className="nav-link" id="deletecourse" onClick={() => handleDelete(course.id)}>
@@ -74,7 +73,7 @@ function Viewcourse() {
       ) : (
         <div>No courses found</div>
       )}
-      <NavLink exact to="/admin/addCourse" className="nav-link" id="addcourse"  activeClassName="active">
+      <NavLink exact="true" to="/admin/addCourse" className="nav-link" id="addcourse"  activeclassname="active">
         <button id="add-course"><i className="fa-solid fa-circle-plus"></i> Add Course</button>
       </NavLink>
     </div>

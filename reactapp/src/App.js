@@ -4,7 +4,7 @@ import Signup from './components/Auth/Signup/Signup';
 import Login from './components/Auth/Login/Login';
 import AdminHomePage from './components/Admin/AdminHomePage/AdminHomePage';
 import Homepage from './components/User/Homepage/Homepage';
-import './App.css';
+// import './App.css';
 import Course from "./components/Admin/Course/Course";
 import Viewcourse from "./components/Admin/Course/Viewcourse.js";
 import Editcourse from "./components/Admin/Course/Editcourse";
