@@ -10,7 +10,6 @@ const Homepage = () => {
   const handleLogout = () => { 
       logout()
   }
-
     return (
       <div>
         <div>
