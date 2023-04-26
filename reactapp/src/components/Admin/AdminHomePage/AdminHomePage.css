@@ -1,1 +1,66 @@
-/* css will do later */
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing:border-box;
+}
+
+div {
+    margin: 0px;
+}
+
+.admin-academy-container {
+    background-color: #dedada;
+}
+
+.academy-display-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    justify-items: center;
+}
+
+.admin-academy-container button {
+    background-color: #59665a;
+    color: beige;
+}
+
+.each-academy-cell img {
+    height: 300px;
+    width: 300px;
+}
+
+.each-academy-cell h4 {
+    color: black;
+}
+
+.admin-search-container {
+    text-align: center;
+    padding: 10px;
+}
+
+.academy-form-container {
+    background: #DAEAF1;
+}
+
+.academy-form-container button {
+    background-color: #4C7650;
+}
+
+.admin-header-container {
+    height: 60px;
+    background-color: #2A7230;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 2fr;
+    align-items: center;
+}
+
+.admin-header-container button,h3 {
+    background-color: #2A7230;
+    color: beige;
+}
+
+.admin-add-academy-button {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+}
