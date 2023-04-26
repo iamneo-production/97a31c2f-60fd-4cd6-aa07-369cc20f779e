@@ -5,6 +5,9 @@ import Login from './components/Auth/Login/Login';
 import AdminHomePage from './components/Admin/AdminHomePage/AdminHomePage';
 import Homepage from './components/User/Homepage/Homepage';
 import './App.css';
+import Course from "./components/Admin/Course/Course";
+import Viewcourse from "./components/Admin/Course/Viewcourse.js";
+import Editcourse from "./components/Admin/Course/Editcourse";
 
 function App() {
   const { user } = UseAuthContext()
@@ -29,6 +32,9 @@ function App() {
         <Route path="/user/dashboard" element={!user ? (<Navigate to="/" />) :
            user.roles === "admin" ? (<AdminHomePage />) : (<Homepage />)} />
         <Route path="*" element={<>404 no such page go to home page</>} />
+        <Route path="/admin/addCourse" element={<Course />} />
+          <Route path="/admin/viewCourse" element={<Viewcourse/>}/>
+          <Route path="/admin/editCourse/:id" element={<Editcourse />} />
       </Routes>
     </Router>
   );
