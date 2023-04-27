@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from "react";
 import { store } from "../../../store";
 import "./AdminHomePage.css";
@@ -5,6 +6,12 @@ import { Navigate } from "react-router";
 import { useNavigate, useParams, NavLink, Link } from "react-router-dom";
 import { baseUrl } from "../../../api/authService";
 import Navbar from "../Navbar/Navbar";
+=======
+import React, { useState, useEffect } from 'react'
+import { UseLogout } from '../../../hooks/UseLogout'
+import Navbar from '../Navbar/Navbar'
+import './AdminHomePage.css'
+>>>>>>> 8b67993 (merging to my branch)
 
 
 
@@ -24,6 +31,7 @@ const initialData = {
 };
 
 const AdminHomePage = () => {
+<<<<<<< HEAD
   if (auth.token === "") {
     return <Navigate to="/login" />;
   }
@@ -35,6 +43,61 @@ const AdminHomePage = () => {
     </>
   );
 };
+=======
+
+  // const [displayState, setDisplayState] = useState({
+  //   institutePage: true,
+  //   coursePage: false,
+  //   studentPage: false,
+  // })
+
+  // const { logout } = UseLogout()
+  // const handleLogout = () => {
+  //   logout()
+  // }
+
+  return (
+    <>
+    <Navbar />
+      {/* <div className="admin-header-container">
+        <div className="admin-title-container">
+          <h3>PG Admission</h3>
+        </div>
+        <div className="admin-academy-button">
+          <button type="button" id="adminInstitute" onClick={() => setDisplayState({ institutePage: true, coursePage: false, studentPage: false, })} >Institute</button>
+        </div>
+        <div className="admin-course-button">
+          <button type="button" id="adminCourse" onClick={() => setDisplayState({ institutePage: false, coursePage: true, studentPage: false, })} >Course</button>
+        </div>
+        <div className="admin-student-button">
+          <button type="button" id="adminStudents" onClick={() => setDisplayState({ institutePage: false, coursePage: false, studentPage: true, })} >Students</button>
+        </div>
+        <div className="admin-logout-button">
+          <button data-testid="logout" name='logout' onClick={handleLogout} >logout</button>
+        </div>
+      </div>
+      <div className="admin-main-container">
+        {displayState.institutePage && <Adminacademy />}
+        {displayState.coursePage && <Admincourse />}
+        {displayState.studentPage && <Adminstudent />}
+      </div> */}
+      <Adminacademy />
+    </>
+  )
+}
+
+// const Admincourse = () => {
+//   return (
+//     <h1>In Admin Course Page</h1>
+//   );
+// }
+
+// const Adminstudent = () => {
+//   return (
+//     <h1>In Admin Student Page</h1>
+//   );
+// }
+>>>>>>> 8b67993 (merging to my branch)
 
 const Adminacademy = () => {
   const [fetchedAcademyData, setFetchedAcademyData] = useState([]);

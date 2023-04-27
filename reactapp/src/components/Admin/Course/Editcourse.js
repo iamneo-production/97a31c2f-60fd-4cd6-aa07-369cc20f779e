@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { getCourses, editCourse } from "../../../api/courseApi.js";
@@ -5,6 +6,13 @@ import { AdminGuard } from "../../../AuthGuard/AdminGuard";
 import "../Course/Addcourse.css";
 import Navbar from "../Navbar/Navbar";
 
+=======
+import React, { useState,useEffect } from 'react';
+import { useParams,Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import {getCourses, editCourse} from '../../../api/courseApi.js';
+import NavBar from '../Navbar/Navbar.js';
+>>>>>>> 8b67993 (merging to my branch)
 
 
 function Editcourse(props) {
@@ -21,6 +29,7 @@ function Editcourse(props) {
 
   });
 
+<<<<<<< HEAD
   const [popup, setPopup] = useState(false);
 
   const handlePop = (e) => {
@@ -49,6 +58,11 @@ function Editcourse(props) {
   const fetchData = async () => {
     const data = await getCourses();
     console.log(data);
+=======
+  const handleClick = (event)=>{
+    handleSubmit(event);
+    navigate('/admin/viewCourse');
+>>>>>>> 8b67993 (merging to my branch)
   }
   useEffect(() => {
     async function fetchCourse() {
@@ -81,6 +95,7 @@ function Editcourse(props) {
 
 
   return (
+<<<<<<< HEAD
 
 
     <AdminGuard>
@@ -224,3 +239,79 @@ function Editcourse(props) {
 
 
 export default Editcourse;
+=======
+    <>
+    <NavBar/>
+    <div>
+      <h1>Edit Course</h1>
+      <form >
+      <div>
+          <label htmlFor="courseId">Course Id:</label>
+          <input
+            id="courseId"
+            type="text"
+            defaultValue={courseId}
+            onChange={(e) => setCourseId(e.target.value)}
+            data-testid="courseId"
+          />
+        </div>
+      <div>
+          <label htmlFor="courseName">Course Name:</label>
+          <input
+            id="courseName"
+            type="text"
+            defaultValue={courseName}
+            onChange={(e) => setCourseName(e.target.value)}
+            data-testid="courseName"
+          />
+        </div>
+        <div>
+          <label htmlFor="courseDuration">Course Duration:</label>
+          <input
+            id="courseDuration"
+            type="text"
+            defaultValue={courseDuration}
+            onChange={(e) => setCourseDuration(e.target.value)}
+            data-testid="courseDuration"
+          />
+        </div>
+        <div>
+          <label htmlFor="courseTiming">Course Timing:</label>
+          <input
+            id="courseTiming"
+            type="text"
+            defaultValue={courseTiming}
+            onChange={(e) => setCourseTiming(e.target.value)}
+            data-testid="courseTiming"
+          />
+        </div>
+        <div>
+          <label htmlFor="courseEnrolled">Course Enrolled:</label>
+          <input
+            id="courseEnrolled"
+            type="text"
+            defaultValue={courseEnrolled}
+            onChange={(e) => setCourseEnrolled(e.target.value)}
+            data-testid="courseEnrolled"
+          />
+        </div>
+        <div>
+          <label htmlFor="courseDescription">Course Description:</label>
+          <textarea
+            id="courseDescription"
+            type="text"
+            defaultValue={courseDescription}
+            onChange={(e) => setCourseDescription(e.target.value)}
+            data-testid="courseDescription"
+          />
+        </div>
+        <button type="submit" onClick={(e)=>handleClick(e)}>Update Course</button>
+        <Link to="/admin/viewCourse" className="btn btn-secondary">Cancel</Link>
+      </form>
+    </div>
+    </>
+  );
+}
+
+export default Editcourse;
+>>>>>>> 8b67993 (merging to my branch)

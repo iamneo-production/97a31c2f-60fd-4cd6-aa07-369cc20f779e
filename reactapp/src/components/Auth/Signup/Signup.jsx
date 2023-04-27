@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
 import authService from "../../../api/authService";
 import { Link, Navigate } from "react-router-dom";
 import Validation from "../../Auth/Signup/Validation";
 import "./Signup.css"; 
+=======
+import React,{ useState } from 'react'
+import authService from "../../../api/authService"
+import { Link,Navigate } from 'react-router-dom'
+// import "./Signup.css"
+import Validation from './Validation'
+>>>>>>> 8b67993 (merging to my branch)
 
 const Signup = () => {
   const initialState = {

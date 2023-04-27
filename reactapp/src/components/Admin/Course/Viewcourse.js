@@ -1,8 +1,15 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { getCourses, deleteCourse } from "../../../api/courseApi.js";
 import "../Course/Viewcourse.css";
 import Navbar from "../Navbar/Navbar";
+=======
+import React, { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
+import { getCourses,deleteCourse } from "../../../api/courseApi.js";
+import NavBar from '../Navbar/Navbar.js';
+>>>>>>> 8b67993 (merging to my branch)
 
 function Viewcourse() {
   const [courses, setCourses] = useState([]);
@@ -68,6 +75,7 @@ function Viewcourse() {
 
   return (
     <>
+<<<<<<< HEAD
       <Navbar />
       {popup.state && (
         <div className="admin-popup-body noHover">
@@ -184,6 +192,22 @@ function Viewcourse() {
                     </button>
                   </div>
                 </div>
+=======
+    <NavBar/>
+    <div>
+      <h1>List of Courses</h1>
+      {courses && courses.length > 0 ? (
+        <div className="courses-grid">
+          {courses.map((course) => (
+            <div key={course.id} className="course-card">
+              <div className="course-card-body">
+              <div className="course-card-text">Course Id: {course.courseId}</div>
+                <div className="course-card-text">Course Name: {course.courseName}</div>
+                <div className="course-card-text">Course Duration: {course.courseDuration}</div>
+                <div className="course-card-text">Course Available Timings: {course.timing}</div>
+                <div className="course-card-text">Number of Students: {course.enrolled}</div>
+                <div className="course-card-text">Course Description: {course.courseDescription}</div>
+>>>>>>> 8b67993 (merging to my branch)
               </div>
             ))}
           </div>
@@ -201,6 +225,7 @@ function Viewcourse() {
                 </div>
               </div>
             </div>
+<<<<<<< HEAD
           </div>
         )}
         <NavLink
@@ -218,6 +243,17 @@ function Viewcourse() {
           </div>
         </NavLink>
       </div>
+=======
+          ))}
+        </div>
+      ) : (
+        <div>No courses found</div>
+      )}
+      <NavLink exact="true" to="/admin/addCourse" className="nav-link" id="addcourse"  activeclassname="active">
+        <button id="add-course"><i className="fa-solid fa-circle-plus"></i> Add Course</button>
+      </NavLink>
+    </div>
+>>>>>>> 8b67993 (merging to my branch)
     </>
   );
 }

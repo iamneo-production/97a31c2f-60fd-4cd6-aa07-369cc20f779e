@@ -1,8 +1,15 @@
+<<<<<<< HEAD
 import React, { useState } from 'react'
 import { Navigate, Link, useNavigate } from 'react-router-dom'
 import { store } from '../../../store'
 import authService from '../../../api/authService'
 import './Login.css'
+=======
+import React,{ useState } from 'react'
+import { Link } from 'react-router-dom'
+import { UseLogin } from '../../../hooks/UseLogin'
+// import "./Login.css"
+>>>>>>> 8b67993 (merging to my branch)
 
 const Login = () => {
 
