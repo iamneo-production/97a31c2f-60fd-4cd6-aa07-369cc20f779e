@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { getCourses,addCourse,deleteCourse,editCourse } from "../../../api/courseApi.js";
+import { getCourses,deleteCourse } from "../../../api/courseApi.js";
 
 
 function Viewcourse() {
@@ -15,25 +15,25 @@ function Viewcourse() {
     fetchData();
   }, []);
 
-  const handleAddCourse = async (newCourse) => {
-    const addedCourse = await addCourse(newCourse);
-    setCourses((prevState) => [...prevState, addedCourse]);
+  // const handleAddCourse = async (newCourse) => {
+  //   const addedCourse = await addCourse(newCourse);
+  //   setCourses((prevState) => [...prevState, addedCourse]);
     
-  };
+  // };
 
-  const handleEdit = async (id, updatedCourse) => {
-    try {
-      const editedCourse = await editCourse(id, updatedCourse);
-      setCourses((prevState) => prevState.map((course) => {
-        if (course.id === editedCourse.id) {
-          return editedCourse;
-        }
-        return course;
-      }));
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  // const handleEdit = async (id, updatedCourse) => {
+  //   try {
+  //     const editedCourse = await editCourse(id, updatedCourse);
+  //     setCourses((prevState) => prevState.map((course) => {
+  //       if (course.id === editedCourse.id) {
+  //         return editedCourse;
+  //       }
+  //       return course;
+  //     }));
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
   const handleDelete = async (id) => {
     try {

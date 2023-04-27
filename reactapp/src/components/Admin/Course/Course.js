@@ -1,5 +1,4 @@
-import React,{ useState } from 'react'
-import '../Course/Course.css';
+import React,{ useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { addCourse} from "../../../api/courseApi.js";
 
@@ -10,7 +9,7 @@ const Course = () => {
   const [courseTiming, setCourseTiming] = useState("");
   const [courseEnrolled, setCourseEnrolled] = useState("");
   const [courseDescription, setCourseDescription] = useState("");
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [courses, setCourses] = useState([]);
 
   const handleSubmit = async(event) => {
@@ -32,7 +31,8 @@ const Course = () => {
     setCourseTiming('');
     setCourseEnrolled('');
     setCourseDescription('');
-    // navigate('/admin/dashboard');
+    navigate('/admin/viewCourse');
+
   };
 
   return (

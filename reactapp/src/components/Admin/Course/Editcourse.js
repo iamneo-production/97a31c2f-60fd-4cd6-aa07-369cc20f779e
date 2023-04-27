@@ -1,5 +1,6 @@
 import React, { useState,useEffect } from 'react';
 import { useParams,Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import {getCourses, editCourse} from '../../../api/courseApi.js';
 
 function Editcourse(props) {
@@ -10,6 +11,7 @@ function Editcourse(props) {
   const [courseTiming, setCourseTiming] = useState(props.course?.CourseTiming || '');
   const [courseEnrolled, setCourseEnrolled] = useState(props.course?.CourseEnrolled || '');
   const [courseDescription, setCourseDescription] = useState(props.course?.CourseDescription || '');
+  const navigate = useNavigate();
   const [course, setCourse] = useState({
     courseId: '',
     courseName: '',
@@ -43,7 +45,7 @@ function Editcourse(props) {
         "courseDuration": courseDuration
       };
       await editCourse(id, updatedCourse);
-      alert('Course updated successfully');
+      navigate('/admin/viewCourse');
     } catch (error) {
       console.error(error);
     }
