@@ -1,7 +1,7 @@
 import React,{ useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { addCourse} from "../../../api/courseApi.js";
-
+import NavBar from '../Navbar/Navbar.js';
 const Course = () => {
   const [courseId, setCourseId] = useState("");
   const [courseName, setCourseName] = useState("");
@@ -12,6 +12,10 @@ const Course = () => {
   const navigate = useNavigate();
   const [courses, setCourses] = useState([]);
 
+  const handleClick = (event)=>{
+    handleSubmit(event);
+    navigate('/admin/viewCourse');
+  }
   const handleSubmit = async(event) => {
     event.preventDefault();
     const newCourse = {
@@ -31,14 +35,16 @@ const Course = () => {
     setCourseTiming('');
     setCourseEnrolled('');
     setCourseDescription('');
-    navigate('/admin/viewCourse');
+    // navigate('/admin/viewCourse');
 
   };
 
   return (
+    <>
+    <NavBar/>
     <div data-testid="addCourse">
       <h2>Add Course Details</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={(e)=>handleClick(e)} >
       <div>
           <label htmlFor="courseId">Course Id:</label>
           <input
@@ -103,6 +109,7 @@ const Course = () => {
         <button type="submit" id="addCourse">Add Course</button>
       </form>
     </div>
+    </>
   );
 };
 

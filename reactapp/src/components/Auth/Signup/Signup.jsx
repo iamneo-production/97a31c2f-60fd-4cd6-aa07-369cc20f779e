@@ -1,7 +1,7 @@
 import React,{ useState } from 'react'
 import authService from "../../../api/authService"
 import { Link,Navigate } from 'react-router-dom'
-import "./Signup.css"
+// import "./Signup.css"
 import Validation from './Validation'
 
 const Signup = () => {

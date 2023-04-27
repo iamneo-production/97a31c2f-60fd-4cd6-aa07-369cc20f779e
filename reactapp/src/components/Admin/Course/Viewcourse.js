@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { getCourses,deleteCourse } from "../../../api/courseApi.js";
-
+import NavBar from '../Navbar/Navbar.js';
 
 function Viewcourse() {
   const [courses, setCourses] = useState([]);
@@ -45,6 +45,8 @@ function Viewcourse() {
   };
 
   return (
+    <>
+    <NavBar/>
     <div>
       <h1>List of Courses</h1>
       {courses && courses.length > 0 ? (
@@ -77,6 +79,7 @@ function Viewcourse() {
         <button id="add-course"><i className="fa-solid fa-circle-plus"></i> Add Course</button>
       </NavLink>
     </div>
+    </>
   );
 }
 

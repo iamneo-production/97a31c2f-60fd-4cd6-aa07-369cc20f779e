@@ -2,6 +2,8 @@ import React, { useState,useEffect } from 'react';
 import { useParams,Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import {getCourses, editCourse} from '../../../api/courseApi.js';
+import NavBar from '../Navbar/Navbar.js';
+
 
 function Editcourse(props) {
   const { id } = useParams();
@@ -19,7 +21,10 @@ function Editcourse(props) {
     courseDuration: ''
   });
 
-  
+  const handleClick = (event)=>{
+    handleSubmit(event);
+    navigate('/admin/viewCourse');
+  }
   useEffect(() => {
     async function fetchCourse() {
       const data = await getCourses(id);
@@ -52,6 +57,8 @@ function Editcourse(props) {
   };
 
   return (
+    <>
+    <NavBar/>
     <div>
       <h1>Edit Course</h1>
       <form >
@@ -115,10 +122,11 @@ function Editcourse(props) {
             data-testid="courseDescription"
           />
         </div>
-        <button type="submit" onClick={handleSubmit}>Update Course</button>
+        <button type="submit" onClick={(e)=>handleClick(e)}>Update Course</button>
         <Link to="/admin/viewCourse" className="btn btn-secondary">Cancel</Link>
       </form>
     </div>
+    </>
   );
 }
 
