@@ -4,6 +4,7 @@ import Signup from './components/Auth/Signup/Signup';
 import Login from './components/Auth/Login/Login';
 import AdminHomePage from './components/Admin/AdminHomePage/AdminHomePage';
 import Homepage from './components/User/Homepage/Homepage';
+import Navpage from './components/User/Homepage/Navpage';
 import './App.css';
 
 function App() {
@@ -27,7 +28,7 @@ function App() {
         <Route path="/admin/dashboard" element={!user ? (<Navigate to="/" />) :
             user.roles === "admin" ? (<AdminHomePage /> ) : ( <Navigate to="/user/dashboard" /> ) }/>
         <Route path="/user/dashboard" element={!user ? (<Navigate to="/" />) :
-           user.roles === "admin" ? (<AdminHomePage />) : (<Homepage />)} />
+           user.roles === "admin" ? (<AdminHomePage />) : (<Navpage />)} />
         <Route path="*" element={<>404 no such page go to home page</>} />
       </Routes>
     </Router>
