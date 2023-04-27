@@ -7,6 +7,7 @@ import Homepage from './components/User/Homepage/Homepage';
 import Navpage from './components/User/Homepage/Navpage';
 import Enrollcourse from './components/User/Homepage/Enrollcourse';
 import Viewacademy from './components/User/Homepage/Viewacademy';
+import Course from './components/User/Homepage/Course';
 import './App.css';
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
            user.roles === "admin" ? (<AdminHomePage />) : (<Navpage />)} />
         <Route path="/Enrollcourse" element={<Enrollcourse/>}/>
         <Route path="/Viewacademy" element={<Viewacademy/>}/>
+        <Route path="/Course" element={<Course/>}/>
         <Route path="*" element={<>404 no such page go to home page</>} />
       </Routes>
     </Router>

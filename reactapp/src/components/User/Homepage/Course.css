@@ -1,0 +1,31 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing:border-box;
+}
+.nvbar{
+    background-color: rgb(195, 8, 176) ;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    padding: 0 8px;
+}
+
+.nvbar h4{
+    text-align: center;
+    color: aqua;
+    padding-left: 200px;
+    padding-right: 200px;
+}
+.nvbar h3{
+    flex:50%;
+    height:100%;
+    padding-left:10px;
+    
+}
+.nvbar.link{
+    flex:50%;
+    height:100%;
+    padding-right: 150px;
+}

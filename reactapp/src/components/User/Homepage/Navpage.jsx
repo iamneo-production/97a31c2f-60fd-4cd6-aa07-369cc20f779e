@@ -1,13 +1,13 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { UseLogout } from '../../../hooks/UseLogout'
 import './Navpage.css'
 const Navpage = () => {
     const { logout } = UseLogout()
-    const handleLogout = () => { 
+    const handleLogout = () => {
         logout()
-        }
-    return(
+    }
+    return (
         <>
             <div className="nvbar">
                 <h2>PG Admission</h2>
@@ -17,11 +17,11 @@ const Navpage = () => {
                 <div className="link">
                     <Link to="/Viewacademy">Institute</Link>
                 </div>
-                <div classname="out">
+                <div className="out">
                     <button data-testid="logout" name='logout' onClick={handleLogout} >Logout</button>
                 </div>
             </div>
-            
+
         </>
     );
 }
