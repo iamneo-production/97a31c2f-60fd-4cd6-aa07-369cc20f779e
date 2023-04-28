@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { UseLogout } from '../../../hooks/UseLogout'
 import './AdminHomePage.css'
 
-const baseUrl = "https://8080-cffdaccdaafaefbebcbbfafccddecaeebaeccc.project.examly.io";
+const baseUrl = "https://8080-daefaebebcbbfafccddecaeebaeccc.project.examly.io";
 
 const initialData = {
   instituteName: "",
