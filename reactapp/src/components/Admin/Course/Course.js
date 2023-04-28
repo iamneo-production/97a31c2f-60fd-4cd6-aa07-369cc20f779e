@@ -1,7 +1,9 @@
-import React,{ useState } from 'react';
+import React,{ useState } from 'react'
+import '../Course/Course.css';
 import { useNavigate } from "react-router-dom";
 import { addCourse} from "../../../api/courseApi.js";
 import NavBar from '../Navbar/Navbar.js';
+
 const Course = () => {
   const [courseId, setCourseId] = useState("");
   const [courseName, setCourseName] = useState("");
@@ -35,8 +37,7 @@ const Course = () => {
     setCourseTiming('');
     setCourseEnrolled('');
     setCourseDescription('');
-    // navigate('/admin/viewCourse');
-
+    // navigate('/admin/dashboard');
   };
 
   return (
@@ -44,7 +45,7 @@ const Course = () => {
     <NavBar/>
     <div data-testid="addCourse">
       <h2>Add Course Details</h2>
-      <form onSubmit={(e)=>handleClick(e)} >
+      <form onSubmit={(e)=>handleClick(e)}>
       <div>
           <label htmlFor="courseId">Course Id:</label>
           <input

@@ -7,14 +7,15 @@ import NavBar from '../Navbar/Navbar.js';
 
 function Editcourse(props) {
   const { id } = useParams();
-  const [courseId, setCourseId] = useState(props.course?.courseId || '');
-  const [courseName, setCourseName] = useState(props.course?.courseName || '');
-  const [courseDuration, setCourseDuration] = useState(props.course?.CourseDuration || '');
+  // const [courseId, setCourseId] = useState(props.course?.courseId || '');
+  // const [courseName, setCourseName] = useState(props.course?.courseName || '');
+  // const [courseDuration, setCourseDuration] = useState(props.course?.CourseDuration || '');
   const [courseTiming, setCourseTiming] = useState(props.course?.CourseTiming || '');
   const [courseEnrolled, setCourseEnrolled] = useState(props.course?.CourseEnrolled || '');
-  const [courseDescription, setCourseDescription] = useState(props.course?.CourseDescription || '');
+  // const [courseDescription, setCourseDescription] = useState(props.course?.CourseDescription || '');
   const navigate = useNavigate();
   const [course, setCourse] = useState({
+    id:'',
     courseId: '',
     courseName: '',
     courseDescription: '',
@@ -28,13 +29,11 @@ function Editcourse(props) {
   useEffect(() => {
     async function fetchCourse() {
       const data = await getCourses(id);
-      setCourse(data);
-      setCourseId(data.courseId)
-      setCourseName(data.courseName);
-      setCourseDuration(data.courseDuration);
-      setCourseTiming(data.courseTiming);
-      setCourseEnrolled(data.courseEnrolled);
-      setCourseDescription(data.courseDescription);
+      const d1=data.find((eachdata)=>{
+        return (eachdata.courseId==id)
+      })
+      console.log(d1);
+      setCourse(d1);
     }
     fetchCourse();
   }, [id]);
@@ -42,15 +41,14 @@ function Editcourse(props) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const updatedCourse = {
-        ...course,
-        "courseId":courseId,
-        "courseName": courseName,
-        "courseDescription":courseDescription ,
-        "courseDuration": courseDuration
-      };
-      await editCourse(id, updatedCourse);
-      navigate('/admin/viewCourse');
+      // const updatedCourse = {
+      //   ...course,
+      //   "courseId":courseId,
+      //   "courseName": courseName,
+      //   "courseDescription":courseDescription ,
+      //   "courseDuration": courseDuration
+      // };
+      await editCourse(id, course);
     } catch (error) {
       console.error(error);
     }
@@ -67,8 +65,9 @@ function Editcourse(props) {
           <input
             id="courseId"
             type="text"
-            defaultValue={courseId}
-            onChange={(e) => setCourseId(e.target.value)}
+            // placeholder={`${course.courseId}`}
+            defaultValue={course.courseId}
+            onChange={(e) => setCourse({...course,courseId:e.target.value})}
             data-testid="courseId"
           />
         </div>
@@ -77,8 +76,8 @@ function Editcourse(props) {
           <input
             id="courseName"
             type="text"
-            defaultValue={courseName}
-            onChange={(e) => setCourseName(e.target.value)}
+            defaultValue={course.courseName}
+            onChange={(e) => setCourse({...course,courseName:e.target.value})}
             data-testid="courseName"
           />
         </div>
@@ -87,8 +86,8 @@ function Editcourse(props) {
           <input
             id="courseDuration"
             type="text"
-            defaultValue={courseDuration}
-            onChange={(e) => setCourseDuration(e.target.value)}
+            defaultValue={course.courseDuration}
+            onChange={(e) => setCourse({...course,courseDuration:e.target.value})}
             data-testid="courseDuration"
           />
         </div>
@@ -117,8 +116,8 @@ function Editcourse(props) {
           <textarea
             id="courseDescription"
             type="text"
-            defaultValue={courseDescription}
-            onChange={(e) => setCourseDescription(e.target.value)}
+            defaultValue={course.courseDescription}
+            onChange={(e) => setCourse({...course,courseDescription:e.target.value})}
             data-testid="courseDescription"
           />
         </div>

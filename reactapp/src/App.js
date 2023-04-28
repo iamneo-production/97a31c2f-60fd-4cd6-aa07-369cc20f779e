@@ -41,9 +41,9 @@ function App() {
         <Route path="/Viewacademy" element={<Viewacademy/>}/>
         {/* <Route path="/Course" element={<Course/>}/> */}
         <Route path="*" element={<>404 no such page go to home page</>} />
-        <Route path="/admin/addCourse" element={<Course />} />
-          <Route path="/admin/viewCourse" element={<Viewcourse/>}/>
-          <Route path="/admin/editCourse/:id" element={<Editcourse />} />
+        <Route path="/admin/addCourse" element={!user ? <Navigate to="/" />:<Course />} />
+          <Route path="/admin/viewCourse" element={!user ? <Navigate to="/" />:<Viewcourse/>}/>
+          <Route path="/admin/editCourse/:id" element={!user ? <Navigate to="/" />:<Editcourse />} />
           <Route path="/admin/Viewstudent" element={<Adminstudent />} />
       </Routes>
     </Router>
