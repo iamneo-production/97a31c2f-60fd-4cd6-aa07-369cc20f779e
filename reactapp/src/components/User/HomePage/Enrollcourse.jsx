@@ -1,7 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Enrollcourse.css';
+import { UseLogout } from '../../../hooks/UseLogout'
 function Enrollcourse() {
+    const { logout } = UseLogout()
+    const handleLogout = () => {
+        logout()
+    }
     return (
         <>
             <div className="nvbar">
@@ -9,6 +14,9 @@ function Enrollcourse() {
                 <h4>Enrollcourse</h4>
                 <div className="link">
                     <Link to="/Viewacademy">Institute</Link>
+                </div>
+                <div className="out">
+                    <button data-testid="logout" name='logout' onClick={handleLogout} >Logout</button>
                 </div>
             </div>
 
