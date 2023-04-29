@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import { UseLogout } from '../../../hooks/UseLogout'
 import './UserCourse.css';
 const baseUrl = "https://8080-daefaebebcbbfafccddecaeebaeccc.project.examly.io";
@@ -23,6 +24,10 @@ const UserCourse = () => {
     const { logout } = UseLogout()
     const handleLogout = () => {
         logout()
+    }
+    const navigate = useNavigate();
+    const handleenroll = () => {
+        navigate('/Navigate')
     }
 
     return (
@@ -48,13 +53,19 @@ const UserCourse = () => {
                             <h3>course name:{courseName}</h3>
                             <h3>course description:{courseDescription}</h3>
                             <h3>course duration:{courseDuration}</h3>
-                            <h3>enroll now</h3>
+                            <div className="out">
+                                <button type="button" onClick={() => handleenroll()} >Enroll Now</button>
+
+                            </div>
+
+                            
                         </div>
+                        
+                        
                     )
                 }
                 )}
             </div>
-        
 
         </>
     );

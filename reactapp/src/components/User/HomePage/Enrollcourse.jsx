@@ -89,7 +89,6 @@ function Enrollcourse() {
                                 <label className="form__label" for="nationality">Nationality </label>
                                 <input type="text" id="nationality" className="form__input" />
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -97,7 +96,6 @@ function Enrollcourse() {
                     <button type="submit" class="btn"><h2>Enroll now</h2></button>
                 </div>
             </div>
-
         </>
     );
 }

@@ -43,7 +43,6 @@ const Viewacademy = () => {
         logout()
     }
 
-
     return (
         <>
             <div className="nvbar">
