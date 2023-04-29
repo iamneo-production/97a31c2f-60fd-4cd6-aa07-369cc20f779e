@@ -13,3 +13,9 @@
     word-spacing:50px;
     white-space:nowrap;
 }
+img{
+    background-attachment: fixed;
+    background-size:cover;
+    width:100%;
+    
+}

@@ -31,7 +31,7 @@ function App() {
         <Route path="/admin/dashboard" element={!user ? (<Navigate to="/" />) :
             user.roles === "admin" ? (<AdminHomePage /> ) : ( <Navigate to="/user/dashboard" /> ) }/>
         <Route path="/user/dashboard" element={!user ? (<Navigate to="/" />) :
-           user.roles === "admin" ? (<AdminHomePage />) : (<Viewacademy />)} />
+           user.roles === "admin" ? (<AdminHomePage />) : (<Navpage />)} />
         <Route path="/Enrollcourse" element={!user ? <Navigate to="/" /> :<Enrollcourse/>}/>
         <Route path="/Viewacademy" element={!user ? <Navigate to="/" /> :<Viewacademy/>}/>
         <Route path="/UserCourse" element={!user ? <Navigate to="/" /> :<UserCourse/>}/>
