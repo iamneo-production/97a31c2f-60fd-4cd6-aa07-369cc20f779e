@@ -1,4 +1,4 @@
-import { createContext, useEffect, useReducer } from "react";
+import { createContext, useEffect, useReducer, useMemo } from "react";
 import authService from "../api/authService";
 
 // Create a context for authentication information
@@ -40,9 +40,14 @@ export const AuthContextProvider = ({ children }) => {
 
   console.log('AuthContext state:', state);
 
+  // Wrap the object passed as the value prop in a useMemo hook to prevent it from changing on every render
+  const contextValue = useMemo(() => {
+     return { ...state, dispatch };
+  }, [state, dispatch]);
+
   // Render the provider component with the current authentication state and dispatch function
   return (
-    <AuthContext.Provider value={{ ...state, dispatch }}>
+    <AuthContext.Provider value={contextValue}>
       {children}
     </AuthContext.Provider>
   );
