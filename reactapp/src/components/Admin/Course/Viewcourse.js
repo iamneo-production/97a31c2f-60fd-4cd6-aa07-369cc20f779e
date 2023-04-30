@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { getCourses,deleteCourse } from "../../../api/courseApi.js";
+import { getCourses,deleteCourse,addCourse } from "../../../api/courseApi.js";
 import NavBar from '../Navbar/Navbar.js';
+import { useNavigate } from 'react-router-dom';
 
 function Viewcourse() {
   const [courses, setCourses] = useState([]);
+  const [isAdded, setIsAdded] = useState(false);
+  const navigate = useNavigate();
+
   
   useEffect(() => {
     const fetchData = async () => {
@@ -13,13 +17,17 @@ function Viewcourse() {
       setCourses(data);
     };
     fetchData();
-  }, []);
+  }, [isAdded]);
 
   // const handleAddCourse = async (newCourse) => {
   //   const addedCourse = await addCourse(newCourse);
   //   setCourses((prevState) => [...prevState, addedCourse]);
     
   // };
+  const handleEditCourse = async (courseId) => {
+    navigate(`/admin/editCourse/${courseId}`);
+    setIsAdded(!isAdded); 
+  };
 
   // const handleEdit = async (id, updatedCourse) => {
   //   try {
@@ -63,7 +71,7 @@ function Viewcourse() {
               </div>
               <div className="course-card-footer">
                 <NavLink exact="true" to={`/admin/editCourse/${course.courseId}`} className="nav-link" id="editcourse"  activeclassname="active">
-                  <i className="fa-regular fa-pen-to-square" style={{ color: '#050505' }}></i>
+                <button id="edit-course" onClick={() => handleEditCourse(course.courseId)}> <i className="fa-regular fa-pen-to-square" style={{ color: '#050505' }}></i></button>
                 </NavLink>
                  <span className="nav-link" id="deletecourse" onClick={() => handleDelete(course.id)}>
                 <i className="fa-regular fa-trash-can" style={{ color: '#050505', cursor: 'pointer' }}></i>
@@ -76,7 +84,12 @@ function Viewcourse() {
         <div>No courses found</div>
       )}
       <NavLink exact="true" to="/admin/addCourse" className="nav-link" id="addcourse"  activeclassname="active">
-        <button id="add-course"><i className="fa-solid fa-circle-plus"></i> Add Course</button>
+      <button
+            id="add-course"
+            onClick={() => setIsAdded(!isAdded)}
+          >
+            <i className="fa-solid fa-circle-plus"></i> Add Course
+          </button>
       </NavLink>
     </div>
     </>
