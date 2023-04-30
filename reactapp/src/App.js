@@ -7,8 +7,8 @@ import UserCourse from './components/User/HomePage/UserCourse';
 import Navpage from './components/User/HomePage/Navpage';
 import Enrollcourse from './components/User/HomePage/Enrollcourse';
 import Viewacademy from './components/User/HomePage/Viewacademy';
-
 import './App.css';
+import Enrolledcourse from './components/User/Enrolledcourse';
 
 function App() {
   const { user } = UseAuthContext()
@@ -35,6 +35,7 @@ function App() {
         <Route path="/Enrollcourse" element={!user ? <Navigate to="/" /> :<Enrollcourse/>}/>
         <Route path="/Viewacademy" element={!user ? <Navigate to="/" /> :<Viewacademy/>}/>
         <Route path="/UserCourse" element={!user ? <Navigate to="/" /> :<UserCourse/>}/>
+        <Route path="/Enrolledcourse" element={!user? <Navigate to="/" /> :<Enrolledcourse/>}/>
         <Route path="*" element={<>404 no such page go to home page</>} />
       </Routes>
     </Router>

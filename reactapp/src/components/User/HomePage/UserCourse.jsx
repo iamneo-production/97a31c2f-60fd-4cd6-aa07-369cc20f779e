@@ -27,7 +27,7 @@ const UserCourse = () => {
     }
     const navigate = useNavigate();
     const handleenroll = () => {
-        navigate('/Navigate')
+        navigate('/Enrollcourse')
     }
 
     return (
@@ -36,7 +36,7 @@ const UserCourse = () => {
                 <h2>PG Admission</h2>
                 <h4>Institute</h4>
                 <div className="link">
-                    <Link to="/Enrollcourse">Enrollcourse</Link>
+                    <Link to="/Enrolledcourse">Enrolled course</Link>
                 </div>
                 <div className="out">
                     <button data-testid="logout" name='logout' onClick={handleLogout} >Logout</button>
