@@ -20,15 +20,7 @@
 body{
     background: #4a8fbd;  
 }
-form{
-    background-color: rgb(54, 211, 159);
-    color: brown;
-    border-radius: 5px;
-    width: 550px;
-    margin: 20px auto;
-    padding: 20px;
 
-}
 .form{
     background-color: rgb(54, 211, 159);
     color: brown;

@@ -66,7 +66,7 @@ const Signup = () => {
     };
 
     return (
-    <form onSubmit={handleSubmit}>
+    <form className="Form" onSubmit={handleSubmit}>
             
         <div>
             <label htmlFor="userType">User Type:</label>
