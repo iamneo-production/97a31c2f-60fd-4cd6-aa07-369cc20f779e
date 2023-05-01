@@ -63,7 +63,7 @@ const Login = () => {
   }
 
   return (
-    <form onSubmit={handleLogin}>
+    <form  className="Form" onSubmit={handleLogin}>
       
         <div data-testid="loginBox">
             <label htmlFor="email">Email:</label>

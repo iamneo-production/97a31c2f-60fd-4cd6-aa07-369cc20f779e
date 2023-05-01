@@ -3,12 +3,12 @@ import { UseAuthContext } from './hooks/UseAuthContext';
 import Signup from './components/Auth/Signup/Signup';
 import Login from './components/Auth/Login/Login';
 import AdminHomePage from './components/Admin/AdminHomePage/AdminHomePage';
-import Homepage from './components/User/Homepage/Homepage';
-import Navpage from './components/User/Homepage/Navpage';
-import Enrollcourse from './components/User/Homepage/Enrollcourse';
-import Viewacademy from './components/User/Homepage/Viewacademy';
-import Course from './components/User/Homepage/Course';
+import UserCourse from './components/User/HomePage/UserCourse';
+import Navpage from './components/User/HomePage/Navpage';
+import Enrollcourse from './components/User/HomePage/Enrollcourse';
+import Viewacademy from './components/User/HomePage/Viewacademy';
 import './App.css';
+import Enrolledcourse from './components/User/Enrolledcourse';
 
 function App() {
   const { user } = UseAuthContext()
@@ -32,9 +32,10 @@ function App() {
             user.roles === "admin" ? (<AdminHomePage /> ) : ( <Navigate to="/user/dashboard" /> ) }/>
         <Route path="/user/dashboard" element={!user ? (<Navigate to="/" />) :
            user.roles === "admin" ? (<AdminHomePage />) : (<Navpage />)} />
-        <Route path="/Enrollcourse" element={<Enrollcourse/>}/>
-        <Route path="/Viewacademy" element={<Viewacademy/>}/>
-        <Route path="/Course" element={<Course/>}/>
+        <Route path="/Enrollcourse" element={!user ? <Navigate to="/" /> :<Enrollcourse/>}/>
+        <Route path="/Viewacademy" element={!user ? <Navigate to="/" /> :<Viewacademy/>}/>
+        <Route path="/UserCourse" element={!user ? <Navigate to="/" /> :<UserCourse/>}/>
+        <Route path="/Enrolledcourse" element={!user? <Navigate to="/" /> :<Enrolledcourse/>}/>
         <Route path="*" element={<>404 no such page go to home page</>} />
       </Routes>
     </Router>
