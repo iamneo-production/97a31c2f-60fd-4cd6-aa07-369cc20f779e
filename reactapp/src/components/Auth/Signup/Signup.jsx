@@ -1,7 +1,7 @@
 import React,{ useState } from 'react'
 import authService from "../../../api/authService"
 import { Link,Navigate } from 'react-router-dom'
-import "./Signup.css"
+// import "./Signup.css"
 import Validation from './Validation'
 
 const Signup = () => {
@@ -66,7 +66,7 @@ const Signup = () => {
     };
 
     return (
-    <form onSubmit={handleSubmit}>
+    <form className="Form" onSubmit={handleSubmit}>
             
         <div>
             <label htmlFor="userType">User Type:</label>

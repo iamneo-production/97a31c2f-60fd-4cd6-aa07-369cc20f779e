@@ -1,0 +1,54 @@
+.nvbar{
+    background-color: rgb(195, 8, 176) ;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    padding: 0 8px;
+}
+.nvbar h4{
+    text-align: center;
+    color: aqua;
+    padding-left: 200px;
+    padding-right: 200px;
+}
+.nvbar.link{
+    flex:50%;
+    height:100%;
+    padding-right: 150px;
+}
+body{
+    background: #4a8fbd;  
+}
+
+.form{
+    background-color: rgb(54, 211, 159);
+    color: brown;
+    border-radius: 5px;
+    width: 550px;
+    margin: 20px auto;
+    padding: 20px;
+}
+.form-body{
+    text-align: left;
+    padding: 20px 10px;
+}
+.form-body > *{
+    padding: 5px;
+}
+.form__label{
+    width: 40%;
+}
+.form_input{
+    width: 60%;
+}
+.add{
+    background-color: rgb(25, 150, 98);
+    border-radius: 5px;
+    width: 450px;
+    margin: 20px auto;
+    padding: 20px;
+}
+.footer{
+    text-align: center;
+}
