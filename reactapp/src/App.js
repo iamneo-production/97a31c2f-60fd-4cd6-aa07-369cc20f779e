@@ -3,12 +3,12 @@ import { UseAuthContext } from './hooks/UseAuthContext';
 import Signup from './components/Auth/Signup/Signup';
 import Login from './components/Auth/Login/Login';
 import AdminHomePage from './components/Admin/AdminHomePage/AdminHomePage';
-import Homepage from './components/User/Homepage/Homepage';
-import Navpage from './components/User/Homepage/Navpage';
-import Enrollcourse from './components/User/Homepage/Enrollcourse';
-import Viewacademy from './components/User/Homepage/Viewacademy';
-import Course from './components/User/Homepage/Course';
+import UserCourse from './components/User/HomePage/UserCourse';
+import Navpage from './components/User/HomePage/Navpage';
+import Enrollcourse from './components/User/HomePage/Enrollcourse';
+import Viewacademy from './components/User/HomePage/Viewacademy';
 import './App.css';
+import Enrolledcourse from './components/User/Enrolledcourse';
 
 function App() {
   const { user } = UseAuthContext()
@@ -34,8 +34,12 @@ function App() {
            user.roles === "admin" ? (<AdminHomePage />) : (<Navpage />)} />
         <Route path="/Enrollcourse" element={<Enrollcourse/>}/>
         <Route path="/Viewacademy" element={<Viewacademy/>}/>
-        <Route path="/Course" element={<Course/>}/>
+        {/* <Route path="/Course" element={<Course/>}/> */}
         <Route path="*" element={<>404 no such page go to home page</>} />
+        <Route path="/admin/addCourse" element={!user ? <Navigate to="/" />:<Course />} />
+          <Route path="/admin/viewCourse" element={!user ? <Navigate to="/" />:<Viewcourse/>}/>
+          <Route path="/admin/editCourse/:id" element={!user ? <Navigate to="/" />:<Editcourse />} />
+          <Route path="/admin/Viewstudent" element={<Adminstudent />} />
       </Routes>
     </Router>
   );
