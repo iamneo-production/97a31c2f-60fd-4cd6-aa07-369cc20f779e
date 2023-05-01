@@ -35,10 +35,20 @@ public class AdminService {
     if(stu.isPresent()){
         StudentModel student = stu.get();
         
-        student.setStudentName(updatedStudent.getStudentName());
+        student.setFirstName(updatedStudent.getFirstName());
+        student.setLastName(updatedStudent.getLastName());
+        student.setFatherName(updatedStudent.getFatherName());
+        student.setPhoneNumber1(updatedStudent.getPhoneNumber1());
+        student.setMotherName(updatedStudent.getMotherName());
+        student.setPhoneNumber2(updatedStudent.getPhoneNumber2());
+        student.setEmailId(updatedStudent.getEmailId());
         student.setStudentDOB(updatedStudent.getStudentDOB());
-        student.setAddress(updatedStudent.getAddress());
-        student.setMobile(updatedStudent.getMobile());
+        student.setHouseNumber(updatedStudent.getHouseNumber());
+        student.setStreetName(updatedStudent.getStreetName());
+        student.setAreaName(updatedStudent.getAreaName());
+        student.setState(updatedStudent.getState());
+        student.setPincode(updatedStudent.getPincode());
+        student.setNationality(updatedStudent.getNationality());
         student.setSslc(updatedStudent.getSslc());
         student.setHsc(updatedStudent.getHsc());
         student.setDiploma(updatedStudent.getDiploma());
@@ -82,6 +92,8 @@ public class AdminService {
         course.setCourseName(courseModelFromRequest.getCourseName()); 
         course.setCourseDescription(courseModelFromRequest.getCourseDescription()); 
         course.setCourseDuration(courseModelFromRequest.getCourseDuration());
+        course.setCourseTiming(courseModelFromRequest.getCourseTiming());
+        course.setCourseEnrolled(courseModelFromRequest.getCourseEnrolled());
         courseRepository.save(course);
         return "Course edited";
     }

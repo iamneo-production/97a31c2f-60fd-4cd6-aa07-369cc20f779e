@@ -1,4 +1,3 @@
-
 package com.examly.springapp.models;
 import java.lang.annotation.Inherited;
 import java.sql.Date;
@@ -18,12 +17,14 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "Student")
+@Table(name = "Studentform")
 
-public class StudentModel {
+public class StudentformModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer studentId;
+    private Integer id;
+    private Integer courseId;
+    private Integer studentIdNumber;
     private String firstName;
     private String lastName;
     private String fatherName;
@@ -31,7 +32,7 @@ public class StudentModel {
     private String phoneNumber1;
     private String phoneNumber2;
     private String emailId;
-    private Date studentDOB;
+    private Date  studentDOB;
     private String houseNumber;
     private String streetName;
     private String areaName;
@@ -41,5 +42,5 @@ public class StudentModel {
     private Integer sslc;
     private Integer hsc;
     private Integer diploma;
-    private String eligibility;    
+     
 }

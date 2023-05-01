@@ -55,7 +55,7 @@ public class WebSecurityConfig {
 			.exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
 			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 			.authorizeHttpRequests().antMatchers("/user/login/**","/user/signup/**","/admin/signup/**","/admin/login/**").permitAll()
-			.antMatchers("/admin/addInstitute/**","/admin/editInstitute/*","/admin/viewInstitutes","/admin/deleteInstitutes").permitAll()
+			.antMatchers("/admin/addInstitute/**","/admin/editInstitute/*","/admin/viewInstitutes","/admin/deleteInstitutes","/admin/viewCourse/**").permitAll()
 			.anyRequest().authenticated();
 		
 		http.authenticationProvider(authenticationProvider());
