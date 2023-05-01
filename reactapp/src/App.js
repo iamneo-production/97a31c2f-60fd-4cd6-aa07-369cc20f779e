@@ -3,17 +3,12 @@ import { UseAuthContext } from './hooks/UseAuthContext';
 import Signup from './components/Auth/Signup/Signup';
 import Login from './components/Auth/Login/Login';
 import AdminHomePage from './components/Admin/AdminHomePage/AdminHomePage';
-import Homepage from './components/User/Homepage/Homepage';
-// import './App.css';
-import Course from "./components/Admin/Course/Course";
-import Viewcourse from "./components/Admin/Course/Viewcourse.js";
-import Editcourse from "./components/Admin/Course/Editcourse";
-import Navpage from './components/User/Homepage/Navpage';
-import Enrollcourse from './components/User/Homepage/Enrollcourse';
-import Viewacademy from './components/User/Homepage/Viewacademy';
-// import Course from './components/User/Homepage/Course';
-import Adminstudent from './components/Admin/Adminstudent';
+import UserCourse from './components/User/HomePage/UserCourse';
+import Navpage from './components/User/HomePage/Navpage';
+import Enrollcourse from './components/User/HomePage/Enrollcourse';
+import Viewacademy from './components/User/HomePage/Viewacademy';
 import './App.css';
+import Enrolledcourse from './components/User/Enrolledcourse';
 
 function App() {
   const { user } = UseAuthContext()
