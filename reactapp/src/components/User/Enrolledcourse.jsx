@@ -10,7 +10,9 @@ function Enrolledcourse() {
         <>
             <div className="nvbar">
                 <h2>PG Admission</h2>
-                <h4>Institute</h4>
+                <div className="link">
+                    <Link to="/Viewacademy"><h2>Institute</h2></Link>
+                </div>
                 <div className="link">
                     <Link to="/Enrolledcourse">Enrolled course</Link>
                 </div>
