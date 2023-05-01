@@ -36,8 +36,8 @@ public class AdminController {
 
 
     @GetMapping("admin/viewStudent")
-    public StudentModel viewStudent(@RequestParam("id") Integer studentid){         
-         return adminService.getStudent(studentid);
+    public List<StudentModel> viewStudent(){         
+         return adminService.getStudent();
     }
 
     @PostMapping("admin/addCourse")
