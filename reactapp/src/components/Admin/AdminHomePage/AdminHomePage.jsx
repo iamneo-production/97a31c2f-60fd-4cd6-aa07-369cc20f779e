@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { UseLogout } from '../../../hooks/UseLogout'
+import Navbar from '../Navbar/Navbar'
 import './AdminHomePage.css'
 
-const baseUrl = "https://8080-daefaebebcbbfafccddecaeebaeccc.project.examly.io";
+const baseUrl = "https://8080-adbcafaeebcbbfafccddecaeebaeccc.project.examly.io";
 
 const initialData = {
   instituteName: "",
@@ -15,20 +16,21 @@ const initialData = {
 
 const AdminHomePage = () => {
 
-  const [displayState, setDisplayState] = useState({
-    institutePage: true,
-    coursePage: false,
-    studentPage: false,
-  })
+  // const [displayState, setDisplayState] = useState({
+  //   institutePage: true,
+  //   coursePage: false,
+  //   studentPage: false,
+  // })
 
-  const { logout } = UseLogout()
-  const handleLogout = () => {
-    logout()
-  }
+  // const { logout } = UseLogout()
+  // const handleLogout = () => {
+  //   logout()
+  // }
 
   return (
     <>
-      <div className="admin-header-container">
+    <Navbar />
+      {/* <div className="admin-header-container">
         <div className="admin-title-container">
           <h3>PG Admission</h3>
         </div>
@@ -49,22 +51,23 @@ const AdminHomePage = () => {
         {displayState.institutePage && <Adminacademy />}
         {displayState.coursePage && <Admincourse />}
         {displayState.studentPage && <Adminstudent />}
-      </div>
+      </div> */}
+      <Adminacademy />
     </>
   )
 }
 
-const Admincourse = () => {
-  return (
-    <h1>In Admin Course Page</h1>
-  );
-}
+// const Admincourse = () => {
+//   return (
+//     <h1>In Admin Course Page</h1>
+//   );
+// }
 
-const Adminstudent = () => {
-  return (
-    <h1>In Admin Student Page</h1>
-  );
-}
+// const Adminstudent = () => {
+//   return (
+//     <h1>In Admin Student Page</h1>
+//   );
+// }
 
 const Adminacademy = () => {
   const [fetchedAcademyData, setFetchedAcademyData] = useState([]);

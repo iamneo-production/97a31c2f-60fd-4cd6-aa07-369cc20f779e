@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 import { UseLogout } from '../../../hooks/UseLogout'
 import './Viewacademy.css';
-const baseUrl = "https://8080-daefaebebcbbfafccddecaeebaeccc.project.examly.io";
+const baseUrl = "https://8080-adbcafaeebcbbfafccddecaeebaeccc.project.examly.io";
 const Viewacademy = () => {
     const [viewdata, setViewdata] = useState([])
     const [fetchdata, setFetchdata] = useState([])
