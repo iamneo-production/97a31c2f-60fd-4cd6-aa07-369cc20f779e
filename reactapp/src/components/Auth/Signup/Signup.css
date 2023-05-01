@@ -1,5 +1,5 @@
 /* It is arraing the order in the middle of the form*/
-form {
+.Form {
   display: flex;
   flex-direction: column;
   align-items: center;
