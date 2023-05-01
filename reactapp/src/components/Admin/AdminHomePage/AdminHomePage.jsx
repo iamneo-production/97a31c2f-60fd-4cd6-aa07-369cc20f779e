@@ -29,11 +29,47 @@ const AdminHomePage = () => {
 
   return (
     <>
+<<<<<<< HEAD
       <Navbar />
       <Adminacademy />
     </>
   );
 };
+=======
+      <div className="admin-header-container">
+        <div className="admin-title-container">
+          <h3>PG Admission</h3>
+        </div>
+        <div className="admin-academy-button">
+          <button type="button" id="adminInstitute" onClick={() => setDisplayState({ institutePage: true, coursePage: false, studentPage: false, })} >Institute</button>
+        </div>
+        <div className="admin-course-button">
+          <button type="button" id="adminCourse" onClick={() => setDisplayState({ institutePage: false, coursePage: true, studentPage: false, })} >Course</button>
+        </div>
+        <div className="admin-student-button">
+          <button type="button" id="adminStudents" onClick={() => setDisplayState({ institutePage: false, coursePage: false, studentPage: true, })} >Students</button>
+        </div>
+        <div className="admin-logout-button">
+          <button data-testid="logout" name='logout' onClick={handleLogout} >logout</button>
+        </div>
+      </div>
+      <div className="admin-main-container">
+        {displayState.institutePage && <Adminacademy />}
+        {displayState.coursePage && <Admincourse />}
+        {displayState.studentPage && <AdminStudent />}
+      </div>
+    </>
+  )
+}
+
+const Admincourse = () => {
+  return (
+    <h1>In Admin Course Page</h1>
+  );
+}
+
+
+>>>>>>> 134ebe0 (push into my branch)
 
 const Adminacademy = () => {
   const [fetchedAcademyData, setFetchedAcademyData] = useState([]);
