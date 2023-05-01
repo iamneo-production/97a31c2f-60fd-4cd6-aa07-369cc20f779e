@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { UseLogout } from '../../../hooks/UseLogout'
 import './AdminHomePage.css'
+import AdminStudent from '../AdminStudent';
 
-const baseUrl = "https://8080-daefaebebcbbfafccddecaeebaeccc.project.examly.io";
+const baseUrl = "https://8080-fccfeeaccfaaabbebcbbfafccddecaeebaeccc.project.examly.io";
 
 const initialData = {
   instituteName: "",
@@ -48,7 +49,7 @@ const AdminHomePage = () => {
       <div className="admin-main-container">
         {displayState.institutePage && <Adminacademy />}
         {displayState.coursePage && <Admincourse />}
-        {displayState.studentPage && <Adminstudent />}
+        {displayState.studentPage && <AdminStudent />}
       </div>
     </>
   )
@@ -60,11 +61,7 @@ const Admincourse = () => {
   );
 }
 
-const Adminstudent = () => {
-  return (
-    <h1>In Admin Student Page</h1>
-  );
-}
+
 
 const Adminacademy = () => {
   const [fetchedAcademyData, setFetchedAcademyData] = useState([]);
