@@ -51,6 +51,7 @@ const Course = () => {
           <input
             id="courseId"
             type="text"
+            placeholder='Enter courseId'
             value={courseId}
             onChange={(event) => setCourseId(event.target.value)}
             data-testid="courseId"
@@ -61,6 +62,7 @@ const Course = () => {
           <input
             id="courseName"
             type="text"
+            placeholder='Enter courseName'
             value={courseName}
             onChange={(event) => setCourseName(event.target.value)}
             data-testid="courseName"
@@ -71,6 +73,7 @@ const Course = () => {
           <input
             id="courseDuration"
             type="text"
+            placeholder='Enter courseDuration'
             value={courseDuration}
             onChange={(event) => setCourseDuration(event.target.value)}
             data-testid="courseDuration"
@@ -81,6 +84,7 @@ const Course = () => {
           <input
             id="courseTiming"
             type="text"
+            placeholder='Enter courseTiming'
             value={courseTiming}
             onChange={(event) => setCourseTiming(event.target.value)}
             data-testid="courseTiming"
@@ -91,6 +95,7 @@ const Course = () => {
           <input
             id="courseEnrolled"
             type="text"
+            placeholder='courseEnrolled'
             value={courseEnrolled}
             onChange={(event) => setCourseEnrolled(event.target.value)}
             data-testid="courseEnrolled"
@@ -101,6 +106,7 @@ const Course = () => {
           <textarea
             id="courseDescription"
             type="text"
+            placeholder='courseDescription'
             value={courseDescription}
             onChange={(event) => setCourseDescription(event.target.value)}
             data-testid="courseDescription"
