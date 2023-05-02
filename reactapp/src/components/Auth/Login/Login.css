@@ -1,5 +1,5 @@
 /* back ground image for login and signup page*/
-form {
+.Form {
   max-width: 400px;
   margin: 0 auto;
   display: flex;

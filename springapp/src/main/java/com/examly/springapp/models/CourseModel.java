@@ -29,6 +29,8 @@ public class CourseModel {
     private String courseName ;
     private String courseDescription ;
     private  Integer courseDuration ;
+    private String courseTiming;
+    private Integer courseEnrolled;
 
 
 
