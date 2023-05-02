@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router';
 import { UseLogout } from '../../../hooks/UseLogout'
 import './UserCourse.css';
-const baseUrl = "https://8080-daefaebebcbbfafccddecaeebaeccc.project.examly.io";
+const baseUrl = "https://8080-deacebeebcbbfafccddecaeebaeccc.project.examly.io";
 const UserCourse = () => {
     const [viewdata, setViewdata] = useState([])
     useEffect(() => {

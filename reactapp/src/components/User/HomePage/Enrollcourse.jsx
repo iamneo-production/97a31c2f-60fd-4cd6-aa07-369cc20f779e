@@ -4,7 +4,7 @@ import './Enrollcourse.css';
 import { useNavigate } from 'react-router';
 
 import { UseLogout } from '../../../hooks/UseLogout'
-const baseUrl = "https://8080-daefaebebcbbfafccddecaeebaeccc.project.examly.io";
+const baseUrl = "https://8080-deacebeebcbbfafccddecaeebaeccc.project.examly.io";
 function Enrollcourse() {
     const { logout } = UseLogout()
     const handleLogout = () => {

@@ -1,4 +1,4 @@
-const baseUrl = "https://8080-adbcafaeebcbbfafccddecaeebaeccc.project.examly.io";
+const baseUrl = "https://8080-deacebeebcbbfafccddecaeebaeccc.project.examly.io";
 const token = localStorage.getItem('token')
 
 export const addCourse = async (newCourse) => {

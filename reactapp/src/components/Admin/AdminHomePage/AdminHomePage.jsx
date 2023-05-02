@@ -3,7 +3,7 @@ import { UseLogout } from '../../../hooks/UseLogout'
 import Navbar from '../Navbar/Navbar'
 import './AdminHomePage.css'
 
-const baseUrl = "https://8080-adbcafaeebcbbfafccddecaeebaeccc.project.examly.io";
+const baseUrl = "https://8080-deacebeebcbbfafccddecaeebaeccc.project.examly.io";
 
 const initialData = {
   instituteName: "",
