@@ -1,9 +1,18 @@
 import React, { useState, useEffect } from 'react'
-import { UseLogout } from '../../../hooks/UseLogout'
 import Navbar from '../Navbar/Navbar'
+import { store } from '../../../store';
+import { AdminGuard } from "../../../AuthGuard/AdminGuard"
 import './AdminHomePage.css'
+import { Navigate } from 'react-router';
 
-const baseUrl = "https://8080-adbcafaeebcbbfafccddecaeebaeccc.project.examly.io";
+const baseUrl = "https://8080-fcffeccfcdbefebcbbfafccddecaeebaeccc.project.examly.io";
+let auth =""
+store.subscribe( () => {
+  auth = store.getState().auth;
+  console.log(auth)
+});
+
+
 
 const initialData = {
   instituteName: "",
@@ -15,6 +24,10 @@ const initialData = {
 };
 
 const AdminHomePage = () => {
+  
+  if(auth.token === ""){
+    return <Navigate to="/login" />
+  }
 
   return (
     <>
@@ -25,6 +38,7 @@ const AdminHomePage = () => {
 }
 
 const Adminacademy = () => {
+  
   const [fetchedAcademyData, setFetchedAcademyData] = useState([]);
 
   const [academyData, setAcademyData] = useState([]);
@@ -56,13 +70,15 @@ const Adminacademy = () => {
   };
 
   const fetchAcademyData = async () => {
+   
     setIsLoading(true);
     setIsError({ state: false, msg: "" });
+    console.log(`Bearer ${auth.token}`)
     try {
       const response = await fetch(`${baseUrl}/admin/viewInstitutes`, {
         method: 'GET',
         headers: {
-          'Authorization': `Bearer ${localStorage.token}`,
+          'Authorization': `Bearer ${auth.token}`,
           'Content-type': 'application/json'
         }
       });
@@ -98,7 +114,7 @@ const Adminacademy = () => {
       method: 'DELETE',
       headers: {
         'Content-type': 'application/json',
-        'Authorization': `Bearer ${localStorage.token}`,
+        'Authorization': `Bearer ${auth.token}`,
       }
     });
     console.log(response);
@@ -129,31 +145,33 @@ const Adminacademy = () => {
   }
 
   return (
-    <div className="admin-academy-container">
-      <div className="admin-search-container">
-        <input type="text" name="search" value={searchTerm} placeholder="Type here to Search Institute" onChange={(e) => setSearchTerm(e.target.value)} />
-        <button type="button" onClick={() => filterAcademyData()} >Search</button>
-      </div>
-      {isLoading && <h4>Loading...</h4>}
-      {isError.state && <h4>{isError.msg}</h4>}
-      <div className="academy-display-container">
-        {academyData.map((eachAcademy, index) => {
-          const { instituteId, instituteName, instituteAddress, imageUrl } = eachAcademy;
-          return (
-            <div id={"adminInstituteGrid" + (index + 1)} className="each-academy-cell" key={instituteId} >
-              <img src={imageUrl} alt={instituteName} />
-              <h4>{instituteName}</h4>
-              <h4>{instituteAddress}</h4>
-              <button type="submit" id="editInstitute" onClick={() => handleEdit(instituteId)}>📝</button>
-              <button type="submit" id="deleteInstitute" onClick={() => handleDelete(instituteId)}>🗑️</button>
-            </div>
-          );
-        })}
-      </div>
-      <div className="admin-add-academy-button">
-        <button type="submit" onClick={() => handleAdd()}> ➕ Add Institute</button>
-      </div>
-    </div>
+    <AdminGuard>
+        <div className="admin-academy-container">
+          <div className="admin-search-container">
+            <input type="text" name="search" value={searchTerm} placeholder="Type here to Search Institute" onChange={(e) => setSearchTerm(e.target.value)} />
+            <button type="button" onClick={() => filterAcademyData()} >Search</button>
+          </div>
+          {isLoading && <h4>Loading...</h4>}
+          {isError.state && <h4>{isError.msg}</h4>}
+          <div className="academy-display-container">
+            {academyData.map((eachAcademy, index) => {
+              const { instituteId, instituteName, instituteAddress, imageUrl } = eachAcademy;
+              return (
+                <div id={"adminInstituteGrid" + (index + 1)} className="each-academy-cell" key={instituteId} >
+                  <img src={imageUrl} alt={instituteName} />
+                  <h4>{instituteName}</h4>
+                  <h4>{instituteAddress}</h4>
+                  <button type="submit" id="editInstitute" onClick={() => handleEdit(instituteId)}>📝</button>
+                  <button type="submit" id="deleteInstitute" onClick={() => handleDelete(instituteId)}>🗑️</button>
+                </div>
+              );
+            })}
+          </div>
+          <div className="admin-add-academy-button">
+            <button type="submit" onClick={() => handleAdd()}> ➕ Add Institute</button>
+          </div>
+        </div>
+    </AdminGuard>
   );
 };
 
@@ -183,7 +201,7 @@ const AcademyForm = ({ handleCallBack, pageState, refreshData }) => {
     const request = await fetch(`${baseUrl}/admin/addInstitute`, {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${localStorage.token}`,
+        'Authorization': `Bearer ${auth.token}`,
         'Content-type': 'application/json'
       },
       body: JSON.stringify(formData)
@@ -207,7 +225,7 @@ const AcademyForm = ({ handleCallBack, pageState, refreshData }) => {
     const request = await fetch(`${baseUrl}/admin/editInstitute/${id}`, {
       method: 'PUT',
       headers: {
-        'Authorization': `Bearer ${localStorage.token}`,
+        'Authorization': `Bearer ${auth.token}`,
         'Content-type': 'application/json'
       },
       body: JSON.stringify(formData)

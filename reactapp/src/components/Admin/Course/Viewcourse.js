@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
-import { getCourses,deleteCourse,addCourse } from "../../../api/courseApi.js";
+import { NavLink,useNavigate } from 'react-router-dom';
+import { getCourses,deleteCourse } from "../../../api/courseApi.js";
 import NavBar from '../Navbar/Navbar.js';
-import { useNavigate } from 'react-router-dom';
+import { AdminGuard } from "../../../AuthGuard/AdminGuard"
 
 function Viewcourse() {
   const [courses, setCourses] = useState([]);
@@ -53,7 +53,7 @@ function Viewcourse() {
   };
 
   return (
-    <>
+    <AdminGuard>
     <NavBar/>
     <div>
       <h1>List of Courses</h1>
@@ -92,7 +92,7 @@ function Viewcourse() {
           </button>
       </NavLink>
     </div>
-    </>
+    </AdminGuard>
   );
 }
 

@@ -1,8 +1,9 @@
 import React, { useState,useEffect } from 'react';
-import { useParams,Link } from 'react-router-dom';
-import { useNavigate } from "react-router-dom";
+import { useParams,Link,useNavigate } from 'react-router-dom';
 import {getCourses, editCourse} from '../../../api/courseApi.js';
 import NavBar from '../Navbar/Navbar.js';
+import { AdminGuard } from "../../../AuthGuard/AdminGuard"
+
 
 
 function Editcourse(props) {
@@ -55,7 +56,7 @@ function Editcourse(props) {
   };
 
   return (
-    <>
+    <AdminGuard>
     <NavBar/>
     <div>
       <h1>Edit Course</h1>
@@ -125,7 +126,7 @@ function Editcourse(props) {
         <Link to="/admin/viewCourse" className="btn btn-secondary">Cancel</Link>
       </form>
     </div>
-    </>
+    </AdminGuard>
   );
 }
 

@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
-import { UseLogout } from '../../../hooks/UseLogout'
+import { store } from '../../../store';
+import { UserGuard } from "../../../AuthGuard/UserGuard"
 import './Viewacademy.css';
-const baseUrl = "https://8080-adbcafaeebcbbfafccddecaeebaeccc.project.examly.io";
+const baseUrl = "https://8080-fcffeccfcdbefebcbbfafccddecaeebaeccc.project.examly.io";
+let auth =""
+store.subscribe( () => {
+  auth = store.getState().auth;
+  console.log(auth)
+});
 const Viewacademy = () => {
     const [viewdata, setViewdata] = useState([])
     const [fetchdata, setFetchdata] = useState([])
@@ -16,7 +22,7 @@ const Viewacademy = () => {
         const response = await fetch(`${baseUrl}/admin/viewInstitutes`, {
             method: 'GET',
             headers: {
-                'Authorization': `Bearer ${localStorage.token}`,
+                'Authorization': `Bearer ${auth.token}`,
                 'Content-type': 'application/json'
             }
         });
@@ -38,13 +44,13 @@ const Viewacademy = () => {
 
     }
 
-    const { logout } = UseLogout()
-    const handleLogout = () => {
-        logout()
-    }
+  const handleLogout = () => { 
+    store.dispatch({ type: 'LOGOUT' })
+    navigate('/login');
+  }
 
     return (
-        <>
+        <UserGuard>
             <div className="nvbar">
                 <h2>PG Admission</h2>
                 <h4>Institute</h4>
@@ -74,7 +80,7 @@ const Viewacademy = () => {
                     })
                 }
             </div>
-        </>
+        </UserGuard>
     )
 
 }
