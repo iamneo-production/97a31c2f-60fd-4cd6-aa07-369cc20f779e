@@ -25,29 +25,11 @@ function Viewcourse() {
 
   }, [isAdded]);
 
-  // const handleAddCourse = async (newCourse) => {
-  //   const addedCourse = await addCourse(newCourse);
-  //   setCourses((prevState) => [...prevState, addedCourse]);
-    
-  // };
   const handleEditCourse = async (courseId) => {
     navigate(`/admin/editCourse/${courseId}`);
     setIsAdded(!isAdded); 
   };
 
-  // const handleEdit = async (id, updatedCourse) => {
-  //   try {
-  //     const editedCourse = await editCourse(id, updatedCourse);
-  //     setCourses((prevState) => prevState.map((course) => {
-  //       if (course.id === editedCourse.id) {
-  //         return editedCourse;
-  //       }
-  //       return course;
-  //     }));
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
 
   const handleDelete = async (id) => {
     try {

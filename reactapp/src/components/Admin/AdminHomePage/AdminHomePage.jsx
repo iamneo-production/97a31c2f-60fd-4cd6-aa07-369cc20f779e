@@ -5,7 +5,7 @@ import { AdminGuard } from "../../../AuthGuard/AdminGuard"
 import './AdminHomePage.css'
 import { Navigate } from 'react-router';
 
-const baseUrl = "https://8080-fcffeccfcdbefebcbbfafccddecaeebaeccc.project.examly.io";
+const baseUrl = "https://8080-deacebeebcbbfafccddecaeebaeccc.project.examly.io";
 let auth =""
 store.subscribe( () => {
   auth = store.getState().auth;

@@ -8,12 +8,8 @@ import { AdminGuard } from "../../../AuthGuard/AdminGuard"
 
 function Editcourse(props) {
   const { id } = useParams();
-  // const [courseId, setCourseId] = useState(props.course?.courseId || '');
-  // const [courseName, setCourseName] = useState(props.course?.courseName || '');
-  // const [courseDuration, setCourseDuration] = useState(props.course?.CourseDuration || '');
   const [courseTiming, setCourseTiming] = useState(props.course?.CourseTiming || '');
   const [courseEnrolled, setCourseEnrolled] = useState(props.course?.CourseEnrolled || '');
-  // const [courseDescription, setCourseDescription] = useState(props.course?.CourseDescription || '');
   const navigate = useNavigate();
   const [course, setCourse] = useState({
     id:'',
@@ -54,13 +50,7 @@ function Editcourse(props) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // const updatedCourse = {
-      //   ...course,
-      //   "courseId":courseId,
-      //   "courseName": courseName,
-      //   "courseDescription":courseDescription ,
-      //   "courseDuration": courseDuration
-      // };
+      
       await editCourse(id, course);
     } catch (error) {
       console.error(error);
