@@ -28,8 +28,13 @@ public class JwtUtils {
 	@Value("${project.app.jwtExpirationMs}")
 	private int jwtExpirationMs;
 	
+	// Generate a JWT token using the authentication object
 	public String generateJwtToken(Authentication authentication) {
+		
+		// Get the authenticated user details
 		UserDetailsImpl userPrincipal =(UserDetailsImpl) authentication.getPrincipal();
+
+		// Build the JWT token with user's username, issue date, expiration time, and the secret key
 		return Jwts.builder()
 				.setSubject(userPrincipal.getUsername())
 		        .setIssuedAt(new Date())
@@ -38,14 +43,19 @@ public class JwtUtils {
 		        .compact();
 	}
 	
+	// Extract the username from a JWT token
 	public String getUserNameFromJwtToken(String token) {
+		// Parse the token to get the claims, and return the subject (username) from the claims
 		return Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody().getSubject();
 	}
 	
+	// Validate a JWT token
 	public boolean validateJwtToken(String authToken) {
 		 try {
-		      Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(authToken);
-		      return true;
+		    // Parse the token and verify the signature using the secret key
+			Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(authToken);
+			// If there is no exception, the token is valid
+			return true;
 		    } catch (SignatureException e) {
 		      logger.error("Invalid JWT signature: {}", e.getMessage());
 		    } catch (MalformedJwtException e) {
@@ -58,6 +68,7 @@ public class JwtUtils {
 		      logger.error("JWT claims string is empty: {}", e.getMessage());
 		    }
 
+			// If there is any exception, the token is invalid
 		    return false;
 	}
 
