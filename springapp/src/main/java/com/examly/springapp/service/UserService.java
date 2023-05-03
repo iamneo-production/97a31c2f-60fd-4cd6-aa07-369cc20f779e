@@ -83,6 +83,11 @@ public class UserService {
         }
     }
 
+
+    public List<StudentformModel> getStudentformModel(){
+        return studentformRepository.findAll();
+      }
+
     public CourseModel viewEnrolledCourse(Integer studentId){
         StudentformModel studentformModel = studentformRepository.findByStudentIdNumber(studentId);
         System.out.println("student found "+ studentformModel.getCourseId() );
