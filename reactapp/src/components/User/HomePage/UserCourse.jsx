@@ -1,19 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router';
-import { UseLogout } from '../../../hooks/UseLogout'
+import { store } from '../../../store';
+import { UserGuard } from "../../../AuthGuard/UserGuard"
+
 import './UserCourse.css';
-const baseUrl = "https://8080-deacebeebcbbfafccddecaeebaeccc.project.examly.io";
+const baseUrl = "https://8080-fcffeccfcdbefebcbbfafccddecaeebaeccc.project.examly.io";
+let auth =""
+store.subscribe( () => {
+  auth = store.getState().auth;
+  console.log(auth)
+});
 const UserCourse = () => {
     const [viewdata, setViewdata] = useState([])
     useEffect(() => {
-        getdata()
+        getdata().then((data) => {
+            console.log(data)
+          })
+          .catch((error) => {
+            console.error(error);
+          });
     }, [])
     const getdata = async () => {
         const response = await fetch(`${baseUrl}/admin/viewCourse`, {
             method: 'GET',
             headers: {
-                'Authorization': `Bearer ${localStorage.token}`,
+                'Authorization': `Bearer ${auth.token}`,
                 'Content-type': 'application/json'
             }
         });
@@ -21,17 +33,17 @@ const UserCourse = () => {
         console.log(data)
         setViewdata(data)
     }
-    const { logout } = UseLogout()
-    const handleLogout = () => {
-        logout()
-    }
     const navigate = useNavigate();
+    const handleLogout = () => { 
+      store.dispatch({ type: 'LOGOUT' })
+      navigate('/login');
+    }
     const handleenroll = () => {
         navigate('/Enrollcourse')
     }
 
     return (
-        <>
+        <UserGuard>
             <div className="nvbar">
                 <h2>PG Admission</h2>
                 <div className="link">
@@ -69,7 +81,7 @@ const UserCourse = () => {
                 )}
             </div>
 
-        </>
+        </UserGuard>
     );
 
 }
