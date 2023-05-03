@@ -56,7 +56,13 @@ const Adminacademy = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    fetchAcademyData();
+    fetchAcademyData()
+      .then((data) => {
+        console.log("fetched academy data success ",data)
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }, []);
 
 
@@ -106,7 +112,13 @@ const Adminacademy = () => {
   };
 
   const handleDelete = async (id) => {
-    deleteAcademy(id);
+    deleteAcademy(id)
+    .then(() => {
+      console.log("deleted Academy")
+    })
+    .catch((error) => {
+      console.log(error)
+    });
   };
 
   const deleteAcademy = async (id) => {
@@ -118,8 +130,13 @@ const Adminacademy = () => {
       }
     });
     console.log(response);
-    fetchAcademyData();
-  };
+    fetchAcademyData()
+    .then((data) => {
+      console.log("fetched academy data success ",data)
+    })
+    .catch((error) => {
+      console.error(error);
+    });  };
 
   const handleEdit = (id) => {
     const currentAcademyData = academyData.find((eachAcademy) => {
@@ -189,7 +206,13 @@ const AcademyForm = ({ handleCallBack, pageState, refreshData }) => {
   const handleFormAdd = (e) => {
     e.preventDefault();
     console.log(formData);
-    addAcademy();
+    addAcademy().then((data) => {
+      console.log("added academy ",data)
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+
     handleCallBack({
       view: { state: true },
       add: { state: false },
@@ -213,7 +236,13 @@ const AcademyForm = ({ handleCallBack, pageState, refreshData }) => {
   const handleFormEdit = (e) => {
     e.preventDefault();
     console.log(formData);
-    editAcademy(pageState.edit.data.instituteId);
+    editAcademy(pageState.edit.data.instituteId).then((data) => {
+      console.log(data)
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+
     handleCallBack({
       view: { state: true },
       add: { state: false },

@@ -24,7 +24,13 @@ function Editcourse(props) {
   });
 
   const handleClick = (event)=>{
-    handleSubmit(event);
+    handleSubmit(event).then((data) => {
+      console.log("edited successfully ",data)
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+
     navigate('/admin/viewCourse');
   }
   useEffect(() => {
@@ -36,7 +42,13 @@ function Editcourse(props) {
       console.log(d1);
       setCourse(d1);
     }
-    fetchCourse();
+    fetchCourse().then((data) => {
+      console.log(data)
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+
   }, [id]);
 
   const handleSubmit = async (e) => {

@@ -47,7 +47,12 @@ function Enrollcourse() {
     function handleSubmit(e) {
 
         e.preventDefault();
-        postdata()
+        postdata().then(() => {
+            console.log("success")
+          })
+          .catch((error) => {
+            console.error(error);
+          });
 
         if (!inputData.firstName || !inputData.lastName || !inputData.fatherName || !inputData.motherName || !inputData.gender || !inputData.phonenumber || !inputData.alternativenumber || !inputData.age || !inputData.marks) {
             alert("All fields are Mandatory")

@@ -14,7 +14,12 @@ store.subscribe( () => {
 const UserCourse = () => {
     const [viewdata, setViewdata] = useState([])
     useEffect(() => {
-        getdata()
+        getdata().then((data) => {
+            console.log(data)
+          })
+          .catch((error) => {
+            console.error(error);
+          });
     }, [])
     const getdata = async () => {
         const response = await fetch(`${baseUrl}/admin/viewCourse`, {

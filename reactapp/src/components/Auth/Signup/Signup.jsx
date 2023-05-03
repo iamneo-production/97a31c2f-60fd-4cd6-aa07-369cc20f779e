@@ -45,7 +45,7 @@ const Signup = () => {
         errorObj = Validation(formData, errorObj);
         setErrors(errorObj);
         // If there are no errors, submit the form
-        if (!errorObj.hasError) {
+       if (!errorObj.hasError) {
             setLoader(true);
             authService.register(formData)
                 .then((data) => {
@@ -59,9 +59,13 @@ const Signup = () => {
                         errorObj.custom.message = data.message;
                         setLoader(false);
                     }
+                })
+                .catch((error) => {
+                    console.error("Error registering:", error);
+                    setLoader(false);
                 });
         }
-    };
+};
 
     return (
         <section className="bg-gray-50 ">
@@ -104,13 +108,13 @@ const Signup = () => {
       
                         <div>
                             <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 ">Password</label>
-                            <input type="password" data-testid="password" name="password" value={formData.password} onChange={handleInputChange}   placeholder="••••••••" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5" />
+                            <input type="password" data-testid="password" name="password" value={formData.password} onChange={handleInputChange} autoComplete="new-password"   placeholder="••••••••" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5" />
                             {errors.password.required && <div className="text-red-500">{ errors.password.message }</div>}    
                         </div>
       
                         <div>
                             <label htmlFor="confirmPassword" className="block mb-2 text-sm font-medium text-gray-900 ">Confirm Password</label>
-                            <input type="password" data-testid="confirmPassword" name="confirmPassword" value={formData.confirmPassword} onChange={handleInputChange}   placeholder="••••••••" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5" />
+                            <input type="password" data-testid="confirmPassword" name="confirmPassword" value={formData.confirmPassword} onChange={handleInputChange} autoComplete="new-password"   placeholder="••••••••" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5" />
                             {errors.confirmPassword.required && <div className="text-red-500">{ errors.confirmPassword.message }</div>}
                         </div>
            

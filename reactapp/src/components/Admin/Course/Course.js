@@ -16,7 +16,13 @@ const Course = () => {
   const navigate = useNavigate();
 
   const handleClick = (event)=>{
-    handleSubmit(event);
+    handleSubmit(event).then((data) => {
+      console.log(data)
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+
     navigate('/admin/viewCourse');
   }
   const handleSubmit = async(event) => {

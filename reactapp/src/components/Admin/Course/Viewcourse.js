@@ -16,7 +16,13 @@ function Viewcourse() {
       console.log(data)
       setCourses(data);
     };
-    fetchData();
+    fetchData().then((data) => {
+      console.log(data)
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+
   }, [isAdded]);
 
   // const handleAddCourse = async (newCourse) => {

@@ -15,7 +15,12 @@ const Viewacademy = () => {
     const [fetchdata, setFetchdata] = useState([])
     const [search, setSearch] = useState([])
     useEffect(() => {
-        getdata()
+        getdata().then((data) => {
+            console.log(data)
+          })
+          .catch((error) => {
+            console.error(error);
+          });
     }, [])
     const navigate = useNavigate();
     const getdata = async () => {
