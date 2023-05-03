@@ -57,6 +57,11 @@ public class UserController {
         return "enrolled";
     }
 
+    @GetMapping("user/viewStudentsfrom")
+    public List<StudentformModel> viewStatus(){         
+         return userService.getStudentformModel();
+    }
+
     @GetMapping("user/viewEnrolledCourse")
     public CourseModel viewEnrolledCourses(@RequestParam("studentid") Integer studentid){
         return userService.viewEnrolledCourse(studentid);
