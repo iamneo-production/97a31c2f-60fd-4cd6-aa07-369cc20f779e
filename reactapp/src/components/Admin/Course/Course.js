@@ -1,6 +1,6 @@
 import React,{ useState } from 'react'
 import '../Course/Course.css';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { addCourse} from "../../../api/courseApi.js";
 import NavBar from '../Navbar/Navbar.js';
 import { AdminGuard } from "../../../AuthGuard/AdminGuard"
@@ -113,6 +113,7 @@ const Course = () => {
         </div>
         
         <button type="submit" id="addCourse">Add Course</button>
+        <Link to="/admin/viewCourse" className="btn btn-secondary">Cancel</Link>
       </form>
     </div>
     </AdminGuard>
