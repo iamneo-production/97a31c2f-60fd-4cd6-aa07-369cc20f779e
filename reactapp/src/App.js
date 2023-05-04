@@ -3,12 +3,12 @@ import Signup from './components/Auth/Signup/Signup';
 import Login from './components/Auth/Login/Login';
 import AdminHomePage from './components/Admin/AdminHomePage/AdminHomePage';
 import Adminstudent from './components/Admin/Adminstudent';
-import Viewacademy from './components/User/HomePage/Viewacademy'
-import UserCourse from './components/User/HomePage/UserCourse'
-import Enrollcourse from './components/User/HomePage/Enrollcourse'
-import Course from './components/Admin/Course/Course'
-import Viewcourse from './components/Admin/Course/Viewcourse'
-import Editcourse from './components/Admin/Course/Editcourse'
+import Viewacademy from './components/User/HomePage/Viewacademy';
+import UserCourse from './components/User/HomePage/UserCourse';
+import Enrollcourse from './components/User/HomePage/Enrollcourse';
+import Course from './components/Admin/Course/Course';
+import Viewcourse from './components/Admin/Course/Viewcourse';
+import Editcourse from './components/Admin/Course/Editcourse';
 import Enrolledcourse from './components/User/Enrolledcourse';
 
 function App() {
