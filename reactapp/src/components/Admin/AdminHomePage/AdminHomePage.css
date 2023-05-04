@@ -64,3 +64,23 @@ div {
     right: 20px;
     bottom: 20px;
 }
+
+.admin-academy-form button {
+    background-color: rgb(25, 106, 35);
+}
+
+.admin-academy-form-container {
+    background-color: rgb(192, 192, 187);
+    padding: 5rem;
+    margin: 4rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5rem;
+}
+
+.admin-form-submit-button {
+    background-color: rgb(25, 106, 35);
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+}
