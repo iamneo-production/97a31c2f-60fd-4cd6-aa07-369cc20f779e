@@ -200,7 +200,13 @@ export const AcademyForm = ({ type }) => {
   const { id } = useParams();
 
   useEffect(() => {
-    fetchData();
+    fetchData()
+      .then((data) => {
+        console.log("fetched academy data success ", data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }, [id]);
 
   const fetchData = async () => {
@@ -257,7 +263,7 @@ export const AcademyForm = ({ type }) => {
   const handleFormEdit = (e) => {
     e.preventDefault();
     console.log(formData);
-    editAcademy({})
+    editAcademy()
       .then((data) => {
         console.log(data);
       })
