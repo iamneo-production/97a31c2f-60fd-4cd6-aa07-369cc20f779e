@@ -5,9 +5,9 @@ import { AdminGuard } from "../../../AuthGuard/AdminGuard"
 import './AdminHomePage.css'
 import { Navigate } from 'react-router';
 
-const baseUrl = "https://8080-deacebeebcbbfafccddecaeebaeccc.project.examly.io";
-let auth =""
-store.subscribe( () => {
+const baseUrl = "https://8080-cffdaccdaafaefbebcbbfafccddecaeebaeccc.project.examly.io";
+let auth = ""
+store.subscribe(() => {
   auth = store.getState().auth;
   console.log(auth)
 });
@@ -24,8 +24,8 @@ const initialData = {
 };
 
 const AdminHomePage = () => {
-  
-  if(auth.token === ""){
+
+  if (auth.token === "") {
     return <Navigate to="/login" />
   }
 
@@ -38,7 +38,7 @@ const AdminHomePage = () => {
 }
 
 const Adminacademy = () => {
-  
+
   const [fetchedAcademyData, setFetchedAcademyData] = useState([]);
 
   const [academyData, setAcademyData] = useState([]);
@@ -58,7 +58,7 @@ const Adminacademy = () => {
   useEffect(() => {
     fetchAcademyData()
       .then((data) => {
-        console.log("fetched academy data success ",data)
+        console.log("fetched academy data success ", data)
       })
       .catch((error) => {
         console.error(error);
@@ -76,7 +76,7 @@ const Adminacademy = () => {
   };
 
   const fetchAcademyData = async () => {
-   
+
     setIsLoading(true);
     setIsError({ state: false, msg: "" });
     console.log(`Bearer ${auth.token}`)
@@ -113,12 +113,12 @@ const Adminacademy = () => {
 
   const handleDelete = async (id) => {
     deleteAcademy(id)
-    .then(() => {
-      console.log("deleted Academy")
-    })
-    .catch((error) => {
-      console.log(error)
-    });
+      .then(() => {
+        console.log("deleted Academy")
+      })
+      .catch((error) => {
+        console.log(error)
+      });
   };
 
   const deleteAcademy = async (id) => {
@@ -131,12 +131,13 @@ const Adminacademy = () => {
     });
     console.log(response);
     fetchAcademyData()
-    .then((data) => {
-      console.log("fetched academy data success ",data)
-    })
-    .catch((error) => {
-      console.error(error);
-    });  };
+      .then((data) => {
+        console.log("fetched academy data success ", data)
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
   const handleEdit = (id) => {
     const currentAcademyData = academyData.find((eachAcademy) => {
@@ -163,31 +164,31 @@ const Adminacademy = () => {
 
   return (
     <AdminGuard>
-        <div className="admin-academy-container">
-          <div className="admin-search-container">
-            <input type="text" name="search" value={searchTerm} placeholder="Type here to Search Institute" onChange={(e) => setSearchTerm(e.target.value)} />
-            <button type="button" onClick={() => filterAcademyData()} >Search</button>
-          </div>
-          {isLoading && <h4>Loading...</h4>}
-          {isError.state && <h4>{isError.msg}</h4>}
-          <div className="academy-display-container">
-            {academyData.map((eachAcademy, index) => {
-              const { instituteId, instituteName, instituteAddress, imageUrl } = eachAcademy;
-              return (
-                <div id={"adminInstituteGrid" + (index + 1)} className="each-academy-cell" key={instituteId} >
-                  <img src={imageUrl} alt={instituteName} />
-                  <h4>{instituteName}</h4>
-                  <h4>{instituteAddress}</h4>
-                  <button type="submit" id="editInstitute" onClick={() => handleEdit(instituteId)}>📝</button>
-                  <button type="submit" id="deleteInstitute" onClick={() => handleDelete(instituteId)}>🗑️</button>
-                </div>
-              );
-            })}
-          </div>
-          <div className="admin-add-academy-button">
-            <button type="submit" onClick={() => handleAdd()}> ➕ Add Institute</button>
-          </div>
+      <div className="admin-academy-container">
+        <div className="admin-search-container">
+          <input type="text" name="search" value={searchTerm} placeholder="Type here to Search Institute" onChange={(e) => setSearchTerm(e.target.value)} />
+          <button type="button" onClick={() => filterAcademyData()} >Search</button>
         </div>
+        {isLoading && <h4>Loading...</h4>}
+        {isError.state && <h4>{isError.msg}</h4>}
+        <div className="academy-display-container">
+          {academyData.map((eachAcademy, index) => {
+            const { instituteId, instituteName, instituteAddress, imageUrl } = eachAcademy;
+            return (
+              <div id={"adminInstituteGrid" + (index + 1)} className="each-academy-cell" key={instituteId} >
+                <img src={imageUrl} alt={instituteName} />
+                <h4>{instituteName}</h4>
+                <h4>{instituteAddress}</h4>
+                <button type="submit" id="editInstitute" onClick={() => handleEdit(instituteId)}>📝</button>
+                <button type="submit" id="deleteInstitute" onClick={() => handleDelete(instituteId)}>🗑️</button>
+              </div>
+            );
+          })}
+        </div>
+        <div className="admin-add-academy-button">
+          <button type="submit" onClick={() => handleAdd()}> ➕ Add Institute</button>
+        </div>
+      </div>
     </AdminGuard>
   );
 };
@@ -207,11 +208,11 @@ const AcademyForm = ({ handleCallBack, pageState, refreshData }) => {
     e.preventDefault();
     console.log(formData);
     addAcademy().then((data) => {
-      console.log("added academy ",data)
+      console.log("added academy ", data)
     })
-    .catch((error) => {
-      console.error(error);
-    });
+      .catch((error) => {
+        console.error(error);
+      });
 
     handleCallBack({
       view: { state: true },
@@ -239,9 +240,9 @@ const AcademyForm = ({ handleCallBack, pageState, refreshData }) => {
     editAcademy(pageState.edit.data.instituteId).then((data) => {
       console.log(data)
     })
-    .catch((error) => {
-      console.error(error);
-    });
+      .catch((error) => {
+        console.error(error);
+      });
 
     handleCallBack({
       view: { state: true },
@@ -264,23 +265,85 @@ const AcademyForm = ({ handleCallBack, pageState, refreshData }) => {
   };
 
   return (
-    <>
+    <div className="admin-academy-form">
       {pageState.add.state ? <h1>Add Academy</h1> : <h1>Edit Academy</h1>}
       <button type="submit" onClick={() => handleCallBack({
         view: { state: true },
         add: { state: false },
         edit: { state: false, data: {} },
       })}>Back to Home</button>
-      <form className="academy-form-container">
-        <input type="text" id="academyName" name="academyName" value={formData.instituteName} placeholder="Enter Academy Name" onChange={(e) => handleChange(e, "instituteName")} /><br />
-        <input type="text" id="contactNumber" name="contactNumber" value={formData.mobile} placeholder="Enter Contact Number" onChange={(e) => handleChange(e, "mobile")} /><br />
-        <input type="text" id="imageUrl" name="imageUrl" value={formData.imageUrl} placeholder="Enter Academy Image Url" onChange={(e) => handleChange(e, "imageUrl")} /><br />
-        <input type="text" id="emailId" name="emailId" value={formData.email} placeholder="Enter Academy Email Id" onChange={(e) => handleChange(e, "email")} /><br />
-        <input type="text" id="academyLocation" name="academyLocation" value={formData.instituteAddress} placeholder="Enter Academy Location" onChange={(e) => handleChange(e, "instituteAddress")} /><br />
-        <textarea type="text" id="academyDescription" name="academyDescription" value={formData.instituteDescription} placeholder="Enter Academy Description" onChange={(e) => handleChange(e, "instituteDescription")} /><br />
-        {pageState.add.state ? <button type="submit" id="addAcademy" onClick={(e) => handleFormAdd(e)}>Add Academy</button> : <button type="submit" id="updateAcademy" onClick={(e) => handleFormEdit(e)}>Update Academy</button>}
+      <form className="admin-academy-form-container">
+        <div>
+          <label>Academy Name : </label>
+          <input
+            type="text"
+            id="academyName"
+            name="academyName"
+            value={formData.instituteName}
+            placeholder="Enter Academy Name"
+            onChange={(e) => handleChange(e, "instituteName")}
+          />
+        </div>
+        <div>
+          <label>Contact Number : </label>
+          <input
+            type="text"
+            id="contactNumber"
+            name="contactNumber"
+            value={formData.mobile}
+            placeholder="Enter Contact Number"
+            onChange={(e) => handleChange(e, "mobile")}
+          />
+        </div>
+        <div>
+          <label>Image Url : </label>
+          <input
+            type="text"
+            id="imageUrl"
+            name="imageUrl"
+            value={formData.imageUrl}
+            placeholder="Enter Academy Image Url"
+            onChange={(e) => handleChange(e, "imageUrl")}
+          />
+        </div>
+        <div>
+          <label>Email Id : </label>
+          <input
+            type="text"
+            id="emailId"
+            name="emailId"
+            value={formData.email}
+            placeholder="Enter Academy Email Id"
+            onChange={(e) => handleChange(e, "email")}
+          />
+        </div>
+        <div>
+          <label>Academy Location : </label>
+          <input
+            type="text"
+            id="academyLocation"
+            name="academyLocation"
+            value={formData.instituteAddress}
+            placeholder="Enter Academy Location"
+            onChange={(e) => handleChange(e, "instituteAddress")}
+          />
+        </div>
+        <div>
+          <label>Academy Description : </label>
+          <textarea
+            rows={5}
+            cols={50}
+            type="text"
+            id="academyDescription"
+            name="academyDescription"
+            value={formData.instituteDescription}
+            placeholder="Enter Academy Description"
+            onChange={(e) => handleChange(e, "instituteDescription")}
+          />
+        </div>
+        {pageState.add.state ? <button className="admin-form-submit-button" type="submit" id="addAcademy" onClick={(e) => handleFormAdd(e)}>Add Academy</button> : <button className="admin-form-submit-button" type="submit" id="updateAcademy" onClick={(e) => handleFormEdit(e)}>Update Academy</button>}
       </form>
-    </>
+    </div>
   );
 };
 
