@@ -14,13 +14,13 @@ store.subscribe( () => {
 function Enrollcourse() {
     const navigate = useNavigate();
     const {courseId}=useParams();
+    
 
     const handleLogout = () => { 
       store.dispatch({ type: 'LOGOUT' })
       navigate('/login');
     }    
     const data = {
-        studentIdNumber:'',
         firstName:'',
         lastName:'',
         fatherName:'',
@@ -61,7 +61,7 @@ function Enrollcourse() {
             console.error(error);
           });
 
-        if ( !inputData.studentIdNumber  ||!inputData.firstName || !inputData.lastName || !inputData.fatherName || !inputData.motherName || !inputData.phoneNumber1 || !inputData.phoneNumber2 || !inputData.emailId || !inputData.studentDOB ||!inputData.streetName ||!inputData.areaName ||!inputData.state ||!inputData.pincode ||!inputData.nationality ||!inputData.sslc ||!inputData.hsc) {
+        if ( !inputData.firstName || !inputData.lastName || !inputData.fatherName || !inputData.motherName || !inputData.phoneNumber1 || !inputData.phoneNumber2 || !inputData.emailId || !inputData.studentDOB ||!inputData.streetName ||!inputData.areaName ||!inputData.state ||!inputData.pincode ||!inputData.nationality ||!inputData.sslc ||!inputData.hsc) {
             alert("All fields are Mandatory")
         }
         else {
@@ -77,7 +77,7 @@ function Enrollcourse() {
                 'Content-type': 'application/json'
 
             },
-            body: JSON.stringify( {...inputData, courseId: courseId})
+            body: JSON.stringify( {...inputData, courseId: courseId,studentIdNumber: auth.id})
         })
     }
     return (
@@ -108,7 +108,7 @@ function Enrollcourse() {
                             </div>
                             <div className="studentIdNumber">
                                 <label className="form__label" for="studentIdNumber">studentIdNumber</label>
-                                <input type="text" name="studentIdNumber" id="lastName" className="form__input" placeholder="Enter Your SidN" value={inputData.studentIdNumber} onChange={handledata} />
+                                <input type="text" name="studentIdNumber" id="lastName" className="form__input" value={auth.id}  />
                             </div>
                             <div className="username">
                                 <label className="form__label" for="firstName">First Name </label>
