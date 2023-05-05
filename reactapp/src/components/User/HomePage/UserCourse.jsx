@@ -5,7 +5,7 @@ import { store } from '../../../store';
 import { UserGuard } from "../../../AuthGuard/UserGuard"
 
 import './UserCourse.css';
-const baseUrl = "https://8080-deacebeebcbbfafccddecaeebaeccc.project.examly.io";
+const baseUrl = "https://8080-daefaebebcbbfafccddecaeebaeccc.project.examly.io";
 let auth =""
 store.subscribe( () => {
   auth = store.getState().auth;
@@ -38,8 +38,8 @@ const UserCourse = () => {
       store.dispatch({ type: 'LOGOUT' })
       navigate('/login');
     }
-    const handleenroll = () => {
-        navigate('/Enrollcourse')
+    const handleenroll = (courseId) => {
+        navigate(`/Enrollcourse/${courseId}`)
     }
 
     return (
@@ -68,7 +68,7 @@ const UserCourse = () => {
                             <h3>course description:{courseDescription}</h3>
                             <h3>course duration:{courseDuration}</h3>
                             <div className="out">
-                                <button type="button" onClick={() => handleenroll()} >Enroll Now</button>
+                                <button type="button" onClick={() => handleenroll(courseId)} >Enroll Now</button>
 
                             </div>
 
