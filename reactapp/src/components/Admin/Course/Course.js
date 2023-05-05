@@ -1,6 +1,6 @@
 import React,{ useState } from 'react'
 import '../Course/Course.css';
-import {Link,useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from "react-router-dom";
 import { addCourse} from "../../../api/courseApi.js";
 import NavBar from '../Navbar/Navbar.js';
 import { AdminGuard } from "../../../AuthGuard/AdminGuard"
