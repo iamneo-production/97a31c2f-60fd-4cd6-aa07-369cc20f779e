@@ -1,6 +1,6 @@
 import { createStore } from 'redux'
 
-const initialState = { auth:{token: "",role:"",email:""} }
+const initialState = { auth:{token: "",role:"",email:"",id:""} }
 
 // Define the reducer function that updates the store's state based on dispatched actions
 const counterReducer = (state = initialState , action) => {
@@ -9,7 +9,7 @@ const counterReducer = (state = initialState , action) => {
 
     // If the dispatched action has a type of 'LOGIN', update the auth object in the state with the payload data
     case 'LOGIN':
-      const format = { token: action.payload.token,role:action.payload.roles,email:action.payload.email }
+      const format = { token: action.payload.token,role:action.payload.roles,email:action.payload.email,id:action.payload.id }
       return { ...state, auth: format }
 
     // If the dispatched action has a type of 'LOGOUT', return the initial state object
