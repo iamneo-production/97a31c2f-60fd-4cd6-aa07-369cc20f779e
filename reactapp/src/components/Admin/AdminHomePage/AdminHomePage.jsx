@@ -287,6 +287,7 @@ export const AcademyForm = ({ type }) => {
 
   return (
     <AdminGuard>
+      <Navbar />
       <div className="admin-academy-form">
         {type === "ADD" ? <h1>Add Academy</h1> : <h1>Edit Academy</h1>}
         <button
