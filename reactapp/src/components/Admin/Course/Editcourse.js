@@ -45,14 +45,15 @@ function Editcourse(props) {
     async function fetchCourse() {
       const data = await getCourses(id);
       const d1 = data.find((eachdata) => {
-        return (eachdata.courseId == id)
-      })
+        return eachdata.courseId == id;
+      });
       console.log(d1);
       setCourse(d1);
     }
-    fetchCourse().then((data) => {
-      console.log(data)
-    })
+    fetchCourse()
+      .then((data) => {
+        console.log(data);
+      })
       .catch((error) => {
         console.error(error);
       });
@@ -61,7 +62,6 @@ function Editcourse(props) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-
       await editCourse(id, course);
     } catch (error) {
       console.error(error);
@@ -73,7 +73,7 @@ function Editcourse(props) {
       <NavBar />
       <div>
         <h1>Edit Course</h1>
-        <form >
+        <form>
           <div>
             <label htmlFor="courseId">Course Id:</label>
             <input
@@ -81,7 +81,9 @@ function Editcourse(props) {
               type="text"
               // placeholder={`${course.courseId}`}
               defaultValue={course.courseId}
-              onChange={(e) => setCourse({ ...course, courseId: e.target.value })}
+              onChange={(e) =>
+                setCourse({ ...course, courseId: e.target.value })
+              }
               data-testid="courseId"
             />
           </div>
@@ -91,7 +93,9 @@ function Editcourse(props) {
               id="courseName"
               type="text"
               defaultValue={course.courseName}
-              onChange={(e) => setCourse({ ...course, courseName: e.target.value })}
+              onChange={(e) =>
+                setCourse({ ...course, courseName: e.target.value })
+              }
               data-testid="courseName"
             />
           </div>
@@ -101,7 +105,9 @@ function Editcourse(props) {
               id="courseDuration"
               type="text"
               defaultValue={course.courseDuration}
-              onChange={(e) => setCourse({ ...course, courseDuration: e.target.value })}
+              onChange={(e) =>
+                setCourse({ ...course, courseDuration: e.target.value })
+              }
               data-testid="courseDuration"
             />
           </div>
@@ -110,8 +116,8 @@ function Editcourse(props) {
             <input
               id="courseTiming"
               type="text"
-              defaultValue={course.courseTiming}
-              onChange={(e) => setCourse({ ...course, courseTiming: e.target.value })}
+              defaultValue={courseTiming}
+              onChange={(e) => setCourseTiming(e.target.value)}
               data-testid="courseTiming"
             />
           </div>
@@ -120,8 +126,8 @@ function Editcourse(props) {
             <input
               id="courseEnrolled"
               type="text"
-              defaultValue={course.courseEnrolled}
-              onChange={(e) => setCourse({ ...course, courseEnrolled: e.target.value })}
+              defaultValue={courseEnrolled}
+              onChange={(e) => setCourseEnrolled(e.target.value)}
               data-testid="courseEnrolled"
             />
           </div>
@@ -131,12 +137,18 @@ function Editcourse(props) {
               id="courseDescription"
               type="text"
               defaultValue={course.courseDescription}
-              onChange={(e) => setCourse({ ...course, courseDescription: e.target.value })}
+              onChange={(e) =>
+                setCourse({ ...course, courseDescription: e.target.value })
+              }
               data-testid="courseDescription"
             />
           </div>
-          <button type="submit" onClick={(e) => handleClick(e)}>Update Course</button>
-          <Link to="/admin/viewCourse" className="btn btn-secondary">Cancel</Link>
+          <button type="submit" onClick={(e) => handleClick(e)}>
+            Update Course
+          </button>
+          <Link to="/admin/viewCourse" className="btn btn-secondary">
+            Cancel
+          </Link>
         </form>
       </div>
     </AdminGuard>

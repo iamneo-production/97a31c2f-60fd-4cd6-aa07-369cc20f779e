@@ -1,18 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import { getCourses, deleteCourse } from "../../../api/courseApi.js";
-import NavBar from '../Navbar/Navbar.js';
-import { AdminGuard } from "../../../AuthGuard/AdminGuard"
+import NavBar from "../Navbar/Navbar.js";
+import { AdminGuard } from "../../../AuthGuard/AdminGuard";
 
 function Viewcourse() {
   const [courses, setCourses] = useState([]);
   const navigate = useNavigate();
 
-
   useEffect(() => {
     const fetchData = async () => {
       const data = await getCourses();
-      console.log(data)
+      console.log(data);
       setCourses(data);
     };
     fetchData().then((data) => {
@@ -27,7 +26,6 @@ function Viewcourse() {
   const handleEditCourse = async (courseId) => {
     navigate(`/admin/editCourse/${courseId}`);
   };
-
 
   const handleDelete = async (id) => {
     try {
