@@ -3,11 +3,13 @@ import org.springframework.web.bind.annotation.*;
 import com.examly.springapp.repository.*;
 import com.examly.springapp.service.*;
 import com.examly.springapp.models.*;
+import com.examly.springapp.models.*;
 import org.springframework.http.*;
 import org.springframework.stereotype.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.http.*;
 import java.util.*;
+import org.springframework.web.bind.annotation.*;
 
 import javax.security.auth.spi.LoginModule;
 
@@ -16,7 +18,10 @@ import javax.security.auth.spi.LoginModule;
 @RequestMapping("/")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UserController {
+
+  
     private UserService  userService;
+    
     public UserController(UserService userService){
         this.userService =  userService;
     }
@@ -44,6 +49,22 @@ public class UserController {
     @GetMapping("user/viewStatus")
     public AdmissionModel viewStatus(@RequestParam("id") Integer admissionid){         
          return userService.getAdmission(admissionid);
+    }
+
+    @PostMapping("user/studentForm")
+    public String saveNewStudentform(@RequestBody StudentformModel studnetformModel){
+        userService.addStudentform( studnetformModel);
+        return "enrolled";
+    }
+
+    @GetMapping("user/viewStudentsfrom")
+    public List<StudentformModel> viewStatus(){         
+         return userService.getStudentformModel();
+    }
+
+    @GetMapping("user/viewEnrolledCourse")
+    public CourseModel viewEnrolledCourses(@RequestParam("studentid") Integer studentid){
+        return userService.viewEnrolledCourse(studentid);
     }
 
 

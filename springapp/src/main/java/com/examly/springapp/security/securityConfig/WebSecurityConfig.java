@@ -16,6 +16,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import com.examly.springapp.security.securityServices.UserDetailsServiceImpl;
 
+// configuration for the web security
 @Configuration
 @EnableMethodSecurity
 public class WebSecurityConfig {
@@ -49,17 +50,22 @@ public class WebSecurityConfig {
 		return authconfig.getAuthenticationManager();
 	}
 	
+	// bean for the security filter chain
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
+
+		// Configure the HttpSecurity
 		http.cors().and().csrf().disable()
 			.exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
 			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 			.authorizeHttpRequests().antMatchers("/user/login/**","/user/signup/**","/admin/signup/**","/admin/login/**").permitAll()
-			.antMatchers("/admin/addInstitute/**","/admin/editInstitute/*","/admin/viewInstitutes","/admin/deleteInstitutes","/admin/viewCourse/**","/admin/viewStudent","/admin/editStudent/*","/admin/deleteStudent/*","/admin/addStudent/**").permitAll()
+			.antMatchers("/admin/addInstitute/**","/admin/editInstitute/*","/admin/viewInstitutes","/user/studentForm/**").permitAll()
 			.anyRequest().authenticated();
-		
+
+		// Set the authentication provider and JWT token filter for the HttpSecurity object
 		http.authenticationProvider(authenticationProvider());
 		http.addFilterBefore(authenticatioJwTokenFilter(), UsernamePasswordAuthenticationFilter.class );
+		
 		return http.build();
 	}
 

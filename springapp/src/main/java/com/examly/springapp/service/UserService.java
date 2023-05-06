@@ -20,13 +20,12 @@ public class UserService {
     @Autowired
     private AdmissionRepo admissionR;
 
-    public UserService(UserRepository userRepository,AdminRepository adminRepository
-    ,AdmissionRepo admissionR
-    ){
-        this.userRepository = userRepository;
-        this.adminRepository = adminRepository;
-        this.admissionR = admissionR;
-    }
+    @Autowired
+    private StudentformRepository studentformRepository;
+
+    @Autowired
+    private CourseRepository courseRepository;
+
 
     public String saveUser(UserModel userModel){
         if (userRepository.existsByEmail(userModel.getEmail())) {
@@ -74,9 +73,42 @@ public class UserService {
         return "Admission not Found";
     }
 
+    public void addStudentform(StudentformModel studentformModel ){
+        StudentformModel studentformModel1 = studentformRepository.findByStudentIdNumber(studentformModel.getStudentIdNumber());
+        if(studentformModel1 != null){
+            studentformModel1.setCourseId(studentformModel.getCourseId());
+            studentformRepository.save(studentformModel1);
+        } else {
+            studentformRepository.save(studentformModel);
+        }
+    }
+
+
+    public List<StudentformModel> getStudentformModel(){
+        return studentformRepository.findAll();
+      }
+
+    public CourseModel viewEnrolledCourse(Integer studentId){
+        StudentformModel studentformModel = studentformRepository.findByStudentIdNumber(studentId);
+        System.out.println("student found "+ studentformModel.getCourseId() );
+        if(courseRepository.existsByCourseId(studentformModel.getCourseId())){
+            System.out.println("student found and couese also");
+            Optional<CourseModel> course =  courseRepository.findBycourseId(studentformModel.getCourseId());
+            if(course.isPresent()){
+                System.out.println("course found ");
+                return course.get();
+            } else {
+                System.out.println("course not found ");
+                return null;
+            }
+        }
+        else{
+            System.out.println("student not found ");
+            return null;
+        }
+
+    }
 }
-
-
 
 
 

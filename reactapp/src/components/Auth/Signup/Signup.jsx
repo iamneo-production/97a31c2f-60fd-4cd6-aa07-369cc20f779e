@@ -1,7 +1,6 @@
 import React,{ useState } from 'react'
 import authService from "../../../api/authService"
 import { Link,Navigate } from 'react-router-dom'
-import "./Signup.css"
 import Validation from './Validation'
 
 const Signup = () => {
@@ -46,11 +45,10 @@ const Signup = () => {
         errorObj = Validation(formData, errorObj);
         setErrors(errorObj);
         // If there are no errors, submit the form
-        if (!errorObj.hasError) {
+       if (!errorObj.hasError) {
             setLoader(true);
             authService.register(formData)
                 .then((data) => {
-                    console.log("data for register", data);
                     if (data.id) {
                         console.log("success registered");
                         setRedirect(true);
@@ -61,58 +59,79 @@ const Signup = () => {
                         errorObj.custom.message = data.message;
                         setLoader(false);
                     }
+                })
+                .catch((error) => {
+                    console.error("Error registering:", error);
+                    setLoader(false);
                 });
         }
-    };
+};
 
     return (
-    <form onSubmit={handleSubmit}>
-            
-        <div>
-            <label htmlFor="userType">User Type:</label>
-            <select data-testid="userType" name="userType" value={formData.userRole} onChange={handleInputChange}>
-                <option value="user" >User</option>
-                <option value="admin">Admin</option>
-            </select>
-        </div>
-        
-        <div>
-            <label htmlFor="email">Email:</label>
-            <input type="email" data-testid="email" name='email' value={formData.email} placeholder="Enter Email" onChange={handleInputChange} />
-        </div>
-            {errors.email.required && <div className="error">{errors.email.message}</div>}
-            
-        <div>
-            <label htmlFor="username">Username:</label>
-            <input type="text" data-testid="username" name='username' value={formData.username} placeholder="Enter User Name" onChange={handleInputChange} />
-        </div>
-            {errors.username.required && <div className="error">{ errors.username.message }</div>}
-            
-        <div>
-            <label htmlFor="mobileNumber">Mobile Number:</label>
-            <input type="text" data-testid="mobileNumber" name="mobileNumber" value={formData.mobileNumber} placeholder="Enter phoneNumber" onChange={handleInputChange} />
-        </div>
-            {errors.mobileNumber.required && <div className="error">{ errors.mobileNumber.message }</div>}    
-        
-        <div>
-            <label htmlFor="password">Password:</label>
-            <input type="password" data-testid="password" name="password" value={formData.password} placeholder="Enter Password" onChange={handleInputChange} />
-        </div>
-            {errors.password.required && <div className="error">{ errors.password.message }</div>}    
-            
-        <div>
-            <label htmlFor="confirmPassword">Confirm Password:</label>
-            <input type="password" data-testid="confirmPassword" name="confirmPassword" value={formData.confirmPassword}  placeholder="Enter Confirm Password" onChange={handleInputChange} />
-        </div>
-            {errors.confirmPassword.required && <div className="error">{ errors.confirmPassword.message }</div>}
+        <section className="bg-gray-50 ">
+        <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto  lg:pt-0  lg:pb-4">
+            <div className="flex items-center mb-6 text-2xl font-semibold text-blue-600 md:font-bold md:mt-4">
+                PG Admission Portal    
+            </div>
+            <div data-testid="signupBox" className="w-full bg-white rounded-lg shadow  md:mt-0 sm:max-w-md xl:p-0 ">
+                <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+                    <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl ">
+                        Sign up to your account
+                    </h1>
+                    <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6" >
+                 
+                        <div>
+                            <label htmlFor="userType" className="block mb-2 text-sm font-medium text-gray-900 ">User Type:</label>
+                             <select data-testid="userType" name="userType" value={formData.userRole} onChange={handleInputChange} className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 " >
+                                  <option value="user" >User</option>
+                                   <option value="admin">Admin</option>
+                          </select>
+                        </div>
+      
+                        <div>
+                            <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 ">Your email</label>
+                            <input type="email" data-testid="email" name='email' value={formData.email} onChange={handleInputChange} className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 " placeholder="virtusa@gmail.com" />
+                            {errors.email.required && <div className="text-red-500">{errors.email.message}</div>}
+                        </div>
+      
+                        <div>
+                            <label htmlFor="username" className="block mb-2 text-sm font-medium text-gray-900 ">Username</label>
+                            <input type="text" data-testid="username" name='username' value={formData.username} onChange={handleInputChange} className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 " placeholder="Virtusa" />
+                            {errors.username.required && <div className="text-red-500">{ errors.username.message }</div>}
+                        </div>
+      
+                        <div>
+                            <label htmlFor="mobileNumber" className="block mb-2 text-sm font-medium text-gray-900 ">Mobile Number</label>
+                            <input type="text" data-testid="mobileNumber" name='mobileNumber' value={formData.mobileNumber} onChange={handleInputChange} className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 " placeholder="9710838457" />
+                            {errors.mobileNumber.required && <div className="text-red-500">{ errors.mobileNumber.message }</div>}    
+                        </div>
+      
+                        <div>
+                            <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 ">Password</label>
+                            <input type="password" data-testid="password" name="password" value={formData.password} onChange={handleInputChange} autoComplete="new-password"   placeholder="••••••••" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5" />
+                            {errors.password.required && <div className="text-red-500">{ errors.password.message }</div>}    
+                        </div>
+      
+                        <div>
+                            <label htmlFor="confirmPassword" className="block mb-2 text-sm font-medium text-gray-900 ">Confirm Password</label>
+                            <input type="password" data-testid="confirmPassword" name="confirmPassword" value={formData.confirmPassword} onChange={handleInputChange} autoComplete="new-password"   placeholder="••••••••" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5" />
+                            {errors.confirmPassword.required && <div className="text-red-500">{ errors.confirmPassword.message }</div>}
+                        </div>
+           
+                        <button type="submit" data-testid="submitButton" className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">sign up</button>
+                        {loader && <div className="loader mr-auto ml-auto"></div>}
+                        {errors.custom.required && <div className="text-red-500">{errors.custom.message}</div>}
 
-            {loader && <div className="loader"></div>}
-            {errors.custom.required && <div className="error">{errors.custom.message}</div>}
-            <button type="submit" data-testid="submitButton">Submit</button>
-            <br />
-            All Ready a user? <Link to="/login" data-testid='signinLink'>Login</Link>
-            {redirect && <Navigate to="/login" />}
-    </form>
+                        <p className="text-sm font-light text-gray-500 ">
+                          All Ready a user? <Link to="/login" className='text-blue-800 font-semibold' data-testid='signinLink'>sign in</Link>
+                        </p>
+                        {redirect && <Navigate to="/login" />}
+                    </form>
+                </div>
+            </div>
+        </div>
+      </section>
+      
   )
 }
 
