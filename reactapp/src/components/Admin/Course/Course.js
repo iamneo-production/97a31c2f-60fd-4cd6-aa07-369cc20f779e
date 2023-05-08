@@ -31,7 +31,9 @@ const Course = () => {
         "courseId":courseId,
         "courseName": courseName,
         "courseDescription":courseDescription ,
-        "courseDuration": courseDuration
+        "courseDuration": courseDuration,
+        "courseTiming":courseTiming,
+        "courseEnrolled":courseEnrolled
     };
     
    console.log("course js ",newCourse)
