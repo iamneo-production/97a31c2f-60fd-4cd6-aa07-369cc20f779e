@@ -1,13 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { UseLogout } from '../../hooks/UseLogout';
+import { Link,useNavigate } from 'react-router-dom';
+import { store } from '../../store';
+import { UserGuard } from "../../AuthGuard/UserGuard"
+
 function Enrolledcourse() {
-    const { logout } = UseLogout()
-    const handleLogout = () => {
-        logout()
-    }
+    const navigate = useNavigate();
+
+  const handleLogout = () => { 
+    store.dispatch({ type: 'LOGOUT' })
+    navigate('/login');
+  }
     return (
-        <>
+        <UserGuard>
             <div className="nvbar">
                 <h2>PG Admission</h2>
                 <div className="link">
@@ -21,7 +25,7 @@ function Enrolledcourse() {
                 </div>
             </div>
             <h1>Displaying enrolled course</h1>
-        </>
+        </UserGuard>
     )
 
 }

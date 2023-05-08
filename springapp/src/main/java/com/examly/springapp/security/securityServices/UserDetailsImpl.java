@@ -30,6 +30,7 @@ public class UserDetailsImpl implements UserDetails {
 		this.authorities= authorities;
 	}
 	
+	// A static factory method to create a UserDetailsImpl object from a UserModel object
 	public static UserDetailsImpl build(UserModel userModel) {
 		GrantedAuthority authority = new SimpleGrantedAuthority(userModel.getUserRole().toString());
 		return new UserDetailsImpl(

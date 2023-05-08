@@ -1,5 +1,5 @@
 // Define the base URL for the API requests
-const baseUrl = "https://8080-adbcafaeebcbbfafccddecaeebaeccc.project.examly.io";
+const baseUrl = "https://8080-daefaebebcbbfafccddecaeebaeccc.project.examly.io";
 
 // Define a function to register a user
 const register = async (data) => {
@@ -49,18 +49,8 @@ const login = async (data) => {
   return response.json(); // Return the response as a JSON object
 };
 
-// Define a function to get token details for a user
-const tokenDetails = async (token) => {
-  // Send a GET request to the token details endpoint with the token in the header
-  const response = await fetch(`${baseUrl}/details`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": "Bearer " + token
-    }
-  });
-  return response.json(); // Return the response as a JSON object
-};
 
-// Export the functions as an object
-export default { register, login, tokenDetails };
+
+// Export the functions 
+const authService = {register,login};
+export default authService;

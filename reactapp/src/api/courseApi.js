@@ -1,5 +1,10 @@
-const baseUrl = "https://8080-adbcafaeebcbbfafccddecaeebaeccc.project.examly.io";
-const token = localStorage.getItem('token')
+import { store } from "../store"
+const baseUrl = "https://8080-daefaebebcbbfafccddecaeebaeccc.project.examly.io";
+let token =""
+store.subscribe( () => {
+  token = store.getState().auth.token;
+  console.log(token)
+});
 
 export const addCourse = async (newCourse) => {
   console.log("Bearer -" + token)
