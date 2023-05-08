@@ -27,7 +27,11 @@ function Editcourse(props) {
 
   const handleClick = (event)=>{
     handleSubmit(event);
+    fetchData();
     navigate('/admin/viewCourse');
+  }
+  const fetchData=async()=>{
+    const data = await getCourses();
   }
   useEffect(() => {
     async function fetchCourse() {

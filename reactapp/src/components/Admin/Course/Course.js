@@ -1,7 +1,7 @@
 import React,{ useState } from 'react'
 import '../Course/Course.css';
 import { useNavigate,Link } from "react-router-dom";
-import { addCourse} from "../../../api/courseApi.js";
+import { addCourse, getCourses} from "../../../api/courseApi.js";
 import NavBar from '../Navbar/Navbar.js';
 
 const Course = () => {
@@ -16,7 +16,11 @@ const Course = () => {
 
   const handleClick = (event)=>{
     handleSubmit(event);
+    fetchData();
     navigate('/admin/viewCourse');
+  }
+  const fetchData=async()=>{
+    const data = await getCourses();
   }
   const handleSubmit = async(event) => {
     event.preventDefault();
