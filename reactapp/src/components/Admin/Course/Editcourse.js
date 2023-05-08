@@ -1,18 +1,15 @@
 import React, { useState,useEffect } from 'react';
-import { useParams,Link } from 'react-router-dom';
-import { useNavigate } from "react-router-dom";
+import { useParams,Link,useNavigate } from 'react-router-dom';
 import {getCourses, editCourse} from '../../../api/courseApi.js';
 import NavBar from '../Navbar/Navbar.js';
+import { AdminGuard } from "../../../AuthGuard/AdminGuard"
+
 
 
 function Editcourse(props) {
   const { id } = useParams();
-  // const [courseId, setCourseId] = useState(props.course?.courseId || '');
-  // const [courseName, setCourseName] = useState(props.course?.courseName || '');
-  // const [courseDuration, setCourseDuration] = useState(props.course?.CourseDuration || '');
-  // const [courseTiming, setCourseTiming] = useState(props.course?.CourseTiming || '');
-  // const [courseEnrolled, setCourseEnrolled] = useState(props.course?.CourseEnrolled || '');
-  // const [courseDescription, setCourseDescription] = useState(props.course?.CourseDescription || '');
+  const [courseTiming, setCourseTiming] = useState(props.course?.CourseTiming || '');
+  const [courseEnrolled, setCourseEnrolled] = useState(props.course?.CourseEnrolled || '');
   const navigate = useNavigate();
   const [course, setCourse] = useState({
     id:'',
@@ -26,8 +23,13 @@ function Editcourse(props) {
   });
 
   const handleClick = (event)=>{
-    handleSubmit(event);
-    fetchData();
+    handleSubmit(event).then((data) => {
+      console.log("edited successfully ",data)
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+
     navigate('/admin/viewCourse');
   }
   const fetchData=async()=>{
@@ -42,19 +44,19 @@ function Editcourse(props) {
       console.log(d1);
       setCourse(d1);
     }
-    fetchCourse();
+    fetchCourse().then((data) => {
+      console.log(data)
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+
   }, [id]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // const updatedCourse = {
-      //   ...course,
-      //   "courseId":courseId,
-      //   "courseName": courseName,
-      //   "courseDescription":courseDescription ,
-      //   "courseDuration": courseDuration
-      // };
+      
       await editCourse(id, course);
     } catch (error) {
       console.error(error);
@@ -62,7 +64,7 @@ function Editcourse(props) {
   };
 
   return (
-    <>
+    <AdminGuard>
     <NavBar/>
     <div>
       <h1>Edit Course</h1>
@@ -132,7 +134,7 @@ function Editcourse(props) {
         <Link to="/admin/viewCourse" className="btn btn-secondary">Cancel</Link>
       </form>
     </div>
-    </>
+    </AdminGuard>
   );
 }
 

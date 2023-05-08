@@ -1,8 +1,10 @@
 import React,{ useState } from 'react'
 import '../Course/Course.css';
-import { useNavigate,Link } from "react-router-dom";
-import { addCourse, getCourses} from "../../../api/courseApi.js";
+import { useNavigate, Link } from "react-router-dom";
+import { addCourse} from "../../../api/courseApi.js";
 import NavBar from '../Navbar/Navbar.js';
+import { AdminGuard } from "../../../AuthGuard/AdminGuard"
+
 
 const Course = () => {
   const [courseId, setCourseId] = useState("");
@@ -12,11 +14,15 @@ const Course = () => {
   const [courseEnrolled, setCourseEnrolled] = useState("");
   const [courseDescription, setCourseDescription] = useState("");
   const navigate = useNavigate();
-  const [courses, setCourses] = useState([]);
 
   const handleClick = (event)=>{
-    handleSubmit(event);
-    fetchData();
+    handleSubmit(event).then((data) => {
+      console.log(data)
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+
     navigate('/admin/viewCourse');
   }
   const fetchData=async()=>{
@@ -36,18 +42,16 @@ const Course = () => {
    console.log("course js ",newCourse)
     const addedCourse = await addCourse(newCourse)
     console.log("response in course js",addedCourse)
-    setCourses((prevState) => [...prevState, addedCourse]);
     setCourseId('');
    setCourseName('');
     setCourseDuration('');
     setCourseTiming('');
     setCourseEnrolled('');
     setCourseDescription('');
-    // navigate('/admin/dashboard');
   };
 
   return (
-    <>
+    <AdminGuard>
     <NavBar/>
     <div data-testid="addCourse">
       <h2>Add Course Details</h2>
@@ -123,7 +127,7 @@ const Course = () => {
         <Link to="/admin/viewCourse" className="btn btn-secondary">Cancel</Link>
       </form>
     </div>
-    </>
+    </AdminGuard>
   );
 };
 
