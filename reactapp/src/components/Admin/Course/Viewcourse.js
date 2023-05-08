@@ -53,8 +53,8 @@ function Viewcourse() {
               <div className="course-card-text">Course Id: {course.courseId}</div>
                 <div className="course-card-text">Course Name: {course.courseName}</div>
                 <div className="course-card-text">Course Duration: {course.courseDuration}</div>
-                <div className="course-card-text">Course Available Timings: {course.timing}</div>
-                <div className="course-card-text">Number of Students: {course.enrolled}</div>
+                <div className="course-card-text">Course Available Timings: {course.courseTiming}</div>
+                <div className="course-card-text">Number of Students: {course.courseEnrolled}</div>
                 <div className="course-card-text">Course Description: {course.courseDescription}</div>
               </div>
               <div className="course-card-footer">

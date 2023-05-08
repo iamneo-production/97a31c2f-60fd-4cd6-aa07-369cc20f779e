@@ -16,7 +16,10 @@ function Editcourse(props) {
     courseId: '',
     courseName: '',
     courseDescription: '',
-    courseDuration: ''
+    courseDuration: '',
+    courseTiming:'',
+    courseEnrolled:''
+
   });
 
   const handleClick = (event)=>{
@@ -28,6 +31,9 @@ function Editcourse(props) {
     });
 
     navigate('/admin/viewCourse');
+  }
+  const fetchData=async()=>{
+    const data = await getCourses();
   }
   useEffect(() => {
     async function fetchCourse() {
@@ -99,8 +105,8 @@ function Editcourse(props) {
           <input
             id="courseTiming"
             type="text"
-            defaultValue={courseTiming}
-            onChange={(e) => setCourseTiming(e.target.value)}
+            defaultValue={course.courseTiming}
+            onChange={(e) => setCourse({...course,courseTiming:e.target.value})}
             data-testid="courseTiming"
           />
         </div>
@@ -109,8 +115,8 @@ function Editcourse(props) {
           <input
             id="courseEnrolled"
             type="text"
-            defaultValue={courseEnrolled}
-            onChange={(e) => setCourseEnrolled(e.target.value)}
+            defaultValue={course.courseEnrolled}
+            onChange={(e) => setCourse({...course,courseEnrolled:e.target.value})}
             data-testid="courseEnrolled"
           />
         </div>
