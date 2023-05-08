@@ -6,7 +6,6 @@ import { AdminGuard } from "../../../AuthGuard/AdminGuard"
 
 function Viewcourse() {
   const [courses, setCourses] = useState([]);
-  const [isAdded, setIsAdded] = useState(false);
   const navigate = useNavigate();
 
   
@@ -23,11 +22,10 @@ function Viewcourse() {
       console.error(error);
     });
 
-  }, [isAdded]);
+  }, []);
 
   const handleEditCourse = async (courseId) => {
     navigate(`/admin/editCourse/${courseId}`);
-    setIsAdded(!isAdded); 
   };
 
 
@@ -74,7 +72,6 @@ function Viewcourse() {
       <NavLink exact="true" to="/admin/addCourse" className="nav-link" id="addcourse"  activeclassname="active">
       <button
             id="add-course"
-            onClick={() => setIsAdded(!isAdded)}
           >
             <i className="fa-solid fa-circle-plus"></i> Add Course
           </button>

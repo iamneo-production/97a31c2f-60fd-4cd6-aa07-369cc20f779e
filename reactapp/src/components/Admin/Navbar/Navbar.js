@@ -14,7 +14,7 @@ const NavBar = () => {
 
   return (
     <nav className="nav-container">
-      <h1>PG Admission</h1>
+      <NavLink to="/admin/dashboard">PG Admission</NavLink>
       <div className="navlinks-container">
         <NavLink to="/admin/dashboard">Institute</NavLink>
         <NavLink to="/admin/viewCourse">Course</NavLink>

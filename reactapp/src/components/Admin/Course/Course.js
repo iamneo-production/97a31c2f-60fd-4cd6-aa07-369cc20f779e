@@ -1,7 +1,7 @@
 import React,{ useState } from 'react'
 import '../Course/Course.css';
 import { useNavigate, Link } from "react-router-dom";
-import { addCourse} from "../../../api/courseApi.js";
+import { addCourse,getCourses} from "../../../api/courseApi.js";
 import NavBar from '../Navbar/Navbar.js';
 import { AdminGuard } from "../../../AuthGuard/AdminGuard"
 
@@ -22,7 +22,7 @@ const Course = () => {
     .catch((error) => {
       console.error(error);
     });
-
+    fetchData();
     navigate('/admin/viewCourse');
   }
   const fetchData=async()=>{
