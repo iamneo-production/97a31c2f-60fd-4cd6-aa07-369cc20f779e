@@ -7,7 +7,11 @@ import { Navigate } from "react-router";
 import { useNavigate, useParams } from "react-router-dom";
 
 const baseUrl = "https://8080-daefaebebcbbfafccddecaeebaeccc.project.examly.io";
+<<<<<<< HEAD
 let auth = "";
+=======
+let auth = ""
+>>>>>>> ba5b694 (commit)
 store.subscribe(() => {
   auth = store.getState().auth;
   console.log(auth);
