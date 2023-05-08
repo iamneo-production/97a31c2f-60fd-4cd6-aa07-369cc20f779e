@@ -10,8 +10,8 @@ function Editcourse(props) {
   // const [courseId, setCourseId] = useState(props.course?.courseId || '');
   // const [courseName, setCourseName] = useState(props.course?.courseName || '');
   // const [courseDuration, setCourseDuration] = useState(props.course?.CourseDuration || '');
-  const [courseTiming, setCourseTiming] = useState(props.course?.CourseTiming || '');
-  const [courseEnrolled, setCourseEnrolled] = useState(props.course?.CourseEnrolled || '');
+  // const [courseTiming, setCourseTiming] = useState(props.course?.CourseTiming || '');
+  // const [courseEnrolled, setCourseEnrolled] = useState(props.course?.CourseEnrolled || '');
   // const [courseDescription, setCourseDescription] = useState(props.course?.CourseDescription || '');
   const navigate = useNavigate();
   const [course, setCourse] = useState({
@@ -19,7 +19,10 @@ function Editcourse(props) {
     courseId: '',
     courseName: '',
     courseDescription: '',
-    courseDuration: ''
+    courseDuration: '',
+    courseTiming:'',
+    courseEnrolled:''
+
   });
 
   const handleClick = (event)=>{
@@ -96,8 +99,8 @@ function Editcourse(props) {
           <input
             id="courseTiming"
             type="text"
-            defaultValue={courseTiming}
-            onChange={(e) => setCourseTiming(e.target.value)}
+            defaultValue={course.courseTiming}
+            onChange={(e) => setCourse({...course,courseTiming:e.target.value})}
             data-testid="courseTiming"
           />
         </div>
@@ -106,8 +109,8 @@ function Editcourse(props) {
           <input
             id="courseEnrolled"
             type="text"
-            defaultValue={courseEnrolled}
-            onChange={(e) => setCourseEnrolled(e.target.value)}
+            defaultValue={course.courseEnrolled}
+            onChange={(e) => setCourse({...course,courseEnrolled:e.target.value})}
             data-testid="courseEnrolled"
           />
         </div>
