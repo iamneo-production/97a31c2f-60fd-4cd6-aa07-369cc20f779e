@@ -62,16 +62,40 @@ function Viewcourse() {
                   </span>
                 </div>
               </div>
+<<<<<<< HEAD
               </div>
             ))}
           </div>
         ) :(
           <div>No courses found</div>
         )}
+<<<<<<< HEAD
         <NavLink exact="true" to="/admin/addCourse" className="nav-link" id="addcourse" activeclassname="active">
           <button
             id="add-course"
           >
+=======
+        <NavLink
+          exact="true"
+          to="/admin/addCourse"
+          className="nav-link"
+          id="addcourse"
+          activeclassname="active"
+        >
+          <button id="add-course" onClick={() => setIsAdded(!isAdded)}>
+=======
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div>No courses found</div>
+      )}
+      <NavLink exact="true" to="/admin/addCourse" className="nav-link" id="addcourse"  activeclassname="active">
+      <button
+            id="add-course"
+          >
+>>>>>>> 352df91 (commit)
+>>>>>>> 7b0138e (commit)
             <i className="fa-solid fa-circle-plus"></i> Add Course
           </button>
         </NavLink>

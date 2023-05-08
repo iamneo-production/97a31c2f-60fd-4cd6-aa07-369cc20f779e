@@ -29,6 +29,7 @@ const Course = () => {
     .catch((error) => {
       console.error(error);
     });
+    fetchData();
     navigate('/admin/viewCourse');
   }
   const fetchData = async () => {
