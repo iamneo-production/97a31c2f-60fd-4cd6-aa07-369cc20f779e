@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { Link,useParams } from 'react-router-dom';
-import './Enrollcourse.css';
-import { useNavigate } from 'react-router';
-import { UserGuard } from "../../../AuthGuard/UserGuard"
-import { store } from '../../../store';
+import React, { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import "./Enrollcourse.css";
+import { useNavigate } from "react-router";
+import { UserGuard } from "../../../AuthGuard/UserGuard";
+import { store } from "../../../store";
 
-const baseUrl = "https://8080-cffdaccdaafaefbebcbbfafccddecaeebaeccc.project.examly.io";
-let auth =""
-store.subscribe( () => {
+const baseUrl = "https://8080-fccfeeaccfaaabbebcbbfafccddecaeebaeccc.project.examly.io";
+let auth = "";
+store.subscribe(() => {
   auth = store.getState().auth;
   console.log(auth);
 });
