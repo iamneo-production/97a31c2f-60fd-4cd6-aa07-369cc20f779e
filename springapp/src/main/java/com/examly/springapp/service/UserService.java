@@ -1,7 +1,5 @@
 package com.examly.springapp.service;
 import org.springframework.web.bind.annotation.*;
-// import main.java.com.examly.springapp.models.StudentformModel;
-// Pimport main.java.com.examly.springapp.repository.StudentformRepository;
 import com.examly.springapp.repository.*;
 import com.examly.springapp.models.*;
 import org.springframework.http.*;
@@ -28,13 +26,6 @@ public class UserService {
     @Autowired
     private CourseRepository courseRepository;
 
-    // public UserService(UserRepository userRepository,AdminRepository adminRepository
-    // ,AdmissionRepo admissionR
-    // ){
-    //     this.userRepository = userRepository;
-    //     this.adminRepository = adminRepository;
-    //     this.admissionR = admissionR;
-    // }
 
     public String saveUser(UserModel userModel){
         if (userRepository.existsByEmail(userModel.getEmail())) {
@@ -91,6 +82,11 @@ public class UserService {
             studentformRepository.save(studentformModel);
         }
     }
+
+
+    public List<StudentformModel> getStudentformModel(){
+        return studentformRepository.findAll();
+      }
 
     public CourseModel viewEnrolledCourse(Integer studentId){
         StudentformModel studentformModel = studentformRepository.findByStudentIdNumber(studentId);

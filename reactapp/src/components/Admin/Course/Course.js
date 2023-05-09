@@ -1,7 +1,7 @@
 import React,{ useState } from 'react'
 import '../Course/Course.css';
-import { useNavigate } from "react-router-dom";
-import { addCourse} from "../../../api/courseApi.js";
+import { useNavigate, Link } from "react-router-dom";
+import { addCourse,getCourses} from "../../../api/courseApi.js";
 import NavBar from '../Navbar/Navbar.js';
 import { AdminGuard } from "../../../AuthGuard/AdminGuard"
 
@@ -25,13 +25,18 @@ const Course = () => {
 
     navigate('/admin/viewCourse');
   }
+  const fetchData=async()=>{
+    const data = await getCourses();
+  }
   const handleSubmit = async(event) => {
     event.preventDefault();
     const newCourse = {
         "courseId":courseId,
         "courseName": courseName,
         "courseDescription":courseDescription ,
-        "courseDuration": courseDuration
+        "courseDuration": courseDuration,
+        "courseTiming":courseTiming,
+        "courseEnrolled":courseEnrolled
     };
     
    console.log("course js ",newCourse)
@@ -56,6 +61,7 @@ const Course = () => {
           <input
             id="courseId"
             type="text"
+            placeholder='Enter courseId'
             value={courseId}
             onChange={(event) => setCourseId(event.target.value)}
             data-testid="courseId"
@@ -66,6 +72,7 @@ const Course = () => {
           <input
             id="courseName"
             type="text"
+            placeholder='Enter courseName'
             value={courseName}
             onChange={(event) => setCourseName(event.target.value)}
             data-testid="courseName"
@@ -76,6 +83,7 @@ const Course = () => {
           <input
             id="courseDuration"
             type="text"
+            placeholder='Enter courseDuration'
             value={courseDuration}
             onChange={(event) => setCourseDuration(event.target.value)}
             data-testid="courseDuration"
@@ -86,6 +94,7 @@ const Course = () => {
           <input
             id="courseTiming"
             type="text"
+            placeholder='Enter courseTiming'
             value={courseTiming}
             onChange={(event) => setCourseTiming(event.target.value)}
             data-testid="courseTiming"
@@ -96,6 +105,7 @@ const Course = () => {
           <input
             id="courseEnrolled"
             type="text"
+            placeholder='courseEnrolled'
             value={courseEnrolled}
             onChange={(event) => setCourseEnrolled(event.target.value)}
             data-testid="courseEnrolled"
@@ -106,6 +116,7 @@ const Course = () => {
           <textarea
             id="courseDescription"
             type="text"
+            placeholder='courseDescription'
             value={courseDescription}
             onChange={(event) => setCourseDescription(event.target.value)}
             data-testid="courseDescription"
@@ -113,6 +124,7 @@ const Course = () => {
         </div>
         
         <button type="submit" id="addCourse">Add Course</button>
+        <Link to="/admin/viewCourse" className="btn btn-secondary">Cancel</Link>
       </form>
     </div>
     </AdminGuard>

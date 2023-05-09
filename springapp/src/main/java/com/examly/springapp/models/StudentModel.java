@@ -41,5 +41,6 @@ public class StudentModel {
     private Integer sslc;
     private Integer hsc;
     private Integer diploma;
-    private String eligibility;    
+    private String eligibility;  
+    private String courseId;  
 }
