@@ -8,7 +8,6 @@ function Viewcourse() {
   const [courses, setCourses] = useState([]);
   const navigate = useNavigate();
 
-
   useEffect(() => {
     const fetchData = async () => {
       const data = await getCourses();
@@ -27,7 +26,6 @@ function Viewcourse() {
   const handleEditCourse = async (courseId) => {
     navigate(`/admin/editCourse/${courseId}`);
   };
-
 
   const handleDelete = async (id) => {
     try {
@@ -70,9 +68,7 @@ function Viewcourse() {
           <div>No courses found</div>
         )}
         <NavLink exact="true" to="/admin/addCourse" className="nav-link" id="addcourse" activeclassname="active">
-          <button
-            id="add-course"
-          >
+          <button id="add-course">
             <i className="fa-solid fa-circle-plus"></i> Add Course
           </button>
         </NavLink>

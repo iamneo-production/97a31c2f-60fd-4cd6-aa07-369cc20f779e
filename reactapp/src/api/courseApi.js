@@ -1,7 +1,8 @@
 import { store } from "../store"
-const baseUrl = "https://8080-adbcafaeebcbbfafccddecaeebaeccc.project.examly.io";
-let token = ""
-store.subscribe(() => {
+
+const baseUrl = "https://8080-fccfeeaccfaaabbebcbbfafccddecaeebaeccc.project.examly.io";
+let token ="";
+store.subscribe( () => {
   token = store.getState().auth.token;
   console.log(token)
 });

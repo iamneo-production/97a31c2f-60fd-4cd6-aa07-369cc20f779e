@@ -6,12 +6,13 @@ import "./AdminHomePage.css";
 import { Navigate } from "react-router";
 import { useNavigate, useParams } from "react-router-dom";
 
-const baseUrl = "https://8080-adbcafaeebcbbfafccddecaeebaeccc.project.examly.io";
-let auth = ""
+const baseUrl = "https://8080-fccfeeaccfaaabbebcbbfafccddecaeebaeccc.project.examly.io";
+let auth = "";
 store.subscribe(() => {
   auth = store.getState().auth;
   console.log(auth);
 });
+
 
 const initialData = {
   instituteName: "",

@@ -4,10 +4,10 @@ import { useNavigate } from "react-router";
 import { store } from "../../../store";
 import { UserGuard } from "../../../AuthGuard/UserGuard";
 
-import './UserCourse.css';
-const baseUrl = "https://8080-adbcafaeebcbbfafccddecaeebaeccc.project.examly.io";
-let auth =""
-store.subscribe( () => {
+import "./UserCourse.css";
+const baseUrl = "https://8080-fccfeeaccfaaabbebcbbfafccddecaeebaeccc.project.examly.io";
+let auth = "";
+store.subscribe(() => {
   auth = store.getState().auth;
   console.log(auth);
 });

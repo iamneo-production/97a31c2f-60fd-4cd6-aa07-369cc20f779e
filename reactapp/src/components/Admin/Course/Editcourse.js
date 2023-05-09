@@ -77,7 +77,6 @@ function Editcourse(props) {
             <input
               id="courseId"
               type="text"
-              // placeholder={`${course.courseId}`}
               defaultValue={course.courseId}
               onChange={(e) =>
                 setCourse({ ...course, courseId: e.target.value })
