@@ -17,12 +17,18 @@ const Course = () => {
 
   const handleClick = (event) => {
     handleSubmit(event).then((data) => {
-      console.log(data)
+      console.log(data);
+      
     })
       .catch((error) => {
         console.error(error);
       });
-    fetchData();
+    fetchData().then((data) => {
+      console.log("fetched course data success ", data);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
     navigate('/admin/viewCourse');
   }
   const fetchData = async () => {
