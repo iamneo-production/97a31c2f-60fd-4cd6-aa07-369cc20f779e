@@ -102,4 +102,5 @@ const Viewacademy = () => {
     </UserGuard>
   );
 };
+
 export default Viewacademy;

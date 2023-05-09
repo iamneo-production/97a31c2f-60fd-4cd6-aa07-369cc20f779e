@@ -4,8 +4,6 @@ import { getCourses, editCourse } from '../../../api/courseApi.js';
 import NavBar from '../Navbar/Navbar.js';
 import { AdminGuard } from "../../../AuthGuard/AdminGuard"
 
-
-
 function Editcourse(props) {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -17,7 +15,6 @@ function Editcourse(props) {
     courseDuration: '',
     courseTiming: '',
     courseEnrolled: ''
-
   });
 
   const handleClick = (event) => {

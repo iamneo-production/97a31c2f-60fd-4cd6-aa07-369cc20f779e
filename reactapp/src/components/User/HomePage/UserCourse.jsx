@@ -88,4 +88,5 @@ const UserCourse = () => {
     </UserGuard>
   );
 };
+
 export default UserCourse;
