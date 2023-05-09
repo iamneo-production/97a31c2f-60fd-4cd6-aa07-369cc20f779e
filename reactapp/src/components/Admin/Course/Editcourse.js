@@ -8,8 +8,6 @@ import { AdminGuard } from "../../../AuthGuard/AdminGuard"
 
 function Editcourse(props) {
   const { id } = useParams();
-  // const [courseTiming, setCourseTiming] = useState(props.course?.CourseTiming || '');
-  // const [courseEnrolled, setCourseEnrolled] = useState(props.course?.CourseEnrolled || '');
   const navigate = useNavigate();
   const [course, setCourse] = useState({
     id: '',
