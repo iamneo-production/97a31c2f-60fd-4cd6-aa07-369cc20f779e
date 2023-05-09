@@ -15,8 +15,8 @@ function Enrollcourse() {
   const navigate = useNavigate();
   const { courseId } = useParams();
   const handlecancel = () => {
-    navigate("/viewacademy")
-  }
+    navigate("/viewacademy");
+  };
 
   const handleLogout = () => {
     store.dispatch({ type: "LOGOUT" });
@@ -398,8 +398,7 @@ function Enrollcourse() {
           </div>
           <div class="footer">
             <button type="submit">Submit</button>
-            <br>
-            </br>
+            <br></br>
             <button onClick={handlecancel}>cancel</button>
           </div>
         </div>
