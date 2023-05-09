@@ -21,7 +21,7 @@ export const addCourse = async (newCourse) => {
 
 export const getCourses = async () => {
   try {
-    const response = await fetch(`${baseUrl}/admin/viewCourse`,{
+    const response = await fetch(`${baseUrl}/admin/viewCourse`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -59,7 +59,7 @@ export const editCourse = async (id, updatedCourse) => {
 
 
 export const deleteCourse = async (id) => {
-  try{
+  try {
     const response = await fetch(`${baseUrl}/admin/deleteCourse/${id}`, {
       method: "DELETE",
       headers: {
