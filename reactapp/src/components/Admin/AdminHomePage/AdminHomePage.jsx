@@ -393,4 +393,5 @@ export const AcademyForm = ({ type }) => {
   );
 };
 
+
 export default AdminHomePage;
