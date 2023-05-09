@@ -63,9 +63,10 @@ function Viewcourse() {
                 <i className="fa-regular fa-trash-can" style={{ color: '#050505', cursor: 'pointer' }}></i>
               </span>
               </div>
+              </div>
             ))}
           </div>
-        ) : (
+        ) :(
           <div>No courses found</div>
         )}
         <NavLink
