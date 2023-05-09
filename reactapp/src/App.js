@@ -10,9 +10,7 @@ import Course from './components/Admin/Course/Course';
 import Viewcourse from './components/Admin/Course/Viewcourse';
 import Editcourse from './components/Admin/Course/Editcourse';
 import Enrolledcourse from './components/User/Enrolledcourse';
-import Course from './components/Admin/Course/Course';
-import Viewcourse from './components/Admin/Course/Viewcourse';
-import Editcourse from './components/Admin/Course/Editcourse';
+
 function App() {
   
   return (

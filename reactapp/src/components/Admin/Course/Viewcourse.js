@@ -64,9 +64,10 @@ function Viewcourse() {
                   </span>
                 </div>
               </div>
+              </div>
             ))}
           </div>
-        ) : (
+        ) :(
           <div>No courses found</div>
         )}
         <NavLink exact="true" to="/admin/addCourse" className="nav-link" id="addcourse" activeclassname="active">

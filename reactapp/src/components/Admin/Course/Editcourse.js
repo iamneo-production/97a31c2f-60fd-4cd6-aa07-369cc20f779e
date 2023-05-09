@@ -14,13 +14,13 @@ function Editcourse(props) {
   // const [courseDescription, setCourseDescription] = useState(props.course?.CourseDescription || '');
   const navigate = useNavigate();
   const [course, setCourse] = useState({
-    id:'',
+    id: '',
     courseId: '',
     courseName: '',
     courseDescription: '',
     courseDuration: '',
-    courseTiming:'',
-    courseEnrolled:''
+    courseTiming: '',
+    courseEnrolled: ''
 
   });
 
@@ -33,8 +33,11 @@ function Editcourse(props) {
         console.error(error);
       });
 
-    navigate("/admin/viewCourse");
-  };
+    navigate('/admin/viewCourse');
+  }
+  const fetchData = async () => {
+    const data = await getCourses();
+  }
   useEffect(() => {
     async function fetchCourse() {
       const data = await getCourses(id);
@@ -66,60 +69,60 @@ function Editcourse(props) {
     <AdminGuard>
       <NavBar />
       <div>
-          <label htmlFor="courseName">Course Name:</label>
-          <input
-            id="courseName"
-            type="text"
-            defaultValue={course.courseName}
-            onChange={(e) => setCourse({...course,courseName:e.target.value})}
-            data-testid="courseName"
-          />
-        </div>
-        <div>
-          <label htmlFor="courseDuration">Course Duration:</label>
-          <input
-            id="courseDuration"
-            type="text"
-            defaultValue={course.courseDuration}
-            onChange={(e) => setCourse({...course,courseDuration:e.target.value})}
-            data-testid="courseDuration"
-          />
-        </div>
-        <div>
-          <label htmlFor="courseTiming">Course Timing:</label>
-          <input
-            id="courseTiming"
-            type="text"
-            defaultValue={course.courseTiming}
-            onChange={(e) => setCourse({...course,courseTiming:e.target.value})}
-            data-testid="courseTiming"
-          />
-        </div>
-        <div>
-          <label htmlFor="courseEnrolled">Course Enrolled:</label>
-          <input
-            id="courseEnrolled"
-            type="text"
-            defaultValue={course.courseEnrolled}
-            onChange={(e) => setCourse({...course,courseEnrolled:e.target.value})}
-            data-testid="courseEnrolled"
-          />
-        </div>
-        <div>
-          <label htmlFor="courseDescription">Course Description:</label>
-          <textarea
-            id="courseDescription"
-            type="text"
-            defaultValue={course.courseDescription}
-            onChange={(e) => setCourse({...course,courseDescription:e.target.value})}
-            data-testid="courseDescription"
-          />
-        </div>
-        <button type="submit" onClick={(e)=>handleClick(e)}>Update Course</button>
-        <Link to="/admin/viewCourse" className="btn btn-secondary">Cancel</Link>
-      </form>
-    </div>
-    </>
+        <label htmlFor="courseName">Course Name:</label>
+        <input
+          id="courseName"
+          type="text"
+          defaultValue={course.courseName}
+          onChange={(e) => setCourse({ ...course, courseName: e.target.value })}
+          data-testid="courseName"
+        />
+      </div>
+      <div>
+        <label htmlFor="courseDuration">Course Duration:</label>
+        <input
+          id="courseDuration"
+          type="text"
+          defaultValue={course.courseDuration}
+          onChange={(e) => setCourse({ ...course, courseDuration: e.target.value })}
+          data-testid="courseDuration"
+        />
+      </div>
+      <div>
+        <label htmlFor="courseTiming">Course Timing:</label>
+        <input
+          id="courseTiming"
+          type="text"
+          defaultValue={course.courseTiming}
+          onChange={(e) => setCourse({ ...course, courseTiming: e.target.value })}
+          data-testid="courseTiming"
+        />
+      </div>
+      <div>
+        <label htmlFor="courseEnrolled">Course Enrolled:</label>
+        <input
+          id="courseEnrolled"
+          type="text"
+          defaultValue={course.courseEnrolled}
+          onChange={(e) => setCourse({ ...course, courseEnrolled: e.target.value })}
+          data-testid="courseEnrolled"
+        />
+      </div>
+      <div>
+        <label htmlFor="courseDescription">Course Description:</label>
+        <textarea
+          id="courseDescription"
+          type="text"
+          defaultValue={course.courseDescription}
+          onChange={(e) => setCourse({ ...course, courseDescription: e.target.value })}
+          data-testid="courseDescription"
+        />
+      </div>
+      <button type="submit" onClick={(e) => handleClick(e)}>Update Course</button>
+      <Link to="/admin/viewCourse" className="btn btn-secondary">Cancel</Link>
+    
+    
+  </AdminGuard>
   );
 }
 
