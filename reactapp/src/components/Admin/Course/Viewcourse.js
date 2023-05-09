@@ -1,17 +1,18 @@
-import React, { useState, useEffect } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { getCourses, deleteCourse } from "../../../api/courseApi.js";
-import NavBar from "../Navbar/Navbar.js";
-import { AdminGuard } from "../../../AuthGuard/AdminGuard";
+import NavBar from '../Navbar/Navbar.js';
+import { AdminGuard } from "../../../AuthGuard/AdminGuard"
 
 function Viewcourse() {
   const [courses, setCourses] = useState([]);
   const navigate = useNavigate();
 
+
   useEffect(() => {
     const fetchData = async () => {
       const data = await getCourses();
-      console.log(data);
+      console.log(data)
       setCourses(data);
     };
     fetchData().then((data) => {
@@ -26,6 +27,7 @@ function Viewcourse() {
   const handleEditCourse = async (courseId) => {
     navigate(`/admin/editCourse/${courseId}`);
   };
+
 
   const handleDelete = async (id) => {
     try {
@@ -62,40 +64,15 @@ function Viewcourse() {
                   </span>
                 </div>
               </div>
-<<<<<<< HEAD
-              </div>
             ))}
           </div>
-        ) :(
+        ) : (
           <div>No courses found</div>
         )}
-<<<<<<< HEAD
         <NavLink exact="true" to="/admin/addCourse" className="nav-link" id="addcourse" activeclassname="active">
           <button
             id="add-course"
           >
-=======
-        <NavLink
-          exact="true"
-          to="/admin/addCourse"
-          className="nav-link"
-          id="addcourse"
-          activeclassname="active"
-        >
-          <button id="add-course" onClick={() => setIsAdded(!isAdded)}>
-=======
-            </div>
-          ))}
-        </div>
-      ) : (
-        <div>No courses found</div>
-      )}
-      <NavLink exact="true" to="/admin/addCourse" className="nav-link" id="addcourse"  activeclassname="active">
-      <button
-            id="add-course"
-          >
->>>>>>> 352df91 (commit)
->>>>>>> 7b0138e (commit)
             <i className="fa-solid fa-circle-plus"></i> Add Course
           </button>
         </NavLink>

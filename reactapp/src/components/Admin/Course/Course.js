@@ -26,9 +26,9 @@ const Course = () => {
     fetchData().then((data) => {
       console.log("fetched course data success ", data);
     })
-    .catch((error) => {
-      console.error(error);
-    });
+      .catch((error) => {
+        console.error(error);
+      });
     fetchData();
     navigate('/admin/viewCourse');
   }
