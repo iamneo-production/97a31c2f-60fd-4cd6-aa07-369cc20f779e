@@ -1,7 +1,7 @@
 import React,{ useState } from 'react'
 import '../Course/Course.css';
-import { useNavigate,Link } from "react-router-dom";
-import { addCourse, getCourses} from "../../../api/courseApi.js";
+import { useNavigate, Link } from "react-router-dom";
+import { addCourse,getCourses} from "../../../api/courseApi.js";
 import NavBar from '../Navbar/Navbar.js';
 import { AdminGuard } from "../../../AuthGuard/AdminGuard"
 
