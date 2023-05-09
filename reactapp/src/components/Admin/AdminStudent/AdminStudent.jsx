@@ -47,7 +47,13 @@ const AdminStudent = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    fetchStudentData();
+    fetchStudentData()
+    .then((data) => {
+      console.log("fetched student data success ", data);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
   }, []);
 
 
@@ -95,7 +101,13 @@ const AdminStudent = () => {
   };
 
   const handleDelete = async (id) => {
-    deleteStudent(id);
+    deleteStudent(id)
+    .then((data) => {
+      console.log("delete student data success ", data);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
   };
 
   const deleteStudent = async (id) => {
@@ -107,7 +119,13 @@ const AdminStudent = () => {
       }
     });
     console.log(response);
-    fetchStudentData();
+    fetchStudentData()
+    .then((data) => {
+      console.log("fetched student data success ", data);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
   };
 
   const handleEdit = (id) => {
@@ -193,7 +211,13 @@ const StudentForm = ({ handleCallBack, pageState, refreshData }) => {
   const handleFormAdd = (e) => {
     e.preventDefault();
     console.log(formData);
-    addStudent();
+    addStudent()
+    .then((data) => {
+      console.log("add student data success ", data);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
     handleCallBack({
       view: { state: true },
       add: { state: false },
@@ -217,7 +241,13 @@ const StudentForm = ({ handleCallBack, pageState, refreshData }) => {
   const handleFormEdit = (e) => {
     e.preventDefault();
     console.log(formData);
-    editStudent(pageState.edit.data.studentId);
+    editStudent(pageState.edit.data.studentId)
+    .then((data) => {
+      console.log("edit student data success ", data);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
     handleCallBack({
       view: { state: true },
       add: { state: false },
