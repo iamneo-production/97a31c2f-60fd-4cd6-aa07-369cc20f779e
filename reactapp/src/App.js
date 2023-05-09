@@ -4,7 +4,7 @@ import Login from "./components/Auth/Login/Login";
 import AdminHomePage, {
   AcademyForm,
 } from "./components/Admin/AdminHomePage/AdminHomePage";
-import Adminstudent from "./components/Admin/Adminstudent";
+import AdminStudent from "./components/Admin/AdminStudent/AdminStudent";
 import Viewacademy from "./components/User/HomePage/Viewacademy";
 import UserCourse from "./components/User/HomePage/UserCourse";
 import Enrollcourse from "./components/User/HomePage/Enrollcourse";
@@ -32,7 +32,7 @@ function App() {
         <Route path="/admin/addCourse" element={<Course />} />
         <Route path="/admin/viewCourse" element={<Viewcourse />} />
         <Route path="/admin/editCourse/:id" element={<Editcourse />} />
-        <Route path="/admin/Viewstudent" element={<Adminstudent />} />
+        <Route path="/admin/Viewstudent" element={<AdminStudent />} />
         <Route path="/Viewacademy" element={<Viewacademy />} />
         <Route path="/UserCourse" element={<UserCourse />} />
         <Route path="/Enrollcourse/:courseId" element={<Enrollcourse />} />
