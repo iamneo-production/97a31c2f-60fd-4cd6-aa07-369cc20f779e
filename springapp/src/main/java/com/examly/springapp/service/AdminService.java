@@ -53,6 +53,7 @@ public class AdminService {
         student.setHsc(updatedStudent.getHsc());
         student.setDiploma(updatedStudent.getDiploma());
         student.setEligibility(updatedStudent.getEligibility());
+        student.setCourseId(updatedStudent.getCourseId());
         studentRepository.save(student);
         return "Student details edited";
     }

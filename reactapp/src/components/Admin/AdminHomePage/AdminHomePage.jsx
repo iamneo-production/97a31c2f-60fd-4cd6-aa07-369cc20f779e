@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import Navbar from "../Navbar/Navbar";
 import { store } from "../../../store";
@@ -6,12 +7,13 @@ import "./AdminHomePage.css";
 import { Navigate } from "react-router";
 import { useNavigate, useParams } from "react-router-dom";
 
-const baseUrl = "https://8080-daefaebebcbbfafccddecaeebaeccc.project.examly.io";
+const baseUrl = "https://8080-fccfeeaccfaaabbebcbbfafccddecaeebaeccc.project.examly.io";
 let auth = "";
 store.subscribe(() => {
   auth = store.getState().auth;
   console.log(auth);
 });
+
 
 const initialData = {
   instituteName: "",
