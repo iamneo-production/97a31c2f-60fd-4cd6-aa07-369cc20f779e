@@ -7,7 +7,7 @@ import { Navigate } from "react-router";
 import { useNavigate, useParams } from "react-router-dom";
 
 const baseUrl = "https://8080-daefaebebcbbfafccddecaeebaeccc.project.examly.io";
-let auth = ""
+let auth = "";
 store.subscribe(() => {
   auth = store.getState().auth;
   console.log(auth);
