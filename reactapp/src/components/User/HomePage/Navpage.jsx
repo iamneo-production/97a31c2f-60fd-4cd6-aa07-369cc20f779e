@@ -1,12 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { UseLogout } from '../../../hooks/UseLogout'
 import './Navpage.css'
 const Navpage = () => {
-    const { logout } = UseLogout()
-    const handleLogout = () => {
-        logout()
-    }
+
     return (
         <>
             <div className="nvbar">

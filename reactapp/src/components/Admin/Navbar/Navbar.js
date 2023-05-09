@@ -1,14 +1,16 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
-import { UseLogout } from "../../../hooks/UseLogout";
+import { NavLink ,useNavigate} from "react-router-dom";
+import { store } from "../../../store";
+
 import './Navbar.css';
 const NavBar = () => {
 
-  const { logout } = UseLogout();
+  const navigate = useNavigate();
 
-  const navigateToLogout = () => {
-    logout()
-  };
+  const navigateToLogout = () => { 
+    store.dispatch({ type: 'LOGOUT' })
+    navigate('/login');
+  }
 
   return (
     <nav className="nav-container">

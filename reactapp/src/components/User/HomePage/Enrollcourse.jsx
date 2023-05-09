@@ -2,15 +2,22 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Enrollcourse.css';
 import { useNavigate } from 'react-router';
+import { UserGuard } from "../../../AuthGuard/UserGuard"
 
-import { UseLogout } from '../../../hooks/UseLogout'
-const baseUrl = "https://8080-daefaebebcbbfafccddecaeebaeccc.project.examly.io";
+import { store } from '../../../store';
+const baseUrl = "https://8080-fcffeccfcdbefebcbbfafccddecaeebaeccc.project.examly.io";
+let auth =""
+store.subscribe( () => {
+  auth = store.getState().auth;
+  console.log(auth)
+});
 function Enrollcourse() {
-    const { logout } = UseLogout()
-    const handleLogout = () => {
-        logout()
-    }
     const navigate = useNavigate();
+
+    const handleLogout = () => { 
+      store.dispatch({ type: 'LOGOUT' })
+      navigate('/login');
+    }    
     const data = {
 
         firstName: '',
@@ -40,7 +47,12 @@ function Enrollcourse() {
     function handleSubmit(e) {
 
         e.preventDefault();
-        postdata()
+        postdata().then(() => {
+            console.log("success")
+          })
+          .catch((error) => {
+            console.error(error);
+          });
 
         if (!inputData.firstName || !inputData.lastName || !inputData.fatherName || !inputData.motherName || !inputData.gender || !inputData.phonenumber || !inputData.alternativenumber || !inputData.age || !inputData.marks) {
             alert("All fields are Mandatory")
@@ -54,7 +66,7 @@ function Enrollcourse() {
 
     }
     const postdata = async () => {
-        const response = await fetch(`${baseUrl}/admin/addStudent`, {
+         await fetch(`${baseUrl}/admin/addStudent`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${localStorage.token}`,
@@ -70,7 +82,7 @@ function Enrollcourse() {
 
 
     return (
-        <>
+        <UserGuard>
             <pre>{(flag) ? <h2 className='ui-define'>Hello {inputData.firstName},registered successfully</h2> : ""}</pre>
 
             <div className="nvbar">
@@ -165,7 +177,7 @@ function Enrollcourse() {
                 </div>
             </div>
         </form>
-        </>
+    </UserGuard>
     );
 }
 export default Enrollcourse;
