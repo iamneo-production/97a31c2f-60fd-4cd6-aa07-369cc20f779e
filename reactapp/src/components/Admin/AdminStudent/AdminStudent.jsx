@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { UseLogout } from '../../hooks/UseLogout'
+import Navbar from "../Navbar/Navbar";
+import { AdminGuard } from "../../../AuthGuard/AdminGuard";
 
 const baseUrl = "https://8080-fccfeeaccfaaabbebcbbfafccddecaeebaeccc.project.examly.io";
 
@@ -52,7 +53,7 @@ const AdminStudent = () => {
 
   const filterStudentData = () => {
     const filteredData = fetchedStudentData.filter((eachStudent) => {
-      const studentName = eachStudent.studentName.toLowerCase();
+      const studentName = eachStudent.firstName.toLowerCase();
       const searchName = searchTerm.toLowerCase();
       return studentName.startsWith(searchName);
     });
@@ -72,8 +73,8 @@ const AdminStudent = () => {
       });
       const data = await response.json();
       console.log(data);
-      setFetchedStudentData([data]);
-      setStudentData([data]);
+      setFetchedStudentData(data);
+      setStudentData(data);
       setIsLoading(false);
       setIsError({ state: false, msg: "" });
       if (response.status === 400) {
@@ -132,46 +133,45 @@ const AdminStudent = () => {
     return <StudentForm handleCallBack={CallBack} pageState={adminStudentState} refreshData={fetchStudentData} />;
   }
   return (
+    <AdminGuard>
+      <Navbar />
 
-    <div className="admin-student-container">
-      <div className="admin-search-container">
-        <input type="text" name="search" value={searchTerm} placeholder="Type here to Search Student" onChange={(e) => setSearchTerm(e.target.value)} />
-        <button type="button" onClick={() => filterStudentData()} >Search</button>
+
+      <div className="admin-student-container">
+        <div className="admin-search-container">
+          <input type="text" name="search" value={searchTerm} placeholder="Type here to Search Student" onChange={(e) => setSearchTerm(e.target.value)} />
+          <button type="button" onClick={() => filterStudentData()} >Search</button>
+        </div>
+        {isLoading && <h4>Loading...</h4>}
+        {isError.state && <h4>{isError.msg}</h4>}
+        <div className="student-display-container">
+
+          {studentData.map((student1) => {
+            const { studentId, firstName, phoneNumber1, emailId, lastName } = student1
+
+
+
+            return (
+
+              <div> <h4>Student Id : {studentId}</h4>
+                <h4>Name : {firstName + " " + lastName}</h4>
+                <h4>Email Id : {emailId}</h4>
+                <h4> Phone Number : {phoneNumber1}</h4>
+                <button type="submit" id="editStudent" onClick={() => handleEdit(studentId)}>📝</button>
+                <button type="submit" id="deleteStudent" onClick={() => handleDelete(studentId)}>🗑️</button>
+
+              </div>
+
+
+            );
+          })}
+
+        </div>
+        <div className="admin-add-student-button">
+          <button type="submit" onClick={() => handleAdd()}> ➕ Add Student</button>
+        </div>
       </div>
-      {isLoading && <h4>Loading...</h4>}
-      {isError.state && <h4>{isError.msg}</h4>}
-      <div className="student-display-container">
-        {/* <table className="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Student Id</th>
-                                    <th scope="col">Student Name</th>
-                                    <th scope="col">mobile</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Actions</th>
-                                </tr>
-                            </thead>
-                            </table> */}
-        {studentData.map((student1) => {
-          const { studentId, firstName, phoneNumber1, emailId, actions } = student1
-
-
-
-          return (
-
-            <table><h4>{studentId}</h4><h5>{firstName}</h5><h6>{phoneNumber1}</h6><h5>{emailId}</h5><h4>{actions}</h4>
-              <button type="submit" id="editStudent" onClick={() => handleEdit(studentId)}>📝</button>
-              <button type="submit" id="deleteStudent" onClick={() => handleDelete(studentId)}>🗑️</button>
-            </table>
-
-          );
-        })}
-
-      </div>
-      <div className="admin-add-student-button">
-        <button type="submit" onClick={() => handleAdd()}> ➕ Add Student</button>
-      </div>
-    </div>
+    </AdminGuard>
   );
 };
 
@@ -239,7 +239,8 @@ const StudentForm = ({ handleCallBack, pageState, refreshData }) => {
   };
 
   return (
-    <>
+    <AdminGuard>
+      <Navbar />
 
       <button type="submit" onClick={() => handleCallBack({
         view: { state: true },
@@ -395,31 +396,7 @@ const StudentForm = ({ handleCallBack, pageState, refreshData }) => {
 
               />
             </div>
-            <div className="studentIdNumber">
-              <label className="form__label" htmlFor="institueid"> Student ID Number</label>
-              <input
-                type="text"
-                id="instituteId"
-                name="InstituteId"
-                className="form__input"
-                placeholder="Enter Your Institute Id"
-                value={formData.studentIdNumber}
-                onChange={(e) => handleInputChange(e, "StudentIdNumber")}
-              />
-            </div>
             <h1>Address Information</h1>
-            <div className="address">
-              <label className="form__label" htmlFor="address"> Address </label>
-              <input
-                type="text"
-                id="address"
-                name="address"
-                className="form__input"
-                placeholder="Enter Your house number"
-                value={formData.houseNumber}
-                onChange={(e) => handleInputChange(e, "housenumber")}
-              />
-            </div>
             <div className="address">
               <label className="form__label" htmlFor="address"> Street Name </label>
               <input
@@ -488,7 +465,7 @@ const StudentForm = ({ handleCallBack, pageState, refreshData }) => {
         {pageState.add.state ? <button type="submit" id="addAcademy" onClick={(e) => handleFormAdd(e)}>Add Student</button> : <button type="submit" id="updateAcademy" onClick={(e) => handleFormEdit(e)}>Update Student</button>}
 
       </form>
-    </>
+    </AdminGuard>
   );
 };
 
