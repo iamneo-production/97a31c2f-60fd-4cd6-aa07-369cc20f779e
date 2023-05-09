@@ -1,7 +1,7 @@
-import React,{ useState } from 'react'
+import React, { useState } from 'react'
 import '../Course/Course.css';
 import { useNavigate, Link } from "react-router-dom";
-import { addCourse,getCourses} from "../../../api/courseApi.js";
+import { addCourse, getCourses } from "../../../api/courseApi.js";
 import NavBar from '../Navbar/Navbar.js';
 import { AdminGuard } from "../../../AuthGuard/AdminGuard"
 
@@ -15,35 +15,41 @@ const Course = () => {
   const [courseDescription, setCourseDescription] = useState("");
   const navigate = useNavigate();
 
-  const handleClick = (event)=>{
+  const handleClick = (event) => {
     handleSubmit(event).then((data) => {
-      console.log(data)
+      console.log(data);
+      
     })
-    .catch((error) => {
-      console.error(error);
-    });
-
+      .catch((error) => {
+        console.error(error);
+      });
+    fetchData().then((data) => {
+      console.log("fetched course data success ", data);
+    })
+      .catch((error) => {
+        console.error(error);
+      });
     navigate('/admin/viewCourse');
   }
-  const fetchData=async()=>{
+  const fetchData = async () => {
     const data = await getCourses();
   }
-  const handleSubmit = async(event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const newCourse = {
-        "courseId":courseId,
-        "courseName": courseName,
-        "courseDescription":courseDescription ,
-        "courseDuration": courseDuration,
-        "courseTiming":courseTiming,
-        "courseEnrolled":courseEnrolled
+      "courseId": courseId,
+      "courseName": courseName,
+      "courseDescription": courseDescription,
+      "courseDuration": courseDuration,
+      "courseTiming": courseTiming,
+      "courseEnrolled": courseEnrolled
     };
-    
-   console.log("course js ",newCourse)
+
+    console.log("course js ", newCourse)
     const addedCourse = await addCourse(newCourse)
-    console.log("response in course js",addedCourse)
+    console.log("response in course js", addedCourse)
     setCourseId('');
-   setCourseName('');
+    setCourseName('');
     setCourseDuration('');
     setCourseTiming('');
     setCourseEnrolled('');
@@ -52,81 +58,81 @@ const Course = () => {
 
   return (
     <AdminGuard>
-    <NavBar/>
-    <div data-testid="addCourse">
-      <h2>Add Course Details</h2>
-      <form onSubmit={(e)=>handleClick(e)}>
-      <div>
-          <label htmlFor="courseId">Course Id:</label>
-          <input
-            id="courseId"
-            type="text"
-            placeholder='Enter courseId'
-            value={courseId}
-            onChange={(event) => setCourseId(event.target.value)}
-            data-testid="courseId"
-          />
-        </div>
-        <div>
-          <label htmlFor="courseName">Course Name:</label>
-          <input
-            id="courseName"
-            type="text"
-            placeholder='Enter courseName'
-            value={courseName}
-            onChange={(event) => setCourseName(event.target.value)}
-            data-testid="courseName"
-          />
-        </div>
-        <div>
-          <label htmlFor="courseDuration">Course Duration:</label>
-          <input
-            id="courseDuration"
-            type="text"
-            placeholder='Enter courseDuration'
-            value={courseDuration}
-            onChange={(event) => setCourseDuration(event.target.value)}
-            data-testid="courseDuration"
-          />
-        </div>
-        <div>
-          <label htmlFor="courseTiming">Course Timing:</label>
-          <input
-            id="courseTiming"
-            type="text"
-            placeholder='Enter courseTiming'
-            value={courseTiming}
-            onChange={(event) => setCourseTiming(event.target.value)}
-            data-testid="courseTiming"
-          />
-        </div>
-        <div>
-          <label htmlFor="courseEnrolled">Course Enrolled:</label>
-          <input
-            id="courseEnrolled"
-            type="text"
-            placeholder='courseEnrolled'
-            value={courseEnrolled}
-            onChange={(event) => setCourseEnrolled(event.target.value)}
-            data-testid="courseEnrolled"
-          />
-        </div>
-        <div>
-          <label htmlFor="courseDescription">Course Description:</label>
-          <textarea
-            id="courseDescription"
-            type="text"
-            placeholder='courseDescription'
-            value={courseDescription}
-            onChange={(event) => setCourseDescription(event.target.value)}
-            data-testid="courseDescription"
-          />
-        </div>
-        
-        <button type="submit" id="addCourse">Add Course</button>
-        <Link to="/admin/viewCourse" className="btn btn-secondary">Cancel</Link>
-      </form>
-    </div>
+      <NavBar />
+      <div data-testid="addCourse">
+        <h2>Add Course Details</h2>
+        <form onSubmit={(e) => handleClick(e)}>
+          <div>
+            <label htmlFor="courseId">Course Id:</label>
+            <input
+              id="courseId"
+              type="text"
+              placeholder='Enter courseId'
+              value={courseId}
+              onChange={(event) => setCourseId(event.target.value)}
+              data-testid="courseId"
+            />
+          </div>
+          <div>
+            <label htmlFor="courseName">Course Name:</label>
+            <input
+              id="courseName"
+              type="text"
+              placeholder='Enter courseName'
+              value={courseName}
+              onChange={(event) => setCourseName(event.target.value)}
+              data-testid="courseName"
+            />
+          </div>
+          <div>
+            <label htmlFor="courseDuration">Course Duration:</label>
+            <input
+              id="courseDuration"
+              type="text"
+              placeholder='Enter courseDuration'
+              value={courseDuration}
+              onChange={(event) => setCourseDuration(event.target.value)}
+              data-testid="courseDuration"
+            />
+          </div>
+          <div>
+            <label htmlFor="courseTiming">Course Timing:</label>
+            <input
+              id="courseTiming"
+              type="text"
+              placeholder='Enter courseTiming'
+              value={courseTiming}
+              onChange={(event) => setCourseTiming(event.target.value)}
+              data-testid="courseTiming"
+            />
+          </div>
+          <div>
+            <label htmlFor="courseEnrolled">Course Enrolled:</label>
+            <input
+              id="courseEnrolled"
+              type="text"
+              placeholder='courseEnrolled'
+              value={courseEnrolled}
+              onChange={(event) => setCourseEnrolled(event.target.value)}
+              data-testid="courseEnrolled"
+            />
+          </div>
+          <div>
+            <label htmlFor="courseDescription">Course Description:</label>
+            <textarea
+              id="courseDescription"
+              type="text"
+              placeholder='courseDescription'
+              value={courseDescription}
+              onChange={(event) => setCourseDescription(event.target.value)}
+              data-testid="courseDescription"
+            />
+          </div>
+
+          <button type="submit" id="addCourse">Add Course</button>
+          <Link to="/admin/viewCourse" className="btn btn-secondary">Cancel</Link>
+        </form>
+      </div>
     </AdminGuard>
   );
 };
