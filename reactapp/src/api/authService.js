@@ -1,5 +1,5 @@
 // Define the base URL for the API requests
-const baseUrl = "https://8080-fcffeccfcdbefebcbbfafccddecaeebaeccc.project.examly.io";
+const baseUrl = "https://8080-efdecffbbebcbbfafccddecaeebaeccc.project.examly.io";
 
 // Define a function to register a user
 const register = async (data) => {
@@ -48,7 +48,6 @@ const login = async (data) => {
   });
   return response.json(); // Return the response as a JSON object
 };
-
 
 
 // Export the functions 

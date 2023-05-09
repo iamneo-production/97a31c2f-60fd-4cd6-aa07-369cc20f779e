@@ -9,7 +9,7 @@ import Enrollcourse from './components/User/HomePage/Enrollcourse'
 import Course from './components/Admin/Course/Course'
 import Viewcourse from './components/Admin/Course/Viewcourse'
 import Editcourse from './components/Admin/Course/Editcourse'
-import Enrolledcourse from './components/User/Enrolledcourse';
+import EnrolledCourse from './components/User/EnrolledCourse';
 
 function App() {
   
@@ -27,7 +27,7 @@ function App() {
         <Route path="/Viewacademy" element={<Viewacademy />} />
         <Route path="/UserCourse" element={<UserCourse />} />
         <Route path="/Enrollcourse" element={<Enrollcourse />} />
-        <Route path="/Enrolledcourse" element={<Enrolledcourse/>}/>
+        <Route path="/EnrolledCourse" element={<EnrolledCourse/>}/>
         <Route path="*" element={<>404 no such page go to home page</>} />
       </Routes>
     </Router>
