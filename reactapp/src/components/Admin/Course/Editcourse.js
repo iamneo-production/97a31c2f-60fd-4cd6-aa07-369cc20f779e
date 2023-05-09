@@ -25,11 +25,17 @@ function Editcourse(props) {
   const handleClick = (event) => {
     handleSubmit(event).then((data) => {
       console.log("edited successfully ", data);
-      fetchData().then(() => navigate('/admin/viewCourse'));
     })
       .catch((error) => {
         console.error(error);
       });
+      fetchData().then((data) => {
+        console.log("fetched course data success ", data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+      navigate('/admin/viewCourse');
     
   }
   const fetchData = async () => {
