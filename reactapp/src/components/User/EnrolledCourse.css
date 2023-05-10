@@ -1,0 +1,43 @@
+.navbar{
+    background-color: rgb(195, 8, 176) ;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    padding: 0 8px;
+}
+.leftside{
+    flex:50%;
+    height:100%;
+    padding-left:   50px;
+}
+.middle{
+   
+    flex:50%;
+    height:100%;   
+    color:black;
+    text-decoration: justify; 
+    margin:auto;
+}
+.rightside{
+    
+    flex:50%;
+    height:100%;
+    color:rgb(19, 19, 19);
+    padding-right: 150px;
+}
+.enrolled-course {
+    border: 2px solid black;
+    padding: 10px;
+    margin: 10px;
+  }
+  .my-learning-button {
+    margin-left: 200px;
+    background-color:red;
+    color: white;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+}
