@@ -5,7 +5,7 @@ import { useNavigate } from "react-router";
 import { UserGuard } from "../../../AuthGuard/UserGuard";
 import { store } from "../../../store";
 
-const baseUrl = "https://8080-efdecffbbebcbbfafccddecaeebaeccc.project.examly.io";
+const baseUrl = "https://8080-adbcafaeebcbbfafccddecaeebaeccc.project.examly.io";
 let auth = "";
 store.subscribe(() => {
   auth = store.getState().auth;

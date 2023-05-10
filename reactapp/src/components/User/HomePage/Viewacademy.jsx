@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { store } from "../../../store";
 import { UserGuard } from "../../../AuthGuard/UserGuard";
 import "./Viewacademy.css";
-const baseUrl = "https://8080-efdecffbbebcbbfafccddecaeebaeccc.project.examly.io";
+const baseUrl = "https://8080-adbcafaeebcbbfafccddecaeebaeccc.project.examly.io";
 let auth = "";
 store.subscribe(() => {
   auth = store.getState().auth;

@@ -26,6 +26,7 @@
 .nav-container a.active {
     font-weight: bold;
     font-size: larger;
+    transform: translateY(-9px);
 }
 
 .nav-container h1 {
