@@ -9,7 +9,7 @@ import Enrollcourse from './components/User/HomePage/Enrollcourse';
 import Course from './components/Admin/Course/Course';
 import Viewcourse from './components/Admin/Course/Viewcourse';
 import Editcourse from './components/Admin/Course/Editcourse';
-import Enrolledcourse from './components/User/Enrolledcourse';
+import EnrolledCourse from './components/User/EnrolledCourse';
 
 function App() {
   
