@@ -4,7 +4,6 @@ import { AdminGuard } from "../../../AuthGuard/AdminGuard";
 
 const baseUrl = "https://8080-efdecffbbebcbbfafccddecaeebaeccc.project.examly.io";
 
-
 const student = {
   firstName: '',
   lastName: '',
