@@ -1,16 +1,15 @@
 import React from "react";
-import { NavLink ,useNavigate} from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { store } from "../../../store";
 
-import './Navbar.css';
+import "./Navbar.css";
 const NavBar = () => {
-
   const navigate = useNavigate();
 
-  const navigateToLogout = () => { 
-    store.dispatch({ type: 'LOGOUT' })
-    navigate('/login');
-  }
+  const navigateToLogout = () => {
+    store.dispatch({ type: "LOGOUT" });
+    navigate("/login");
+  };
 
   return (
     <nav className="nav-container">
@@ -20,7 +19,11 @@ const NavBar = () => {
         <NavLink to="/admin/viewCourse">Course</NavLink>
         <NavLink to="/admin/Viewstudent">Students</NavLink>
       </div>
-      <button type="submit" onClick={navigateToLogout} style={{cursor: 'pointer'}}>
+      <button
+        type="submit"
+        onClick={navigateToLogout}
+        style={{ cursor: "pointer" }}
+      >
         Logout
       </button>
     </nav>
