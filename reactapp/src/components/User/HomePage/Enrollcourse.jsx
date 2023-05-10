@@ -15,8 +15,8 @@ function Enrollcourse() {
   const navigate = useNavigate();
   const { courseId } = useParams();
   const handlecancel = () => {
-    navigate("/viewacademy");
-  };
+    navigate("/viewacademy")
+  }
 
   const handleLogout = () => {
     store.dispatch({ type: "LOGOUT" });
@@ -324,7 +324,6 @@ function Enrollcourse() {
                     name="houseNumber"
                     id="houseNumber"
                     className="form__input"
-                    placeholder="enter house number"
                     value={inputData.houseNumber}
                     onChange={handledata}
                   />
@@ -338,7 +337,6 @@ function Enrollcourse() {
                     id="streetName"
                     name="streetName"
                     className="form__input"
-                    placeholder="enter streetname"
                     value={inputData.streetName}
                     onChange={handledata}
                   />
@@ -352,7 +350,6 @@ function Enrollcourse() {
                     id="areaName"
                     name="areaName"
                     className="form__input"
-                    placeholder="enter areaname"
                     value={inputData.areaName}
                     onChange={handledata}
                   />
@@ -366,7 +363,6 @@ function Enrollcourse() {
                     id="state"
                     name="state"
                     className="form__input"
-                    placeholder="enter state"
                     value={inputData.state}
                     onChange={handledata}
                   />
@@ -380,7 +376,6 @@ function Enrollcourse() {
                     id="pincode"
                     name="pincode"
                     className="form__input"
-                    placeholder="enter the pincode"
                     value={inputData.pincode}
                     onChange={handledata}
                   />
@@ -394,7 +389,6 @@ function Enrollcourse() {
                     id="nationality"
                     name="nationality"
                     className="form__input"
-                    placeholder="enter the nationality"
                     value={inputData.nationality}
                     onChange={handledata}
                   />
@@ -404,7 +398,8 @@ function Enrollcourse() {
           </div>
           <div class="footer">
             <button type="submit">Submit</button>
-            <br></br>
+            <br>
+            </br>
             <button onClick={handlecancel}>cancel</button>
           </div>
         </div>

@@ -12,29 +12,24 @@ import Editcourse from './components/Admin/Course/Editcourse';
 import Enrolledcourse from './components/User/Enrolledcourse';
 
 function App() {
+  
   return (
     <Router>
       <Routes>
         <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login"element={<Login />} />
         <Route path="/" element={<Login />} />
-        <Route path="/admin/dashboard" element={<AdminHomePage />} />
-        <Route
-          path="/admin/addInstitute"
-          element={<AcademyForm type="ADD" />}
-        />
-        <Route
-          path="/admin/editInstitute/:id"
-          element={<AcademyForm type="EDIT" />}
-        />
+        <Route path="/admin/dashboard" element={<AdminHomePage /> }/>
+        <Route path="/admin/addInstitute" element={<AcademyForm type="ADD"/>}/>
+        <Route path="/admin/editInstitute/:id" element={<AcademyForm type="EDIT"/>}/>
         <Route path="/admin/addCourse" element={<Course />} />
-        <Route path="/admin/viewCourse" element={<Viewcourse />} />
+        <Route path="/admin/viewCourse" element={<Viewcourse/>}/>
         <Route path="/admin/editCourse/:id" element={<Editcourse />} />
         <Route path="/admin/Viewstudent" element={<AdminStudent />} />
         <Route path="/Viewacademy" element={<Viewacademy />} />
         <Route path="/UserCourse" element={<UserCourse />} />
         <Route path="/Enrollcourse/:courseId" element={<Enrollcourse />} />
-        <Route path="/Enrolledcourse" element={<Enrolledcourse />} />
+        <Route path="/Enrolledcourse" element={<Enrolledcourse/>}/>
         <Route path="*" element={<>404 no such page go to home page</>} />
       </Routes>
     </Router>
