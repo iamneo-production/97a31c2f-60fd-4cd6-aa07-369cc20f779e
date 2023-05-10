@@ -8,7 +8,6 @@ import { UserGuard } from '../../AuthGuard/UserGuard';
 
 const EnrolledCourse=()=>{
     const navigate=useNavigate();
-    const [data,setData] = useState([])
     const [courses,setCourses] = useState([])
     const { auth } = store.getState()  
     const handleClick=()=>{
@@ -25,12 +24,16 @@ const EnrolledCourse=()=>{
 
         const fetchStudents  = async () => {
             const res = await  CourseService.studentDetails(); 
-            setData(res)
             const userReg = res.filter(student => student.studentIdNumber === auth.id)
             console.log(userReg, " filtered ")
             const courseId = userReg.map(user => user.courseId)
             console.log("courseId  "  , courseId)    
-            fetchCourses();
+            fetchCourses().then((data) => {
+                console.log(data);
+              })
+              .catch((error) => {
+                console.error(error);
+              });
         }
 
         const fetchCourses = async () => {
