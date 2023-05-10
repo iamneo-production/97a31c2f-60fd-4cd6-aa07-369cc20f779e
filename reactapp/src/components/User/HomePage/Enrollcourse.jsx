@@ -324,7 +324,7 @@ function Enrollcourse() {
                     name="houseNumber"
                     id="houseNumber"
                     className="form__input"
-                    placeholder="enter Housenumber"
+                    placeholder="Enter Housenumber"
                     value={inputData.houseNumber}
                     onChange={handledata}
                   />
@@ -338,7 +338,7 @@ function Enrollcourse() {
                     id="streetName"
                     name="streetName"
                     className="form__input"
-                    placeholder="enter the Streetname"
+                    placeholder="Enter the Streetname"
                     value={inputData.streetName}
                     onChange={handledata}
                   />
@@ -351,7 +351,7 @@ function Enrollcourse() {
                     type="text"
                     id="areaName"
                     name="areaName"
-                    placeholder="enter the Areaname"
+                    placeholder="Enter the Areaname"
                     className="form__input"
                     value={inputData.areaName}
                     onChange={handledata}
@@ -366,7 +366,7 @@ function Enrollcourse() {
                     id="state"
                     name="state"
                     className="form__input"
-                    placeholder="enter the State"
+                    placeholder="Enter the State"
                     value={inputData.state}
                     onChange={handledata}
                   />
@@ -380,7 +380,7 @@ function Enrollcourse() {
                     id="pincode"
                     name="pincode"
                     className="form__input"
-                    placeholder="enter the Pincode"
+                    placeholder="Enter the Pincode"
                     value={inputData.pincode}
                     onChange={handledata}
                   />
@@ -393,7 +393,7 @@ function Enrollcourse() {
                     type="text"
                     id="nationality"
                     name="nationality"
-                    placeholder="enter Nationality"
+                    placeholder="Enter Nationality"
                     className="form__input"
                     value={inputData.nationality}
                     onChange={handledata}
