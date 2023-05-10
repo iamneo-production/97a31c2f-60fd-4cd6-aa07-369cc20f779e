@@ -2,11 +2,14 @@ import React,{useEffect,useState} from 'react';
 import './EnrolledCourse.css'
 import {store} from '../../store';
 import {useNavigate,Link} from 'react-router-dom';
+import { getCourses } from '../../api/courseApi';
 import CourseService from "../.././api/CourseService"
+import { UserGuard } from '../../AuthGuard/UserGuard';
 
 const EnrolledCourse=()=>{
     const navigate=useNavigate();
     const [data,setData] = useState([])
+    const [courses,setCourses] = useState([])
     const { auth } = store.getState()  
     const handleClick=()=>{
         navigate('/EnrolledCourse');
@@ -17,45 +20,69 @@ const EnrolledCourse=()=>{
         navigate('/login');
       }
 
-      useEffect(() => {
+      useEffect(() =>  {
         console.log(auth)
 
-        CourseService.studentDetails()
-        .then((res) => {
-            console.log(res)
+        const fetchStudents  = async () => {
+            const res = await  CourseService.studentDetails(); 
             setData(res)
-        }).catch((err) => {
-            console.log(err)
-        })
+            const userReg = res.filter(student => student.studentIdNumber === auth.id)
+            console.log(userReg, " filtered ")
+            const courseId = userReg.map(user => user.courseId)
+            console.log("courseId  "  , courseId)    
+            fetchCourses();
+        }
 
+        const fetchCourses = async () => {
+            const res = await getCourses();
+            console.log(res,"final res")
+            setCourses(res)
+        }
+
+
+        fetchStudents() .then((data) => {
+            console.log(data);
+          })
+          .catch((error) => {
+            console.error(error);
+          });
     }, [])
-    const userReg = data.filter(student => student.studentId === auth.id)
-    console.log(userReg, " filtered ")
-
-    const courseId = userReg.map(user => user.courseId)
-    console.log("courseId  "  , courseId)
-   
+    
 
     return(
-        <div>
-         <div className='navbar'>
+        <UserGuard>
+            <div>
+            <div className='navbar'>
+                <div className='middle'>
+                <Link to="/Viewacademy"><button>Institute</button></Link>
+            </div>
             <div className='middle'>
-            <Link to="/Viewacademy"><button>Institute</button></Link>
-           </div>
-           <div className='middle'>
-                <button onClick={handleClick}>EnrolledCourse</button>
+                    <button onClick={handleClick}>EnrolledCourse</button>
+                </div>
+            <div className='middle'>
+                <button  onClick={handleLogout}>LogOut</button>
+                </div>
+                </div>
+
+
+            {courses && courses.length > 0 ? (
+                courses.map((course) => (
+                <div key={course.id} className='enrolled-course'>
+                    <p><b>Course id: {course.id} </b></p>
+                    <p><b>Course Name: {course.courseName} </b></p>
+                    <p><b>courseDuration: {course.courseDuration} </b></p>
+                    <p><b>Course Description: {course.courseDescription} </b></p>
+                    <Link to="/Viewacademy"><button  className="my-learning-button">My Learning</button></Link>
+                </div>
+            )  )
+                    
+                    ) :(
+                    <div>No courses found</div>
+                )}
+
+
             </div>
-           <div className='middle'>
-            <button  onClick={handleLogout}>LogOut</button>
-            </div>
-            </div>
-        <div className='enrolled-course'>
-        <p><b>Course Name:</b></p>
-        <p><b>Joined Date:</b></p>
-        <p><b>Course End date:</b></p>
-        <button className="my-learning-button">My Learning</button>
-        </div>
-        </div>
+        </UserGuard>
         
          );
 }
