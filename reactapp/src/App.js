@@ -1,17 +1,15 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Signup from "./components/Auth/Signup/Signup";
-import Login from "./components/Auth/Login/Login";
-import AdminHomePage, {
-  AcademyForm,
-} from "./components/Admin/AdminHomePage/AdminHomePage";
-import AdminStudent from "./components/Admin/AdminStudent/AdminStudent";
-import Viewacademy from "./components/User/HomePage/Viewacademy";
-import UserCourse from "./components/User/HomePage/UserCourse";
-import Enrollcourse from "./components/User/HomePage/Enrollcourse";
-import Course from "./components/Admin/Course/Course";
-import Viewcourse from "./components/Admin/Course/Viewcourse";
-import Editcourse from "./components/Admin/Course/Editcourse";
-import Enrolledcourse from "./components/User/Enrolledcourse";
+import { BrowserRouter as Router,Route,Routes } from 'react-router-dom';
+import Signup from './components/Auth/Signup/Signup';
+import Login from './components/Auth/Login/Login';
+import AdminHomePage, { AcademyForm } from './components/Admin/AdminHomePage/AdminHomePage';
+import AdminStudent from './components/Admin/AdminStudent/AdminStudent';
+import Viewacademy from './components/User/HomePage/Viewacademy';
+import UserCourse from './components/User/HomePage/UserCourse';
+import Enrollcourse from './components/User/HomePage/Enrollcourse';
+import Course from './components/Admin/Course/Course';
+import Viewcourse from './components/Admin/Course/Viewcourse';
+import Editcourse from './components/Admin/Course/Editcourse';
+import Enrolledcourse from './components/User/Enrolledcourse';
 
 function App() {
   return (

@@ -5,7 +5,6 @@ import { addCourse, getCourses } from "../../../api/courseApi.js";
 import NavBar from '../Navbar/Navbar.js';
 import { AdminGuard } from "../../../AuthGuard/AdminGuard"
 
-
 const Course = () => {
   const [courseId, setCourseId] = useState("");
   const [courseName, setCourseName] = useState("");
