@@ -29,7 +29,7 @@ function App() {
         <Route path="/Viewacademy" element={<Viewacademy />} />
         <Route path="/UserCourse" element={<UserCourse />} />
         <Route path="/Enrollcourse/:courseId" element={<Enrollcourse />} />
-        <Route path="/Enrolledcourse" element={<Enrolledcourse/>}/>
+        <Route path="/Enrolledcourse" element={<EnrolledCourse/>}/>
         <Route path="*" element={<>404 no such page go to home page</>} />
       </Routes>
     </Router>
