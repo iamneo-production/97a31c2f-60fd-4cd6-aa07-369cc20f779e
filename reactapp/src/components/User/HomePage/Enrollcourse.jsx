@@ -6,8 +6,8 @@ import { UserGuard } from "../../../AuthGuard/UserGuard";
 import { store } from "../../../store";
 
 const baseUrl = "https://8080-deacebeebcbbfafccddecaeebaeccc.project.examly.io";
-let auth =""
-store.subscribe( () => {
+let auth = "";
+store.subscribe(() => {
   auth = store.getState().auth;
   console.log(auth);
 });
