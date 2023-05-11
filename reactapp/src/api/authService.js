@@ -50,7 +50,6 @@ const login = async (data) => {
 };
 
 
-
 // Export the functions 
 const authService = {register,login};
 export default authService;
