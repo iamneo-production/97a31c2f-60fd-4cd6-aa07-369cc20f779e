@@ -74,7 +74,7 @@ const EnrolledCourse=()=>{
             {courses && courses.length > 0 ? (
                 courses.map((course) => (
                 <div key={course.id} className='enrolled-course'>
-                    <p><b>Course id: {course.id} </b></p>
+                    <p><b>Course id: {course.courseId} </b></p>
                     <p><b>Course Name: {course.courseName} </b></p>
                     <p><b>courseDuration: {course.courseDuration} </b></p>
                     <p><b>Course Description: {course.courseDescription} </b></p>

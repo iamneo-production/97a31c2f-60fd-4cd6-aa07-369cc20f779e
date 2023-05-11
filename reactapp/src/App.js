@@ -10,6 +10,7 @@ import Course from './components/Admin/Course/Course';
 import Viewcourse from './components/Admin/Course/Viewcourse';
 import Editcourse from './components/Admin/Course/Editcourse';
 import EnrolledCourse from './components/User/EnrolledCourse';
+import FeedbackForm from './components/User/HomePage/Review';
 
 function App() {
   
@@ -30,6 +31,7 @@ function App() {
         <Route path="/UserCourse" element={<UserCourse />} />
         <Route path="/Enrollcourse/:courseId" element={<Enrollcourse />} />
         <Route path="/Enrolledcourse" element={<EnrolledCourse/>}/>
+        <Route path="/FeedBack" element={<FeedbackForm/>}/>
         <Route path="*" element={<>404 no such page go to home page</>} />
       </Routes>
     </Router>

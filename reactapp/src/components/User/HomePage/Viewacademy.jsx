@@ -63,6 +63,9 @@ const Viewacademy = () => {
         <div className="link">
           <Link to="/Enrolledcourse">Enrolled course</Link>
         </div>
+        <div className="link">
+          <Link to="/FeedBack">FeedBack</Link>
+        </div>
         <div className="out">
           <button data-testid="logout" name="logout" onClick={handleLogout}>
             Logout

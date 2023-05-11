@@ -42,5 +42,4 @@ public class StudentformModel {
     private Integer sslc;
     private Integer hsc;
     private Integer diploma;
-     
 }
