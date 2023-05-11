@@ -1,6 +1,6 @@
 import { store } from "../store"
+import { baseUrl } from "./authService";
 
-const baseUrl = "https://8080-cffdaccdaafaefbebcbbfafccddecaeebaeccc.project.examly.io";
 let token ="";
 store.subscribe( () => {
   token = store.getState().auth.token;
