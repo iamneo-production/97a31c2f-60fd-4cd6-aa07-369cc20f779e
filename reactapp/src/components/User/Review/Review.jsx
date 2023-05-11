@@ -80,14 +80,15 @@ const Review = () => {
       </div>
       <div>
         <label htmlFor="comments">Comments:</label>
-        <textarea
+        <p data-testid="comments">hello this is vignesh hhh</p>
+        {/* <textarea
           id="comments"
           type="text"
           placeholder="Write your comments here"
           value={comments}
           onChange={(event) => setComments(event.target.value)}
           data-testid="comments"
-        />
+        /> */}
       </div>
       <button type="submit" id="submit">Submit</button>
       <button onClick={handlecancel}>cancel</button>
