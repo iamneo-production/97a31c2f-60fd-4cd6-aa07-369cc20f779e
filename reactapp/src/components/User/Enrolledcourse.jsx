@@ -1,32 +1,94 @@
-import React from 'react';
-import { Link,useNavigate } from 'react-router-dom';
-import { store } from '../../store';
-import { UserGuard } from "../../AuthGuard/UserGuard"
+import React,{useEffect,useState} from 'react';
+import {store} from '../../store';
+import {useNavigate,Link} from 'react-router-dom';
+import { getCourses } from '../../api/courseApi';
+import CourseService from "../.././api/CourseService"
+import { UserGuard } from '../../AuthGuard/UserGuard';
 
-function Enrolledcourse() {
-    const navigate = useNavigate();
+const EnrolledCourse=()=>{
+    const navigate=useNavigate();
+    const [courses,setCourses] = useState([])
+    const { auth } = store.getState()  
+    const handleClick=()=>{
+        navigate('/EnrolledCourse');
+    }
 
-  const handleLogout = () => { 
-    store.dispatch({ type: 'LOGOUT' })
-    navigate('/login');
-  }
-    return (
+    const handleLogout = () => { 
+        store.dispatch({ type: 'LOGOUT' })
+        navigate('/login');
+      }
+
+      useEffect(() =>  {
+        console.log(auth)
+        let courseId;
+        const fetchStudents  = async () => {
+            const res = await  CourseService.studentDetails(); 
+            console.log("all response students ",res)
+            const userReg = res.filter(student => student.studentIdNumber === auth.id)
+            console.log(userReg, " filtered student as user ")
+            courseId = userReg.map(user => user.courseId)
+            console.log("courseId  "  , courseId)    
+            fetchCourses().then((data) => {
+                console.log(data);
+              })
+              .catch((error) => {
+                console.error(error);
+              });
+        }
+
+        const fetchCourses = async () => {
+            const res = await getCourses();
+            console.log(res," res")
+            const userCourses  = res.filter(course => courseId.includes(course.courseId)  )
+            console.log(userCourses," courres")
+            setCourses(userCourses)
+        }
+
+
+        fetchStudents() .then((data) => {
+            console.log(data);
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+    }, [])
+    
+
+    return(
         <UserGuard>
-            <div className="nvbar">
-                <h2>PG Admission</h2>
-                <div className="link">
-                    <Link to="/Viewacademy"><h2>Institute</h2></Link>
-                </div>
-                <div className="link">
-                    <Link to="/Enrolledcourse">Enrolled course</Link>
-                </div>
-                <div className="out">
-                    <button data-testid="logout" name='logout' onClick={handleLogout} >Logout</button>
-                </div>
+            <div>
+            <div className='navbar'>
+                <div className='middle'>
+                <Link to="/Viewacademy"><button>Institute</button></Link>
             </div>
-            <h1>Displaying enrolled course</h1>
-        </UserGuard>
-    )
+            <div className='middle'>
+                    <button onClick={handleClick}>EnrolledCourse</button>
+                </div>
+            <div className='middle'>
+                <button  onClick={handleLogout}>LogOut</button>
+                </div>
+                </div>
 
+
+            {courses && courses.length > 0 ? (
+                courses.map((course) => (
+                <div key={course.id} className='enrolled-course'>
+                    <p><b>Course id: {course.id} </b></p>
+                    <p><b>Course Name: {course.courseName} </b></p>
+                    <p><b>courseDuration: {course.courseDuration} </b></p>
+                    <p><b>Course Description: {course.courseDescription} </b></p>
+                    <Link to="/Viewacademy"><button  className="my-learning-button">My Learning</button></Link>
+                </div>
+            )  )
+                    
+                    ) :(
+                    <div>No courses found</div>
+                )}
+
+
+            </div>
+        </UserGuard>
+        
+         );
 }
-export default Enrolledcourse;
+export default EnrolledCourse;
