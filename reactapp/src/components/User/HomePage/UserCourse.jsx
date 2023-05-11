@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router";
 import { store } from "../../../store";
 import { UserGuard } from "../../../AuthGuard/UserGuard";
+import "./UserCourse.css";
+import { baseUrl } from "../../../api/authService";
 
-import './UserCourse.css';
-const baseUrl = "https://8080-deacebeebcbbfafccddecaeebaeccc.project.examly.io";
-let auth =""
-store.subscribe( () => {
+let auth = "";
+store.subscribe(() => {
   auth = store.getState().auth;
   console.log(auth);
 });
