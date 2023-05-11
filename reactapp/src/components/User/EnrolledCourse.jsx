@@ -21,12 +21,13 @@ const EnrolledCourse=()=>{
 
       useEffect(() =>  {
         console.log(auth)
-
+        let courseId;
         const fetchStudents  = async () => {
             const res = await  CourseService.studentDetails(); 
+            console.log("all response students ",res)
             const userReg = res.filter(student => student.studentIdNumber === auth.id)
-            console.log(userReg, " filtered ")
-            const courseId = userReg.map(user => user.courseId)
+            console.log(userReg, " filtered student as user ")
+            courseId = userReg.map(user => user.courseId)
             console.log("courseId  "  , courseId)    
             fetchCourses().then((data) => {
                 console.log(data);
@@ -38,8 +39,10 @@ const EnrolledCourse=()=>{
 
         const fetchCourses = async () => {
             const res = await getCourses();
-            console.log(res,"final res")
-            setCourses(res)
+            console.log(res," res")
+            const userCourses  = res.filter(course => courseId.includes(course.courseId)  )
+            console.log(userCourses," courres")
+            setCourses(userCourses)
         }
 
 
