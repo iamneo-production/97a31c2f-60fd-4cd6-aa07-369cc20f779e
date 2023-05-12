@@ -21,9 +21,6 @@ public class UserService {
     private AdmissionRepo admissionR;
 
     @Autowired
-    private StudentformRepository studentformRepository;
-
-    @Autowired
     private CourseRepository courseRepository;
 
 
@@ -49,12 +46,8 @@ public class UserService {
         admissionR.save(admissionModel);
     }
 
-    public AdmissionModel getAdmission(Integer admissionid){
-        Optional<AdmissionModel> admissionModel = admissionR.findById(admissionid);
-        if(admissionModel.isPresent()){
-            return  admissionModel.get();
-        }
-        return null;
+     public List<AdmissionModel> getAdmission(){
+        return admissionR.findAll();
     }
     public String deleteAdmission(Integer id){
         Optional<AdmissionModel> admissionmodel=admissionR.findById(id);
@@ -65,45 +58,47 @@ public class UserService {
         return "Admission not Found";
     }
 
-    public String editAdmission(Integer id){
+    public String editAdmission(Integer id, AdmissionModel updatedAdmission){
         Optional<AdmissionModel> admissionmodel=admissionR.findById(id);
         if(admissionmodel.isPresent()){
+        AdmissionModel admission = admissionmodel.get();
+        admission.setCourseId(updatedAdmission.getCourseId());
+        admission.setStudentIdNumber(updatedAdmission.getStudentIdNumber());
+        admission.setFirstName(updatedAdmission.getFirstName());
+        admission.setLastName(updatedAdmission.getLastName());
+        admission.setFatherName(updatedAdmission.getFatherName());
+        admission.setPhoneNumber1(updatedAdmission.getPhoneNumber1());
+        admission.setMotherName(updatedAdmission.getMotherName());
+        admission.setPhoneNumber2(updatedAdmission.getPhoneNumber2());
+        admission.setEmailId(updatedAdmission.getEmailId());
+        admission.setStudentDOB(updatedAdmission.getStudentDOB());
+        admission.setHouseNumber(updatedAdmission.getHouseNumber());
+        admission.setStreetName(updatedAdmission.getStreetName());
+        admission.setAreaName(updatedAdmission.getAreaName());
+        admission.setState(updatedAdmission.getState());
+        admission.setPincode(updatedAdmission.getPincode());
+        admission.setNationality(updatedAdmission.getNationality());
+        admission.setSslc(updatedAdmission.getSslc());
+        admission.setHsc(updatedAdmission.getHsc());
+        admission.setDiploma(updatedAdmission.getDiploma());
+        admissionR.save(admission);
             return "Admission details edited";
         }
         return "Admission not Found";
     }
 
-    public void addStudentform(StudentformModel studentformModel ){
-        StudentformModel studentformModel1 = studentformRepository.findByStudentIdNumber(studentformModel.getStudentIdNumber());
-        if(studentformModel1 != null){
-            studentformModel1.setCourseId(studentformModel.getCourseId());
-            studentformRepository.save(studentformModel1);
-        } else {
-            studentformRepository.save(studentformModel);
-        }
-    }
-
-
-    public List<StudentformModel> getStudentformModel(){
-        return studentformRepository.findAll();
-      }
 
     public CourseModel viewEnrolledCourse(Integer studentId){
-        StudentformModel studentformModel = studentformRepository.findByStudentIdNumber(studentId);
-        System.out.println("student found "+ studentformModel.getCourseId() );
-        if(courseRepository.existsByCourseId(studentformModel.getCourseId())){
-            System.out.println("student found and couese also");
-            Optional<CourseModel> course =  courseRepository.findBycourseId(studentformModel.getCourseId());
+        AdmissionModel admissionmodel = admissionR.findByStudentIdNumber(studentId);
+        if(courseRepository.existsByCourseId(admissionmodel.getCourseId())){
+            Optional<CourseModel> course =  courseRepository.findBycourseId(admissionmodel.getCourseId());
             if(course.isPresent()){
-                System.out.println("course found ");
                 return course.get();
             } else {
-                System.out.println("course not found ");
                 return null;
             }
         }
         else{
-            System.out.println("student not found ");
             return null;
         }
 

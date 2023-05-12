@@ -9,7 +9,7 @@ store.subscribe( () => {
 
 export const studentDetails = async () => {
     try {
-      const response = await fetch(`${baseUrl}/user/viewStudentsform`,{
+      const response = await fetch(`${baseUrl}/user/viewAdmission`,{
         method: "GET",
         headers: {
           "Content-Type": "application/json",
