@@ -32,7 +32,7 @@ function App() {
         <Route path="/UserCourse" element={<UserCourse />} />
         <Route path="/Enrollcourse/:courseId" element={<Enrollcourse />} />
         <Route path="/Enrolledcourse" element={<EnrolledCourse/>}/>
-        <Route path="/FeedBack" element={<MemoryRouter><Review/></MemoryRouter>}/>
+        <Route path="/FeedBack" element={<Review/>}/>
         <Route path="*" element={<>404 no such page go to home page</>} />
       </Routes>
     </Router>
