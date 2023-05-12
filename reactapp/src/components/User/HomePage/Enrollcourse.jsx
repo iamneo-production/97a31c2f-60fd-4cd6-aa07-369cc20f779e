@@ -84,7 +84,7 @@ function Enrollcourse() {
     }
   }
   const postdata = async () => {
-    await fetch(`${baseUrl}user/addAdmission`, {
+    await fetch(`${baseUrl}/user/addAdmission`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${localStorage.token}`,
