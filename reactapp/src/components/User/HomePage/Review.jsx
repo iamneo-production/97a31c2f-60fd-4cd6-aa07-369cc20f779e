@@ -25,7 +25,9 @@ const Review = () => {
     console.log(`Name: ${name}\nMobile: ${mobile}\nEmail: ${email}\nComments: ${comments}`);
   };
 
-  const handlecancel = () => {
+
+   const handlecancel = () => {
+
     navigate("/viewacademy")
   }
 
@@ -95,6 +97,7 @@ const Review = () => {
         <button type="submit" id="submit">Submit</button>
         <button onClick={handlecancel}>cancel</button>
       </form>
+
     </UserGuard>
   );
 };

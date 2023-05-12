@@ -82,6 +82,7 @@ const EnrolledCourse = () => {
                 </div>
 
 
+
                     {courses && courses.length > 0 ? (
                         courses.map((course) => (
                             <div key={course.id} className='enrolled-course'>
@@ -92,7 +93,6 @@ const EnrolledCourse = () => {
                                 <Link to="/Viewacademy"><button className="my-learning-button">My Learning</button></Link>
                             </div>
                         ))
-
                     ) : (
                         <div>No courses found</div>
                     )}
