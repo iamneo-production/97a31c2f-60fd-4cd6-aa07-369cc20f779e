@@ -25,15 +25,15 @@ public class UserController {
     public UserController(UserService userService){
         this.userService =  userService;
     }
-  
+
     @PostMapping("user/addAdmission")
     public String saveNewUser(@RequestBody AdmissionModel admissionModel){
         userService.addAdmission(admissionModel);
         return "Course enrolled";
     }
     @GetMapping("user/viewAdmission")
-    public AdmissionModel viewAdmission(@RequestParam("id") Integer admissionid){         
-         return userService.getAdmission(admissionid);
+    public List<AdmissionModel> viewAdmission(){         
+         return userService.getAdmission();
     }
 
     @DeleteMapping("user/deleteAdmission/{id}")
@@ -42,30 +42,14 @@ public class UserController {
     }
 
     @PutMapping("user/editAdmission/{id}")
-    private String editAdmission(@PathVariable("id") Integer admissionid ){
-        return userService.editAdmission(admissionid);
+    private String editAdmission(@PathVariable("id") Integer admissionid, @RequestBody AdmissionModel updatedAdmission){
+        return userService.editAdmission(admissionid,updatedAdmission);
     }
 
-    @GetMapping("user/viewStatus")
-    public AdmissionModel viewStatus(@RequestParam("id") Integer admissionid){         
-         return userService.getAdmission(admissionid);
-    }
-
-    @PostMapping("user/studentForm")
-    public String saveNewStudentform(@RequestBody StudentformModel studnetformModel){
-        userService.addStudentform( studnetformModel);
-        return "enrolled";
-    }
-
-    @GetMapping("user/viewStudentsform")
-    public List<StudentformModel> viewStatus(){         
-         return userService.getStudentformModel();
-    }
-
+    
     @GetMapping("user/viewEnrolledCourse")
     public CourseModel viewEnrolledCourses(@RequestParam("studentid") Integer studentid){
         return userService.viewEnrolledCourse(studentid);
     }
-
 
 }
