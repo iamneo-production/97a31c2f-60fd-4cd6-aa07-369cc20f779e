@@ -1,5 +1,6 @@
 import { store } from "../store"
-const baseUrl = "https://8080-daefaebebcbbfafccddecaeebaeccc.project.examly.io";
+import { baseUrl } from "./authService";
+
 let token =""
 store.subscribe( () => {
   token = store.getState().auth.token;
@@ -8,7 +9,7 @@ store.subscribe( () => {
 
 export const studentDetails = async () => {
     try {
-      const response = await fetch(`${baseUrl}/user/viewStudentsfrom`,{
+      const response = await fetch(`${baseUrl}/user/viewStudentsform`,{
         method: "GET",
         headers: {
           "Content-Type": "application/json",
