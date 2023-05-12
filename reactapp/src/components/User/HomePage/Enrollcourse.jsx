@@ -17,7 +17,6 @@ function Enrollcourse() {
   const handlecancel = () => {
     navigate("/viewacademy")
   }
-
   const handleLogout = () => {
     store.dispatch({ type: "LOGOUT" });
     navigate("/login");
@@ -111,14 +110,18 @@ function Enrollcourse() {
       </pre>
 
       <div className="nvbar">
-        <h2>PG Admission</h2>
+        <Link to ="/Viewacademy">
+          <h2>PG Admission</h2>
+        </Link>
         <div className="link">
           <Link to="/Viewacademy">
             <h2>Institute</h2>
           </Link>
         </div>
         <div className="link">
-          <Link to="/Enrolledcourse">Enrolled course</Link>
+          <Link to="/Enrolledcourse">
+            Enrolled course
+          </Link>
         </div>
         <div className="out">
           <button data-testid="logout" name="logout" onClick={handleLogout}>
@@ -126,6 +129,9 @@ function Enrollcourse() {
           </button>
         </div>
       </div>
+      <Link to ="/Viewacademy">
+          <h5>Back To Home</h5>
+      </Link>
       <form className="info" onSubmit={handleSubmit}>
         <div className="form">
           <div className="form-body">
