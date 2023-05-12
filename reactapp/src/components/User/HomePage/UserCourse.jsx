@@ -46,7 +46,9 @@ const UserCourse = () => {
   return (
     <UserGuard>
       <div className="nvbar">
-        <h2>PG Admission</h2>
+        <Link to ="/Viewacademy">
+          <h2>PG Admission</h2>
+        </Link>
         <div className="link">
           <Link to="/Viewacademy">
             <h2>Institute</h2>
@@ -61,6 +63,9 @@ const UserCourse = () => {
           </button>
         </div>
       </div>
+      <Link to ="/Viewacademy">
+          <h5>Back To Home</h5>
+      </Link>
       <div className="hero sec">
         {viewdata.map((course) => {
           const {
