@@ -1,14 +1,24 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useNavigate } from "react-router";
+import { store } from "../../../store";
 import './Navpage.css'
+import { UserGuard } from '../../../AuthGuard/UserGuard';
 const Navpage = () => {
+    const navigate = useNavigate();
+    const handleLogout = () => {
+        store.dispatch({ type: "LOGOUT" });
+        navigate("/login");
+    };
 
     return (
-        <>
-            <div className="nvbar" data-testid = "user_navbar">
-                console.log("user dashboard");
+        <UserGuard>
+
+            <div className="nvbar" data-testid="user_navbar">
+                
+
                 <h2>PG Admission</h2>
-               
+
                 <div className="link">
                     <Link to="/Viewacademy">Institute</Link>
                 </div>
@@ -22,10 +32,15 @@ const Navpage = () => {
                     <button data-testid="logout" name='logout' onClick={handleLogout} >Logout</button>
                 </div>
             </div>
-            <div className="img">
-                <img src="https://media.istockphoto.com/id/953481084/photo/thats-a-wrap-folks.jpg?s=612x612&w=0&k=20&c=voXx6DEoIT7nHe6f90n4heMTCTiZFFha7FRnvkbvWvs=" alt="pic" />
+
+            <div className="image">
+                <div className='txt'>
+                    <h1>WELCOME TO PG ADMISSION PORTAL!!!</h1>
+                    <h6>Navigate to your future with us</h6>
+                </div>
             </div>
-        </>
+
+        </UserGuard>
     );
 }
 export default Navpage

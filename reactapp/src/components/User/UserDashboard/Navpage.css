@@ -1,0 +1,67 @@
+body{
+    margin: 0;
+    padding:0rem;
+    height: 100%;
+    width: 100%;
+}
+.nvbar{
+    color: aliceblue;
+    background-color:black;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    padding: 0 8px;
+    text-align:center;
+}
+.nvbar h2{
+    color: lavenderblush;
+    font-size:2rem;
+    text-align: center;
+}
+.nvbar link{
+    text-indent:50px;
+    word-spacing:50px;
+    white-space:nowrap;
+}
+.image{
+    height:93vh;
+    width:100%;
+    background-image:url(img4.jpg);
+    background-size:cover;
+    background-repeat:no-repeat;
+    animation-name: animate;
+    animation-direction:alternate-reverse;
+    animation-duration:15s;
+    animation-fill-mode:forwards;
+    animation-iteration-count:infinite;
+    animation-play-state:running;
+    animation-timing-function:ease-in-out;
+
+}
+.txt h1{
+    opacity: 10;
+    color: aliceblue;
+    text-align: center;
+    padding-top: 15%;
+    font-size: 3rem;
+    text-decoration: underline;
+    
+    
+}
+.txt h6{
+    color: aliceblue;
+    text-align: center;
+    
+}
+
+@keyframes animate{
+    50%{
+        background-image:url(img3.jpg);
+    }
+    100%{
+        background-image:url(img1.jpg);
+    }
+    
+    
+}

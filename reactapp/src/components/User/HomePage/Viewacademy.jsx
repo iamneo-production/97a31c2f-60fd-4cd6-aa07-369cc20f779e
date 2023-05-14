@@ -58,7 +58,9 @@ const Viewacademy = () => {
   return (
     <UserGuard>
       <div className="nvbar">
-        <h2>PG Admission</h2>
+       <Link to ="/Navpage">
+          <h2>PG Admission</h2>
+        </Link>
         <h4>Institute</h4>
         <div className="link">
           <Link to="/Enrolledcourse">Enrolled course</Link>

@@ -11,6 +11,9 @@ import Viewcourse from './components/Admin/Course/Viewcourse';
 import Editcourse from './components/Admin/Course/Editcourse';
 import EnrolledCourse from './components/User/EnrolledCourse';
 import FeedbackForm from './components/User/HomePage/Review';
+import Navpage from './components/User/UserDashboard/Navpage';
+import Firstpage from './components/Admin/AdminDashboard/Firstpage';
+
 
 function App() {
   
@@ -20,6 +23,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login"element={<Login />} />
         <Route path="/" element={<Login />} />
+        <Route path="/Firstpage" element={<Firstpage/>}/>
         <Route path="/admin/dashboard" element={<AdminHomePage /> }/>
         <Route path="/admin/addInstitute" element={<AcademyForm type="ADD"/>}/>
         <Route path="/admin/editInstitute/:id" element={<AcademyForm type="EDIT"/>}/>
@@ -27,6 +31,7 @@ function App() {
         <Route path="/admin/viewCourse" element={<Viewcourse/>}/>
         <Route path="/admin/editCourse/:id" element={<Editcourse />} />
         <Route path="/admin/Viewstudent" element={<AdminStudent />} />
+        <Route path="/Navpage"  element={<Navpage/>} />
         <Route path="/Viewacademy" element={<Viewacademy />} />
         <Route path="/UserCourse" element={<UserCourse />} />
         <Route path="/Enrollcourse/:courseId" element={<Enrollcourse />} />
@@ -37,4 +42,5 @@ function App() {
     </Router>
   );
 }
+
 export default App;

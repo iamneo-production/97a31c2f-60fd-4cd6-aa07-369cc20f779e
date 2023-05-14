@@ -46,7 +46,7 @@ const UserCourse = () => {
   return (
     <UserGuard>
       <div className="nvbar">
-        <Link to ="/Viewacademy">
+        <Link to ="/Navpage">
           <h2>PG Admission</h2>
         </Link>
         <div className="link">

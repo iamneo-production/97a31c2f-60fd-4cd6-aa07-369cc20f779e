@@ -59,7 +59,7 @@ const EnrolledCourse = () => {
         <UserGuard>
             <div>
                 <div className='navbar'>
-                <Link to ="/Viewacademy">
+                <Link to ="/Navpage">
                     <h2>PG Admission</h2>
                 </Link>
                     <br></br>
