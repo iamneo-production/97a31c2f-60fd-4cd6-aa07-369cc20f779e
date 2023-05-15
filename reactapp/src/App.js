@@ -1,4 +1,4 @@
-import { BrowserRouter as Router,Route,Routes } from 'react-router-dom';
+import { BrowserRouter as Router,Route,Routes, MemoryRouter } from 'react-router-dom';
 import Signup from './components/Auth/Signup/Signup';
 import Login from './components/Auth/Login/Login';
 import AdminHomePage, { AcademyForm } from './components/Admin/AdminHomePage/AdminHomePage';
@@ -10,6 +10,8 @@ import Course from './components/Admin/Course/Course';
 import Viewcourse from './components/Admin/Course/Viewcourse';
 import Editcourse from './components/Admin/Course/Editcourse';
 import EnrolledCourse from './components/User/EnrolledCourse';
+import Review from './components/User/Review/Review';
+
 
 function App() {
   
@@ -30,6 +32,7 @@ function App() {
         <Route path="/UserCourse" element={<UserCourse />} />
         <Route path="/Enrollcourse/:courseId" element={<Enrollcourse />} />
         <Route path="/Enrolledcourse" element={<EnrolledCourse/>}/>
+        <Route path="/FeedBack" element={<Review/>}/>
         <Route path="*" element={<>404 no such page go to home page</>} />
       </Routes>
     </Router>

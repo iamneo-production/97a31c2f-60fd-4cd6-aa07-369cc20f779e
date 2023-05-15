@@ -34,15 +34,24 @@ public class AdmissionModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String studentName;
-    private Date studentDOB;
-    private String address;
-    private String mobile;
-    private Integer SSLC;
-    private Integer HSC;
-    private Integer Diploma;
-    private String eligibility;
     private Integer courseId;
-    private Integer instituteId;
+    private Integer studentIdNumber;
+    private String firstName;
+    private String lastName;
+    private String fatherName;
+    private String motherName;
+    private String phoneNumber1;
+    private String phoneNumber2;
+    private String emailId;
+    private Date  studentDOB;
+    private String houseNumber;
+    private String streetName;
+    private String areaName;
+    private String state;
+    private Integer pincode;
+    private String nationality;
+    private Integer sslc;
+    private Integer hsc;
+    private Integer diploma;
     
 }

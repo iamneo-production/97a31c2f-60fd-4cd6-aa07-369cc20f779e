@@ -4,8 +4,8 @@ import "./Enrollcourse.css";
 import { useNavigate } from "react-router";
 import { UserGuard } from "../../../AuthGuard/UserGuard";
 import { store } from "../../../store";
+import { baseUrl } from "../../../api/authService";
 
-const baseUrl = "https://8080-daefaebebcbbfafccddecaeebaeccc.project.examly.io";
 let auth = "";
 store.subscribe(() => {
   auth = store.getState().auth;
@@ -17,7 +17,6 @@ function Enrollcourse() {
   const handlecancel = () => {
     navigate("/viewacademy")
   }
-
   const handleLogout = () => {
     store.dispatch({ type: "LOGOUT" });
     navigate("/login");
@@ -85,7 +84,7 @@ function Enrollcourse() {
     }
   }
   const postdata = async () => {
-    await fetch(`${baseUrl}/user/studentForm`, {
+    await fetch(`${baseUrl}/user/addAdmission`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${localStorage.token}`,
@@ -111,14 +110,18 @@ function Enrollcourse() {
       </pre>
 
       <div className="nvbar">
-        <h2>PG Admission</h2>
+        <Link to ="/Viewacademy">
+          <h2>PG Admission</h2>
+        </Link>
         <div className="link">
           <Link to="/Viewacademy">
             <h2>Institute</h2>
           </Link>
         </div>
         <div className="link">
-          <Link to="/Enrolledcourse">Enrolled course</Link>
+          <Link to="/Enrolledcourse">
+            Enrolled course
+          </Link>
         </div>
         <div className="out">
           <button data-testid="logout" name="logout" onClick={handleLogout}>
@@ -126,6 +129,9 @@ function Enrollcourse() {
           </button>
         </div>
       </div>
+      <Link to ="/Viewacademy">
+          <h5>Back To Home</h5>
+      </Link>
       <form className="info" onSubmit={handleSubmit}>
         <div className="form">
           <div className="form-body">

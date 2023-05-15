@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import { store } from "../../../store";
 import { UserGuard } from "../../../AuthGuard/UserGuard";
 import "./Viewacademy.css";
-const baseUrl = "https://8080-daefaebebcbbfafccddecaeebaeccc.project.examly.io";
+import { baseUrl } from "../../../api/authService";
+
 let auth = "";
 store.subscribe(() => {
   auth = store.getState().auth;
@@ -61,6 +62,9 @@ const Viewacademy = () => {
         <h4>Institute</h4>
         <div className="link">
           <Link to="/Enrolledcourse">Enrolled course</Link>
+        </div>
+        <div className="link">
+          <Link to="/FeedBack">FeedBack</Link>
         </div>
         <div className="out">
           <button data-testid="logout" name="logout" onClick={handleLogout}>
