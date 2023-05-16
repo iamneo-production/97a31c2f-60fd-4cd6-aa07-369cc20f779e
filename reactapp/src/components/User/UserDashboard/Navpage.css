@@ -4,28 +4,61 @@ body{
     height: 100%;
     width: 100%;
 }
-.nvbar{
+.top{
     color: aliceblue;
-    background-color:black;
     display:flex;
     justify-content: space-between;
     align-items: center;
     margin: 0;
     padding: 0 8px;
     text-align:center;
+    font-size:1rem;
 }
-.nvbar h2{
+.nv h2{
+    font-size:3rem;
+    color:bisque;
+    font-weight: bolder;
+    
+    
+}
+.first{
+    display:flex;
+    justify-content:space-equally;
+    align-items: center;
+}
+.link:hover{
+    font-weight: bold;
+    font-size:2rem;
+    color:lavender
+}
+.out{
     color: lavenderblush;
     font-size:2rem;
+    font-weight:bold;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     text-align: center;
+    animation-name: color; 
+    animation-iteration-count:infinite;
+    animation-duration: 10s;
+    animation-play-state: running;
+    
 }
-.nvbar link{
-    text-indent:50px;
-    word-spacing:50px;
-    white-space:nowrap;
+@keyframes color {
+    0%{color:skyblue}
+    10%{color:lightsalmon}
+    20%{color:aquamarine}
+    30%{color:tomato}
+    40%{color:lightseagreen}
+    50%{color:hotpink}
+    60%{color:lightgreen}
+    70%{color:lightskyblue}
+    80%{color:lightcoral}
+    90%{color:lime}
+    100%{color:lightpink}
 }
-.image{
-    height:93vh;
+
+.nv{
+    height: 100vh;
     width:100%;
     background-image:url(img4.jpg);
     background-size:cover;
@@ -37,24 +70,7 @@ body{
     animation-iteration-count:infinite;
     animation-play-state:running;
     animation-timing-function:ease-in-out;
-
 }
-.txt h1{
-    opacity: 10;
-    color: aliceblue;
-    text-align: center;
-    padding-top: 15%;
-    font-size: 3rem;
-    text-decoration: underline;
-    
-    
-}
-.txt h6{
-    color: aliceblue;
-    text-align: center;
-    
-}
-
 @keyframes animate{
     50%{
         background-image:url(img3.jpg);
@@ -62,6 +78,17 @@ body{
     100%{
         background-image:url(img1.jpg);
     }
-    
-    
 }
+.txt h1{
+    color:cornsilk;
+    text-align: center;
+    font-size: 3rem;
+    font-weight:bolder;
+    padding-top: 15%;
+    text-decoration:none;
+}
+.txt h6{
+    color: aliceblue;
+    text-align: center;
+}
+

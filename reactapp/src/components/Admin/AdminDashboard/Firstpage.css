@@ -30,7 +30,7 @@ body{
     background-image:url(img4.jpg);
     background-size:cover;
     background-repeat:no-repeat;
-    animation-name: animate;
+    animation-name: animae;
     animation-direction:alternate-reverse;
     animation-duration:15s;
     animation-fill-mode:forwards;
@@ -55,7 +55,7 @@ body{
     
 }
 
-@keyframes animate{
+@keyframes animae{
     50%{
         background-image:url(img3.jpg);
     }

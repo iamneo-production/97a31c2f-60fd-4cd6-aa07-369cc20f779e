@@ -14,33 +14,35 @@ const Navpage = () => {
     return (
         <UserGuard>
 
-            <div className="nvbar" data-testid="user_navbar">
-                
+            <div className="nv" data-testid="user_navbar">
+                <div className='top'>
+                    <div>
+                        <h2>PG Admission</h2>
+                    </div>
+                    <div className='first'>
+                        <div className="link">
+                            <Link to="/Viewacademy">Institute   &nbsp;  &nbsp;  &nbsp;</Link>
+                        </div>
 
-                <h2>PG Admission</h2>
+                        <div className="link">
+                            <Link to="/Enrolledcourse">Enrolledcourse   &nbsp;  &nbsp;  &nbsp;</Link>
+                        </div>
 
-                <div className="link">
-                    <Link to="/Viewacademy">Institute</Link>
+                        <div className="link">
+                            <Link to="/FeedBack">FeedBack</Link>
+                        </div>
+                    </div>
+                    <div className="out">
+                        <button data-testid="logout" name='logout' onClick={handleLogout} >Logout</button>
+                    </div>
                 </div>
-                <div className="link">
-                    <Link to="/Enrolledcourse">Enrolled course</Link>
-                </div>
-                <div className="link">
-                    <Link to="/FeedBack">FeedBack</Link>
-                </div>
-                <div className="out">
-                    <button data-testid="logout" name='logout' onClick={handleLogout} >Logout</button>
-                </div>
-            </div>
 
-            <div className="image">
                 <div className='txt'>
                     <h1>WELCOME TO PG ADMISSION PORTAL!!!</h1>
                     <h6>Navigate to your future with us</h6>
                 </div>
             </div>
-
-        </UserGuard>
+        </UserGuard >
     );
 }
 export default Navpage

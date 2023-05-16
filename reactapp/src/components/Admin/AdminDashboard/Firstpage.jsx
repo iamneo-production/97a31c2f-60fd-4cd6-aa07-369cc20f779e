@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import NavBar from '../Navbar/Navbar'
 import { useNavigate } from "react-router";
 import { store } from "../../../store";
 import './Firstpage.css'
@@ -13,8 +14,9 @@ const Firstpage = () => {
 
     return (
         <AdminGuard>
+            <NavBar/>
 
-            <div className="nvbar" data-testid="user_navbar">
+            {/* <div className="nvbar" data-testid="user_navbar">
                 
 
                 <h2>PG Admission</h2>
@@ -31,7 +33,7 @@ const Firstpage = () => {
                 <div className="out">
                     <button data-testid="logout" name='logout' onClick={handleLogout} >Logout</button>
                 </div>
-            </div>
+            </div> */}
 
             <div className="image">
                 <div className='txt'>
