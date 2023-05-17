@@ -1,4 +1,4 @@
-.add-course-btn {
+/* .add-course-btn {
     position: fixed;
     bottom: 20px;
     right: 20px;
@@ -14,7 +14,63 @@
   
   .add-course-btn:hover {
     background-color: #3e9746;
+  } */
+  .add-course-btn{
+    position: fixed;
+    bottom:20px;
+    right:20px;
+    width: 60px;
+    height:60px;
+    float:left;
+    margin:0 5px;
+    background:#2A7230;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0px 10px 10px rgba(0,0,0,0.1);
+    transition: all 0.3s ease-out;
+    overflow: hidden;
   }
+  
+  .add-course-btn:hover{
+    width: 165px;
+  }
+  
+  .add-course-btn .icon{
+    height: 60px;
+    width:60px;
+    text-align: center;
+    border-radius: 50px;
+    box-sizing: border-box;
+  }
+  
+  .add-course-btn .icon i{
+    font-size: 25px;
+    line-height: 60px;
+    color: white;
+  }
+  
+  .add-course-btn:hover::after{
+    content: "Add Course";
+    display: block;
+    position: absolute;
+    left: 50px;
+    top: 0;
+    width: 100px;
+    height: 60px;
+    background: #2A7230;
+    font-weight: bold;
+    line-height: 60px;
+    text-align: center;
+    border-radius: 0 50px 50px 0;
+  }
+  
+  
+  /* .add-course-btn span{
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 60px;
+    margin-left: 10px;
+  } */
   
   /* Search bar */
   .search-box {
@@ -61,7 +117,7 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 30px;
-    background-color: #f5f5f5;
+    background-color: #e6e3e3;
     padding: 30px;
     max-width: 85%; 
     margin-left:2%;
@@ -143,11 +199,14 @@
   .course-card-footer button,
   .course-card-footer span {
     margin-left: 10px;
-    background-color: transparent;
-    border: none;
     cursor: pointer;
-    font-size: 20px;
+
   }
+    /* background-color: transparent; */
+    /* border: none;
+    cursor: pointer;
+    font-size: 20px; */
+  /* }  */
   
   .course-card-footer button:hover,
   .course-card-footer span:hover {

@@ -136,19 +136,20 @@ const Adminacademy = () => {
 
   return (
     <AdminGuard>
+      <div className="admin-search-container">
+        <input
+          type="text"
+          name="search"
+          value={searchTerm}
+          className='search-input'
+          placeholder="Type here to Search Institute"
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+        <button type="button" className='search-btn' onClick={() => filterAcademyData()}>
+          Search
+        </button>
+      </div>
       <div className="admin-academy-container">
-        <div className="admin-search-container">
-          <input
-            type="text"
-            name="search"
-            value={searchTerm}
-            placeholder="Type here to Search Institute"
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-          <button type="button" onClick={() => filterAcademyData()}>
-            Search
-          </button>
-        </div>
         {isLoading && <h4>Loading...</h4>}
         {isError.state && <h4>{isError.msg}</h4>}
         <div className="academy-display-container">
@@ -156,36 +157,42 @@ const Adminacademy = () => {
             const { instituteId, instituteName, instituteAddress, imageUrl } =
               eachAcademy;
             return (
-              <div
-                id={"adminInstituteGrid" + (index + 1)}
-                className="each-academy-cell"
-                key={instituteId}
-              >
-                <img src={imageUrl} alt={instituteName} />
-                <h4>{instituteName}</h4>
-                <h4>{instituteAddress}</h4>
-                <button
-                  type="submit"
-                  id="editInstitute"
-                  onClick={() => handleEdit(instituteId)}
+              <div className=".admin-institute-grid-container">
+                <div
+                  id={"adminInstituteGrid" + (index + 1)}
+                  className="each-academy-cell"
+                  key={instituteId}
                 >
-                  📝
-                </button>
-                <button
-                  type="submit"
-                  id="deleteInstitute"
-                  onClick={() => handleDelete(instituteId)}
-                >
-                  🗑️
-                </button>
+                  <img src={imageUrl} alt={instituteName} />
+                  <h4 className="admin-institute-name">{instituteName}</h4>
+                  <h4 className="admin-institute-address">Place : {instituteAddress}</h4>
+                  <div className="action-btn">
+                  <button
+                    type="submit"
+                    className="admin-edit-btn"
+                    id="editInstitute"
+                    onClick={() => handleEdit(instituteId)}
+                  >
+                    <i className="fa-regular fa-pen-to-square"></i>
+                  </button>
+                  <button
+                    type="submit"
+                    className="admin-delete-btn"
+                    id="deleteInstitute"
+                    onClick={() => handleDelete(instituteId)}
+                  >
+                    <i className="fa-regular fa-trash-can"></i>
+                  </button>
+                  </div>
+                </div>
               </div>
             );
           })}
         </div>
         <div className="admin-add-academy-button">
-          <button type="submit" onClick={() => handleAdd()}>
+          <button type="submit" className='admin-add-institute-icon' onClick={() => handleAdd()}>
             {" "}
-            ➕ Add Institute
+            <i className="fa-solid fa-circle-plus"></i>Add Institute
           </button>
         </div>
       </div>
@@ -289,19 +296,20 @@ export const AcademyForm = ({ type }) => {
   return (
     <AdminGuard>
       <Navbar />
+      <button
+        className="back-to-home"
+        type="submit"
+        onClick={() => {
+          navigate("/admin/dashboard");
+        }}
+      >
+        Back to Home
+      </button>
       <div className="admin-academy-form">
-        {type === "ADD" ? <h1>Add Academy</h1> : <h1>Edit Academy</h1>}
-        <button
-          type="submit"
-          onClick={() => {
-            navigate("/admin/dashboard");
-          }}
-        >
-          Back to Home
-        </button>
+        {type === "ADD" ? <h1 className="head-container">Add Academy Details</h1> : <h1 className="head-container">Edit Academy Details</h1>}
         <form className="admin-academy-form-container">
-          <div>
-            <label>Academy Name : </label>
+          <div className="form-group">
+            <label className='label-heading'>Academy Name : </label>
             <input
               type="text"
               id="academyName"
@@ -311,8 +319,8 @@ export const AcademyForm = ({ type }) => {
               onChange={(e) => handleChange(e, "instituteName")}
             />
           </div>
-          <div>
-            <label>Contact Number : </label>
+          <div className="form-group">
+            <label className='label-heading'>Contact Number : </label>
             <input
               type="text"
               id="contactNumber"
@@ -322,8 +330,8 @@ export const AcademyForm = ({ type }) => {
               onChange={(e) => handleChange(e, "mobile")}
             />
           </div>
-          <div>
-            <label>Image Url : </label>
+          <div className="form-group">
+            <label className='label-heading'>Image Url : </label>
             <input
               type="text"
               id="imageUrl"
@@ -333,8 +341,8 @@ export const AcademyForm = ({ type }) => {
               onChange={(e) => handleChange(e, "imageUrl")}
             />
           </div>
-          <div>
-            <label>Email Id : </label>
+          <div className="form-group">
+            <label className='label-heading'>Email Id : </label>
             <input
               type="text"
               id="emailId"
@@ -344,8 +352,8 @@ export const AcademyForm = ({ type }) => {
               onChange={(e) => handleChange(e, "email")}
             />
           </div>
-          <div>
-            <label>Academy Location : </label>
+          <div className="form-group">
+            <label className='label-heading'>Academy Location : </label>
             <input
               type="text"
               id="academyLocation"
@@ -355,8 +363,8 @@ export const AcademyForm = ({ type }) => {
               onChange={(e) => handleChange(e, "instituteAddress")}
             />
           </div>
-          <div>
-            <label>Academy Description : </label>
+          <div className="form-group">
+            <label className='label-heading'>Academy Description : </label>
             <textarea
               rows={5}
               cols={50}

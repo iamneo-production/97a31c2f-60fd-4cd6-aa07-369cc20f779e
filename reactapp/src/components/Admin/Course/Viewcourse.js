@@ -106,9 +106,10 @@ function Viewcourse() {
           <div>No courses found</div>
         )}
         <NavLink exact="true" to="/admin/addCourse" className="nav-link" id="addcourse" activeclassname="active">
-          <button id="add-course" className='add-course-btn'>
-            <i className="fa-solid fa-circle-plus"></i> Add Course
-          </button>
+          <div className='add-course-btn'>
+           <div className='icon'><i className="fa-solid fa-circle-plus "></i></div>
+            <span>Add Course</span>
+          </div>
         </NavLink>
       </div>
     </AdminGuard>
