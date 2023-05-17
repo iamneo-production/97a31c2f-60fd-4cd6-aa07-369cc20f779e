@@ -4,12 +4,13 @@
   box-sizing: border-box;
 }
 .nvbar {
-  background-color: rgb(195, 8, 176);
+
+  background-color: rgb(199, 53, 187);
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 0;
-  padding: 0 8px;
+  padding: 16px;
 }
 .nvbar h4 {
   text-align: center;
