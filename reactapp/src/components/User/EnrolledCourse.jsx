@@ -54,6 +54,7 @@ const EnrolledCourse=()=>{
 
     return(
         <UserGuard>
+            
             <div>
             <div className='navbar'>
                 <div className='middle'>

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { store } from "../../../store";
 import { UserGuard } from "../../../AuthGuard/UserGuard";
 import "./Viewacademy.css";
-const baseUrl = "https://8080-efdecffbbebcbbfafccddecaeebaeccc.project.examly.io";
+const baseUrl = "https://8080-ecebbecebcbbfafccddecaeebaeccc.project.examly.io";
 let auth = "";
 store.subscribe(() => {
   auth = store.getState().auth;
@@ -57,7 +57,7 @@ const Viewacademy = () => {
   return (
     <UserGuard>
       <div className="nvbar">
-        <h2>PG Admission</h2>
+        <h1>PG Admission</h1>
         <h4>Institute</h4>
         <div className="link">
           <Link to="/Enrolledcourse">Enrolled course</Link>
