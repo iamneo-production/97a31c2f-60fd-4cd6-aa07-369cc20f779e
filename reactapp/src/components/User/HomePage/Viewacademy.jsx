@@ -57,15 +57,18 @@ const Viewacademy = () => {
 
   return (
     <UserGuard>
-      <div className="nvbar">
-       <Link to ="/Navpage">
-          <h2>PG Admission</h2>
+      <div className="mainbar">
+        <Link to="/Navpage">
+          <h1>PG Admission</h1>
         </Link>
-        <h4>Institute</h4>
-        <div className="link">
+        <div className="one">
+          <Link to="/Viewacademy">Institute</Link>
+        </div>
+
+        <div className="one">
           <Link to="/Enrolledcourse">Enrolled course</Link>
         </div>
-        <div className="link">
+        <div className="one">
           <Link to="/FeedBack">FeedBack</Link>
         </div>
         <div className="out">
@@ -79,12 +82,14 @@ const Viewacademy = () => {
           type="text"
           name="search"
           value={search}
-          placeholder="Type here to Search Institute"
+          placeholder="Type to Search Institutes"
           onChange={(e) => setSearch(e.target.value)}
         />
-        <button type="button" onClick={() => handlesearch()}>
-          Search
-        </button>
+        <srch>
+          <button type="button" onClick={() => handlesearch()}>
+            SEARCH
+          </button>
+        </srch>
       </div>
       <div className="herosec">
         {viewdata.map((institute) => {

@@ -58,48 +58,53 @@ const EnrolledCourse = () => {
     return (
         <UserGuard>
             <div>
-                <div className='navbar'>
-                <Link to ="/Navpage">
-                    <h2>PG Admission</h2>
-                </Link>
-                    <br></br>
-                    <div className='middle'>
-                        <Link to="/Viewacademy"><button>Institute</button></Link>
-                    </div>
-
-                    <div className='middle1'>
-                        <button onClick={handleClick}>EnrolledCourse</button>
-                    </div>
-                    <div className='right'>
-                        <button onClick={handleLogout}>LogOut</button>
-                    </div>
-                    
-                </div>
-                <div class='hero sec'>
-                    <Link to="/Viewacademy">
-                        <h5>Back To Home</h5>
+                <div className="mainbar">
+                    <Link to="/Navpage">
+                        <h1>PG Admission</h1>
                     </Link>
+                    <div className="one">
+                        <Link to="/Viewacademy">Institute</Link>
+                    </div>
+
+                    <div className="one">
+                        <Link to="/Enrolledcourse">Enrolled course</Link>
+                    </div>
+                    <div className="one">
+                        <Link to="/FeedBack">FeedBack</Link>
+                    </div>
+                    <div className="out">
+                        <button data-testid="logout" name="logout" onClick={handleLogout}>
+                            Logout
+                        </button>
+                    </div>
                 </div>
 
+            </div>
+            <div className="home">
+                <Link to="/Viewacademy">
+                    <h5>Back To Home</h5>
+                </Link>
+            </div>
 
 
-                    {courses && courses.length > 0 ? (
-                        courses.map((course) => (
-                            <div key={course.id} className='enrolled-course'>
-                                <p><b>Course id: {course.id} </b></p>
-                                <p><b>Course Name: {course.courseName} </b></p>
-                                <p><b>courseDuration: {course.courseDuration} </b></p>
-                                <p><b>Course Description: {course.courseDescription} </b></p>
-                                <Link to="/Viewacademy"><button className="my-learning-button">My Learning</button></Link>
-                            </div>
-                        ))
-                    ) : (
-                        <div>No courses found</div>
-                    )}
+
+                {courses && courses.length > 0 ? (
+                    courses.map((course) => (
+                        <div key={course.id} className='enrolled-course'>
+                            <p><b>Course id: {course.id} </b></p>
+                            <p><b>Course Name: {course.courseName} </b></p>
+                            <p><b>courseDuration: {course.courseDuration} </b></p>
+                            <p><b>Course Description: {course.courseDescription} </b></p>
+                            <Link to="/Viewacademy"><button className="my-learning-button">My Learning</button></Link>
+                        </div>
+                    ))
+                ) : (
+                    <div>No courses found</div>
+                )}
 
 
-                </div>
-        </UserGuard>
+
+        </UserGuard >
 
     );
 }

@@ -109,19 +109,19 @@ function Enrollcourse() {
         )}
       </pre>
 
-      <div className="nvbar">
-        <Link to ="/Navpage">
-          <h2>PG Admission</h2>
+      <div className="mainbar">
+        <Link to="/Navpage">
+          <h1>PG Admission</h1>
         </Link>
-        <div className="link">
-          <Link to="/Viewacademy">
-            <h2>Institute</h2>
-          </Link>
+        <div className="one">
+          <Link to="/Viewacademy">Institute</Link>
         </div>
-        <div className="link">
-          <Link to="/Enrolledcourse">
-            Enrolled course
-          </Link>
+
+        <div className="one">
+          <Link to="/Enrolledcourse">Enrolled course</Link>
+        </div>
+        <div className="one">
+          <Link to="/FeedBack">FeedBack</Link>
         </div>
         <div className="out">
           <button data-testid="logout" name="logout" onClick={handleLogout}>
@@ -129,9 +129,11 @@ function Enrollcourse() {
           </button>
         </div>
       </div>
-      <Link to ="/Viewacademy">
+      <div className="home">
+        <Link to="/Viewacademy">
           <h5>Back To Home</h5>
-      </Link>
+        </Link>
+      </div>
       <form className="info" onSubmit={handleSubmit}>
         <div className="form">
           <div className="form-body">
@@ -416,6 +418,7 @@ function Enrollcourse() {
           </div>
         </div>
       </form>
+
     </UserGuard>
   );
 }

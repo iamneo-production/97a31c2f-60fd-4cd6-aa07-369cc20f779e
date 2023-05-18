@@ -45,17 +45,19 @@ const UserCourse = () => {
 
   return (
     <UserGuard>
-      <div className="nvbar">
-        <Link to ="/Navpage">
-          <h2>PG Admission</h2>
+      <div className="mainbar">
+        <Link to="/Navpage">
+          <h1>PG Admission</h1>
         </Link>
-        <div className="link">
-          <Link to="/Viewacademy">
-            <h2>Institute</h2>
-          </Link>
+        <div className="one">
+          <Link to="/Viewacademy">Institute</Link>
         </div>
-        <div className="link">
+
+        <div className="one">
           <Link to="/Enrolledcourse">Enrolled course</Link>
+        </div>
+        <div className="one">
+          <Link to="/FeedBack">FeedBack</Link>
         </div>
         <div className="out">
           <button data-testid="logout" name="logout" onClick={handleLogout}>
@@ -63,10 +65,12 @@ const UserCourse = () => {
           </button>
         </div>
       </div>
-      <Link to ="/Viewacademy">
+      <div className="home">
+        <Link to="/Viewacademy">
           <h5>Back To Home</h5>
-      </Link>
-      <div className="hero sec">
+        </Link>
+      </div>
+      <div className="onesec">
         {viewdata.map((course) => {
           const {
             id,
@@ -76,17 +80,34 @@ const UserCourse = () => {
             courseId,
           } = course;
           return (
-            <div key={id}>
-              <h3>course id: {courseId}</h3>
+            <table>
+              <div key={id}>
+                <tr>
+                  <th>course id</th>
+                  <th>course name</th>
+                  <th>course description</th>
+                  <th>course duration</th>
+
+                </tr>
+                <tr>
+                  <td>{courseId}</td>
+                  <td>{courseName}</td>
+                  <td>{courseDescription}</td>
+                  <td>{courseDuration}</td>
+                </tr>
+                {/* <h3>course id: {courseId}</h3>
               <h3>course name:{courseName}</h3>
               <h3>course description:{courseDescription}</h3>
-              <h3>course duration:{courseDuration}</h3>
-              <div className="out">
-                <button type="button" onClick={() => handleenroll(courseId)}>
-                  Enroll Now
-                </button>
+              <h3>course duration:{courseDuration}</h3> */}
+                <div className="en">
+
+                  <button type="button" onClick={() => handleenroll(courseId)}>
+                    <td>Enroll Now</td>
+                  </button>
+                </div>
+
               </div>
-            </div>
+            </table>
           );
         })}
       </div>

@@ -2,28 +2,54 @@
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
+  
 }
-.nvbar {
-  background-color: rgb(195, 8, 176);
+.mainbar {
+  background-color:aliceblue;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 0;
   padding: 0 8px;
 }
-.nvbar h4 {
+.mainbar h1{
+  font-size:2rem ;
+  font-weight:bolder;
+  font-style: oblique;
+}
+
+.one {
+  justify-content: space-around;
+  font-size: 1.5rem;
+  font-weight:350;
+}
+.one:hover{
+  color:darkslategray;
+  font-weight: 500;
+}
+.home{
+  font-size: 1rem;
+  font-style: oblique;
+  font-weight: lighter;
+  border:0.5px solid;
+  width:100px;
+  background-color: lightyellow;
+}
+.onesec{
+  background-color: azure;
+}
+.table{
   text-align: center;
-  color: aqua;
-  padding-left: 200px;
-  padding-right: 200px;
 }
-.nvbar h3 {
-  flex: 50%;
-  height: 100%;
-  padding-left: 10px;
+.table,th,td{
+  border:1px dashed;
+  text-align: center;
 }
-.nvbar.link {
-  flex: 50%;
-  height: 100%;
-  padding-right: 150px;
+.en{
+  padding:10px;
+}
+
+.th,td{
+  padding:15px;
+  
 }
