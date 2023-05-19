@@ -114,11 +114,12 @@ function Enrollcourse() {
           <h1>PG Admission</h1>
         </Link>
         <div className="one">
-          <Link to="/Viewacademy">Institute</Link>
+          <Link to="/Enrolledcourse">Enrolled course</Link>
         </div>
 
         <div className="one">
-          <Link to="/Enrolledcourse">Enrolled course</Link>
+          <Link to="/Viewacademy">Institute</Link>
+
         </div>
         <div className="one">
           <Link to="/FeedBack">FeedBack</Link>

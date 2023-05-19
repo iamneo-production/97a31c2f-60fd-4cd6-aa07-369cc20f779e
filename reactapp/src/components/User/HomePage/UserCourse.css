@@ -40,6 +40,9 @@
 }
 .table{
   text-align: center;
+  width:100px;
+  height:100vh;
+
 }
 .table,th,td{
   border:1px dashed;

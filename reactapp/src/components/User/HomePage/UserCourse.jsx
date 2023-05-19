@@ -81,37 +81,55 @@ const UserCourse = () => {
           } = course;
           return (
             <table>
-              <div key={id}>
-                <tr>
-                  <th>course id</th>
-                  <th>course name</th>
-                  <th>course description</th>
-                  <th>course duration</th>
 
-                </tr>
-                <tr>
-                  <td>{courseId}</td>
-                  <td>{courseName}</td>
-                  <td>{courseDescription}</td>
-                  <td>{courseDuration}</td>
-                </tr>
+            <div key={id}>
+              
+                <thead>
+                  <tr>
+                    <th>course id</th>
+                    <th>course name</th>
+                    <th>course description</th>
+                    <th>course duration</th>
+                    <th>click me</th>
+                  </tr>
+                </thead>
+
+
+
+                <tbody>
+                  <tr>
+                    <td>{courseId}</td>
+                    <td>{courseName}</td>
+                    <td>{courseDescription}</td>
+                    <td>{courseDuration}</td>
+                    
+
+                      <button type="button" onClick={() => handleenroll(courseId)}>
+                        <td>Enroll Now</td>
+                      </button>
+                    
+                  </tr>
+                </tbody>
+
                 {/* <h3>course id: {courseId}</h3>
               <h3>course name:{courseName}</h3>
               <h3>course description:{courseDescription}</h3>
               <h3>course duration:{courseDuration}</h3> */}
-                <div className="en">
+                {/* <div className="en">
 
                   <button type="button" onClick={() => handleenroll(courseId)}>
                     <td>Enroll Now</td>
                   </button>
+                </div> */}
                 </div>
+              </table>
 
-              </div>
-            </table>
+            
+
           );
         })}
       </div>
-    </UserGuard>
+    </UserGuard >
   );
 };
 
