@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import "./Enrollcourse.css";
+import "./ApplyForm.css";
 import { useNavigate } from "react-router";
 import { UserGuard } from "../../../AuthGuard/UserGuard";
 import { store } from "../../../store";
@@ -11,7 +11,7 @@ store.subscribe(() => {
   auth = store.getState().auth;
   console.log(auth);
 });
-function Enrollcourse() {
+function ApplyForm() {
   const navigate = useNavigate();
   const { courseId } = useParams();
   const handlecancel = () => {
@@ -109,19 +109,20 @@ function Enrollcourse() {
         )}
       </pre>
 
-      <div className="nvbar">
-        <Link to ="/Viewacademy">
-          <h2>PG Admission</h2>
+      <div className="mainbar">
+        <Link to="/Navpage">
+          <h1>PG Admission</h1>
         </Link>
-        <div className="link">
-          <Link to="/Viewacademy">
-            <h2>Institute</h2>
-          </Link>
+        <div className="one">
+          <Link to="/Enrolledcourse">Enrolled course</Link>
         </div>
-        <div className="link">
-          <Link to="/Enrolledcourse">
-            Enrolled course
-          </Link>
+
+        <div className="one">
+          <Link to="/HomePage">Institute</Link>
+
+        </div>
+        <div className="one">
+          <Link to="/FeedBack">FeedBack</Link>
         </div>
         <div className="out">
           <button data-testid="logout" name="logout" onClick={handleLogout}>
@@ -129,9 +130,11 @@ function Enrollcourse() {
           </button>
         </div>
       </div>
-      <Link to ="/Viewacademy">
+      <div className="home">
+        <Link to="/HomePage">
           <h5>Back To Home</h5>
-      </Link>
+        </Link>
+      </div>
       <form className="info" onSubmit={handleSubmit}>
       <h1 className="user-head-container">Enroll Now</h1>
         <div className="user-student-form-container">
@@ -415,7 +418,8 @@ function Enrollcourse() {
           </div>
         </div>
       </form>
+
     </UserGuard>
   );
 }
-export default Enrollcourse;
+export default ApplyForm;

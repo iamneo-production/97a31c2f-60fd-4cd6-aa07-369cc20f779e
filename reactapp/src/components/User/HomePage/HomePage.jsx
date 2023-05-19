@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import { store } from "../../../store";
 import { UserGuard } from "../../../AuthGuard/UserGuard";
-import "./Viewacademy.css";
+import "./HomePage.css";
 import { baseUrl } from "../../../api/authService";
 
 let auth = "";
@@ -11,7 +11,7 @@ store.subscribe(() => {
   auth = store.getState().auth;
   console.log(auth);
 });
-const Viewacademy = () => {
+const HomePage = () => {
   const [viewdata, setViewdata] = useState([]);
   const [fetchdata, setFetchdata] = useState([]);
   const [search, setSearch] = useState([]);
@@ -57,13 +57,18 @@ const Viewacademy = () => {
 
   return (
     <UserGuard>
-      <div className="nvbar">
-        <h1>PG Admission</h1>
-        <h4>Institute</h4>
-        <div className="link">
+      <div className="mainbar">
+        <Link to="/Navpage">
+          <h1>PG Admission</h1>
+        </Link>
+        <div className="one">
+          <Link to="/HomePage">Institute</Link>
+        </div>
+
+        <div className="one">
           <Link to="/Enrolledcourse">Enrolled course</Link>
         </div>
-        <div className="link">
+        <div className="one">
           <Link to="/FeedBack">FeedBack</Link>
         </div>
         <div className="out">
@@ -77,12 +82,14 @@ const Viewacademy = () => {
           type="text"
           name="search"
           value={search}
-          placeholder="Type here to Search Institute"
+          placeholder="Type to Search Institutes"
           onChange={(e) => setSearch(e.target.value)}
         />
-        <button type="button" onClick={() => handlesearch()}>
-          Search
-        </button>
+        <srch>
+          <button type="button" onClick={() => handlesearch()}>
+            SEARCH
+          </button>
+        </srch>
       </div>
       <div className="herosec">
         {viewdata.map((institute) => {
@@ -107,4 +114,4 @@ const Viewacademy = () => {
   );
 };
 
-export default Viewacademy;
+export default HomePage;

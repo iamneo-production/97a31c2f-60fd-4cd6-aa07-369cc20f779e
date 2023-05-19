@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { useNavigate } from "react-router";
+import { NavLink, useNavigate } from "react-router-dom";
 import { store } from "../../../store";
-import './Navpage.css'
-import { UserGuard } from '../../../AuthGuard/UserGuard';
+import './Firstpage.css'
+import { AdminGuard } from "../../../AuthGuard/AdminGuard"
 const Navpage = () => {
     const navigate = useNavigate();
     const handleLogout = () => {
@@ -12,7 +12,7 @@ const Navpage = () => {
     };
 
     return (
-        <UserGuard>
+        <AdminGuard>
 
             <div className="nv" data-testid="user_navbar">
                 <div className='top'>
@@ -21,11 +21,15 @@ const Navpage = () => {
                     </div>
                     <div className='first'>
                         <div className="link">
-                            <Link to="/HomePage">Institute   &nbsp;  &nbsp;  &nbsp;</Link>
+                            <NavLink to="/admin/dashboard">Institute   &nbsp;  &nbsp;  &nbsp;</NavLink>
                         </div>
 
                         <div className="link">
-                            <Link to="/Enrolledcourse">Enrolledcourse   &nbsp;  &nbsp;  &nbsp;</Link>
+                            <Link to="/admin/viewCourse">Course   &nbsp;  &nbsp;  &nbsp;</Link>
+                        </div>
+
+                        <div className="link">
+                            <Link to="/admin/Viewstudent">Students   &nbsp;  &nbsp;  &nbsp;</Link>
                         </div>
 
                         <div className="link">
@@ -46,11 +50,11 @@ const Navpage = () => {
                     <h1>BOOST YOUR CAREER WITH US</h1>
                     <p>we provide you a accessible virtual platform to check over various institutes,courses and let's you to chooose the best for you. We belive that exploring through neumerous institutions is important before getting into any course, This platform let's you to explore.And now it's time to CHOOSE YOUR'S!!!.</p>
                 </div>
-                <div className='yashaswi'>
-                    <span> </span>
+                <div className='last'>
+                    <h1><span> </span></h1>
                 </div>
             </div>
-        </UserGuard >
+        </AdminGuard >
     );
 }
 export default Navpage
