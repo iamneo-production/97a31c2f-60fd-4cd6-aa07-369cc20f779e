@@ -2,57 +2,68 @@
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
-  
+
 }
+
 .mainbar {
-  background-color:aliceblue;
+  background-color: aliceblue;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 0;
   padding: 0 8px;
 }
-.mainbar h1{
-  font-size:2rem ;
-  font-weight:bolder;
+
+.mainbar h1 {
+  font-size: 2rem;
+  font-weight: bolder;
   font-style: oblique;
 }
 
 .one {
   justify-content: space-around;
   font-size: 1.5rem;
-  font-weight:350;
+  font-weight: 350;
 }
-.one:hover{
-  color:darkslategray;
+
+.one:hover {
+  color: darkslategray;
   font-weight: 500;
 }
-.home{
+
+.home {
   font-size: 1rem;
   font-style: oblique;
   font-weight: lighter;
-  border:0.5px solid;
-  width:100px;
+  border: 0.5px solid;
+  width: 100px;
   background-color: lightyellow;
 }
-.onesec{
+
+.onesec {
   background-color: azure;
 }
-.table{
+
+.table {
   text-align: center;
-  width:100px;
-  height:100vh;
+  width: 100px;
+  height: 100vh;
 
 }
-.table,th,td{
-  border:1px dashed;
+
+.table,
+th,
+td {
+  border: 1px dashed;
   text-align: center;
 }
-.en{
-  padding:10px;
+
+.en {
+  padding: 10px;
 }
 
-.th,td{
-  padding:15px;
-  
+.th,
+td {
+  padding: 15px;
+
 }

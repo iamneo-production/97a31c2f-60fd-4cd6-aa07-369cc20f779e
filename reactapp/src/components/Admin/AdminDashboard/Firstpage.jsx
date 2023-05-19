@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { NavLink,useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { store } from "../../../store";
 import './Firstpage.css'
-import { AdminGuard} from "../../../AuthGuard/AdminGuard"
+import { AdminGuard } from "../../../AuthGuard/AdminGuard"
 const Navpage = () => {
     const navigate = useNavigate();
     const handleLogout = () => {

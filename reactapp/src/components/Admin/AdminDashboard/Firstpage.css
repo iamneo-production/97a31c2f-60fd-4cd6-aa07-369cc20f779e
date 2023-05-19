@@ -181,7 +181,7 @@ body {
 }
 
 span::before {
-    content:"BUILD A BETTER FUTURE!!!";
+    content: "BUILD A BETTER FUTURE!!!";
     animation-name: line;
     animation-direction: alternate-reverse;
     animation-duration: 6s;
@@ -195,9 +195,11 @@ span::before {
     0% {
         content: "LET'S GO!!!";
     }
-    10%{
-        content:"BUILD A BETTER FUTURE!!!";
+
+    10% {
+        content: "BUILD A BETTER FUTURE!!!";
     }
+
     20% {
         content: "ALL THE BEST!!!";
     }

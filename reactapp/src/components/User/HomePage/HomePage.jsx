@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import { store } from "../../../store";
 import { UserGuard } from "../../../AuthGuard/UserGuard";
-import "./Viewacademy.css";
+import "./HomePage.css";
 import { baseUrl } from "../../../api/authService";
 
 let auth = "";
@@ -11,7 +11,7 @@ store.subscribe(() => {
   auth = store.getState().auth;
   console.log(auth);
 });
-const Viewacademy = () => {
+const HomePage = () => {
   const [viewdata, setViewdata] = useState([]);
   const [fetchdata, setFetchdata] = useState([]);
   const [search, setSearch] = useState([]);
@@ -62,7 +62,7 @@ const Viewacademy = () => {
           <h1>PG Admission</h1>
         </Link>
         <div className="one">
-          <Link to="/Viewacademy">Institute</Link>
+          <Link to="/HomePage">Institute</Link>
         </div>
 
         <div className="one">
@@ -114,4 +114,4 @@ const Viewacademy = () => {
   );
 };
 
-export default Viewacademy;
+export default HomePage;

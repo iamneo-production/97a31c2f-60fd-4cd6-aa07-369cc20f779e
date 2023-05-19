@@ -21,7 +21,7 @@ const Navpage = () => {
                     </div>
                     <div className='first'>
                         <div className="link">
-                            <Link to="/Viewacademy">Institute   &nbsp;  &nbsp;  &nbsp;</Link>
+                            <Link to="/HomePage">Institute   &nbsp;  &nbsp;  &nbsp;</Link>
                         </div>
 
                         <div className="link">

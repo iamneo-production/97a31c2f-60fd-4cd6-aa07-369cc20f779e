@@ -3,16 +3,16 @@ import Signup from './components/Auth/Signup/Signup';
 import Login from './components/Auth/Login/Login';
 import AdminHomePage, { AcademyForm } from './components/Admin/AdminHomePage/AdminHomePage';
 import AdminStudent from './components/Admin/AdminStudent/AdminStudent';
-import Viewacademy from './components/User/HomePage/Viewacademy';
-import UserCourse from './components/User/HomePage/UserCourse';
-import Enrollcourse from './components/User/HomePage/Enrollcourse';
+import HomePage from './components/User/HomePage/HomePage';
+import UserCourse from './components/User/UserCourse/UserCourse';
+import ApplyForm from './components/User/ApplyForm/ApplyForm';
 import Course from './components/Admin/Course/Course';
 import Viewcourse from './components/Admin/Course/Viewcourse';
 import Editcourse from './components/Admin/Course/Editcourse';
 import EnrolledCourse from './components/User/EnrolledCourse';
-import FeedbackForm from './components/User/HomePage/Review';
-import Navpage from './components/User/UserDashboard/Navpage';
+import Navpage from './components/User/HomePage/Navpage';
 import Firstpage from './components/Admin/AdminDashboard/Firstpage';
+import Review from './components/User/Review/Review';
 
 
 function App() {
@@ -32,11 +32,11 @@ function App() {
         <Route path="/admin/editCourse/:id" element={<Editcourse />} />
         <Route path="/admin/Viewstudent" element={<AdminStudent />} />
         <Route path="/Navpage"  element={<Navpage/>} />
-        <Route path="/Viewacademy" element={<Viewacademy />} />
+        <Route path="/HomePage" element={<HomePage />} />
         <Route path="/UserCourse" element={<UserCourse />} />
-        <Route path="/Enrollcourse/:courseId" element={<Enrollcourse />} />
+        <Route path="/ApplyForm/:courseId" element={<ApplyForm />} />
         <Route path="/Enrolledcourse" element={<EnrolledCourse/>}/>
-        <Route path="/FeedBack" element={<FeedbackForm/>}/>
+        <Route path="/Review" element={<Review/>}/>
         <Route path="*" element={<>404 no such page go to home page</>} />
       </Routes>
     </Router>

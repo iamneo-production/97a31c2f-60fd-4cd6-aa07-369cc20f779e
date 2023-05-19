@@ -40,7 +40,7 @@ const UserCourse = () => {
     navigate("/login");
   };
   const handleenroll = (courseId) => {
-    navigate(`/Enrollcourse/${courseId}`);
+    navigate(`/ApplyForm/${courseId}`);
   };
 
   return (
@@ -50,7 +50,7 @@ const UserCourse = () => {
           <h1>PG Admission</h1>
         </Link>
         <div className="one">
-          <Link to="/Viewacademy">Institute</Link>
+          <Link to="/HomePage">Institute</Link>
         </div>
 
         <div className="one">
@@ -66,7 +66,7 @@ const UserCourse = () => {
         </div>
       </div>
       <div className="home">
-        <Link to="/Viewacademy">
+        <Link to="/HomePage">
           <h5>Back To Home</h5>
         </Link>
       </div>
@@ -82,8 +82,8 @@ const UserCourse = () => {
           return (
             <table>
 
-            <div key={id}>
-              
+              <div key={id}>
+
                 <thead>
                   <tr>
                     <th>course id</th>
@@ -102,12 +102,12 @@ const UserCourse = () => {
                     <td>{courseName}</td>
                     <td>{courseDescription}</td>
                     <td>{courseDuration}</td>
-                    
 
-                      <button type="button" onClick={() => handleenroll(courseId)}>
-                        <td>Enroll Now</td>
-                      </button>
-                    
+
+                    <button type="button" onClick={() => handleenroll(courseId)}>
+                      <td>Enroll Now</td>
+                    </button>
+
                   </tr>
                 </tbody>
 
@@ -121,10 +121,10 @@ const UserCourse = () => {
                     <td>Enroll Now</td>
                   </button>
                 </div> */}
-                </div>
-              </table>
+              </div>
+            </table>
 
-            
+
 
           );
         })}

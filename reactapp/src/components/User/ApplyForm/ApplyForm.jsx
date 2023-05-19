@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import "./Enrollcourse.css";
+import "./ApplyForm.css";
 import { useNavigate } from "react-router";
 import { UserGuard } from "../../../AuthGuard/UserGuard";
 import { store } from "../../../store";
@@ -11,7 +11,7 @@ store.subscribe(() => {
   auth = store.getState().auth;
   console.log(auth);
 });
-function Enrollcourse() {
+function ApplyForm() {
   const navigate = useNavigate();
   const { courseId } = useParams();
   const handlecancel = () => {
@@ -118,7 +118,7 @@ function Enrollcourse() {
         </div>
 
         <div className="one">
-          <Link to="/Viewacademy">Institute</Link>
+          <Link to="/HomePage">Institute</Link>
 
         </div>
         <div className="one">
@@ -131,7 +131,7 @@ function Enrollcourse() {
         </div>
       </div>
       <div className="home">
-        <Link to="/Viewacademy">
+        <Link to="/HomePage">
           <h5>Back To Home</h5>
         </Link>
       </div>
@@ -423,4 +423,4 @@ function Enrollcourse() {
     </UserGuard>
   );
 }
-export default Enrollcourse;
+export default ApplyForm;

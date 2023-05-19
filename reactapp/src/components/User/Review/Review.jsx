@@ -26,7 +26,7 @@ const Review = () => {
   };
 
 
-   const handlecancel = () => {
+  const handlecancel = () => {
 
     navigate("/viewacademy")
   }
@@ -35,7 +35,7 @@ const Review = () => {
   return (
     <UserGuard>
       <div className="nvbar">
-        <Link to="/Viewacademy">
+        <Link to="/HomePage">
           PG Admission
         </Link>
         <h4>Institute</h4>
@@ -48,7 +48,7 @@ const Review = () => {
           </button>
         </div>
       </div>
-      <Link to="/Viewacademy">Back To Home</Link>
+      <Link to="/HomePage">Back To Home</Link>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="name">Name</label>
