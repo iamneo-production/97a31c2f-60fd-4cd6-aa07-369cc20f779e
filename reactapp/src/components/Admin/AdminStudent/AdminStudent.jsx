@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Navbar from "../Navbar/Navbar";
 import { AdminGuard } from "../../../AuthGuard/AdminGuard";
 import { baseUrl } from '../../../api/authService';
+import './AdminStudent.css';
 
 const student = {
   firstName: '',
