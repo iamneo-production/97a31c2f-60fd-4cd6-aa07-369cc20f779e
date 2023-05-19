@@ -11,7 +11,7 @@ const Validation = (formData, errors) => {
       ...errors,
       username: {
         required: true,
-        message: "Username must be atleast 3 characters",
+        message: "Username must be at least 3 characters",
       },
     };
     errors.hasError = true;
@@ -45,7 +45,7 @@ const Validation = (formData, errors) => {
       ...errors,
       confirmPassword: {
         required: true,
-        message: "Password and Confirm Password must be same",
+        message: "Password and Confirm Password must be the same",
       },
     };
     errors.hasError = true;
@@ -55,7 +55,7 @@ const Validation = (formData, errors) => {
       ...errors,
       password: {
         required: true,
-        message: "Password must be atleast 6 characters",
+        message: "Password must be at least 6 characters",
       },
     };
     errors.hasError = true;
@@ -77,6 +77,28 @@ const Validation = (formData, errors) => {
     };
     errors.hasError = true;
   }
+
+  // Password validation
+  var specialChars = /[!@#$%^&*(),.?":{}|<>]/;
+  var uppercaseChars = /[A-Z]/;
+  var numberChars = /[0-9]/;
+
+  if (
+    !formData.password.match(specialChars) ||
+    !formData.password.match(uppercaseChars) ||
+    !formData.password.match(numberChars)
+  ) {
+    errors = {
+      ...errors,
+      password: {
+        required: true,
+        message:
+          "Password must contain at least one special character, one uppercase letter, and one number",
+      },
+    };
+    errors.hasError = true;
+  }
+
   return errors;
 };
 
