@@ -257,52 +257,7 @@ th {
   .address-container input:focus {
     border-color: #4CAF50;
   }
-  
-  .form-container {
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 30px;
-    width: 100%;
-  }
-  
-  .form-container h2 {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #555;
-    margin-bottom: 15px;
-  }
-  
-  .form-container .form-body {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-  
-  .form-container .form__label {
-    display: block;
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 5px;
-    text-align: left;
-  }
-  
-  .form-container .form__input {
-    border: 1px solid #ddd;
-    border-radius: 3px;
-    box-sizing: border-box;
-    font-size: 16px;
-    margin-bottom: 20px;
-    padding: 10px;
-    width: 100%;
-    transition: border-color 0.2s ease-in-out;
-  }
-  
-  .form-container .form__input:focus {
-    border-color: #4CAF50;
-  }
-  
-  
+    
   .username,
   .mobile,
   .SSLC,
@@ -333,7 +288,7 @@ th {
      background-color: #2A7230;
     color: #fff;
     margin-top: 20px;
-    margin-left:85%;
+    margin-left:80%;
   }
   
   .add-academy-btn:hover {
