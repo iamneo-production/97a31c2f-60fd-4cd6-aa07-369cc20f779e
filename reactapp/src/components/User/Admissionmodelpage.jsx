@@ -41,6 +41,12 @@ function Admissionmodelpage() {
             await deletestud(id)
 
             fetchstud()
+            .then((data) => {
+                console.log(data)
+            })
+                .catch((error) => {
+                    console.error(error)
+                });
         } catch (error) {
             console.error(error);
         }
