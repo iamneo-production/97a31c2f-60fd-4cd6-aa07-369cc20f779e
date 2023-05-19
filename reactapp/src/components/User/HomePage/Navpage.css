@@ -183,7 +183,7 @@ body {
     font-weight: bolder;
 }
 
-span::before {
+.yashaswi span::before {
     content: "BUILD A BETTER FUTURE!!!";
     animation-name: line;
     animation-direction: alternate-reverse;

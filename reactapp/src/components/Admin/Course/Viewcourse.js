@@ -94,9 +94,9 @@ function Viewcourse() {
                     <NavLink exact="true" to={`/admin/editCourse/${course.courseId}`} className="nav-link" id="editcourse" activeclassname="active">
                       <button id="edit-course" onClick={() => handleEditCourse(course.courseId)}> <i className="fa-regular fa-pen-to-square"></i></button>
                     </NavLink>
-                    <span className="nav-link" id="deletecourse" onClick={() => handleDelete(course.id)}>
+                    <span1 className="nav-link" id="deletecourse" onClick={() => handleDelete(course.id)}>
                       <i className="fa-regular fa-trash-can"></i>
-                    </span>
+                    </span1>
                   </div>
                 </div>
               </div>

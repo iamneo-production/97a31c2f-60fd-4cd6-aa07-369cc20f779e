@@ -44,26 +44,3 @@
   background-color: azure;
 }
 
-.table {
-  text-align: center;
-  width: 100px;
-  height: 100vh;
-
-}
-
-.table,
-th,
-td {
-  border: 1px dashed;
-  text-align: center;
-}
-
-.en {
-  padding: 10px;
-}
-
-.th,
-td {
-  padding: 15px;
-
-}
