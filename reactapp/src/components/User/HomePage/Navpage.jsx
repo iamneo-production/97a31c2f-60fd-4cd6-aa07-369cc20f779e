@@ -5,7 +5,8 @@ const Navpage = () => {
 
     return (
         <>
-            <div className="nvbar">
+            <div className="nvbar" data-testid = "user_navbar">
+                console.log("user dashboard");
                 <h2>PG Admission</h2>
                
                 <div className="link">
@@ -13,6 +14,9 @@ const Navpage = () => {
                 </div>
                 <div className="link">
                     <Link to="/Enrolledcourse">Enrolled course</Link>
+                </div>
+                <div className="link">
+                    <Link to="/FeedBack">FeedBack</Link>
                 </div>
                 <div className="out">
                     <button data-testid="logout" name='logout' onClick={handleLogout} >Logout</button>

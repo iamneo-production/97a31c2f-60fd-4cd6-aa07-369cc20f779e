@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router";
 import { store } from "../../../store";
 import { UserGuard } from "../../../AuthGuard/UserGuard";
-
 import "./UserCourse.css";
-const baseUrl = "https://8080-adbcafaeebcbbfafccddecaeebaeccc.project.examly.io";
+import { baseUrl } from "../../../api/authService";
+
 let auth = "";
 store.subscribe(() => {
   auth = store.getState().auth;
@@ -46,7 +46,9 @@ const UserCourse = () => {
   return (
     <UserGuard>
       <div className="nvbar">
-        <h2>PG Admission</h2>
+        <Link to ="/Viewacademy">
+          <h2>PG Admission</h2>
+        </Link>
         <div className="link">
           <Link to="/Viewacademy">
             <h2>Institute</h2>
@@ -61,6 +63,9 @@ const UserCourse = () => {
           </button>
         </div>
       </div>
+      <Link to ="/Viewacademy">
+          <h5>Back To Home</h5>
+      </Link>
       <div className="hero sec">
         {viewdata.map((course) => {
           const {

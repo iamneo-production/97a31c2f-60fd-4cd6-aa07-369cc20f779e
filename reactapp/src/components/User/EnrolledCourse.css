@@ -6,11 +6,6 @@
     margin: 0;
     padding: 0 8px;
 }
-.leftside{
-    flex:50%;
-    height:100%;
-    padding-left:   50px;
-}
 .middle{
    
     flex:50%;
@@ -18,13 +13,26 @@
     color:black;
     text-decoration: justify; 
     margin:auto;
+    padding-left: 350px;
+    padding-right: 250px;
 }
-.rightside{
+.middle1{
+   
+    flex:50%;
+    height:100%;   
+    color:black;
+    text-decoration: justify; 
+    margin:auto;
+    padding-left: 200px;
+    padding-right: 100px;
+}
+
+.right{
     
     flex:50%;
     height:100%;
     color:rgb(19, 19, 19);
-    padding-right: 150px;
+    padding-right: 0px;
 }
 .enrolled-course {
     border: 2px solid black;
@@ -32,6 +40,7 @@
     margin: 10px;
   }
   .my-learning-button {
+    text-align:right;
     margin-left: 200px;
     background-color:red;
     color: white;
@@ -41,3 +50,16 @@
     margin-top: 10px;
     cursor: pointer;
 }
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: black;
+    text-align: center;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 4px;
+    
+  }
+  
+  

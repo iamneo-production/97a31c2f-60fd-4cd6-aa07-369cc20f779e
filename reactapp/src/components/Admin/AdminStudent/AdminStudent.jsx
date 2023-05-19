@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Navbar from "../Navbar/Navbar";
 import { AdminGuard } from "../../../AuthGuard/AdminGuard";
-import "../AdminStudent/AdminStudent.css";
-
-const baseUrl = "https://8080-adbcafaeebcbbfafccddecaeebaeccc.project.examly.io";
+import { baseUrl } from '../../../api/authService';
 
 const student = {
   firstName: '',
