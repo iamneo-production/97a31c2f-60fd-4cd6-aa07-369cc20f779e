@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
-import { getCourses, editCourse } from '../../../api/courseApi.js';
-import NavBar from '../Navbar/Navbar.js';
+import React , { useState , useEffect } from "react";
+import { useParams , Link , useNavigate } from "react-router-dom";
+import { getCourses , editCourse } from "../../../api/courseApi.js";
+import NavBar from "../Navbar/Navbar.js";
 import { AdminGuard } from "../../../AuthGuard/AdminGuard";
-import '../Course/Addcourse.css';
+import "../Course/Addcourse.css";
 
 
 function Editcourse(props) {
@@ -36,6 +36,8 @@ function Editcourse(props) {
       navigate('/admin/viewCourse');
     
   }
+
+
   const fetchData = async () => {
     const data = await getCourses();
   }
@@ -57,6 +59,7 @@ function Editcourse(props) {
       });
   }, [id]);
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -66,7 +69,11 @@ function Editcourse(props) {
     }
   };
 
+
+
   return (
+
+
     <AdminGuard>
       <NavBar />
       <div className='course'>
@@ -141,17 +148,25 @@ function Editcourse(props) {
             />
           </div>
           <div>
-          <button className="btn-primary" type="submit" onClick={(e) => handleClick(e)}>
+          <button 
+          className="btn-primary"
+           type="submit"
+            onClick={(e) => handleClick(e)}>
             Update Course
           </button>
-          <Link to="/admin/viewCourse" className="btn-secondary">
+          <Link 
+          to="/admin/viewCourse" 
+          className="btn-secondary">
             Cancel
           </Link>
           </div>
         </form>
       </div>
     </AdminGuard>
+
   );
 }
+
+
 
 export default Editcourse;
