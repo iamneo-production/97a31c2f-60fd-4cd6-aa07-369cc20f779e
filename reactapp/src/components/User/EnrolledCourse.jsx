@@ -57,6 +57,7 @@ const EnrolledCourse = () => {
 
     return (
         <UserGuard>
+            
             <div>
                 <div className="mainbar">
                     <Link to="/Navpage">
@@ -87,20 +88,22 @@ const EnrolledCourse = () => {
             </div>
 
 
+                    {courses && courses.length > 0 ? (
+                        courses.map((course) => (
+                            <div key={course.id} className='enrolled-course'>
+                                <p><b>Course id: {course.courseId} </b></p>
+                                <p><b>Course Name: {course.courseName} </b></p>
+                                <p><b>courseDuration: {course.courseDuration} </b></p>
+                                <p><b>Course Description: {course.courseDescription} </b></p>
+                                <Link to="/Admissionmodelpage"><button className="my-learning-button">My Learning</button></Link>
+                                
+                            </div>
+                        ))
+                    ) : (
+                        <div>No courses found</div>
+                    )}
 
-            {courses && courses.length > 0 ? (
-                courses.map((course) => (
-                    <div key={course.id} className='enrolled-course'>
-                        <p><b>Course id: {course.id} </b></p>
-                        <p><b>Course Name: {course.courseName} </b></p>
-                        <p><b>courseDuration: {course.courseDuration} </b></p>
-                        <p><b>Course Description: {course.courseDescription} </b></p>
-                        <Link to="/HOmePage"><button className="my-learning-button">My Learning</button></Link>
-                    </div>
-                ))
-            ) : (
-                <div>No courses found</div>
-            )}
+           
 
 
 

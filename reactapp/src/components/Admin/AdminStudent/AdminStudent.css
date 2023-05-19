@@ -1,0 +1,299 @@
+/* Back to home css */
+.back-to-home {
+  background-color: #fff;
+  border: 2px solid #2A7230;
+  color: #2A7230;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  margin-top: 20px;
+}
+
+.back-to-home:hover {
+  background-color: #2A7230;
+  color: #fff;
+}
+
+
+/* search bar css */
+.admin-search-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+  }
+  
+  .search-input {
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    padding: 10px;
+    width: 35%;
+  }
+  
+  .search-btn {
+    background-color: #2A7230;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1.2rem;
+    margin-left: 10px;
+    padding: 5px;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .search-btn:hover {
+    background-color: #3e9746;
+  }
+
+
+/* student information css */
+.student-heading {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #2A7230;
+}
+.edit-btn{
+  color:#2A7230;
+  font-size: 1rem;
+  background-color: #f8f9fa;
+  border: 1px solid #2A7230;
+  padding: 6px 12px;
+  border-radius: 4px;
+  margin-right: 8px;
+}
+.delete-btn{
+  color:#E62020;
+  font-size: 1rem;
+  background-color: #f8f9fa;
+  border: 1px solid #E62020;
+  padding: 6px 12px;
+  border-radius: 4px;
+}
+.edit-btn:hover{
+  color: #3e9746;
+  background-color: #d1e7d6;
+  border-color: #3e9746;
+}
+.delete-btn:hover{
+  color: #f24747;
+  background-color: #f1c6c5;
+  border-color: #f24747;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 12px;
+  width: 20%;
+}
+
+th {
+  background-color: rgb(167, 167, 167);
+  color: white;
+}
+
+.student-display-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  justify-content: space-between;
+}
+
+.student-card-info {
+  background-color: #f8f9fa;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  padding: 16px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Hover effect for student card */
+.student-card-info:hover {
+  background-color: #e9ecef;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translate(0, -5px);
+}
+
+
+
+/* add student btn */
+.admin-add-student-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .admin-add-student-icon {
+    display: flex;
+    align-items: center;
+    background-color: #2A7230;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 1%;
+  transition: all 0.3s ease-in-out;
+    
+  }
+  
+  .admin-add-student-icon:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .admin-add-student-icon i {
+    margin-right: 10px;
+  }
+  
+/* add student form css */
+.student-form-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+  
+  .head-container {
+    text-align: center;
+    margin-bottom: 15px;
+    font-weight: bold;
+    font-size: 1.9rem;
+    color: #555;
+  }
+  
+  .studentform {
+    background-color: #f8f8f8;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 100%;
+  }
+  
+  .form-body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .form__label {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-align: left;
+  }
+  
+  .form__input {
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    box-sizing: border-box;
+    font-size: 16px;
+    margin-bottom: 20px;
+    padding: 10px;
+    width: 100%;
+    transition: border-color 0.2s ease-in-out;
+  }
+  
+  .form__input:focus {
+    border-color: #4CAF50;
+  }
+.address-container {
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin-bottom: 30px;
+    width:100%
+  }
+  
+  .address-container h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 15px;
+  }
+  
+  .address-container .address {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .address-container label {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-align: left;
+  }
+  
+  .address-container input {
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    box-sizing: border-box;
+    font-size: 16px;
+    margin-bottom: 20px;
+    padding: 10px;
+    width: 100%;
+    transition: border-color 0.2s ease-in-out;
+  }
+  
+  .address-container input:focus {
+    border-color: #4CAF50;
+  }
+    
+  .username,
+  .mobile,
+  .SSLC,
+  .HSC,
+  .diploma,
+  .emailId,
+  .eligibility,
+  .courseId,
+  .studentDob {
+    width: 48%;
+  }
+  .address {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }  
+  .add-academy-btn {
+    padding: 15px 25px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out; 
+     background-color: #2A7230;
+    color: #fff;
+    margin-top: 20px;
+    margin-left:80%;
+  }
+  
+  .add-academy-btn:hover {
+    background-color: #3e8e41;
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  }
+  

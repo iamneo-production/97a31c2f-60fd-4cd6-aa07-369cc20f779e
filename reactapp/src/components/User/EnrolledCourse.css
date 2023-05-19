@@ -41,18 +41,31 @@
 }
 
 .enrolled-course {
-  border: 2px solid black;
-  padding: 10px;
-  margin: 10px;
+    border: 2px solid black;
+    padding: 10px;
+    margin: 10px;
+  }
+  .my-learning-button {
+    text-align:right;
+    margin-left: 200px;
+    background-color:red;
+    color: white;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
 }
-
-.my-learning-button {
-  margin-left: 200px;
-  background-color: red;
-  color: white;
-  padding: 8px;
-  border: none;
-  border-radius: 5px;
-  margin-top: 10px;
-  cursor: pointer;
-}
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: black;
+    text-align: center;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 4px;
+    
+  }
+  
+  

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Navbar from "../Navbar/Navbar";
 import { AdminGuard } from "../../../AuthGuard/AdminGuard";
 import { baseUrl } from '../../../api/authService';
+import './AdminStudent.css';
 
 const student = {
   firstName: '',
@@ -46,12 +47,12 @@ const AdminStudent = () => {
 
   useEffect(() => {
     fetchStudentData()
-    .then((data) => {
-      console.log("fetched student data success ", data);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+      .then((data) => {
+        console.log("fetched student data success ", data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }, []);
 
 
@@ -100,12 +101,12 @@ const AdminStudent = () => {
 
   const handleDelete = async (id) => {
     deleteStudent(id)
-    .then((data) => {
-      console.log("delete student data success ", data);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+      .then((data) => {
+        console.log("delete student data success ", data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   const deleteStudent = async (id) => {
@@ -118,12 +119,12 @@ const AdminStudent = () => {
     });
     console.log(response);
     fetchStudentData()
-    .then((data) => {
-      console.log("fetched student data success ", data);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+      .then((data) => {
+        console.log("fetched student data success ", data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   const handleEdit = (id) => {
@@ -155,39 +156,70 @@ const AdminStudent = () => {
 
       <div className="admin-student-container">
         <div className="admin-search-container">
-          <input type="text" name="search" value={searchTerm} placeholder="Type here to Search Student" onChange={(e) => setSearchTerm(e.target.value)} />
-          <button type="button" onClick={() => filterStudentData()} >Search</button>
+          <input type="text" name="search" className='search-input' value={searchTerm} placeholder="Type here to Search Student" onChange={(e) => setSearchTerm(e.target.value)} />
+          <button type="button" className='search-btn' onClick={() => filterStudentData()} >Search</button>
         </div>
         {isLoading && <h4>Loading...</h4>}
         {isError.state && <h4>{isError.msg}</h4>}
+        <div className="student-heading">
+          <h1>List of Students</h1>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Student ID</th>
+              <th>Name</th>
+              <th>Email ID</th>
+              <th>Phone Number</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+        </table>
         <div className="student-display-container">
 
           {studentData.map((student1) => {
             const { studentId, firstName, phoneNumber1, emailId, lastName } = student1
 
-
-
             return (
+              <>
+                <div className='student-card-info'>
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td>{studentId}</td>
+                        <td>{firstName + " " + lastName}</td>
+                        <td>{emailId}</td>
+                        <td>{phoneNumber1}</td>
+                        <td>
+                          <button type="submit" id="editStudent" className='edit-btn' onClick={() => handleEdit(studentId)}>
+                            <i className="fa-regular fa-pen-to-square"></i>
+                          </button>
+                          <button type="submit" id="deleteStudent" className='delete-btn' onClick={() => handleDelete(studentId)}>
+                            <i className="fa-regular fa-trash-can"></i>
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  {/* <h4>Student Id : {studentId}</h4>
+                  <h4>Name : {firstName + " " + lastName}</h4>
+                  <h4>Email Id : {emailId}</h4>
+                  <h4> Phone Number : {phoneNumber1}</h4>
+                  <button type="submit" id="editStudent" className='edit-btn' onClick={() => handleEdit(studentId)}><i className="fa-regular fa-pen-to-square"></i></button>
+                  <button type="submit" id="deleteStudent" className='delete-btn' onClick={() => handleDelete(studentId)}><i className="fa-regular fa-trash-can"></i></button> */}
 
-              <div> <h4>Student Id : {studentId}</h4>
-                <h4>Name : {firstName + " " + lastName}</h4>
-                <h4>Email Id : {emailId}</h4>
-                <h4> Phone Number : {phoneNumber1}</h4>
-                <button type="submit" id="editStudent" onClick={() => handleEdit(studentId)}>📝</button>
-                <button type="submit" id="deleteStudent" onClick={() => handleDelete(studentId)}>🗑️</button>
+                </div>
+                </>
 
-              </div>
-
-
-            );
+                );
           })}
 
-        </div>
-        <div className="admin-add-student-button">
-          <button type="submit" onClick={() => handleAdd()}> ➕ Add Student</button>
-        </div>
+              </div >
+                <div className="admin-add-student-button">
+                  <button type="submit" className='admin-add-student-icon' onClick={() => handleAdd()}> <i className="fa-solid fa-circle-plus"></i>Add Student</button>
+                </div>
       </div>
-    </AdminGuard>
+    </AdminGuard >
   );
 };
 
@@ -210,12 +242,12 @@ const StudentForm = ({ handleCallBack, pageState, refreshData }) => {
     e.preventDefault();
     console.log(formData);
     addStudent()
-    .then((data) => {
-      console.log("add student data success ", data);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+      .then((data) => {
+        console.log("add student data success ", data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
     handleCallBack({
       view: { state: true },
       add: { state: false },
@@ -240,12 +272,12 @@ const StudentForm = ({ handleCallBack, pageState, refreshData }) => {
     e.preventDefault();
     console.log(formData);
     editStudent(pageState.edit.data.studentId)
-    .then((data) => {
-      console.log("edit student data success ", data);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+      .then((data) => {
+        console.log("edit student data success ", data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
     handleCallBack({
       view: { state: true },
       add: { state: false },
@@ -269,12 +301,12 @@ const StudentForm = ({ handleCallBack, pageState, refreshData }) => {
   return (
     <AdminGuard>
       <Navbar />
-
-      <button type="submit" onClick={() => handleCallBack({
+      <button type="submit" className='back-to-home' onClick={() => handleCallBack({
         view: { state: true },
         add: { state: false },
         edit: { state: false, data: {} },
       })}>Back to Home</button>
+      <h1 className="head-container">Add Student Details</h1>
       <form className="student-form-container">
         <div className="studentform">
           <div className="form-body">
@@ -320,13 +352,13 @@ const StudentForm = ({ handleCallBack, pageState, refreshData }) => {
             </div>
 
             <div className="studentDob">
-              <label className="form__label" htmlFor="studentDob">Student DOB (YYYY-MM-DD)</label>
+              <label className="form__label" htmlFor="studentDob">Student DOB</label>
               <input
                 type="text"
                 id="studentDob"
                 name="studentDob"
                 className="form__input"
-                placeholder="Enter Your DOB"
+                placeholder="Enter Your DOB (YYYY-MM-DD)"
                 value={formData.studentDOB}
                 onChange={(e) => handleInputChange(e, "studentDOB")}
               />
@@ -424,73 +456,75 @@ const StudentForm = ({ handleCallBack, pageState, refreshData }) => {
 
               />
             </div>
-            <h1>Address Information</h1>
-            <div className="address">
-              <label className="form__label" htmlFor="address"> Street Name </label>
-              <input
-                type="text"
-                id="address"
-                name="address"
-                className="form__input"
-                placeholder="Enter Your street name"
-                value={formData.streetName}
-                onChange={(e) => handleInputChange(e, "streetName")}
-              />
-            </div>
-            <div className="address">
-              <label className="form__label" htmlFor="address"> Area Name </label>
-              <input
-                type="text"
-                id="address"
-                name="address"
-                className="form__input"
-                placeholder="Enter Your area name"
-                value={formData.areaName}
-                onChange={(e) => handleInputChange(e, "areaName")}
-              />
-            </div>
-            <div className="address">
-              <label className="form__label" htmlFor="address"> nationality </label>
-              <input
-                type="text"
-                id="address"
-                name="address"
-                className="form__input"
-                placeholder="Enter Your nationality"
-                value={formData.nationality}
-                onChange={(e) => handleInputChange(e, "nationality")}
-              />
-            </div>
-            <div className="address">
-              <label className="form__label" htmlFor="address"> PINCODE </label>
-              <input
-                type="text"
-                id="address"
-                name="address"
-                className="form__input"
-                placeholder="Enter Your Pincode"
-                value={formData.pincode}
-                onChange={(e) => handleInputChange(e, "pincode")}
-              />
-            </div>
-            <div className="address">
-              <label className="form__label" htmlFor="address"> State </label>
-              <input
-                type="text"
-                id="address"
-                name="address"
-                className="form__input"
-                placeholder="Enter Your state name"
-                value={formData.state}
-                onChange={(e) => handleInputChange(e, "state")}
-              />
+            <div className='address-container'>
+              <h2>Address Information</h2>
+              <div className="address">
+                <label className="form__label" htmlFor="address"> Street Name </label>
+                <input
+                  type="text"
+                  id="address"
+                  name="address"
+                  className="form__input"
+                  placeholder="Enter Your street name"
+                  value={formData.streetName}
+                  onChange={(e) => handleInputChange(e, "streetName")}
+                />
+              </div>
+              <div className="address">
+                <label className="form__label" htmlFor="address"> Area Name </label>
+                <input
+                  type="text"
+                  id="address"
+                  name="address"
+                  className="form__input"
+                  placeholder="Enter Your area name"
+                  value={formData.areaName}
+                  onChange={(e) => handleInputChange(e, "areaName")}
+                />
+              </div>
+              <div className="address">
+                <label className="form__label" htmlFor="address"> nationality </label>
+                <input
+                  type="text"
+                  id="address"
+                  name="address"
+                  className="form__input"
+                  placeholder="Enter Your nationality"
+                  value={formData.nationality}
+                  onChange={(e) => handleInputChange(e, "nationality")}
+                />
+              </div>
+              <div className="address">
+                <label className="form__label" htmlFor="address"> PINCODE </label>
+                <input
+                  type="text"
+                  id="address"
+                  name="address"
+                  className="form__input"
+                  placeholder="Enter Your Pincode"
+                  value={formData.pincode}
+                  onChange={(e) => handleInputChange(e, "pincode")}
+                />
+              </div>
+              <div className="address">
+                <label className="form__label" htmlFor="address"> State </label>
+                <input
+                  type="text"
+                  id="address"
+                  name="address"
+                  className="form__input"
+                  placeholder="Enter Your state name"
+                  value={formData.state}
+                  onChange={(e) => handleInputChange(e, "state")}
+                />
+              </div>
             </div>
           </div>
 
         </div>
 
 
-        {pageState.add.state ? <button type="submit" id="addAcademy" onClick={(e) => handleFormAdd(e)}>Add Student</button> : <button type="submit" id="updateAcademy" onClick={(e) => handleFormEdit(e)}>Update Student</button>}
+        {pageState.add.state ? <button className='add-academy-btn' type="submit" id="addAcademy" onClick={(e) => handleFormAdd(e)}>Add Student</button> : <button className='add-academy-btn' type="submit" id="updateAcademy" onClick={(e) => handleFormEdit(e)}>Update Student</button>}
 
       </form>
     </AdminGuard>

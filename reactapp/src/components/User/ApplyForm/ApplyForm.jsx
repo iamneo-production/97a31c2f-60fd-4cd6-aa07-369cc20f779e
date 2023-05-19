@@ -84,7 +84,7 @@ function ApplyForm() {
     }
   }
   const postdata = async () => {
-    await fetch(`${baseUrl}/user/studentForm`, {
+    await fetch(`${baseUrl}/user/addAdmission`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${localStorage.token}`,
@@ -136,9 +136,10 @@ function ApplyForm() {
         </Link>
       </div>
       <form className="info" onSubmit={handleSubmit}>
-        <div className="form">
-          <div className="form-body">
-            <div className="flex-conatiner">
+      <h1 className="user-head-container">Enroll Now</h1>
+        <div className="user-student-form-container">
+          <div className="user-student-form">
+            <div className="user-form-body">
               <div className="courseId">
                 <label className="form__label" for="courseId">
                   courseId{" "}
@@ -322,9 +323,9 @@ function ApplyForm() {
                   onChange={handledata}
                 />
               </div>
-              <div className="add">
-                <h4>Address information</h4>
-                <div className="houseNumber">
+              <div className="user-address-container">
+                <h2>Address information</h2>
+                <div className="user-address">
                   <label className="form__label" for="houseNumber">
                     HouseNo{" "}
                   </label>
@@ -338,7 +339,7 @@ function ApplyForm() {
                     onChange={handledata}
                   />
                 </div>
-                <div className="streetName">
+                <div className="user-address">
                   <label className="form__label" for="streetName">
                     Street Name{" "}
                   </label>
@@ -352,7 +353,7 @@ function ApplyForm() {
                     onChange={handledata}
                   />
                 </div>
-                <div className="areaname">
+                <div className="user-address">
                   <label className="form__label" for="areaname">
                     AreaName{" "}
                   </label>
@@ -366,7 +367,7 @@ function ApplyForm() {
                     onChange={handledata}
                   />
                 </div>
-                <div className="state">
+                <div className="user-address">
                   <label className="form__label" for="state">
                     State{" "}
                   </label>
@@ -380,7 +381,7 @@ function ApplyForm() {
                     onChange={handledata}
                   />
                 </div>
-                <div className="pincode">
+                <div className="user-address">
                   <label className="form__label" for="pincode">
                     Pincode{" "}
                   </label>
@@ -394,7 +395,7 @@ function ApplyForm() {
                     onChange={handledata}
                   />
                 </div>
-                <div className="nationality">
+                <div className="user-address">
                   <label className="form__label" for="nationality">
                     Nationality{" "}
                   </label>
@@ -411,11 +412,9 @@ function ApplyForm() {
               </div>
             </div>
           </div>
-          <div class="footer">
-            <button type="submit">Submit</button>
-            <br>
-            </br>
-            <button onClick={handlecancel}>cancel</button>
+          <div class="user-footer">
+            <button className="user-enroll" type="submit">Enroll now</button>
+            <button className="user-cancel" onClick={handlecancel}>cancel</button>
           </div>
         </div>
       </form>

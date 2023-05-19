@@ -13,7 +13,8 @@ import EnrolledCourse from './components/User/EnrolledCourse';
 import Navpage from './components/User/HomePage/Navpage';
 import Firstpage from './components/Admin/AdminDashboard/Firstpage';
 import Review from './components/User/Review/Review';
-
+import Admissionmodelpage from './components/User/Admissionmodelpage';
+import Updatepage from './components/User/Updatepage';
 
 function App() {
   
@@ -36,7 +37,9 @@ function App() {
         <Route path="/UserCourse" element={<UserCourse />} />
         <Route path="/ApplyForm/:courseId" element={<ApplyForm />} />
         <Route path="/Enrolledcourse" element={<EnrolledCourse/>}/>
-        <Route path="/Review" element={<Review/>}/>
+        <Route path="/FeedBack" element={<Review/>}/>
+        <Route path="/Admissionmodelpage" element={<Admissionmodelpage/>}></Route>
+        <Route path="/Updatepage/:id" element={<Updatepage/>}/>
         <Route path="*" element={<>404 no such page go to home page</>} />
       </Routes>
     </Router>

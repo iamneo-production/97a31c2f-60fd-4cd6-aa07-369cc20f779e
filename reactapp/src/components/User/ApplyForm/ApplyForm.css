@@ -1,83 +1,155 @@
-* {
-  padding: 0px;
-  margin: 0px;
-  box-sizing: border-box;
-
+.user-head-container {
+  text-align: center;
+  margin-bottom: 15px;
+  font-weight: bold;
+  font-size: 1.9rem;
+  color: #555;
 }
 
-.mainbar {
-  background-color: aliceblue;
+.user-student-form-container {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
-  margin: 0;
-  padding: 0 8px;
+  font-family: Arial, sans-serif;
+  margin: 20px;
 }
 
-.mainbar h1 {
-  font-size: 2rem;
-  font-weight: bolder;
-  font-style: oblique;
-}
-
-.one {
-  justify-content: space-around;
-  font-size: 1.5rem;
-  font-weight: 350;
-}
-
-.one:hover {
-  color: darkslategray;
-  font-weight: 500;
-}
-
-.home {
-  font-size: 1rem;
-  font-style: oblique;
-  font-weight: lighter;
-  border: 0.5px solid;
-  width: 100px;
-  background-color: lightyellow;
-}
-
-.body {
-  background: #4a8fbd;
-}
-
-.form {
-  background-color: rgb(54, 211, 159);
-  color: brown;
+.user-student-form {
+  background-color: #F4F7F9;
   border-radius: 5px;
-  width: 550px;
-  margin: 20px auto;
-  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  width: 100%;
 }
 
-.form-body {
-  text-align: left;
-  padding: 20px 10px;
-}
-
-.form-body>* {
-  padding: 5px;
+.user-form-body {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .form__label {
-  width: 40%;
+  display: block;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  text-align: left;
 }
 
-.form_input {
-  width: 60%;
+.form__input {
+  border: 1px solid #D3DCE6;
+  border-radius: 3px;
+  box-sizing: border-box;
+  font-size: 16px;
+  margin-bottom: 20px;
+  padding: 10px;
+  width: 100%;
+  transition: border-color 0.2s ease-in-out;
 }
 
-.add {
-  background-color: rgb(25, 150, 98);
+.form__input:focus {
+  border-color: #4D90FE;
+}
+.user-address-container {
+  background-color: #F4F7F9;
   border-radius: 5px;
-  width: 450px;
-  margin: 20px auto;
-  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  margin-bottom: 30px;
+  width:100%
 }
 
-.footer {
-  text-align: center;
+.user-address-container h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #555;
+  margin-bottom: 15px;
 }
+
+.user-address-container .user-address {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.user-address-container label {
+  display: block;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  text-align: left;
+}
+
+.user-address-container input {
+  border: 1px solid #D3DCE6;
+  border-radius: 3px;
+  box-sizing: border-box;
+  font-size: 16px;
+  margin-bottom: 20px;
+  padding: 10px;
+  width: 100%;
+  transition: border-color 0.2s ease-in-out;
+}
+.courseId,
+.studentIdNumber,
+.username,
+.lastname,
+.fathername,
+.mothername,
+.emailId,
+.phoneNumber1,
+.phoneNumber2,
+.studentDOB,
+.sslc,
+.hsc,
+.diploma
+ {
+  width: 48%;
+}
+.user-address {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 20px;
+} 
+
+/* button css */
+.user-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 40px;
+  }
+  
+  .user-enroll,
+  .user-cancel {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  }
+  
+  .user-enroll {
+  background-color: #1E90FF;
+  color: #fff;
+  margin-right: 20px;
+  }
+  
+  .user-cancel {
+  background-color: #fff;
+  color: #1E90FF;
+  border: 2px solid #1E90FF;
+  }
+  
+  .user-enroll:hover,
+  .user-cancel:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  }
