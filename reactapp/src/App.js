@@ -11,7 +11,8 @@ import Viewcourse from './components/Admin/Course/Viewcourse';
 import Editcourse from './components/Admin/Course/Editcourse';
 import EnrolledCourse from './components/User/EnrolledCourse';
 import Review from './components/User/Review/Review';
-
+import Admissionmodelpage from './components/User/Admissionmodelpage';
+import Updatepage from './components/User/Updatepage';
 
 function App() {
   
@@ -33,6 +34,8 @@ function App() {
         <Route path="/Enrollcourse/:courseId" element={<Enrollcourse />} />
         <Route path="/Enrolledcourse" element={<EnrolledCourse/>}/>
         <Route path="/FeedBack" element={<Review/>}/>
+        <Route path="/Admissionmodelpage" element={<Admissionmodelpage/>}></Route>
+        <Route path="/Updatepage/:id" element={<Updatepage/>}/>
         <Route path="*" element={<>404 no such page go to home page</>} />
       </Routes>
     </Router>

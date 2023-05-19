@@ -308,7 +308,7 @@ export const AcademyForm = ({ type }) => {
               name="academyName"
               value={formData.instituteName}
               placeholder="Enter Academy Name"
-              onChange={(e) => handleChange(e, "instituteName")}
+              onChange={(s) => handleChange(s, "instituteName")}
             />
           </div>
           <div>
