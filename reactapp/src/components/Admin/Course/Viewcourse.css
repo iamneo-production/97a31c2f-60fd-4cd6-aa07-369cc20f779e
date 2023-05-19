@@ -1,0 +1,230 @@
+/* .add-course-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #2A7230;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 1.2rem;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .add-course-btn:hover {
+    background-color: #3e9746;
+  } */
+  .add-course-btn{
+    position: fixed;
+    bottom:20px;
+    right:20px;
+    width: 60px;
+    height:60px;
+    float:left;
+    margin:0 5px;
+    background:#2A7230;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0px 10px 10px rgba(0,0,0,0.1);
+    transition: all 0.3s ease-out;
+    overflow: hidden;
+  }
+  
+  .add-course-btn:hover{
+    width: 165px;
+  }
+  
+  .add-course-btn .icon{
+    height: 60px;
+    width:60px;
+    text-align: center;
+    border-radius: 50px;
+    box-sizing: border-box;
+  }
+  
+  .add-course-btn .icon i{
+    font-size: 25px;
+    line-height: 60px;
+    color: white;
+  }
+  
+  .add-course-btn:hover::after{
+    content: "Add Course";
+    display: block;
+    position: absolute;
+    left: 50px;
+    top: 0;
+    width: 100px;
+    height: 60px;
+    background: #2A7230;
+    font-weight: bold;
+    line-height: 60px;
+    text-align: center;
+    border-radius: 0 50px 50px 0;
+  }
+  
+  
+  /* .add-course-btn span{
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 60px;
+    margin-left: 10px;
+  } */
+  
+  /* Search bar */
+  .search-box {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+  }
+  
+  .search-input {
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    padding: 10px;
+    width: 35%;
+  }
+  
+  .search-btn {
+    background-color: #2A7230;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1.2rem;
+    margin-left: 10px;
+    padding: 5px;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .search-btn:hover {
+    background-color: #3e9746;
+  }
+  
+  /* Course heading */
+  .course-heading {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #2A7230;
+  }
+  
+  /* Course grid */
+  .courses-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 30px;
+    background-color: #e6e3e3;
+    padding: 30px;
+    max-width: 85%; 
+    margin-left:2%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Course card */
+  .course-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  .course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  
+  /* Course card info */
+  .course-card-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 5px 0 0 5px;
+  }
+  
+  .course-card-info .course-id {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #2A7230;
+  }
+  
+  .course-card-info .course-name,
+  .course-card-info .course-duration,
+  .course-card-info .course-timing,
+  .course-card-details .course-students,
+  .course-card-details .course-description {
+    font-size: 1.2rem;
+    color: #555;
+  }
+  
+  
+  /* Course card details */
+  .course-card-details {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 0 5px 5px 0;
+    justify-content: space-between;
+  }
+  
+  .course-card-details .course-timing {
+    font-size: 1.2rem;
+    color: #555;
+  }
+  
+  .course-card-details .course-enrolled {
+    font-size: 1.2rem;
+    color: #555;
+  }
+  
+  .course-card-details .course-description {
+    font-size: 1.2rem;
+    color: #555;
+  }
+  
+  /* Course card footer */
+  .course-card-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .course-card-footer button,
+  .course-card-footer span {
+    margin-left: 10px;
+    cursor: pointer;
+
+  }
+    /* background-color: transparent; */
+    /* border: none;
+    cursor: pointer;
+    font-size: 20px; */
+  /* }  */
+  
+  .course-card-footer button:hover,
+  .course-card-footer span:hover {
+    color: #2A7230;
+  }
+  
+  .course-card-footer #editcourse {
+    color: #2A7230;
+  }
+  
+  .course-card-footer #editcourse:hover {
+    color: #3e9746;
+  }
+  
+  .course-card-footer #deletecourse {
+    color: #E62020;
+  }
+  
+  .course-card-footer #deletecourse:hover {
+    color: #f24747;
+  }
