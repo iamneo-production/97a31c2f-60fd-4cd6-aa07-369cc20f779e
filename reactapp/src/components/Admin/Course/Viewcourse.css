@@ -208,7 +208,7 @@
   }
   
   .course-card-footer button,
-  .course-card-footer span {
+  .course-card-footer span1 {
     margin-left: 10px;
     cursor: pointer;
 
@@ -219,8 +219,8 @@
     font-size: 20px; */
   /* }  */
   
-  /* .course-card-footer button:hover,
-  .course-card-footer span:hover {
+  .course-card-footer button:hover,
+  .course-card-footer span1:hover {
     color: #2A7230;
   }
    */
