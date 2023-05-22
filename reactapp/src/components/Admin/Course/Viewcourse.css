@@ -15,6 +15,9 @@
   .add-course-btn:hover {
     background-color: #3e9746;
   } */
+
+/* addcourse btn on bottom right corner in viewcourse page */
+
   .add-course-btn{
     position: fixed;
     bottom:20px;
@@ -72,7 +75,8 @@
     margin-left: 10px;
   } */
   
-  /* Search bar */
+
+  /* Search bar in viewcourse page */
   .search-box {
     display: flex;
     justify-content: center;
@@ -102,8 +106,10 @@
   .search-btn:hover {
     background-color: #3e9746;
   }
+
+
   
-  /* Course heading */
+  /* Course heading(list of courses) */
   .course-heading {
     font-size: 2.5rem;
     font-weight: bold;
@@ -112,7 +118,8 @@
     color: #2A7230;
   }
   
-  /* Course grid */
+
+  /* Courses list display */
   .courses-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -124,7 +131,9 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
   
-  /* Course card */
+
+
+  /* Course card display */
   .course-card {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -137,7 +146,7 @@
   }
   
   
-  /* Course card info */
+  /* Course card info display */
   .course-card-info {
     display: flex;
     flex-direction: column;
@@ -188,7 +197,9 @@
     color: #555;
   }
   
-  /* Course card footer */
+
+
+  /* Course card footer for edit and delete */
   .course-card-footer {
     display: flex;
     justify-content: flex-end;
@@ -228,3 +239,122 @@
   .course-card-footer #deletecourse:hover {
     color: #f24747;
   }
+
+  /* Responsive styles */
+/* Responsive styles */
+
+@media screen and (max-width: 768px) {
+  /* Add Course Button */
+  .add-course-btn {
+    bottom: 10px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+    font-size: 0.8rem;
+  }
+  
+  .add-course-btn:hover::after {
+    left: 40px;
+    width: 80px;
+    height: 50px;
+    font-size: 0.8rem;
+  }
+
+  /* Search Bar */
+  .search-box {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .search-input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .search-btn {
+    margin-left: 0;
+    font-size: 0.8rem;
+  }
+  
+  /* Course Heading */
+  .course-heading {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  /* Courses List Display */
+  .courses-grid {
+    grid-template-columns: 1fr;
+    padding: 20px;
+    max-width: 95%;
+    margin-left: 2.5%;
+  }
+  
+  /* Course Card Info Display */
+  .course-card-info {
+    padding: 20px;
+  }
+  
+  /* Course Card Details */
+  .course-card-details {
+    padding: 20px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  /* Add Course Button */
+  .add-course-btn {
+    bottom: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    font-size: 0.7rem;
+  }
+  
+  .add-course-btn:hover::after {
+    left: 30px;
+    width: 70px;
+    height: 40px;
+    font-size: 0.7rem;
+  }
+  
+  /* Search Bar */
+  .search-box {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .search-input {
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+  }
+  
+  .search-btn {
+    margin-left: 0;
+    font-size: 0.9rem;
+  }
+  
+  /* Course Heading */
+  .course-heading {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+  }
+  
+  /* Courses List Display */
+  .courses-grid {
+    padding: 15px;
+    max-width: 95%;
+    margin-left: 2.5%;
+  }
+  
+  /* Course Card Info Display */
+  .course-card-info {
+    padding: 15px;
+  }
+  
+  /* Course Card Details */
+  .course-card-details {
+    padding: 15px;
+  }
+}
