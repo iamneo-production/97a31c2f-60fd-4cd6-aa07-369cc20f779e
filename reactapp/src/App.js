@@ -2,7 +2,7 @@ import { BrowserRouter as Router,Route,Routes } from 'react-router-dom';
 import Signup from './components/Auth/Signup/Signup';
 import Login from './components/Auth/Login/Login';
 import AdminHomePage, { AcademyForm } from './components/Admin/AdminHomePage/AdminHomePage';
-import AdminStudent from './components/Admin/AdminStudent/AdminStudent';
+import User,{StudentForm} from './components/Admin/User/User';
 import HomePage from './components/User/HomePage/HomePage';
 import UserCourse from './components/User/UserCourse/UserCourse';
 import ApplyForm from './components/User/ApplyForm/ApplyForm';
@@ -31,7 +31,9 @@ function App() {
         <Route path="/admin/addCourse" element={<Course />} />
         <Route path="/admin/viewCourse" element={<Viewcourse/>}/>
         <Route path="/admin/editCourse/:id" element={<Editcourse />} />
-        <Route path="/admin/Viewstudent" element={<AdminStudent />} />
+        <Route path="/admin/Viewstudent" element={<User />} />
+        <Route path="/admin/addStudent" element={<StudentForm type="ADD"/>}/>
+        <Route path="/admin/editStudent/:id" element={<StudentForm type="EDIT"/>}/>        
         <Route path="/Navpage"  element={<Navpage/>} />
         <Route path="/HomePage" element={<HomePage />} />
         <Route path="/UserCourse" element={<UserCourse />} />
