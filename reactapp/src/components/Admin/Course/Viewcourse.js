@@ -135,14 +135,14 @@ function Viewcourse() {
                         </i>
                       </button>
                     </NavLink>
-                    <span1
+                    <button
                       className="nav-link"
                       id="deletecourse"
                       onClick={() => handleDelete(course.id)}>
                       <i
                         className="fa-regular fa-trash-can">
                       </i>
-                    </span1>
+                    </button>
                   </div>
                 </div>
               </div>
