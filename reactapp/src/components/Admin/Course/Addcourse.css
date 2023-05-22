@@ -1,31 +1,59 @@
+/* back to home css */
+/* .course-back-to-home {
+  background-color: #fff;
+  border: 2px solid #2A7230;
+  color: #2A7230;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  margin-top: 20px;
+}
+
+.course-back-to-home:hover {
+  background-color: #2A7230;
+  color: #fff;
+} */
+
 .course {
+
   max-width: 800px;
   margin: auto;
   padding: 40px;
-  }
-  
-  .head-container {
+
+}
+
+.head-container {
+
   text-align: center;
   margin-bottom: 15px;
   font-weight: bold;
   font-size: 1.9rem;
   color: #555;
-  }
-  
-  .form-group {
+
+}
+
+.form-group {
+
   margin-bottom: 20px;
-  }
-  
-  .form-group label {
+
+}
+
+.form-group label {
+
   font-weight: bold;
   display: block;
   margin-bottom: 5px;
   color: #555;
   font-size: 1.1rem;
-  }
-  
-  .form-group input[type="text"],
-  .form-group textarea {
+
+}
+
+.form-group input[type="text"],
+.form-group textarea {
+
   width: 100%;
   padding: 15px;
   border: none;
@@ -34,28 +62,37 @@
   color: #333;
   background-color: transparent;
   transition: border-color 0.3s ease-in-out;
-  }
-  
-  .form-group input[type="text"]:focus,
-  .form-group textarea:focus {
+
+}
+
+
+.form-group input[type="text"]:focus,
+.form-group textarea:focus {
+
   border-color: #2A7230;
   outline: none;
-  }
-  
-  .form-group textarea {
+
+}
+
+.form-group textarea {
+
   resize: none;
   min-height: 120px;
-  }
-  
-  .button-container {
+
+}
+
+.button-container {
+
   display: flex;
   justify-content: flex-end;
   align-items: center;
   margin-top: 40px;
-  }
-  
-  .btn-primary,
-  .btn-secondary {
+
+}
+
+.btn-primary,
+.btn-secondary {
+
   padding: 15px 25px;
   border: none;
   border-radius: 50px;
@@ -65,22 +102,31 @@
   letter-spacing: 1px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
-  }
-  
-  .btn-primary {
+
+}
+
+.btn-primary {
+
   background-color: #2A7230;
   color: #fff;
   margin-right: 20px;
-  }
-  
-  .btn-secondary {
+
+}
+
+
+.btn-secondary {
+
   background-color: #fff;
   color: #2A7230;
   border: 2px solid #2A7230;
-  }
-  
-  .btn-primary:hover,
-  .btn-secondary:hover {
+
+}
+
+
+.btn-primary:hover,
+.btn-secondary:hover {
+
   transform: translateY(-5px);
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-  }
+  
+}

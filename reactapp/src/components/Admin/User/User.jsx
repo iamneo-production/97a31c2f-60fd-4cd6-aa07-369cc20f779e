@@ -1,43 +1,59 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from "react";
 import Navbar from "../Navbar/Navbar";
+import { store } from "../../../store";
 import { AdminGuard } from "../../../AuthGuard/AdminGuard";
-import { baseUrl } from '../../../api/authService';
+import { Navigate } from "react-router";
+import { useNavigate, useParams } from "react-router-dom";
+import { baseUrl } from "../../../api/authService";
 import './AdminStudent.css';
 
-const student = {
-  firstName: '',
-  lastName: '',
-  fatherName: '',
-  motherName: '',
-  phoneNumber1: '',
-  phoneNumber2: '',
-  studentIdNumber: '',
-  studentDOB: '',
-  sslc: '',
-  hsc: '',
-  diploma: '',
-  emailId: '',
-  eligibility: '',
-  courseId: '',
-  houseNumber: '',
-  streetName: '',
-  areaName: '',
-  state: '',
-  pincode: '',
-  nationality: '',
+let auth = "";
+store.subscribe(() => {
+  auth = store.getState().auth;
+  console.log(auth);
+});
 
+const student = {
+  firstName: "",
+  lastName: "",
+  fatherName: "",
+  motherName: "",
+  phoneNumber1: "",
+  phoneNumber2: "",
+  studentIdNumber: "",
+  studentDOB: "",
+  sslc: "",
+  hsc: "",
+  diploma: "",
+  emailId: "",
+  eligibility: "",
+  courseId: "",
+  houseNumber: "",
+  streetName: "",
+  areaName: "",
+  state: "",
+  pincode: "",
+  nationality: "",
 };
 
-const AdminStudent = () => {
+const User = () => {
+  if (auth.token === "") {
+    return <Navigate to="/login" />;
+  }
+
+  return (
+    <>
+          <AdminStudent1 />
+    </>
+  );
+};
+
+const AdminStudent1 = () => {
   const [fetchedStudentData, setFetchedStudentData] = useState([]);
 
   const [studentData, setStudentData] = useState([]);
 
-  const [adminStudentState, setAdminStudentState] = useState({
-    view: { state: true },
-    add: { state: false },
-    edit: { state: false, data: {} },
-  });
+  const [course1, setCourse1] = useState([]);
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -45,16 +61,17 @@ const AdminStudent = () => {
 
   const [searchTerm, setSearchTerm] = useState("");
 
+  const navigate = useNavigate();
+
   useEffect(() => {
-    fetchStudentData()
+    fetchCourseName()
       .then((data) => {
-        console.log("fetched student data success ", data);
+        console.log("fetched course data success ", data);
       })
       .catch((error) => {
         console.error(error);
       });
   }, []);
-
 
   const filterStudentData = () => {
     const filteredData = fetchedStudentData.filter((eachStudent) => {
@@ -70,11 +87,11 @@ const AdminStudent = () => {
     setIsError({ state: false, msg: "" });
     try {
       const response = await fetch(`${baseUrl}/admin/viewStudent`, {
-        method: 'GET',
+        method: "GET",
         headers: {
-          'Authorization': `Bearer ${localStorage.token}`,
-          'Content-type': 'application/json'
-        }
+          Authorization: `Bearer ${localStorage.token}`,
+          "Content-type": "application/json",
+        },
       });
       const data = await response.json();
       console.log(data);
@@ -87,16 +104,40 @@ const AdminStudent = () => {
       }
     } catch (error) {
       setIsLoading(false);
-      setIsError({ state: true, msg: error.message || "Something Went Wrong !" });
+      setIsError({
+        state: true,
+        msg: error.message || "Something Went Wrong !",
+      });
     }
   };
 
+  async function fetchCourseName() {
+    try {
+      const response = await fetch(`${baseUrl}/admin/viewCourse`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${localStorage.token}`,
+          "Content-type": "application/json",
+        },
+      });
+
+      const data = await response.json();
+      console.log(data);
+      setCourse1(data);
+      fetchStudentData()
+        .then((data) => {
+          console.log("fetched student data success ", data);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    } catch (error) {
+      console.error("Error fetching course data:", error);
+    }
+  }
+
   const handleAdd = () => {
-    setAdminStudentState({
-      view: { state: false },
-      add: { state: true },
-      edit: { state: false, data: {} },
-    });
+    navigate("/admin/addStudent");
   };
 
   const handleDelete = async (id) => {
@@ -111,11 +152,11 @@ const AdminStudent = () => {
 
   const deleteStudent = async (id) => {
     const response = await fetch(`${baseUrl}/admin/deleteStudent/${id}`, {
-      method: 'DELETE',
+      method: "DELETE",
       headers: {
-        'Content-type': 'application/json',
-        'Authorization': `Bearer ${localStorage.token}`,
-      }
+        "Content-type": "application/json",
+        Authorization: `Bearer ${localStorage.token}`,
+      },
     });
     console.log(response);
     fetchStudentData()
@@ -128,36 +169,30 @@ const AdminStudent = () => {
   };
 
   const handleEdit = (id) => {
-    const currentStudentData = studentData.find((eachStudent) => {
-      return eachStudent.studentId === id;
-    })
-    setAdminStudentState({
-      view: { state: false },
-      add: { state: false },
-      edit: { state: true, data: currentStudentData },
-    })
+    navigate(`/admin/editStudent/${id}`);
   };
 
-  const CallBack = (childData) => {
-    setAdminStudentState(childData);
-  };
-
-  if (adminStudentState.add.state) {
-    return <StudentForm handleCallBack={CallBack} pageState={adminStudentState} refreshData={fetchStudentData} />;
-  }
-
-  if (adminStudentState.edit.state) {
-    return <StudentForm handleCallBack={CallBack} pageState={adminStudentState} refreshData={fetchStudentData} />;
-  }
   return (
     <AdminGuard>
       <Navbar />
 
-
       <div className="admin-student-container">
         <div className="admin-search-container">
-          <input type="text" name="search" className='search-input' value={searchTerm} placeholder="Type here to Search Student" onChange={(e) => setSearchTerm(e.target.value)} />
-          <button type="button" className='search-btn' onClick={() => filterStudentData()} >Search</button>
+          <input
+            type="text"
+            name="search"
+            className="search-input"
+            value={searchTerm}
+            placeholder="Type here to Search Student"
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <button
+            type="button"
+            className="search-btn"
+            onClick={() => filterStudentData()}
+          >
+            Search
+          </button>
         </div>
         {isLoading && <h4>Loading...</h4>}
         {isError.state && <h4>{isError.msg}</h4>}
@@ -169,32 +204,46 @@ const AdminStudent = () => {
             <tr>
               <th>Student ID</th>
               <th>Name</th>
-              <th>Email ID</th>
+              <th>Course Name</th>
               <th>Phone Number</th>
               <th>Actions</th>
             </tr>
           </thead>
         </table>
         <div className="student-display-container">
-
           {studentData.map((student1) => {
-            const { studentId, firstName, phoneNumber1, emailId, lastName } = student1
+            const { studentId, firstName, phoneNumber1, courseId, lastName } =
+              student1;
+            const course = course1.find((eachCourse) => {
+              return eachCourse.courseId == courseId;
+            });
+            console.log(course);
 
             return (
               <>
-                <div className='student-card-info'>
+                <div className="student-card-info">
                   <table>
                     <tbody>
                       <tr>
                         <td>{studentId}</td>
                         <td>{firstName + " " + lastName}</td>
-                        <td>{emailId}</td>
+                        <td>{course.courseName}</td>
                         <td>{phoneNumber1}</td>
                         <td>
-                          <button type="submit" id="editStudent" className='edit-btn' onClick={() => handleEdit(studentId)}>
+                          <button
+                            type="submit"
+                            id="editStudent"
+                            className="edit-btn"
+                            onClick={() => handleEdit(studentId)}
+                          >
                             <i className="fa-regular fa-pen-to-square"></i>
                           </button>
-                          <button type="submit" id="deleteStudent" className='delete-btn' onClick={() => handleDelete(studentId)}>
+                          <button
+                            type="submit"
+                            id="deleteStudent"
+                            className="delete-btn"
+                            onClick={() => handleDelete(studentId)}
+                          >
                             <i className="fa-regular fa-trash-can"></i>
                           </button>
                         </td>
@@ -207,33 +256,63 @@ const AdminStudent = () => {
                   <h4> Phone Number : {phoneNumber1}</h4>
                   <button type="submit" id="editStudent" className='edit-btn' onClick={() => handleEdit(studentId)}><i className="fa-regular fa-pen-to-square"></i></button>
                   <button type="submit" id="deleteStudent" className='delete-btn' onClick={() => handleDelete(studentId)}><i className="fa-regular fa-trash-can"></i></button> */}
-
                 </div>
-                </>
-
-                );
+              </>
+            );
           })}
-
-              </div >
-                <div className="admin-add-student-button">
-                  <button type="submit" className='admin-add-student-icon' onClick={() => handleAdd()}> <i className="fa-solid fa-circle-plus"></i>Add Student</button>
-                </div>
+        </div>
+        <div className="admin-add-student-button">
+          <button
+            type="submit"
+            className="admin-add-student-icon"
+            onClick={() => handleAdd()}
+          >
+            {" "}
+            <i className="fa-solid fa-circle-plus"></i>Add Student
+          </button>
+        </div>
       </div>
-    </AdminGuard >
+    </AdminGuard>
   );
 };
 
+export const StudentForm = ({ type }) => {
+  const [formData, setFormData] = useState(student);
+  const navigate = useNavigate();
 
+  const { id } = useParams();
+  useEffect(() => {
+    fetchData()
+      .then((data) => {
+        console.log("fetched student data success ", data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, [id]);
 
-
-
-const StudentForm = ({ handleCallBack, pageState, refreshData }) => {
-  const [formData, setFormData] = useState(pageState.edit.state ? pageState.edit.data : student);
+  const fetchData = async () => {
+    const response = await fetch(`${baseUrl}/admin/viewStudent`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${auth.token}`,
+        "Content-type": "application/json",
+      },
+    });
+    const data = await response.json();
+    const editData = data.find((eachStudent) => {
+      return eachStudent.studentId == id;
+    });
+    console.log(editData);
+    if (type === "EDIT") {
+      setFormData(editData);
+    }
+  };
 
   const handleInputChange = (e, key) => {
     const currentData = {
-      ...formData
-    }
+      ...formData,
+    };
     currentData[key] = e.target.value;
     setFormData(currentData);
   };
@@ -243,116 +322,135 @@ const StudentForm = ({ handleCallBack, pageState, refreshData }) => {
     console.log(formData);
     addStudent()
       .then((data) => {
-        console.log("add student data success ", data);
+        console.log("added student ", data);
       })
       .catch((error) => {
         console.error(error);
       });
-    handleCallBack({
-      view: { state: true },
-      add: { state: false },
-      edit: { state: false, data: {} },
-    });
   };
 
   const addStudent = async () => {
-    const request = await fetch(`${baseUrl}/admin/addStudent`, {
-      method: 'POST',
+    const response = await fetch(`${baseUrl}/admin/addStudent`, {
+      method: "POST",
       headers: {
-        'Authorization': `Bearer ${localStorage.token}`,
-        'Content-type': 'application/json'
+        Authorization: `Bearer ${auth.token}`,
+        "Content-type": "application/json",
       },
-      body: JSON.stringify(formData)
+      body: JSON.stringify(formData),
     });
-    console.log(request);
-    refreshData();
+    console.log(response);
+    navigate("/admin/Viewstudent");
   };
 
   const handleFormEdit = (e) => {
     e.preventDefault();
     console.log(formData);
-    editStudent(pageState.edit.data.studentId)
+    editStudent()
       .then((data) => {
-        console.log("edit student data success ", data);
+        console.log(data);
       })
       .catch((error) => {
         console.error(error);
       });
-    handleCallBack({
-      view: { state: true },
-      add: { state: false },
-      edit: { state: false, data: {} },
-    });
   };
 
-  const editStudent = async (id) => {
-    const request = await fetch(`${baseUrl}/admin/editStudent/${id}`, {
-      method: 'PUT',
+  const editStudent = async () => {
+    const response = await fetch(`${baseUrl}/admin/editStudent/${id}`, {
+      method: "PUT",
       headers: {
-        'Authorization': `Bearer ${localStorage.token}`,
-        'Content-type': 'application/json'
+        Authorization: `Bearer ${auth.token}`,
+        "Content-type": "application/json",
       },
-      body: JSON.stringify(formData)
+      body: JSON.stringify(formData),
     });
-    console.log(request);
-    refreshData();
+    console.log(response);
+    navigate("/admin/Viewstudent");
   };
-
   return (
     <AdminGuard>
       <Navbar />
-      <button type="submit" className='back-to-home' onClick={() => handleCallBack({
-        view: { state: true },
-        add: { state: false },
-        edit: { state: false, data: {} },
-      })}>Back to Home</button>
-      <h1 className="head-container">Add Student Details</h1>
+      <button
+        type="submit"
+        className="back-to-home"
+        onClick={() => {
+          navigate("/admin/dashboard");
+        }}
+      >
+        Back to Home
+      </button>
+      {type === "ADD" ? (
+        <h1 className="head-container">Add Student Details</h1>
+      ) : (
+        <h1 className="head-container">Edit Student Details</h1>
+      )}
       <form className="student-form-container">
         <div className="studentform">
           <div className="form-body">
             <div className="username">
-              <label className="form__label" htmlFor="firstName"> First Name </label>
-              <input className="form__input"
+              <label className="form__label" htmlFor="firstName">
+                {" "}
+                First Name{" "}
+              </label>
+              <input
+                className="form__input"
                 type="text"
                 id="firstName"
                 name="studentName"
                 placeholder="Enter Your First Name"
-                value={formData.firstName} onChange={(e) => handleInputChange(e, "firstName")}
+                value={formData.firstName}
+                onChange={(e) => handleInputChange(e, "firstName")}
               />
             </div>
             <div className="username">
-              <label className="form__label" htmlFor="firstName"> Last Name </label>
-              <input className="form__input"
+              <label className="form__label" htmlFor="firstName">
+                {" "}
+                Last Name{" "}
+              </label>
+              <input
+                className="form__input"
                 type="text"
                 id="firstName"
                 name="studentName"
                 placeholder="Enter Your Last Name"
-                value={formData.lastName} onChange={(e) => handleInputChange(e, "lastName")}
+                value={formData.lastName}
+                onChange={(e) => handleInputChange(e, "lastName")}
               />
             </div>
             <div className="username">
-              <label className="form__label" htmlFor="firstName"> Father Name </label>
-              <input className="form__input"
+              <label className="form__label" htmlFor="firstName">
+                {" "}
+                Father Name{" "}
+              </label>
+              <input
+                className="form__input"
                 type="text"
                 id="firstName"
                 name="studentName"
                 placeholder="Enter Your Father Name"
-                value={formData.fatherName} onChange={(e) => handleInputChange(e, "fatherName")}
+                value={formData.fatherName}
+                onChange={(e) => handleInputChange(e, "fatherName")}
               />
             </div>
             <div className="username">
-              <label className="form__label" htmlFor="firstName"> Mother Name </label>
-              <input className="form__input"
+              <label className="form__label" htmlFor="firstName">
+                {" "}
+                Mother Name{" "}
+              </label>
+              <input
+                className="form__input"
                 type="text"
                 id="firstName"
                 name="studentName"
                 placeholder="Enter Your Mother  Name"
-                value={formData.motherName} onChange={(e) => handleInputChange(e, "motherName")}
+                value={formData.motherName}
+                onChange={(e) => handleInputChange(e, "motherName")}
               />
             </div>
 
             <div className="studentDob">
-              <label className="form__label" htmlFor="studentDob">Student DOB</label>
+              <label className="form__label" htmlFor="studentDob">
+                Student DOB
+              </label>
               <input
                 type="text"
                 id="studentDob"
@@ -364,8 +462,13 @@ const StudentForm = ({ handleCallBack, pageState, refreshData }) => {
               />
             </div>
             <div className="mobile">
-              <label className="form__label" htmlFor="mobile"> Phone Number </label>
-              <input type="text" id="mobile"
+              <label className="form__label" htmlFor="mobile">
+                {" "}
+                Phone Number{" "}
+              </label>
+              <input
+                type="text"
+                id="mobile"
                 name="mobile"
                 className="form__input"
                 placeholder="Enter Your Phone Number"
@@ -374,8 +477,12 @@ const StudentForm = ({ handleCallBack, pageState, refreshData }) => {
               />
             </div>
             <div className="mobile">
-              <label className="form__label" htmlFor="mobile">Alternative Phone Number </label>
-              <input type="text" id="mobile"
+              <label className="form__label" htmlFor="mobile">
+                Alternative Phone Number{" "}
+              </label>
+              <input
+                type="text"
+                id="mobile"
                 name="mobile"
                 className="form__input"
                 placeholder="Enter Your Phone Number"
@@ -384,7 +491,10 @@ const StudentForm = ({ handleCallBack, pageState, refreshData }) => {
               />
             </div>
             <div className="SSLC">
-              <label className="form__label" htmlFor="SSLC"> SSLC Marks </label>
+              <label className="form__label" htmlFor="SSLC">
+                {" "}
+                SSLC Marks{" "}
+              </label>
               <input
                 type="text"
                 id="SSLC"
@@ -396,7 +506,10 @@ const StudentForm = ({ handleCallBack, pageState, refreshData }) => {
               />
             </div>
             <div className="HSC">
-              <label className="form__label" htmlFor="HSC"> HSC Marks </label>
+              <label className="form__label" htmlFor="HSC">
+                {" "}
+                HSC Marks{" "}
+              </label>
               <input
                 type="input"
                 id="HSC"
@@ -408,7 +521,10 @@ const StudentForm = ({ handleCallBack, pageState, refreshData }) => {
               />
             </div>
             <div className="diploma">
-              <label className="form__label" htmlFor="diploma"> Diploma Marks </label>
+              <label className="form__label" htmlFor="diploma">
+                {" "}
+                Diploma Marks{" "}
+              </label>
               <input
                 type="text"
                 id="diploma"
@@ -420,7 +536,10 @@ const StudentForm = ({ handleCallBack, pageState, refreshData }) => {
               />
             </div>
             <div className="emailId">
-              <label className="form__label" htmlFor="emailId"> email  </label>
+              <label className="form__label" htmlFor="emailId">
+                {" "}
+                email{" "}
+              </label>
               <input
                 type="input"
                 id="emailId"
@@ -432,7 +551,10 @@ const StudentForm = ({ handleCallBack, pageState, refreshData }) => {
               />
             </div>
             <div className="eligibility">
-              <label className="form__label" htmlFor="eligibility">  eligibility </label>
+              <label className="form__label" htmlFor="eligibility">
+                {" "}
+                eligibility{" "}
+              </label>
               <input
                 type="text"
                 id="eligibility"
@@ -444,7 +566,10 @@ const StudentForm = ({ handleCallBack, pageState, refreshData }) => {
               />
             </div>
             <div className="courseId">
-              <label className="form__label" htmlFor="courseid">  Course ID  </label>
+              <label className="form__label" htmlFor="courseid">
+                {" "}
+                Course ID{" "}
+              </label>
               <input
                 type="text"
                 id="courseId"
@@ -453,13 +578,15 @@ const StudentForm = ({ handleCallBack, pageState, refreshData }) => {
                 placeholder="Enter Your Course Id"
                 value={formData.courseId}
                 onChange={(e) => handleInputChange(e, "courseId")}
-
               />
             </div>
-            <div className='address-container'>
+            <div className="address-container">
               <h2>Address Information</h2>
               <div className="address">
-                <label className="form__label" htmlFor="address"> Street Name </label>
+                <label className="form__label" htmlFor="address">
+                  {" "}
+                  Street Name{" "}
+                </label>
                 <input
                   type="text"
                   id="address"
@@ -471,7 +598,10 @@ const StudentForm = ({ handleCallBack, pageState, refreshData }) => {
                 />
               </div>
               <div className="address">
-                <label className="form__label" htmlFor="address"> Area Name </label>
+                <label className="form__label" htmlFor="address">
+                  {" "}
+                  Area Name{" "}
+                </label>
                 <input
                   type="text"
                   id="address"
@@ -483,7 +613,10 @@ const StudentForm = ({ handleCallBack, pageState, refreshData }) => {
                 />
               </div>
               <div className="address">
-                <label className="form__label" htmlFor="address"> nationality </label>
+                <label className="form__label" htmlFor="address">
+                  {" "}
+                  nationality{" "}
+                </label>
                 <input
                   type="text"
                   id="address"
@@ -495,7 +628,10 @@ const StudentForm = ({ handleCallBack, pageState, refreshData }) => {
                 />
               </div>
               <div className="address">
-                <label className="form__label" htmlFor="address"> PINCODE </label>
+                <label className="form__label" htmlFor="address">
+                  {" "}
+                  PINCODE{" "}
+                </label>
                 <input
                   type="text"
                   id="address"
@@ -507,7 +643,10 @@ const StudentForm = ({ handleCallBack, pageState, refreshData }) => {
                 />
               </div>
               <div className="address">
-                <label className="form__label" htmlFor="address"> State </label>
+                <label className="form__label" htmlFor="address">
+                  {" "}
+                  State{" "}
+                </label>
                 <input
                   type="text"
                   id="address"
@@ -520,19 +659,29 @@ const StudentForm = ({ handleCallBack, pageState, refreshData }) => {
               </div>
             </div>
           </div>
-
         </div>
 
-
-        {pageState.add.state ? <button className='add-academy-btn' type="submit" id="addAcademy" onClick={(e) => handleFormAdd(e)}>Add Student</button> : <button className='add-academy-btn' type="submit" id="updateAcademy" onClick={(e) => handleFormEdit(e)}>Update Student</button>}
-
+        {type === "ADD" ? (
+          <button
+            className="add-academy-btn"
+            type="submit"
+            id="addStudent"
+            onClick={(e) => handleFormAdd(e)}
+          >
+            Add Student
+          </button>
+        ) : (
+          <button
+            className="add-academy-btn"
+            type="submit"
+            id="updateStudent"
+            onClick={(e) => handleFormEdit(e)}
+          >
+            Update Student
+          </button>
+        )}
       </form>
     </AdminGuard>
   );
 };
-
-
-
-
-
-export default AdminStudent;
+export default User;
