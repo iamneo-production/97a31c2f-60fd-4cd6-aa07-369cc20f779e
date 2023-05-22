@@ -59,30 +59,33 @@ const EnrolledCourse = () => {
         <UserGuard>
             
             <div>
-                <div className='navbar'>
-                <Link to ="/Viewacademy">
-                    <h2>PG Admission</h2>
-                </Link>
-                    <br></br>
-                    <div className='middle'>
-                        <Link to="/Viewacademy"><button>Institute</button></Link>
-                    </div>
-
-                    <div className='middle1'>
-                        <button onClick={handleClick}>EnrolledCourse</button>
-                    </div>
-                    <div className='right'>
-                        <button onClick={handleLogout}>LogOut</button>
-                    </div>
-                    
-                </div>
-                <div class='hero sec'>
-                    <Link to="/Viewacademy">
-                        <h5>Back To Home</h5>
+                <div className="mainbar">
+                    <Link to="/Navpage">
+                        <h1>PG Admission</h1>
                     </Link>
-                    
+                    <div className="one">
+                        <Link to="/HomePage">Institute</Link>
+                    </div>
+
+                    <div className="one">
+                        <Link to="/Enrolledcourse">Enrolled course</Link>
+                    </div>
+                    <div className="one">
+                        <Link to="/FeedBack">FeedBack</Link>
+                    </div>
+                    <div className="out">
+                        <button data-testid="logout" name="logout" onClick={handleLogout}>
+                            Logout
+                        </button>
+                    </div>
                 </div>
 
+            </div>
+            <div className="home">
+                <Link to="/HomePage">
+                    <h5>Back To Home</h5>
+                </Link>
+            </div>
 
 
                     {courses && courses.length > 0 ? (
@@ -100,9 +103,11 @@ const EnrolledCourse = () => {
                         <div>No courses found</div>
                     )}
 
+           
 
-                </div>
-        </UserGuard>
+
+
+        </UserGuard >
 
     );
 }

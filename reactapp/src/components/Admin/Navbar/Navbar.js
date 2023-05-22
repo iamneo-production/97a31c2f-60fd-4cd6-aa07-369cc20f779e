@@ -20,7 +20,7 @@ const NavBar = () => {
         <NavLink to="/admin/viewCourse">Course</NavLink>
         <NavLink to="/admin/Viewstudent">Students</NavLink>
       </div>
-      <button type="submit" onClick={navigateToLogout} style={{cursor: 'pointer'}}>
+      <button type="submit" onClick={navigateToLogout}>
         Logout
       </button>
     </nav>

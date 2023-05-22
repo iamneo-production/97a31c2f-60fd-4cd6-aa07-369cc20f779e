@@ -1,0 +1,91 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+
+}
+
+.mainbar {
+  background-color: aliceblue;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  padding: 0 8px;
+}
+
+.mainbar h1 {
+  font-size: 2rem;
+  font-weight: bolder;
+  font-style: oblique;
+}
+
+.one {
+  justify-content: space-around;
+  font-size: 1.5rem;
+  font-weight: 350;
+}
+
+.one:hover {
+  color: darkslategray;
+  font-weight: 500;
+}
+
+.searchsec {
+  text-align: center;
+  padding: 15px;
+
+}
+
+.searchsec input,
+{
+  text-align: center;
+  padding: 15px;
+  width: auto;
+  background-color: whitesmoke;
+  border: 1px solid;
+  border-color: aquamarine;
+}
+
+.out {
+  font-size: 1.5rem;
+}
+
+.herosec {
+  height: 70px;
+  margin: 50px auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4rem;
+  justify-items: center;
+
+}
+
+.card {
+  background-color: #fff;
+  height: 35vh;
+  width: 300px;
+  border: 2.5px solid;
+  border-color: black;
+  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
+}
+
+.card h2 {
+  text-align: center;
+}
+
+.card:hover {
+  background-color: lightgray;
+  width: 350px;
+  height: 37vh;
+  border: 3.5px solid;
+}
+
+.herosec img {
+  width: 300px;
+  height: 25vh;
+}
+
+.herosec img:hover {
+  width: 350px;
+}

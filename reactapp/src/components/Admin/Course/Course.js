@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
-import '../Course/Course.css';
-import { useNavigate, Link } from "react-router-dom";
-import { addCourse, getCourses } from "../../../api/courseApi.js";
-import NavBar from '../Navbar/Navbar.js';
+import React , { useState } from "react";
+import "../Course/Addcourse.css";
+import { useNavigate , Link } from "react-router-dom";
+import { addCourse , getCourses } from "../../../api/courseApi.js";
+import NavBar from "../Navbar/Navbar.js";
 import { AdminGuard } from "../../../AuthGuard/AdminGuard"
+
 
 const Course = () => {
   const [courseId, setCourseId] = useState("");
@@ -17,7 +18,7 @@ const Course = () => {
   const handleClick = (event) => {
     handleSubmit(event).then((data) => {
       console.log(data);
-      
+
     })
       .catch((error) => {
         console.error(error);
@@ -30,9 +31,13 @@ const Course = () => {
       });
     navigate('/admin/viewCourse');
   }
+
+
   const fetchData = async () => {
     const data = await getCourses();
   }
+
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const newCourse = {
@@ -56,13 +61,26 @@ const Course = () => {
   };
 
   return (
+
     <AdminGuard>
+
       <NavBar />
-      <div data-testid="addCourse">
-        <h2>Add Course Details</h2>
-        <form onSubmit={(e) => handleClick(e)}>
-          <div>
-            <label htmlFor="courseId">Course Id:</label>
+
+      {/* <Link to="/admin/viewCourse" className="course-back-to-home">Back To Home</Link> */}
+      <div 
+      data-testid="addCourse" 
+      className='course'>
+        <h2 
+        className="head-container">
+          Add Course Details</h2>
+        <form 
+        onSubmit={(e) => handleClick(e)} >
+          <div 
+          className="form-group">
+            <label 
+            htmlFor="courseId" 
+            className='label-heading'>
+            Course Id:</label>
             <input
               id="courseId"
               type="text"
@@ -72,8 +90,8 @@ const Course = () => {
               data-testid="courseId"
             />
           </div>
-          <div>
-            <label htmlFor="courseName">Course Name:</label>
+          <div className="form-group">
+            <label htmlFor="courseName" className='label-heading'>Course Name:</label>
             <input
               id="courseName"
               type="text"
@@ -83,8 +101,8 @@ const Course = () => {
               data-testid="courseName"
             />
           </div>
-          <div>
-            <label htmlFor="courseDuration">Course Duration:</label>
+          <div className="form-group">
+            <label htmlFor="courseDuration" className='label-heading'>Course Duration:</label>
             <input
               id="courseDuration"
               type="text"
@@ -94,8 +112,8 @@ const Course = () => {
               data-testid="courseDuration"
             />
           </div>
-          <div>
-            <label htmlFor="courseTiming">Course Timing:</label>
+          <div className="form-group">
+            <label htmlFor="courseTiming" className='label-heading'>Course Timing:</label>
             <input
               id="courseTiming"
               type="text"
@@ -105,8 +123,8 @@ const Course = () => {
               data-testid="courseTiming"
             />
           </div>
-          <div>
-            <label htmlFor="courseEnrolled">Course Enrolled:</label>
+          <div className="form-group">
+            <label htmlFor="courseEnrolled" className='label-heading'>Course Enrolled:</label>
             <input
               id="courseEnrolled"
               type="text"
@@ -116,8 +134,8 @@ const Course = () => {
               data-testid="courseEnrolled"
             />
           </div>
-          <div>
-            <label htmlFor="courseDescription">Course Description:</label>
+          <div className="form-group">
+            <label htmlFor="courseDescription" className='label-heading'>Course Description:</label>
             <textarea
               id="courseDescription"
               type="text"
@@ -127,13 +145,23 @@ const Course = () => {
               data-testid="courseDescription"
             />
           </div>
-
-          <button type="submit" id="addCourse">Add Course</button>
-          <Link to="/admin/viewCourse" className="btn btn-secondary">Cancel</Link>
+          <div 
+          class="button-container">
+            <button 
+            className="btn-primary" 
+            type="submit" id="addCourse">
+              Add Course</button>
+            <Link 
+            to="/admin/viewCourse"
+             className="btn-secondary">
+              Cancel</Link>
+          </div>
         </form>
       </div>
+
     </AdminGuard>
   );
 };
+
 
 export default Course;

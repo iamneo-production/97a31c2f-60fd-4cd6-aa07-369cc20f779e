@@ -13,16 +13,12 @@ body {
     margin: 0;
     padding: 0 8px;
     text-align: center;
-    font-size: 3rem;
-}
-
-.link {
-    font-size: 1.5rem;
+    font-size: 1rem;
 }
 
 .nv h2 {
     font-size: 3rem;
-    color: cornflowerblue;
+    color: bisque;
     font-weight: bolder;
 
 
@@ -30,19 +26,20 @@ body {
 
 .first {
     display: flex;
-    padding-right: 1%;
+    justify-content: space-equally;
+    align-items: center;
 }
 
 .link:hover {
     font-weight: bold;
-    font-size: 2.5rem;
+    font-size: 2rem;
     color: lavender
 }
 
 .out {
     color: lavenderblush;
-    font-size: 1.5rem;
-    font-weight: 600;
+    font-size: 2rem;
+    font-weight: bold;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     text-align: center;
     animation-name: color;
@@ -183,7 +180,7 @@ body {
     font-weight: bolder;
 }
 
-.yashaswi span::before {
+span::before {
     content: "BUILD A BETTER FUTURE!!!";
     animation-name: line;
     animation-direction: alternate-reverse;

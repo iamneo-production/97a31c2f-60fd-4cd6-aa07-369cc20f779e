@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
-import { getCourses, editCourse } from '../../../api/courseApi.js';
-import NavBar from '../Navbar/Navbar.js';
-import { AdminGuard } from "../../../AuthGuard/AdminGuard"
+import React , { useState , useEffect } from "react";
+import { useParams , Link , useNavigate } from "react-router-dom";
+import { getCourses , editCourse } from "../../../api/courseApi.js";
+import NavBar from "../Navbar/Navbar.js";
+import { AdminGuard } from "../../../AuthGuard/AdminGuard";
+import "../Course/Addcourse.css";
+
 
 function Editcourse(props) {
   const { id } = useParams();
@@ -15,6 +17,7 @@ function Editcourse(props) {
     courseDuration: '',
     courseTiming: '',
     courseEnrolled: ''
+
   });
 
   const handleClick = (event) => {
@@ -33,6 +36,8 @@ function Editcourse(props) {
       navigate('/admin/viewCourse');
     
   }
+
+
   const fetchData = async () => {
     const data = await getCourses();
   }
@@ -54,6 +59,7 @@ function Editcourse(props) {
       });
   }, [id]);
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -63,14 +69,18 @@ function Editcourse(props) {
     }
   };
 
+
+
   return (
+
+
     <AdminGuard>
       <NavBar />
-      <div>
-        <h1>Edit Course</h1>
+      <div className='course'>
+        <h1 class="head-container">Edit Course</h1>
         <form>
-          <div>
-            <label htmlFor="courseId">Course Id:</label>
+          <div className="form-group">
+            <label htmlFor="courseId" className='label-heading'>Course Id:</label>
             <input
               id="courseId"
               type="text"
@@ -81,8 +91,8 @@ function Editcourse(props) {
               data-testid="courseId"
             />
           </div>
-          <div>
-            <label htmlFor="courseName">Course Name:</label>
+          <div className="form-group">
+            <label htmlFor="courseName" className='label-heading'>Course Name:</label>
             <input
               id="courseName"
               type="text"
@@ -93,8 +103,8 @@ function Editcourse(props) {
               data-testid="courseName"
             />
           </div>
-          <div>
-            <label htmlFor="courseDuration">Course Duration:</label>
+          <div className="form-group">
+            <label htmlFor="courseDuration" className='label-heading'>Course Duration:</label>
             <input
               id="courseDuration"
               type="text"
@@ -105,8 +115,8 @@ function Editcourse(props) {
               data-testid="courseDuration"
             />
           </div>
-          <div>
-            <label htmlFor="courseTiming">Course Timing:</label>
+          <div className="form-group">
+            <label htmlFor="courseTiming" className='label-heading'>Course Timing:</label>
             <input
               id="courseTiming"
               type="text"
@@ -115,8 +125,8 @@ function Editcourse(props) {
               data-testid="courseTiming"
             />
           </div>
-          <div>
-            <label htmlFor="courseEnrolled">Course Enrolled:</label>
+          <div className="form-group">
+            <label htmlFor="courseEnrolled" className='label-heading'>Course Enrolled:</label>
             <input
               id="courseEnrolled"
               type="text"
@@ -125,8 +135,8 @@ function Editcourse(props) {
               data-testid="courseEnrolled"
             />
           </div>
-          <div>
-            <label htmlFor="courseDescription">Course Description:</label>
+          <div className="form-group">
+            <label htmlFor="courseDescription" className='label-heading'>Course Description:</label>
             <textarea
               id="courseDescription"
               type="text"
@@ -137,16 +147,26 @@ function Editcourse(props) {
               data-testid="courseDescription"
             />
           </div>
-          <button type="submit" onClick={(e) => handleClick(e)}>
+          <div>
+          <button 
+          className="btn-primary"
+           type="submit"
+            onClick={(e) => handleClick(e)}>
             Update Course
           </button>
-          <Link to="/admin/viewCourse" className="btn btn-secondary">
+          <Link 
+          to="/admin/viewCourse" 
+          className="btn-secondary">
             Cancel
           </Link>
+          </div>
         </form>
       </div>
     </AdminGuard>
+
   );
 }
+
+
 
 export default Editcourse;

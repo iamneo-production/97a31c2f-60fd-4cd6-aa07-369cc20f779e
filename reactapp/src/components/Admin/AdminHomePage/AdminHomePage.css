@@ -1,86 +1,249 @@
-* {
-    padding: 0px;
-    margin: 0px;
-    box-sizing:border-box;
+/* search bar css */
+
+.admin-search-container {
+
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+
 }
 
-div {
-    margin: 0px;
+.search-input {
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  padding: 10px;
+  width: 35%;
 }
+
+.search-btn {
+  background-color: #2A7230;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.2rem;
+  margin-left: 10px;
+  padding: 5px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.search-btn:hover {
+  background-color: #3e9746;
+}
+
+
+/* add institute btn */
+
+.admin-add-institute-button {
+  display: flex;
+  justify-content: center;
+}
+
+.admin-add-institute-icon {
+  display: flex;
+  align-items: center;
+  background-color: #2A7230;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  transition: all 0.3s ease-in-out;
+
+}
+
+.admin-add-institute-icon:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.admin-add-institute-icon i {
+  margin-right: 10px;
+}
+
+
+/* institute display css */
 
 .admin-academy-container {
-    background-color: #dedada;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background-color: #ccc; */
 }
 
 .academy-display-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    justify-items: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin-top: 20px;
 }
 
-.admin-academy-container button {
-    background-color: #59665a;
-    color: beige;
+.each-academy-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 400px;
+  height: 350px;
+  /* position: relative; */
+  transition: transform 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.each-academy-cell:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .each-academy-cell img {
-    height: 300px;
-    width: 300px;
+  width: 350px;
+  height: 200px;
+  object-fit: cover;
+  margin-bottom: 10px;
+  border-radius: 5px;
 }
 
-.each-academy-cell h4 {
-    color: black;
+.admin-institute-name {
+  font-weight: bold;
+  color: #545D89;
+  text-transform: uppercase;
+  font-size: 20px;
+
 }
 
-.admin-search-container {
-    text-align: center;
-    padding: 10px;
+.admin-institute-address {
+  font-size: 16px;
+  color: #666;
 }
 
-.academy-form-container {
-    background: #DAEAF1;
+/* edit and delete btn css */
+
+.action-btn {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 10px;
 }
 
-.academy-form-container button {
-    background-color: #4C7650;
+.admin-edit-btn,
+.admin-delete-btn {
+  margin-left: 10px;
+  cursor: pointer;
+  font-size: 18px;
 }
 
-.admin-header-container {
-    height: 60px;
-    background-color: #2A7230;
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr 2fr;
-    align-items: center;
+.admin-edit-btn {
+  color: #2A7230;
 }
 
-.admin-header-container button,h3 {
-    background-color: #2A7230;
-    color: beige;
+.admin-edit-btn:hover {
+  color: #3e9746;
 }
 
-.admin-add-academy-button {
-    position: fixed;
-    right: 20px;
-    bottom: 20px;
+.admin-delete-btn {
+  color: #E62020;
 }
 
-.admin-academy-form button {
-    background-color: rgb(25, 106, 35);
+.admin-delete-btn:hover {
+  color: #f24747;
 }
 
-.admin-academy-form-container {
-    background-color: rgb(192, 192, 187);
-    padding: 5rem;
-    margin: 4rem;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 5rem;
+
+/* add institute page css */
+
+/* Back to home css */
+
+.back-to-home {
+  background-color: #fff;
+  border: 2px solid #2A7230;
+  color: #2A7230;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  margin-top: 20px;
+}
+
+.back-to-home:hover {
+  background-color: #2A7230;
+  color: #fff;
+}
+
+.head-container {
+  text-align: center;
+  margin-bottom: 15px;
+  font-weight: bold;
+  font-size: 1.9rem;
+  color: #555;
+}
+
+
+.admin-academy-form {
+  max-width: 800px;
+  margin: auto;
+  padding: 40px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+  color: #555;
+  font-size: 1.1rem;
+}
+
+.form-group input[type="text"],
+.form-group textarea {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-bottom: 2px solid #ddd;
+  font-size: 1.1rem;
+  color: #333;
+  background-color: transparent;
+  transition: border-color 0.3s ease-in-out;
+}
+
+.form-group input[type="text"]:focus,
+.form-group textarea:focus {
+  border-color: #2A7230;
+  outline: none;
+}
+
+.form-group textarea {
+  resize: none;
+  min-height: 120px;
 }
 
 .admin-form-submit-button {
-    background-color: rgb(25, 106, 35);
-    position: fixed;
-    right: 20px;
-    bottom: 20px;
+  padding: 15px 25px;
+  border: none;
+  border-radius: 50px;
+  /* font-size: 1.1rem; */
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  background-color: #2A7230;
+  color: #fff;
+  /* margin-right: 20px; */
+  margin-left: 70%;
+}
+
+.admin-form-submit-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
 }
