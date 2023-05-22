@@ -42,11 +42,17 @@ const Adminacademy = () => {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const [isError, setIsError] = useState({ state: false, msg: "" });
+  const [isError, setIsError] = useState({
+    state: false,
+    msg: ""
+  });
 
   const [searchTerm, setSearchTerm] = useState("");
 
-  const [popup, setPopup] = useState({ state: false, delid: null });
+  const [popup, setPopup] = useState({
+    state: false,
+    delid: null
+  });
 
   const navigate = useNavigate();
 
@@ -105,13 +111,6 @@ const Adminacademy = () => {
 
   const handleDelete = async (id) => {
     setPopup({ state: true, delid: id });
-    // deleteAcademy(id)
-    //   .then(() => {
-    //     console.log("deleted Academy");
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
   };
 
   const deleteAcademy = async (id) => {
@@ -138,32 +137,48 @@ const Adminacademy = () => {
 
   return (
     <AdminGuard>
-      {popup.state && (
-        <div className="admin-popup-body noHover">
-          <div className="admin-popup-overlay"></div>
-          <div className="admin-institute-popup">
-            <h1>Are you sure to delete the data ?</h1>
-            <button
-              type="submit"
-              onClick={() => {
-                deleteAcademy(popup.delid);
-                setPopup({ state: false, delid: null });
-              }}
-            >
-              confirm delete
-            </button>
-            <br />
-            <button
-              type="submit"
-              onClick={() => {
-                setPopup({ state: false, delid: null });
-              }}
-            >
-              cancel
-            </button>
+      {
+        popup.state && (
+          <div className="admin-popup-body noHover">
+            <div className="admin-popup-overlay">
+
+            </div>
+            <div className="admin-institute-popup">
+              <h1>Are you sure to delete the data ?</h1>
+              <button
+                type="submit"
+                onClick={() => {
+                  deleteAcademy(popup.delid)
+                    .then(() => {
+                      console.log("deleted Academy");
+                    })
+                    .catch((error) => {
+                      console.log(error);
+                    });
+                  setPopup({
+                    state: false,
+                    delid: null
+                  });
+                }}
+              >
+                confirm delete
+              </button>
+              <br />
+              <button
+                type="submit"
+                onClick={() => {
+                  setPopup({
+                    state: false,
+                    delid: null
+                  });
+                }}
+              >
+                cancel
+              </button>
+            </div>
           </div>
-        </div>
-      )}
+        )
+      }
       <div className="admin-search-container">
         <input
           type="text"
@@ -189,11 +204,10 @@ const Adminacademy = () => {
             const { instituteId, instituteName, instituteAddress, imageUrl } =
               eachAcademy;
             return (
-              <div key={index} className=".admin-institute-grid-container">
+              <div key={instituteId} className=".admin-institute-grid-container">
                 <div
                   id={"adminInstituteGrid" + (index + 1)}
                   className="each-academy-cell"
-                  key={instituteId}
                 >
                   <img src={imageUrl} alt={instituteName} />
                   <h4 className="admin-institute-name">{instituteName}</h4>
@@ -287,13 +301,6 @@ export const AcademyForm = ({ type }) => {
     e.preventDefault();
     console.log(formData);
     setPopup(true);
-    // addAcademy()
-    //   .then((data) => {
-    //     console.log("added academy ", data);
-    //   })
-    //   .catch((error) => {
-    //     console.error(error);
-    //   });
   };
 
   const addAcademy = async () => {
@@ -311,15 +318,8 @@ export const AcademyForm = ({ type }) => {
 
   const handleFormEdit = (e) => {
     e.preventDefault();
-    console.log(formData);
+    console.log("Edited Data :", formData);
     setPopup(true);
-    // editAcademy()
-    //   .then((data) => {
-    //     console.log(data);
-    //   })
-    //   .catch((error) => {
-    //     console.error(error);
-    //   });
   };
 
   const editAcademy = async () => {
@@ -338,46 +338,63 @@ export const AcademyForm = ({ type }) => {
   return (
     <AdminGuard>
       <NavBar />
-      {popup && (
-        <div className="admin-popup-body">
-          <div className="admin-popup-overlay"></div>
-          <div className="admin-institute-popup">
-            {type === "ADD" ? (
-              <h1>Are you sure to add the data ?</h1>
-            ) : (
-              <h1>Are you sure to edit the data ?</h1>
-            )}
-            {type === "ADD" ? (
+      {
+        popup && (
+          <div className="admin-popup-body">
+            <div className="admin-popup-overlay">
+
+            </div>
+            <div className="admin-institute-popup">
+              {type === "ADD" ? (
+                <h1>Are you sure to add the data ?</h1>
+              ) : (
+                <h1>Are you sure to edit the data ?</h1>
+              )}
+              {
+                type === "ADD" ? (
+                  <button
+                    type="submit"
+                    onClick={() => {
+                      addAcademy()
+                        .then((data) => {
+                          console.log("added academy ", data);
+                        })
+                        .catch((error) => {
+                          console.error(error);
+                        });
+                    }}
+                  >
+                    confirm add
+                  </button>
+                ) : (
+                  <button
+                    type="submit"
+                    onClick={() => {
+                      editAcademy()
+                        .then((data) => {
+                          console.log(data);
+                        })
+                        .catch((error) => {
+                          console.error(error);
+                        });
+                    }}
+                  >
+                    confirm edit
+                  </button>
+                )}
+              <br />
               <button
                 type="submit"
                 onClick={() => {
-                  addAcademy();
+                  setPopup(false);
                 }}
               >
-                confirm add
+                cancel
               </button>
-            ) : (
-              <button
-                type="submit"
-                onClick={() => {
-                  editAcademy();
-                }}
-              >
-                confirm edit
-              </button>
-            )}
-            <br />
-            <button
-              type="submit"
-              onClick={() => {
-                setPopup(false);
-              }}
-            >
-              cancel
-            </button>
+            </div>
           </div>
-        </div>
-      )}
+        )
+      }
       <button
         className="back-to-home"
         type="submit"

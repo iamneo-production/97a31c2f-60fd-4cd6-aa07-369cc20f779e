@@ -10,7 +10,10 @@ function Viewcourse() {
   const [courses, setCourses] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
-  const [popup, setPopup] = useState({ state: false, deleteId: null });
+  const [popup, setPopup] = useState({
+    state: false,
+    deleteId: null
+  });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -68,16 +71,28 @@ function Viewcourse() {
 
     <AdminGuard>
       <NavBar />
-      {popup.state &&
+      {
+        popup.state &&
         <div className="admin-popup-body noHover">
-          <div className="admin-popup-overlay"></div>
+          <div className="admin-popup-overlay">
+
+          </div>
           <div className="admin-institute-popup">
             <h1>Are you sure to delete the data ?</h1>
             <button
               type="submit"
               onClick={() => {
-                handleDelete(popup.deleteId);
-                setPopup({ state: false, deleteId: null });
+                handleDelete(popup.deleteId)
+                  .then(() => {
+                    console.log("deleted Course");
+                  })
+                  .catch((error) => {
+                    console.log(error);
+                  });
+                setPopup({
+                  state: false,
+                  deleteId: null
+                });
               }}
             >
               confirm delete
@@ -86,7 +101,10 @@ function Viewcourse() {
             <button
               type="submit"
               onClick={() => {
-                setPopup({ state: false, deleteId: null });
+                setPopup({
+                  state: false,
+                  deleteId: null
+                });
               }}
             >
               cancel
@@ -164,7 +182,12 @@ function Viewcourse() {
                     <button
                       className="nav-link"
                       id="deletecourse"
-                      onClick={() => setPopup({ state: true, deleteId: course.id })}>
+                      onClick={() => {
+                        setPopup({
+                          state: true,
+                          deleteId: course.id
+                        })
+                      }}>
                       <i
                         className="fa-regular fa-trash-can">
                       </i>

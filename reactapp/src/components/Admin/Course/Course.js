@@ -72,32 +72,36 @@ const Course = () => {
 
       <NavBar />
 
-      {popup && (
-        <div className="admin-popup-body noHover">
-          <div className="admin-popup-overlay"></div>
-          <div className="admin-institute-popup">
-            <h1>Are you sure to add the data ?</h1>
-            <button
-              type="submit"
-              onClick={(e) => {
-                handleClick(e);
-                setPopup(false);
-              }}
-            >
-              confirm add
-            </button>
-            <br />
-            <button
-              type="submit"
-              onClick={() => {
-                setPopup(false);
-              }}
-            >
-              cancel
-            </button>
+      {
+        popup && (
+          <div className="admin-popup-body noHover">
+            <div className="admin-popup-overlay">
+
+            </div>
+            <div className="admin-institute-popup">
+              <h1>Are you sure to add the data ?</h1>
+              <button
+                type="submit"
+                onClick={(e) => {
+                  handleClick(e);
+                  setPopup(false);
+                }}
+              >
+                confirm add
+              </button>
+              <br />
+              <button
+                type="submit"
+                onClick={() => {
+                  setPopup(false);
+                }}
+              >
+                cancel
+              </button>
+            </div>
           </div>
-        </div>
-      )}
+        )
+      }
 
       {/* <Link to="/admin/viewCourse" className="course-back-to-home">Back To Home</Link> */}
       <div
@@ -181,8 +185,11 @@ const Course = () => {
             class="button-container">
             <button
               className="btn-primary"
-              type="submit" id="addCourse"
-              onClick={(e) => { handlePop(e) }}>
+              type="submit"
+              id="addCourse"
+              onClick={(e) => {
+                handlePop(e)
+              }}>
               Add Course</button>
             <Link
               to="/admin/viewCourse"

@@ -83,32 +83,36 @@ function Editcourse(props) {
 
     <AdminGuard>
       <NavBar />
-      {popup && (
-        <div className="admin-popup-body noHover">
-          <div className="admin-popup-overlay"></div>
-          <div className="admin-institute-popup">
-            <h1>Are you sure to edit the data ?</h1>
-            <button
-              type="submit"
-              onClick={(e) => {
-                handleClick(e);
-                setPopup(false);
-              }}
-            >
-              confirm edit
-            </button>
-            <br />
-            <button
-              type="submit"
-              onClick={() => {
-                setPopup(false);
-              }}
-            >
-              cancel
-            </button>
+      {
+        popup && (
+          <div className="admin-popup-body noHover">
+            <div className="admin-popup-overlay">
+
+            </div>
+            <div className="admin-institute-popup">
+              <h1>Are you sure to edit the data ?</h1>
+              <button
+                type="submit"
+                onClick={(e) => {
+                  handleClick(e);
+                  setPopup(false);
+                }}
+              >
+                confirm edit
+              </button>
+              <br />
+              <button
+                type="submit"
+                onClick={() => {
+                  setPopup(false);
+                }}
+              >
+                cancel
+              </button>
+            </div>
           </div>
-        </div>
-      )}
+        )
+      }
       <div className='course'>
         <h1 class="head-container">Edit Course</h1>
         <form>
@@ -184,7 +188,9 @@ function Editcourse(props) {
             <button
               className="btn-primary"
               type="submit"
-              onClick={(e) => handlePop(e)}>
+              onClick={(e) => {
+                handlePop(e)
+              }}>
               Update Course
             </button>
             <Link

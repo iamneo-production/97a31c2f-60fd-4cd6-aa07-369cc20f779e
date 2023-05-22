@@ -63,7 +63,10 @@ const AdminStudent1 = () => {
 
   const navigate = useNavigate();
 
-  const [popup, setPopup] = useState({ state: false, deleteId: null });
+  const [popup, setPopup] = useState({
+    state: false,
+    deleteId: null
+  });
 
   useEffect(() => {
     fetchCourseName()
@@ -127,8 +130,8 @@ const AdminStudent1 = () => {
       console.log(data);
       setCourse1(data);
       fetchStudentData()
-        .then((data) => {
-          console.log("fetched student data success ", data);
+        .then((dataa) => {
+          console.log("fetched student data success ", dataa);
         })
         .catch((error) => {
           console.error(error);
@@ -144,13 +147,6 @@ const AdminStudent1 = () => {
 
   const handleDelete = async (id) => {
     setPopup({ state: true, deleteId: id });
-    // deleteStudent(id)
-    //   .then((data) => {
-    //     console.log("delete student data success ", data);
-    //   })
-    //   .catch((error) => {
-    //     console.error(error);
-    //   });
   };
 
   const deleteStudent = async (id) => {
@@ -179,32 +175,48 @@ const AdminStudent1 = () => {
     <AdminGuard>
       <Navbar />
 
-      {popup.state && (
-        <div className="admin-popup-body noHover">
-          <div className="admin-popup-overlay"></div>
-          <div className="admin-institute-popup">
-            <h1>Are you sure to delete the data ?</h1>
-            <button
-              type="submit"
-              onClick={() => {
-                deleteStudent(popup.deleteId);
-                setPopup({ state: false, deleteId: null });
-              }}
-            >
-              confirm delete
-            </button>
-            <br />
-            <button
-              type="submit"
-              onClick={() => {
-                setPopup({ state: false, deleteId: null });
-              }}
-            >
-              cancel
-            </button>
+      {
+        popup.state && (
+          <div className="admin-popup-body noHover">
+            <div className="admin-popup-overlay">
+
+            </div>
+            <div className="admin-institute-popup">
+              <h1>Are you sure to delete the data ?</h1>
+              <button
+                type="submit"
+                onClick={() => {
+                  deleteStudent(popup.deleteId)
+                    .then((data) => {
+                      console.log("delete student data success ", data);
+                    })
+                    .catch((error) => {
+                      console.error(error);
+                    });
+                  setPopup({
+                    state: false,
+                    deleteId: null
+                  });
+                }}
+              >
+                confirm delete
+              </button>
+              <br />
+              <button
+                type="submit"
+                onClick={() => {
+                  setPopup({
+                    state: false,
+                    deleteId: null
+                  });
+                }}
+              >
+                cancel
+              </button>
+            </div>
           </div>
-        </div>
-      )}
+        )
+      }
       <div className="admin-student-container">
         <div className="admin-search-container">
           <input
@@ -351,13 +363,6 @@ export const StudentForm = ({ type }) => {
     e.preventDefault();
     console.log(formData);
     setPopup(true);
-    // addStudent()
-    //   .then((data) => {
-    //     console.log("added student ", data);
-    //   })
-    //   .catch((error) => {
-    //     console.error(error);
-    //   });
   };
 
   const addStudent = async () => {
@@ -375,15 +380,8 @@ export const StudentForm = ({ type }) => {
 
   const handleFormEdit = (e) => {
     e.preventDefault();
-    console.log(formData);
+    console.log("Edited Data : ", formData);
     setPopup(true);
-    // editStudent()
-    //   .then((data) => {
-    //     console.log(data);
-    //   })
-    //   .catch((error) => {
-    //     console.error(error);
-    //   });
   };
 
   const editStudent = async () => {
@@ -401,46 +399,62 @@ export const StudentForm = ({ type }) => {
   return (
     <AdminGuard>
       <Navbar />
-      {popup && (
-        <div className="admin-popup-body">
-          <div className="admin-popup-overlay"></div>
-          <div className="admin-institute-popup">
-            {type === "ADD" ? (
-              <h1>Are you sure to add the data ?</h1>
-            ) : (
-              <h1>Are you sure to edit the data ?</h1>
-            )}
-            {type === "ADD" ? (
+      {
+        popup && (
+          <div className="admin-popup-body">
+            <div className="admin-popup-overlay">
+
+            </div>
+            <div className="admin-institute-popup">
+              {type === "ADD" ? (
+                <h1>Are you sure to add the data ?</h1>
+              ) : (
+                <h1>Are you sure to edit the data ?</h1>
+              )}
+              {type === "ADD" ? (
+                <button
+                  type="submit"
+                  onClick={() => {
+                    addStudent()
+                      .then((data) => {
+                        console.log("added student ", data);
+                      })
+                      .catch((error) => {
+                        console.error(error);
+                      });
+                  }}
+                >
+                  confirm add
+                </button>
+              ) : (
+                <button
+                  type="submit"
+                  onClick={() => {
+                    editStudent()
+                      .then((data) => {
+                        console.log(data);
+                      })
+                      .catch((error) => {
+                        console.error(error);
+                      });
+                  }}
+                >
+                  confirm edit
+                </button>
+              )}
+              <br />
               <button
                 type="submit"
                 onClick={() => {
-                  addStudent();
+                  setPopup(false);
                 }}
               >
-                confirm add
+                cancel
               </button>
-            ) : (
-              <button
-                type="submit"
-                onClick={() => {
-                  editStudent();
-                }}
-              >
-                confirm edit
-              </button>
-            )}
-            <br />
-            <button
-              type="submit"
-              onClick={() => {
-                setPopup(false);
-              }}
-            >
-              cancel
-            </button>
+            </div>
           </div>
-        </div>
-      )}
+        )
+      }
       <button
         type="submit"
         className="back-to-home"
