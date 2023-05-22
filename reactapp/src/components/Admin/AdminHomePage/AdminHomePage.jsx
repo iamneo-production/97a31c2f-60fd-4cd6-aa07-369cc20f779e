@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Navbar from "../Navbar/Navbar";
+import NavBar from "../Navbar/Navbar";
 import { store } from "../../../store";
 import { AdminGuard } from "../../../AuthGuard/AdminGuard";
 import "./AdminHomePage.css";
@@ -12,7 +12,6 @@ store.subscribe(() => {
   auth = store.getState().auth;
   console.log(auth);
 });
-
 
 const initialData = {
   instituteName: "",
@@ -30,7 +29,7 @@ const AdminHomePage = () => {
 
   return (
     <>
-      <Navbar />
+      <NavBar />
       <Adminacademy />
     </>
   );
@@ -46,6 +45,8 @@ const Adminacademy = () => {
   const [isError, setIsError] = useState({ state: false, msg: "" });
 
   const [searchTerm, setSearchTerm] = useState("");
+
+  const [popup, setPopup] = useState({ state: false, delid: null });
 
   const navigate = useNavigate();
 
@@ -103,13 +104,14 @@ const Adminacademy = () => {
   };
 
   const handleDelete = async (id) => {
-    deleteAcademy(id)
-      .then(() => {
-        console.log("deleted Academy");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    setPopup({ state: true, delid: id });
+    // deleteAcademy(id)
+    //   .then(() => {
+    //     console.log("deleted Academy");
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
   };
 
   const deleteAcademy = async (id) => {
@@ -136,16 +138,46 @@ const Adminacademy = () => {
 
   return (
     <AdminGuard>
+      {popup.state && (
+        <div className="admin-popup-body noHover">
+          <div className="admin-popup-overlay"></div>
+          <div className="admin-institute-popup">
+            <h1>Are you sure to delete the data ?</h1>
+            <button
+              type="submit"
+              onClick={() => {
+                deleteAcademy(popup.delid);
+                setPopup({ state: false, delid: null });
+              }}
+            >
+              confirm delete
+            </button>
+            <br />
+            <button
+              type="submit"
+              onClick={() => {
+                setPopup({ state: false, delid: null });
+              }}
+            >
+              cancel
+            </button>
+          </div>
+        </div>
+      )}
       <div className="admin-search-container">
         <input
           type="text"
           name="search"
           value={searchTerm}
-          className='search-input'
+          className="search-input"
           placeholder="Type here to Search Institute"
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <button type="button" className='search-btn' onClick={() => filterAcademyData()}>
+        <button
+          type="button"
+          className="search-btn"
+          onClick={() => filterAcademyData()}
+        >
           Search
         </button>
       </div>
@@ -157,7 +189,7 @@ const Adminacademy = () => {
             const { instituteId, instituteName, instituteAddress, imageUrl } =
               eachAcademy;
             return (
-              <div className=".admin-institute-grid-container">
+              <div key={index} className=".admin-institute-grid-container">
                 <div
                   id={"adminInstituteGrid" + (index + 1)}
                   className="each-academy-cell"
@@ -165,24 +197,26 @@ const Adminacademy = () => {
                 >
                   <img src={imageUrl} alt={instituteName} />
                   <h4 className="admin-institute-name">{instituteName}</h4>
-                  <h4 className="admin-institute-address">Place : {instituteAddress}</h4>
+                  <h4 className="admin-institute-address">
+                    Place : {instituteAddress}
+                  </h4>
                   <div className="action-btn">
-                  <button
-                    type="submit"
-                    className="admin-edit-btn"
-                    id="editInstitute"
-                    onClick={() => handleEdit(instituteId)}
-                  >
-                    <i className="fa-regular fa-pen-to-square"></i>
-                  </button>
-                  <button
-                    type="submit"
-                    className="admin-delete-btn"
-                    id="deleteInstitute"
-                    onClick={() => handleDelete(instituteId)}
-                  >
-                    <i className="fa-regular fa-trash-can"></i>
-                  </button>
+                    <button
+                      type="submit"
+                      className="admin-edit-btn"
+                      id="editInstitute"
+                      onClick={() => handleEdit(instituteId)}
+                    >
+                      <i className="fa-regular fa-pen-to-square"></i>
+                    </button>
+                    <button
+                      type="submit"
+                      className="admin-delete-btn"
+                      id="deleteInstitute"
+                      onClick={() => handleDelete(instituteId)}
+                    >
+                      <i className="fa-regular fa-trash-can"></i>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -190,7 +224,11 @@ const Adminacademy = () => {
           })}
         </div>
         <div className="admin-add-academy-button">
-          <button type="submit" className='admin-add-institute-icon' onClick={() => handleAdd()}>
+          <button
+            type="submit"
+            className="admin-add-institute-icon"
+            onClick={() => handleAdd()}
+          >
             {" "}
             <i className="fa-solid fa-circle-plus"></i>Add Institute
           </button>
@@ -202,6 +240,8 @@ const Adminacademy = () => {
 
 export const AcademyForm = ({ type }) => {
   const [formData, setFormData] = useState(initialData);
+
+  const [popup, setPopup] = useState(false);
 
   const navigate = useNavigate();
 
@@ -246,13 +286,14 @@ export const AcademyForm = ({ type }) => {
   const handleFormAdd = (e) => {
     e.preventDefault();
     console.log(formData);
-    addAcademy()
-      .then((data) => {
-        console.log("added academy ", data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    setPopup(true);
+    // addAcademy()
+    //   .then((data) => {
+    //     console.log("added academy ", data);
+    //   })
+    //   .catch((error) => {
+    //     console.error(error);
+    //   });
   };
 
   const addAcademy = async () => {
@@ -271,13 +312,14 @@ export const AcademyForm = ({ type }) => {
   const handleFormEdit = (e) => {
     e.preventDefault();
     console.log(formData);
-    editAcademy()
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    setPopup(true);
+    // editAcademy()
+    //   .then((data) => {
+    //     console.log(data);
+    //   })
+    //   .catch((error) => {
+    //     console.error(error);
+    //   });
   };
 
   const editAcademy = async () => {
@@ -295,7 +337,47 @@ export const AcademyForm = ({ type }) => {
 
   return (
     <AdminGuard>
-      <Navbar />
+      <NavBar />
+      {popup && (
+        <div className="admin-popup-body">
+          <div className="admin-popup-overlay"></div>
+          <div className="admin-institute-popup">
+            {type === "ADD" ? (
+              <h1>Are you sure to add the data ?</h1>
+            ) : (
+              <h1>Are you sure to edit the data ?</h1>
+            )}
+            {type === "ADD" ? (
+              <button
+                type="submit"
+                onClick={() => {
+                  addAcademy();
+                }}
+              >
+                confirm add
+              </button>
+            ) : (
+              <button
+                type="submit"
+                onClick={() => {
+                  editAcademy();
+                }}
+              >
+                confirm edit
+              </button>
+            )}
+            <br />
+            <button
+              type="submit"
+              onClick={() => {
+                setPopup(false);
+              }}
+            >
+              cancel
+            </button>
+          </div>
+        </div>
+      )}
       <button
         className="back-to-home"
         type="submit"
@@ -306,21 +388,25 @@ export const AcademyForm = ({ type }) => {
         Back to Home
       </button>
       <div className="admin-academy-form">
-        {type === "ADD" ? <h1 className="head-container">Add Academy Details</h1> : <h1 className="head-container">Edit Academy Details</h1>}
+        {type === "ADD" ? (
+          <h1 className="head-container">Add Academy Details</h1>
+        ) : (
+          <h1 className="head-container">Edit Academy Details</h1>
+        )}
         <form className="admin-academy-form-container">
           <div className="form-group">
-            <label className='label-heading'>Academy Name : </label>
+            <label className="label-heading">Academy Name : </label>
             <input
               type="text"
               id="academyName"
               name="academyName"
               value={formData.instituteName}
               placeholder="Enter Academy Name"
-              onChange={(s) => handleChange(s, "instituteName")}
+              onChange={(e) => handleChange(e, "instituteName")}
             />
           </div>
           <div className="form-group">
-            <label className='label-heading'>Contact Number : </label>
+            <label className="label-heading">Contact Number : </label>
             <input
               type="text"
               id="contactNumber"
@@ -331,7 +417,7 @@ export const AcademyForm = ({ type }) => {
             />
           </div>
           <div className="form-group">
-            <label className='label-heading'>Image Url : </label>
+            <label className="label-heading">Image Url : </label>
             <input
               type="text"
               id="imageUrl"
@@ -342,7 +428,7 @@ export const AcademyForm = ({ type }) => {
             />
           </div>
           <div className="form-group">
-            <label className='label-heading'>Email Id : </label>
+            <label className="label-heading">Email Id : </label>
             <input
               type="text"
               id="emailId"
@@ -353,7 +439,7 @@ export const AcademyForm = ({ type }) => {
             />
           </div>
           <div className="form-group">
-            <label className='label-heading'>Academy Location : </label>
+            <label className="label-heading">Academy Location : </label>
             <input
               type="text"
               id="academyLocation"
@@ -364,7 +450,7 @@ export const AcademyForm = ({ type }) => {
             />
           </div>
           <div className="form-group">
-            <label className='label-heading'>Academy Description : </label>
+            <label className="label-heading">Academy Description : </label>
             <textarea
               rows={5}
               cols={50}

@@ -1,11 +1,8 @@
 /* search bar css */
-
 .admin-search-container {
-
   display: flex;
   justify-content: center;
   margin: 20px 0;
-
 }
 
 .search-input {
@@ -34,7 +31,6 @@
 
 
 /* add institute btn */
-
 .admin-add-institute-button {
   display: flex;
   justify-content: center;
@@ -67,7 +63,6 @@
 
 
 /* institute display css */
-
 .admin-academy-container {
   display: flex;
   flex-direction: column;
@@ -77,7 +72,7 @@
 
 .academy-display-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   gap: 40px;
   margin-top: 20px;
 }
@@ -107,6 +102,8 @@
   object-fit: cover;
   margin-bottom: 10px;
   border-radius: 5px;
+
+
 }
 
 .admin-institute-name {
@@ -123,7 +120,6 @@
 }
 
 /* edit and delete btn css */
-
 .action-btn {
   display: flex;
   justify-content: flex-end;
@@ -156,9 +152,7 @@
 
 
 /* add institute page css */
-
 /* Back to home css */
-
 .back-to-home {
   background-color: #fff;
   border: 2px solid #2A7230;
@@ -246,4 +240,56 @@
 .admin-form-submit-button:hover {
   transform: translateY(-5px);
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+@media only screen and (min-width:975px) {
+  .academy-display-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+  .academy-display-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.admin-popup-body,
+.admin-popup-overlay {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+}
+
+.admin-popup-overlay {
+  background-color: rgba(49, 49, 49, 0.55);
+}
+
+.admin-institute-popup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 1.4;
+  background: rgb(104, 104, 104);
+  padding: 14px 28px;
+  border-radius: 3px;
+  min-height: 125px;
+  max-width: 600px;
+  min-width: 400px;
+}
+
+.admin-institute-popup button {
+  background-color: #dcdfc7;
+  color: rgb(27, 27, 25);
+  border-radius: 5%;
+}
+
+.noHover {
+  transform: none;
+  box-shadow: none;
 }

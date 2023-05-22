@@ -1,6 +1,6 @@
-import React , { useState , useEffect } from "react";
-import { useParams , Link , useNavigate } from "react-router-dom";
-import { getCourses , editCourse } from "../../../api/courseApi.js";
+import React, { useState, useEffect } from "react";
+import { useParams, Link, useNavigate } from "react-router-dom";
+import { getCourses, editCourse } from "../../../api/courseApi.js";
 import NavBar from "../Navbar/Navbar.js";
 import { AdminGuard } from "../../../AuthGuard/AdminGuard";
 import "../Course/Addcourse.css";
@@ -20,6 +20,13 @@ function Editcourse(props) {
 
   });
 
+  const [popup, setPopup] = useState(false);
+
+  const handlePop = (e) => {
+    e.preventDefault();
+    setPopup(true);
+  }
+
   const handleClick = (event) => {
     handleSubmit(event).then((data) => {
       console.log("edited successfully ", data);
@@ -27,14 +34,14 @@ function Editcourse(props) {
       .catch((error) => {
         console.error(error);
       });
-      fetchData().then((data) => {
-        console.log("fetched course data success ", data);
-      })
+    fetchData().then((data) => {
+      console.log("fetched course data success ", data);
+    })
       .catch((error) => {
         console.error(error);
       });
-      navigate('/admin/viewCourse');
-    
+    navigate('/admin/viewCourse');
+
   }
 
 
@@ -76,6 +83,32 @@ function Editcourse(props) {
 
     <AdminGuard>
       <NavBar />
+      {popup && (
+        <div className="admin-popup-body noHover">
+          <div className="admin-popup-overlay"></div>
+          <div className="admin-institute-popup">
+            <h1>Are you sure to edit the data ?</h1>
+            <button
+              type="submit"
+              onClick={(e) => {
+                handleClick(e);
+                setPopup(false);
+              }}
+            >
+              confirm edit
+            </button>
+            <br />
+            <button
+              type="submit"
+              onClick={() => {
+                setPopup(false);
+              }}
+            >
+              cancel
+            </button>
+          </div>
+        </div>
+      )}
       <div className='course'>
         <h1 class="head-container">Edit Course</h1>
         <form>
@@ -148,17 +181,17 @@ function Editcourse(props) {
             />
           </div>
           <div>
-          <button 
-          className="btn-primary"
-           type="submit"
-            onClick={(e) => handleClick(e)}>
-            Update Course
-          </button>
-          <Link 
-          to="/admin/viewCourse" 
-          className="btn-secondary">
-            Cancel
-          </Link>
+            <button
+              className="btn-primary"
+              type="submit"
+              onClick={(e) => handlePop(e)}>
+              Update Course
+            </button>
+            <Link
+              to="/admin/viewCourse"
+              className="btn-secondary">
+              Cancel
+            </Link>
           </div>
         </form>
       </div>
