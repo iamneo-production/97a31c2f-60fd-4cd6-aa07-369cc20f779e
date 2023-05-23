@@ -55,15 +55,24 @@ function Admissionmodelpage() {
         <UserGuard>
             <div>
                 <div className='mainbar'>
+                    <div>
+                        <Link to="/NavPage"><h1>PG Admission</h1></Link>
+                    </div>
                     <div className='one'>
                         <Link to="/HomePage"><button>Institute</button></Link>
                     </div>
                     <div className='one'>
-                        <button onClick={handleClick}>EnrolledCourse</button>
+                        <button onClick={handleClick}>Enrolled course</button>
+                    </div>
+                    <div className='one'>
+                        <Link to="/FeedBack">FeedBack</Link>
                     </div>
                     <div className='out'>
                         <button onClick={handleLogout}>LogOut</button>
                     </div>
+                </div>
+                <div className='home'>
+                   <Link to="/HomePage"><h5>Back To Home</h5></Link>
                 </div>
                 <div><h2 align="center"><b>STUDENT DETAILS</b></h2>
                 </div>
