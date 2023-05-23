@@ -24,12 +24,23 @@ public class StudentModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer studentId;
-    private String studentName;
+    private String firstName;
+    private String lastName;
+    private String fatherName;
+    private String motherName;
+    private String phoneNumber1;
+    private String phoneNumber2;
+    private String emailId;
     private Date studentDOB;
-    private String address;
-    private String mobile;
+    private String houseNumber;
+    private String streetName;
+    private String areaName;
+    private String state;
+    private Integer pincode;
+    private String nationality;
     private Integer sslc;
     private Integer hsc;
     private Integer diploma;
-    private String eligibility;    
+    private String eligibility;  
+    private String courseId;  
 }

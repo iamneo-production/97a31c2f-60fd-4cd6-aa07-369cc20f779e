@@ -1,0 +1,46 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+
+}
+
+.mainbar {
+  background-color: aliceblue;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  padding: 0 8px;
+}
+
+.mainbar h1 {
+  font-size: 2rem;
+  font-weight: bolder;
+  font-style: oblique;
+}
+
+.one {
+  justify-content: space-around;
+  font-size: 1.5rem;
+  font-weight: 350;
+}
+
+.one:hover {
+  color: darkslategray;
+  font-weight: 500;
+}
+
+.home {
+  font-size: 1rem;
+  font-style: oblique;
+  font-weight: lighter;
+  border: 0.5px solid;
+  width: 100px;
+  background-color: lightyellow;
+}
+
+.onesec {
+  background-color: azure;
+}
+

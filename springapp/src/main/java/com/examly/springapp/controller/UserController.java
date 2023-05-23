@@ -3,11 +3,13 @@ import org.springframework.web.bind.annotation.*;
 import com.examly.springapp.repository.*;
 import com.examly.springapp.service.*;
 import com.examly.springapp.models.*;
+import com.examly.springapp.models.*;
 import org.springframework.http.*;
 import org.springframework.stereotype.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.http.*;
 import java.util.*;
+import org.springframework.web.bind.annotation.*;
 
 import javax.security.auth.spi.LoginModule;
 
@@ -16,19 +18,22 @@ import javax.security.auth.spi.LoginModule;
 @RequestMapping("/")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UserController {
+
+  
     private UserService  userService;
+    
     public UserController(UserService userService){
         this.userService =  userService;
     }
-  
+
     @PostMapping("user/addAdmission")
     public String saveNewUser(@RequestBody AdmissionModel admissionModel){
         userService.addAdmission(admissionModel);
         return "Course enrolled";
     }
     @GetMapping("user/viewAdmission")
-    public AdmissionModel viewAdmission(@RequestParam("id") Integer admissionid){         
-         return userService.getAdmission(admissionid);
+    public List<AdmissionModel> viewAdmission(){         
+         return userService.getAdmission();
     }
 
     @DeleteMapping("user/deleteAdmission/{id}")
@@ -37,14 +42,14 @@ public class UserController {
     }
 
     @PutMapping("user/editAdmission/{id}")
-    private String editAdmission(@PathVariable("id") Integer admissionid ){
-        return userService.editAdmission(admissionid);
+    private String editAdmission(@PathVariable("id") Integer admissionid, @RequestBody AdmissionModel updatedAdmission){
+        return userService.editAdmission(admissionid,updatedAdmission);
     }
 
-    @GetMapping("user/viewStatus")
-    public AdmissionModel viewStatus(@RequestParam("id") Integer admissionid){         
-         return userService.getAdmission(admissionid);
+    
+    @GetMapping("user/viewEnrolledCourse")
+    public CourseModel viewEnrolledCourses(@RequestParam("studentid") Integer studentid){
+        return userService.viewEnrolledCourse(studentid);
     }
-
 
 }

@@ -1,0 +1,207 @@
+body {
+    margin: 0;
+    padding: 0rem;
+    height: 100%;
+    width: 100%;
+}
+
+.top {
+    color: aliceblue;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    padding: 0 8px;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.nv h2 {
+    font-size: 3rem;
+    color: bisque;
+    font-weight: bolder;
+
+
+}
+
+.first {
+    display: flex;
+    justify-content: space-equally;
+    align-items: center;
+}
+
+.link:hover {
+    font-weight: bold;
+    font-size: 2rem;
+    color: lavender
+}
+
+.out {
+    color: lavenderblush;
+    font-size: 2rem;
+    font-weight: bold;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    text-align: center;
+    animation-name: color;
+    animation-iteration-count: infinite;
+    animation-duration: 10s;
+    animation-play-state: running;
+
+}
+
+@keyframes color {
+    0% {
+        color: skyblue
+    }
+
+    10% {
+        color: lightsalmon
+    }
+
+    20% {
+        color: aquamarine
+    }
+
+    30% {
+        color: tomato
+    }
+
+    40% {
+        color: lightseagreen
+    }
+
+    50% {
+        color: hotpink
+    }
+
+    60% {
+        color: lightgreen
+    }
+
+    70% {
+        color: lightskyblue
+    }
+
+    80% {
+        color: lightcoral
+    }
+
+    90% {
+        color: lime
+    }
+
+    100% {
+        color: lightpink
+    }
+}
+
+.nv {
+    height: 100vh;
+    width: 100%;
+    background-image: url(img4.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    animation-name: animate;
+    animation-direction: alternate-reverse;
+    animation-duration: 15s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-play-state: running;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes animate {
+    50% {
+        background-image: url(img3.jpg);
+    }
+
+    100% {
+        background-image: url(img1.jpg);
+    }
+}
+
+.txt p {
+    color: antiquewhite;
+    text-align: center;
+    margin-left: 12%;
+    font-style: italic;
+    font-size: 3rem;
+    font-weight: bolder;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    padding-top: 1%;
+    text-decoration: none;
+
+}
+
+.txt h2 {
+    color: cornsilk;
+    margin-left: 12%;
+    text-align: center;
+    font-style: oblique;
+    font-size: 2.8rem;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-top: 0%;
+    text-decoration: none;
+}
+
+.txt h4 {
+    color: aliceblue;
+    margin-left: 12%;
+    text-align: center;
+    font-family: cursive;
+}
+
+.addon h1 {
+    color: lightcyan;
+    padding-top: 3%;
+    margin-left: 7%;
+    font-size: 2rem;
+    font-weight: bold;
+    font-style: italic;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.addon p {
+    color: palegoldenrod;
+    font-weight: lighter;
+    font-size: 1.7rem;
+    margin-left: 9%;
+    font-style: italic;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.last h1 {
+    color: blanchedalmond;
+    padding-top: 3%;
+    margin-left: 7%;
+    font-size: 3rem;
+    font-family: cursive;
+    font-weight: bolder;
+}
+
+span::before {
+    content: "BUILD A BETTER FUTURE!!!";
+    animation-name: line;
+    animation-direction: alternate-reverse;
+    animation-duration: 6s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-play-state: running;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes line {
+    0% {
+        content: "LET'S GO!!!";
+    }
+
+    10% {
+        content: "BUILD A BETTER FUTURE!!!";
+    }
+
+    20% {
+        content: "ALL THE BEST!!!";
+    }
+
+}
