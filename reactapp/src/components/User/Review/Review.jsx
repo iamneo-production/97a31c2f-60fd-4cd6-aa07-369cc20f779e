@@ -61,7 +61,7 @@ const Review = () => {
         <Link to="/HomePage">Back To Home</Link>
       </div>
       <div className='headtxt'>
-        Your Feedback Is Most Important For US!!
+        Your Feedback Is Most Important For Us!!
       </div>
       <form onSubmit={handleSubmit}>
         <div className='ffform'>
@@ -110,7 +110,7 @@ const Review = () => {
             />
           </div>
           <div className='btnbtn'>
-            <button className='submitbutton' type="submit" id="submit">Submit </button>
+            <button className='submitbutton' type="submit" id="submit" onClick={handlecancel}>Submit </button>
             <button className='cancelbutton' onClick={handlecancel}>cancel</button>
           </div>
         </div>
