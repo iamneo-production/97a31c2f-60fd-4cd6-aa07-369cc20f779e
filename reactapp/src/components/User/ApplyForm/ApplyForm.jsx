@@ -15,7 +15,7 @@ function ApplyForm() {
   const navigate = useNavigate();
   const { courseId } = useParams();
   const handlecancel = () => {
-    navigate("/viewacademy")
+    navigate("/HomePage")
   }
   const handleLogout = () => {
     store.dispatch({ type: "LOGOUT" });
@@ -97,6 +97,7 @@ function ApplyForm() {
       }),
     });
   };
+  
   return (
     <UserGuard>
       <pre>
@@ -117,7 +118,7 @@ function ApplyForm() {
           <Link to="/Enrolledcourse">Enrolled course</Link>
         </div>
 
-        <div className="one">
+        <div className="one1">
           <Link to="/HomePage">Institute</Link>
 
         </div>
@@ -130,13 +131,17 @@ function ApplyForm() {
           </button>
         </div>
       </div>
-      <div className="home">
+      <div className="bth">
         <Link to="/HomePage">
           <h5>Back To Home</h5>
         </Link>
       </div>
+      <div className="headtxt">
+        Here You Go! Fill Up The Form And Enroll Now
+      </div>
+
       <form className="info" onSubmit={handleSubmit}>
-      <h1 className="user-head-container">Enroll Now</h1>
+      
         <div className="user-student-form-container">
           <div className="user-student-form">
             <div className="user-form-body">
@@ -248,7 +253,7 @@ function ApplyForm() {
                   type="text"
                   id="phoneNumber1"
                   placeholder="Enter your phonenumber"
-                  value={inputData.PhoneNumber1}
+                  value={inputData.phoneNumber1}
                   onChange={handledata}
                 />
               </div>

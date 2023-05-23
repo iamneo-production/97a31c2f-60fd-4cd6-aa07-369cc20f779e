@@ -1,9 +1,38 @@
-.user-head-container {
+.bth{
+    
+  appearance: none;
+  background-color:whitesmoke;
+  border-radius: 40em;
+  border-style: none;
+  box-shadow:#ADCFFF 0 -12px 6px inset;
+  box-sizing: border-box;
+  color:black;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system,sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -.24px;
+  margin: 10px;
+  outline: none;
+  padding: 1rem 1.3rem;
+  quotes: auto;
   text-align: center;
-  margin-bottom: 15px;
-  font-weight: bold;
-  font-size: 1.9rem;
-  color: #555;
+  text-decoration: none;
+  transition: all .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+.bth:hover{
+background-color: lavender;
+}
+.headtxt{
+  text-align: center;
+  color: purple;
+  font-size: 1.7rem;
+  font-weight:bolder;
+  font-family :'Times New Roman', Times, serif;
 }
 
 .user-student-form-container {

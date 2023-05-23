@@ -62,11 +62,13 @@ const HomePage = () => {
           <h1>PG Admission</h1>
         </Link>
         <div className="one">
-          <Link to="/HomePage">Institute</Link>
+
+          <Link to="/Enrolledcourse">Enrolled course</Link>
         </div>
 
-        <div className="one">
-          <Link to="/Enrolledcourse">Enrolled course</Link>
+        <div className="one1">
+          <Link to="/HomePage">Institute</Link>
+
         </div>
         <div className="one">
           <Link to="/FeedBack">FeedBack</Link>
@@ -82,12 +84,13 @@ const HomePage = () => {
           type="text"
           name="search"
           value={search}
+          className="searchinp"
           placeholder="Type to Search Institutes"
           onChange={(e) => setSearch(e.target.value)}
         />
         <srch>
-          <button type="button" onClick={() => handlesearch()}>
-            SEARCH
+          <button type="button"  className="searchbtn" onClick={() => handlesearch()}>
+            Search
           </button>
         </srch>
       </div>
@@ -105,7 +108,7 @@ const HomePage = () => {
             >
               <img src={imageUrl} alt="img" />
               <h2>{instituteName}</h2>
-              <h4>{instituteAddress}</h4>
+              <h4>Place:{instituteAddress}</h4>
             </div>
           );
         })}

@@ -50,11 +50,13 @@ const UserCourse = () => {
           <h1>PG Admission</h1>
         </Link>
         <div className="one">
-          <Link to="/HomePage">Institute</Link>
+          <Link to="/Enrolledcourse">Enrolled course</Link>
+
         </div>
 
-        <div className="one">
-          <Link to="/Enrolledcourse">Enrolled course</Link>
+        <div className="one1">
+          <Link to="/HomePage">Institute</Link>
+
         </div>
         <div className="one">
           <Link to="/FeedBack">FeedBack</Link>
@@ -65,69 +67,64 @@ const UserCourse = () => {
           </button>
         </div>
       </div>
-      <div className="home">
+      <div className="bth">
         <Link to="/HomePage">
           <h5>Back To Home</h5>
         </Link>
       </div>
-      <div className="onesec">
-        {viewdata.map((course) => {
-          const {
-            id,
-            courseName,
-            courseDescription,
-            courseDuration,
-            courseId,
-          } = course;
-          return (
-            <table>
+      <div className="usercoursecontainer">
+        <div className="headtxt">
+          Offered Courses!
+          It's Time To Pick Yours
+        </div>
 
-              <div key={id}>
+        <table>
+          <thead>
+            <tr>
+              <th>Course Id</th>
+              <th>Course Name</th>
+              <th>Course Description</th>
+              <th>Course Duration</th>
+              <th>Click Me</th>
+            </tr>
+          </thead>
+        </table>
 
-                <thead>
-                  <tr>
-                    <th>course id</th>
-                    <th>course name</th>
-                    <th>course description</th>
-                    <th>course duration</th>
-                    <th>click me</th>
-                  </tr>
-                </thead>
+        <div className="onesec">
+          {viewdata.map((course) => {
+            const {
+              id,
+              courseName,
+              courseDescription,
+              courseDuration,
+              courseId,
+            } = course;
 
-
-
-                <tbody>
-                  <tr>
-                    <td>{courseId}</td>
-                    <td>{courseName}</td>
-                    <td>{courseDescription}</td>
-                    <td>{courseDuration}</td>
+            return (
+              
 
 
-                    <button type="button" onClick={() => handleenroll(courseId)}>
-                      <td>Enroll Now</td>
-                    </button>
+                <div  className="courseinfo" key={id}>
 
-                  </tr>
-                </tbody>
+                  <table>
+                    <tbody>
+                      <tr className="row hover">
+                        <td>{courseId}</td>
+                        <td>{courseName}</td>
+                        <td>{courseDescription}</td>
+                        <td>{courseDuration}</td>
+                        <button type="button" className="enroll" onClick={() => handleenroll(courseId)}>
+                          <td>EnrollNow</td>
+                        </button>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              
 
-                {/* <h3>course id: {courseId}</h3>
-              <h3>course name:{courseName}</h3>
-              <h3>course description:{courseDescription}</h3>
-              <h3>course duration:{courseDuration}</h3> */}
-                {/* <div className="en">
-
-                  <button type="button" onClick={() => handleenroll(courseId)}>
-                    <td>Enroll Now</td>
-                  </button>
-                </div> */}
-              </div>
-            </table>
-
-
-
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </UserGuard >
   );
