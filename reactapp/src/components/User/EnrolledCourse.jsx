@@ -67,7 +67,7 @@ const EnrolledCourse = () => {
                         <Link to="/HomePage">Institute</Link>
                     </div>
 
-                    <div className="one">
+                    <div className="one1">
                         <Link to="/Enrolledcourse">Enrolled course</Link>
                     </div>
                     <div className="one">
@@ -81,10 +81,13 @@ const EnrolledCourse = () => {
                 </div>
 
             </div>
-            <div className="home">
+            <div className="bth">
                 <Link to="/HomePage">
                     <h5>Back To Home</h5>
                 </Link>
+            </div>
+            <div className='headtxt'>
+               These Are The Courses You Have Enrolled
             </div>
 
 

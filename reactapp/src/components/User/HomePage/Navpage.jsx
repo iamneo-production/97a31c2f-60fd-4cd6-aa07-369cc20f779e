@@ -46,8 +46,8 @@ const Navpage = () => {
                     <h1>BOOST YOUR CAREER WITH US</h1>
                     <p>we provide you a accessible virtual platform to check over various institutes,courses and let's you to chooose the best for you. We belive that exploring through neumerous institutions is important before getting into any course, This platform let's you to explore.And now it's time to CHOOSE YOUR'S!!!.</p>
                 </div>
-                <div className='yashaswi'>
-                    <span> </span>
+                <div className='last'>
+                    <h1><span> </span></h1>
                 </div>
             </div>
         </UserGuard >

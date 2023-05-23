@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { store } from "../../../store";
 import { useNavigate } from "react-router";
 import { UserGuard } from "../../../AuthGuard/UserGuard";
+import './Review.css';
 
 let auth = "";
 store.subscribe(() => {
@@ -28,18 +29,26 @@ const Review = () => {
 
   const handlecancel = () => {
 
-    navigate("/viewacademy")
+    navigate("/HomePage")
   }
 
   const navigate = useNavigate();
   return (
     <UserGuard>
-      <div className="nvbar">
-        <Link to="/HomePage">
-          PG Admission
+      <div className="mainbar">
+        <Link to="/Navpage">
+          <h1>PG Admission</h1>
         </Link>
-        <h4>Institute</h4>
-        <div className="link">
+        <div className="one">
+          <Link to="/HomePage">Institute</Link>
+        </div>
+
+        <div className="one1">
+
+          <Link to="/FeedBack">FeedBack</Link>
+        </div>
+        <div className="one">
+
           <Link to="/Enrolledcourse">Enrolled course</Link>
         </div>
         <div className="out">
@@ -48,54 +57,63 @@ const Review = () => {
           </button>
         </div>
       </div>
-      <Link to="/HomePage">Back To Home</Link>
+      <div className='bth'>
+        <Link to="/HomePage">Back To Home</Link>
+      </div>
+      <div className='headtxt'>
+        Your Feedback Is Most Important For Us!!
+      </div>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="name">Name</label>
-          <input
-            id="name"
-            type="text"
-            value={name}
-            placeholder="Enter your Name"
-            onChange={(event) => setName(event.target.value)}
-            data-testid="name"
-          />
+        <div className='ffform'>
+          <div className='reviewname'>
+            <label className='reviewheading' htmlFor="name">Name:</label>
+            <input className='reviewinput'
+              id="name"
+              type="text"
+              value={name}
+              placeholder="Enter your Name"
+              onChange={(event) => setName(event.target.value)}
+              data-testid="name"
+            />
+          </div>
+          <div className='reviewname'>
+            <label className='reviewheading' htmlFor="mobile">Mobile Number:</label>
+            <input className='reviewinput'
+              id="mobile"
+              type="text"
+              placeholder="Enter your Mobie Number"
+              value={mobile}
+              onChange={(event) => setMobile(event.target.value)}
+              data-testid="mobile"
+            />
+          </div>
+          <div className='reviewname'>
+            <label className='reviewheading' htmlFor="email">Email:</label>
+            <input className='reviewinput'
+              id="email"
+              type="text"
+              placeholder="Enter your Email"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+              data-testid="email"
+            />
+          </div>
+          <div className='reviewname'>
+            <label className='reviewheading' htmlFor="comments">Comments:</label>
+            <textarea className='reviewinput'
+              id="comments"
+              type="text"
+              placeholder="Write your comments here"
+              value={comments}
+              onChange={(event) => setComments(event.target.value)}
+              data-testid="comments"
+            />
+          </div>
+          <div className='btnbtn'>
+            <button className='submitbutton' type="submit" id="submit" onClick={handlecancel}>Submit </button>
+            <button className='cancelbutton' onClick={handlecancel}>cancel</button>
+          </div>
         </div>
-        <div>
-          <label htmlFor="mobile">Mobile Number</label>
-          <input
-            id="mobile"
-            type="text"
-            placeholder="Enter your Mobie Number"
-            value={mobile}
-            onChange={(event) => setMobile(event.target.value)}
-            data-testid="mobile"
-          />
-        </div>
-        <div>
-          <label htmlFor="email">Email:</label>
-          <input
-            id="email"
-            type="text"
-            placeholder="Enter your Email"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-            data-testid="email"
-          />
-        </div>
-        <div>
-          <label htmlFor="comments">Comments:</label>
-          <textarea
-            id="comments"
-            type="text"
-            placeholder="Write your comments here"
-            value={comments}
-            onChange={(event) => setComments(event.target.value)}
-            data-testid="comments"
-          />
-        </div>
-        <button type="submit" id="submit">Submit</button>
-        <button onClick={handlecancel}>cancel</button>
       </form>
 
     </UserGuard>
