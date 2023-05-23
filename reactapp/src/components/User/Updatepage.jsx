@@ -66,14 +66,14 @@ function Updatepage() {
     return (
         <UserGuard>
             <div>
-                <div className='navbar'>
-                    <div className='middle'>
-                        <Link to="/Viewacademy"><button>Institute</button></Link>
+                <div className='mainbar'>
+                    <div className='one'>
+                        <Link to="/HomePage"><button>Institute</button></Link>
                     </div>
-                    <div className='middle'>
+                    <div className='one'>
                         <button onClick={handleClick}>EnrolledCourse</button>
                     </div>
-                    <div className='right'>
+                    <div className='out'>
                         <button onClick={handleLogout}>LogOut</button>
                     </div>
                 </div>
