@@ -153,3 +153,44 @@
   transform: translateY(-5px);
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
   }
+
+
+.user-popups-body,
+.user-popups-overlay {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+}
+
+.user-popups-overlay {
+  background-color: rgba(49, 49, 49, 0.55);
+}
+
+.user-institute-popups {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 1.4;
+  background: rgb(104, 104, 104);
+  padding: 14px 28px;
+  border-radius: 3px;
+  min-height: 125px;
+  max-width: 600px;
+  min-width: 400px;
+}
+
+.user-institute-popups button {
+  background-color: #dcdfc7;
+  color: rgb(27, 27, 25);
+  border-radius: 5%;
+}
+
+.noHover {
+  transform: none;
+  box-shadow: none;
+}

@@ -14,8 +14,15 @@ store.subscribe(() => {
 function ApplyForm() {
   const navigate = useNavigate();
   const { courseId } = useParams();
+  const [userPopup, setUserPopup] = useState(false);
+
+  const handlePopup = (e) => {
+    e.preventDefault();
+    setUserPopup(true);
+  }
+
   const handlecancel = () => {
-    navigate("/viewacademy")
+    navigate("/HomePage")
   }
   const handleLogout = () => {
     store.dispatch({ type: "LOGOUT" });
@@ -97,6 +104,7 @@ function ApplyForm() {
       }),
     });
   };
+
   return (
     <UserGuard>
       <pre>
@@ -117,7 +125,7 @@ function ApplyForm() {
           <Link to="/Enrolledcourse">Enrolled course</Link>
         </div>
 
-        <div className="one">
+        <div className="one1">
           <Link to="/HomePage">Institute</Link>
 
         </div>
@@ -130,13 +138,47 @@ function ApplyForm() {
           </button>
         </div>
       </div>
-      <div className="home">
+      {
+        userPopup && (
+          <div className="admin-popup-body noHover">
+            <div className="admin-popup-overlay">
+
+            </div>
+            <div className="admin-institute-popup">
+              <h1>Are you sure to enroll the data ?</h1>
+              <button
+                type="submit"
+                onClick={(e) => {
+                  handleSubmit(e);
+                  setUserPopup(false);
+                }}
+              >
+                confirm enroll
+              </button>
+              <br />
+              <button
+                type="submit"
+                onClick={() => {
+                  setUserPopup(false);
+                }}
+              >
+                cancel
+              </button>
+            </div>
+          </div>
+        )
+      }
+      <div className="bth">
         <Link to="/HomePage">
           <h5>Back To Home</h5>
         </Link>
       </div>
-      <form className="info" onSubmit={handleSubmit}>
-      <h1 className="user-head-container">Enroll Now</h1>
+      <div className="headtxt">
+        Here You Go! Fill Up The Form And Enroll Now
+      </div>
+
+      <form className="info">
+
         <div className="user-student-form-container">
           <div className="user-student-form">
             <div className="user-form-body">
@@ -248,7 +290,7 @@ function ApplyForm() {
                   type="text"
                   id="phoneNumber1"
                   placeholder="Enter your phonenumber"
-                  value={inputData.PhoneNumber1}
+                  value={inputData.phoneNumber1}
                   onChange={handledata}
                 />
               </div>
@@ -413,7 +455,7 @@ function ApplyForm() {
             </div>
           </div>
           <div class="user-footer">
-            <button className="user-enroll" type="submit">Enroll now</button>
+            <button className="user-enroll" type="submit" onClick={(e) => { handlePopup(e) }}>Enroll now</button>
             <button className="user-cancel" onClick={handlecancel}>cancel</button>
           </div>
         </div>

@@ -8,7 +8,14 @@ function Updatepage() {
     const navigate = useNavigate();
     const { auth } = store.getState();
     const [studentdetail, setStudentdetail] = useState({});
-    const { id } = useParams()
+    const { id } = useParams();
+    const [userPopup, setUserPopup] = useState(false);
+
+    const handleUserPopup = (e) => {
+        e.preventDefault();
+        setUserPopup(true);
+    }
+
     const handleClick = (event) => {
         handleupdate(event).then((data) => {
             console.log("successfully edited", data)
@@ -66,16 +73,55 @@ function Updatepage() {
     return (
         <UserGuard>
             <div>
-                <div className='navbar'>
-                    <div className='middle'>
-                        <Link to="/Viewacademy"><button>Institute</button></Link>
+                <div className='mainbar'>
+                    <div className='one'>
+                        <h1>PG Admission</h1>
                     </div>
-                    <div className='middle'>
-                        <button onClick={handleClick}>EnrolledCourse</button>
+                    <div className='one'>
+                        <Link to="/HomePage"><button>Institute</button></Link>
                     </div>
-                    <div className='right'>
+                    <div className='one'>
+                        <button onClick={handleClick}>Enrolled course</button>
+                    </div>
+                    <div className='one'>
+                        <Link to="/FeedBack">FeedBack</Link>
+                    </div>
+                    <div className='out'>
                         <button onClick={handleLogout}>LogOut</button>
                     </div>
+                </div>
+                {
+                    userPopup && (
+                        <div className="admin-popup-body noHover">
+                            <div className="admin-popup-overlay">
+
+                            </div>
+                            <div className="admin-institute-popup">
+                                <h1>Are you sure to update the data ?</h1>
+                                <button
+                                    type="submit"
+                                    onClick={(e) => {
+                                        handleClick(e);
+                                        setUserPopup(false);
+                                    }}
+                                >
+                                    confirm update
+                                </button>
+                                <br />
+                                <button
+                                    type="submit"
+                                    onClick={() => {
+                                        setUserPopup(false);
+                                    }}
+                                >
+                                    cancel
+                                </button>
+                            </div>
+                        </div>
+                    )
+                }
+                <div className='home'>
+                    <Link to="/HomePage"><h5>Back To Home</h5></Link>
                 </div>
                 <div><h2 align="center"><b>STUDENT DETAILS</b></h2>
                 </div>
@@ -259,7 +305,7 @@ function Updatepage() {
                             />
                         </div>
                     </form>
-                    <button className="button" type="submit" onClick={(a) => handleClick(a)}>
+                    <button className="button" type="submit" onClick={(a) => handleUserPopup(a)}>
                         Update
                     </button>
                     <Link to="/Admissionmodelpage" className='button'><button>Cancel</button></Link>
