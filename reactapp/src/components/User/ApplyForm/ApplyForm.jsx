@@ -104,7 +104,6 @@ function ApplyForm() {
       }),
     });
   };
-
   return (
     <UserGuard>
       <pre>

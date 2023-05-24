@@ -59,7 +59,7 @@ const Status = () => {
         <UserGuard>
             <div data-testid="status">
                 <div className='navbar'>
-                    <Link to="/Viewacademy">
+                    <Link to="/Homepage">
                         <h2>PG Admission</h2>
                     </Link>
                     <br></br>
@@ -75,7 +75,7 @@ const Status = () => {
                     </div>
 
                 </div>
-                <div class='hero sec'>
+                <div class='bth'>
                     <Link to="/HomePage">
                         <h5>Back To Home</h5>
                     </Link>
@@ -90,7 +90,7 @@ const Status = () => {
                             <p><b>Course Name: {course.courseName} </b></p>
                             <p><b>courseDuration: {course.courseDuration} </b></p>
                             <p><b>Course Description: {course.courseDescription} </b></p>
-                            <Link to="/Viewacademy"><button className="my-learning-button">My Learning</button></Link>
+                            <Link to="/HomePage"><button className="my-learning-button">My Learning</button></Link>
                         </div>
                     ))
                 ) : (
