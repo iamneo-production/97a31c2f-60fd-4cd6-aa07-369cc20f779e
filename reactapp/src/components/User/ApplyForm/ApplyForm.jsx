@@ -14,6 +14,13 @@ store.subscribe(() => {
 function ApplyForm() {
   const navigate = useNavigate();
   const { courseId } = useParams();
+  const [userPopup, setUserPopup] = useState(false);
+
+  const handlePopup = (e) => {
+    e.preventDefault();
+    setUserPopup(true);
+  }
+
   const handlecancel = () => {
     navigate("/HomePage")
   }
@@ -97,7 +104,6 @@ function ApplyForm() {
       }),
     });
   };
-  
   return (
     <UserGuard>
       <pre>
@@ -131,6 +137,36 @@ function ApplyForm() {
           </button>
         </div>
       </div>
+      {
+        userPopup && (
+          <div className="admin-popup-body noHover">
+            <div className="admin-popup-overlay">
+
+            </div>
+            <div className="admin-institute-popup">
+              <h1>Are you sure to enroll the data ?</h1>
+              <button
+                type="submit"
+                onClick={(e) => {
+                  handleSubmit(e);
+                  setUserPopup(false);
+                }}
+              >
+                confirm enroll
+              </button>
+              <br />
+              <button
+                type="submit"
+                onClick={() => {
+                  setUserPopup(false);
+                }}
+              >
+                cancel
+              </button>
+            </div>
+          </div>
+        )
+      }
       <div className="bth">
         <Link to="/HomePage">
           <h5>Back To Home</h5>
@@ -140,8 +176,8 @@ function ApplyForm() {
         Here You Go! Fill Up The Form And Enroll Now
       </div>
 
-      <form className="info" onSubmit={handleSubmit}>
-      
+      <form className="info">
+
         <div className="user-student-form-container">
           <div className="user-student-form">
             <div className="user-form-body">
@@ -418,7 +454,7 @@ function ApplyForm() {
             </div>
           </div>
           <div class="user-footer">
-            <button className="user-enroll" type="submit">Enroll now</button>
+            <button className="user-enroll" type="submit" onClick={(e) => { handlePopup(e) }}>Enroll now</button>
             <button className="user-cancel" onClick={handlecancel}>cancel</button>
           </div>
         </div>
