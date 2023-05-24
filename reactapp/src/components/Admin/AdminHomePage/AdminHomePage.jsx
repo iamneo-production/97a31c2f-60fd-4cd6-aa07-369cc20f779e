@@ -53,6 +53,7 @@ const Adminacademy = () => {
     state: false,
     delid: null
   });
+  
 
   const navigate = useNavigate();
 

@@ -15,6 +15,12 @@ const Review = () => {
   const [mobile, setMobile] = useState("");
   const [email, setEmail] = useState("");
   const [comments, setComments] = useState("");
+  const [userPopup, setUserPopup] = useState(false);
+
+  const makePopup = (e) => {
+    e.preventDefault();
+    setUserPopup(true);
+  }
 
   const handleLogout = () => {
     store.dispatch({ type: "LOGOUT" });
@@ -57,6 +63,36 @@ const Review = () => {
           </button>
         </div>
       </div>
+      {
+        userPopup && (
+          <div className="admin-popup-body noHover">
+            <div className="admin-popup-overlay">
+
+            </div>
+            <div className="admin-institute-popup">
+              <h1>Are you sure to add the data ?</h1>
+              <button
+                type="submit"
+                onClick={() => {
+                  handlecancel();
+                  setUserPopup(false);
+                }}
+              >
+                confirm submit
+              </button>
+              <br />
+              <button
+                type="submit"
+                onClick={() => {
+                  setUserPopup(false);
+                }}
+              >
+                cancel
+              </button>
+            </div>
+          </div>
+        )
+      }
       <div className='bth'>
         <Link to="/HomePage">Back To Home</Link>
       </div>
@@ -110,7 +146,7 @@ const Review = () => {
             />
           </div>
           <div className='btnbtn'>
-            <button className='submitbutton' type="submit" id="submit" onClick={handlecancel}>Submit </button>
+            <button className='submitbutton' type="submit" id="submit" onClick={(e) => { makePopup(e) }}>Submit </button>
             <button className='cancelbutton' onClick={handlecancel}>cancel</button>
           </div>
         </div>
