@@ -1,0 +1,258 @@
+/* navbar css */
+.pg-admission-heading{
+  color:white;
+  font-weight:bold;
+  font-size:1.7rem;
+  cursor:pointer;
+}
+.user-nav-container {
+  height: 60px;
+  padding: 35px;
+  background-color: #3770a9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease-in-out;
+}
+.user-navlinks-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-nav-container a {
+  margin: 0 50px;
+  text-decoration: none;
+  color: beige;
+  font-size: 1.3rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.user-nav-container a:hover {
+  color: #fff;
+  border-bottom: 2px solid #fff;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.user-nav-container a.active {
+  font-weight: bold;
+  font-size: 1.4rem;
+  transform: translateY(-9px);
+  border-bottom: 2px solid #fff;
+}
+
+
+.user-nav-container button {
+  border: none;
+  background-color: #3770a9;
+  color: beige;
+  font-size: 1.3rem;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.user-nav-container button:hover {
+  background-color: #477db4;
+  color: #fff;
+}
+
+
+/* popup css */
+.user-popup-body {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+  
+  .user-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.533);
+    z-index: -1;
+  }
+  
+  .user-admissionmodel-popup {
+    background-color: #e5e0e0;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .user-admissionmodel-popup h1 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #333;
+  }
+  
+  .user-admissionmodel-popup button {
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .user-admissionmodel-popup .user-admissionmodel-confirm-btn {
+    background-color: #2A7230;
+    color: #fff;
+  }
+  
+  .user-admissionmodel-popup .user-admissionmodel-confirm-btn:hover {
+    background-color: #3e9746;
+    transform: scale(1.05);
+  }
+  
+  
+  .user-admissionmodel-popup .user-admissionmodel-cancel-btn {
+    background-color:#E62020;
+    color: #fff;
+  }
+  
+  .user-admissionmodel-popup .user-admissionmodel-cancel-btn:hover {
+    background-color: #f24747;
+    transform: scale(1.05);
+  }
+  
+ /* back to home css  */
+.bth {
+  text-align: left;
+  margin-top: 20px;
+}
+
+.bth a {
+  text-decoration: none;
+}
+
+.bth h5 {
+    margin-left: 5px;
+    color: #4987c4;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    border: 2px solid #4987c4;
+}
+
+
+.bth h5:hover {
+  background-color: #4a90e2;
+  color: #fff;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.bth h5::before {
+  content: '\2190';
+  margin-right: 5px;
+}
+  /* student details heading */
+
+.user-heading-student h2 {
+  margin-bottom:15px;
+  text-align: center;
+  font-size: 1.6rem;
+  color: #4a4848;
+  font-weight: bold;
+  }
+
+ /* student information display  */
+ 
+  .student-details-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .column {
+    margin: 10px;
+    padding: 20px;
+    background-color: #f1f1f1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .column:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  }
+
+  /* Table styles */
+  user-enrolled-course-table {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .user-table-head,
+  .user-table-data {
+    padding: 5px 10px;
+  }
+  
+  .user-table-head{
+    padding:20px;
+    text-align: left;
+  }
+  
+  /* Button styles */
+  .button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .update-button,
+  .delete-button {
+    display: inline-block;
+    padding: 8px 12px;
+    margin: 0 5px;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .update-button {
+    background-color: #4caf50;
+  }
+  
+  .update-button:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+  }
+  
+  .delete-button  {
+    background-color: #f44336;
+  }
+  
+  .delete-button:hover {
+    background-color: #e13636;
+    transform: scale(1.05);
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+  }
+  

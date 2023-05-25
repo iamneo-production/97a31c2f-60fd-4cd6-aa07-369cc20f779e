@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './EnrolledCourse.css'
 import { store } from '../../store';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, NavLink } from 'react-router-dom';
 import { getCourses } from '../../api/courseApi';
 import CourseService from "../.././api/CourseService"
 import { UserGuard } from '../../AuthGuard/UserGuard';
@@ -57,56 +57,46 @@ const EnrolledCourse = () => {
 
     return (
         <UserGuard>
-            
-            <div>
-                <div className="mainbar">
-                    <Link to="/Navpage">
-                        <h1>PG Admission</h1>
-                    </Link>
-                    <div className="one">
-                        <Link to="/HomePage">Institute</Link>
-                    </div>
 
-                    <div className="one1">
-                        <Link to="/Enrolledcourse">Enrolled course</Link>
-                    </div>
-                    <div className="one">
-                        <Link to="/FeedBack">FeedBack</Link>
-                    </div>
-                    <div className="out">
-                        <button data-testid="logout" name="logout" onClick={handleLogout}>
-                            Logout
-                        </button>
-                    </div>
+            <nav className="user-nav-container">
+                <div>
+                    <NavLink to="/Navpage" >
+                        <h2 className="pg-admission-heading">PG Admission</h2>
+                    </NavLink>
                 </div>
-
-            </div>
+                <div className="user-navlinks-container">
+                    <NavLink to="/HomePage">Institute</NavLink>
+                    <NavLink to="/Enrolledcourse">Enrolledcourse</NavLink>
+                    <NavLink to="/FeedBack">FeedBack</NavLink>
+                </div>
+                <button data-testid="logout" name='logout' onClick={handleLogout} >Logout</button>
+            </nav>
             <div className="bth">
                 <Link to="/HomePage">
                     <h5>Back To Home</h5>
                 </Link>
             </div>
-            <div className='headtxt'>
-               These Are The Courses You Have Enrolled
-            </div>
-
-
+            <div class="course-container">
+                <div class='user-enrolledcourse-headtxt'>
+                    These Are The Courses You Have Enrolled
+                </div>
+                <div class="enrolled-courses">
                     {courses && courses.length > 0 ? (
                         courses.map((course) => (
-                            <div key={course.id} className='enrolled-course'>
-                                <p><b>Course id: {course.courseId} </b></p>
-                                <p><b>Course Name: {course.courseName} </b></p>
-                                <p><b>courseDuration: {course.courseDuration} </b></p>
-                                <p><b>Course Description: {course.courseDescription} </b></p>
-                                <Link to="/Admissionmodelpage"><button className="my-learning-button">My Learning</button></Link>
-                                
+                            <div class="enrolled-course">
+                                <p>Course id: {course.courseId}</p>
+                                <p>Course Name: {course.courseName}</p>
+                                <p>Course Duration: {course.courseDuration}</p>
+                                <p>Course Description: {course.courseDescription}</p>
+                                <Link to="/Admissionmodelpage"><button class="my-learning-button">My Learning</button></Link>
                             </div>
                         ))
                     ) : (
                         <div>No courses found</div>
                     )}
+                </div>
+            </div>
 
-           
 
 
 

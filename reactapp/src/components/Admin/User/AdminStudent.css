@@ -132,36 +132,55 @@ th {
 }
 
 
-
 /* add student btn */
-.admin-add-student-button {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
 
-.admin-add-student-icon {
-  display: flex;
-  align-items: center;
-  background-color: #2A7230;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 25px;
-  font-size: 16px;
+.admin-add-student-button{
+  position: fixed;
+  bottom:20px;
+  right:20px;
+  width: 60px;
+  height:60px;
+  float:left;
+  margin:0 5px;
+  background:#2A7230;
+  border-radius: 50px;
   cursor: pointer;
-  margin-bottom: 1%;
-  transition: all 0.3s ease-in-out;
-
+  box-shadow: 0px 10px 10px rgba(0,0,0,0.1);
+  transition: all 0.3s ease-out;
+  overflow: hidden;
 }
 
-.admin-add-student-icon:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+.admin-add-student-button:hover{
+  width: 165px;
 }
 
-.admin-add-student-icon i {
-  margin-right: 10px;
+.admin-add-student-button .admin-add-student-icon{
+  height: 60px;
+  width:60px;
+  text-align: center;
+  border-radius: 50px;
+  box-sizing: border-box;
+}
+
+.admin-add-student-button .admin-add-student-icon i{
+  font-size: 25px;
+  line-height: 60px;
+  color: white;
+}
+
+.admin-add-student-button:hover::after{
+  content: "Add Student";
+  display: block;
+  position: absolute;
+  left: 50px;
+  top: 0;
+  width: 100px;
+  height: 60px;
+  background: #2A7230;
+  font-weight: bold;
+  line-height: 60px;
+  text-align: center;
+  border-radius: 0 50px 50px 0;
 }
 
 /* add student form css */

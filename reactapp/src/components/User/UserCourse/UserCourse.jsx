@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useNavigate } from "react-router";
 import { store } from "../../../store";
 import { UserGuard } from "../../../AuthGuard/UserGuard";
@@ -45,35 +45,26 @@ const UserCourse = () => {
 
   return (
     <UserGuard>
-      <div className="mainbar">
-        <Link to="/Navpage">
-          <h1>PG Admission</h1>
-        </Link>
-        <div className="one">
-          <Link to="/Enrolledcourse">Enrolled course</Link>
-
+      <nav className="user-nav-container">
+        <div>
+          <NavLink to="/Navpage" >
+            <h2 className="pg-admission-heading">PG Admission</h2>
+          </NavLink>
         </div>
-
-        <div className="one1">
-          <Link to="/HomePage">Institute</Link>
-
+        <div className="user-navlinks-container">
+          <NavLink to="/Enrolledcourse">Enrolledcourse</NavLink>
+          <NavLink to="/HomePage">Institute</NavLink>
+          <NavLink to="/FeedBack">FeedBack</NavLink>
         </div>
-        <div className="one">
-          <Link to="/FeedBack">FeedBack</Link>
-        </div>
-        <div className="out">
-          <button data-testid="logout" name="logout" onClick={handleLogout}>
-            Logout
-          </button>
-        </div>
-      </div>
+        <button data-testid="logout" name='logout' onClick={handleLogout} >Logout</button>
+      </nav>
       <div className="bth">
         <Link to="/HomePage">
           <h5>Back To Home</h5>
         </Link>
       </div>
       <div className="usercoursecontainer">
-        <div className="headtxt">
+        <div className="user-headtxt">
           Offered Courses!
           It's Time To Pick Yours
         </div>
@@ -101,26 +92,26 @@ const UserCourse = () => {
             } = course;
 
             return (
-              
 
 
-                <div  className="courseinfo" key={id}>
 
-                  <table>
-                    <tbody>
-                      <tr className="row hover">
-                        <td>{courseId}</td>
-                        <td>{courseName}</td>
-                        <td>{courseDescription}</td>
-                        <td>{courseDuration}</td>
-                        <button type="button" className="enroll" onClick={() => handleenroll(courseId)}>
-                          <td>EnrollNow</td>
-                        </button>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              
+              <div className="courseinfo" key={id}>
+
+                <table>
+                  <tbody>
+                    <tr className="row hover">
+                      <td>{courseId}</td>
+                      <td>{courseName}</td>
+                      <td>{courseDescription}</td>
+                      <td>{courseDuration}</td>
+                      <button type="button" className="enroll" onClick={() => handleenroll(courseId)}>
+                        <td>EnrollNow</td>
+                      </button>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
 
             );
           })}
