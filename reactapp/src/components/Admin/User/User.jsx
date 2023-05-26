@@ -172,7 +172,7 @@ const AdminStudent1 = () => {
   };
 
   return (
-    <AdminGuard>
+    <>
       <Navbar />
 
       {
@@ -237,17 +237,17 @@ const AdminStudent1 = () => {
         </div>
         {isLoading && <h4>Loading...</h4>}
         {isError.state && <h4>{isError.msg}</h4>}
-        <div className="student-heading">
+        <div className="student-heading"  >
           <h1>List of Students</h1>
         </div>
         <table>
           <thead>
             <tr>
               <th>Student ID</th>
-              <th>Name</th>
-              <th>Course Name</th>
-              <th>Phone Number</th>
-              <th>Actions</th>
+              <th  data-testid="userName" >Name</th>
+              <th data-testid="qualification">Course Name</th>
+              <th data-testid="mobile">Phone Number</th>
+              <th >Actions</th>
             </tr>
           </thead>
         </table>
@@ -313,7 +313,7 @@ const AdminStudent1 = () => {
           </button>
         </div>
       </div>
-    </AdminGuard>
+    </>
   );
 };
 
@@ -397,7 +397,7 @@ export const StudentForm = ({ type }) => {
     navigate("/admin/Viewstudent");
   };
   return (
-    <AdminGuard>
+    <>
       <Navbar />
       {
         popup && (
@@ -472,7 +472,7 @@ export const StudentForm = ({ type }) => {
       <form className="student-form-container">
         <div className="studentform">
           <div className="form-body">
-            <div className="username">
+            <div className="username" >
               <label className="form__label" htmlFor="firstName">
                 {" "}
                 First Name{" "}
@@ -481,6 +481,7 @@ export const StudentForm = ({ type }) => {
                 className="form__input"
                 type="text"
                 id="firstName"
+               
                 name="studentName"
                 placeholder="Enter Your First Name"
                 value={formData.firstName}
@@ -547,7 +548,7 @@ export const StudentForm = ({ type }) => {
                 onChange={(e) => handleInputChange(e, "studentDOB")}
               />
             </div>
-            <div className="mobile">
+            <div className="mobile" >
               <label className="form__label" htmlFor="mobile">
                 {" "}
                 Phone Number{" "}
@@ -767,7 +768,7 @@ export const StudentForm = ({ type }) => {
           </button>
         )}
       </form>
-    </AdminGuard>
+    </>
   );
 };
 export default User;

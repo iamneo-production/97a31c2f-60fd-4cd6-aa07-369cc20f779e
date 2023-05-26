@@ -40,7 +40,7 @@ const Review = () => {
 
   const navigate = useNavigate();
   return (
-    <UserGuard>
+    <>
       <div className="mainbar">
         <Link to="/Navpage">
           <h1>PG Admission</h1>
@@ -152,7 +152,7 @@ const Review = () => {
         </div>
       </form>
 
-    </UserGuard>
+    </>
   );
 };
 

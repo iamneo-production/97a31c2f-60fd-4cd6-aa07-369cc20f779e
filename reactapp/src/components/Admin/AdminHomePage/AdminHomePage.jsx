@@ -79,7 +79,6 @@ const Adminacademy = () => {
   const fetchAcademyData = async () => {
     setIsLoading(true);
     setIsError({ state: false, msg: "" });
-    console.log(`Bearer ${auth.token}`);
     try {
       const response = await fetch(`${baseUrl}/admin/viewInstitutes`, {
         method: "GET",
@@ -137,7 +136,7 @@ const Adminacademy = () => {
   };
 
   return (
-    <AdminGuard>
+    <>
       {
         popup.state && (
           <div className="admin-popup-body noHover">
@@ -200,7 +199,7 @@ const Adminacademy = () => {
       <div className="admin-academy-container">
         {isLoading && <h4>Loading...</h4>}
         {isError.state && <h4>{isError.msg}</h4>}
-        <div className="academy-display-container">
+        <div className="academy-display-container" data-testid="instituteName" >
           {academyData.map((eachAcademy, index) => {
             const { instituteId, instituteName, instituteAddress, imageUrl } =
               eachAcademy;
@@ -211,7 +210,7 @@ const Adminacademy = () => {
                   className="each-academy-cell"
                 >
                   <img src={imageUrl} alt={instituteName} />
-                  <h4 className="admin-institute-name">{instituteName}</h4>
+                  <h4 className="admin-institute-name" >{instituteName}</h4>
                   <h4 className="admin-institute-address">
                     Place : {instituteAddress}
                   </h4>
@@ -242,6 +241,7 @@ const Adminacademy = () => {
           <button
             type="submit"
             className="admin-add-institute-icon"
+            data-testid="addInstitute"
             onClick={() => handleAdd()}
           >
             {" "}
@@ -249,7 +249,7 @@ const Adminacademy = () => {
           </button>
         </div>
       </div>
-    </AdminGuard>
+    </>
   );
 };
 
@@ -324,7 +324,7 @@ export const AcademyForm = ({ type }) => {
   };
 
   const editAcademy = async () => {
-    const response = await fetch(`${baseUrl}/admin/editInstitute/${id}`, {
+    const response = await fetch(`${baseUrl}/admin/editInstitute?instituteId=${id}`, {
       method: "PUT",
       headers: {
         Authorization: `Bearer ${auth.token}`,
@@ -337,7 +337,7 @@ export const AcademyForm = ({ type }) => {
   };
 
   return (
-    <AdminGuard>
+    <>
       <NavBar />
       {
         popup && (
@@ -501,7 +501,7 @@ export const AcademyForm = ({ type }) => {
           )}
         </form>
       </div>
-    </AdminGuard>
+    </>
   );
 };
 
