@@ -172,7 +172,7 @@ const AdminStudent1 = () => {
   };
 
   return (
-    <AdminGuard>
+    <>
       <Navbar />
 
       {
@@ -238,16 +238,16 @@ const AdminStudent1 = () => {
         </div>
         {isLoading && <h4>Loading...</h4>}
         {isError.state && <h4>{isError.msg}</h4>}
-        <div className="student-heading">
+        <div className="student-heading"  >
           <h1>List of Students</h1>
         </div>
         <table className="admin-student-table">
           <thead>
             <tr>
               <th className="admin-student-th">Student ID</th>
-              <th className="admin-student-th">Name</th>
-              <th className="admin-student-th">Course Name</th>
-              <th className="admin-student-th">Phone Number</th>
+              <th data-testid="userName" className="admin-student-th">Name</th>
+              <th data-testid="qualification" className="admin-student-th">Course Name</th>
+              <th data-testid="mobile" className="admin-student-th">Phone Number</th>
               <th className="admin-student-th">Actions</th>
             </tr>
           </thead>
@@ -292,12 +292,6 @@ const AdminStudent1 = () => {
                       </tr>
                     </tbody>
                   </table>
-                  {/* <h4>Student Id : {studentId}</h4>
-                  <h4>Name : {firstName + " " + lastName}</h4>
-                  <h4>Email Id : {emailId}</h4>
-                  <h4> Phone Number : {phoneNumber1}</h4>
-                  <button type="submit" id="editStudent" className='edit-btn' onClick={() => handleEdit(studentId)}><i className="fa-regular fa-pen-to-square"></i></button>
-                  <button type="submit" id="deleteStudent" className='delete-btn' onClick={() => handleDelete(studentId)}><i className="fa-regular fa-trash-can"></i></button> */}
                 </div>
               </>
             );
@@ -307,7 +301,7 @@ const AdminStudent1 = () => {
           exact="true"
           to="/admin/addStudent"
           className="nav-link"
-          id="addinstitute"
+          id="addStudent"
           activeclassname="active">
           <div className="admin-add-student-button">
             <div className='admin-add-student-icon' >
@@ -316,7 +310,7 @@ const AdminStudent1 = () => {
           </div>
         </NavLink>
       </div>
-    </AdminGuard>
+    </>
   );
 };
 
@@ -400,7 +394,7 @@ export const StudentForm = ({ type }) => {
     navigate("/admin/Viewstudent");
   };
   return (
-    <AdminGuard>
+    <>
       <Navbar />
       {
         popup && (
@@ -477,7 +471,7 @@ export const StudentForm = ({ type }) => {
       <form className="student-form-container">
         <div className="studentform">
           <div className="form-body">
-            <div className="username">
+            <div className="username" >
               <label className="form__label" htmlFor="firstName">
                 {" "}
                 First Name{" "}
@@ -486,6 +480,7 @@ export const StudentForm = ({ type }) => {
                 className="form__input"
                 type="text"
                 id="firstName"
+               
                 name="studentName"
                 placeholder="Enter Your First Name"
                 value={formData.firstName}
@@ -552,7 +547,7 @@ export const StudentForm = ({ type }) => {
                 onChange={(e) => handleInputChange(e, "studentDOB")}
               />
             </div>
-            <div className="mobile">
+            <div className="mobile" >
               <label className="form__label" htmlFor="mobile">
                 {" "}
                 Phone Number{" "}
@@ -772,7 +767,7 @@ export const StudentForm = ({ type }) => {
           </button>
         )}
       </form>
-    </AdminGuard>
+    </>
   );
 };
 export default User;

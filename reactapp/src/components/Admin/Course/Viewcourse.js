@@ -131,13 +131,14 @@ function Viewcourse() {
 
       <div>
         <h1
-          class="course-heading">
+          class="course-heading"
+          id="courseGrid1">
           List of Courses
         </h1>
         {courses && courses.length > 0 ? (
           <div className="courses-grid">
-            {courses.map((course) => (
-              <div key={course.id} className="course-card">
+            {courses.map((course, index) => (
+              <div id={`courseGrid` + (index + 1)} key={course.id} className="course-card">
                 <div className="course-card-info">
                   <div
                     className="course-card-text course-id">

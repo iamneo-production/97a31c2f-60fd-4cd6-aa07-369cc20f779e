@@ -56,7 +56,7 @@ const HomePage = () => {
   };
 
   return (
-    <UserGuard>
+    <>
       <nav className="user-nav-container">
                 <div>
                     <NavLink to="/Navpage" >
@@ -75,23 +75,25 @@ const HomePage = () => {
           type="text"
           name="search"
           value={search}
+          data-testid="courseName"
           className="searchinp"
           placeholder="Type to Search Institutes"
           onChange={(e) => setSearch(e.target.value)}
         />
-        <srch>
+        <div>
           <button type="button"  className="searchbtn" onClick={() => handlesearch()}>
             Search
           </button>
-        </srch>
+        </div>
       </div>
-      <div className="herosec">
-        {viewdata.map((institute) => {
+      <div id = "userInstituteGrid1" data-testid="instituteName" className="herosec">
+        {viewdata.map((institute,index) => {
           const { instituteId, instituteName, instituteAddress, imageUrl } =
             institute;
           return (
             <div
               className="card"
+              id = {`userInstituteGrid`+(index+1)}
               onClick={() => {
                 handle();
               }}
@@ -104,7 +106,7 @@ const HomePage = () => {
           );
         })}
       </div>
-    </UserGuard>
+    </>
   );
 };
 

@@ -68,7 +68,7 @@ const Course = () => {
 
   return (
 
-    <AdminGuard>
+    <>
 
       <NavBar />
 
@@ -104,7 +104,6 @@ const Course = () => {
         )
       }
 
-      {/* <Link to="/admin/viewCourse" className="course-back-to-home">Back To Home</Link> */}
       <div
         data-testid="addCourse"
         className='course'>
@@ -146,7 +145,7 @@ const Course = () => {
               placeholder='Enter courseDuration'
               value={courseDuration}
               onChange={(event) => setCourseDuration(event.target.value)}
-              data-testid="courseDuration"
+              data-testid="courseDuriation"
             />
           </div>
           <div className="form-group">
@@ -183,11 +182,12 @@ const Course = () => {
             />
           </div>
           <div
-            class="button-container">
+            className="button-container">
             <button
               className="btn-primary"
               type="submit"
               id="addCourse"
+              data-testid="addCourse"
               onClick={(e) => {
                 handlePop(e)
               }}>
@@ -200,7 +200,7 @@ const Course = () => {
         </form>
       </div>
 
-    </AdminGuard>
+    </>
   );
 };
 

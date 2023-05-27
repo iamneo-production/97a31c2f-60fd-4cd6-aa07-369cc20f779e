@@ -40,7 +40,7 @@ const Review = () => {
 
   const navigate = useNavigate();
   return (
-    <UserGuard>
+    <>
       <nav className="user-nav-container">
         <div>
           <NavLink to="/Navpage" >
@@ -145,7 +145,7 @@ const Review = () => {
           </div>
         </form>
       </div>
-    </UserGuard>
+    </>
   );
 };
 

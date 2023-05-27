@@ -56,8 +56,7 @@ const EnrolledCourse = () => {
 
 
     return (
-        <UserGuard>
-
+        <>
             <nav className="user-nav-container">
                 <div>
                     <NavLink to="/Navpage" >
@@ -69,14 +68,14 @@ const EnrolledCourse = () => {
                     <NavLink to="/Enrolledcourse">Enrolledcourse</NavLink>
                     <NavLink to="/FeedBack">FeedBack</NavLink>
                 </div>
-                <button data-testid="logout" name='logout' onClick={handleLogout} >Logout</button>
+                <button data-testid="logout" id ="logout" name='logout' onClick={handleLogout} >Logout</button>
             </nav>
             <div className="bth">
                 <Link to="/HomePage">
                     <h5>Back To Home</h5>
                 </Link>
             </div>
-            <div class="course-container">
+            <div id="enrolledCourse" class="course-container">
                 <div class='user-enrolledcourse-headtxt'>
                     These Are The Courses You Have Enrolled
                 </div>
@@ -100,7 +99,7 @@ const EnrolledCourse = () => {
 
 
 
-        </UserGuard >
+        </>
 
     );
 }
