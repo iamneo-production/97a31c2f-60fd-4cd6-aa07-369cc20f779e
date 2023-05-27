@@ -69,14 +69,14 @@ const UserCourse = () => {
           It's Time To Pick Yours
         </div>
 
-        <table>
+        <table className="user-usercourse-table">
           <thead>
             <tr>
-              <th>Course Id</th>
-              <th>Course Name</th>
-              <th>Course Description</th>
-              <th>Course Duration</th>
-              <th>Click Me</th>
+              <th className="user-usercourse-th">Course Id</th>
+              <th className="user-usercourse-th">Course Name</th>
+              <th className="user-usercourse-th">Course Description</th>
+              <th className="user-usercourse-th">Course Duration</th>
+              <th className="user-usercourse-th">Click Me</th>
             </tr>
           </thead>
         </table>
@@ -97,15 +97,15 @@ const UserCourse = () => {
 
               <div className="courseinfo" key={id}>
 
-                <table>
+                <table className="user-usercourse-table">
                   <tbody>
                     <tr className="row hover">
-                      <td>{courseId}</td>
-                      <td>{courseName}</td>
-                      <td>{courseDescription}</td>
-                      <td>{courseDuration}</td>
+                      <td className="user-usercourse-td">{courseId}</td>
+                      <td className="user-usercourse-td">{courseName}</td>
+                      <td className="user-usercourse-td">{courseDescription}</td>
+                      <td className="user-usercourse-td">{courseDuration}</td>
                       <button type="button" className="enroll" onClick={() => handleenroll(courseId)}>
-                        <td>EnrollNow</td>
+                        <td className="user-usercourse-td">EnrollNow</td>
                       </button>
                     </tr>
                   </tbody>

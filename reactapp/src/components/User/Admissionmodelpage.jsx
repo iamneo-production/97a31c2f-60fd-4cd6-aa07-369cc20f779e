@@ -112,28 +112,28 @@ function Admissionmodelpage() {
                     </div>
                 }
                 <div className="bth">
-                    <Link to="/HomePage">
-                        <h5>Back To Home</h5>
+                    <Link to="/Enrolledcourse">
+                        <h5>Back</h5>
                     </Link>
                 </div>
                 <div>
-                    <h2 class='user-heading-student' align="center"><h2>STUDENT DETAILS</h2></h2>
+                    <h2 className='user-heading-student' align="center"><h2>STUDENT DETAILS</h2></h2>
                 </div>
-                <div class="student-details-container">
+                <div className="student-details-container">
                     {studentdetails && studentdetails.length > 0 ? (
-                        <div class="row">
+                        <div className="row">
                             {studentdetails.map((studentdetail, index) => (
-                                <div key={studentdetail.id} class="column">
-                                    <div class='enrolled-courses'>
-                                        <table class='user-enrolled-course-table'>
+                                <div key={studentdetail.id} className="column">
+                                    <div className='user-enrolled-courses'>
+                                        <table className='user-enrolled-course-table'>
                                             <tbody>
                                                 <tr>
-                                                    <th className='user-table-head'>Course Id:</th>
-                                                    <td className='user-table-data'>{studentdetail.courseId}</td>
+                                                    <th className='user-table-head courseID'>Course Id:</th>
+                                                    <td className='user-table-data courseID'>{studentdetail.courseId}</td>
                                                 </tr>
                                                 <tr>
-                                                    <th className='user-table-head'>Student Id:</th>
-                                                    <td className='user-table-data'>{studentdetail.studentIdNumber}</td>
+                                                    <th className='user-table-head studentID'>Student Id:</th>
+                                                    <td className='user-table-data studentID'>{studentdetail.studentIdNumber}</td>
                                                 </tr>
                                                 <tr>
                                                     <th className='user-table-head'>First Name:</th>

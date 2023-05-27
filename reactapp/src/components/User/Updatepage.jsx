@@ -122,209 +122,215 @@ function Updatepage() {
                 </div>
                 <div className='user-update-heading'><h2>Student Details</h2>
                 </div>
-
-                <div key={studentdetail.id} className="user-enrolled-course">
-                    <form className="user-update-form">
-                        <div className="user-name">
-                            <label className="user__label">First Name:</label>
-                            <input
-                                type="text"
-                                id="firstName"
-                                className="user__input"
-                                name="firstName"
-                                value={studentdetail.firstName}
-                                placeholder="Enter First Name"
-                                onChange={(a) => handleInput(a, "firstName")}
-                            />
+                <form className="user-updatepage-form">
+                    <div key={studentdetail.id} className="user-enrolled-course">
+                        <div className="user-update-form">
+                            <div className="user-update-form-body">
+                                <div className="user-name">
+                                    <label className="user__label">First Name:</label>
+                                    <input
+                                        type="text"
+                                        id="firstName"
+                                        className="user__input"
+                                        name="firstName"
+                                        value={studentdetail.firstName}
+                                        placeholder="Enter First Name"
+                                        onChange={(a) => handleInput(a, "firstName")}
+                                    />
+                                </div>
+                                <div className="user-name">
+                                    <label className="user__label">Last Name:</label>
+                                    <input
+                                        type="text"
+                                        id="lastName"
+                                        className="user__input"
+                                        name="lastName"
+                                        value={studentdetail.lastName}
+                                        placeholder='Enter Last Name'
+                                        onChange={(a) => handleInput(a, "lastName")}
+                                    />
+                                </div>
+                                <div className="user-name">
+                                    <label className="user__label">Father Name:</label>
+                                    <input
+                                        type="text"
+                                        id="fatherName"
+                                        className="user__input"
+                                        name="fatherName"
+                                        value={studentdetail.fatherName}
+                                        placeholder="Enter Father Name"
+                                        onChange={(a) => handleInput(a, "fatherName")}
+                                    />
+                                </div>
+                                <div className="user-name">
+                                    <label className="user__label">Mother Name:</label>
+                                    <input
+                                        type="text"
+                                        id="motherName"
+                                        className="user__input"
+                                        name="motherName"
+                                        value={studentdetail.motherName}
+                                        placeholder="Enter Mother Name"
+                                        onChange={(a) => handleInput(a, "motherName")}
+                                    />
+                                </div>
+                                <div className="user-mobile">
+                                    <label className="user__label">Phone Number 1:</label>
+                                    <input
+                                        type="text"
+                                        id="phoneNumber1"
+                                        className="user__input"
+                                        name="phoneNumber1"
+                                        value={studentdetail.phoneNumber1}
+                                        placeholder="Enter Phone Number1"
+                                        onChange={(a) => handleInput(a, "phoneNumber1")}
+                                    />
+                                </div>
+                                <div className="user-mobile">
+                                    <label className="user__label">Phone Number 2:</label>
+                                    <input
+                                        type="text"
+                                        id="phoneNumber2"
+                                        className="user__input"
+                                        name="phoneNumber2"
+                                        value={studentdetail.phoneNumber2}
+                                        placeholder="Enter Phone Number2"
+                                        onChange={(a) => handleInput(a, "phoneNumber2")}
+                                    />
+                                </div>
+                                <div className="user-dob">
+                                    <label className="user__label">Student DOB:</label>
+                                    <input
+                                        type="text"
+                                        id="studentDOB"
+                                        className="user__input"
+                                        name="studentDOB"
+                                        value={studentdetail.studentDOB}
+                                        placeholder="Enter Student DOB"
+                                        onChange={(a) => handleInput(a, "studentDOB")}
+                                    />
+                                </div>
+                                <div className="user-marks">
+                                    <label className="user__label">Enter SSLC marks:</label>
+                                    <input
+                                        type="text"
+                                        id="sslc"
+                                        className="user__input"
+                                        name="sslc"
+                                        value={studentdetail.sslc}
+                                        placeholder="Enter SSLC marks"
+                                        onChange={(a) => handleInput(a, "sslc")}
+                                    />
+                                </div>
+                                <div className="user-marks">
+                                    <label className="user__label">Enter HSC marks:</label>
+                                    <input
+                                        type="text"
+                                        id="hsc"
+                                        className="user__input"
+                                        name="hsc"
+                                        value={studentdetail.hsc}
+                                        placeholder="Enter HSC marks"
+                                        onChange={(a) => handleInput(a, "hsc")}
+                                    />
+                                </div>
+                                <div className="user-marks">
+                                    <label className="user__label">Enter diploma marks:</label>
+                                    <input
+                                        type="text"
+                                        id="diploma"
+                                        className="user__input"
+                                        name="diploma"
+                                        value={studentdetail.diploma}
+                                        placeholder="Enter diploma marks"
+                                        onChange={(a) => handleInput(a, "diploma")}
+                                    />
+                                </div>
+                                <div className="user-update-address-container">
+                                    <h2>Address information</h2>
+                                    <div className="user-address">
+                                        <label className="user__label">Enter House Number:</label>
+                                        <input
+                                            type="text"
+                                            id="houseNumber"
+                                            className="user__input"
+                                            name="houseNumber"
+                                            value={studentdetail.houseNumber}
+                                            placeholder="Enter House Number"
+                                            onChange={(a) => handleInput(a, "houseNumber")}
+                                        />
+                                    </div>
+                                    <div className="user-address">
+                                        <label className="user__label">Enter Street Name:</label>
+                                        <input
+                                            type="text"
+                                            id="streetName"
+                                            className="user__input"
+                                            name="streetName"
+                                            value={studentdetail.streetName}
+                                            placeholder="Enter Street Name"
+                                            onChange={(a) => handleInput(a, "streetName")}
+                                        />
+                                    </div>
+                                    <div className="user-address">
+                                        <label className="user__label">Enter Area Name:</label>
+                                        <input
+                                            type="text"
+                                            id="areaName"
+                                            className="user__input"
+                                            name="areaName"
+                                            value={studentdetail.areaName}
+                                            placeholder="Enter Area Name"
+                                            onChange={(a) => handleInput(a, "areaName")}
+                                        />
+                                    </div>
+                                    <div className="user-address">
+                                        <label className="user__label">Enter Pincode:</label>
+                                        <input
+                                            type="text"
+                                            id="pincode"
+                                            className="user__input"
+                                            name="pincode"
+                                            value={studentdetail.pincode}
+                                            placeholder="Enter Pincode"
+                                            onChange={(a) => handleInput(a, "pincode")}
+                                        />
+                                    </div>
+                                    <div className="user-address">
+                                        <label className="user__label">Enter State:</label>
+                                        <input
+                                            type="text"
+                                            id="state"
+                                            className="user__input"
+                                            name="state"
+                                            value={studentdetail.state}
+                                            placeholder="Enter State"
+                                            onChange={(a) => handleInput(a, "state")}
+                                        />
+                                    </div>
+                                    <div className="user-address">
+                                        <label className="user__label">Enter Nationality:</label>
+                                        <input
+                                            type="text"
+                                            id="nationality"
+                                            className="user__input"
+                                            name="nationality"
+                                            value={studentdetail.nationality}
+                                            placeholder="Enter Nationality"
+                                            onChange={(a) => handleInput(a, "nationality")}
+                                        />
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div className="user-name">
-                            <label className="user__label">Last Name:</label>
-                            <input
-                                type="text"
-                                id="lastName"
-                                className="user__input"
-                                name="lastName"
-                                value={studentdetail.lastName}
-                                placeholder='Enter Last Name'
-                                onChange={(a) => handleInput(a, "lastName")}
-                            />
+                        <div className="user-button-container">
+                            <button className="user-update-button" type="submit" onClick={(a) => handleUserPopup(a)}>
+                                Update
+                            </button>
+                            <Link to="/Admissionmodelpage" className='user-cancel-button'><button>Cancel</button></Link>
                         </div>
-                        <div className="user-name">
-                            <label className="user__label">Father Name:</label>
-                            <input
-                                type="text"
-                                id="fatherName"
-                                className="user__input"
-                                name="fatherName"
-                                value={studentdetail.fatherName}
-                                placeholder="Enter Father Name"
-                                onChange={(a) => handleInput(a, "fatherName")}
-                            />
-                        </div>
-                        <div className="user-name">
-                            <label className="user__label">Mother Name:</label>
-                            <input
-                                type="text"
-                                id="motherName"
-                                className="user__input"
-                                name="motherName"
-                                value={studentdetail.motherName}
-                                placeholder="Enter Mother Name"
-                                onChange={(a) => handleInput(a, "motherName")}
-                            />
-                        </div>
-                        <div className="user-mobile">
-                            <label className="user__label">Phone Number 1:</label>
-                            <input
-                                type="text"
-                                id="phoneNumber1"
-                                className="user__input"
-                                name="phoneNumber1"
-                                value={studentdetail.phoneNumber1}
-                                placeholder="Enter Phone Number1"
-                                onChange={(a) => handleInput(a, "phoneNumber1")}
-                            />
-                        </div>
-                        <div className="user-mobile">
-                            <label className="user__label">Phone Number 2:</label>
-                            <input
-                                type="text"
-                                id="phoneNumber2"
-                                className="user__input"
-                                name="phoneNumber2"
-                                value={studentdetail.phoneNumber2}
-                                placeholder="Enter Phone Number2"
-                                onChange={(a) => handleInput(a, "phoneNumber2")}
-                            />
-                        </div>
-                        <div className="user-dob">
-                            <label className="user__label">Student DOB:</label>
-                            <input
-                                type="text"
-                                id="studentDOB"
-                                className="user__input"
-                                name="studentDOB"
-                                value={studentdetail.studentDOB}
-                                placeholder="Enter Student DOB"
-                                onChange={(a) => handleInput(a, "studentDOB")}
-                            />
-                        </div>
-                        <div className="user-marks">
-                            <label className="user__label">Enter SSLC marks:</label>
-                            <input
-                                type="text"
-                                id="sslc"
-                                className="user__input"
-                                name="sslc"
-                                value={studentdetail.sslc}
-                                placeholder="Enter SSLC marks"
-                                onChange={(a) => handleInput(a, "sslc")}
-                            />
-                        </div>
-                        <div className="user-marks">
-                            <label className="user__label">Enter HSC marks:</label>
-                            <input
-                                type="text"
-                                id="hsc"
-                                className="user__input"
-                                name="hsc"
-                                value={studentdetail.hsc}
-                                placeholder="Enter HSC marks"
-                                onChange={(a) => handleInput(a, "hsc")}
-                            />
-                        </div>
-                        <div className="user-marks">
-                            <label className="user__label">Enter diploma marks:</label>
-                            <input
-                                type="text"
-                                id="diploma"
-                                className="user__input"
-                                name="diploma"
-                                value={studentdetail.diploma}
-                                placeholder="Enter diploma marks"
-                                onChange={(a) => handleInput(a, "diploma")}
-                            />
-                        </div>
-                        <div className="user-address">
-                            <label className="user__label">Enter House Number:</label>
-                            <input
-                                type="text"
-                                id="houseNumber"
-                                className="user__input"
-                                name="houseNumber"
-                                value={studentdetail.houseNumber}
-                                placeholder="Enter House Number"
-                                onChange={(a) => handleInput(a, "houseNumber")}
-                            />
-                        </div>
-                        <div className="user-address">
-                            <label className="user__label">Enter Street Name:</label>
-                            <input
-                                type="text"
-                                id="streetName"
-                                className="user__input"
-                                name="streetName"
-                                value={studentdetail.streetName}
-                                placeholder="Enter Street Name"
-                                onChange={(a) => handleInput(a, "streetName")}
-                            />
-                        </div>
-                        <div className="user-address">
-                            <label className="user__label">Enter Area Name:</label>
-                            <input
-                                type="text"
-                                id="areaName"
-                                className="user__input"
-                                name="areaName"
-                                value={studentdetail.areaName}
-                                placeholder="Enter Area Name"
-                                onChange={(a) => handleInput(a, "areaName")}
-                            />
-                        </div>
-                        <div className="user-address">
-                            <label className="user__label">Enter Pincode:</label>
-                            <input
-                                type="text"
-                                id="pincode"
-                                className="user__input"
-                                name="pincode"
-                                value={studentdetail.pincode}
-                                placeholder="Enter Pincode"
-                                onChange={(a) => handleInput(a, "pincode")}
-                            />
-                        </div>
-                        <div className="user-address">
-                            <label className="user__label">Enter State:</label>
-                            <input
-                                type="text"
-                                id="state"
-                                className="user__input"
-                                name="state"
-                                value={studentdetail.state}
-                                placeholder="Enter State"
-                                onChange={(a) => handleInput(a, "state")}
-                            />
-                        </div>
-                        <div className="user-address">
-                            <label className="user__label">Enter Nationality:</label>
-                            <input
-                                type="text"
-                                id="nationality"
-                                className="user__input"
-                                name="nationality"
-                                value={studentdetail.nationality}
-                                placeholder="Enter Nationality"
-                                onChange={(a) => handleInput(a, "nationality")}
-                            />
-                        </div>
-                    </form>
-                    <div className="user-button-container">
-                        <button className="user-update-button" type="submit" onClick={(a) => handleUserPopup(a)}>
-                            Update
-                        </button>
-                        <Link to="/Admissionmodelpage" className='user-cancel-button'><button>Cancel</button></Link>
                     </div>
-                </div>
+                </form>
             </div>
         </UserGuard>
 

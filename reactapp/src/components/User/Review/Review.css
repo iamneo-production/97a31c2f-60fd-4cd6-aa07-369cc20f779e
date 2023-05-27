@@ -177,7 +177,7 @@
 
 
 .user-review-headtxt{
-  margin-bottom:15px;
+  margin-bottom:30px;
   text-align: center;
   color: #4a4848;
   font-size: 1.7rem;
@@ -185,35 +185,46 @@
   font-family :'Times New Roman', Times, serif;
 }
   
-  .ffform{
-    background-color: #f8f8f8;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 30px;
-    width: 100%;
-  }
-  .reviewheading {
-    display: block;
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 5px;
-    text-align: left;
-  }
-  
-  .reviewinput {
-    border: 1px solid #ddd;
-    border-radius: 3px;
-    box-sizing: border-box;
-    font-size: 16px;
-    margin-bottom: 20px;
-    padding: 10px;
-    width: 100%;
-    transition: border-color 0.2s ease-in-out;
-  }
-  
-  .form__input:focus {
-    border-color: #4CAF50;
-  }
+.user-review-form {
+  max-width: 800px;
+  margin: auto;
+  padding: 40px;
+}
+
+.reviewname {
+  margin-bottom: 20px;
+}
+
+.reviewname label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+  color: #555;
+  font-size: 1.1rem;
+}
+
+.reviewname input,
+.reviewname textarea {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-bottom: 2px solid #ddd;
+  font-size: 1.1rem;
+  color: #333;
+  background-color: transparent;
+  transition: border-color 0.3s ease-in-out;
+}
+
+.reviewname input:focus,
+.reviewname textarea:focus {
+  border-color: #4987c4;
+  outline: none;
+}
+
+.reviewname textarea {
+  resize: none;
+  min-height: 120px;
+}
   .btnbtn {
     display: flex;
     justify-content: flex-end;

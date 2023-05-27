@@ -292,6 +292,7 @@
 /* Back to home css */
 
 .back-to-home {
+  margin-left:5px;
   background-color: #fff;
   border: 2px solid #2A7230;
   color: #2A7230;

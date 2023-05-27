@@ -113,19 +113,19 @@
 
 
 
-table {
+.user-usercourse-table {
   border-collapse: collapse;
   width: 100%;
 }
 
-th,
-td {
+.user-usercourse-th,
+.user-usercourse-td{
   text-align: left;
   padding: 12px;
   width: 20%;
 }
 
-th {
+.user-usercourse-th {
   background-color:#878181;
   color: white;
 

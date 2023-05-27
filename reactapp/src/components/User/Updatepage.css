@@ -178,75 +178,142 @@
   font-family: 'Times New Roman', Times, serif;
 }
 
+
 .user-enrolled-course {
-  max-width: 600px;
-  margin: 20px auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #f9f9f9;
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  margin: 20px;
 }
 
 .user-update-form {
-  margin-bottom: 20px;
+  background-color: #e0e6e9;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  width: 100%;
+}
+
+.user-update-form-body {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .user__label {
   display: block;
+  font-size: 16px;
   font-weight: bold;
   margin-bottom: 5px;
+  text-align: left;
 }
 
 .user__input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #D3DCE6;
   border-radius: 3px;
+  box-sizing: border-box;
+  font-size: 16px;
+  margin-bottom: 20px;
+  padding: 10px;
+  width: 100%;
+  transition: border-color 0.2s ease-in-out;
 }
 
+.user__input:focus {
+  border-color: #4D90FE;
+}
+.user-update-address-container {
+  background-color: #f1f4f6;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  margin-bottom: 30px;
+  width:100%
+}
+
+.user-update-address-container h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.user-update-address-container .user-address {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.user-update-address-container label {
+  display: block;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  text-align: left;
+}
+
+.user-update-address-container input {
+  border: 1px solid #D3DCE6;
+  border-radius: 3px;
+  box-sizing: border-box;
+  font-size: 16px;
+  margin-bottom: 20px;
+  padding: 10px;
+  width: 100%;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.user-name,
+.user-mobile,
+.user-dob,
+.user-marks
+ {
+  width: 48%;
+}
+.user-address {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 20px;
+} 
+/* button css */
 .user-button-container {
   display: flex;
   justify-content: flex-end;
-  margin-top: 20px;
-}
-
-.user-update-button,
-.user-cancel-button button {
-  color: white;
+  align-items: center;
+  margin-top: 40px;
+  }
+  
+  .user-update-button,
+  .user-cancel-button {
+  padding: 15px 25px;
   border: none;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  border-radius: 15px;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.user-update-button {
-  background-color: #4caf50;
-}
-
-.user-update-button:hover {
-  background-color: #45a049;
-  transform: scale(1.05);
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
-}
-
-.user-cancel-button button {
-  background-color: #f44336;
-}
-
-.user-cancel-button button:hover {
-  background-color: #e13636;
-  transform: scale(1.05);
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
-}
-
-.user-cancel-button {
-  margin-left: 10px;
-  display: inline-block;
-  text-decoration: none;
-}
+  transition: all 0.3s ease-in-out;
+  }
+  
+  .user-update-button {
+  background-color: #4987c4;
+  color: #fff;
+  margin-right: 20px;
+  }
+  
+  .user-cancel-button {
+  background-color: #fff;
+  color: #4987c4;
+  border: 2px solid #4987c4;
+  }
+  
+  .user-update-button:hover,
+  .user-cancel-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  }

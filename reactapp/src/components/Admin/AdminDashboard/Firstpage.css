@@ -17,7 +17,7 @@ body {
 }
 
 .nv h2 {
-    font-size: 3rem;
+    font-size: 2rem;
     color: bisque;
     font-weight: bolder;
 
@@ -110,17 +110,10 @@ body {
     animation-timing-function: ease-in-out;
 }
 
-@keyframes animate {
-    50% {
-        background-image: url(img3.jpg);
-    }
 
-    100% {
-        background-image: url(img1.jpg);
-    }
-}
 
 .txt p {
+    margin-top:160px;
     color: antiquewhite;
     text-align: center;
     margin-left: 12%;
@@ -146,6 +139,7 @@ body {
 }
 
 .txt h4 {
+    font-size:2.1rem;
     color: aliceblue;
     margin-left: 12%;
     text-align: center;

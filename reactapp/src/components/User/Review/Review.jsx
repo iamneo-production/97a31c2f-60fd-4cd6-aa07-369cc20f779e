@@ -41,19 +41,19 @@ const Review = () => {
   const navigate = useNavigate();
   return (
     <UserGuard>
-  <nav className="user-nav-container">
-                <div>
-                    <NavLink to="/Navpage" >
-                        <h2 className="pg-admission-heading">PG Admission</h2>
-                    </NavLink>
-                </div>
-                <div className="user-navlinks-container">
-                    <NavLink to="/HomePage">Institute</NavLink>
-                    <NavLink to="/FeedBack">FeedBack</NavLink>
-                    <NavLink to="/Enrolledcourse">Enrolledcourse</NavLink>
-                </div>
-                <button data-testid="logout" name='logout' onClick={handleLogout} >Logout</button>
-            </nav>
+      <nav className="user-nav-container">
+        <div>
+          <NavLink to="/Navpage" >
+            <h2 className="pg-admission-heading">PG Admission</h2>
+          </NavLink>
+        </div>
+        <div className="user-navlinks-container">
+          <NavLink to="/HomePage">Institute</NavLink>
+          <NavLink to="/FeedBack">FeedBack</NavLink>
+          <NavLink to="/Enrolledcourse">Enrolledcourse</NavLink>
+        </div>
+        <button data-testid="logout" name='logout' onClick={handleLogout} >Logout</button>
+      </nav>
       {
         userPopup && (
           <div className="user-popup-body noHover">
@@ -90,11 +90,11 @@ const Review = () => {
           <h5>Back To Home</h5>
         </Link>
       </div>
-      <div className='user-review-headtxt'>
-        Your Feedback Is Most Important For Us!!
-      </div>
-      <form onSubmit={handleSubmit}>
-        <div className='ffform'>
+      <div className="user-review-form">
+        <div className='user-review-headtxt'>
+          Your Feedback Is Most Important For Us!!
+        </div>
+        <form onSubmit={handleSubmit} className="user-review-form-container">
           <div className='reviewname'>
             <label className='reviewheading' htmlFor="name">Name:</label>
             <input className='reviewinput'
@@ -143,9 +143,8 @@ const Review = () => {
             <button className='user-submitbutton' type="submit" id="submit" onClick={(e) => { makePopup(e) }}>Submit </button>
             <button className='user-cancelbutton' onClick={handlecancel}>cancel</button>
           </div>
-        </div>
-      </form>
-
+        </form>
+      </div>
     </UserGuard>
   );
 };

@@ -241,14 +241,14 @@ const AdminStudent1 = () => {
         <div className="student-heading">
           <h1>List of Students</h1>
         </div>
-        <table>
+        <table className="admin-student-table">
           <thead>
             <tr>
-              <th>Student ID</th>
-              <th>Name</th>
-              <th>Course Name</th>
-              <th>Phone Number</th>
-              <th>Actions</th>
+              <th className="admin-student-th">Student ID</th>
+              <th className="admin-student-th">Name</th>
+              <th className="admin-student-th">Course Name</th>
+              <th className="admin-student-th">Phone Number</th>
+              <th className="admin-student-th">Actions</th>
             </tr>
           </thead>
         </table>
@@ -264,14 +264,14 @@ const AdminStudent1 = () => {
             return (
               <>
                 <div className="student-card-info">
-                  <table>
+                  <table className="admin-student-table">
                     <tbody>
                       <tr>
-                        <td>{studentId}</td>
-                        <td>{firstName + " " + lastName}</td>
-                        <td>{course.courseName}</td>
-                        <td>{phoneNumber1}</td>
-                        <td>
+                        <td className="admin-student-td">{studentId}</td>
+                        <td className="admin-student-td">{firstName + " " + lastName}</td>
+                        <td className="admin-student-td">{course.courseName}</td>
+                        <td className="admin-student-td">{phoneNumber1}</td>
+                        <td className="admin-student-td">
                           <button
                             type="submit"
                             id="editStudent"
@@ -464,10 +464,10 @@ export const StudentForm = ({ type }) => {
         type="submit"
         className="back-to-home"
         onClick={() => {
-          navigate("/admin/dashboard");
+          navigate("/admin/Viewstudent");
         }}
       >
-        Back to Home
+        Back
       </button>
       {type === "ADD" ? (
         <h1 className="head-container">Add Student Details</h1>

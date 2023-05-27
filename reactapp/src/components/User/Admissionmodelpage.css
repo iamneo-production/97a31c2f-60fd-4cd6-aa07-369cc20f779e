@@ -174,85 +174,97 @@
   font-weight: bold;
   }
 
- /* student information display  */
+/* Student Details Container */
+.student-details-container {
+  padding: 20px;
  
-  .student-details-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-  }
-  
-  .row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  .column {
-    margin: 10px;
-    padding: 20px;
-    background-color: #f1f1f1;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  .column:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-  }
+}
 
-  /* Table styles */
-  user-enrolled-course-table {
-    width: 100%;
-    margin-bottom: 10px;
-  }
-  
-  .user-table-head,
-  .user-table-data {
-    padding: 5px 10px;
-  }
-  
-  .user-table-head{
-    padding:20px;
-    text-align: left;
-  }
-  
-  /* Button styles */
-  .button-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-  }
-  
-  .update-button,
-  .delete-button {
-    display: inline-block;
-    padding: 8px 12px;
-    margin: 0 5px;
-    color: #fff;
-    border: none;
-    border-radius: 15px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  .update-button {
-    background-color: #4caf50;
-  }
-  
-  .update-button:hover {
-    background-color: #45a049;
-    transform: scale(1.05);
-    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
-  }
-  
-  .delete-button  {
-    background-color: #f44336;
-  }
-  
-  .delete-button:hover {
-    background-color: #e13636;
-    transform: scale(1.05);
-    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
-  }
-  
+/* Table Styling */
+.user-enrolled-course-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+
+}
+
+.user-enrolled-course-table th,
+.user-enrolled-course-table td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Table Header Styling */
+.user-table-head {
+  font-weight: bold;
+  color: #333;
+}
+/* .courseID,
+.studentID{
+  font-size:1.2rem;
+  color:#4987c4;
+} */
+/* Table Data Styling */
+.user-table-data {
+  color: #666;
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.column {
+  flex-basis: 50%; 
+  padding: 0px 30px 30px 30px; 
+}
+
+/* Enrolled Courses Styling */
+.user-enrolled-courses {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* width:50%; */
+}
+
+/* Button Container Styling */
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Update Button Styling */
+.update-button,
+.delete-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 35px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.update-button{
+  background-color: #4987c4;
+  color: #fff;
+  margin-right: 20px;
+}
+
+.delete-button{
+  background-color: #fff;
+  color: #E76161;
+  border: 2px solid #E76161;
+}
+.update-button:hover,
+.delete-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+

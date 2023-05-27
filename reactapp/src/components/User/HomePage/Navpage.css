@@ -21,7 +21,7 @@ body {
 }
 
 .nv h2 {
-    font-size: 3rem;
+    font-size: 2rem;
     color: cornflowerblue;
     font-weight: bolder;
 
@@ -113,17 +113,10 @@ body {
     animation-timing-function: ease-in-out;
 }
 
-@keyframes animate {
-    50% {
-        background-image: url(img3.jpg);
-    }
 
-    100% {
-        background-image: url(img1.jpg);
-    }
-}
 
 .txt p {
+    margin-top:160px;
     color: antiquewhite;
     text-align: center;
     margin-left: 12%;
@@ -139,7 +132,7 @@ body {
 .txt h2 {
     color: cornsilk;
     margin-left: 12%;
-    text-align: center;
+    padding-right:150px;
     font-style: oblique;
     font-size: 2.8rem;
     font-weight: bold;
@@ -149,6 +142,7 @@ body {
 }
 
 .txt h4 {
+    font-size:2,1rem;
     color: aliceblue;
     margin-left: 12%;
     text-align: center;
