@@ -250,13 +250,7 @@ const AdminStudent1 = () => {
                       </tr>
                     </tbody>
                   </table>
-                  {/* <h4>Student Id : {studentId}</h4>
-                  <h4>Name : {firstName + " " + lastName}</h4>
-                  <h4>Email Id : {emailId}</h4>
-                  <h4> Phone Number : {phoneNumber1}</h4>
-                  <button type="submit" id="editStudent" className='edit-btn' onClick={() => handleEdit(studentId)}><i className="fa-regular fa-pen-to-square"></i></button>
-                  <button type="submit" id="deleteStudent" className='delete-btn' onClick={() => handleDelete(studentId)}><i className="fa-regular fa-trash-can"></i></button> */}
-                </div>
+                                 </div>
               </>
             );
           })}
