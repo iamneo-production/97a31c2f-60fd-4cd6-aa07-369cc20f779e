@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, NavLink } from "react-router-dom";
 import "./ApplyForm.css";
 import { useNavigate } from "react-router";
 import { UserGuard } from "../../../AuthGuard/UserGuard";
@@ -22,7 +22,7 @@ function ApplyForm() {
   }
 
   const handlecancel = () => {
-    navigate("/HomePage")
+    navigate("/UserCourse");
   }
   const handleLogout = () => {
     store.dispatch({ type: "LOGOUT" });
@@ -113,36 +113,29 @@ function ApplyForm() {
         )}
       </pre>
 
-      <div className="mainbar">
-        <Link to="/Navpage">
-          <h1>PG Admission</h1>
-        </Link>
-        <div className="one">
-          <Link to="/Enrolledcourse">Enrolled course</Link>
+      <nav className="user-nav-container">
+        <div>
+          <NavLink to="/Navpage" >
+            <h2 className="pg-admission-heading">PG Admission</h2>
+          </NavLink>
         </div>
-
-        <div className="one1">
-          <Link to="/HomePage">Institute</Link>
-
+        <div className="user-navlinks-container">
+          <NavLink to="/Enrolledcourse">Enrolledcourse</NavLink>
+          <NavLink to="/HomePage">Institute</NavLink>
+          <NavLink to="/FeedBack">FeedBack</NavLink>
         </div>
-        <div className="one">
-          <Link to="/FeedBack">FeedBack</Link>
-        </div>
-        <div className="out">
-          <button data-testid="logout" name="logout" onClick={handleLogout}>
-            Logout
-          </button>
-        </div>
-      </div>
+        <button data-testid="logout" name='logout' onClick={handleLogout} >Logout</button>
+      </nav>
       {
         userPopup && (
-          <div className="admin-popup-body noHover">
-            <div className="admin-popup-overlay">
+          <div className="user-popup-body noHover">
+            <div className="user-popup-overlay">
 
             </div>
-            <div className="admin-institute-popup">
+            <div className="user-applyform-popup">
               <h1>Are you sure to enroll the data ?</h1>
               <button
+                className="user-applyform-confirm-btn"
                 type="submit"
                 onClick={(e) => {
                   handleSubmit(e);
@@ -151,8 +144,8 @@ function ApplyForm() {
               >
                 confirm enroll
               </button>
-              <br />
               <button
+                className="user-applyform-cancel-btn"
                 type="submit"
                 onClick={() => {
                   setUserPopup(false);
@@ -169,7 +162,7 @@ function ApplyForm() {
           <h5>Back To Home</h5>
         </Link>
       </div>
-      <div className="headtxt">
+      <div className="user-applyform-headtxt">
         Here You Go! Fill Up The Form And Enroll Now
       </div>
 

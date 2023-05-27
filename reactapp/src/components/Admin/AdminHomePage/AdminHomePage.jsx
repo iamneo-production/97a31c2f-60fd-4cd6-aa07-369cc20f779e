@@ -4,7 +4,7 @@ import { store } from "../../../store";
 import { AdminGuard } from "../../../AuthGuard/AdminGuard";
 import "./AdminHomePage.css";
 import { Navigate } from "react-router";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, NavLink } from "react-router-dom";
 import { baseUrl } from "../../../api/authService";
 
 let auth = "";
@@ -53,7 +53,6 @@ const Adminacademy = () => {
     state: false,
     delid: null
   });
-  
 
   const navigate = useNavigate();
 
@@ -105,9 +104,6 @@ const Adminacademy = () => {
     }
   };
 
-  const handleAdd = () => {
-    navigate("/admin/addInstitute");
-  };
 
   const handleDelete = async (id) => {
     setPopup({ state: true, delid: id });
@@ -146,6 +142,7 @@ const Adminacademy = () => {
             <div className="admin-institute-popup">
               <h1>Are you sure to delete the data ?</h1>
               <button
+                className="confirm-button"
                 type="submit"
                 onClick={() => {
                   deleteAcademy(popup.delid)
@@ -163,8 +160,8 @@ const Adminacademy = () => {
               >
                 confirm delete
               </button>
-              <br />
               <button
+                className="cancel-button"
                 type="submit"
                 onClick={() => {
                   setPopup({
@@ -237,17 +234,19 @@ const Adminacademy = () => {
             );
           })}
         </div>
-        <div className="admin-add-academy-button">
-          <button
-            type="submit"
-            className="admin-add-institute-icon"
-            data-testid="addInstitute"
-            onClick={() => handleAdd()}
-          >
-            {" "}
-            <i className="fa-solid fa-circle-plus"></i>Add Institute
-          </button>
-        </div>
+        <NavLink
+          exact="true"
+          to="/admin/addInstitute"
+          className="nav-link"
+          id="addinstitute"
+          data-testid="addInstitute"
+          activeclassname="active">
+          <div className="admin-add-academy-button">
+            <div className='admin-add-institute-icon' >
+              <i className="fa-solid fa-circle-plus"></i>
+            </div>
+          </div>
+        </NavLink>
       </div>
     </>
   );
@@ -353,7 +352,7 @@ export const AcademyForm = ({ type }) => {
               )}
               {
                 type === "ADD" ? (
-                  <button
+                  <button className="confirm-button"
                     type="submit"
                     onClick={() => {
                       addAcademy()
@@ -368,7 +367,7 @@ export const AcademyForm = ({ type }) => {
                     confirm add
                   </button>
                 ) : (
-                  <button
+                  <button className="confirm-button"
                     type="submit"
                     onClick={() => {
                       editAcademy()
@@ -383,8 +382,8 @@ export const AcademyForm = ({ type }) => {
                     confirm edit
                   </button>
                 )}
-              <br />
               <button
+                className="cancel-button"
                 type="submit"
                 onClick={() => {
                   setPopup(false);

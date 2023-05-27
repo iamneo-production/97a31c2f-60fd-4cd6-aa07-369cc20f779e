@@ -78,9 +78,10 @@ const Course = () => {
             <div className="admin-popup-overlay">
 
             </div>
-            <div className="admin-institute-popup">
+            <div className="admin-course-popup">
               <h1>Are you sure to add the data ?</h1>
               <button
+                className="confirm-button"
                 type="submit"
                 onClick={(e) => {
                   handleClick(e);
@@ -89,8 +90,8 @@ const Course = () => {
               >
                 confirm add
               </button>
-              <br />
               <button
+                className="cancel-button"
                 type="submit"
                 onClick={() => {
                   setPopup(false);
@@ -103,9 +104,8 @@ const Course = () => {
         )
       }
 
-      {/* <Link to="/admin/viewCourse" className="course-back-to-home">Back To Home</Link> */}
       <div
-        data-testid="add Course"
+        data-testid="addCourse"
         className='course'>
         <h2
           className="head-container">

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { store } from "../../../store";
 import { useNavigate } from "react-router";
 import { UserGuard } from "../../../AuthGuard/UserGuard";
@@ -41,37 +41,29 @@ const Review = () => {
   const navigate = useNavigate();
   return (
     <>
-      <div className="mainbar">
-        <Link to="/Navpage">
-          <h1>PG Admission</h1>
-        </Link>
-        <div className="one">
-          <Link to="/HomePage">Institute</Link>
+      <nav className="user-nav-container">
+        <div>
+          <NavLink to="/Navpage" >
+            <h2 className="pg-admission-heading">PG Admission</h2>
+          </NavLink>
         </div>
-
-        <div className="one1">
-
-          <Link to="/FeedBack">FeedBack</Link>
+        <div className="user-navlinks-container">
+          <NavLink to="/HomePage">Institute</NavLink>
+          <NavLink to="/FeedBack">FeedBack</NavLink>
+          <NavLink to="/Enrolledcourse">Enrolledcourse</NavLink>
         </div>
-        <div className="one">
-
-          <Link to="/Enrolledcourse">Enrolled course</Link>
-        </div>
-        <div className="out">
-          <button data-testid="logout" name="logout" onClick={handleLogout}>
-            Logout
-          </button>
-        </div>
-      </div>
+        <button data-testid="logout" name='logout' onClick={handleLogout} >Logout</button>
+      </nav>
       {
         userPopup && (
-          <div className="admin-popup-body noHover">
-            <div className="admin-popup-overlay">
+          <div className="user-popup-body noHover">
+            <div className="user-popup-overlay">
 
             </div>
-            <div className="admin-institute-popup">
+            <div className="user-review-popup">
               <h1>Are you sure to add the data ?</h1>
               <button
+                className="user-review-confirm-btn"
                 type="submit"
                 onClick={() => {
                   handlecancel();
@@ -80,8 +72,8 @@ const Review = () => {
               >
                 confirm submit
               </button>
-              <br />
               <button
+                className="user-review-cancel-btn"
                 type="submit"
                 onClick={() => {
                   setUserPopup(false);
@@ -93,14 +85,16 @@ const Review = () => {
           </div>
         )
       }
-      <div className='bth'>
-        <Link to="/HomePage">Back To Home</Link>
+      <div className="bth">
+        <Link to="/HomePage">
+          <h5>Back To Home</h5>
+        </Link>
       </div>
-      <div className='headtxt'>
-        Your Feedback Is Most Important For Us!!
-      </div>
-      <form onSubmit={handleSubmit}>
-        <div className='ffform'>
+      <div className="user-review-form">
+        <div className='user-review-headtxt'>
+          Your Feedback Is Most Important For Us!!
+        </div>
+        <form onSubmit={handleSubmit} className="user-review-form-container">
           <div className='reviewname'>
             <label className='reviewheading' htmlFor="name">Name:</label>
             <input className='reviewinput'
@@ -146,12 +140,11 @@ const Review = () => {
             />
           </div>
           <div className='btnbtn'>
-            <button className='submitbutton' type="submit" id="submit" onClick={(e) => { makePopup(e) }}>Submit </button>
-            <button className='cancelbutton' onClick={handlecancel}>cancel</button>
+            <button className='user-submitbutton' type="submit" id="submit" onClick={(e) => { makePopup(e) }}>Submit </button>
+            <button className='user-cancelbutton' onClick={handlecancel}>cancel</button>
           </div>
-        </div>
-      </form>
-
+        </form>
+      </div>
     </>
   );
 };
