@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useNavigate } from "react-router";
 import { store } from "../../../store";
 import { UserGuard } from "../../../AuthGuard/UserGuard";
@@ -45,89 +45,77 @@ const UserCourse = () => {
 
   return (
     <UserGuard>
-      <div className="mainbar">
-        <Link to="/Navpage">
-          <h1>PG Admission</h1>
-        </Link>
-        <div className="one">
-          <Link to="/HomePage">Institute</Link>
+      <nav className="user-nav-container">
+        <div>
+          <NavLink to="/Navpage" >
+            <h2 className="pg-admission-heading">PG Admission</h2>
+          </NavLink>
         </div>
-
-        <div className="one">
-          <Link to="/Enrolledcourse">Enrolled course</Link>
+        <div className="user-navlinks-container">
+          <NavLink to="/Enrolledcourse">Enrolledcourse</NavLink>
+          <NavLink to="/HomePage">Institute</NavLink>
+          <NavLink to="/FeedBack">FeedBack</NavLink>
         </div>
-        <div className="one">
-          <Link to="/FeedBack">FeedBack</Link>
-        </div>
-        <div className="out">
-          <button data-testid="logout" name="logout" onClick={handleLogout}>
-            Logout
-          </button>
-        </div>
-      </div>
-      <div className="home">
+        <button data-testid="logout" name='logout' onClick={handleLogout} >Logout</button>
+      </nav>
+      <div className="bth">
         <Link to="/HomePage">
           <h5>Back To Home</h5>
         </Link>
       </div>
-      <div className="onesec">
-        {viewdata.map((course) => {
-          const {
-            id,
-            courseName,
-            courseDescription,
-            courseDuration,
-            courseId,
-          } = course;
-          return (
-            <table>
+      <div className="usercoursecontainer">
+        <div className="user-headtxt">
+          Offered Courses!
+          It's Time To Pick Yours
+        </div>
 
-              <div key={id}>
+        <table className="user-usercourse-table">
+          <thead>
+            <tr>
+              <th className="user-usercourse-th">Course Id</th>
+              <th className="user-usercourse-th">Course Name</th>
+              <th className="user-usercourse-th">Course Description</th>
+              <th className="user-usercourse-th">Course Duration</th>
+              <th className="user-usercourse-th">Click Me</th>
+            </tr>
+          </thead>
+        </table>
 
-                <thead>
-                  <tr>
-                    <th>course id</th>
-                    <th>course name</th>
-                    <th>course description</th>
-                    <th>course duration</th>
-                    <th>click me</th>
-                  </tr>
-                </thead>
+        <div className="onesec">
+          {viewdata.map((course) => {
+            const {
+              id,
+              courseName,
+              courseDescription,
+              courseDuration,
+              courseId,
+            } = course;
 
-
-
-                <tbody>
-                  <tr>
-                    <td>{courseId}</td>
-                    <td>{courseName}</td>
-                    <td>{courseDescription}</td>
-                    <td>{courseDuration}</td>
+            return (
 
 
-                    <button type="button" onClick={() => handleenroll(courseId)}>
-                      <td>Enroll Now</td>
-                    </button>
 
-                  </tr>
-                </tbody>
+              <div className="courseinfo" key={id}>
 
-                {/* <h3>course id: {courseId}</h3>
-              <h3>course name:{courseName}</h3>
-              <h3>course description:{courseDescription}</h3>
-              <h3>course duration:{courseDuration}</h3> */}
-                {/* <div className="en">
-
-                  <button type="button" onClick={() => handleenroll(courseId)}>
-                    <td>Enroll Now</td>
-                  </button>
-                </div> */}
+                <table className="user-usercourse-table">
+                  <tbody>
+                    <tr className="row hover">
+                      <td className="user-usercourse-td">{courseId}</td>
+                      <td className="user-usercourse-td">{courseName}</td>
+                      <td className="user-usercourse-td">{courseDescription}</td>
+                      <td className="user-usercourse-td">{courseDuration}</td>
+                      <button type="button" className="enroll" onClick={() => handleenroll(courseId)}>
+                        <td className="user-usercourse-td">EnrollNow</td>
+                      </button>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
-            </table>
 
 
-
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </UserGuard >
   );

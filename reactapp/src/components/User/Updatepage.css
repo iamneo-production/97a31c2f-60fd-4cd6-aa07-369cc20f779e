@@ -1,10 +1,11 @@
 /* navbar css */
-.pg-admission-heading{
-  color:white;
-  font-weight:bold;
-  font-size:1.7rem;
-  cursor:pointer;
+.pg-admission-heading {
+  color: white;
+  font-weight: bold;
+  font-size: 1.7rem;
+  cursor: pointer;
 }
+
 .user-nav-container {
   height: 60px;
   padding: 35px;
@@ -15,6 +16,7 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   transition: background-color 0.3s ease-in-out;
 }
+
 .user-navlinks-container {
   display: flex;
   justify-content: center;
@@ -59,7 +61,6 @@
   color: #fff;
 }
 
-
 /* popup css */
 .user-popup-body {
   position: fixed;
@@ -83,7 +84,7 @@
   z-index: -1;
 }
 
-.user-applyform-popup {
+.user-updatepage-popup {
   background-color: #e5e0e0;
   padding: 20px;
   border-radius: 10px;
@@ -93,13 +94,13 @@
   margin: 0 auto;
 }
 
-.user-applyform-popup h1 {
+.user-updatepage-popup h1 {
   font-size: 24px;
   margin-bottom: 15px;
   color: #333;
 }
 
-.user-applyform-popup button {
+.user-updatepage-popup button {
   padding: 10px 20px;
   margin: 5px;
   font-size: 16px;
@@ -109,28 +110,28 @@
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.user-applyform-popup .user-applyform-confirm-btn {
+.user-updatepage-popup .user-updatepage-confirm-btn {
   background-color: #2A7230;
   color: #fff;
 }
 
-.user-applyform-popup .user-applyform-confirm-btn:hover {
+.user-updatepage-popup .user-updatepage-confirm-btn:hover {
   background-color: #3e9746;
   transform: scale(1.05);
 }
 
 
-.user-applyform-popup .user-applyform-cancel-btn {
-  background-color:#E62020;
+.user-updatepage-popup .user-updatepage-cancel-btn {
+  background-color: #E62020;
   color: #fff;
 }
 
-.user-applyform-popup .user-applyform-cancel-btn:hover {
+.user-updatepage-popup .user-updatepage-cancel-btn:hover {
   background-color: #f24747;
   transform: scale(1.05);
 }
 
-
+/* back to home css */
 .bth {
   text-align: left;
   margin-top: 20px;
@@ -141,16 +142,16 @@
 }
 
 .bth h5 {
-    margin-left: 5px;
-    color: #4987c4;
-    font-size: 16px;
-    font-weight: bold;
-    padding: 10px 15px;
-    border-radius: 5px;
-    display: inline-block;
-    transition: background-color 0.3s ease;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-    border: 2px solid #4987c4;
+  margin-left: 5px;
+  color: #4987c4;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 15px;
+  border-radius: 5px;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  border: 2px solid #4987c4;
 }
 
 
@@ -165,16 +166,20 @@
   margin-right: 5px;
 }
 
-.user-applyform-headtxt{
+
+/* student details heading css */
+
+.user-update-heading h2 {
   margin-bottom:15px;
   text-align: center;
   color: #4a4848;
-  font-size: 1.7rem;
-  font-weight:bolder;
-  font-family :'Times New Roman', Times, serif;
+  font-size: 2.2rem;
+  font-weight: bolder;
+  font-family: 'Times New Roman', Times, serif;
 }
 
-.user-student-form-container {
+
+.user-enrolled-course {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -183,7 +188,7 @@
   margin: 20px;
 }
 
-.user-student-form {
+.user-update-form {
   background-color: #e0e6e9;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -191,13 +196,13 @@
   width: 100%;
 }
 
-.user-form-body {
+.user-update-form-body {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
 
-.form__label {
+.user__label {
   display: block;
   font-size: 16px;
   font-weight: bold;
@@ -205,7 +210,7 @@
   text-align: left;
 }
 
-.form__input {
+.user__input {
   border: 1px solid #D3DCE6;
   border-radius: 3px;
   box-sizing: border-box;
@@ -216,10 +221,10 @@
   transition: border-color 0.2s ease-in-out;
 }
 
-.form__input:focus {
+.user__input:focus {
   border-color: #4D90FE;
 }
-.user-address-container {
+.user-update-address-container {
   background-color: #f1f4f6;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -228,21 +233,21 @@
   width:100%
 }
 
-.user-address-container h2 {
+.user-update-address-container h2 {
   font-size: 1.5rem;
   font-weight: bold;
   color: #555;
   margin-bottom: 15px;
 }
 
-.user-address-container .user-address {
+.user-update-address-container .user-address {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   margin-bottom: 20px;
 }
 
-.user-address-container label {
+.user-update-address-container label {
   display: block;
   font-size: 16px;
   font-weight: bold;
@@ -250,7 +255,7 @@
   text-align: left;
 }
 
-.user-address-container input {
+.user-update-address-container input {
   border: 1px solid #D3DCE6;
   border-radius: 3px;
   box-sizing: border-box;
@@ -260,19 +265,11 @@
   width: 100%;
   transition: border-color 0.2s ease-in-out;
 }
-.courseId,
-.studentIdNumber,
-.username,
-.lastname,
-.fathername,
-.mothername,
-.emailId,
-.phoneNumber1,
-.phoneNumber2,
-.studentDOB,
-.sslc,
-.hsc,
-.diploma
+
+.user-name,
+.user-mobile,
+.user-dob,
+.user-marks
  {
   width: 48%;
 }
@@ -282,17 +279,16 @@
   justify-content: space-between;
   margin-bottom: 20px;
 } 
-
 /* button css */
-.user-footer {
+.user-button-container {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   margin-top: 40px;
   }
   
-  .user-enroll,
-  .user-cancel {
+  .user-update-button,
+  .user-cancel-button {
   padding: 15px 25px;
   border: none;
   border-radius: 50px;
@@ -304,20 +300,20 @@
   transition: all 0.3s ease-in-out;
   }
   
-  .user-enroll {
+  .user-update-button {
   background-color: #4987c4;
   color: #fff;
   margin-right: 20px;
   }
   
-  .user-cancel {
+  .user-cancel-button {
   background-color: #fff;
   color: #4987c4;
   border: 2px solid #4987c4;
   }
   
-  .user-enroll:hover,
-  .user-cancel:hover {
+  .user-update-button:hover,
+  .user-cancel-button:hover {
   transform: translateY(-5px);
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
   }

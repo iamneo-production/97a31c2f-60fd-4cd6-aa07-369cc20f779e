@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { store } from "../../../store";
 import { UserGuard } from "../../../AuthGuard/UserGuard";
 import "./HomePage.css";
@@ -57,37 +57,31 @@ const HomePage = () => {
 
   return (
     <UserGuard>
-      <div className="mainbar">
-        <Link to="/Navpage">
-          <h1>PG Admission</h1>
-        </Link>
-        <div className="one">
-          <Link to="/HomePage">Institute</Link>
-        </div>
-
-        <div className="one">
-          <Link to="/Enrolledcourse">Enrolled course</Link>
-        </div>
-        <div className="one">
-          <Link to="/FeedBack">FeedBack</Link>
-        </div>
-        <div className="out">
-          <button data-testid="logout" name="logout" onClick={handleLogout}>
-            Logout
-          </button>
-        </div>
-      </div>
+      <nav className="user-nav-container">
+                <div>
+                    <NavLink to="/Navpage" >
+                      <h2 className="pg-admission-heading">PG Admission</h2>
+                    </NavLink>
+                </div>
+                <div className="user-navlinks-container">
+                    <NavLink to="/Enrolledcourse">Enrolledcourse</NavLink>
+                    <NavLink to="/HomePage">Institute</NavLink>
+                    <NavLink to="/FeedBack">FeedBack</NavLink>
+                </div>
+                <button data-testid="logout" name='logout' onClick={handleLogout} >Logout</button>
+            </nav>
       <div className="searchsec">
         <input
           type="text"
           name="search"
           value={search}
+          className="searchinp"
           placeholder="Type to Search Institutes"
           onChange={(e) => setSearch(e.target.value)}
         />
         <srch>
-          <button type="button" onClick={() => handlesearch()}>
-            SEARCH
+          <button type="button"  className="searchbtn" onClick={() => handlesearch()}>
+            Search
           </button>
         </srch>
       </div>
@@ -105,7 +99,7 @@ const HomePage = () => {
             >
               <img src={imageUrl} alt="img" />
               <h2>{instituteName}</h2>
-              <h4>{instituteAddress}</h4>
+              <h4>Place:{instituteAddress}</h4>
             </div>
           );
         })}

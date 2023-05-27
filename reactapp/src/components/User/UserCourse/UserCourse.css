@@ -5,42 +5,164 @@
 
 }
 
-.mainbar {
-  background-color: aliceblue;
+/* navbar css */
+.pg-admission-heading{
+  color:white;
+  font-weight:bold;
+  font-size:1.7rem;
+  cursor:pointer;
+}
+.user-nav-container {
+  height: 60px;
+  padding: 35px;
+  background-color: #3770a9;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0;
-  padding: 0 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease-in-out;
+}
+.user-navlinks-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.mainbar h1 {
-  font-size: 2rem;
-  font-weight: bolder;
-  font-style: oblique;
+.user-nav-container a {
+  margin: 0 50px;
+  text-decoration: none;
+  color: beige;
+  font-size: 1.3rem;
+  transition: all 0.3s ease-in-out;
 }
 
-.one {
-  justify-content: space-around;
-  font-size: 1.5rem;
-  font-weight: 350;
+.user-nav-container a:hover {
+  color: #fff;
+  border-bottom: 2px solid #fff;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
 }
 
-.one:hover {
-  color: darkslategray;
-  font-weight: 500;
+.user-nav-container a.active {
+  font-weight: bold;
+  font-size: 1.4rem;
+  transform: translateY(-9px);
+  border-bottom: 2px solid #fff;
 }
 
-.home {
-  font-size: 1rem;
-  font-style: oblique;
-  font-weight: lighter;
-  border: 0.5px solid;
-  width: 100px;
-  background-color: lightyellow;
+
+.user-nav-container button {
+  border: none;
+  background-color: #3770a9;
+  color: beige;
+  font-size: 1.3rem;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
 }
 
-.onesec {
-  background-color: azure;
+.user-nav-container button:hover {
+  background-color: #477db4;
+  color: #fff;
 }
 
+
+.bth {
+  text-align: left;
+  margin-top: 20px;
+}
+
+.bth a {
+  text-decoration: none;
+}
+
+.bth h5 {
+    margin-left: 5px;
+    color: #4987c4;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    border: 2px solid #4987c4;
+}
+
+
+.bth h5:hover {
+  background-color: #4a90e2;
+  color: #fff;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.bth h5::before {
+  content: '\2190';
+  margin-right: 5px;
+}
+
+
+.user-headtxt{
+  text-align: center;
+  margin-bottom:15px;
+  color: #4a4848;
+  font-size: 1.7rem;
+  font-weight:bolder;
+  font-family :'Times New Roman', Times, serif;
+}
+
+
+
+.user-usercourse-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.user-usercourse-th,
+.user-usercourse-td{
+  text-align: left;
+  padding: 12px;
+  width: 20%;
+}
+
+.user-usercourse-th {
+  background-color:#878181;
+  color: white;
+
+} 
+
+.courseinfo {
+  background-color: #f8f9fa;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  padding: 12px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  transition: transform 0.3s, box-shadow 0.3s;
+} 
+
+ .courseinfo:hover {
+  background-color:rgb(218, 214, 214);
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translate(0, -5px);
+  border:1px solid rgb(70, 69, 69);
+  width: 100%;
+} 
+
+.enroll{
+  display: flex;
+  align-items: center;
+  background-color:#4a90e2;
+  color: #fff;
+  border: none;
+  border-radius:5px;
+  text-align: center;
+  font-size: 15px;
+  cursor: pointer;
+  margin-bottom: 1%;
+  transition: all 0.3s ease-in-out;
+}
+.enroll:hover{
+  background-color:#689edb;
+}

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { store } from "../../../store";
 import { useNavigate } from "react-router";
 import { UserGuard } from "../../../AuthGuard/UserGuard";
+import './Review.css';
 
 let auth = "";
 store.subscribe(() => {
@@ -14,6 +15,12 @@ const Review = () => {
   const [mobile, setMobile] = useState("");
   const [email, setEmail] = useState("");
   const [comments, setComments] = useState("");
+  const [userPopup, setUserPopup] = useState(false);
+
+  const makePopup = (e) => {
+    e.preventDefault();
+    setUserPopup(true);
+  }
 
   const handleLogout = () => {
     store.dispatch({ type: "LOGOUT" });
@@ -28,76 +35,116 @@ const Review = () => {
 
   const handlecancel = () => {
 
-    navigate("/viewacademy")
+    navigate("/HomePage")
   }
 
   const navigate = useNavigate();
   return (
     <UserGuard>
-      <div className="nvbar">
-        <Link to="/HomePage">
-          PG Admission
-        </Link>
-        <h4>Institute</h4>
-        <div className="link">
-          <Link to="/Enrolledcourse">Enrolled course</Link>
-        </div>
-        <div className="out">
-          <button data-testid="logout" name="logout" onClick={handleLogout}>
-            Logout
-          </button>
-        </div>
-      </div>
-      <Link to="/HomePage">Back To Home</Link>
-      <form onSubmit={handleSubmit}>
+      <nav className="user-nav-container">
         <div>
-          <label htmlFor="name">Name</label>
-          <input
-            id="name"
-            type="text"
-            value={name}
-            placeholder="Enter your Name"
-            onChange={(event) => setName(event.target.value)}
-            data-testid="name"
-          />
+          <NavLink to="/Navpage" >
+            <h2 className="pg-admission-heading">PG Admission</h2>
+          </NavLink>
         </div>
-        <div>
-          <label htmlFor="mobile">Mobile Number</label>
-          <input
-            id="mobile"
-            type="text"
-            placeholder="Enter your Mobie Number"
-            value={mobile}
-            onChange={(event) => setMobile(event.target.value)}
-            data-testid="mobile"
-          />
+        <div className="user-navlinks-container">
+          <NavLink to="/HomePage">Institute</NavLink>
+          <NavLink to="/FeedBack">FeedBack</NavLink>
+          <NavLink to="/Enrolledcourse">Enrolledcourse</NavLink>
         </div>
-        <div>
-          <label htmlFor="email">Email:</label>
-          <input
-            id="email"
-            type="text"
-            placeholder="Enter your Email"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-            data-testid="email"
-          />
-        </div>
-        <div>
-          <label htmlFor="comments">Comments:</label>
-          <textarea
-            id="comments"
-            type="text"
-            placeholder="Write your comments here"
-            value={comments}
-            onChange={(event) => setComments(event.target.value)}
-            data-testid="comments"
-          />
-        </div>
-        <button type="submit" id="submit">Submit</button>
-        <button onClick={handlecancel}>cancel</button>
-      </form>
+        <button data-testid="logout" name='logout' onClick={handleLogout} >Logout</button>
+      </nav>
+      {
+        userPopup && (
+          <div className="user-popup-body noHover">
+            <div className="user-popup-overlay">
 
+            </div>
+            <div className="user-review-popup">
+              <h1>Are you sure to add the data ?</h1>
+              <button
+                className="user-review-confirm-btn"
+                type="submit"
+                onClick={() => {
+                  handlecancel();
+                  setUserPopup(false);
+                }}
+              >
+                confirm submit
+              </button>
+              <button
+                className="user-review-cancel-btn"
+                type="submit"
+                onClick={() => {
+                  setUserPopup(false);
+                }}
+              >
+                cancel
+              </button>
+            </div>
+          </div>
+        )
+      }
+      <div className="bth">
+        <Link to="/HomePage">
+          <h5>Back To Home</h5>
+        </Link>
+      </div>
+      <div className="user-review-form">
+        <div className='user-review-headtxt'>
+          Your Feedback Is Most Important For Us!!
+        </div>
+        <form onSubmit={handleSubmit} className="user-review-form-container">
+          <div className='reviewname'>
+            <label className='reviewheading' htmlFor="name">Name:</label>
+            <input className='reviewinput'
+              id="name"
+              type="text"
+              value={name}
+              placeholder="Enter your Name"
+              onChange={(event) => setName(event.target.value)}
+              data-testid="name"
+            />
+          </div>
+          <div className='reviewname'>
+            <label className='reviewheading' htmlFor="mobile">Mobile Number:</label>
+            <input className='reviewinput'
+              id="mobile"
+              type="text"
+              placeholder="Enter your Mobie Number"
+              value={mobile}
+              onChange={(event) => setMobile(event.target.value)}
+              data-testid="mobile"
+            />
+          </div>
+          <div className='reviewname'>
+            <label className='reviewheading' htmlFor="email">Email:</label>
+            <input className='reviewinput'
+              id="email"
+              type="text"
+              placeholder="Enter your Email"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+              data-testid="email"
+            />
+          </div>
+          <div className='reviewname'>
+            <label className='reviewheading' htmlFor="comments">Comments:</label>
+            <textarea className='reviewinput'
+              id="comments"
+              type="text"
+              placeholder="Write your comments here"
+              value={comments}
+              onChange={(event) => setComments(event.target.value)}
+              data-testid="comments"
+            />
+          </div>
+          <div className='btnbtn'>
+            <button className='user-submitbutton' type="submit" id="submit" onClick={(e) => { makePopup(e) }}>Submit </button>
+            <button className='user-cancelbutton' onClick={handlecancel}>cancel</button>
+          </div>
+        </form>
+      </div>
     </UserGuard>
   );
 };

@@ -5,51 +5,101 @@
 
 }
 
-.mainbar {
-  background-color: aliceblue;
+/* navbar css */
+.pg-admission-heading{
+  color:white;
+  font-weight:bold;
+  font-size:1.7rem;
+  cursor:pointer;
+}
+.user-nav-container {
+  height: 60px;
+  padding: 35px;
+  background-color: #3770a9;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0;
-  padding: 0 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease-in-out;
+}
+.user-navlinks-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.mainbar h1 {
-  font-size: 2rem;
-  font-weight: bolder;
-  font-style: oblique;
+.user-nav-container a {
+  margin: 0 50px;
+  text-decoration: none;
+  color: beige;
+  font-size: 1.3rem;
+  transition: all 0.3s ease-in-out;
 }
 
-.one {
-  justify-content: space-around;
-  font-size: 1.5rem;
-  font-weight: 350;
+.user-nav-container a:hover {
+  color: #fff;
+  border-bottom: 2px solid #fff;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
 }
 
-.one:hover {
-  color: darkslategray;
-  font-weight: 500;
+.user-nav-container a.active {
+  font-weight: bold;
+  font-size: 1.4rem;
+  transform: translateY(-9px);
+  border-bottom: 2px solid #fff;
 }
+
+
+.user-nav-container button {
+  border: none;
+  background-color: #3770a9;
+  color: beige;
+  font-size: 1.3rem;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.user-nav-container button:hover {
+  background-color: #477db4;
+  color: #fff;
+}
+
+
 
 .searchsec {
-  text-align: center;
-  padding: 15px;
-
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
 }
 
-.searchsec input,
-{
-  text-align: center;
-  padding: 15px;
-  width: auto;
-  background-color: whitesmoke;
-  border: 1px solid;
-  border-color: aquamarine;
+.searchinp {
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  padding: 10px;
+  width: 35%;
 }
 
-.out {
-  font-size: 1.5rem;
+.searchbtn {
+  background-color: #4987c4;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.4rem;
+  margin-left: 10px;
+  padding: 5px;
+  transition: background-color 0.2s ease-in-out;
 }
+
+.searchbtn:hover {
+  background-color: #4a8dd0;
+}
+
+
+
 
 .herosec {
   height: 70px;
@@ -62,30 +112,41 @@
 }
 
 .card {
-  background-color: #fff;
-  height: 35vh;
-  width: 300px;
-  border: 2.5px solid;
-  border-color: black;
-  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 400px;
+  height: 350px;
+  transition: transform 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.card h2 {
+.card h2  {
+  font-size: 1.3rem;
+  font-weight: bold;
+  font-family:cursive;
+  text-align: center;
+  color:#4384c6;
+  text-transform: uppercase;
+}
+.card h4{
   text-align: center;
 }
 
 .card:hover {
-  background-color: lightgray;
-  width: 350px;
-  height: 37vh;
-  border: 3.5px solid;
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  border:2px solid;
+  
 }
 
-.herosec img {
-  width: 300px;
-  height: 25vh;
-}
-
-.herosec img:hover {
-  width: 350px;
+.card img {
+  width: 350px; 
+  height: 200px; 
+  object-fit: cover;
+  margin-bottom: 10px;
+  border-radius: 5px;
 }

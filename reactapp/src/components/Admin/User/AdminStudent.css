@@ -1,5 +1,76 @@
+/* popup css */
+.admin-popup-body {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.admin-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.533);
+  z-index: -1;
+}
+
+.admin-student-popup {
+  background-color: #e5e0e0;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.admin-student-popup h1 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.admin-student-popup button {
+  padding: 10px 20px;
+  margin: 5px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.admin-student-popup .admin-student-confirm-btn {
+  background-color: #2A7230;
+  color: #fff;
+}
+
+.admin-student-popup .admin-student-confirm-btn:hover {
+  background-color: #3e9746;
+  transform: scale(1.05);
+}
+
+
+.admin-student-popup .admin-student-cancel-btn {
+  background-color:#E62020;
+  color: #fff;
+}
+
+.admin-institute-popup .admin-student-cancel-btn:hover {
+  background-color: #f24747;
+  transform: scale(1.05);
+}
+
 /* Back to home css */
 .back-to-home {
+  margin-left:5px;
   background-color: #fff;
   border: 2px solid #2A7230;
   color: #2A7230;
@@ -90,19 +161,19 @@
   border-color: #f24747;
 }
 
-table {
+.admin-student-table {
   border-collapse: collapse;
   width: 100%;
 }
 
-th,
-td {
+.admin-student-th,
+.admin-student-td {
   text-align: left;
   padding: 12px;
   width: 20%;
 }
 
-th {
+.admin-student-th {
   background-color: rgb(167, 167, 167);
   color: white;
 }
@@ -132,36 +203,55 @@ th {
 }
 
 
-
 /* add student btn */
-.admin-add-student-button {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
 
-.admin-add-student-icon {
-  display: flex;
-  align-items: center;
-  background-color: #2A7230;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 25px;
-  font-size: 16px;
+.admin-add-student-button{
+  position: fixed;
+  bottom:20px;
+  right:20px;
+  width: 60px;
+  height:60px;
+  float:left;
+  margin:0 5px;
+  background:#2A7230;
+  border-radius: 50px;
   cursor: pointer;
-  margin-bottom: 1%;
-  transition: all 0.3s ease-in-out;
-
+  box-shadow: 0px 10px 10px rgba(0,0,0,0.1);
+  transition: all 0.3s ease-out;
+  overflow: hidden;
 }
 
-.admin-add-student-icon:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+.admin-add-student-button:hover{
+  width: 165px;
 }
 
-.admin-add-student-icon i {
-  margin-right: 10px;
+.admin-add-student-button .admin-add-student-icon{
+  height: 60px;
+  width:60px;
+  text-align: center;
+  border-radius: 50px;
+  box-sizing: border-box;
+}
+
+.admin-add-student-button .admin-add-student-icon i{
+  font-size: 25px;
+  line-height: 60px;
+  color: white;
+}
+
+.admin-add-student-button:hover::after{
+  content: "Add Student";
+  display: block;
+  position: absolute;
+  left: 50px;
+  top: 0;
+  width: 100px;
+  height: 60px;
+  background: #2A7230;
+  font-weight: bold;
+  line-height: 60px;
+  text-align: center;
+  border-radius: 0 50px 50px 0;
 }
 
 /* add student form css */

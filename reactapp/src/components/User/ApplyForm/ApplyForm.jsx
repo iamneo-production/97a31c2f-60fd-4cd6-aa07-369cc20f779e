@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, NavLink } from "react-router-dom";
 import "./ApplyForm.css";
 import { useNavigate } from "react-router";
 import { UserGuard } from "../../../AuthGuard/UserGuard";
@@ -14,8 +14,15 @@ store.subscribe(() => {
 function ApplyForm() {
   const navigate = useNavigate();
   const { courseId } = useParams();
+  const [userPopup, setUserPopup] = useState(false);
+
+  const handlePopup = (e) => {
+    e.preventDefault();
+    setUserPopup(true);
+  }
+
   const handlecancel = () => {
-    navigate("/viewacademy")
+    navigate("/UserCourse");
   }
   const handleLogout = () => {
     store.dispatch({ type: "LOGOUT" });
@@ -109,34 +116,61 @@ function ApplyForm() {
         )}
       </pre>
 
-      <div className="mainbar">
-        <Link to="/Navpage">
-          <h1>PG Admission</h1>
-        </Link>
-        <div className="one">
-          <Link to="/Enrolledcourse">Enrolled course</Link>
+      <nav className="user-nav-container">
+        <div>
+          <NavLink to="/Navpage" >
+            <h2 className="pg-admission-heading">PG Admission</h2>
+          </NavLink>
         </div>
+        <div className="user-navlinks-container">
+          <NavLink to="/Enrolledcourse">Enrolledcourse</NavLink>
+          <NavLink to="/HomePage">Institute</NavLink>
+          <NavLink to="/FeedBack">FeedBack</NavLink>
+        </div>
+        <button data-testid="logout" name='logout' onClick={handleLogout} >Logout</button>
+      </nav>
+      {
+        userPopup && (
+          <div className="user-popup-body noHover">
+            <div className="user-popup-overlay">
 
-        <div className="one">
-          <Link to="/HomePage">Institute</Link>
-
-        </div>
-        <div className="one">
-          <Link to="/FeedBack">FeedBack</Link>
-        </div>
-        <div className="out">
-          <button data-testid="logout" name="logout" onClick={handleLogout}>
-            Logout
-          </button>
-        </div>
-      </div>
-      <div className="home">
+            </div>
+            <div className="user-applyform-popup">
+              <h1>Are you sure to enroll the data ?</h1>
+              <button
+                className="user-applyform-confirm-btn"
+                type="submit"
+                onClick={(e) => {
+                  handleSubmit(e);
+                  setUserPopup(false);
+                }}
+              >
+                confirm enroll
+              </button>
+              <button
+                className="user-applyform-cancel-btn"
+                type="submit"
+                onClick={() => {
+                  setUserPopup(false);
+                }}
+              >
+                cancel
+              </button>
+            </div>
+          </div>
+        )
+      }
+      <div className="bth">
         <Link to="/HomePage">
           <h5>Back To Home</h5>
         </Link>
       </div>
-      <form className="info" onSubmit={handleSubmit}>
-      <h1 className="user-head-container">Enroll Now</h1>
+      <div className="user-applyform-headtxt">
+        Here You Go! Fill Up The Form And Enroll Now
+      </div>
+
+      <form className="info">
+
         <div className="user-student-form-container">
           <div className="user-student-form">
             <div className="user-form-body">
@@ -248,7 +282,7 @@ function ApplyForm() {
                   type="text"
                   id="phoneNumber1"
                   placeholder="Enter your phonenumber"
-                  value={inputData.PhoneNumber1}
+                  value={inputData.phoneNumber1}
                   onChange={handledata}
                 />
               </div>
@@ -413,7 +447,7 @@ function ApplyForm() {
             </div>
           </div>
           <div class="user-footer">
-            <button className="user-enroll" type="submit">Enroll now</button>
+            <button className="user-enroll" type="submit" onClick={(e) => { handlePopup(e) }}>Enroll now</button>
             <button className="user-cancel" onClick={handlecancel}>cancel</button>
           </div>
         </div>
