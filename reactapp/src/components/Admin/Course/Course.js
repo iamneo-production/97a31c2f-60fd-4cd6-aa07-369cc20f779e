@@ -105,7 +105,7 @@ const Course = () => {
       }
 
       <div
-        data-testid="addCourse"
+        data-testid="add Course"
         className='course'>
         <h2
           className="head-container">
