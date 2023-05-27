@@ -77,9 +77,10 @@ function Viewcourse() {
           <div className="admin-popup-overlay">
 
           </div>
-          <div className="admin-institute-popup">
+          <div className="admin-course-popup">
             <h1>Are you sure to delete the data ?</h1>
-            <button
+            <button 
+              className="confirm-button"
               type="submit"
               onClick={() => {
                 handleDelete(popup.deleteId)
@@ -97,8 +98,8 @@ function Viewcourse() {
             >
               confirm delete
             </button>
-            <br />
             <button
+              className="cancel-button"
               type="submit"
               onClick={() => {
                 setPopup({
