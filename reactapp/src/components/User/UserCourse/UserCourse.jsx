@@ -72,7 +72,7 @@ const UserCourse = () => {
           <h5>Back To Home</h5>
         </Link>
       </div>
-      <div className="usercoursecontainer">
+      <div id ="userCourseGrid1" className="usercoursecontainer">
         <div className="headtxt">
           Offered Courses!
           It's Time To Pick Yours
@@ -91,7 +91,7 @@ const UserCourse = () => {
         </table>
 
         <div className="onesec">
-          {viewdata.map((course) => {
+          {viewdata.map((course,index) => {
             const {
               id,
               courseName,
@@ -101,14 +101,11 @@ const UserCourse = () => {
             } = course;
 
             return (
-              
-
-
                 <div  className="courseinfo" key={id}>
 
                   <table>
                     <tbody>
-                      <tr className="row hover">
+                      <tr id = "id={`userCourseGrid` + (index + 1)}"className="row hover" >
                         <td>{courseId}</td>
                         <td>{courseName}</td>
                         <td>{courseDescription}</td>

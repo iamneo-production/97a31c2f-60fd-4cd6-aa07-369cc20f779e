@@ -21,11 +21,11 @@ const Navpage = () => {
                     </div>
                     <div className='first'>
                         <div className="link">
-                            <Link to="/HomePage">Institute   &nbsp;  &nbsp;  &nbsp;</Link>
+                            <Link id='userInstitute' to="/HomePage">Institute   &nbsp;  &nbsp;  &nbsp;</Link>
                         </div>
 
                         <div className="link">
-                            <Link to="/Enrolledcourse">Enrolledcourse   &nbsp;  &nbsp;  &nbsp;</Link>
+                            <Link id='userEnrolledCourse' to="/Enrolledcourse">Enrolledcourse   &nbsp;  &nbsp;  &nbsp;</Link>
                         </div>
 
                         <div className="link">
@@ -33,7 +33,7 @@ const Navpage = () => {
                         </div>
                     </div>
                     <div className="out">
-                        <button data-testid="logout" name='logout' onClick={handleLogout} >Logout</button>
+                        <button id="logout" data-testid="logout" name='logout' onClick={handleLogout} >Logout</button>
                     </div>
                 </div>
 

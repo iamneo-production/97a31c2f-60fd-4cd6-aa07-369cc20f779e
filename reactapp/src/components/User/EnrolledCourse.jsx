@@ -74,7 +74,7 @@ const EnrolledCourse = () => {
                         <Link to="/FeedBack">FeedBack</Link>
                     </div>
                     <div className="out">
-                        <button data-testid="logout" name="logout" onClick={handleLogout}>
+                        <button data-testid="logout" id ="logout" name="logout" onClick={handleLogout}>
                             Logout
                         </button>
                     </div>
@@ -86,7 +86,7 @@ const EnrolledCourse = () => {
                     <h5>Back To Home</h5>
                 </Link>
             </div>
-            <div className='headtxt'>
+            <div id="enrolledCourse" className='headtxt'>
                These Are The Courses You Have Enrolled
             </div>
 

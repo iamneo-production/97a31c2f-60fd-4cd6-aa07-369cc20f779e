@@ -305,6 +305,7 @@ const AdminStudent1 = () => {
         <div className="admin-add-student-button">
           <button
             type="submit"
+            id="addStudent"
             className="admin-add-student-icon"
             onClick={() => handleAdd()}
           >

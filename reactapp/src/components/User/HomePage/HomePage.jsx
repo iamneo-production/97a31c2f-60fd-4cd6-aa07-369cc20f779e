@@ -96,13 +96,14 @@ const HomePage = () => {
           </button>
         </div>
       </div>
-      <div data-testid="instituteName" className="herosec">
-        {viewdata.map((institute) => {
+      <div id = "userInstituteGrid1" data-testid="instituteName" className="herosec">
+        {viewdata.map((institute,index) => {
           const { instituteId, instituteName, instituteAddress, imageUrl } =
             institute;
           return (
             <div
               className="card"
+              id = {`userInstituteGrid`+(index+1)}
               onClick={() => {
                 handle();
               }}

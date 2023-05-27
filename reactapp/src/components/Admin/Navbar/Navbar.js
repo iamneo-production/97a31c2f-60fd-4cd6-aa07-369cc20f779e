@@ -14,13 +14,13 @@ const NavBar = () => {
 
   return (
     <nav className="nav-container">
-      <NavLink to="/admin/dashboard">PG Admission</NavLink>
+     <NavLink to="/Firstpage">PG Admission</NavLink>
       <div className="navlinks-container">
-        <NavLink to="/admin/dashboard">Institute</NavLink>
-        <NavLink to="/admin/viewCourse">Course</NavLink>
-        <NavLink to="/admin/Viewstudent">Students</NavLink>
+      <NavLink id="adminInstitute" to="/admin/dashboard">Institute</NavLink>
+        <NavLink id="adminCourse" to="/admin/viewCourse">Course</NavLink>
+        <NavLink id="adminStudents" to="/admin/Viewstudent">Students</NavLink>
       </div>
-      <button type="submit" onClick={navigateToLogout}>
+      <button id="logout" type="submit" onClick={navigateToLogout}>
         Logout
       </button>
     </nav>
