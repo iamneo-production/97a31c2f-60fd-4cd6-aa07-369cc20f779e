@@ -104,9 +104,8 @@ const Course = () => {
         )
       }
 
-      {/* <Link to="/admin/viewCourse" className="course-back-to-home">Back To Home</Link> */}
       <div
-        data-testid="add Course"
+        data-testid="addCourse"
         className='course'>
         <h2
           className="head-container">
