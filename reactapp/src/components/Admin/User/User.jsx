@@ -3,7 +3,7 @@ import Navbar from "../Navbar/Navbar";
 import { store } from "../../../store";
 import { AdminGuard } from "../../../AuthGuard/AdminGuard";
 import { Navigate } from "react-router";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, NavLink } from "react-router-dom";
 import { baseUrl } from "../../../api/authService";
 import './AdminStudent.css';
 
@@ -141,9 +141,9 @@ const AdminStudent1 = () => {
     }
   }
 
-  const handleAdd = () => {
-    navigate("/admin/addStudent");
-  };
+  // const handleAdd = () => {
+  //   navigate("/admin/addStudent");
+  // };
 
   const handleDelete = async (id) => {
     setPopup({ state: true, deleteId: id });
@@ -181,9 +181,10 @@ const AdminStudent1 = () => {
             <div className="admin-popup-overlay">
 
             </div>
-            <div className="admin-institute-popup">
+            <div className="admin-student-popup">
               <h1>Are you sure to delete the data ?</h1>
               <button
+                className="admin-student-confirm-btn"
                 type="submit"
                 onClick={() => {
                   deleteStudent(popup.deleteId)
@@ -201,8 +202,8 @@ const AdminStudent1 = () => {
               >
                 confirm delete
               </button>
-              <br />
               <button
+                className="admin-student-cancel-btn"
                 type="submit"
                 onClick={() => {
                   setPopup({
@@ -240,14 +241,14 @@ const AdminStudent1 = () => {
         <div className="student-heading">
           <h1>List of Students</h1>
         </div>
-        <table>
+        <table className="admin-student-table">
           <thead>
             <tr>
-              <th>Student ID</th>
-              <th>Name</th>
-              <th>Course Name</th>
-              <th>Phone Number</th>
-              <th>Actions</th>
+              <th className="admin-student-th">Student ID</th>
+              <th className="admin-student-th">Name</th>
+              <th className="admin-student-th">Course Name</th>
+              <th className="admin-student-th">Phone Number</th>
+              <th className="admin-student-th">Actions</th>
             </tr>
           </thead>
         </table>
@@ -263,14 +264,14 @@ const AdminStudent1 = () => {
             return (
               <>
                 <div className="student-card-info">
-                  <table>
+                  <table className="admin-student-table">
                     <tbody>
                       <tr>
-                        <td>{studentId}</td>
-                        <td>{firstName + " " + lastName}</td>
-                        <td>{course.courseName}</td>
-                        <td>{phoneNumber1}</td>
-                        <td>
+                        <td className="admin-student-td">{studentId}</td>
+                        <td className="admin-student-td">{firstName + " " + lastName}</td>
+                        <td className="admin-student-td">{course.courseName}</td>
+                        <td className="admin-student-td">{phoneNumber1}</td>
+                        <td className="admin-student-td">
                           <button
                             type="submit"
                             id="editStudent"
@@ -302,16 +303,18 @@ const AdminStudent1 = () => {
             );
           })}
         </div>
-        <div className="admin-add-student-button">
-          <button
-            type="submit"
-            className="admin-add-student-icon"
-            onClick={() => handleAdd()}
-          >
-            {" "}
-            <i className="fa-solid fa-circle-plus"></i>Add Student
-          </button>
-        </div>
+        <NavLink
+          exact="true"
+          to="/admin/addStudent"
+          className="nav-link"
+          id="addinstitute"
+          activeclassname="active">
+          <div className="admin-add-student-button">
+            <div className='admin-add-student-icon' >
+              <i className="fa-solid fa-circle-plus"></i>
+            </div>
+          </div>
+        </NavLink>
       </div>
     </AdminGuard>
   );
@@ -405,7 +408,7 @@ export const StudentForm = ({ type }) => {
             <div className="admin-popup-overlay">
 
             </div>
-            <div className="admin-institute-popup">
+            <div className="admin-student-popup">
               {type === "ADD" ? (
                 <h1>Are you sure to add the data ?</h1>
               ) : (
@@ -413,6 +416,7 @@ export const StudentForm = ({ type }) => {
               )}
               {type === "ADD" ? (
                 <button
+                  className="admin-student-confirm-btn"
                   type="submit"
                   onClick={() => {
                     addStudent()
@@ -428,6 +432,7 @@ export const StudentForm = ({ type }) => {
                 </button>
               ) : (
                 <button
+                  className="admin-student-confirm-btn"
                   type="submit"
                   onClick={() => {
                     editStudent()
@@ -442,8 +447,8 @@ export const StudentForm = ({ type }) => {
                   confirm edit
                 </button>
               )}
-              <br />
               <button
+                className="admin-student-cancel-btn"
                 type="submit"
                 onClick={() => {
                   setPopup(false);
@@ -459,10 +464,10 @@ export const StudentForm = ({ type }) => {
         type="submit"
         className="back-to-home"
         onClick={() => {
-          navigate("/admin/dashboard");
+          navigate("/admin/Viewstudent");
         }}
       >
-        Back to Home
+        Back
       </button>
       {type === "ADD" ? (
         <h1 className="head-container">Add Student Details</h1>

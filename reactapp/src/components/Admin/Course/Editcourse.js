@@ -89,9 +89,10 @@ function Editcourse(props) {
             <div className="admin-popup-overlay">
 
             </div>
-            <div className="admin-institute-popup">
+            <div className="admin-course-popup">
               <h1>Are you sure to edit the data ?</h1>
               <button
+                className="confirm-button"
                 type="submit"
                 onClick={(e) => {
                   handleClick(e);
@@ -100,8 +101,8 @@ function Editcourse(props) {
               >
                 confirm edit
               </button>
-              <br />
               <button
+                className="cancel-button"
                 type="submit"
                 onClick={() => {
                   setPopup(false);

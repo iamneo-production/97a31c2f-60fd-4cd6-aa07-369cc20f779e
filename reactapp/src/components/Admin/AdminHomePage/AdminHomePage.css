@@ -1,8 +1,93 @@
+/* popup css */
+.admin-popup-body {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.admin-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.533);
+  z-index: -1;
+}
+
+.admin-institute-popup {
+  background-color: #e5e0e0;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.admin-institute-popup h1 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.admin-institute-popup button {
+  padding: 10px 20px;
+  margin: 5px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.admin-institute-popup .confirm-button {
+  background-color: #2A7230;
+  color: #fff;
+}
+
+.admin-institute-popup .confirm-button:hover {
+  background-color: #3e9746;
+  transform: scale(1.05);
+}
+
+
+.admin-institute-popup .cancel-button {
+  background-color:#E62020;
+  color: #fff;
+}
+
+.admin-institute-popup .cancel-button:hover {
+  background-color: #f24747;
+  transform: scale(1.05);
+}
+
+
+/* .admin-institute-popup button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.admin-institute-popup button:disabled:hover {
+  background-color: #ccc;
+  transform: scale(1);
+} */
+
+
 /* search bar css */
+
 .admin-search-container {
+
   display: flex;
   justify-content: center;
   margin: 20px 0;
+
 }
 
 .search-input {
@@ -31,7 +116,8 @@
 
 
 /* add institute btn */
-.admin-add-institute-button {
+
+/* .admin-add-institute-button {
   display: flex;
   justify-content: center;
 }
@@ -59,10 +145,60 @@
 
 .admin-add-institute-icon i {
   margin-right: 10px;
+} */
+
+
+.admin-add-academy-button{
+  position: fixed;
+  bottom:20px;
+  right:20px;
+  width: 60px;
+  height:60px;
+  float:left;
+  margin:0 5px;
+  background:#2A7230;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0px 10px 10px rgba(0,0,0,0.1);
+  transition: all 0.3s ease-out;
+  overflow: hidden;
 }
 
+.admin-add-academy-button:hover{
+  width: 165px;
+}
+
+.admin-add-academy-button .admin-add-institute-icon{
+  height: 60px;
+  width:60px;
+  text-align: center;
+  border-radius: 50px;
+  box-sizing: border-box;
+}
+
+.admin-add-academy-button .admin-add-institute-icon i{
+  font-size: 25px;
+  line-height: 60px;
+  color: white;
+}
+
+.admin-add-academy-button:hover::after{
+  content: "Add Institute";
+  display: block;
+  position: absolute;
+  left: 50px;
+  top: 0;
+  width: 100px;
+  height: 60px;
+  background: #2A7230;
+  font-weight: bold;
+  line-height: 60px;
+  text-align: center;
+  border-radius: 0 50px 50px 0;
+}
 
 /* institute display css */
+
 .admin-academy-container {
   display: flex;
   flex-direction: column;
@@ -72,9 +208,10 @@
 
 .academy-display-container {
   display: grid;
-  grid-template-columns: repeat(1, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 40px;
   margin-top: 20px;
+  margin-bottom:15px;
 }
 
 .each-academy-cell {
@@ -102,8 +239,6 @@
   object-fit: cover;
   margin-bottom: 10px;
   border-radius: 5px;
-
-
 }
 
 .admin-institute-name {
@@ -120,6 +255,7 @@
 }
 
 /* edit and delete btn css */
+
 .action-btn {
   display: flex;
   justify-content: flex-end;
@@ -152,8 +288,11 @@
 
 
 /* add institute page css */
+
 /* Back to home css */
+
 .back-to-home {
+  margin-left:5px;
   background-color: #fff;
   border: 2px solid #2A7230;
   color: #2A7230;
@@ -198,7 +337,7 @@
   font-size: 1.1rem;
 }
 
-.form-group input[type="text"],
+.form-group input,
 .form-group textarea {
   width: 100%;
   padding: 15px;
@@ -210,7 +349,7 @@
   transition: border-color 0.3s ease-in-out;
 }
 
-.form-group input[type="text"]:focus,
+.form-group input:focus,
 .form-group textarea:focus {
   border-color: #2A7230;
   outline: none;
@@ -240,56 +379,4 @@
 .admin-form-submit-button:hover {
   transform: translateY(-5px);
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-}
-
-@media only screen and (min-width:975px) {
-  .academy-display-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media only screen and (min-width: 1400px) {
-  .academy-display-container {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-.admin-popup-body,
-.admin-popup-overlay {
-  width: 100vw;
-  height: 100vh;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  position: fixed;
-}
-
-.admin-popup-overlay {
-  background-color: rgba(49, 49, 49, 0.55);
-}
-
-.admin-institute-popup {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  line-height: 1.4;
-  background: rgb(104, 104, 104);
-  padding: 14px 28px;
-  border-radius: 3px;
-  min-height: 125px;
-  max-width: 600px;
-  min-width: 400px;
-}
-
-.admin-institute-popup button {
-  background-color: #dcdfc7;
-  color: rgb(27, 27, 25);
-  border-radius: 5%;
-}
-
-.noHover {
-  transform: none;
-  box-shadow: none;
 }
