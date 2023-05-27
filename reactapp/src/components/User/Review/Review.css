@@ -1,109 +1,230 @@
+/* popup css */
+.user-popup-body {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.user-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.533);
+  z-index: -1;
+}
+
+.user-review-popup {
+  background-color: #e5e0e0;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.user-review-popup h1 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.user-review-popup button {
+  padding: 10px 20px;
+  margin: 5px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.user-review-popup .user-review-confirm-btn {
+  background-color: #2A7230;
+  color: #fff;
+}
+
+.user-review-popup .user-review-confirm-btn:hover {
+  background-color: #3e9746;
+  transform: scale(1.05);
+}
+
+
+.user-review-popup .user-review-cancel-btn {
+  background-color:#E62020;
+  color: #fff;
+}
+
+.user-review-popup .user-review-cancel-btn:hover {
+  background-color: #f24747;
+  transform: scale(1.05);
+}
+
 * {
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
   
   }
-  
-  .mainbar {
-    background-color: aliceblue;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0;
-    padding: 0 8px;
-  }
-  
-  .mainbar h1 {
-    font-size: 2rem;
-    font-weight: bolder;
-    font-style: oblique;
-  }
-  .one {
-    justify-content: space-around;
-    font-size: 1.5rem;
-    font-weight: 350;
-  }
-  
-  .one:hover {
-    color: darkslategray;
-    font-weight: 500;
-  }
-  .one1{
-    font-size: 1.5rem;
-    font-weight: 350;
-    text-decoration:underline ;
-  }
-  .one1:hover {
-    color: darkslategray;
-    font-weight: 500;
-  }
-  .bth{
-    
-    appearance: none;
-    background-color:whitesmoke;
-    border-radius: 40em;
-    border-style: none;
-    box-shadow:#ADCFFF 0 -12px 6px inset;
-    box-sizing: border-box;
-    color:black;
-    cursor: pointer;
-    display: inline-block;
-    font-family: -apple-system,sans-serif;
-    font-size: 1.2rem;
-    font-weight: 700;
-    letter-spacing: -.24px;
-    margin: 10px;
-    outline: none;
-    padding: 1rem 1.3rem;
-    quotes: auto;
-    text-align: center;
-    text-decoration: none;
-    transition: all .15s;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
+
+
+/* navbar css */
+
+.pg-admission-heading{
+  color:white;
+  font-weight:bold;
+  font-size:1.7rem;
+  cursor:pointer;
 }
-.bth:hover{
-  background-color: lavender;
+
+.user-nav-container {
+  height: 60px;
+  padding: 35px;
+  background-color: #3770a9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease-in-out;
 }
-.headtxt{
+
+.user-navlinks-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-nav-container a {
+  margin: 0 50px;
+  text-decoration: none;
+  color: beige;
+  font-size: 1.3rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.user-nav-container a:hover {
+  color: #fff;
+  border-bottom: 2px solid #fff;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.user-nav-container a.active {
+  font-weight: bold;
+  font-size: 1.4rem;
+  transform: translateY(-9px);
+  border-bottom: 2px solid #fff;
+}
+
+
+.user-nav-container button {
+  border: none;
+  background-color: #3770a9;
+  color: beige;
+  font-size: 1.3rem;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.user-nav-container button:hover {
+  background-color: #477db4;
+  color: #fff;
+}
+
+/* back to home css */
+.bth {
+  text-align: left;
+  margin-top: 20px;
+}
+
+.bth a {
+  text-decoration: none;
+}
+
+.bth h5 {
+  margin-left: 5px;
+  color: #4987c4;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 15px;
+  border-radius: 5px;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  border: 2px solid #4987c4;
+}
+
+
+.bth h5:hover {
+  background-color: #4a90e2;
+  color: #fff;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.bth h5::before {
+  content: '\2190';
+  margin-right: 5px;
+}
+
+
+.user-review-headtxt{
+  margin-bottom:30px;
   text-align: center;
-  color: purple;
+  color: #4a4848;
   font-size: 1.7rem;
   font-weight:bolder;
   font-family :'Times New Roman', Times, serif;
 }
   
-  .ffform{
-    background-color: #f8f8f8;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 30px;
-    width: 100%;
-  }
-  .reviewheading {
-    display: block;
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 5px;
-    text-align: left;
-  }
-  
-  .reviewinput {
-    border: 1px solid #ddd;
-    border-radius: 3px;
-    box-sizing: border-box;
-    font-size: 16px;
-    margin-bottom: 20px;
-    padding: 10px;
-    width: 100%;
-    transition: border-color 0.2s ease-in-out;
-  }
-  
-  .form__input:focus {
-    border-color: #4CAF50;
-  }
+.user-review-form {
+  max-width: 800px;
+  margin: auto;
+  padding: 40px;
+}
+
+.reviewname {
+  margin-bottom: 20px;
+}
+
+.reviewname label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+  color: #555;
+  font-size: 1.1rem;
+}
+
+.reviewname input,
+.reviewname textarea {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-bottom: 2px solid #ddd;
+  font-size: 1.1rem;
+  color: #333;
+  background-color: transparent;
+  transition: border-color 0.3s ease-in-out;
+}
+
+.reviewname input:focus,
+.reviewname textarea:focus {
+  border-color: #4987c4;
+  outline: none;
+}
+
+.reviewname textarea {
+  resize: none;
+  min-height: 120px;
+}
   .btnbtn {
     display: flex;
     justify-content: flex-end;
@@ -111,8 +232,8 @@
     margin-top: 40px;
     }
     
-    .submitbutton,
-    .cancelbutton {
+    .user-submitbutton,
+    .user-cancelbutton {
     padding: 15px 25px;
     border: none;
     border-radius: 50px;
@@ -124,20 +245,20 @@
     transition: all 0.3s ease-in-out;
     }
     
-    .submitbutton{
-    background-color:olivedrab;
+    .user-submitbutton{
+    background-color:#4987c4;
     color: #fff;
     margin-right: 20px;
     }
     
-    .cancelbutton{
+    .user-cancelbutton{
     background-color: #fff;
-    color:olivedrab;
-    border: 2px solid #2A7230;
+    color:#4987c4;
+    border: 2px solid #4987c4;
     }
     
-    .submitbutton:hover,
-    .cancelbutton:hover {
+    .user-submitbutton:hover,
+    .user-cancelbutton:hover {
     transform: translateY(-5px);
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
     }
