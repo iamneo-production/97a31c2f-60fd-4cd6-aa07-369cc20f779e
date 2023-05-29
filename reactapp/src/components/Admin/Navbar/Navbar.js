@@ -20,8 +20,8 @@ const NavBar = () => {
         </NavLink>
       </div>
       <div className="navlinks-container">
-        <NavLink to="/admin/dashboard">Institute</NavLink>
-        <NavLink to="/admin/viewCourse">Course</NavLink>
+        <NavLink to="/admin/dashboard">Institutes</NavLink>
+        <NavLink to="/admin/viewCourse">Courses</NavLink>
         <NavLink to="/admin/Viewstudent">Students</NavLink>
       </div>
       <button type="submit" onClick={navigateToLogout}>
