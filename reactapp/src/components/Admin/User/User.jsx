@@ -141,10 +141,7 @@ const AdminStudent1 = () => {
     }
   }
 
-  // const handleAdd = () => {
-  //   navigate("/admin/addStudent");
-  // };
-
+ 
   const handleDelete = async (id) => {
     setPopup({ state: true, deleteId: id });
   };
@@ -269,7 +266,7 @@ const AdminStudent1 = () => {
                       <tr>
                         <td className="admin-student-td">{studentId}</td>
                         <td className="admin-student-td">{firstName + " " + lastName}</td>
-                        <td className="admin-student-td">{course.courseName}</td>
+                        <td className="admin-student-td">{(course != null) ? course.courseName : "Course Not Found"}</td>
                         <td className="admin-student-td">{phoneNumber1}</td>
                         <td className="admin-student-td">
                           <button

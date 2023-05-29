@@ -56,13 +56,7 @@ function ApplyForm() {
   }
   function handleSubmit(e) {
     e.preventDefault();
-    postdata()
-      .then(() => {
-        console.log("success");
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+   
 
     if (
       !inputData.firstName ||
@@ -84,6 +78,13 @@ function ApplyForm() {
       alert("All fields are Mandatory");
     } else {
       setFlag(true);
+      postdata()
+      .then(() => {
+        console.log("success");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
       navigate("/Enrolledcourse");
     }
   }
