@@ -150,3 +150,56 @@
   margin-bottom: 10px;
   border-radius: 5px;
 }
+@media screen and (max-width: 768px) {
+  .searchsec {
+    flex-direction: column;
+    align-items: center;
+  }
+  .searchinp {
+    width: 100%;
+  }
+  .searchbtn {
+    margin-top: 10px;
+    margin-left: 0;
+    width: 100%;
+  }
+  .herosec {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+  }
+  .card {
+    width: 100%;
+  }
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 768px) {
+
+  .user-nav-container {
+    height: auto;
+    padding: 20px;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .user-navlinks-container {
+    margin-top: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .user-nav-container a {
+    margin: 5px 0;
+    font-size:1.1rem;
+  }
+  .user-nav-container a.active {
+    transform: translateY(-4px);
+  }
+}
+ 

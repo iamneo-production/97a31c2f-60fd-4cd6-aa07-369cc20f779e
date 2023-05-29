@@ -1,4 +1,4 @@
-import './Updatepage.css'
+ import './Updatepage.css'
 import { store } from '../../store'
 import { useNavigate, Link, NavLink, useParams } from 'react-router-dom';
 import Studentservice, { editstudent, getStudents } from "../.././api/Studentservice"

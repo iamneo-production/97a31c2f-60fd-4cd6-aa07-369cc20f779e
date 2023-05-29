@@ -1,4 +1,4 @@
-import './Admissionmodelpage.css'
+ import './Admissionmodelpage.css'
 import { store } from '../../store'
 import { useNavigate, Link, NavLink } from 'react-router-dom';
 import { getStudents, deletestud } from "../.././api/Studentservice"

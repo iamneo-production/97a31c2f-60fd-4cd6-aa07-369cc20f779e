@@ -70,7 +70,7 @@ const HomePage = () => {
                 </div>
                 <button data-testid="logout" name='logout' onClick={handleLogout} >Logout</button>
             </nav>
-      <div className="searchsec">
+       <div className="searchsec">
         <input
           type="text"
           name="search"

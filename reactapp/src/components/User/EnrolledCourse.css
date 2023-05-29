@@ -4,68 +4,193 @@
   box-sizing: border-box;
 
 }
-
-.mainbar {
-  background-color: aliceblue;
+/* navbar css */
+.pg-admission-heading{
+  color:white;
+  font-weight:bold;
+  font-size:1.7rem;
+  cursor:pointer;
+}
+.user-nav-container {
+  height: 60px;
+  padding: 35px;
+  background-color: #3770a9;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0;
-  padding: 0 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease-in-out;
+}
+.user-navlinks-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.mainbar h1 {
-  font-size: 2rem;
-  font-weight: bolder;
-  font-style: oblique;
+.user-nav-container a {
+  margin: 0 50px;
+  text-decoration: none;
+  color: beige;
+  font-size: 1.3rem;
+  transition: all 0.3s ease-in-out;
 }
 
-.one {
-  justify-content: space-around;
-  font-size: 1.5rem;
-  font-weight: 350;
+.user-nav-container a:hover {
+  color: #fff;
+  border-bottom: 2px solid #fff;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
 }
 
-.one:hover {
-  color: darkslategray;
-  font-weight: 500;
+.user-nav-container a.active {
+  font-weight: bold;
+  font-size: 1.4rem;
+  transform: translateY(-9px);
+  border-bottom: 2px solid #fff;
 }
 
-.home {
-  font-size: 1rem;
-  font-style: oblique;
-  font-weight: lighter;
-  border: 0.5px solid;
-  width: 100px;
-  background-color: lightyellow;
+
+.user-nav-container button {
+  border: none;
+  background-color: #3770a9;
+  color: beige;
+  font-size: 1.3rem;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
 }
 
-.enrolled-course {
-    border: 2px solid black;
-    padding: 10px;
-    margin: 10px;
-  }
-  .my-learning-button {
-    text-align:right;
-    margin-left: 200px;
-    background-color:red;
-    color: white;
-    padding: 8px;
-    border: none;
+.user-nav-container button:hover {
+  background-color: #477db4;
+  color: #fff;
+}
+
+
+.bth {
+  text-align: left;
+  margin-top: 20px;
+}
+
+.bth a {
+  text-decoration: none;
+}
+
+.bth h5 {
+    margin-left: 5px;
+    color: #4987c4;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 15px;
     border-radius: 5px;
-    margin-top: 10px;
-    cursor: pointer;
-}
-.button {
     display: inline-block;
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: black;
-    text-align: center;
-    font-size: 15px;
-    cursor: pointer;
-    border-radius: 4px;
-    
+    transition: background-color 0.3s ease;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    border: 2px solid #4987c4;
+}
+
+
+.bth h5:hover {
+  background-color: #4a90e2;
+  color: #fff;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.bth h5::before {
+  content: '\2190';
+  margin-right: 5px;
+}
+
+.course-container {
+  padding: 30px;
+}
+
+.user-enrolledcourse-headtxt {
+  margin-bottom:15px;
+  text-align: center;
+  font-size: 1.7rem;
+  color: #4a4848;
+  font-weight: bold;
+}
+
+.enrolled-courses {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.enrolled-course { 
+  margin: 35px 35px 25px 50px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  /* border-radius: 8px; */
+  background-color: #d9d3d3;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease;
+  width: 27%;
+}
+
+.enrolled-course:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.enrolled-course p {
+  margin: 15px 20px;
+}
+
+.my-learning-button {
+  margin-top:15px;
+  padding: 8px 16px;
+  background-color: #3770a9;
+  color: white;
+  border: none;
+  /* border-radius: 15px; */
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.my-learning-button:hover {
+  background-color: #457db5;
+}
+@media only screen and (max-width: 768px) {
+  
+  .bth h5 {
+    font-size: 14px;
   }
 
-  
+  .enrolled-course {
+    width: 100%;
+    margin: 15px 0;
+  }
+
+  .my-learning-button {
+    margin-top: 10px;
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+} 
+
+@media screen and (max-width: 768px) {
+
+  .user-nav-container {
+    height: auto;
+    padding: 20px;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .user-navlinks-container {
+    margin-top: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .user-nav-container a {
+    margin: 5px 0;
+    font-size:1.1rem;
+  }
+  .user-nav-container a.active {
+    transform: translateY(-4px);
+  }
+}
+ 
