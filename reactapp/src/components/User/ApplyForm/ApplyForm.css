@@ -321,3 +321,70 @@
   transform: translateY(-5px);
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
   }
+  @media (max-width: 768px) {
+    .user-nav-container {
+      padding: 15px;
+    }
+  
+    .user-nav-container a {
+      margin: 0 10px;
+      font-size: 0.9rem;
+    }
+  
+    .user-nav-container button {
+      padding: 6px 12px;
+      font-size: 0.9rem;
+    }
+  
+    .user-applyform-popup {
+      max-width: 250px;
+      padding: 10px;
+    }
+  
+    .user-applyform-popup h1 {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+  
+    .user-applyform-popup button {
+      padding: 6px 12px;
+      font-size: 12px;
+    }
+  
+    .user-footer {
+      margin-top: 20px;
+    }
+  
+    .user-enroll,
+    .user-cancel {
+      padding: 10px 18px;
+      font-size: 0.9rem;
+    }
+  }
+
+  
+@media screen and (max-width: 768px) {
+
+  .user-nav-container {
+    height: auto;
+    padding: 20px;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .user-navlinks-container {
+    margin-top: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .user-nav-container a {
+    margin: 5px 0;
+    font-size:1.1rem;
+  }
+  .user-nav-container a.active {
+    transform: translateY(-4px);
+  }
+}
+ 

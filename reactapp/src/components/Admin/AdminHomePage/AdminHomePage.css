@@ -380,3 +380,88 @@
   transform: translateY(-5px);
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
 }
+@media (max-width: 768px) {
+  .academy-display-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .each-academy-cell {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+  }
+  
+  .each-academy-cell img {
+    width: 100%;
+    height: 200px;
+  }
+
+  .admin-academy-container {
+    align-items: center;
+  }
+  .admin-search-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .search-input {
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 10px;
+  }
+
+  .search-btn {
+    margin-left: 0;
+    width: 100%;
+    max-width: 200px;
+  }
+
+  .admin-add-academy-button {
+    bottom: 10px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+  }
+
+  .admin-add-academy-button:hover {
+    width: 130px;
+  }
+
+  .admin-add-academy-button .admin-add-institute-icon {
+    height: 50px;
+    width: 50px;
+  }
+
+  .admin-add-academy-button .admin-add-institute-icon i {
+    font-size: 20px;
+    line-height: 50px;
+  }
+
+  .admin-add-academy-button:hover::after {
+    left: 40px;
+    top: 0;
+    width: 90px;
+    height: 50px;
+    font-size: 0.8rem;
+    line-height: 50px;
+    border-radius: 0 50px 50px 0;
+  }
+
+  .admin-academy-form {
+    padding: 20px;
+  }
+
+  .head-container {
+    font-size: 1.5rem;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    font-size: 1rem;
+  }
+
+  .admin-form-submit-button {
+    font-size: 1rem;
+    margin-left: 50%;
+  }
+}
