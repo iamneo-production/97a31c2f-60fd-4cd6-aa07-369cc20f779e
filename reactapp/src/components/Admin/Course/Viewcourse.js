@@ -10,7 +10,10 @@ function Viewcourse() {
   const [courses, setCourses] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
-
+  const [popup, setPopup] = useState({
+    state: false,
+    deleteId: null
+  });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -68,6 +71,48 @@ function Viewcourse() {
 
     <AdminGuard>
       <NavBar />
+      {
+        popup.state &&
+        <div className="admin-popup-body noHover">
+          <div className="admin-popup-overlay">
+
+          </div>
+          <div className="admin-course-popup">
+            <h1>Are you sure to delete the data ?</h1>
+            <button 
+              className="confirm-button"
+              type="submit"
+              onClick={() => {
+                handleDelete(popup.deleteId)
+                  .then(() => {
+                    console.log("deleted Course");
+                  })
+                  .catch((error) => {
+                    console.log(error);
+                  });
+                setPopup({
+                  state: false,
+                  deleteId: null
+                });
+              }}
+            >
+              confirm delete
+            </button>
+            <button
+              className="cancel-button"
+              type="submit"
+              onClick={() => {
+                setPopup({
+                  state: false,
+                  deleteId: null
+                });
+              }}
+            >
+              cancel
+            </button>
+          </div>
+        </div>
+      }
       <div className="search-box">
         <input
           className="search-input"
@@ -86,13 +131,14 @@ function Viewcourse() {
 
       <div>
         <h1
-          class="course-heading">
+          class="course-heading"
+          id="courseGrid1">
           List of Courses
         </h1>
         {courses && courses.length > 0 ? (
           <div className="courses-grid">
-            {courses.map((course) => (
-              <div key={course.id} className="course-card">
+            {courses.map((course, index) => (
+              <div id={`courseGrid` + (index + 1)} key={course.id} className="course-card">
                 <div className="course-card-info">
                   <div
                     className="course-card-text course-id">
@@ -138,7 +184,12 @@ function Viewcourse() {
                     <button
                       className="nav-link"
                       id="deletecourse"
-                      onClick={() => handleDelete(course.id)}>
+                      onClick={() => {
+                        setPopup({
+                          state: true,
+                          deleteId: course.id
+                        })
+                      }}>
                       <i
                         className="fa-regular fa-trash-can">
                       </i>

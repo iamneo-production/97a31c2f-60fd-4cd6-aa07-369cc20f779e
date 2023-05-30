@@ -1,7 +1,7 @@
-import React , { useState } from "react";
+import React, { useState } from "react";
 import "../Course/Addcourse.css";
-import { useNavigate , Link } from "react-router-dom";
-import { addCourse , getCourses } from "../../../api/courseApi.js";
+import { useNavigate, Link } from "react-router-dom";
+import { addCourse, getCourses } from "../../../api/courseApi.js";
 import NavBar from "../Navbar/Navbar.js";
 import { AdminGuard } from "../../../AuthGuard/AdminGuard"
 
@@ -14,6 +14,12 @@ const Course = () => {
   const [courseEnrolled, setCourseEnrolled] = useState("");
   const [courseDescription, setCourseDescription] = useState("");
   const navigate = useNavigate();
+  const [popup, setPopup] = useState(false);
+
+  const handlePop = (e) => {
+    e.preventDefault();
+    setPopup(true);
+  }
 
   const handleClick = (event) => {
     handleSubmit(event).then((data) => {
@@ -62,25 +68,55 @@ const Course = () => {
 
   return (
 
-    <AdminGuard>
+    <>
 
       <NavBar />
 
-      {/* <Link to="/admin/viewCourse" className="course-back-to-home">Back To Home</Link> */}
-      <div 
-      data-testid="addCourse" 
-      className='course'>
-        <h2 
-        className="head-container">
+      {
+        popup && (
+          <div className="admin-popup-body noHover">
+            <div className="admin-popup-overlay">
+
+            </div>
+            <div className="admin-course-popup">
+              <h1>Are you sure to add the data ?</h1>
+              <button
+                className="confirm-button"
+                type="submit"
+                onClick={(e) => {
+                  handleClick(e);
+                  setPopup(false);
+                }}
+              >
+                confirm add
+              </button>
+              <button
+                className="cancel-button"
+                type="submit"
+                onClick={() => {
+                  setPopup(false);
+                }}
+              >
+                cancel
+              </button>
+            </div>
+          </div>
+        )
+      }
+
+      <div
+        data-testid="addCourse"
+        className='course'>
+        <h2
+          className="head-container">
           Add Course Details</h2>
-        <form 
-        onSubmit={(e) => handleClick(e)} >
-          <div 
-          className="form-group">
-            <label 
-            htmlFor="courseId" 
-            className='label-heading'>
-            Course Id:</label>
+        <form>
+          <div
+            className="form-group">
+            <label
+              htmlFor="courseId"
+              className='label-heading'>
+              Course Id:</label>
             <input
               id="courseId"
               type="text"
@@ -109,7 +145,7 @@ const Course = () => {
               placeholder='Enter courseDuration'
               value={courseDuration}
               onChange={(event) => setCourseDuration(event.target.value)}
-              data-testid="courseDuration"
+              data-testid="courseDuriation"
             />
           </div>
           <div className="form-group">
@@ -145,21 +181,26 @@ const Course = () => {
               data-testid="courseDescription"
             />
           </div>
-          <div 
-          class="button-container">
-            <button 
-            className="btn-primary" 
-            type="submit" id="addCourse">
+          <div
+            className="button-container">
+            <button
+              className="btn-primary"
+              type="submit"
+              id="addCourse"
+              data-testid="addCourse"
+              onClick={(e) => {
+                handlePop(e)
+              }}>
               Add Course</button>
-            <Link 
-            to="/admin/viewCourse"
-             className="btn-secondary">
+            <Link
+              to="/admin/viewCourse"
+              className="btn-secondary">
               Cancel</Link>
           </div>
         </form>
       </div>
 
-    </AdminGuard>
+    </>
   );
 };
 

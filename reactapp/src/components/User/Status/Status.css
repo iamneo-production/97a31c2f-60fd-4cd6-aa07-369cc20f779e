@@ -1,0 +1,84 @@
+.navbar {
+    background-color: rgb(195, 8, 176);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    padding: 0 8px;
+}
+
+.middle {
+
+    flex: 50%;
+    height: 100%;
+    color: black;
+    text-decoration: justify;
+    margin: auto;
+    padding-left: 350px;
+    padding-right: 250px;
+}
+
+.middle1 {
+
+    flex: 50%;
+    height: 100%;
+    color: black;
+    text-decoration: justify;
+    margin: auto;
+    padding-left: 200px;
+    padding-right: 100px;
+}
+
+.right {
+
+    flex: 50%;
+    height: 100%;
+    color: rgb(19, 19, 19);
+    padding-right: 0px;
+}
+.bth{
+    
+    appearance: none;
+    background-color:whitesmoke;
+    border-radius: 40em;
+    border-style: none;
+    box-shadow:#ADCFFF 0 -12px 6px inset;
+    box-sizing: border-box;
+    color:black;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system,sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: -.24px;
+    margin: 10px;
+    outline: none;
+    padding: 1rem 1.3rem;
+    quotes: auto;
+    text-align: center;
+    text-decoration: none;
+    transition: all .15s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+.bth:hover{
+  background-color: lavender;
+}
+
+.enrolled-course {
+    border: 2px solid black;
+    padding: 10px;
+    margin: 10px;
+}
+
+.my-learning-button {
+    margin-left: 200px;
+    background-color: red;
+    color: white;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+}

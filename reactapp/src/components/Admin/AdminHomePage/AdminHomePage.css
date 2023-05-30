@@ -1,3 +1,85 @@
+/* popup css */
+.admin-popup-body {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.admin-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.533);
+  z-index: -1;
+}
+
+.admin-institute-popup {
+  background-color: #e5e0e0;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.admin-institute-popup h1 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.admin-institute-popup button {
+  padding: 10px 20px;
+  margin: 5px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.admin-institute-popup .confirm-button {
+  background-color: #2A7230;
+  color: #fff;
+}
+
+.admin-institute-popup .confirm-button:hover {
+  background-color: #3e9746;
+  transform: scale(1.05);
+}
+
+
+.admin-institute-popup .cancel-button {
+  background-color:#E62020;
+  color: #fff;
+}
+
+.admin-institute-popup .cancel-button:hover {
+  background-color: #f24747;
+  transform: scale(1.05);
+}
+
+
+/* .admin-institute-popup button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.admin-institute-popup button:disabled:hover {
+  background-color: #ccc;
+  transform: scale(1);
+} */
+
+
 /* search bar css */
 
 .admin-search-container {
@@ -35,7 +117,7 @@
 
 /* add institute btn */
 
-.admin-add-institute-button {
+/* .admin-add-institute-button {
   display: flex;
   justify-content: center;
 }
@@ -63,8 +145,57 @@
 
 .admin-add-institute-icon i {
   margin-right: 10px;
+} */
+
+
+.admin-add-academy-button{
+  position: fixed;
+  bottom:20px;
+  right:20px;
+  width: 60px;
+  height:60px;
+  float:left;
+  margin:0 5px;
+  background:#2A7230;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0px 10px 10px rgba(0,0,0,0.1);
+  transition: all 0.3s ease-out;
+  overflow: hidden;
 }
 
+.admin-add-academy-button:hover{
+  width: 165px;
+}
+
+.admin-add-academy-button .admin-add-institute-icon{
+  height: 60px;
+  width:60px;
+  text-align: center;
+  border-radius: 50px;
+  box-sizing: border-box;
+}
+
+.admin-add-academy-button .admin-add-institute-icon i{
+  font-size: 25px;
+  line-height: 60px;
+  color: white;
+}
+
+.admin-add-academy-button:hover::after{
+  content: "Add Institute";
+  display: block;
+  position: absolute;
+  left: 50px;
+  top: 0;
+  width: 100px;
+  height: 60px;
+  background: #2A7230;
+  font-weight: bold;
+  line-height: 60px;
+  text-align: center;
+  border-radius: 0 50px 50px 0;
+}
 
 /* institute display css */
 
@@ -80,6 +211,7 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 40px;
   margin-top: 20px;
+  margin-bottom:15px;
 }
 
 .each-academy-cell {
@@ -160,6 +292,7 @@
 /* Back to home css */
 
 .back-to-home {
+  margin-left:5px;
   background-color: #fff;
   border: 2px solid #2A7230;
   color: #2A7230;
@@ -204,7 +337,7 @@
   font-size: 1.1rem;
 }
 
-.form-group input[type="text"],
+.form-group input,
 .form-group textarea {
   width: 100%;
   padding: 15px;
@@ -216,7 +349,7 @@
   transition: border-color 0.3s ease-in-out;
 }
 
-.form-group input[type="text"]:focus,
+.form-group input:focus,
 .form-group textarea:focus {
   border-color: #2A7230;
   outline: none;
@@ -246,4 +379,89 @@
 .admin-form-submit-button:hover {
   transform: translateY(-5px);
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+@media (max-width: 768px) {
+  .academy-display-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .each-academy-cell {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+  }
+  
+  .each-academy-cell img {
+    width: 100%;
+    height: 200px;
+  }
+
+  .admin-academy-container {
+    align-items: center;
+  }
+  .admin-search-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .search-input {
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 10px;
+  }
+
+  .search-btn {
+    margin-left: 0;
+    width: 100%;
+    max-width: 200px;
+  }
+
+  .admin-add-academy-button {
+    bottom: 10px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+  }
+
+  .admin-add-academy-button:hover {
+    width: 130px;
+  }
+
+  .admin-add-academy-button .admin-add-institute-icon {
+    height: 50px;
+    width: 50px;
+  }
+
+  .admin-add-academy-button .admin-add-institute-icon i {
+    font-size: 20px;
+    line-height: 50px;
+  }
+
+  .admin-add-academy-button:hover::after {
+    left: 40px;
+    top: 0;
+    width: 90px;
+    height: 50px;
+    font-size: 0.8rem;
+    line-height: 50px;
+    border-radius: 0 50px 50px 0;
+  }
+
+  .admin-academy-form {
+    padding: 20px;
+  }
+
+  .head-container {
+    font-size: 1.5rem;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    font-size: 1rem;
+  }
+
+  .admin-form-submit-button {
+    font-size: 1rem;
+    margin-left: 50%;
+  }
 }

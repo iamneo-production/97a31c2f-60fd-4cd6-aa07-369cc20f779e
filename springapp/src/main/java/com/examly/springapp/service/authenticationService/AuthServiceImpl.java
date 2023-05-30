@@ -46,7 +46,7 @@ public class AuthServiceImpl implements AuthService {
         if (userRepository.existsByEmail(userModel.getEmail())) {
 			HashMap<String, Object> outResponse = new HashMap<>();
 			outResponse.put("message", "Email is already in use!");
-			return ResponseEntity.badRequest().body(outResponse);
+			return ResponseEntity.ok().body(outResponse);
 		}
 
 		// Create new user and set attributes

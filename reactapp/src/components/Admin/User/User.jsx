@@ -43,7 +43,7 @@ const User = () => {
 
   return (
     <>
-          <AdminStudent1 />
+      <AdminStudent1 />
     </>
   );
 };
@@ -250,7 +250,7 @@ const AdminStudent1 = () => {
                       </tr>
                     </tbody>
                   </table>
-                                 </div>
+                </div>
               </>
             );
           })}
