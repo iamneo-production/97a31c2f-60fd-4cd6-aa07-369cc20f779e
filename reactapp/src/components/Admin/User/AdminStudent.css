@@ -59,7 +59,7 @@
 
 
 .admin-student-popup .admin-student-cancel-btn {
-  background-color:#E62020;
+  background-color: #E62020;
   color: #fff;
 }
 
@@ -70,7 +70,7 @@
 
 /* Back to home css */
 .back-to-home {
-  margin-left:5px;
+  margin-left: 5px;
   background-color: #fff;
   border: 2px solid #2A7230;
   color: #2A7230;
@@ -205,41 +205,41 @@
 
 /* add student btn */
 
-.admin-add-student-button{
+.admin-add-student-button {
   position: fixed;
-  bottom:20px;
-  right:20px;
+  bottom: 20px;
+  right: 20px;
   width: 60px;
-  height:60px;
-  float:left;
-  margin:0 5px;
-  background:#2A7230;
+  height: 60px;
+  float: left;
+  margin: 0 5px;
+  background: #2A7230;
   border-radius: 50px;
   cursor: pointer;
-  box-shadow: 0px 10px 10px rgba(0,0,0,0.1);
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease-out;
   overflow: hidden;
 }
 
-.admin-add-student-button:hover{
+.admin-add-student-button:hover {
   width: 165px;
 }
 
-.admin-add-student-button .admin-add-student-icon{
+.admin-add-student-button .admin-add-student-icon {
   height: 60px;
-  width:60px;
+  width: 60px;
   text-align: center;
   border-radius: 50px;
   box-sizing: border-box;
 }
 
-.admin-add-student-button .admin-add-student-icon i{
+.admin-add-student-button .admin-add-student-icon i {
   font-size: 25px;
   line-height: 60px;
   color: white;
 }
 
-.admin-add-student-button:hover::after{
+.admin-add-student-button:hover::after {
   content: "Add Student";
   display: block;
   position: absolute;
@@ -395,36 +395,78 @@
   transform: translateY(-5px);
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
 }
-@media (max-width: 768px) {
-  .admin-student-table {
-    width: auto;
+
+@media (max-width: 820px) {
+  .search-box {
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 0;
   }
-  
+
+  .search-input {
+    width: 95%;
+    margin-bottom: 10px;
+  }
+
+  .search-btn {
+    margin-left: 0;
+    width: 50%;
+  }
+
+  .student-heading {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+  }
+
   .admin-student-th,
   .admin-student-td {
-   
-    width: auto;
-    padding: 8px;
+    padding: 2px;
+    font-size: 11px;
+    padding-left: 5px;
   }
-  .admin-student-popup,
-  .student-form-container {
-    max-width: 90%;
-  }
-  
-  .admin-student-popup,
-  .studentform {
-    width: 100%;
+
+  .admin-student-th {
+    font-size: 1rem;
   }
 
   .admin-add-student-button {
-    right: 10px;
     bottom: 10px;
-    margin: 0;
+    right: 10px;
+    width: 40px;
+    height: 40px;
   }
-  
-  .add-academy-btn {
-    margin-left: 0;
-    width: 100%;
+
+  .admin-add-student-button .admin-add-student-icon {
+    height: 40px;
+    width: 40px;
   }
-  
+
+  .admin-add-student-button .admin-add-student-icon i {
+    font-size: 16px;
+    line-height: 40px;
+  }
+
+  .admin-add-student-button:hover::after {
+    left: 40px;
+    top: 0;
+    width: 80px;
+    height: 80px;
+    line-height: 35px;
+    font-size: 11px;
+  }
+
+  .edit-btn,
+  .delete-btn {
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    margin-right: 2px;
+    margin-bottom: 2px;
+    margin-left: 10px;
+  }
+}
+
+@media (max-width:300px) {
+  .admin-student-th {
+    font-size: 0.5rem;
+  }
 }

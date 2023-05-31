@@ -170,7 +170,7 @@
 /* student details heading css */
 
 .user-update-heading h2 {
-  margin-bottom:15px;
+  margin-bottom: 15px;
   text-align: center;
   color: #4a4848;
   font-size: 2.2rem;
@@ -224,13 +224,14 @@
 .user__input:focus {
   border-color: #4D90FE;
 }
+
 .user-update-address-container {
   background-color: #f1f4f6;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 30px;
   margin-bottom: 30px;
-  width:100%
+  width: 100%
 }
 
 .user-update-address-container h2 {
@@ -269,26 +270,27 @@
 .user-name,
 .user-mobile,
 .user-dob,
-.user-marks
- {
+.user-marks {
   width: 48%;
 }
+
 .user-address {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   margin-bottom: 20px;
-} 
+}
+
 /* button css */
 .user-button-container {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   margin-top: 40px;
-  }
-  
-  .user-update-button,
-  .user-cancel-button {
+}
+
+.user-update-button,
+.user-cancel-button {
   padding: 15px 25px;
   border: none;
   border-radius: 50px;
@@ -298,50 +300,51 @@
   letter-spacing: 1px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
-  }
-  
-  .user-update-button {
+}
+
+.user-update-button {
   background-color: #4987c4;
   color: #fff;
   margin-right: 20px;
-  }
-  
-  .user-cancel-button {
+}
+
+.user-cancel-button {
   background-color: #fff;
   color: #4987c4;
   border: 2px solid #4987c4;
-  }
-  
-  .user-update-button:hover,
-  .user-cancel-button:hover {
+}
+
+.user-update-button:hover,
+.user-cancel-button:hover {
   transform: translateY(-5px);
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+@media screen and (max-width: 768px) {
+
+  .user-updatepage-popup {
+    max-width: 300px;
   }
-  @media screen and (max-width: 768px) {
-    
-    .user-updatepage-popup {
-      max-width: 300px;
-    }
-  
-    .bth {
-      text-align: center;
-    }
-  
-    .user-update-form {
-      padding: 20px;
-    }
-  
-    .user__input {
-      margin-bottom: 15px;
-    }
-  
-    .user-update-address-container {
-      padding: 20px;
-      margin-bottom: 20px;
-    }
+
+  .bth {
+    text-align: center;
   }
-  
-  
+
+  .user-update-form {
+    padding: 20px;
+  }
+
+  .user__input {
+    margin-bottom: 15px;
+  }
+
+  .user-update-address-container {
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+}
+
+
 @media screen and (max-width: 768px) {
 
   .user-nav-container {
@@ -360,11 +363,61 @@
 
   .user-nav-container a {
     margin: 5px 0;
-    font-size:1.1rem;
+    font-size: 1.1rem;
   }
+
   .user-nav-container a.active {
     transform: translateY(-4px);
   }
-  
+
 }
- 
+
+@media screen and (max-width: 820px) {
+  .user-nav-container {
+    height: auto;
+    padding: 20px;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .user-navlinks-container {
+    margin-top: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .user-nav-container a {
+    margin: 5px 0;
+    font-size: 1.1rem;
+  }
+
+  .user-nav-container a.active {
+    transform: translateY(-4px);
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .user-nav-container {
+    height: auto;
+    padding: 20px;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .user-navlinks-container {
+    margin-top: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .user-nav-container a {
+    margin: 5px 0;
+    font-size: 1.1rem;
+  }
+
+  .user-nav-container a.active {
+    transform: translateY(-4px);
+  }
+}
