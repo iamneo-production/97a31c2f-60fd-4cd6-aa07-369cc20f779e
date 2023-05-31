@@ -4,7 +4,6 @@ import { store } from '../../../store';
 import { useNavigate, Link } from 'react-router-dom';
 import { getCourses } from '../../../api/courseApi';
 import CourseService from '../../../api/CourseService'
-import { UserGuard } from '../../../AuthGuard/UserGuard';
 
 const Status = () => {
     const navigate = useNavigate();

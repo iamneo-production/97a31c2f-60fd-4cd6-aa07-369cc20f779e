@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useNavigate } from "react-router";
 import { store } from "../../../store";
-import { UserGuard } from "../../../AuthGuard/UserGuard";
 import "./UserCourse.css";
 import { baseUrl } from "../../../api/authService";
 
