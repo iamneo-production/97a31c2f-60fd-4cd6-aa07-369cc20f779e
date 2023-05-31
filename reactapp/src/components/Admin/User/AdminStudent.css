@@ -395,3 +395,36 @@
   transform: translateY(-5px);
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
 }
+@media (max-width: 768px) {
+  .admin-student-table {
+    width: auto;
+  }
+  
+  .admin-student-th,
+  .admin-student-td {
+   
+    width: auto;
+    padding: 8px;
+  }
+  .admin-student-popup,
+  .student-form-container {
+    max-width: 90%;
+  }
+  
+  .admin-student-popup,
+  .studentform {
+    width: 100%;
+  }
+
+  .admin-add-student-button {
+    right: 10px;
+    bottom: 10px;
+    margin: 0;
+  }
+  
+  .add-academy-btn {
+    margin-left: 0;
+    width: 100%;
+  }
+  
+}
