@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import NavBar from "../Navbar/Navbar";
 import { store } from "../../../store";
-import { AdminGuard } from "../../../AuthGuard/AdminGuard";
 import "./AdminHomePage.css";
 import { Navigate } from "react-router";
 import { useNavigate, useParams, NavLink } from "react-router-dom";
@@ -140,7 +139,7 @@ const Adminacademy = () => {
 
             </div>
             <div className="admin-institute-popup">
-              <h1>Are you sure to delete the data ?</h1>
+              <h1>Are you sure to delete this data ?</h1>
               <button
                 className="confirm-button"
                 type="submit"
@@ -158,7 +157,7 @@ const Adminacademy = () => {
                   });
                 }}
               >
-                confirm delete
+                Confirm Delete
               </button>
               <button
                 className="cancel-button"
@@ -170,7 +169,7 @@ const Adminacademy = () => {
                   });
                 }}
               >
-                cancel
+                Cancel
               </button>
             </div>
           </div>
@@ -364,7 +363,7 @@ export const AcademyForm = ({ type }) => {
                         });
                     }}
                   >
-                    confirm add
+                    Confirm Add
                   </button>
                 ) : (
                   <button className="confirm-button"
@@ -379,7 +378,7 @@ export const AcademyForm = ({ type }) => {
                         });
                     }}
                   >
-                    confirm edit
+                    Confirm Edit
                   </button>
                 )}
               <button
@@ -389,7 +388,7 @@ export const AcademyForm = ({ type }) => {
                   setPopup(false);
                 }}
               >
-                cancel
+                Cancel
               </button>
             </div>
           </div>
