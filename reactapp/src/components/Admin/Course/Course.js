@@ -39,6 +39,7 @@ const Course = () => {
 
   const fetchData = async () => {
     const data = await getCourses();
+    console.log(data);
   }
 
 
