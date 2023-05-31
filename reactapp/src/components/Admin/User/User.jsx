@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../Navbar/Navbar";
 import { store } from "../../../store";
-import { AdminGuard } from "../../../AuthGuard/AdminGuard";
 import { Navigate } from "react-router";
 import { useNavigate, useParams, NavLink } from "react-router-dom";
 import { baseUrl } from "../../../api/authService";
@@ -140,8 +139,6 @@ const AdminStudent1 = () => {
       console.error("Error fetching course data:", error);
     }
   }
-
- 
   const handleDelete = async (id) => {
     setPopup({ state: true, deleteId: id });
   };
@@ -197,7 +194,7 @@ const AdminStudent1 = () => {
                   });
                 }}
               >
-                confirm delete
+                Confirm Delete
               </button>
               <button
                 className="admin-student-cancel-btn"
@@ -209,7 +206,7 @@ const AdminStudent1 = () => {
                   });
                 }}
               >
-                cancel
+                Cancel
               </button>
             </div>
           </div>
@@ -419,7 +416,7 @@ export const StudentForm = ({ type }) => {
                       });
                   }}
                 >
-                  confirm add
+                  Confirm Add
                 </button>
               ) : (
                 <button
@@ -435,7 +432,7 @@ export const StudentForm = ({ type }) => {
                       });
                   }}
                 >
-                  confirm edit
+                  Confirm Edit
                 </button>
               )}
               <button
@@ -445,7 +442,7 @@ export const StudentForm = ({ type }) => {
                   setPopup(false);
                 }}
               >
-                cancel
+                Cancel
               </button>
             </div>
           </div>
