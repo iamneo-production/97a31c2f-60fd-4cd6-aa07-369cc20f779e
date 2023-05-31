@@ -77,9 +77,10 @@ function Viewcourse() {
           <div className="admin-popup-overlay">
 
           </div>
-          <div className="admin-institute-popup">
+          <div className="admin-course-popup">
             <h1>Are you sure to delete the data ?</h1>
-            <button
+            <button 
+              className="confirm-button"
               type="submit"
               onClick={() => {
                 handleDelete(popup.deleteId)
@@ -95,10 +96,10 @@ function Viewcourse() {
                 });
               }}
             >
-              confirm delete
+              Confirm Delete
             </button>
-            <br />
             <button
+              className="cancel-button"
               type="submit"
               onClick={() => {
                 setPopup({
@@ -107,7 +108,7 @@ function Viewcourse() {
                 });
               }}
             >
-              cancel
+              Cancel
             </button>
           </div>
         </div>
@@ -116,7 +117,7 @@ function Viewcourse() {
         <input
           className="search-input"
           type="text"
-          placeholder='Search course by name or ID'
+          placeholder='Search course by Name or Id'
           value={searchTerm}
           onChange={(event) => setSearchTerm(event.target.value)}
           data-testid="search"
@@ -130,13 +131,14 @@ function Viewcourse() {
 
       <div>
         <h1
-          class="course-heading">
+          class="course-heading"
+          id="courseGrid1">
           List of Courses
         </h1>
         {courses && courses.length > 0 ? (
           <div className="courses-grid">
-            {courses.map((course) => (
-              <div key={course.id} className="course-card">
+            {courses.map((course, index) => (
+              <div id={`courseGrid` + (index + 1)} key={course.id} className="course-card">
                 <div className="course-card-info">
                   <div
                     className="course-card-text course-id">

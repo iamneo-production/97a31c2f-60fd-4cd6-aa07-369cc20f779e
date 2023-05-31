@@ -3,8 +3,6 @@ import "../Course/Addcourse.css";
 import { useNavigate, Link } from "react-router-dom";
 import { addCourse, getCourses } from "../../../api/courseApi.js";
 import NavBar from "../Navbar/Navbar.js";
-import { AdminGuard } from "../../../AuthGuard/AdminGuard"
-
 
 const Course = () => {
   const [courseId, setCourseId] = useState("");
@@ -68,7 +66,7 @@ const Course = () => {
 
   return (
 
-    <AdminGuard>
+    <>
 
       <NavBar />
 
@@ -78,32 +76,32 @@ const Course = () => {
             <div className="admin-popup-overlay">
 
             </div>
-            <div className="admin-institute-popup">
+            <div className="admin-course-popup">
               <h1>Are you sure to add the data ?</h1>
               <button
+                className="confirm-button"
                 type="submit"
                 onClick={(e) => {
                   handleClick(e);
                   setPopup(false);
                 }}
               >
-                confirm add
+                Confirm Add
               </button>
-              <br />
               <button
+                className="cancel-button"
                 type="submit"
                 onClick={() => {
                   setPopup(false);
                 }}
               >
-                cancel
+                Cancel
               </button>
             </div>
           </div>
         )
       }
 
-      {/* <Link to="/admin/viewCourse" className="course-back-to-home">Back To Home</Link> */}
       <div
         data-testid="addCourse"
         className='course'>
@@ -145,7 +143,7 @@ const Course = () => {
               placeholder='Enter courseDuration'
               value={courseDuration}
               onChange={(event) => setCourseDuration(event.target.value)}
-              data-testid="courseDuration"
+              data-testid="courseDuriation"
             />
           </div>
           <div className="form-group">
@@ -182,11 +180,12 @@ const Course = () => {
             />
           </div>
           <div
-            class="button-container">
+            className="button-container">
             <button
               className="btn-primary"
               type="submit"
               id="addCourse"
+              data-testid="addCourse"
               onClick={(e) => {
                 handlePop(e)
               }}>
@@ -199,7 +198,7 @@ const Course = () => {
         </form>
       </div>
 
-    </AdminGuard>
+    </>
   );
 };
 

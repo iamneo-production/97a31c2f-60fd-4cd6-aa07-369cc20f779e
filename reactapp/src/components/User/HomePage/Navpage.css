@@ -21,7 +21,7 @@ body {
 }
 
 .nv h2 {
-    font-size: 3rem;
+    font-size: 2rem;
     color: cornflowerblue;
     font-weight: bolder;
 
@@ -113,17 +113,10 @@ body {
     animation-timing-function: ease-in-out;
 }
 
-@keyframes animate {
-    50% {
-        background-image: url(img3.jpg);
-    }
 
-    100% {
-        background-image: url(img1.jpg);
-    }
-}
 
 .txt p {
+    margin-top: 160px;
     color: antiquewhite;
     text-align: center;
     margin-left: 12%;
@@ -139,7 +132,7 @@ body {
 .txt h2 {
     color: cornsilk;
     margin-left: 12%;
-    text-align: center;
+    padding-right: 150px;
     font-style: oblique;
     font-size: 2.8rem;
     font-weight: bold;
@@ -149,6 +142,7 @@ body {
 }
 
 .txt h4 {
+    font-size: 2, 1rem;
     color: aliceblue;
     margin-left: 12%;
     text-align: center;
@@ -183,7 +177,7 @@ body {
     font-weight: bolder;
 }
 
-span::before{
+span::before {
     content: "BUILD A BETTER FUTURE!!!";
     animation-name: line;
     animation-direction: alternate-reverse;
@@ -207,4 +201,147 @@ span::before{
         content: "ALL THE BEST!!!";
     }
 
+}
+
+.link {
+    font-size: 1.5rem;
+}
+
+@media only screen and (max-width: 768px) {
+    .link {
+        font-size: 1rem;
+    }
+
+
+    .top {
+        flex-direction: column;
+        font-size: 2rem;
+        padding: 0 16px;
+    }
+
+    .out {
+        font-size: 1.2rem;
+        font-weight: 400;
+        text-shadow: none;
+        animation-duration: 5s;
+    }
+
+    .txt p,
+    .txt h2,
+    .txt h4 {
+        margin-left: 6%;
+        margin-right: 6%;
+        font-size: 2rem;
+        padding-right: 5px;
+    }
+
+    .txt p {
+        margin-top: 80px;
+    }
+
+    .txt h4 {
+        font-size: 1.8rem;
+    }
+
+    .last h1 {
+        font-size: 2rem;
+        margin-left: 2%;
+        padding-top: 1%;
+    }
+
+    span::before {
+        font-size: 1rem;
+    }
+}
+
+@media only screen and (max-width: 820px) {
+    .link {
+        font-size: 20px;
+    }
+
+    .top {
+        flex-direction: column;
+        font-size: 28px;
+        padding: 0 16px;
+    }
+
+    .out {
+        font-size: 16.8px;
+        font-weight: 400;
+        text-shadow: none;
+        animation-duration: 5s;
+    }
+
+    .txt p,
+    .txt h2,
+    .txt h4 {
+        margin-left: 6%;
+        margin-right: 6%;
+        font-size: 28px;
+        padding-right: 5px;
+    }
+
+    .txt p {
+        margin-top: 80px;
+    }
+
+    .txt h4 {
+        font-size: 25.2px;
+    }
+
+    .last h1 {
+        font-size: 28px;
+        margin-left: 2%;
+        padding-top: 1%;
+    }
+
+    span::before {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (min-width: 821px) and (max-width: 1280px) {
+    .link {
+        font-size: 20px;
+    }
+
+    .top {
+        flex-direction: column;
+        font-size: 28px;
+        padding: 0 16px;
+    }
+
+    .out {
+        font-size: 16.8px;
+        font-weight: 400;
+        text-shadow: none;
+        animation-duration: 5s;
+    }
+
+    .txt p,
+    .txt h2,
+    .txt h4 {
+        margin-left: 6%;
+        margin-right: 6%;
+        font-size: 28px;
+        padding-right: 5px;
+    }
+
+    .txt p {
+        margin-top: 80px;
+    }
+
+    .txt h4 {
+        font-size: 25.2px;
+    }
+
+    .last h1 {
+        font-size: 28px;
+        margin-left: 2%;
+        padding-top: 1%;
+    }
+
+    span::before {
+        font-size: 22px;
+    }
 }

@@ -128,22 +128,22 @@ public class AdminService {
         instituteRepository.save(instituteModel);
     }  
 
-     public String editInstitute(Integer instituteId, InstituteModel updatedInstitute){
-    Optional<InstituteModel> institutemodel = instituteRepository.findByInstituteId(instituteId);
-    if(institutemodel.isPresent()){
-        InstituteModel institute = institutemodel.get();
-        institute.setInstituteId(updatedInstitute.getInstituteId());
-        institute.setInstituteName(updatedInstitute.getInstituteName());
-        institute.setInstituteDescription(updatedInstitute.getInstituteDescription());
-        institute.setInstituteAddress(updatedInstitute.getInstituteAddress());
-        institute.setMobile(updatedInstitute.getMobile());
-        institute.setEmail(updatedInstitute.getEmail());
-        institute.setImageUrl(updatedInstitute.getImageUrl());
-        instituteRepository.save(institute);
-        return "Institute edited";
+    public String editInstitute(Integer instituteId, InstituteModel updatedInstitute){
+        Optional<InstituteModel> institutemodel = instituteRepository.findByInstituteId(instituteId);
+        if(institutemodel.isPresent()){
+            InstituteModel institute = institutemodel.get();
+            institute.setInstituteId(updatedInstitute.getInstituteId());
+            institute.setInstituteName(updatedInstitute.getInstituteName());
+            institute.setInstituteDescription(updatedInstitute.getInstituteDescription());
+            institute.setInstituteAddress(updatedInstitute.getInstituteAddress());
+            institute.setMobile(updatedInstitute.getMobile());
+            institute.setEmail(updatedInstitute.getEmail());
+            institute.setImageUrl(updatedInstitute.getImageUrl());
+            instituteRepository.save(institute);
+            return "Institute edited";
+        }
+        return "Institute not found";
     }
-    return "Institute not found";
-}
 
     public String deleteInstitute(Integer id){
         Optional<InstituteModel> institutemodel= instituteRepository.findByInstituteId(id);

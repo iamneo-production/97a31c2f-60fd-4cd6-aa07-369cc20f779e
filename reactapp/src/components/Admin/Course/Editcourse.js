@@ -47,6 +47,7 @@ function Editcourse(props) {
 
   const fetchData = async () => {
     const data = await getCourses();
+    console.log(data);
   }
   useEffect(() => {
     async function fetchCourse() {
@@ -89,25 +90,26 @@ function Editcourse(props) {
             <div className="admin-popup-overlay">
 
             </div>
-            <div className="admin-institute-popup">
+            <div className="admin-course-popup">
               <h1>Are you sure to edit the data ?</h1>
               <button
+                className="confirm-button"
                 type="submit"
                 onClick={(e) => {
                   handleClick(e);
                   setPopup(false);
                 }}
               >
-                confirm edit
+                Confirm Edit
               </button>
-              <br />
               <button
+                className="cancel-button"
                 type="submit"
                 onClick={() => {
                   setPopup(false);
                 }}
               >
-                cancel
+                Cancel
               </button>
             </div>
           </div>
