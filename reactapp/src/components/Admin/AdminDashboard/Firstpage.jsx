@@ -21,11 +21,11 @@ const Navpage = () => {
                     </div>
                     <div className='first'>
                         <div className="link">
-                        <NavLink id="adminInstitute" to="/admin/dashboard">Institute   &nbsp;  &nbsp;  &nbsp;</NavLink>
+                        <NavLink id="adminInstitute" to="/admin/dashboard">Institutes   &nbsp;  &nbsp;  &nbsp;</NavLink>
                         </div>
 
                         <div className="link">
-                            <Link id="adminCourse" to="/admin/viewCourse">Course   &nbsp;  &nbsp;  &nbsp;</Link>
+                            <Link id="adminCourse" to="/admin/viewCourse">Courses   &nbsp;  &nbsp;  &nbsp;</Link>
                         </div>
 
                         <div className="link">
@@ -42,7 +42,7 @@ const Navpage = () => {
                 </div>
 
                 <div className='txt'>
-                    <p>WELCOME TO PG AdMISSION PORTAL </p>
+                    <p>WELCOME TO PG ADMISSION PORTAL </p>
                     <h4>Bright Future Ahead </h4>
                 </div>
                 <div className='last'>

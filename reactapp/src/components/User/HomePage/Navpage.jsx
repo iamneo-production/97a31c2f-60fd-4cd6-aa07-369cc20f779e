@@ -38,7 +38,7 @@ const Navpage = () => {
                 </div>
 
                 <div className='txt'>
-                    <p>WELCOME TO PG AdMISSION PORTAL </p>
+                    <p>WELCOME TO PG ADMISSION PORTAL </p>
                     <h4>Bright Future Ahead </h4>
                 </div>
                 <div className='last'>
