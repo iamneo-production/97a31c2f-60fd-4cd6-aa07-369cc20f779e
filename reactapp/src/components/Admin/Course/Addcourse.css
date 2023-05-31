@@ -59,7 +59,7 @@
 
 
 .admin-course-popup .cancel-button {
-  background-color:#E62020;
+  background-color: #E62020;
   color: #fff;
 }
 
@@ -179,5 +179,35 @@
 
   transform: translateY(-5px);
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-  
+
+}
+
+@media (max-width: 768px) {
+  .head-container {
+    font-size: 1.6rem;
+  }
+
+  .form-group label {
+    font-size: 1rem;
+  }
+
+  .form-group input[type="text"],
+  .form-group textarea {
+    font-size: 1rem;
+  }
+
+  .button-container {
+    justify-content: center;
+    margin-top: 30px;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    padding: 6px 12px;
+    font-size: 0.6rem;
+  }
+
+  .btn-primary {
+    margin-right: 10px;
+  }
 }
