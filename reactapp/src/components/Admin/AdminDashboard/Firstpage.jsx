@@ -1,6 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, Link } from "react-router-dom";
 import { store } from "../../../store";
 import './Firstpage.css'
 import { AdminGuard } from "../../../AuthGuard/AdminGuard"
@@ -13,7 +12,6 @@ const Navpage = () => {
 
     return (
         <AdminGuard>
-
             <div className="nv" data-testid="user_navbar">
                 <div className='top'>
                     <div>
@@ -33,7 +31,7 @@ const Navpage = () => {
                         </div>
 
                         <div className="link">
-                            <Link to="/FeedBack">FeedBack</Link>
+                            <Link to="/admin/FeedBack">FeedBack</Link>
                         </div>
                     </div>
                     <div className="out">
