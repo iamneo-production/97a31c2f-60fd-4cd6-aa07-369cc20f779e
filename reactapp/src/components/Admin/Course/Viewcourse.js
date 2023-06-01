@@ -96,7 +96,7 @@ function Viewcourse() {
                 });
               }}
             >
-              confirm delete
+              Confirm Delete
             </button>
             <button
               className="cancel-button"
@@ -108,7 +108,7 @@ function Viewcourse() {
                 });
               }}
             >
-              cancel
+              Cancel
             </button>
           </div>
         </div>
@@ -117,7 +117,7 @@ function Viewcourse() {
         <input
           className="search-input"
           type="text"
-          placeholder='Search course by name or ID'
+          placeholder='Search course by Name or Id'
           value={searchTerm}
           onChange={(event) => setSearchTerm(event.target.value)}
           data-testid="search"

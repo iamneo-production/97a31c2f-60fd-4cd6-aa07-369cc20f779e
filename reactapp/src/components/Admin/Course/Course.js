@@ -3,8 +3,6 @@ import "../Course/Addcourse.css";
 import { useNavigate, Link } from "react-router-dom";
 import { addCourse, getCourses } from "../../../api/courseApi.js";
 import NavBar from "../Navbar/Navbar.js";
-import { AdminGuard } from "../../../AuthGuard/AdminGuard"
-
 
 const Course = () => {
   const [courseId, setCourseId] = useState("");
@@ -41,6 +39,7 @@ const Course = () => {
 
   const fetchData = async () => {
     const data = await getCourses();
+    console.log(data);
   }
 
 
@@ -88,7 +87,7 @@ const Course = () => {
                   setPopup(false);
                 }}
               >
-                confirm add
+                Confirm Add
               </button>
               <button
                 className="cancel-button"
@@ -97,7 +96,7 @@ const Course = () => {
                   setPopup(false);
                 }}
               >
-                cancel
+                Cancel
               </button>
             </div>
           </div>

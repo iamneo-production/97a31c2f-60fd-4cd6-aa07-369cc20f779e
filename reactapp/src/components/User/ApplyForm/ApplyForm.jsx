@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link, useParams, NavLink } from "react-router-dom";
 import "./ApplyForm.css";
 import { useNavigate } from "react-router";
-import { UserGuard } from "../../../AuthGuard/UserGuard";
 import { store } from "../../../store";
 import { baseUrl } from "../../../api/authService";
 
@@ -56,13 +55,7 @@ function ApplyForm() {
   }
   function handleSubmit(e) {
     e.preventDefault();
-    postdata()
-      .then(() => {
-        console.log("success");
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+   
 
     if (
       !inputData.firstName ||
@@ -84,6 +77,13 @@ function ApplyForm() {
       alert("All fields are Mandatory");
     } else {
       setFlag(true);
+      postdata()
+      .then(() => {
+        console.log("success");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
       navigate("/Enrolledcourse");
     }
   }

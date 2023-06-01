@@ -1,6 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, Link } from "react-router-dom";
 import { store } from "../../../store";
 import './Firstpage.css'
 import { AdminGuard } from "../../../AuthGuard/AdminGuard"
@@ -13,7 +12,6 @@ const Navpage = () => {
 
     return (
         <AdminGuard>
-
             <div className="nv" data-testid="user_navbar">
                 <div className='top'>
                     <div>
@@ -21,11 +19,11 @@ const Navpage = () => {
                     </div>
                     <div className='first'>
                         <div className="link">
-                        <NavLink id="adminInstitute" to="/admin/dashboard">Institute   &nbsp;  &nbsp;  &nbsp;</NavLink>
+                        <NavLink id="adminInstitute" to="/admin/dashboard">Institutes   &nbsp;  &nbsp;  &nbsp;</NavLink>
                         </div>
 
                         <div className="link">
-                            <Link id="adminCourse" to="/admin/viewCourse">Course   &nbsp;  &nbsp;  &nbsp;</Link>
+                            <Link id="adminCourse" to="/admin/viewCourse">Courses   &nbsp;  &nbsp;  &nbsp;</Link>
                         </div>
 
                         <div className="link">
@@ -33,7 +31,7 @@ const Navpage = () => {
                         </div>
 
                         <div className="link">
-                            <Link to="/FeedBack">FeedBack</Link>
+                            <Link to="/admin/FeedBack">FeedBack</Link>
                         </div>
                     </div>
                     <div className="out">
@@ -42,7 +40,7 @@ const Navpage = () => {
                 </div>
 
                 <div className='txt'>
-                    <p>WELCOME TO PG AdMISSION PORTAL </p>
+                    <p>WELCOME TO PG ADMISSION PORTAL </p>
                     <h4>Bright Future Ahead </h4>
                 </div>
                 <div className='last'>

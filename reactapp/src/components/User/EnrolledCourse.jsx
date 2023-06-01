@@ -4,15 +4,11 @@ import { store } from '../../store';
 import { useNavigate, Link, NavLink } from 'react-router-dom';
 import { getCourses } from '../../api/courseApi';
 import CourseService from "../.././api/CourseService"
-import { UserGuard } from '../../AuthGuard/UserGuard';
 
 const EnrolledCourse = () => {
     const navigate = useNavigate();
     const [courses, setCourses] = useState([])
     const { auth } = store.getState()
-    const handleClick = () => {
-        navigate('/EnrolledCourse');
-    }
 
     const handleLogout = () => {
         store.dispatch({ type: 'LOGOUT' })
@@ -64,8 +60,8 @@ const EnrolledCourse = () => {
                     </NavLink>
                 </div>
                 <div className="user-navlinks-container">
-                    <NavLink to="/HomePage">Institute</NavLink>
-                    <NavLink to="/Enrolledcourse">Enrolledcourse</NavLink>
+                    <NavLink to="/HomePage">Institutes</NavLink>
+                    <NavLink to="/Enrolledcourse">EnrolledCourses</NavLink>
                     <NavLink to="/FeedBack">FeedBack</NavLink>
                 </div>
                 <button data-testid="logout" id ="logout" name='logout' onClick={handleLogout} >Logout</button>
@@ -82,7 +78,7 @@ const EnrolledCourse = () => {
                 <div class="enrolled-courses">
                     {courses && courses.length > 0 ? (
                         courses.map((course) => (
-                            <div class="enrolled-course">
+                            <div key={course.courseId} class="enrolled-course">
                                 <p>Course id: {course.courseId}</p>
                                 <p>Course Name: {course.courseName}</p>
                                 <p>Course Duration: {course.courseDuration}</p>
@@ -95,12 +91,7 @@ const EnrolledCourse = () => {
                     )}
                 </div>
             </div>
-
-
-
-
         </>
-
     );
 }
 export default EnrolledCourse;

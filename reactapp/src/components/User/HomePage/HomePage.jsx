@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { NavLink } from "react-router-dom";
 import { store } from "../../../store";
-import { UserGuard } from "../../../AuthGuard/UserGuard";
 import "./HomePage.css";
 import { baseUrl } from "../../../api/authService";
 
@@ -64,8 +63,8 @@ const HomePage = () => {
                     </NavLink>
                 </div>
                 <div className="user-navlinks-container">
-                    <NavLink to="/Enrolledcourse">Enrolledcourse</NavLink>
-                    <NavLink to="/HomePage">Institute</NavLink>
+                    <NavLink to="/Enrolledcourse">EnrolledCourses</NavLink>
+                    <NavLink to="/HomePage">Institutes</NavLink>
                     <NavLink to="/FeedBack">FeedBack</NavLink>
                 </div>
                 <button data-testid="logout" name='logout' onClick={handleLogout} >Logout</button>
