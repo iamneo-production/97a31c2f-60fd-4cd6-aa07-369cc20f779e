@@ -196,7 +196,7 @@ const AdminStudent1 = () => {
                   });
                 }}
               >
-                confirm delete
+                Confirm Delete
               </button>
               <button
                 className="admin-student-cancel-btn"
@@ -457,7 +457,7 @@ export const StudentForm = ({ type }) => {
                       });
                   }}
                 >
-                  confirm add
+                  Confirm Add
                 </button>
               ) : (
                 <button
@@ -473,7 +473,7 @@ export const StudentForm = ({ type }) => {
                       });
                   }}
                 >
-                  confirm edit
+                  Confirm Edit
                 </button>
               )}
               <button
@@ -483,7 +483,7 @@ export const StudentForm = ({ type }) => {
                   setPopup(false);
                 }}
               >
-                cancel
+                Cancel
               </button>
             </div>
           </div>
