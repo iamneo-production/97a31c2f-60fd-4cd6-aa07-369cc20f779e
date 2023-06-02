@@ -102,9 +102,17 @@ const Course = () => {
           </div>
         )
       }
-
+      <button
+        className="admin-course-back-to-home"
+        type="submit"
+        onClick={() => {
+          navigate("/admin/dashboard");
+        }}
+      >
+        Back to Home
+      </button>
       <div
-      
+
         className='course'>
         <h2
           className="head-container">

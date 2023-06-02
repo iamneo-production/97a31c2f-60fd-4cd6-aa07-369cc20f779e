@@ -88,7 +88,8 @@ const Review = () => {
                 className="user-review-confirm-btn"
                 type="submit"
                 onClick={(e) => {
-                  handleSubmit(e);
+                  handleSubmit(e).then(()=> {console.log("hello this is safeena")})
+                  .catch(error=>{console.log(error)});
                   setUserPopup(false);
                   navigate('/Navpage');
                 }}
