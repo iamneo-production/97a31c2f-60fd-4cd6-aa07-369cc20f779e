@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../Navbar/Navbar";
 import { store } from "../../../store";
-import { AdminGuard } from "../../../AuthGuard/AdminGuard";
 import { Navigate } from "react-router";
 import { useNavigate, useParams, NavLink } from "react-router-dom";
 import { baseUrl } from "../../../api/authService";
