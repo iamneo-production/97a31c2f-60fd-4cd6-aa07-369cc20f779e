@@ -9,12 +9,12 @@ import java.util.*;
 import javax.lang.model.type.NullType;
 
 @Service
-public class reviewService {
+public class ReviewService {
 	
 	@Autowired
-	private reviewRepository repo;
+	private ReviewRepository repo;
 	
-	public reviewModel addTask(reviewModel mod) {
+	public ReviewModel addTask(ReviewModel mod) {
 		try {
 			return repo.save(mod);
 		} catch (Exception e) {
@@ -22,7 +22,7 @@ public class reviewService {
 		}	
 	}
 	
-	public List<reviewModel> getTask() {
+	public List<ReviewModel> getTask() {
 		return repo.findAll();
 	}
 

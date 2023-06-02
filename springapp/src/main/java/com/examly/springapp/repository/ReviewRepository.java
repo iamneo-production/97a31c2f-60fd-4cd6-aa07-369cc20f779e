@@ -10,7 +10,7 @@ import java.util.*;
 
 
 @Repository
-public interface reviewRepository extends JpaRepository<reviewModel, String> {
-    List<reviewModel> findAll(); 
+public interface ReviewRepository extends JpaRepository<ReviewModel, String> {
+    List<ReviewModel> findAll(); 
 
 }

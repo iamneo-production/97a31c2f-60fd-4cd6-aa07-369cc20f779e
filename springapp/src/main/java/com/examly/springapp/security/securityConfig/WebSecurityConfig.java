@@ -60,7 +60,7 @@ public class WebSecurityConfig {
 			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 			.authorizeHttpRequests().antMatchers("/user/login/**","/user/signup/**","/admin/signup/**","/admin/login/**").permitAll()
 
-			.antMatchers("/admin/addInstitute/**","/admin/editInstitute/*","/admin/viewInstitutes","/user/studentForm/**","/admin/viewStudent","/admin/editStudent/*","/admin/addStudent/**","/admin/deleteStudent/*","/user/addAdmission/**","/user/deleteAdmission/*","/admin/viewCourse","/api/review/**","api/review").permitAll()
+			.antMatchers("/admin/addInstitute/**","/admin/editInstitute/*","/admin/viewInstitutes","/user/studentForm/**","/admin/viewStudent","/admin/editStudent/*","/admin/addStudent/**","/admin/deleteStudent/*","/user/addAdmission/**","/user/deleteAdmission/*","/admin/viewCourse","/user/addFeedback/**").permitAll()
 
 			.anyRequest().authenticated();
 
