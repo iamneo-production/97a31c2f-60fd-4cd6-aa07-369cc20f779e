@@ -142,7 +142,7 @@ function ApplyForm() {
                   setUserPopup(false);
                 }}
               >
-                confirm enroll
+                Confirm Enroll
               </button>
               <button
                 className="user-applyform-cancel-btn"
@@ -151,7 +151,7 @@ function ApplyForm() {
                   setUserPopup(false);
                 }}
               >
-                cancel
+                Cancel
               </button>
             </div>
           </div>
@@ -252,10 +252,6 @@ function ApplyForm() {
                   onChange={handledata}
                 />
               </div>
-              {/* <div className="gender">
-                                <label className="form__label" htmlFor="gender">Gender </label>
-                                <input type="text" name="" id="gender" className="form__input" placeholder="Enter male or female" value={inputData.gender} onChange={handledata} />
-                            </div> */}
               <div className="emailId">
                 <label className="form__label" htmlFor="emailId">
                   Email{" "}
