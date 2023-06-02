@@ -359,26 +359,49 @@
   resize: none;
   min-height: 120px;
 }
+.admin-institute-btn-container{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 40px;
+}
 
-.admin-form-submit-button {
+
+
+.admin-form-submit-button,
+.admin-btn-secondary {
+
   padding: 15px 25px;
   border: none;
   border-radius: 50px;
-  /* font-size: 1.1rem; */
+  font-size: 1.1rem;
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 1px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
-  background-color: #2A7230;
-  color: #fff;
-  /* margin-right: 20px; */
-  margin-left: 70%;
+
 }
 
-.admin-form-submit-button:hover {
+
+.admin-form-submit-button{
+  background-color: #2A7230;
+  color: #fff;
+  margin-right: 20px;
+}
+
+.admin-btn-secondary{
+  background-color: #fff;
+  color: #2A7230;
+  border: 2px solid #2A7230;
+
+}
+.admin-form-submit-button:hover,
+.admin-btn-secondary:hover {
+
   transform: translateY(-5px);
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+
 }
 
 @media (max-width: 768px) {

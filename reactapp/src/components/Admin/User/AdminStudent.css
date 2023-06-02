@@ -205,6 +205,7 @@
 
 /* add student btn */
 
+
 .admin-add-student-button {
   position: fixed;
   bottom: 20px;
@@ -374,7 +375,17 @@
   margin-bottom: 20px;
 }
 
-.add-academy-btn {
+.admin-student-btn-container{
+  margin-left:70%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.add-academy-btn,
+.admin-btn-secondary {
+
   padding: 15px 25px;
   border: none;
   border-radius: 50px;
@@ -384,12 +395,22 @@
   letter-spacing: 1px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
+
+} 
+.add-academy-btn{
   background-color: #2A7230;
   color: #fff;
-  margin-top: 20px;
-  margin-left: 80%;
+  margin-right: 20px;
+
 }
 
+.admin-btn-secondary{
+  background-color: #fff;
+  color: #2A7230;
+  border: 2px solid #2A7230;
+
+}
+.add-academy-btn:hover,
 .add-academy-btn:hover {
   background-color: #3e8e41;
   transform: translateY(-5px);

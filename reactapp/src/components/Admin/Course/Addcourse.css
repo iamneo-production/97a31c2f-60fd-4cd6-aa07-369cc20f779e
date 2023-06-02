@@ -68,6 +68,27 @@
   transform: scale(1.05);
 }
 
+/* Back to home css */
+
+.admin-course-back-to-home {
+  margin-left: 5px;
+  background-color: #fff;
+  border: 2px solid #2A7230;
+  color: #2A7230;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  margin-top: 20px;
+}
+
+.admin-course-back-to-home:hover {
+  background-color: #2A7230;
+  color: #fff;
+}
+
 .course {
 
   max-width: 800px;
