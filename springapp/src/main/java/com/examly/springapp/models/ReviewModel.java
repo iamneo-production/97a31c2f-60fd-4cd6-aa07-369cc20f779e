@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name = "Review")
-public class reviewModel {
+public class ReviewModel {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,7 +29,7 @@ public class reviewModel {
 	@Column
 	private String name;
 	@Column
-	private String no;
+	private String number;
 	@Column
 	private String email;
 	@Column

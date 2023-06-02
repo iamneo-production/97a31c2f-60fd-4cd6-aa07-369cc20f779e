@@ -5,7 +5,7 @@ body {
     width: 100%;
 }
 
-.top {
+.top1 {
     color: aliceblue;
     display: flex;
     justify-content: space-between;
@@ -16,28 +16,87 @@ body {
     font-size: 1rem;
 }
 
-.nv h2 {
+.anime {
+    color: white;
     font-size: 2rem;
-    color: bisque;
-    font-weight: bolder;
-
-
+    font-weight: bold;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    text-align: center;
+    animation-name: disc;
+    animation-iteration-count: infinite;
+    animation-duration: 10s;
+    animation-play-state: running;
 }
 
-.first {
+@keyframes disc {
+    0% {
+        color: skyblue
+    }
+
+    10% {
+        color: lightsalmon
+    }
+
+    20% {
+        color: aquamarine
+    }
+
+    30% {
+        color: tomato
+    }
+
+    40% {
+        color: lightseagreen
+    }
+
+    50% {
+        color: hotpink
+    }
+
+    60% {
+        color: lightgreen
+    }
+
+    70% {
+        color: lightskyblue
+    }
+
+    80% {
+        color: lightcoral
+    }
+
+    90% {
+        color: lime
+    }
+
+    100% {
+        color: lightpink
+    }
+}
+
+
+.nv1 h2 {
+    font-size: 2rem;
+    color:azure;
+    font-weight: bolder;
+}
+
+.first1 {
+    color: white;
     display: flex;
     justify-content: space-equally;
     align-items: center;
+    font-size: 1.5rem;
 }
 
-.link:hover {
+.link1:hover {
     font-weight: bold;
     font-size: 2rem;
-    color: lavender
+    color: lightpink;
 }
 
 .out {
-    color: lavenderblush;
+    color: white;
     font-size: 2rem;
     font-weight: bold;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
@@ -95,28 +154,38 @@ body {
     }
 }
 
-.nv {
+.nv1 {
     height: 100vh;
     width: 100%;
-    background-image: url(img4.jpg);
+    background-image: url(hat1.jpeg.jpg);
+    opacity: 1;
     background-size: cover;
     background-repeat: no-repeat;
     animation-name: animate;
     animation-direction: alternate-reverse;
-    animation-duration: 15s;
+    animation-duration: 10s;
     animation-fill-mode: forwards;
     animation-iteration-count: infinite;
     animation-play-state: running;
     animation-timing-function: ease-in-out;
 }
+@keyframes animate{
+    0%{
+        background-image: url(hat1.jpeg.jpg);
+    }
+    20%{
+        background-image: url(img4.jpg);
+    }
+}
 
 
 
-.txt p {
-    margin-top: 160px;
-    color: antiquewhite;
+
+.txt1 p {
+    margin-top: 200px;
+    color: azure;
     text-align: center;
-    margin-left: 12%;
+    margin-left: 0;
     font-style: italic;
     font-size: 3rem;
     font-weight: bolder;
@@ -126,9 +195,9 @@ body {
 
 }
 
-.txt h2 {
-    color: cornsilk;
-    margin-left: 12%;
+.txt1 h2 {
+    color: white;
+    margin-left: 0;
     text-align: center;
     font-style: oblique;
     font-size: 2.8rem;
@@ -138,16 +207,16 @@ body {
     text-decoration: none;
 }
 
-.txt h4 {
+.txt1 h4 {
     font-size: 2.1rem;
-    color: aliceblue;
-    margin-left: 12%;
+    color: skyblue;
+    margin-left: 0%;
     text-align: center;
     font-family: cursive;
 }
 
 .addon h1 {
-    color: lightcyan;
+    color: white;
     padding-top: 3%;
     margin-left: 7%;
     font-size: 2rem;
@@ -157,7 +226,7 @@ body {
 }
 
 .addon p {
-    color: palegoldenrod;
+    color: whitesmoke;
     font-weight: lighter;
     font-size: 1.7rem;
     margin-left: 9%;
@@ -165,16 +234,16 @@ body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-.last h1 {
-    color: blanchedalmond;
-    padding-top: 3%;
-    margin-left: 7%;
-    font-size: 3rem;
+.last1 h1 {
+    color: lightpink;
+    padding-top: 7%;
+    text-align: center;
+    font-size: 2rem;
     font-family: cursive;
     font-weight: bolder;
 }
 
-span::before {
+.last1 span::before {
     content: "BUILD A BETTER FUTURE!!!";
     animation-name: line;
     animation-direction: alternate-reverse;
