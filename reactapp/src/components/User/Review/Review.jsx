@@ -29,7 +29,7 @@ const Review = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    senddata();
+    senddata().then((data)=>console.log(data))
     console.log(`Name: ${name}\nMobile: ${mobile}\nEmail: ${email}\nComments: ${comments}`);
   };
 
