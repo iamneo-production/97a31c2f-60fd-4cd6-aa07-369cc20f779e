@@ -141,10 +141,6 @@ const AdminStudent1 = () => {
     }
   }
 
-  // const handleAdd = () => {
-  //   navigate("/admin/addStudent");
-  // };
-
   const handleDelete = async (id) => {
     setPopup({ state: true, deleteId: id });
   };
