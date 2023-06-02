@@ -27,12 +27,17 @@ const Review = () => {
     navigate("/login");
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    senddata().then((data)=>console.log(data))
-    console.log(`Name: ${name}\nMobile: ${mobile}\nEmail: ${email}\nComments: ${comments}`);
-  };
-
+    const handleSubmit = async (event) => {
+      event.preventDefault();
+      try {
+        const data = await senddata();
+        console.log(data);
+      } catch (error) {
+        console.error(error);
+      }
+      console.log(`Name: ${name}\nMobile: ${mobile}\nEmail: ${email}\nComments: ${comments}`);
+    };
+   
 
   const handlecancel = () => {
 
