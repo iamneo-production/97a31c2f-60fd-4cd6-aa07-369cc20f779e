@@ -139,6 +139,7 @@ const AdminStudent1 = () => {
       console.error("Error fetching course data:", error);
     }
   }
+
   const handleDelete = async (id) => {
     setPopup({ state: true, deleteId: id });
   };
@@ -312,12 +313,21 @@ export const StudentForm = ({ type }) => {
   const [formData, setFormData] = useState(student);
   const navigate = useNavigate();
   const [popup, setPopup] = useState(false);
+  const [course, setCourse] = useState([]);
+  const [coursePopup, setCoursePopup] = useState(false);
 
   const { id } = useParams();
   useEffect(() => {
     fetchData()
       .then((data) => {
         console.log("fetched student data success ", data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+    fetchCourse()
+      .then((data) => {
+        console.log("fetched course data success ", data);
       })
       .catch((error) => {
         console.error(error);
@@ -341,6 +351,18 @@ export const StudentForm = ({ type }) => {
       setFormData(editData);
     }
   };
+
+  const fetchCourse = async () => {
+    const response = await fetch(`${baseUrl}/admin/viewCourse`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${auth.token}`,
+        "Content-type": "application/json",
+      },
+    });
+    const data = await response.json();
+    setCourse(data);
+  }
 
   const handleInputChange = (e, key) => {
     const currentData = {
@@ -390,6 +412,24 @@ export const StudentForm = ({ type }) => {
   return (
     <>
       <Navbar />
+      {
+        coursePopup && (
+          <div className="admin-popup-body">
+            <div className="admin-popup-overlay">
+
+            </div>
+            <div className="admin-student-popup">
+              {course.map((eachCourse) => {
+                return (
+                  <div onClick={() => { setFormData({ ...formData, courseId: eachCourse.courseId }); setCoursePopup(false); }}>
+                    <h1>{eachCourse.courseId} : {eachCourse.courseName}</h1>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+        )
+      }
       {
         popup && (
           <div className="admin-popup-body">
@@ -474,7 +514,6 @@ export const StudentForm = ({ type }) => {
                 className="form__input"
                 type="text"
                 id="firstName"
-               
                 name="studentName"
                 placeholder="Enter Your First Name"
                 value={formData.firstName}
@@ -656,8 +695,10 @@ export const StudentForm = ({ type }) => {
                 name="courseId"
                 className="form__input"
                 placeholder="Enter Your Course Id"
+                autoComplete="off"
                 value={formData.courseId}
-                onChange={(e) => handleInputChange(e, "courseId")}
+                onClick={() => { setCoursePopup(true) }}
+              // onChange={(e) => handleInputChange(e, "courseId")}
               />
             </div>
             <div className="address-container">
