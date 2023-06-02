@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, NavLink } from "react-router-dom";
 import { store } from "../../../store";
 import { useNavigate } from "react-router";
+import { baseUrl } from "../../../api/authService";
 import './Review.css';
 
 let auth = "";
@@ -28,6 +29,7 @@ const Review = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    senddata();
     console.log(`Name: ${name}\nMobile: ${mobile}\nEmail: ${email}\nComments: ${comments}`);
   };
 
@@ -36,8 +38,24 @@ const Review = () => {
 
     navigate("/HomePage")
   }
+  const senddata = async () => {
+    await fetch(`${baseUrl}/user/addFeedback`, {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${auth.token}`,
+        "Content-type": "application/json",
+      },
+      body:JSON.stringify({
+        name:name,number:mobile,email:email,comments:comments
+      })
+
+    });
+  }
+    
+  
 
   const navigate = useNavigate();
+
   return (
     <>
       <nav className="user-nav-container">
@@ -64,9 +82,10 @@ const Review = () => {
               <button
                 className="user-review-confirm-btn"
                 type="submit"
-                onClick={() => {
-                  handlecancel();
+                onClick={(e) => {
+                  handleSubmit(e);
                   setUserPopup(false);
+                  navigate('/Navpage');
                 }}
               >
                 confirm submit
@@ -93,7 +112,7 @@ const Review = () => {
         <div className='user-review-headtxt'>
           Your Feedback Is Most Important For Us!!
         </div>
-        <form onSubmit={handleSubmit} className="user-review-form-container">
+        <form  className="user-review-form-container">
           <div className='reviewname'>
             <label className='reviewheading' htmlFor="name">Name:</label>
             <input className='reviewinput'
