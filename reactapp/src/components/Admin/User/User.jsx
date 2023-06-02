@@ -208,7 +208,7 @@ const AdminStudent1 = () => {
                   });
                 }}
               >
-                cancel
+                Cancel
               </button>
             </div>
           </div>
