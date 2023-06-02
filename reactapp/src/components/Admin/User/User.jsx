@@ -421,7 +421,7 @@ export const StudentForm = ({ type }) => {
             <div className="admin-student-popup">
               {course.map((eachCourse) => {
                 return (
-                  <div onClick={() => { setFormData({ ...formData, courseId: eachCourse.courseId }); setCoursePopup(false); }}>
+                  <div key = {eachCourse.courseId} onClick={() => { setFormData({ ...formData, courseId: eachCourse.courseId }); setCoursePopup(false); }}>
                     <h1>{eachCourse.courseId} : {eachCourse.courseName}</h1>
                   </div>
                 )
