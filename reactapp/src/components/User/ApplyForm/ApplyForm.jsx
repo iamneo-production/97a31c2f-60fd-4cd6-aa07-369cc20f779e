@@ -142,7 +142,7 @@ function ApplyForm() {
                   setUserPopup(false);
                 }}
               >
-                confirm enroll
+                Confirm Enroll
               </button>
               <button
                 className="user-applyform-cancel-btn"

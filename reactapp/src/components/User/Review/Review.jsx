@@ -69,7 +69,7 @@ const Review = () => {
                   setUserPopup(false);
                 }}
               >
-                confirm submit
+                Confirm Submit
               </button>
               <button
                 className="user-review-cancel-btn"
@@ -78,7 +78,7 @@ const Review = () => {
                   setUserPopup(false);
                 }}
               >
-                cancel
+                Cancel
               </button>
             </div>
           </div>
