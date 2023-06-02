@@ -47,6 +47,7 @@ function Editcourse(props) {
 
   const fetchData = async () => {
     const data = await getCourses();
+    console.log(data);
   }
   useEffect(() => {
     async function fetchCourse() {
@@ -99,7 +100,7 @@ function Editcourse(props) {
                   setPopup(false);
                 }}
               >
-                confirm edit
+                Confirm Edit
               </button>
               <button
                 className="cancel-button"
@@ -108,7 +109,7 @@ function Editcourse(props) {
                   setPopup(false);
                 }}
               >
-                cancel
+                Cancel
               </button>
             </div>
           </div>

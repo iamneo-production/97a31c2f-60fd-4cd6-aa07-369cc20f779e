@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useNavigate } from "react-router";
 import { store } from "../../../store";
-import { UserGuard } from "../../../AuthGuard/UserGuard";
 import "./UserCourse.css";
 import { baseUrl } from "../../../api/authService";
 
@@ -44,7 +43,7 @@ const UserCourse = () => {
   };
 
   return (
-    <UserGuard>
+    <>
       <nav className="user-nav-container">
         <div>
           <NavLink to="/Navpage" >
@@ -63,7 +62,7 @@ const UserCourse = () => {
           <h5>Back To Home</h5>
         </Link>
       </div>
-      <div className="usercoursecontainer">
+      <div id ="userCourseGrid1" className="usercoursecontainer">
         <div className="user-headtxt">
           Offered Courses!
           It's Time To Pick Yours
@@ -82,7 +81,7 @@ const UserCourse = () => {
         </table>
 
         <div className="onesec">
-          {viewdata.map((course) => {
+          {viewdata.map((course,index) => {
             const {
               id,
               courseName,
@@ -99,7 +98,7 @@ const UserCourse = () => {
 
                 <table className="user-usercourse-table">
                   <tbody>
-                    <tr className="row hover">
+                    <tr id={`userCourseGrid` + (index + 1)} className="row hover">
                       <td className="user-usercourse-td">{courseId}</td>
                       <td className="user-usercourse-td">{courseName}</td>
                       <td className="user-usercourse-td">{courseDescription}</td>
@@ -117,7 +116,7 @@ const UserCourse = () => {
           })}
         </div>
       </div>
-    </UserGuard >
+    </>
   );
 };
 

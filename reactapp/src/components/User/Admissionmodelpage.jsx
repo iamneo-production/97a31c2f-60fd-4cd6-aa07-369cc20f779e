@@ -12,10 +12,6 @@ function Admissionmodelpage() {
 
     const [userPopup, setUserPopup] = useState({ state: false, deleteId: null });
 
-    const handleClick = () => {
-        navigate('/EnrolledCourse');
-    }
-
     const handleLogout = () => {
         store.dispatch({ type: 'LOGOUT' })
         navigate('/login');

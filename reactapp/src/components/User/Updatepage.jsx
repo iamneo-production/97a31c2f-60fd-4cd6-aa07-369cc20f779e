@@ -38,6 +38,7 @@ function Updatepage() {
     }
     const fetchstud = async () => {
         const data = await getStudents();
+        console.log(data)
     }
     useEffect(() => {
         console.log(auth)

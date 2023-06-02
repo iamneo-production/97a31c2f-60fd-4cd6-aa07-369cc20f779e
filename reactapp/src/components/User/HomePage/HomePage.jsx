@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { NavLink } from "react-router-dom";
 import { store } from "../../../store";
-import { UserGuard } from "../../../AuthGuard/UserGuard";
 import "./HomePage.css";
 import { baseUrl } from "../../../api/authService";
 
@@ -56,7 +55,7 @@ const HomePage = () => {
   };
 
   return (
-    <UserGuard>
+    <>
       <nav className="user-nav-container">
                 <div>
                     <NavLink to="/Navpage" >
@@ -64,8 +63,8 @@ const HomePage = () => {
                     </NavLink>
                 </div>
                 <div className="user-navlinks-container">
-                    <NavLink to="/Enrolledcourse">Enrolledcourse</NavLink>
-                    <NavLink to="/HomePage">Institute</NavLink>
+                    <NavLink to="/Enrolledcourse">EnrolledCourses</NavLink>
+                    <NavLink to="/HomePage">Institutes</NavLink>
                     <NavLink to="/FeedBack">FeedBack</NavLink>
                 </div>
                 <button data-testid="logout" name='logout' onClick={handleLogout} >Logout</button>
@@ -75,23 +74,25 @@ const HomePage = () => {
           type="text"
           name="search"
           value={search}
+          data-testid="courseName"
           className="searchinp"
           placeholder="Type to Search Institutes"
           onChange={(e) => setSearch(e.target.value)}
         />
-        <srch>
+        <div>
           <button type="button"  className="searchbtn" onClick={() => handlesearch()}>
             Search
           </button>
-        </srch>
+        </div>
       </div>
-      <div className="herosec">
-        {viewdata.map((institute) => {
+      <div id = "userInstituteGrid1" data-testid="instituteName" className="herosec">
+        {viewdata.map((institute,index) => {
           const { instituteId, instituteName, instituteAddress, imageUrl } =
             institute;
           return (
             <div
               className="card"
+              id = {`userInstituteGrid`+(index+1)}
               onClick={() => {
                 handle();
               }}
@@ -104,7 +105,7 @@ const HomePage = () => {
           );
         })}
       </div>
-    </UserGuard>
+    </>
   );
 };
 

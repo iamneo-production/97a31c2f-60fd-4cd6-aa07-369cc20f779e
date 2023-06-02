@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link, NavLink } from "react-router-dom";
 import { store } from "../../../store";
 import { useNavigate } from "react-router";
-import { UserGuard } from "../../../AuthGuard/UserGuard";
 import './Review.css';
 
 let auth = "";
@@ -40,7 +39,7 @@ const Review = () => {
 
   const navigate = useNavigate();
   return (
-    <UserGuard>
+    <>
       <nav className="user-nav-container">
         <div>
           <NavLink to="/Navpage" >
@@ -145,7 +144,7 @@ const Review = () => {
           </div>
         </form>
       </div>
-    </UserGuard>
+    </>
   );
 };
 

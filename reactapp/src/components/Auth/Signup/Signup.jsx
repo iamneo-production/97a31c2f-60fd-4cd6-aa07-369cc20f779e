@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import authService from "../../../api/authService";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import Validation from "./Validation";
 
 const Signup = () => {
@@ -29,6 +29,7 @@ const Signup = () => {
   const [errors, setErrors] = useState(initialState.errors);
   const [loader, setLoader] = useState(false);
   const [redirect, setRedirect] = useState(false);
+  const navigate = useNavigate();
 
   // Event handler for input change
   const handleInputChange = (e) => {
@@ -110,6 +111,7 @@ const Signup = () => {
                 <input
                   type="email"
                   data-testid="email"
+                  id="email"
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
@@ -131,6 +133,7 @@ const Signup = () => {
                 <input
                   type="text"
                   data-testid="username"
+                  id="username"
                   name="username"
                   value={formData.username}
                   onChange={handleInputChange}
@@ -152,6 +155,7 @@ const Signup = () => {
                 <input
                   type="text"
                   data-testid="mobileNumber"
+                  id="mobileNumber"
                   name="mobileNumber"
                   value={formData.mobileNumber}
                   onChange={handleInputChange}
@@ -175,6 +179,7 @@ const Signup = () => {
                 <input
                   type="password"
                   data-testid="password"
+                  id="password"
                   name="password"
                   value={formData.password}
                   onChange={handleInputChange}
@@ -197,6 +202,7 @@ const Signup = () => {
                 <input
                   type="password"
                   data-testid="confirmPassword"
+                  id="confirmPassword"
                   name="confirmPassword"
                   value={formData.confirmPassword}
                   onChange={handleInputChange}
@@ -214,6 +220,8 @@ const Signup = () => {
               <button
                 type="submit"
                 data-testid="submitButton"
+                id="submitButton"
+                onClick={() => setTimeout(() => {navigate("/login")}, 2000)}
                 className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center "
               >
                 sign up

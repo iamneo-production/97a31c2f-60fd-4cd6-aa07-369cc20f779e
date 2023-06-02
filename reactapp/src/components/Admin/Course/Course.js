@@ -3,8 +3,6 @@ import "../Course/Addcourse.css";
 import { useNavigate, Link } from "react-router-dom";
 import { addCourse, getCourses } from "../../../api/courseApi.js";
 import NavBar from "../Navbar/Navbar.js";
-import { AdminGuard } from "../../../AuthGuard/AdminGuard"
-
 
 const Course = () => {
   const [courseId, setCourseId] = useState("");
@@ -41,6 +39,7 @@ const Course = () => {
 
   const fetchData = async () => {
     const data = await getCourses();
+    console.log(data);
   }
 
 
@@ -68,7 +67,7 @@ const Course = () => {
 
   return (
 
-    <AdminGuard>
+    <>
 
       <NavBar />
 
@@ -88,7 +87,7 @@ const Course = () => {
                   setPopup(false);
                 }}
               >
-                confirm add
+                Confirm Add
               </button>
               <button
                 className="cancel-button"
@@ -97,16 +96,15 @@ const Course = () => {
                   setPopup(false);
                 }}
               >
-                cancel
+                Cancel
               </button>
             </div>
           </div>
         )
       }
 
-      {/* <Link to="/admin/viewCourse" className="course-back-to-home">Back To Home</Link> */}
       <div
-        data-testid="addCourse"
+      
         className='course'>
         <h2
           className="head-container">
@@ -146,7 +144,7 @@ const Course = () => {
               placeholder='Enter courseDuration'
               value={courseDuration}
               onChange={(event) => setCourseDuration(event.target.value)}
-              data-testid="courseDuration"
+              data-testid="courseDuriation"
             />
           </div>
           <div className="form-group">
@@ -183,11 +181,12 @@ const Course = () => {
             />
           </div>
           <div
-            class="button-container">
+            className="button-container">
             <button
               className="btn-primary"
               type="submit"
               id="addCourse"
+              data-testid="addCourse"
               onClick={(e) => {
                 handlePop(e)
               }}>
@@ -200,7 +199,7 @@ const Course = () => {
         </form>
       </div>
 
-    </AdminGuard>
+    </>
   );
 };
 
