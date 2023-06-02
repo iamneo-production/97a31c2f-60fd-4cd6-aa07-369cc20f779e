@@ -56,55 +56,57 @@ const HomePage = () => {
 
   return (
     <>
-      <nav className="user-nav-container">
-                <div>
-                    <NavLink to="/Navpage" >
-                      <h2 className="pg-admission-heading">PG Admission</h2>
-                    </NavLink>
-                </div>
-                <div className="user-navlinks-container">
-                    <NavLink to="/Enrolledcourse">EnrolledCourses</NavLink>
-                    <NavLink to="/HomePage">Institutes</NavLink>
-                    <NavLink to="/FeedBack">FeedBack</NavLink>
-                </div>
-                <button data-testid="logout" name='logout' onClick={handleLogout} >Logout</button>
-            </nav>
-      <div className="searchsec">
-        <input
-          type="text"
-          name="search"
-          value={search}
-          data-testid="courseName"
-          className="searchinp"
-          placeholder="Type to Search Institutes"
-          onChange={(e) => setSearch(e.target.value)}
-        />
-        <div>
-          <button type="button"  className="searchbtn" onClick={() => handlesearch()}>
-            Search
-          </button>
+      
+        <nav className="user-nav-container">
+          <div>
+            <NavLink to="/Navpage" >
+              <h2 className="pg-admission-heading">PG Admission</h2>
+            </NavLink>
+          </div>
+          <div className="user-navlinks-container">
+            <NavLink to="/Enrolledcourse">EnrolledCourses</NavLink>
+            <NavLink to="/HomePage">Institutes</NavLink>
+            <NavLink to="/FeedBack">FeedBack</NavLink>
+          </div>
+          <button data-testid="logout" name='logout' onClick={handleLogout} >Logout</button>
+        </nav>
+        <div className="searchsec">
+          <input
+            type="text"
+            name="search"
+            value={search}
+            data-testid="courseName"
+            className="searchinp"
+            placeholder="Type to Search Institutes"
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          <div>
+            <button type="button" className="searchbtn" onClick={() => handlesearch()}>
+              Search
+            </button>
+          </div>
         </div>
-      </div>
-      <div id = "userInstituteGrid1" data-testid="instituteName" className="herosec">
-        {viewdata.map((institute,index) => {
-          const { instituteId, instituteName, instituteAddress, imageUrl } =
-            institute;
-          return (
-            <div
-              className="card"
-              id = {`userInstituteGrid`+(index+1)}
-              onClick={() => {
-                handle();
-              }}
-              key={instituteId}
-            >
-              <img src={imageUrl} alt="img" />
-              <h2>{instituteName}</h2>
-              <h4>Place:{instituteAddress}</h4>
-            </div>
-          );
-        })}
-      </div>
+        <div id="userInstituteGrid1" data-testid="instituteName" className="herosec">
+          {viewdata.map((institute, index) => {
+            const { instituteId, instituteName, instituteAddress, imageUrl } =
+              institute;
+            return (
+              <div
+                className="card"
+                id={`userInstituteGrid` + (index + 1)}
+                onClick={() => {
+                  handle();
+                }}
+                key={instituteId}
+              >
+                <img src={imageUrl} alt="img" />
+                <h2>{instituteName}</h2>
+                <h4>Place:{instituteAddress}</h4>
+              </div>
+            );
+          })}
+        </div>
+      
     </>
   );
 };
