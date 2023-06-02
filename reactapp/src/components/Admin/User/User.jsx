@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../Navbar/Navbar";
 import { store } from "../../../store";
+import { AdminGuard } from "../../../AuthGuard/AdminGuard";
 import { Navigate } from "react-router";
 import { useNavigate, useParams, NavLink } from "react-router-dom";
 import { baseUrl } from "../../../api/authService";
@@ -139,6 +140,11 @@ const AdminStudent1 = () => {
       console.error("Error fetching course data:", error);
     }
   }
+
+  // const handleAdd = () => {
+  //   navigate("/admin/addStudent");
+  // };
+
   const handleDelete = async (id) => {
     setPopup({ state: true, deleteId: id });
   };
@@ -194,7 +200,7 @@ const AdminStudent1 = () => {
                   });
                 }}
               >
-                Confirm Delete
+                confirm delete
               </button>
               <button
                 className="admin-student-cancel-btn"
@@ -206,7 +212,7 @@ const AdminStudent1 = () => {
                   });
                 }}
               >
-                Cancel
+                cancel
               </button>
             </div>
           </div>
@@ -312,12 +318,21 @@ export const StudentForm = ({ type }) => {
   const [formData, setFormData] = useState(student);
   const navigate = useNavigate();
   const [popup, setPopup] = useState(false);
+  const [course, setCourse] = useState([]);
+  const [coursePopup, setCoursePopup] = useState(false);
 
   const { id } = useParams();
   useEffect(() => {
     fetchData()
       .then((data) => {
         console.log("fetched student data success ", data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+    fetchCourse()
+      .then((data) => {
+        console.log("fetched course data success ", data);
       })
       .catch((error) => {
         console.error(error);
@@ -341,6 +356,18 @@ export const StudentForm = ({ type }) => {
       setFormData(editData);
     }
   };
+
+  const fetchCourse = async () => {
+    const response = await fetch(`${baseUrl}/admin/viewCourse`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${auth.token}`,
+        "Content-type": "application/json",
+      },
+    });
+    const data = await response.json();
+    setCourse(data);
+  }
 
   const handleInputChange = (e, key) => {
     const currentData = {
@@ -391,6 +418,24 @@ export const StudentForm = ({ type }) => {
     <>
       <Navbar />
       {
+        coursePopup && (
+          <div className="admin-popup-body">
+            <div className="admin-popup-overlay">
+
+            </div>
+            <div className="admin-student-popup">
+              {course.map((eachCourse) => {
+                return (
+                  <div onClick={() => { setFormData({ ...formData, courseId: eachCourse.courseId }); setCoursePopup(false); }}>
+                    <h1>{eachCourse.courseId} : {eachCourse.courseName}</h1>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+        )
+      }
+      {
         popup && (
           <div className="admin-popup-body">
             <div className="admin-popup-overlay">
@@ -416,7 +461,7 @@ export const StudentForm = ({ type }) => {
                       });
                   }}
                 >
-                  Confirm Add
+                  confirm add
                 </button>
               ) : (
                 <button
@@ -432,7 +477,7 @@ export const StudentForm = ({ type }) => {
                       });
                   }}
                 >
-                  Confirm Edit
+                  confirm edit
                 </button>
               )}
               <button
@@ -442,7 +487,7 @@ export const StudentForm = ({ type }) => {
                   setPopup(false);
                 }}
               >
-                Cancel
+                cancel
               </button>
             </div>
           </div>
@@ -474,7 +519,6 @@ export const StudentForm = ({ type }) => {
                 className="form__input"
                 type="text"
                 id="firstName"
-               
                 name="studentName"
                 placeholder="Enter Your First Name"
                 value={formData.firstName}
@@ -656,8 +700,10 @@ export const StudentForm = ({ type }) => {
                 name="courseId"
                 className="form__input"
                 placeholder="Enter Your Course Id"
+                autoComplete="off"
                 value={formData.courseId}
-                onChange={(e) => handleInputChange(e, "courseId")}
+                onClick={() => { setCoursePopup(true) }}
+              // onChange={(e) => handleInputChange(e, "courseId")}
               />
             </div>
             <div className="address-container">
