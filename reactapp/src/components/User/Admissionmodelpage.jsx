@@ -90,7 +90,7 @@ function Admissionmodelpage() {
                                     });
                                 }}
                             >
-                                confirm delete
+                                Confirm Delete
                             </button>
                             <button
                                 className='user-admissionmodel-cancel-btn'
@@ -102,7 +102,7 @@ function Admissionmodelpage() {
                                     });
                                 }}
                             >
-                                cancel
+                                Cancel
                             </button>
                         </div>
                     </div>
