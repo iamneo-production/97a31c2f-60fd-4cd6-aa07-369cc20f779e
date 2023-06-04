@@ -115,6 +115,15 @@ function Editcourse(props) {
           </div>
         )
       }
+      <button
+        className="admin-course-back-to-home"
+        type="submit"
+        onClick={() => {
+          navigate("/admin/dashboard");
+        }}
+      >
+        Back to Home
+      </button>
       <div className='course'>
         <h1 class="head-container">Edit Course</h1>
         <form>
@@ -187,6 +196,8 @@ function Editcourse(props) {
             />
           </div>
           <div>
+          <div
+            className="button-container">
             <button
               className="btn-primary"
               type="submit"
@@ -200,6 +211,7 @@ function Editcourse(props) {
               className="btn-secondary">
               Cancel
             </Link>
+            </div>
           </div>
         </form>
       </div>
