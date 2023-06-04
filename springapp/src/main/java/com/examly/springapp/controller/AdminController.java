@@ -74,8 +74,8 @@ private String deleteInstitute(@RequestParam("id") Integer instituteId) {
     return adminService.deleteInstitute(instituteId);
 }
 
-    @PutMapping("admin/editInstitute/{instituteId}")
-    private String editInstitute(@PathVariable("instituteId") Integer instituteId, @RequestBody InstituteModel updatedInstitute){
+    @PutMapping("admin/editInstitute")
+    private String editInstitute(@RequestParam("instituteId") Integer instituteId, @RequestBody InstituteModel updatedInstitute){
     return adminService.editInstitute(instituteId, updatedInstitute);
     }
 

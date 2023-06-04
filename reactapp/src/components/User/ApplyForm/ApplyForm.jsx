@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useParams, NavLink } from "react-router-dom";
 import "./ApplyForm.css";
 import { useNavigate } from "react-router";
-import { UserGuard } from "../../../AuthGuard/UserGuard";
 import { store } from "../../../store";
 import { baseUrl } from "../../../api/authService";
 
@@ -14,8 +13,15 @@ store.subscribe(() => {
 function ApplyForm() {
   const navigate = useNavigate();
   const { courseId } = useParams();
+  const [userPopup, setUserPopup] = useState(false);
+
+  const handlePopup = (e) => {
+    e.preventDefault();
+    setUserPopup(true);
+  }
+
   const handlecancel = () => {
-    navigate("/HomePage")
+    navigate("/UserCourse");
   }
   const handleLogout = () => {
     store.dispatch({ type: "LOGOUT" });
@@ -42,9 +48,6 @@ function ApplyForm() {
   };
   const [inputData, setInputData] = useState(data);
   const [flag, setFlag] = useState(false);
-  useEffect(() => {
-    console.log("registered");
-  }, [flag]);
   function handledata(e) {
     console.log(e.target.id);
     setInputData({ ...inputData, [e.target.name]: e.target.value });
@@ -52,13 +55,7 @@ function ApplyForm() {
   }
   function handleSubmit(e) {
     e.preventDefault();
-    postdata()
-      .then(() => {
-        console.log("success");
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+   
 
     if (
       !inputData.firstName ||
@@ -80,6 +77,13 @@ function ApplyForm() {
       alert("All fields are Mandatory");
     } else {
       setFlag(true);
+      postdata()
+      .then(() => {
+        console.log("success");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
       navigate("/Enrolledcourse");
     }
   }
@@ -97,9 +101,8 @@ function ApplyForm() {
       }),
     });
   };
-  
   return (
-    <UserGuard>
+    <>
       <pre>
         {flag ? (
           <h2 className="ui-define">
@@ -110,43 +113,66 @@ function ApplyForm() {
         )}
       </pre>
 
-      <div className="mainbar">
-        <Link to="/Navpage">
-          <h1>PG Admission</h1>
-        </Link>
-        <div className="one">
-          <Link to="/Enrolledcourse">Enrolled course</Link>
+      <nav className="user-nav-container">
+        <div>
+          <NavLink to="/Navpage" >
+            <h2 className="pg-admission-heading">PG Admission</h2>
+          </NavLink>
         </div>
+        <div className="user-navlinks-container">
+          <NavLink to="/Enrolledcourse">Enrolledcourse</NavLink>
+          <NavLink to="/HomePage">Institute</NavLink>
+          <NavLink to="/FeedBack">FeedBack</NavLink>
+        </div>
+        <button data-testid="logout" name='logout' onClick={handleLogout} >Logout</button>
+      </nav>
+      {
+        userPopup && (
+          <div className="user-popup-body noHover">
+            <div className="user-popup-overlay">
 
-        <div className="one1">
-          <Link to="/HomePage">Institute</Link>
-
-        </div>
-        <div className="one">
-          <Link to="/FeedBack">FeedBack</Link>
-        </div>
-        <div className="out">
-          <button data-testid="logout" name="logout" onClick={handleLogout}>
-            Logout
-          </button>
-        </div>
-      </div>
+            </div>
+            <div className="user-applyform-popup">
+              <h1>Are you sure to enroll the data ?</h1>
+              <button
+                className="user-applyform-confirm-btn"
+                type="submit"
+                onClick={(e) => {
+                  handleSubmit(e);
+                  setUserPopup(false);
+                }}
+              >
+                Confirm Enroll
+              </button>
+              <button
+                className="user-applyform-cancel-btn"
+                type="submit"
+                onClick={() => {
+                  setUserPopup(false);
+                }}
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        )
+      }
       <div className="bth">
         <Link to="/HomePage">
           <h5>Back To Home</h5>
         </Link>
       </div>
-      <div className="headtxt">
+      <div className="user-applyform-headtxt">
         Here You Go! Fill Up The Form And Enroll Now
       </div>
 
-      <form className="info" onSubmit={handleSubmit}>
-      
+      <form className="info">
+
         <div className="user-student-form-container">
           <div className="user-student-form">
             <div className="user-form-body">
               <div className="courseId">
-                <label className="form__label" for="courseId">
+                <label className="form__label" htmlFor="courseId">
                   courseId{" "}
                 </label>
                 <input
@@ -158,7 +184,7 @@ function ApplyForm() {
                 />
               </div>
               <div className="studentIdNumber">
-                <label className="form__label" for="studentIdNumber">
+                <label className="form__label" htmlFor="studentIdNumber">
                   studentIdNumber
                 </label>
                 <input
@@ -170,7 +196,7 @@ function ApplyForm() {
                 />
               </div>
               <div className="username">
-                <label className="form__label" for="firstName">
+                <label className="form__label" htmlFor="firstName">
                   First Name{" "}
                 </label>
                 <input
@@ -178,13 +204,14 @@ function ApplyForm() {
                   name="firstName"
                   type="text"
                   id="firstName"
+                  data-testid="studentName"
                   placeholder=" Enter Your First Name"
                   value={inputData.firstName}
                   onChange={handledata}
                 />
               </div>
               <div className="lastname">
-                <label className="form__label" for="lastName">
+                <label className="form__label" htmlFor="lastName">
                   Last Name{" "}
                 </label>
                 <input
@@ -198,7 +225,7 @@ function ApplyForm() {
                 />
               </div>
               <div className="fathername">
-                <label className="form__label" for="fatherName">
+                <label className="form__label" htmlFor="fatherName">
                   Father Name{" "}
                 </label>
                 <input
@@ -212,7 +239,7 @@ function ApplyForm() {
                 />
               </div>
               <div className="mothername">
-                <label className="form__label" for="motherName">
+                <label className="form__label" htmlFor="motherName">
                   Mother Name{" "}
                 </label>
                 <input
@@ -225,18 +252,15 @@ function ApplyForm() {
                   onChange={handledata}
                 />
               </div>
-              {/* <div className="gender">
-                                <label className="form__label" for="gender">Gender </label>
-                                <input type="text" name="" id="gender" className="form__input" placeholder="Enter male or female" value={inputData.gender} onChange={handledata} />
-                            </div> */}
               <div className="emailId">
-                <label className="form__label" for="emailId">
+                <label className="form__label" htmlFor="emailId">
                   Email{" "}
                 </label>
                 <input
                   type="email"
                   name="emailId"
                   id="emailId"
+                  data-testid="emailId"
                   className="form__input"
                   placeholder="Enter Your Email"
                   value={inputData.emailId}
@@ -244,7 +268,7 @@ function ApplyForm() {
                 />
               </div>
               <div className="phoneNumber1">
-                <label className="form__label" for="phoneNumber1">
+                <label className="form__label" htmlFor="phoneNumber1">
                   phonenumber{" "}
                 </label>
                 <input
@@ -252,6 +276,7 @@ function ApplyForm() {
                   name="phoneNumber1"
                   type="text"
                   id="phoneNumber1"
+                  data-testid="mobileNumber"
                   placeholder="Enter your phonenumber"
                   value={inputData.phoneNumber1}
                   onChange={handledata}
@@ -259,7 +284,7 @@ function ApplyForm() {
               </div>
 
               <div className="phoneNumber2">
-                <label className="form__label" for="phoneNumber2">
+                <label className="form__label" htmlFor="phoneNumber2">
                   Alternativenumber{" "}
                 </label>
                 <input
@@ -273,7 +298,7 @@ function ApplyForm() {
                 />
               </div>
               <div className="studentDOB">
-                <label className="form__label" for="studentDOB">
+                <label className="form__label" htmlFor="studentDOB">
                   Age{" "}
                 </label>
                 <input
@@ -287,7 +312,7 @@ function ApplyForm() {
                 />
               </div>
               <div className="sslc">
-                <label className="form__label" for="sslc">
+                <label className="form__label" htmlFor="sslc">
                   sslc{" "}
                 </label>
                 <input
@@ -301,7 +326,7 @@ function ApplyForm() {
                 />
               </div>
               <div className="hsc">
-                <label className="form__label" for="hsc">
+                <label className="form__label" htmlFor="hsc">
                   hsc{" "}
                 </label>
                 <input
@@ -315,7 +340,7 @@ function ApplyForm() {
                 />
               </div>
               <div className="diploma">
-                <label className="form__label" for="diploma">
+                <label className="form__label" htmlFor="diploma">
                   diploma{" "}
                 </label>
                 <input
@@ -331,7 +356,7 @@ function ApplyForm() {
               <div className="user-address-container">
                 <h2>Address information</h2>
                 <div className="user-address">
-                  <label className="form__label" for="houseNumber">
+                  <label className="form__label" htmlFor="houseNumber">
                     HouseNo{" "}
                   </label>
                   <input
@@ -345,7 +370,7 @@ function ApplyForm() {
                   />
                 </div>
                 <div className="user-address">
-                  <label className="form__label" for="streetName">
+                  <label className="form__label" htmlFor="streetName">
                     Street Name{" "}
                   </label>
                   <input
@@ -359,13 +384,14 @@ function ApplyForm() {
                   />
                 </div>
                 <div className="user-address">
-                  <label className="form__label" for="areaname">
+                  <label className="form__label" htmlFor="areaname">
                     AreaName{" "}
                   </label>
                   <input
                     type="text"
                     id="areaName"
                     name="areaName"
+                    data-testid="place"
                     placeholder="Enter the Areaname"
                     className="form__input"
                     value={inputData.areaName}
@@ -373,7 +399,7 @@ function ApplyForm() {
                   />
                 </div>
                 <div className="user-address">
-                  <label className="form__label" for="state">
+                  <label className="form__label" htmlFor="state">
                     State{" "}
                   </label>
                   <input
@@ -387,7 +413,7 @@ function ApplyForm() {
                   />
                 </div>
                 <div className="user-address">
-                  <label className="form__label" for="pincode">
+                  <label className="form__label" htmlFor="pincode">
                     Pincode{" "}
                   </label>
                   <input
@@ -401,7 +427,7 @@ function ApplyForm() {
                   />
                 </div>
                 <div className="user-address">
-                  <label className="form__label" for="nationality">
+                  <label className="form__label" htmlFor="nationality">
                     Nationality{" "}
                   </label>
                   <input
@@ -417,14 +443,14 @@ function ApplyForm() {
               </div>
             </div>
           </div>
-          <div class="user-footer">
-            <button className="user-enroll" type="submit">Enroll now</button>
+          <div className="user-footer">
+            <button className="user-enroll" type="submit" onClick={(e) => { handlePopup(e) }}>Enroll now</button>
             <button className="user-cancel" onClick={handlecancel}>cancel</button>
           </div>
         </div>
       </form>
 
-    </UserGuard>
+    </>
   );
 }
 export default ApplyForm;

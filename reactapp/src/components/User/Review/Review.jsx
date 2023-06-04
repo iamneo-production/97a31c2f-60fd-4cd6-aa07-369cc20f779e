@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { store } from "../../../store";
 import { useNavigate } from "react-router";
-import { UserGuard } from "../../../AuthGuard/UserGuard";
+import { baseUrl } from "../../../api/authService";
 import './Review.css';
 
 let auth = "";
@@ -15,56 +15,110 @@ const Review = () => {
   const [mobile, setMobile] = useState("");
   const [email, setEmail] = useState("");
   const [comments, setComments] = useState("");
+  const [userPopup, setUserPopup] = useState(false);
+
+  const makePopup = (e) => {
+    e.preventDefault();
+    setUserPopup(true);
+  }
 
   const handleLogout = () => {
     store.dispatch({ type: "LOGOUT" });
     navigate("/login");
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(`Name: ${name}\nMobile: ${mobile}\nEmail: ${email}\nComments: ${comments}`);
-  };
-
+    const handleSubmit = async (event) => {
+      event.preventDefault();
+      try {
+        const data = await senddata();
+        console.log(data);
+      } catch (error) {
+        console.error(error);
+      }
+      console.log(`Name: ${name}\nMobile: ${mobile}\nEmail: ${email}\nComments: ${comments}`);
+    };
+   
 
   const handlecancel = () => {
 
     navigate("/HomePage")
   }
+  const senddata = async () => {
+    await fetch(`${baseUrl}/user/addFeedback`, {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${auth.token}`,
+        "Content-type": "application/json",
+      },
+      body:JSON.stringify({
+        name:name,number:mobile,email:email,comments:comments
+      })
+
+    });
+  }
+    
+  
 
   const navigate = useNavigate();
+
   return (
-    <UserGuard>
-      <div className="mainbar">
-        <Link to="/Navpage">
-          <h1>PG Admission</h1>
+    <>
+      <nav className="user-nav-container">
+        <div>
+          <NavLink to="/Navpage" >
+            <h2 className="pg-admission-heading">PG Admission</h2>
+          </NavLink>
+        </div>
+        <div className="user-navlinks-container">
+          <NavLink to="/HomePage">Institute</NavLink>
+          <NavLink to="/FeedBack">FeedBack</NavLink>
+          <NavLink to="/Enrolledcourse">Enrolledcourse</NavLink>
+        </div>
+        <button data-testid="logout" name='logout' onClick={handleLogout} >Logout</button>
+      </nav>
+      {
+        userPopup && (
+          <div className="user-popup-body noHover">
+            <div className="user-popup-overlay">
+
+            </div>
+            <div className="user-review-popup">
+              <h1>Are you sure to add the feedback ?</h1>
+              <button
+                className="user-review-confirm-btn"
+                type="submit"
+                onClick={(e) => {
+                  handleSubmit(e).then(()=> {console.log("hello this is safeena")})
+                  .catch(error=>{console.log(error)});
+                  setUserPopup(false);
+                  navigate('/Navpage');
+                }}
+              >
+                Confirm Submit
+              </button>
+              <button
+                className="user-review-cancel-btn"
+                type="submit"
+                onClick={() => {
+                  setUserPopup(false);
+                }}
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        )
+      }
+      <div className="bth">
+        <Link to="/HomePage">
+          <h5>Back To Home</h5>
         </Link>
-        <div className="one">
-          <Link to="/HomePage">Institute</Link>
-        </div>
-
-        <div className="one1">
-
-          <Link to="/FeedBack">FeedBack</Link>
-        </div>
-        <div className="one">
-
-          <Link to="/Enrolledcourse">Enrolled course</Link>
-        </div>
-        <div className="out">
-          <button data-testid="logout" name="logout" onClick={handleLogout}>
-            Logout
-          </button>
-        </div>
       </div>
-      <div className='bth'>
-        <Link to="/HomePage">Back To Home</Link>
-      </div>
-      <div className='headtxt'>
-        Your Feedback Is Most Important For Us!!
-      </div>
-      <form onSubmit={handleSubmit}>
-        <div className='ffform'>
+      <div className="user-review-form">
+        <div className='user-review-headtxt'>
+          Your Feedback Is Most Important For Us!!
+        </div>
+        <form  className="user-review-form-container">
           <div className='reviewname'>
             <label className='reviewheading' htmlFor="name">Name:</label>
             <input className='reviewinput'
@@ -110,13 +164,12 @@ const Review = () => {
             />
           </div>
           <div className='btnbtn'>
-            <button className='submitbutton' type="submit" id="submit" onClick={handlecancel}>Submit </button>
-            <button className='cancelbutton' onClick={handlecancel}>cancel</button>
+            <button className='user-submitbutton' type="submit" id="submit" onClick={(e) => { makePopup(e) }}>Submit </button>
+            <button className='user-cancelbutton' onClick={handlecancel}>cancel</button>
           </div>
-        </div>
-      </form>
-
-    </UserGuard>
+        </form>
+      </div>
+    </>
   );
 };
 
