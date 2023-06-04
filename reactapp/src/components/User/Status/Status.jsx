@@ -4,7 +4,6 @@ import { store } from '../../../store';
 import { useNavigate, Link } from 'react-router-dom';
 import { getCourses } from '../../../api/courseApi';
 import CourseService from '../../../api/CourseService'
-import { UserGuard } from '../../../AuthGuard/UserGuard';
 
 const Status = () => {
     const navigate = useNavigate();
@@ -20,7 +19,6 @@ const Status = () => {
     }
 
     useEffect(() => {
-        console.log(auth)
         let courseId;
         const fetchStudents = async () => {
             const res = await CourseService.studentDetails();
@@ -56,7 +54,7 @@ const Status = () => {
 
 
     return (
-        <UserGuard>
+        <>
             <div data-testid="status">
                 <div className='navbar'>
                     <Link to="/Homepage">
@@ -75,7 +73,7 @@ const Status = () => {
                     </div>
 
                 </div>
-                <div class='bth'>
+                <div className='bth'>
                     <Link to="/HomePage">
                         <h5>Back To Home</h5>
                     </Link>
@@ -99,7 +97,7 @@ const Status = () => {
 
 
             </div>
-        </UserGuard>
+        </>
 
     );
 }

@@ -51,5 +51,4 @@ public class UserController {
     public CourseModel viewEnrolledCourses(@RequestParam("studentid") Integer studentid){
         return userService.viewEnrolledCourse(studentid);
     }
-
 }

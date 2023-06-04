@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import NavBar from "../Navbar/Navbar";
 import { store } from "../../../store";
-import { AdminGuard } from "../../../AuthGuard/AdminGuard";
 import "./AdminHomePage.css";
 import { Navigate } from "react-router";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, NavLink, Link } from "react-router-dom";
 import { baseUrl } from "../../../api/authService";
 
 let auth = "";
@@ -53,7 +52,6 @@ const Adminacademy = () => {
     state: false,
     delid: null
   });
-  
 
   const navigate = useNavigate();
 
@@ -79,7 +77,6 @@ const Adminacademy = () => {
   const fetchAcademyData = async () => {
     setIsLoading(true);
     setIsError({ state: false, msg: "" });
-    console.log(`Bearer ${auth.token}`);
     try {
       const response = await fetch(`${baseUrl}/admin/viewInstitutes`, {
         method: "GET",
@@ -106,9 +103,6 @@ const Adminacademy = () => {
     }
   };
 
-  const handleAdd = () => {
-    navigate("/admin/addInstitute");
-  };
 
   const handleDelete = async (id) => {
     setPopup({ state: true, delid: id });
@@ -137,7 +131,7 @@ const Adminacademy = () => {
   };
 
   return (
-    <AdminGuard>
+    <>
       {
         popup.state && (
           <div className="admin-popup-body noHover">
@@ -145,8 +139,9 @@ const Adminacademy = () => {
 
             </div>
             <div className="admin-institute-popup">
-              <h1>Are you sure to delete the data ?</h1>
+              <h1>Are you sure to delete this data ?</h1>
               <button
+                className="confirm-button"
                 type="submit"
                 onClick={() => {
                   deleteAcademy(popup.delid)
@@ -162,10 +157,10 @@ const Adminacademy = () => {
                   });
                 }}
               >
-                confirm delete
+                Confirm Delete
               </button>
-              <br />
               <button
+                className="cancel-button"
                 type="submit"
                 onClick={() => {
                   setPopup({
@@ -174,7 +169,7 @@ const Adminacademy = () => {
                   });
                 }}
               >
-                cancel
+                Cancel
               </button>
             </div>
           </div>
@@ -200,7 +195,7 @@ const Adminacademy = () => {
       <div className="admin-academy-container">
         {isLoading && <h4>Loading...</h4>}
         {isError.state && <h4>{isError.msg}</h4>}
-        <div className="academy-display-container">
+        <div className="academy-display-container" data-testid="instituteName" >
           {academyData.map((eachAcademy, index) => {
             const { instituteId, instituteName, instituteAddress, imageUrl } =
               eachAcademy;
@@ -211,7 +206,7 @@ const Adminacademy = () => {
                   className="each-academy-cell"
                 >
                   <img src={imageUrl} alt={instituteName} />
-                  <h4 className="admin-institute-name">{instituteName}</h4>
+                  <h4 className="admin-institute-name" >{instituteName}</h4>
                   <h4 className="admin-institute-address">
                     Place : {instituteAddress}
                   </h4>
@@ -238,18 +233,21 @@ const Adminacademy = () => {
             );
           })}
         </div>
-        <div className="admin-add-academy-button">
-          <button
-            type="submit"
-            className="admin-add-institute-icon"
-            onClick={() => handleAdd()}
-          >
-            {" "}
-            <i className="fa-solid fa-circle-plus"></i>Add Institute
-          </button>
-        </div>
+        <NavLink
+          exact="true"
+          to="/admin/addInstitute"
+          className="nav-link"
+          id="addinstitute"
+          data-testid="addInstitute"
+          activeclassname="active">
+          <div className="admin-add-academy-button">
+            <div className='admin-add-institute-icon' >
+              <i className="fa-solid fa-circle-plus"></i>
+            </div>
+          </div>
+        </NavLink>
       </div>
-    </AdminGuard>
+    </>
   );
 };
 
@@ -324,7 +322,7 @@ export const AcademyForm = ({ type }) => {
   };
 
   const editAcademy = async () => {
-    const response = await fetch(`${baseUrl}/admin/editInstitute/${id}`, {
+    const response = await fetch(`${baseUrl}/admin/editInstitute?instituteId=${id}`, {
       method: "PUT",
       headers: {
         Authorization: `Bearer ${auth.token}`,
@@ -337,7 +335,7 @@ export const AcademyForm = ({ type }) => {
   };
 
   return (
-    <AdminGuard>
+    <>
       <NavBar />
       {
         popup && (
@@ -353,7 +351,7 @@ export const AcademyForm = ({ type }) => {
               )}
               {
                 type === "ADD" ? (
-                  <button
+                  <button className="confirm-button"
                     type="submit"
                     onClick={() => {
                       addAcademy()
@@ -365,10 +363,10 @@ export const AcademyForm = ({ type }) => {
                         });
                     }}
                   >
-                    confirm add
+                    Confirm Add
                   </button>
                 ) : (
-                  <button
+                  <button className="confirm-button"
                     type="submit"
                     onClick={() => {
                       editAcademy()
@@ -380,17 +378,17 @@ export const AcademyForm = ({ type }) => {
                         });
                     }}
                   >
-                    confirm edit
+                    Confirm Edit
                   </button>
                 )}
-              <br />
               <button
+                className="cancel-button"
                 type="submit"
                 onClick={() => {
                   setPopup(false);
                 }}
               >
-                cancel
+                Cancel
               </button>
             </div>
           </div>
@@ -480,6 +478,7 @@ export const AcademyForm = ({ type }) => {
               onChange={(e) => handleChange(e, "instituteDescription")}
             />
           </div>
+          <div className="admin-institute-btn-container">
           {type === "ADD" ? (
             <button
               className="admin-form-submit-button"
@@ -499,9 +498,14 @@ export const AcademyForm = ({ type }) => {
               Update Academy
             </button>
           )}
+           <Link
+              to="/admin/dashboard"
+              className="admin-btn-secondary">
+              Cancel</Link>
+          </div>
         </form>
       </div>
-    </AdminGuard>
+    </>
   );
 };
 
