@@ -170,7 +170,7 @@ const Course = () => {
               placeholder="Enter courseDuration"
               value={courseDuration}
               onChange={(event) => setCourseDuration(event.target.value)}
-              data-testid="courseDuration"
+              data-testid="courseDuriation"
             />
             {validationErrors.courseDuration && (
               <div className="validation-message">
