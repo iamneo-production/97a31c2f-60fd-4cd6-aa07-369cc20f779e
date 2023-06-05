@@ -1,47 +1,60 @@
 import { BrowserRouter as Router,Route,Routes } from 'react-router-dom';
 import Signup from './components/Auth/Signup/Signup';
 import Login from './components/Auth/Login/Login';
-import AdminHomePage, { AcademyForm } from './components/Admin/AdminHomePage/AdminHomePage';
-import User,{StudentForm} from './components/Admin/User/User';
-import HomePage from './components/User/HomePage/HomePage';
-import UserCourse from './components/User/UserCourse/UserCourse';
-import ApplyForm from './components/User/ApplyForm/ApplyForm';
-import Course from './components/Admin/Course/Course';
-import Viewcourse from './components/Admin/Course/Viewcourse';
-import Editcourse from './components/Admin/Course/Editcourse';
-import EnrolledCourse from './components/User/EnrolledCourse';
-import Navpage from './components/User/HomePage/Navpage';
-import Firstpage from './components/Admin/AdminDashboard/Firstpage';
-import Review from './components/User/Review/Review';
-import Admissionmodelpage from './components/User/Admissionmodelpage';
-import Updatepage from './components/User/Updatepage';
+import InstitutePage from './pages/Admin/InstitutePages/InstitutePage';
+import AddInstitute from './pages/Admin/InstitutePages/AddInstitute';
+import EditInstitute from './pages/Admin/InstitutePages/EditInstitute';
+import StudentPage from './pages/Admin/StudentPages/StudentPage';
+import AddStudent from './pages/Admin/StudentPages/AddStudent';
+import EditStudent from './pages/Admin/StudentPages/EditStudent';
+import UserInstitutePage from './pages/User/UserInstitutePage';
+import UserCoursePage from './pages/User/UserCoursePage';
+import CourseApplyForm from './pages/User/Course/CourseApplyForm';
+import AddCourse from './pages/Admin/CoursePages/AddCourse';
+import CoursePage from './pages/Admin/CoursePages/CoursePage';
+import EditCourse from './pages/Admin/CoursePages/EditCourse';
+import EnrolledCoursePage from './pages/User/EnrolledCoursePage';
+import UserLandingPage from './pages/User/UserLandingPage';
+import LandingPage from './pages/Admin/LandingPage';
+import UserFeedbackPage from './pages/User/UserFeedbackPage';
+import CourseAppliedView from './pages/User/Course/CourseAppliedView';
+import CourseApplyEdit from './pages/User/Course/CourseApplyEdit';
+import AdminReviewPage from './pages/Admin/AdminReviewPage';
+
 
 function App() {
   
   return (
     <Router>
       <Routes>
+        <Route path="/" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login"element={<Login />} />
-        <Route path="/" element={<Login />} />
-        <Route path="/Firstpage" element={<Firstpage/>}/>
-        <Route path="/admin/dashboard" element={<AdminHomePage /> }/>
-        <Route path="/admin/addInstitute" element={<AcademyForm type="ADD"/>}/>
-        <Route path="/admin/editInstitute/:id" element={<AcademyForm type="EDIT"/>}/>
-        <Route path="/admin/addCourse" element={<Course />} />
-        <Route path="/admin/viewCourse" element={<Viewcourse/>}/>
-        <Route path="/admin/editCourse/:id" element={<Editcourse />} />
-        <Route path="/admin/Viewstudent" element={<User />} />
-        <Route path="/admin/addStudent" element={<StudentForm type="ADD"/>}/>
-        <Route path="/admin/editStudent/:id" element={<StudentForm type="EDIT"/>}/>        
-        <Route path="/Navpage"  element={<Navpage/>} />
-        <Route path="/HomePage" element={<HomePage />} />
-        <Route path="/UserCourse" element={<UserCourse />} />
-        <Route path="/ApplyForm/:courseId" element={<ApplyForm />} />
-        <Route path="/Enrolledcourse" element={<EnrolledCourse/>}/>
-        <Route path="/FeedBack" element={<Review/>}/>
-        <Route path="/Admissionmodelpage" element={<Admissionmodelpage/>}></Route>
-        <Route path="/Updatepage/:id" element={<Updatepage/>}/>
+
+        <Route path="/Firstpage" element={<LandingPage/>} />
+        <Route path="/admin/dashboard" element={<InstitutePage /> }/>
+        <Route path="/admin/addInstitute" element={<AddInstitute/> }/>
+        <Route path="/admin/editInstitute/:id" element={<EditInstitute/>}/>
+
+        <Route path="/admin/addCourse" element={<AddCourse />} />
+        <Route path="/admin/viewCourse" element={<CoursePage/>}/>
+        <Route path="/admin/editCourse/:id" element={<EditCourse />} />
+
+        <Route path="/admin/Viewstudent" element={<StudentPage />} />
+        <Route path="/admin/addStudent" element={ <AddStudent />}/>
+        <Route path="/admin/editStudent/:id" element={<EditStudent/>}/>
+
+
+        <Route path="/admin/FeedBack" element={<AdminReviewPage/>}/> 
+
+        <Route path="/Navpage"  element={<UserLandingPage/>} />
+        <Route path="/HomePage" element={<UserInstitutePage />} />
+        <Route path="/UserCourse" element={<UserCoursePage />} />
+        <Route path="/ApplyForm/:courseId" element={<CourseApplyForm />} />
+        <Route path="/Enrolledcourse" element={<EnrolledCoursePage/>}/>
+        <Route path="/FeedBack" element={<UserFeedbackPage/>}/>
+        <Route path="/Admissionmodelpage" element={<CourseAppliedView/>} />
+        <Route path="/Updatepage/:id" element={<CourseApplyEdit/>}/>
         <Route path="*" element={<>404 no such page go to home page</>} />
       </Routes>
     </Router>
