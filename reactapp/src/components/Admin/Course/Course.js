@@ -46,8 +46,7 @@ const Course = () => {
     console.log(data);
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const handleSubmit = async () => {
     const newCourse = {
       courseId,
       courseName,
@@ -94,7 +93,7 @@ const Course = () => {
     if (!courseDescription) {
       errors.courseDescription = "Course Description is required.";
     }
-
+    
     setValidationErrors(errors);
     return Object.keys(errors).length === 0;
   };
