@@ -517,7 +517,6 @@ export const AcademyForm = ({ type }) => {
               to="/admin/dashboard"
               className="admin-btn-secondary">
               Cancel</Link>
-          </div>
         </form>
       </div>
     </>
