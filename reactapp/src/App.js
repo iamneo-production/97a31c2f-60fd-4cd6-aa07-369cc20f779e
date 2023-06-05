@@ -19,7 +19,7 @@ import LandingPage from './pages/Admin/LandingPage';
 import UserFeedbackPage from './pages/User/UserFeedbackPage';
 import CourseAppliedView from './pages/User/Course/CourseAppliedView';
 import CourseApplyEdit from './pages/User/Course/CourseApplyEdit';
-import AdminReview from './components/Admin/Review/Review';
+import AdminReviewPage from './pages/Admin/AdminReviewPage';
 
 function App() {
   
@@ -43,7 +43,7 @@ function App() {
         <Route path="/admin/addStudent" element={ <AddStudent />}/>
         <Route path="/admin/editStudent/:id" element={<EditStudent/>}/>
 
-        <Route path="/admin/FeedBack" element={<AdminReview/>}/> 
+        <Route path="/admin/FeedBack" element={<AdminReviewPage/>}/> 
 
         <Route path="/Navpage"  element={<UserLandingPage/>} />
         <Route path="/HomePage" element={<UserInstitutePage />} />
