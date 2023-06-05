@@ -21,6 +21,7 @@ import CourseAppliedView from './pages/User/Course/CourseAppliedView';
 import CourseApplyEdit from './pages/User/Course/CourseApplyEdit';
 import AdminReviewPage from './pages/Admin/AdminReviewPage';
 
+
 function App() {
   
   return (
@@ -42,6 +43,7 @@ function App() {
         <Route path="/admin/Viewstudent" element={<StudentPage />} />
         <Route path="/admin/addStudent" element={ <AddStudent />}/>
         <Route path="/admin/editStudent/:id" element={<EditStudent/>}/>
+
 
         <Route path="/admin/FeedBack" element={<AdminReviewPage/>}/> 
 
