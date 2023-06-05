@@ -91,7 +91,7 @@ function ApplyForm() {
     await fetch(`${baseUrl}/user/addAdmission`, {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${localStorage.token}`,
+        Authorization: `Bearer ${auth.token}`,
         "Content-type": "application/json",
       },
       body: JSON.stringify({
