@@ -47,7 +47,7 @@ const Course = () => {
   };
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
+    event.preventDefault();mvn 
     const newCourse = {
       courseId,
       courseName,
