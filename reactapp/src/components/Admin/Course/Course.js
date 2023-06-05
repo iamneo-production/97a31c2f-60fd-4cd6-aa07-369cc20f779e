@@ -26,7 +26,7 @@ const Course = () => {
     if (isValid) {
       handleSubmit();
       fetchData();
-      navigate("/admin/viewCourse"); // Redirect to "/admin/viewCourse"
+      navigate("/admin/viewCourse"); 
     }
   };
 
