@@ -3,7 +3,7 @@ import { NavLink, useNavigate, Link } from "react-router-dom";
 import { store } from "../../../store";
 import './Firstpage.css'
 
-const Navpage = () => {
+const Firstpage = () => {
     const navigate = useNavigate();
     const handleLogout = () => {
         store.dispatch({ type: "LOGOUT" });
@@ -50,4 +50,4 @@ const Navpage = () => {
         
     );
 }
-export default Navpage
+export default Firstpage
