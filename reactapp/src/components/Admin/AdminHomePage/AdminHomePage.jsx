@@ -492,7 +492,7 @@ export const AcademyForm = ({ type }) => {
             />
           </div>
           {error && <div className="errorfields"> All Fileds Requried</div>}
-
+          <div className="admin-institute-btn-container">
           {type === "ADD" ? (
             <button
               className="admin-form-submit-button"
@@ -517,6 +517,7 @@ export const AcademyForm = ({ type }) => {
               to="/admin/dashboard"
               className="admin-btn-secondary">
               Cancel</Link>
+              </div>
         </form>
       </div>
     </>

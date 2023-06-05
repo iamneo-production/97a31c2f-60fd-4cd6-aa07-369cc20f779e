@@ -24,10 +24,21 @@ const Course = () => {
     event.preventDefault();
     const isValid = validateFields();
     if (isValid) {
-      handleSubmit();
-      fetchData();
-      navigate("/admin/viewCourse"); 
-    }
+      handleSubmit(event).then((data) => {
+        console.log(data);
+  
+      })
+        .catch((error) => {
+          console.error(error);
+        });
+        fetchData().then((data) => {
+          console.log("fetched course data success ", data);
+        })
+          .catch((error) => {
+            console.error(error);
+          });
+        navigate('/admin/viewCourse');
+      }
   };
 
   const fetchData = async () => {
@@ -82,7 +93,7 @@ const Course = () => {
     if (!courseDescription) {
       errors.courseDescription = "Course Description is required.";
     }
-
+    
     setValidationErrors(errors);
     return Object.keys(errors).length === 0;
   };
