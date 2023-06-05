@@ -203,6 +203,12 @@
 
 }
 
+/* all fields mandotory css */
+
+.validation-message{
+  color:red;
+}
+
 @media (max-width: 768px) {
   .head-container {
     font-size: 1.6rem;
