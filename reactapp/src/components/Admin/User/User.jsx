@@ -27,7 +27,6 @@ const student = {
   emailId: "",
   eligibility: "",
   courseId: "",
-  houseNumber: "",
   streetName: "",
   areaName: "",
   state: "",
@@ -93,7 +92,7 @@ const AdminStudent1 = () => {
       const response = await fetch(`${baseUrl}/admin/viewStudent`, {
         method: "GET",
         headers: {
-          Authorization: `Bearer ${localStorage.token}`,
+          Authorization: `Bearer ${auth.token}`,
           "Content-type": "application/json",
         },
       });
@@ -120,7 +119,7 @@ const AdminStudent1 = () => {
       const response = await fetch(`${baseUrl}/admin/viewCourse`, {
         method: "GET",
         headers: {
-          Authorization: `Bearer ${localStorage.token}`,
+          Authorization: `Bearer ${auth.token}`,
           "Content-type": "application/json",
         },
       });
@@ -149,7 +148,7 @@ const AdminStudent1 = () => {
       method: "DELETE",
       headers: {
         "Content-type": "application/json",
-        Authorization: `Bearer ${localStorage.token}`,
+        Authorization: `Bearer ${auth.token}`,
       },
     });
     console.log(response);
@@ -381,7 +380,6 @@ export const StudentForm = ({ type }) => {
       formData.motherName &&
       formData.phoneNumber1 &&
       formData.phoneNumber2 &&
-      formData.studentIdNumber &&
       formData.studentDOB &&
       formData.sslc &&
       formData.hsc &&
@@ -389,7 +387,6 @@ export const StudentForm = ({ type }) => {
       formData.emailId &&
       formData.eligibility &&
       formData.courseId &&
-      formData.houseNumber &&
       formData.streetName &&
       formData.areaName &&
       formData.state &&
