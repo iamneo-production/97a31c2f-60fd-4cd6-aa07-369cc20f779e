@@ -254,6 +254,8 @@ const Adminacademy = () => {
 export const AcademyForm = ({ type }) => {
   const [formData, setFormData] = useState(initialData);
 
+  const[error, setError]=useState(false);
+
   const [popup, setPopup] = useState(false);
 
   const navigate = useNavigate();
@@ -299,8 +301,14 @@ export const AcademyForm = ({ type }) => {
   const handleFormAdd = (e) => {
     e.preventDefault();
     console.log(formData);
+    if(formData.instituteName){
     setPopup(true);
+    }
+    else{
+      setError(true);
+    }
   };
+  
 
   const addAcademy = async () => {
     const response = await fetch(`${baseUrl}/admin/addInstitute`, {
@@ -413,13 +421,17 @@ export const AcademyForm = ({ type }) => {
           <div className="form-group">
             <label className="label-heading">Academy Name : </label>
             <input
-              type="text"
-              id="academyName"
-              name="academyName"
-              value={formData.instituteName}
-              placeholder="Enter Academy Name"
-              onChange={(e) => handleChange(e, "instituteName")}
-            />
+            type="text"
+            id="academyName"
+            name="academyName"
+            value={formData.instituteName}
+            placeholder="Enter Academy Name"
+            onChange={(e) => handleChange(e, "instituteName")}
+            required
+           />
+           {!formData.instituteName && (
+            <div className="validation-message"></div>
+           )}
           </div>
           <div className="form-group">
             <label className="label-heading">Contact Number : </label>
@@ -430,6 +442,7 @@ export const AcademyForm = ({ type }) => {
               value={formData.mobile}
               placeholder="Enter Contact Number"
               onChange={(e) => handleChange(e, "mobile")}
+              required
             />
           </div>
           <div className="form-group">
@@ -478,7 +491,8 @@ export const AcademyForm = ({ type }) => {
               onChange={(e) => handleChange(e, "instituteDescription")}
             />
           </div>
-          <div className="admin-institute-btn-container">
+          {error && <div className="errorfields"> All Fileds Requried</div>}
+
           {type === "ADD" ? (
             <button
               className="admin-form-submit-button"
@@ -497,6 +511,7 @@ export const AcademyForm = ({ type }) => {
             >
               Update Academy
             </button>
+            
           )}
            <Link
               to="/admin/dashboard"

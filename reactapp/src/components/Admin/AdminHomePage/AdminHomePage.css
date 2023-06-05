@@ -57,7 +57,9 @@
   transform: scale(1.05);
 }
 
-
+.errorfields{
+  color:red;
+}
 .admin-institute-popup .cancel-button {
   background-color: #E62020;
   color: #fff;
