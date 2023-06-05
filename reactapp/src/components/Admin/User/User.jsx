@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Navbar from "../Navbar/Navbar";
 import { store } from "../../../store";
 import { Navigate } from "react-router";
-import { useNavigate, useParams, NavLink } from "react-router-dom";
+import { useNavigate, useParams, NavLink, Link } from "react-router-dom";
 import { baseUrl } from "../../../api/authService";
 import './AdminStudent.css';
 
@@ -27,7 +27,6 @@ const student = {
   emailId: "",
   eligibility: "",
   courseId: "",
-  houseNumber: "",
   streetName: "",
   areaName: "",
   state: "",
@@ -93,7 +92,7 @@ const AdminStudent1 = () => {
       const response = await fetch(`${baseUrl}/admin/viewStudent`, {
         method: "GET",
         headers: {
-          Authorization: `Bearer ${localStorage.token}`,
+          Authorization: `Bearer ${auth.token}`,
           "Content-type": "application/json",
         },
       });
@@ -120,7 +119,7 @@ const AdminStudent1 = () => {
       const response = await fetch(`${baseUrl}/admin/viewCourse`, {
         method: "GET",
         headers: {
-          Authorization: `Bearer ${localStorage.token}`,
+          Authorization: `Bearer ${auth.token}`,
           "Content-type": "application/json",
         },
       });
@@ -149,7 +148,7 @@ const AdminStudent1 = () => {
       method: "DELETE",
       headers: {
         "Content-type": "application/json",
-        Authorization: `Bearer ${localStorage.token}`,
+        Authorization: `Bearer ${auth.token}`,
       },
     });
     console.log(response);
@@ -375,7 +374,28 @@ export const StudentForm = ({ type }) => {
   const handleFormAdd = (e) => {
     e.preventDefault();
     console.log(formData);
-    setPopup(true);
+    if(formData.firstName &&
+      formData.lastName &&
+      formData.fatherName &&
+      formData.motherName &&
+      formData.phoneNumber1 &&
+      formData.phoneNumber2 &&
+      formData.studentDOB &&
+      formData.sslc &&
+      formData.hsc &&
+      formData.diploma &&
+      formData.emailId &&
+      formData.eligibility &&
+      formData.courseId &&
+      formData.streetName &&
+      formData.areaName &&
+      formData.state &&
+      formData.pincode &&
+      formData.nationality
+      ){ setPopup(true);}
+      else{
+        alert("All fields are mandatory")
+      }
   };
 
   const addStudent = async () => {
@@ -421,7 +441,7 @@ export const StudentForm = ({ type }) => {
             <div className="admin-student-popup">
               {course.map((eachCourse) => {
                 return (
-                  <div onClick={() => { setFormData({ ...formData, courseId: eachCourse.courseId }); setCoursePopup(false); }}>
+                  <div key = {eachCourse.courseId} onClick={() => { setFormData({ ...formData, courseId: eachCourse.courseId }); setCoursePopup(false); }}>
                     <h1>{eachCourse.courseId} : {eachCourse.courseName}</h1>
                   </div>
                 )
@@ -495,7 +515,7 @@ export const StudentForm = ({ type }) => {
           navigate("/admin/Viewstudent");
         }}
       >
-        Back
+        Back to Home
       </button>
       {type === "ADD" ? (
         <h1 className="head-container">Add Student Details</h1>
@@ -781,7 +801,7 @@ export const StudentForm = ({ type }) => {
             </div>
           </div>
         </div>
-
+        <div className="admin-student-btn-container">
         {type === "ADD" ? (
           <button
             className="add-academy-btn"
@@ -801,6 +821,11 @@ export const StudentForm = ({ type }) => {
             Update Student
           </button>
         )}
+        <Link
+              to="/admin/Viewstudent"
+              className="admin-btn-secondary">
+              Cancel</Link>
+        </div>
       </form>
     </>
   );

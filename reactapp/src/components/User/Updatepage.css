@@ -283,6 +283,7 @@
 
 /* button css */
 .user-button-container {
+  margin-left:80%;
   display: flex;
   justify-content: flex-end;
   align-items: center;

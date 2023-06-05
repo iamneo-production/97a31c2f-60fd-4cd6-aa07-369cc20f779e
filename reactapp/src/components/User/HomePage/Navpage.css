@@ -22,21 +22,23 @@ body {
 
 .nv h2 {
     font-size: 2rem;
-    color: cornflowerblue;
+    color:black;
     font-weight: bolder;
 
 
 }
 
 .first {
+    color:rebeccapurple;
     display: flex;
-    padding-right: 1%;
+    justify-content: space-equally;
+    align-items: center;
 }
 
 .link:hover {
     font-weight: bold;
-    font-size: 2.5rem;
-    color: lavender
+    font-size: 2rem;
+    color:midnightblue;
 }
 
 .out {
@@ -101,23 +103,31 @@ body {
 .nv {
     height: 100vh;
     width: 100%;
-    background-image: url(img4.jpg);
+    background-image: url(usbg.jpg);
     background-size: cover;
     background-repeat: no-repeat;
-    animation-name: animate;
+    animation-name: uimg;
     animation-direction: alternate-reverse;
-    animation-duration: 15s;
+    animation-duration: 10s;
     animation-fill-mode: forwards;
     animation-iteration-count: infinite;
     animation-play-state: running;
     animation-timing-function: ease-in-out;
 }
+@keyframes uimg{
+    0%{
+        background-image: url(usbg.jpg);
+    }
+    20%{
+        background-image:url(ussbg.jpg);
+    }
+}
 
 
 
 .txt p {
-    margin-top: 160px;
-    color: antiquewhite;
+    margin-top: 30px;
+    color:darkslateblue;
     text-align: center;
     margin-left: 12%;
     font-style: italic;
@@ -130,7 +140,7 @@ body {
 }
 
 .txt h2 {
-    color: cornsilk;
+    color: black;
     margin-left: 12%;
     padding-right: 150px;
     font-style: oblique;
@@ -142,8 +152,8 @@ body {
 }
 
 .txt h4 {
-    font-size: 2, 1rem;
-    color: aliceblue;
+    font-size: 2rem;
+    color:cadetblue;
     margin-left: 12%;
     text-align: center;
     font-family: cursive;
@@ -160,7 +170,7 @@ body {
 }
 
 .addon p {
-    color: palegoldenrod;
+    color:black;
     font-weight: lighter;
     font-size: 1.7rem;
     margin-left: 9%;
@@ -169,10 +179,11 @@ body {
 }
 
 .last h1 {
-    color: blanchedalmond;
-    padding-top: 3%;
-    margin-left: 7%;
-    font-size: 3rem;
+    color: black;
+    padding-top: 10%;
+    margin-left: 0;
+    text-align: center;
+    font-size: 2rem;
     font-family: cursive;
     font-weight: bolder;
 }
@@ -202,6 +213,7 @@ span::before {
     }
 
 }
+
 
 @media only screen and (max-width: 768px) {
     .link {

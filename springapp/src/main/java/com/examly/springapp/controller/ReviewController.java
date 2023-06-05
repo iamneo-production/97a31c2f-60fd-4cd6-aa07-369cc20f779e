@@ -11,26 +11,27 @@ import java.util.*;
 
 
 @RestController
-public class reviewController {
+@CrossOrigin(origins = "*", allowedHeaders = "*")
+public class ReviewController {
 		
 	@Autowired
-	private reviewService ser;
+	private ReviewService ser;
 	
 	// To save task
 		@PostMapping("/user/addFeedback")
-		public ResponseEntity<?> addTaskById(@RequestBody reviewModel mod) {
-			reviewModel taskObj = ser.addTask(mod);
+		public ResponseEntity<?> addTaskById(@RequestBody ReviewModel mod) {
+			ReviewModel taskObj = ser.addTask(mod);
 			
 			if(taskObj == null)
 				return	new ResponseEntity<String>("FeedBack not saved", HttpStatus.BAD_REQUEST);
 			
-			return	new ResponseEntity<reviewModel>(taskObj, HttpStatus.CREATED);
+			return	new ResponseEntity<ReviewModel>(taskObj, HttpStatus.CREATED);
 		}
 		
 		// To Get a all task
 		@GetMapping("/user/getAllFeedback")
-		public ResponseEntity<List<reviewModel>> getTask() {
+		public ResponseEntity<List<ReviewModel>> getTask() {
 
-			return	new ResponseEntity<List<reviewModel>>(ser.getTask(), HttpStatus.OK);
+			return	new ResponseEntity<List<ReviewModel>>(ser.getTask(), HttpStatus.OK);
 		}
 }

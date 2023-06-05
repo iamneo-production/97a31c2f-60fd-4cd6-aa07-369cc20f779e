@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { getCourses, deleteCourse } from "../../../api/courseApi.js";
 import NavBar from "../Navbar/Navbar.js";
-import { AdminGuard } from "../../../AuthGuard/AdminGuard";
 import "../Course/Viewcourse.css";
 
 
@@ -69,7 +68,7 @@ function Viewcourse() {
 
   return (
 
-    <AdminGuard>
+    <>
       <NavBar />
       {
         popup.state &&
@@ -218,7 +217,7 @@ function Viewcourse() {
           </div>
         </NavLink>
       </div>
-    </AdminGuard>
+    </>
   );
 }
 
