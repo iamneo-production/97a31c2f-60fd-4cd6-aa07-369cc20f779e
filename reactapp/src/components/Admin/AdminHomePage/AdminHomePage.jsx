@@ -3,7 +3,7 @@ import NavBar from "../Navbar/Navbar";
 import { store } from "../../../store";
 import "./AdminHomePage.css";
 import { Navigate } from "react-router";
-import { useNavigate, useParams, NavLink } from "react-router-dom";
+import { useNavigate, useParams, NavLink, Link } from "react-router-dom";
 import { baseUrl } from "../../../api/authService";
 
 let auth = "";
@@ -492,6 +492,7 @@ export const AcademyForm = ({ type }) => {
             />
           </div>
           {error && <div className="errorfields"> All Fileds Requried</div>}
+
           {type === "ADD" ? (
             <button
               className="admin-form-submit-button"
@@ -512,6 +513,11 @@ export const AcademyForm = ({ type }) => {
             </button>
             
           )}
+           <Link
+              to="/admin/dashboard"
+              className="admin-btn-secondary">
+              Cancel</Link>
+          </div>
         </form>
       </div>
     </>

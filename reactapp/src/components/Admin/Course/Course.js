@@ -118,11 +118,13 @@ const Course = () => {
               Cancel
             </button>
           </div>
+
         </div>
       )}
 
       <div className="course">
         <h2 className="head-container">Add Course Details</h2>
+    
         <form>
           <div className="form-group">
             <label htmlFor="courseId" className="label-heading">

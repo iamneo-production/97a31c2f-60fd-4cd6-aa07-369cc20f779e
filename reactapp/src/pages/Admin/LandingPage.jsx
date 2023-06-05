@@ -5,8 +5,7 @@ const LandingPage = () => {
     return (
     <>
       <AdminGuard>
-        <Firstpage>
-        </Firstpage>
+        <Firstpage/>
       </AdminGuard>
     </>
     )
