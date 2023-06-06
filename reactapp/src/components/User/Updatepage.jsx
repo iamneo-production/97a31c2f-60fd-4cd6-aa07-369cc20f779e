@@ -38,6 +38,7 @@ function Updatepage() {
     }
     const fetchstud = async () => {
         const data = await getStudents();
+        console.log(data)
     }
     useEffect(() => {
         console.log(auth)
@@ -102,7 +103,7 @@ function Updatepage() {
                                         setUserPopup(false);
                                     }}
                                 >
-                                    confirm update
+                                    Confirm Update
                                 </button>
                                 <button
                                     className="user-updatepage-cancel-btn"
@@ -111,7 +112,7 @@ function Updatepage() {
                                         setUserPopup(false);
                                     }}
                                 >
-                                    cancel
+                                    Cancel
                                 </button>
                             </div>
                         </div>

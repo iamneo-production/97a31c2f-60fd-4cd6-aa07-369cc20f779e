@@ -12,10 +12,6 @@ function Admissionmodelpage() {
 
     const [userPopup, setUserPopup] = useState({ state: false, deleteId: null });
 
-    const handleClick = () => {
-        navigate('/EnrolledCourse');
-    }
-
     const handleLogout = () => {
         store.dispatch({ type: 'LOGOUT' })
         navigate('/login');
@@ -94,7 +90,7 @@ function Admissionmodelpage() {
                                     });
                                 }}
                             >
-                                confirm delete
+                                Confirm Delete
                             </button>
                             <button
                                 className='user-admissionmodel-cancel-btn'
@@ -106,7 +102,7 @@ function Admissionmodelpage() {
                                     });
                                 }}
                             >
-                                cancel
+                                Cancel
                             </button>
                         </div>
                     </div>

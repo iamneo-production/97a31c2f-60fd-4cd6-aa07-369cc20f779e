@@ -79,9 +79,9 @@ const Validation = (formData, errors) => {
   }
 
   // Password validation
-  var specialChars = /[!@#$%^&*(),.?":{}|<>]/;
-  var uppercaseChars = /[A-Z]/;
-  var numberChars = /[0-9]/;
+  const specialChars = /[!@#$%^&*(),.?":{}|<>]/;
+  const uppercaseChars = /[A-Z]/;
+  const numberChars = /\d/; // \d for [0-9]
 
   if (
     !formData.password.match(specialChars) ||

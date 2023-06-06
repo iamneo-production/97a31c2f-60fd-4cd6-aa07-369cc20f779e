@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, NavLink } from "react-router-dom";
 import { store } from "../../../store";
 import { useNavigate } from "react-router";
-import { UserGuard } from "../../../AuthGuard/UserGuard";
+import { baseUrl } from "../../../api/authService";
 import './Review.css';
 
 let auth = "";
@@ -27,18 +27,40 @@ const Review = () => {
     navigate("/login");
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(`Name: ${name}\nMobile: ${mobile}\nEmail: ${email}\nComments: ${comments}`);
-  };
-
+    const handleSubmit = async (event) => {
+      event.preventDefault();
+      try {
+        const data = await senddata();
+        console.log(data);
+      } catch (error) {
+        console.error(error);
+      }
+      console.log(`Name: ${name}\nMobile: ${mobile}\nEmail: ${email}\nComments: ${comments}`);
+    };
+   
 
   const handlecancel = () => {
 
     navigate("/HomePage")
   }
+  const senddata = async () => {
+    await fetch(`${baseUrl}/user/addFeedback`, {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${auth.token}`,
+        "Content-type": "application/json",
+      },
+      body:JSON.stringify({
+        name:name,number:mobile,email:email,comments:comments
+      })
+
+    });
+  }
+    
+  
 
   const navigate = useNavigate();
+
   return (
     <>
       <nav className="user-nav-container">
@@ -61,16 +83,18 @@ const Review = () => {
 
             </div>
             <div className="user-review-popup">
-              <h1>Are you sure to add the data ?</h1>
+              <h1>Are you sure to add the feedback ?</h1>
               <button
                 className="user-review-confirm-btn"
                 type="submit"
-                onClick={() => {
-                  handlecancel();
+                onClick={(e) => {
+                  handleSubmit(e).then(()=> {console.log("hello this is safeena")})
+                  .catch(error=>{console.log(error)});
                   setUserPopup(false);
+                  navigate('/Navpage');
                 }}
               >
-                confirm submit
+                Confirm Submit
               </button>
               <button
                 className="user-review-cancel-btn"
@@ -79,7 +103,7 @@ const Review = () => {
                   setUserPopup(false);
                 }}
               >
-                cancel
+                Cancel
               </button>
             </div>
           </div>
@@ -94,7 +118,7 @@ const Review = () => {
         <div className='user-review-headtxt'>
           Your Feedback Is Most Important For Us!!
         </div>
-        <form onSubmit={handleSubmit} className="user-review-form-container">
+        <form  className="user-review-form-container">
           <div className='reviewname'>
             <label className='reviewheading' htmlFor="name">Name:</label>
             <input className='reviewinput'
