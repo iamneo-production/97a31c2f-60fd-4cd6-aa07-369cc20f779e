@@ -61,6 +61,7 @@ public class WebSecurityConfig {
 			.authorizeHttpRequests().antMatchers("/user/login/**","/user/signup/**","/admin/signup/**","/admin/login/**").permitAll()
 			.antMatchers("/admin/addInstitute/**","/admin/editInstitute/*","/admin/viewInstitutes").permitAll()
 
+
 			.anyRequest().authenticated();
 
 		// Set the authentication provider and JWT token filter for the HttpSecurity object
