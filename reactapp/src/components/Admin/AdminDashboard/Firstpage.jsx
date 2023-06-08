@@ -12,7 +12,7 @@ const Firstpage = () => {
     };
 
     return (
-        
+
             <div className="nv1" data-testid="user_navbar">
                 <div className='top1'>
                     <div className='anime'>
