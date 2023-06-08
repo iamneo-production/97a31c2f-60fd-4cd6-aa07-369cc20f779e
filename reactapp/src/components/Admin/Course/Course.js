@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../Course/Addcourse.css";
 import { useNavigate, Link } from "react-router-dom";
 import { addCourse, getCourses } from "../../../api/courseApi.js";
-import NavBar from "../Navbar/Navbar.js";
+import Navbar from "../../Navbar/Navbar";
 
 const Course = () => {
   const [courseId, setCourseId] = useState("");
@@ -101,7 +101,7 @@ const Course = () => {
 
   return (
     <>
-      <NavBar />
+      <Navbar />
 
       {popup && (
         <div className="admin-popup-body noHover">

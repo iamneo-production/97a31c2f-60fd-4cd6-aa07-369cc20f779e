@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from 'react';
-import NavBar from '../Navbar/Navbar';
 import { getReviews } from '../../../api/ReviewService';
+import Navbar from '../../Navbar/Navbar';
 
 const Review = () => {
   const [data, setData] = useState([]);
@@ -15,7 +15,7 @@ const Review = () => {
     
   return (
   <>
-      <NavBar/>
+      <Navbar/>
 
       <h3 className="text-3xl text-green-800 font-bold p-3 mb-4 text-center">Platform Feedback By Users</h3>
 

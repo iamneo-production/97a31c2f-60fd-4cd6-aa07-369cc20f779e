@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { getCourses, editCourse } from "../../../api/courseApi.js";
-import NavBar from "../Navbar/Navbar.js";
 import { AdminGuard } from "../../../AuthGuard/AdminGuard";
 import "../Course/Addcourse.css";
+import Navbar from "../../Navbar/Navbar.jsx";
 
 
 function Editcourse(props) {
@@ -83,7 +83,7 @@ function Editcourse(props) {
 
 
     <AdminGuard>
-      <NavBar />
+      <Navbar />
       {
         popup && (
           <div className="admin-popup-body noHover">
