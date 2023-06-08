@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { getCourses, deleteCourse } from "../../../api/courseApi.js";
-import NavBar from "../Navbar/Navbar.js";
 import "../Course/Viewcourse.css";
+import Navbar from "../../Navbar/Navbar.jsx";
 
 
 function Viewcourse() {
@@ -69,7 +69,7 @@ function Viewcourse() {
   return (
 
     <>
-      <NavBar />
+      <Navbar />
       {
         popup.state &&
         <div className="admin-popup-body noHover">

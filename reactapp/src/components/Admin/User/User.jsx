@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import Navbar from "../Navbar/Navbar";
 import { store } from "../../../store";
 import { Navigate } from "react-router";
 import { useNavigate, useParams, NavLink, Link } from "react-router-dom";
 import { baseUrl } from "../../../api/authService";
 import './AdminStudent.css';
+import Navbar from "../../Navbar/Navbar";
 
 let auth = "";
 store.subscribe(() => {
@@ -522,8 +522,8 @@ export const StudentForm = ({ type }) => {
       ) : (
         <h1 className="head-container">Edit Student Details</h1>
       )}
-      <form className="student-form-container">
-        <div className="studentform">
+      <form className="student-form-container m-2 lg:m-12">
+        <div className="studentform p-4 lg:18 ">
           <div className="form-body">
             <div className="username" >
               <label className="form__label" htmlFor="firstName">
@@ -753,21 +753,7 @@ export const StudentForm = ({ type }) => {
                   onChange={(e) => handleInputChange(e, "areaName")}
                 />
               </div>
-              <div className="address">
-                <label className="form__label" htmlFor="address">
-                  {" "}
-                  nationality{" "}
-                </label>
-                <input
-                  type="text"
-                  id="address"
-                  name="address"
-                  className="form__input"
-                  placeholder="Enter Your nationality"
-                  value={formData.nationality}
-                  onChange={(e) => handleInputChange(e, "nationality")}
-                />
-              </div>
+              
               <div className="address">
                 <label className="form__label" htmlFor="address">
                   {" "}
@@ -798,13 +784,28 @@ export const StudentForm = ({ type }) => {
                   onChange={(e) => handleInputChange(e, "state")}
                 />
               </div>
+              <div className="address">
+                <label className="form__label" htmlFor="address">
+                  {" "}
+                  Nationality{" "}
+                </label>
+                <input
+                  type="text"
+                  id="address"
+                  name="address"
+                  className="form__input"
+                  placeholder="Enter Your nationality"
+                  value={formData.nationality}
+                  onChange={(e) => handleInputChange(e, "nationality")}
+                />
+              </div>
             </div>
           </div>
         </div>
-        <div className="admin-student-btn-container">
+        <div className="admin-student-btn-container ml-[30%] lg:ml-[70%]">
         {type === "ADD" ? (
           <button
-            className="add-academy-btn"
+            className="bg-green-500  text-white px-4 py-2 rounded-xl hover:bg-green-700 "
             type="submit"
             id="addStudent"
             onClick={(e) => handleFormAdd(e)}
@@ -813,7 +814,7 @@ export const StudentForm = ({ type }) => {
           </button>
         ) : (
           <button
-            className="add-academy-btn"
+            className="bg-green-500  text-white px-4 py-2 rounded-xl hover:bg-green-700"
             type="submit"
             id="updateStudent"
             onClick={(e) => handleFormEdit(e)}
@@ -823,7 +824,7 @@ export const StudentForm = ({ type }) => {
         )}
         <Link
               to="/admin/Viewstudent"
-              className="admin-btn-secondary">
+              className="ml-2 bg-red-500  text-white px-4 py-2 rounded-xl hover:bg-red-700">
               Cancel</Link>
         </div>
       </form>

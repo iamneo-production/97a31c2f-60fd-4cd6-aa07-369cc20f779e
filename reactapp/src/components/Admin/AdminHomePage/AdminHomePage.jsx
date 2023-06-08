@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import NavBar from "../Navbar/Navbar";
 import { store } from "../../../store";
 import "./AdminHomePage.css";
 import { Navigate } from "react-router";
 import { useNavigate, useParams, NavLink, Link } from "react-router-dom";
 import { baseUrl } from "../../../api/authService";
+import Navbar from "../../Navbar/Navbar";
 
 let auth = "";
 store.subscribe(() => {
@@ -28,7 +28,7 @@ const AdminHomePage = () => {
 
   return (
     <>
-      <NavBar />
+      {/* <NavBar /> */}
       <Adminacademy />
     </>
   );
@@ -344,7 +344,7 @@ export const AcademyForm = ({ type }) => {
 
   return (
     <>
-      <NavBar />
+      <Navbar />
       {
         popup && (
           <div className="admin-popup-body">
