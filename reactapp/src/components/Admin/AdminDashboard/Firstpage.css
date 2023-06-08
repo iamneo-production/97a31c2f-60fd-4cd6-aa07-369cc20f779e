@@ -13,12 +13,12 @@ body {
     margin: 0;
     padding: 0 8px;
     text-align: center;
-    font-size: 1rem;
+    font-size: 0.5rem;
 }
 
 .anime {
     color: white;
-    font-size: 2rem;
+    font-size: 1rem;
     font-weight: bold;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     text-align: center;
@@ -30,54 +30,43 @@ body {
 
 @keyframes disc {
     0% {
-        color: skyblue
+        color: skyblue;
     }
-
     10% {
-        color: lightsalmon
+        color: lightsalmon;
     }
-
     20% {
-        color: aquamarine
+        color: aquamarine;
     }
-
     30% {
-        color: tomato
+        color: tomato;
     }
-
     40% {
-        color: lightseagreen
+        color: lightseagreen;
     }
-
     50% {
-        color: hotpink
+        color: hotpink;
     }
-
     60% {
-        color: lightgreen
+        color: lightgreen;
     }
-
     70% {
-        color: lightskyblue
+        color: lightskyblue;
     }
-
     80% {
-        color: lightcoral
+        color: lightcoral;
     }
-
     90% {
-        color: lime
+        color: lime;
     }
-
     100% {
-        color: lightpink
+        color: lightpink;
     }
 }
 
-
 .nv1 h2 {
-    font-size: 2rem;
-    color:azure;
+    font-size: 1rem;
+    color: azure;
     font-weight: bolder;
 }
 
@@ -86,7 +75,7 @@ body {
     display: flex;
     justify-content: space-equally;
     align-items: center;
-    font-size: 1.5rem;
+    font-size: 0.9rem;
 }
 
 .link1:hover {
@@ -105,52 +94,41 @@ body {
     animation-iteration-count: infinite;
     animation-duration: 10s;
     animation-play-state: running;
-
 }
 
 @keyframes color {
     0% {
-        color: skyblue
+        color: skyblue;
     }
-
     10% {
-        color: lightsalmon
+        color: lightsalmon;
     }
-
     20% {
-        color: aquamarine
+        color: aquamarine;
     }
-
     30% {
-        color: tomato
+        color: tomato;
     }
-
     40% {
-        color: lightseagreen
+        color: lightseagreen;
     }
-
     50% {
-        color: hotpink
+        color: hotpink;
     }
-
     60% {
-        color: lightgreen
+        color: lightgreen;
     }
-
     70% {
-        color: lightskyblue
+        color: lightskyblue;
     }
-
     80% {
-        color: lightcoral
+        color: lightcoral;
     }
-
     90% {
-        color: lime
+        color: lime;
     }
-
     100% {
-        color: lightpink
+        color: lightpink;
     }
 }
 
@@ -169,17 +147,15 @@ body {
     animation-play-state: running;
     animation-timing-function: ease-in-out;
 }
-@keyframes animate{
-    0%{
+
+@keyframes animate {
+    0% {
         background-image: url(hat1.jpeg.jpg);
     }
-    20%{
+    20% {
         background-image: url(img4.jpg);
     }
 }
-
-
-
 
 .txt1 p {
     margin-top: 200px;
@@ -192,7 +168,6 @@ body {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     padding-top: 1%;
     text-decoration: none;
-
 }
 
 .txt1 h2 {
@@ -222,6 +197,7 @@ body {
     font-size: 2rem;
     font-weight: bold;
     font-style: italic;
+    text-align: center;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
@@ -230,13 +206,15 @@ body {
     font-weight: lighter;
     font-size: 1.7rem;
     margin-left: 9%;
+    text-align: center;
     font-style: italic;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .last1 h1 {
     color: lightpink;
-    padding-top: 7%;
+    padding-top: 3%;
+    margin-left: 7;
     text-align: center;
     font-size: 2rem;
     font-family: cursive;
@@ -258,60 +236,68 @@ body {
     0% {
         content: "LET'S GO!!!";
     }
-
     10% {
         content: "BUILD A BETTER FUTURE!!!";
     }
-
     20% {
         content: "ALL THE BEST!!!";
     }
-
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 480px) {
+    /* Styles for small mobile devices */
     .link {
         font-size: 0.9rem;
     }
-
-
-    .top {
+    .top1 {
         flex-direction: column;
         font-size: 2rem;
         padding: 0 16px;
     }
-
     .out {
         font-size: 1.2rem;
         font-weight: 400;
         text-shadow: none;
         animation-duration: 5s;
     }
-
-    .txt p,
-    .txt h2,
-    .txt h4 {
+    .txt1 p,
+    .txt1 h2,
+    .txt1 h4 {
         margin-left: 6%;
         margin-right: 6%;
         font-size: 2rem;
         padding-right: 5px;
     }
-
-    .txt p {
+    .txt1 p {
         margin-top: 80px;
     }
-
-    .txt h4 {
+    .txt1 h4 {
         font-size: 1.8rem;
     }
-
-    .last h1 {
+    .last1 h1 {
         font-size: 2rem;
         margin-left: 2%;
         padding-top: 1%;
     }
-
     span::before {
         font-size: 1rem;
     }
 }
+
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+    /* Styles for medium mobile devices */
+    .link {
+        font-size: 1rem;
+    }
+    /* Add additional styles as needed */
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+    /* Styles for large mobile devices */
+    .link {
+        font-size: 1.2rem;
+    }
+    /* Add additional styles as needed */
+}
+
+/* Add more media queries for larger screens if necessary */
