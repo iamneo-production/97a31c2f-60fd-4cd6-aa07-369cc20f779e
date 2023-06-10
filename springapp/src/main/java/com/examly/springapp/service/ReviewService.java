@@ -28,9 +28,10 @@ public class ReviewService {
 
     public boolean deleteTask(String id) {
         try {
-            Optional<ReviewModel> optionalReview = repo.findById(id);
+            Long reviewId = Long.parseLong(id); // Convert the String ID to Long
+            Optional<ReviewModel> optionalReview = repo.findById(reviewId);
             if (optionalReview.isPresent()) {
-                repo.deleteById(id);
+                repo.deleteById(reviewId);
                 return true;
             }
             return false;
