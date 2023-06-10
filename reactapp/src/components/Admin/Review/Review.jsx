@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from 'react';
-import { getReviews } from '../../../api/ReviewService';
+import { getReviews, deleteReviews } from '../../../api/ReviewService';
 import Navbar from '../../Navbar/Navbar';
 
 const Review = () => {
@@ -10,9 +10,14 @@ const Review = () => {
     .then((res) => setData(res) )
     .catch((err) => console.log(err) )
   }, [])
-  
 
-    
+  const handleDelete = (id) =>{
+    console.log(id)
+    deleteReviews(id)
+    .then((res) => { setData((prevData) => prevData.filter((item) => item.id !== id));} )
+    .catch((err) => console.log(err) )
+  }
+  
   return (
   <>
       <Navbar/>
@@ -38,6 +43,9 @@ const Review = () => {
             <th data-testid="comments" className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
               Comments
             </th>
+            <th data-testid="delete" className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Action
+            </th>
           </tr>
         </thead>
         <tbody className="bg-white divide-y divide-gray-200">
@@ -48,6 +56,10 @@ const Review = () => {
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.number}</td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.email}</td>
               <td className="px-6 py-4 whitespace-wrap break-words text-sm text-gray-500">{item.comments}</td>
+              {/* <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 hover:text-red-500"
+                  onClick={()=>handleDelete(item.id)}
+              >Delete</td> */}
+              <button className='bg-red-400 text-white px-3 py-2 my-2 rounded-lg hover:bg-red-700 '  onClick={()=>handleDelete(item.id)}>Delete</button>
             </tr>
           ))}
         </tbody>
