@@ -31,6 +31,7 @@ public class ReviewService {
             Optional<ReviewModel> optionalReview = repo.findById(id);
             if (optionalReview.isPresent()) {
                 repo.deleteById(id);
+
                 return true;
             }
             return false;
