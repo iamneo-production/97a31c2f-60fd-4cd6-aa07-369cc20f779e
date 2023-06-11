@@ -26,12 +26,12 @@ public class ReviewService {
         return repo.findAll();
     }
 
-    public boolean deleteTask(String id) {
+    public boolean deleteTask(Long id) {
         try {
-            Long reviewId = Long.parseLong(id); // Convert the String ID to Long
-            Optional<ReviewModel> optionalReview = repo.findById(reviewId);
+            Optional<ReviewModel> optionalReview = repo.findById(id);
             if (optionalReview.isPresent()) {
-                repo.deleteById(reviewId);
+                repo.deleteById(id);
+
                 return true;
             }
             return false;

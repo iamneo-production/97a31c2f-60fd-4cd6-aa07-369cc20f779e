@@ -32,7 +32,15 @@ public class ReviewController {
 		@GetMapping("/user/getAllFeedback")
 		public ResponseEntity<List<ReviewModel>> getTask() {
 
-			return	new ResponseEntity<List<ReviewModel>>(ser.getTask(), HttpStatus.OK);
+			return	new ResponseEntity<>(ser.getTask(), HttpStatus.OK);
+		}
+		@DeleteMapping("/admin/deleteFeedback/{id}")
+		public String deleteEmployeeById(@PathVariable Long id) {
+			if(ser.deleteTask(id)) {
+				return "Feedback Removed of id: "+id;
+			}
+			
+			return "internal server error";
 		}
 		@DeleteMapping("/admin/deleteFeedback/{id}")
 		public String deleteEmployeeById(@PathVariable String id) {
