@@ -26,7 +26,7 @@ public class ReviewService {
         return repo.findAll();
     }
 
-    public boolean deleteTask(String id) {
+    public boolean deleteTask(Long id) {
         try {
             Optional<ReviewModel> optionalReview = repo.findById(id);
             if (optionalReview.isPresent()) {
