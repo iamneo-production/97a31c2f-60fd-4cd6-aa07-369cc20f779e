@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../Course/Addcourse.css";
 import { useNavigate, Link } from "react-router-dom";
 import { addCourse, getCourses } from "../../../api/courseApi.js";
-import Navbar from "../../Navbar/Navbar";
+import Navbar from "../Navbar/Navbar";
 
 const Course = () => {
   const [courseId, setCourseId] = useState("");
@@ -26,19 +26,19 @@ const Course = () => {
     if (isValid) {
       handleSubmit(event).then((data) => {
         console.log(data);
-  
+
       })
         .catch((error) => {
           console.error(error);
         });
-        fetchData().then((data) => {
-          console.log("fetched course data success ", data);
-        })
-          .catch((error) => {
-            console.error(error);
-          });
-        navigate('/admin/viewCourse');
-      }
+      fetchData().then((data) => {
+        console.log("fetched course data success ", data);
+      })
+        .catch((error) => {
+          console.error(error);
+        });
+      navigate('/admin/viewCourse');
+    }
   };
 
   const fetchData = async () => {
@@ -117,8 +117,8 @@ const Course = () => {
               }}
             >
               <navigate to="/admin/viewCourse">
-              Confirm Add
-            </navigate>
+                Confirm Add
+              </navigate>
             </button>
             <button
               className="cancel-button"
@@ -133,10 +133,18 @@ const Course = () => {
 
         </div>
       )}
-
+      <button
+        className="admin-course-back-to-home"
+        type="submit"
+        onClick={() => {
+          navigate("/admin/dashboard");
+        }}
+      >
+        Back to Home
+      </button>
       <div className="course">
-        <h2 className="head-container">Add Course Details</h2>
-    
+        <h2 className="admin-course-head-container">Add Course Details</h2>
+
         <form>
           <div className="form-group">
             <label htmlFor="courseId" className="label-heading">
