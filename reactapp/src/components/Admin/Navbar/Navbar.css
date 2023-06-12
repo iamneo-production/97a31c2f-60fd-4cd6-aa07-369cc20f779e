@@ -189,6 +189,7 @@
   border: none;
   cursor: pointer;
   transition: transform 0.3s ease;
+  color: white;
 }
 
 .icon-container .logout-button i {
@@ -196,9 +197,6 @@
   margin-right: 5px;
 }
 
-.icon-container .logout-button  {
-  color: white;
-}
 
 .icon-container .logout-button:hover {
   transform: translateX(-10px);
