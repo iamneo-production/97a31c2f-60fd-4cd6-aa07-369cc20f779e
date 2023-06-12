@@ -44,7 +44,7 @@ const NavBar = () => {
         </NavLink>
         <button id="logout" type="submit" onClick={navigateToLogout} className="logout-button">
           <i className="fa-solid fa-sign-out"></i>
-          <span1>Logout</span1>
+          Logout
         </button>
       </div>
 
