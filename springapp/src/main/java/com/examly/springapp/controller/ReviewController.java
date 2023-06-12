@@ -42,12 +42,4 @@ public class ReviewController {
 			
 			return "internal server error";
 		}
-		@DeleteMapping("/admin/deleteFeedback/{id}")
-		public String deleteEmployeeById(@PathVariable String id) {
-			if(ser.deleteTask(id)) {
-				return "Feedback Removed of id: "+id;
-			}
-			
-			return "internal server error";
-		}
 }
