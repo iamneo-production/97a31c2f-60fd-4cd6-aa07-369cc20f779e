@@ -103,15 +103,16 @@
 
 
 
-.herosec {
-  height: 70px;
-  margin: 50px auto;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 4rem;
-  justify-items: center;
+  .herosec {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-top: 70px;
+    margin-bottom: 20px;
+    margin-left:60px;
+  
+  }
 
-}
 
 .card {
   display: flex;
