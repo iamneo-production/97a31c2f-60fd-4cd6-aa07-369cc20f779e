@@ -1,6 +1,7 @@
 import React, { useState,useEffect } from 'react';
 import { getReviews } from '../../../api/ReviewService';
-import Navbar from '../../Navbar/Navbar';
+import Navbar from "../Navbar/Navbar";
+
 
 const Review = () => {
   const [data, setData] = useState([]);
