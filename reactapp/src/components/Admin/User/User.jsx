@@ -4,7 +4,8 @@ import { Navigate } from "react-router";
 import { useNavigate, useParams, NavLink, Link } from "react-router-dom";
 import { baseUrl } from "../../../api/authService";
 import './AdminStudent.css';
-import Navbar from "../../Navbar/Navbar";
+import Navbar from "../Navbar/Navbar";
+
 
 let auth = "";
 store.subscribe(() => {
@@ -802,10 +803,10 @@ export const StudentForm = ({ type }) => {
             </div>
           </div>
         </div>
-        <div className="admin-student-btn-container ml-[30%] lg:ml-[70%]">
+        <div className="admin-student-btn-container">
         {type === "ADD" ? (
           <button
-            className="bg-green-500  text-white px-4 py-2 rounded-xl hover:bg-green-700 "
+            className="add-academy-btn"
             type="submit"
             id="addStudent"
             onClick={(e) => handleFormAdd(e)}
@@ -814,7 +815,7 @@ export const StudentForm = ({ type }) => {
           </button>
         ) : (
           <button
-            className="bg-green-500  text-white px-4 py-2 rounded-xl hover:bg-green-700"
+            className="add-academy-btn"
             type="submit"
             id="updateStudent"
             onClick={(e) => handleFormEdit(e)}
@@ -824,7 +825,7 @@ export const StudentForm = ({ type }) => {
         )}
         <Link
               to="/admin/Viewstudent"
-              className="ml-2 bg-red-500  text-white px-4 py-2 rounded-xl hover:bg-red-700">
+              className="admin-btn-secondary">
               Cancel</Link>
         </div>
       </form>

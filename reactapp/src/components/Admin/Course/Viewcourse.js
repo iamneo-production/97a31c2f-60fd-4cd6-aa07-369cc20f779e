@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { getCourses, deleteCourse } from "../../../api/courseApi.js";
 import "../Course/Viewcourse.css";
-import Navbar from "../../Navbar/Navbar.jsx";
+import Navbar from "../Navbar/Navbar";
+
 
 
 function Viewcourse() {
