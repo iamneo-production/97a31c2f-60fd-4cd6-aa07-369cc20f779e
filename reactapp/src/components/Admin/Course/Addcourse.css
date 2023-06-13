@@ -81,7 +81,7 @@
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-  margin-top: 20px;
+  margin-top: 90px;
 }
 
 .admin-course-back-to-home:hover {
@@ -97,8 +97,7 @@
 
 }
 
-.head-container {
-
+.admin-course-head-container {
   text-align: center;
   margin-bottom: 15px;
   font-weight: bold;

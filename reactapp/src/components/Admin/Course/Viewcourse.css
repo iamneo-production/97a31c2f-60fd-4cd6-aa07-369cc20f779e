@@ -1,20 +1,11 @@
-/* .add-course-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #2A7230;
-    border: none;
-    border-radius: 5px;
-    color: #fff;
-    cursor: pointer;
-    padding: 10px;
-    font-size: 1.2rem;
-    transition: background-color 0.2s ease-in-out;
-  }
-  
-  .add-course-btn:hover {
-    background-color: #3e9746;
-  } */
+/* heading */
+.head-container {
+  text-align: center;
+  margin-bottom: 15px;
+  font-weight: bold;
+  font-size: 1.9rem;
+  color: #555;
+}
 
 /* popup css */
 .admin-popup-body {
@@ -86,6 +77,8 @@
   transform: scale(1.05);
 }
 
+
+
 /* addcourse btn on bottom right corner in viewcourse page */
 
 .add-course-btn {
@@ -150,7 +143,8 @@
 .search-box {
   display: flex;
   justify-content: center;
-  margin: 20px 0;
+  margin-top: 85px;
+
 }
 
 .search-input {

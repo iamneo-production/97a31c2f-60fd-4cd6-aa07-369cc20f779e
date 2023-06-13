@@ -4,7 +4,9 @@ import "./AdminHomePage.css";
 import { Navigate } from "react-router";
 import { useNavigate, useParams, NavLink, Link } from "react-router-dom";
 import { baseUrl } from "../../../api/authService";
-import Navbar from "../../Navbar/Navbar";
+import Navbar from "../Navbar/Navbar";
+
+
 
 let auth = "";
 store.subscribe(() => {
@@ -403,7 +405,7 @@ export const AcademyForm = ({ type }) => {
         )
       }
       <button
-        className="back-to-home"
+        className="admin-institute-back-to-home"
         type="submit"
         onClick={() => {
           navigate("/admin/dashboard");
@@ -413,9 +415,9 @@ export const AcademyForm = ({ type }) => {
       </button>
       <div className="admin-academy-form">
         {type === "ADD" ? (
-          <h1 className="head-container">Add Academy Details</h1>
+          <h1 className="admin-institute-head-container">Add Academy Details</h1>
         ) : (
-          <h1 className="head-container">Edit Academy Details</h1>
+          <h1 className="admin-institute-head-container">Edit Academy Details</h1>
         )}
         <form className="admin-academy-form-container">
           <div className="form-group">
