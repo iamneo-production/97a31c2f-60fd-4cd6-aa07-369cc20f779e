@@ -93,6 +93,7 @@
 }
 
 .search-input {
+  margin-bottom:20px;
   border: 2px solid #ccc;
   border-radius: 5px;
   font-size: 1.1rem;
@@ -101,6 +102,7 @@
 }
 
 .search-btn {
+  margin-bottom:20px;
   background-color: #2A7230;
   border: none;
   border-radius: 5px;
@@ -211,8 +213,8 @@
 .academy-display-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
-  margin-top: 20px;
+  gap: 75px;
+  margin-top: 50px;
   margin-bottom: 15px;
 }
 

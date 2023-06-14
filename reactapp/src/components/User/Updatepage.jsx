@@ -10,6 +10,11 @@ function Updatepage() {
     const [studentdetail, setStudentdetail] = useState({});
     const { id } = useParams();
     const [userPopup, setUserPopup] = useState(false);
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+    const toggleSidebar = () => {
+        setIsSidebarOpen(!isSidebarOpen);
+    };
 
     const handleUserPopup = (e) => {
         e.preventDefault();
@@ -74,19 +79,70 @@ function Updatepage() {
     return (
         <UserGuard>
             <div>
-                <nav className="user-nav-container">
-                    <div>
-                        <NavLink to="/Navpage" >
-                            <h2 className="pg-admission-heading">PG Admission</h2>
+                <div>
+                    <div className="user-icon-container">
+                        <i
+                            className={`fa-solid fa-bars ${isSidebarOpen ? "user-icon-hidden" : ""}`}
+                            onClick={toggleSidebar}
+                        ></i>
+                        <NavLink to="/Navpage" className="user-nav-pg">
+                            <h1>PG Admission Portal</h1>
                         </NavLink>
+                        <NavLink to="/HomePage" className="user-navlink-buttons">
+                            <i className="fa-solid fa-university"></i>
+                            Institutes
+                        </NavLink>
+                        <NavLink to="/Enrolledcourse" className="user-navlink-buttons">
+                            <i className="fa-solid fa-book"></i>
+                            EnrolledCourses
+                        </NavLink>
+                        <NavLink to="/FeedBack" className="user-navlink-buttons">
+                            <i className="fa-solid fa-comment"></i>
+                            FeedBack
+                        </NavLink>
+                        <button data-testid="logout" name='logout' onClick={handleLogout} className="user-logout-button">
+                            <i className="fa-solid fa-sign-out"></i>Logout</button>
                     </div>
-                    <div className="user-navlinks-container">
-                        <NavLink to="/HomePage">Institute</NavLink>
-                        <NavLink to="/Enrolledcourse">Enrolledcourse</NavLink>
-                        <NavLink to="/FeedBack">FeedBack</NavLink>
+
+
+                    <div className={`user-nav-container ${isSidebarOpen ? "user-show-sidebar" : ""}`}>
+                        <nav>
+                            <i
+                                className={`fa-solid fa-bars ${isSidebarOpen ? "user-icon-hidden" : ""}`}
+                                onClick={toggleSidebar}
+                            ></i>
+                            <div>
+                                <NavLink to="/Navpage">
+                                    <h2 className="pg-admission-heading">PG Admission</h2>
+                                </NavLink>
+                            </div>
+                            <div className="user-navlinks-container">
+                                <div className="user-navlink-box">
+                                <i class="fa-solid fa-building-columns"></i>
+                                    <NavLink  to="/HomePage">
+                                        Institutes
+                                    </NavLink>
+                                </div>
+                                <div className="user-navlink-box">
+                                <i className="fa-solid fa-book"></i>
+                                    <NavLink  to="/Enrolledcourse">
+                                        EnrolledCourses
+                                    </NavLink>
+                                </div>
+                                <div className="user-navlink-box">
+                                    <i class="fa-solid fa-comments"></i>
+                                    <NavLink  to="/FeedBack">
+                                        FeedBack
+                                    </NavLink>
+                                </div>
+                                <div className="user-navlink-box user-bottom" onClick={handleLogout}>
+                                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                    <button data-testid="logout" name='logout'  >Logout</button>
+                                </div>
+                            </div>
+                        </nav>
                     </div>
-                    <button data-testid="logout" name='logout' onClick={handleLogout} >Logout</button>
-                </nav>
+                </div>
                 {
                     userPopup && (
                         <div className="user-popup-body noHover">
