@@ -62,6 +62,10 @@ public class WebSecurityConfig {
 
 			.antMatchers("/admin/addInstitute/**","/admin/editInstitute/**","/admin/deleteInstitutes/**","/admin/viewInstitutes","/user/studentForm/**","/admin/viewStudent","/admin/editStudent/*","/admin/addStudent/**","/admin/deleteStudent/*","/user/addAdmission/**","/user/deleteAdmission/*","/admin/viewCourse","/admin/deleteCourse/*","/user/addFeedback/**").permitAll()
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> f22cb4aa351f0e9bea9199623809ffbd40f673c6
 
 			.anyRequest().authenticated();
 

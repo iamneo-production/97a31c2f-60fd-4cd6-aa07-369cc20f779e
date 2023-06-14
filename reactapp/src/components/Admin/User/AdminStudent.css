@@ -80,7 +80,7 @@
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-  margin-top: 20px;
+  margin-top: 90px;
 }
 
 .back-to-home:hover {
@@ -93,7 +93,8 @@
 .admin-search-container {
   display: flex;
   justify-content: center;
-  margin: 20px 0;
+  margin-top:85px;
+
 }
 
 .search-input {
@@ -262,7 +263,7 @@
   justify-content: center;
   align-items: center;
   font-family: Arial, sans-serif;
-  margin: 20px;
+  /* margin: 20px; */
 }
 
 .head-container {
@@ -277,7 +278,7 @@
   background-color: #f8f8f8;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 30px;
+  /* padding: 30px; */
   width: 100%;
 }
 
@@ -376,11 +377,18 @@
 }
 
 .admin-student-btn-container{
+<<<<<<< HEAD
   margin-left:70%;
+=======
+>>>>>>> f22cb4aa351f0e9bea9199623809ffbd40f673c6
   display: flex;
   justify-content: flex-end;
   align-items: center;
   margin-top: 40px;
+<<<<<<< HEAD
+=======
+  margin-left:70%;
+>>>>>>> f22cb4aa351f0e9bea9199623809ffbd40f673c6
 }
 
 .add-academy-btn,

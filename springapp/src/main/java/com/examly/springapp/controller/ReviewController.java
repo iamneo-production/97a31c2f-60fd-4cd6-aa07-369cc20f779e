@@ -32,6 +32,18 @@ public class ReviewController {
 		@GetMapping("/user/getAllFeedback")
 		public ResponseEntity<List<ReviewModel>> getTask() {
 
+<<<<<<< HEAD:springapp/src/main/java/com/examly/springapp/controller/ReviewController.java
 			return	new ResponseEntity<List<ReviewModel>>(ser.getTask(), HttpStatus.OK);
+=======
+			return	new ResponseEntity<>(ser.getTask(), HttpStatus.OK);
+		}
+		@DeleteMapping("/admin/deleteFeedback/{id}")
+		public String deleteEmployeeById(@PathVariable Long id) {
+			if(ser.deleteTask(id)) {
+				return "Feedback Removed of id: "+id;
+			}
+			
+			return "internal server error";
+>>>>>>> f22cb4aa351f0e9bea9199623809ffbd40f673c6:springapp/src/main/java/com/examly/springapp/controller/reviewController.java
 		}
 }

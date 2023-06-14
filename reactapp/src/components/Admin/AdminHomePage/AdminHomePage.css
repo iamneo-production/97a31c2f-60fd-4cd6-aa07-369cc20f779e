@@ -88,7 +88,7 @@
 
   display: flex;
   justify-content: center;
-  margin: 20px 0;
+  margin-top:85px;
 
 }
 
@@ -293,7 +293,7 @@
 
 /* Back to home css */
 
-.back-to-home {
+.admin-institute-back-to-home {
   margin-left: 5px;
   background-color: #fff;
   border: 2px solid #2A7230;
@@ -304,15 +304,15 @@
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-  margin-top: 20px;
+  margin-top: 90px;
 }
 
-.back-to-home:hover {
+.admin-institute-back-to-home:hover {
   background-color: #2A7230;
   color: #fff;
 }
 
-.head-container {
+.admin-institute-head-container {
   text-align: center;
   margin-bottom: 15px;
   font-weight: bold;
@@ -390,8 +390,22 @@
   background-color: #2A7230;
   color: #fff;
   margin-right: 20px;
+<<<<<<< HEAD
 }
 
+.admin-btn-secondary{
+  background-color: #fff;
+  color: #2A7230;
+  border: 2px solid #2A7230;
+
+=======
+>>>>>>> f22cb4aa351f0e9bea9199623809ffbd40f673c6
+}
+.admin-form-submit-button:hover,
+.admin-btn-secondary:hover {
+
+<<<<<<< HEAD
+=======
 .admin-btn-secondary{
   background-color: #fff;
   color: #2A7230;
@@ -401,6 +415,7 @@
 .admin-form-submit-button:hover,
 .admin-btn-secondary:hover {
 
+>>>>>>> f22cb4aa351f0e9bea9199623809ffbd40f673c6
   transform: translateY(-5px);
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
 
