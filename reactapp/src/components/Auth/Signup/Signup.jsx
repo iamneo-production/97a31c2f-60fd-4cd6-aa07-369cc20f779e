@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import authService from "../../../api/authService";
 import { Link, Navigate } from "react-router-dom";
 import Validation from "../../Auth/Signup/Validation";
+import "./Signup.css"; 
 
 const Signup = () => {
   const initialState = {
@@ -67,7 +68,7 @@ const Signup = () => {
   };
 
   return (
-    <section className="whole1">
+    <section className="whole2">
       <div className="flex flex-col ml-6 md:ml-20 px-2 md:px-6 py-4 md:py-8 lg:pt-0 lg:pb-4">
         <div className="flex mx-auto items-center mb-4 text-3xl md:text-4xl font-semibold text-white md:font-bold md:mt-4">
           PG Admission Portal
