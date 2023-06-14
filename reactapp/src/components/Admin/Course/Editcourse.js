@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { getCourses, editCourse } from "../../../api/courseApi.js";
-import NavBar from "../Navbar/Navbar.js";
 import { AdminGuard } from "../../../AuthGuard/AdminGuard";
 import "../Course/Addcourse.css";
+import Navbar from "../Navbar/Navbar";
+
 
 
 function Editcourse(props) {
@@ -83,7 +84,7 @@ function Editcourse(props) {
 
 
     <AdminGuard>
-      <NavBar />
+      <Navbar />
       {
         popup && (
           <div className="admin-popup-body noHover">
@@ -125,7 +126,7 @@ function Editcourse(props) {
         Back to Home
       </button>
       <div className='course'>
-        <h1 class="head-container">Edit Course</h1>
+        <h1 class="admin-course-head-container">Edit Course</h1>
         <form>
           <div className="form-group">
             <label htmlFor="courseId" className='label-heading'>Course Id:</label>

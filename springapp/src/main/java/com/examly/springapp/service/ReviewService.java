@@ -6,24 +6,36 @@ import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.*;
 import java.util.*;
-import javax.lang.model.type.NullType;
 
 @Service
 public class ReviewService {
-	
-	@Autowired
-	private ReviewRepository repo;
-	
-	public ReviewModel addTask(ReviewModel mod) {
-		try {
-			return repo.save(mod);
-		} catch (Exception e) {
-			return null;
-		}	
-	}
-	
-	public List<ReviewModel> getTask() {
-		return repo.findAll();
-	}
 
+    @Autowired
+    private ReviewRepository repo;
+
+    public ReviewModel addTask(ReviewModel mod) {
+        try {
+            return repo.save(mod);
+        } catch (Exception e) {
+            return null;
+        }   
+    }
+
+    public List<ReviewModel> getTask() {
+        return repo.findAll();
+    }
+
+    public boolean deleteTask(Long id) {
+        try {
+            Optional<ReviewModel> optionalReview = repo.findById(id);
+            if (optionalReview.isPresent()) {
+                repo.deleteById(id);
+
+                return true;
+            }
+            return false;
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }
