@@ -25,3 +25,23 @@ code {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+.student-heading {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #2A7230;
+}
+
+/* background image for login and signup */
+.whole1 {
+  font-family: sans-serif;
+  background-image: url(./components/Auth/Login/back.jpg);
+  background-repeat: repeat-y;
+  background-size: 100% auto;
+  width: 100%;
+  min-height: 100vh; 
+  object-fit: cover;
+}
+
