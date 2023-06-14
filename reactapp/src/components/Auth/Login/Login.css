@@ -8,7 +8,7 @@ body {
     
     height:100vh;
     font-family: sans-serif;
-    background-image:url(lobg.jpg);
+    background-image:url(back.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -29,7 +29,7 @@ body {
     border-radius: 50px 20px;
     position: absolute;
     top: 50%;
-    left: 80%;
+    left: 20%;
     transform: translate(-50%,-50%);
     background:transparent;
     background-size: cover;
