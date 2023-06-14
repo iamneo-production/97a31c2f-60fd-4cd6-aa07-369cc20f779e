@@ -67,7 +67,7 @@ const Signup = () => {
   };
 
   return (
-    <section className="whole1 " >
+    <section className="whole2" >
 
       <div className="flex flex-col ml-20 px-6 py-8   lg:pt-0  lg:pb-4">
         <div className="flex mx-auto items-center mb-6 text-4xl font-semibold text-white md:font-bold md:mt-4">
