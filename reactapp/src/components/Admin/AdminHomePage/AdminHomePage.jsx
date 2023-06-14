@@ -197,6 +197,9 @@ const Adminacademy = () => {
       <div className="admin-academy-container">
         {isLoading && <h4>Loading...</h4>}
         {isError.state && <h4>{isError.msg}</h4>}
+        <div className="student-heading"  >
+          <h1>List of Institutes</h1>
+        </div>
         <div className="academy-display-container" data-testid="instituteName" >
           {academyData.map((eachAcademy, index) => {
             const { instituteId, instituteName, instituteAddress, imageUrl } =
