@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import authService from "../../../api/authService";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import Validation from '../../Auth/Signup/Validation';
 
 const Signup = () => {
@@ -29,7 +29,6 @@ const Signup = () => {
   const [errors, setErrors] = useState(initialState.errors);
   const [loader, setLoader] = useState(false);
   const [redirect, setRedirect] = useState(false);
-  const navigate = useNavigate();
 
   // Event handler for input change
   const handleInputChange = (e) => {
@@ -68,10 +67,10 @@ const Signup = () => {
   };
 
   return (
-    <section className="bg-gray-50 w-full bg-cover" style={{ backgroundImage: 'url(https://static.vecteezy.com/system/resources/previews/001/311/554/non_2x/education-and-back-to-school-concept-free-vector.jpg)', backgroundSize: 'cover' }}>
+    <section className="whole1 " >
 
-      <div className="flex flex-col items-center px-6 py-8 mx-auto  lg:pt-0  lg:pb-4">
-        <div className="flex items-center mb-6 text-2xl font-semibold text-blue-600 md:font-bold md:mt-4">
+      <div className="flex flex-col ml-20 px-6 py-8   lg:pt-0  lg:pb-4">
+        <div className="flex mx-auto items-center mb-6 text-4xl font-semibold text-white md:font-bold md:mt-4">
           PG Admission Portal
         </div>
         <div
@@ -222,7 +221,7 @@ const Signup = () => {
                 type="submit"
                 data-testid="submitButton"
                 id="submitButton"
-                onClick={() => setTimeout(() => {navigate("/login")}, 2000)}
+                // onClick={() => setTimeout(() => {navigate("/login")}, 2000)}
                 className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center "
               >
                 sign up
