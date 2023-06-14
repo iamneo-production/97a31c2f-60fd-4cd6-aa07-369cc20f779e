@@ -66,7 +66,6 @@ const Login = () => {
           console.log(data, "data");
           if (data.status === 200) {
             store.dispatch({ type: 'LOGIN', payload: data })
-            console.log(auth)
             setLoader(false)
           } else {
             setErrors({ ...errors, custom: { required: true, message: data.message } })

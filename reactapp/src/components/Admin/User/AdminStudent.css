@@ -80,7 +80,7 @@
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-  margin-top: 20px;
+  margin-top: 90px;
 }
 
 .back-to-home:hover {
@@ -93,7 +93,8 @@
 .admin-search-container {
   display: flex;
   justify-content: center;
-  margin: 20px 0;
+  margin-top:85px;
+
 }
 
 .search-input {
@@ -205,6 +206,7 @@
 
 /* add student btn */
 
+
 .admin-add-student-button {
   position: fixed;
   bottom: 20px;
@@ -261,7 +263,7 @@
   justify-content: center;
   align-items: center;
   font-family: Arial, sans-serif;
-  margin: 20px;
+  /* margin: 20px; */
 }
 
 .head-container {
@@ -276,7 +278,7 @@
   background-color: #f8f8f8;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 30px;
+  /* padding: 30px; */
   width: 100%;
 }
 
@@ -374,7 +376,17 @@
   margin-bottom: 20px;
 }
 
-.add-academy-btn {
+.admin-student-btn-container{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 40px;
+  margin-left:70%;
+}
+
+.add-academy-btn,
+.admin-btn-secondary {
+
   padding: 15px 25px;
   border: none;
   border-radius: 50px;
@@ -384,14 +396,23 @@
   letter-spacing: 1px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
+
+} 
+.add-academy-btn{
   background-color: #2A7230;
   color: #fff;
-  margin-top: 20px;
-  margin-left: 80%;
+  margin-right: 20px;
+
 }
 
-.add-academy-btn:hover {
-  background-color: #3e8e41;
+.admin-btn-secondary{
+  background-color: #fff;
+  color: #2A7230;
+  border: 2px solid #2A7230;
+
+}
+.add-academy-btn:hover,
+.admin-btn-secondary:hover {
   transform: translateY(-5px);
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
 }

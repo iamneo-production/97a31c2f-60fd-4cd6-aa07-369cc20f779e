@@ -2,8 +2,9 @@ import React from 'react'
 import { NavLink, useNavigate, Link } from "react-router-dom";
 import { store } from "../../../store";
 import './Firstpage.css'
-import { AdminGuard } from "../../../AuthGuard/AdminGuard"
-const Navpage = () => {
+
+
+const Firstpage = () => {
     const navigate = useNavigate();
     const handleLogout = () => {
         store.dispatch({ type: "LOGOUT" });
@@ -11,7 +12,7 @@ const Navpage = () => {
     };
 
     return (
-        
+
             <div className="nv1" data-testid="user_navbar">
                 <div className='top1'>
                     <div className='anime'>
@@ -50,4 +51,4 @@ const Navpage = () => {
         
     );
 }
-export default Navpage
+export default Firstpage

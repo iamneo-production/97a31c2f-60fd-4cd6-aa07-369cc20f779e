@@ -83,17 +83,18 @@ const Review = () => {
 
             </div>
             <div className="user-review-popup">
-              <h1>Are you sure to add the data ?</h1>
+              <h1>Are you sure to add the feedback ?</h1>
               <button
                 className="user-review-confirm-btn"
                 type="submit"
                 onClick={(e) => {
-                  handleSubmit(e);
+                  handleSubmit(e).then(()=> {console.log("hello this is safeena")})
+                  .catch(error=>{console.log(error)});
                   setUserPopup(false);
                   navigate('/Navpage');
                 }}
               >
-                confirm submit
+                Confirm Submit
               </button>
               <button
                 className="user-review-cancel-btn"
@@ -102,7 +103,7 @@ const Review = () => {
                   setUserPopup(false);
                 }}
               >
-                cancel
+                Cancel
               </button>
             </div>
           </div>

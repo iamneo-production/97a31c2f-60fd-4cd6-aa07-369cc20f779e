@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
-import NavBar from "../Navbar/Navbar";
 import { store } from "../../../store";
 import "./AdminHomePage.css";
 import { Navigate } from "react-router";
-import { useNavigate, useParams, NavLink } from "react-router-dom";
+import { useNavigate, useParams, NavLink, Link } from "react-router-dom";
 import { baseUrl } from "../../../api/authService";
+import Navbar from "../Navbar/Navbar";
+
+
 
 let auth = "";
 store.subscribe(() => {
@@ -28,7 +30,7 @@ const AdminHomePage = () => {
 
   return (
     <>
-      <NavBar />
+      {/* <NavBar /> */}
       <Adminacademy />
     </>
   );
@@ -254,6 +256,8 @@ const Adminacademy = () => {
 export const AcademyForm = ({ type }) => {
   const [formData, setFormData] = useState(initialData);
 
+  const[error, setError]=useState(false);
+
   const [popup, setPopup] = useState(false);
 
   const navigate = useNavigate();
@@ -299,8 +303,14 @@ export const AcademyForm = ({ type }) => {
   const handleFormAdd = (e) => {
     e.preventDefault();
     console.log(formData);
+    if(formData.instituteName){
     setPopup(true);
+    }
+    else{
+      setError(true);
+    }
   };
+  
 
   const addAcademy = async () => {
     const response = await fetch(`${baseUrl}/admin/addInstitute`, {
@@ -336,7 +346,7 @@ export const AcademyForm = ({ type }) => {
 
   return (
     <>
-      <NavBar />
+      <Navbar />
       {
         popup && (
           <div className="admin-popup-body">
@@ -395,7 +405,7 @@ export const AcademyForm = ({ type }) => {
         )
       }
       <button
-        className="back-to-home"
+        className="admin-institute-back-to-home"
         type="submit"
         onClick={() => {
           navigate("/admin/dashboard");
@@ -405,21 +415,25 @@ export const AcademyForm = ({ type }) => {
       </button>
       <div className="admin-academy-form">
         {type === "ADD" ? (
-          <h1 className="head-container">Add Academy Details</h1>
+          <h1 className="admin-institute-head-container">Add Academy Details</h1>
         ) : (
-          <h1 className="head-container">Edit Academy Details</h1>
+          <h1 className="admin-institute-head-container">Edit Academy Details</h1>
         )}
         <form className="admin-academy-form-container">
           <div className="form-group">
             <label className="label-heading">Academy Name : </label>
             <input
-              type="text"
-              id="academyName"
-              name="academyName"
-              value={formData.instituteName}
-              placeholder="Enter Academy Name"
-              onChange={(e) => handleChange(e, "instituteName")}
-            />
+            type="text"
+            id="academyName"
+            name="academyName"
+            value={formData.instituteName}
+            placeholder="Enter Academy Name"
+            onChange={(e) => handleChange(e, "instituteName")}
+            required
+           />
+           {!formData.instituteName && (
+            <div className="validation-message"></div>
+           )}
           </div>
           <div className="form-group">
             <label className="label-heading">Contact Number : </label>
@@ -430,6 +444,7 @@ export const AcademyForm = ({ type }) => {
               value={formData.mobile}
               placeholder="Enter Contact Number"
               onChange={(e) => handleChange(e, "mobile")}
+              required
             />
           </div>
           <div className="form-group">
@@ -478,6 +493,8 @@ export const AcademyForm = ({ type }) => {
               onChange={(e) => handleChange(e, "instituteDescription")}
             />
           </div>
+          {error && <div className="errorfields"> All Fileds Requried</div>}
+          <div className="admin-institute-btn-container">
           {type === "ADD" ? (
             <button
               className="admin-form-submit-button"
@@ -496,7 +513,13 @@ export const AcademyForm = ({ type }) => {
             >
               Update Academy
             </button>
+            
           )}
+           <Link
+              to="/admin/dashboard"
+              className="admin-btn-secondary">
+              Cancel</Link>
+              </div>
         </form>
       </div>
     </>
