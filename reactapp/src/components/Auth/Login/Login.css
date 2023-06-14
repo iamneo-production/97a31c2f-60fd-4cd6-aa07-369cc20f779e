@@ -4,8 +4,8 @@ body {
     height: 100%;
     width: 100%;
 }
+
 .whole1{
-    
     height:100vh;
     font-family: sans-serif;
     background-image:url(back.jpg);
@@ -14,43 +14,43 @@ body {
     background-size: cover;
     width:100%;
 }
+
 .head1{
     text-align:center;
     font-weight:bold;
     font-size:3rem;
     color: whitesmoke;
     text-shadow: 2px 2px 4px white;
-
 }
+
 .box{
     width: 500px;
     padding: 40px;
-    border:5px solid black;
+    border: 5px solid black;
     border-radius: 50px 20px;
     position: absolute;
     top: 50%;
     left: 20%;
     transform: translate(-50%,-50%);
-    background:transparent;
+    background: transparent;
     background-size: cover;
     text-align: center;
-
 }
+
 .box h1{
-color:darkkhaki;
-font-size:2rem;
-font-family:fantasy;
-text-transform: uppercase;
-
+    color: darkkhaki;
+    font-size: 2rem;
+    font-family: fantasy;
+    text-transform: uppercase;
 }
 
-.box input[type ="email"],.box input[type ="password"]{
+.box input[type="email"],
+.box input[type="password"]{
     border: 0;
     background: none;
     display: block;
     margin: 20px auto;
     text-align: center;
-    border: 2px solid orangered;
     padding: 14px 10px;
     width: 200px;
     outline: none;
@@ -58,11 +58,14 @@ text-transform: uppercase;
     border-radius: 24px;
     transition: 0.25s;
 }
-.box input[type ="email"]:focus,.box input[type ="password"]:focus{
+
+.box input[type="email"]:focus,
+.box input[type="password"]:focus{
     width: 250px;
     border-color: #2ecc71;
 }
-.box button[type = "submit"]{
+
+.box button[type="submit"]{
     border: 0;
     background: none;
     display: block;
@@ -71,21 +74,23 @@ text-transform: uppercase;
     border: 2px solid #2ecc71;
     padding: 14px 40px;
     outline: none;
-    color:whitesmoke;
+    color: whitesmoke;
     border-radius: 24px;
     transition: 0.25s;  
     cursor: pointer;
 }
-.box button[type = "submit"]:hover{
+
+.box button[type="submit"]:hover{
     background: #2ecc71;
-    
 }
+
 .plgn{
-    color:whitesmoke;
+    color: whitesmoke;
 }
+
 .plgn h3{
     border: 0;
-    width:150px;
+    width: 150px;
     background: none;
     display: block;
     margin: 20px auto;
@@ -93,13 +98,12 @@ text-transform: uppercase;
     border: 2px solid pink;
     padding: 14px 40px;
     outline: none;
-    color:whitesmoke;
+    color: whitesmoke;
     border-radius: 25px;
     transition: 0.25s;  
     cursor: pointer;
-
 }
+
 .plgn h3:hover{
     background: pink;
-    
 }
