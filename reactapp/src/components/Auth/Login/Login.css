@@ -54,7 +54,7 @@ text-transform: uppercase;
     padding: 14px 10px;
     width: 200px;
     outline: none;
-    color: black;
+    color: whitesmoke;
     border-radius: 24px;
     transition: 0.25s;
 }
@@ -71,7 +71,7 @@ text-transform: uppercase;
     border: 2px solid #2ecc71;
     padding: 14px 40px;
     outline: none;
-    color:black;
+    color:whitesmoke;
     border-radius: 24px;
     transition: 0.25s;  
     cursor: pointer;
@@ -81,7 +81,7 @@ text-transform: uppercase;
     
 }
 .plgn{
-    color:black;
+    color:whitesmoke;
 }
 .plgn h3{
     border: 0;
@@ -93,7 +93,7 @@ text-transform: uppercase;
     border: 2px solid pink;
     padding: 14px 40px;
     outline: none;
-    color:black;
+    color:whitesmoke;
     border-radius: 25px;
     transition: 0.25s;  
     cursor: pointer;
