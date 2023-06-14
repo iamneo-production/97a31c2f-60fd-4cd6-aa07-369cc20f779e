@@ -68,8 +68,9 @@ const Signup = () => {
   };
 
   return (
-    <section className="bg-gray-50 ">
-      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto  lg:pt-0  lg:pb-4">
+    <section className="bg-gray-50 w-full bg-cover" style={{ backgroundImage: 'url(https://static.vecteezy.com/system/resources/previews/001/311/554/non_2x/education-and-back-to-school-concept-free-vector.jpg)', backgroundSize: 'cover' }}>
+
+      <div className="flex flex-col items-center px-6 py-8 mx-auto  lg:pt-0  lg:pb-4">
         <div className="flex items-center mb-6 text-2xl font-semibold text-blue-600 md:font-bold md:mt-4">
           PG Admission Portal
         </div>
