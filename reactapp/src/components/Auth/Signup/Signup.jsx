@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import authService from "../../../api/authService";
 import { Link, Navigate, useNavigate } from "react-router-dom";
-import Validation from "./Validation";
+import Validation from '../../Auth/Signup/Validation';
 
 const Signup = () => {
   const initialState = {
