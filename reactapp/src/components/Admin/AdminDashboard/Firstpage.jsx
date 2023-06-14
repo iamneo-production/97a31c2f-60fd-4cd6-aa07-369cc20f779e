@@ -12,11 +12,6 @@ const Firstpage = () => {
     };
 
     return (
-<<<<<<< HEAD
-        
-=======
-
->>>>>>> f22cb4aa351f0e9bea9199623809ffbd40f673c6
             <div className="nv1" data-testid="user_navbar">
                 <div className='top1'>
                     <div className='anime'>

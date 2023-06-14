@@ -26,25 +26,10 @@ const Course = () => {
     if (isValid) {
       handleSubmit(event).then((data) => {
         console.log(data);
-<<<<<<< HEAD
-  
-=======
-
->>>>>>> f22cb4aa351f0e9bea9199623809ffbd40f673c6
       })
         .catch((error) => {
           console.error(error);
         });
-<<<<<<< HEAD
-        fetchData().then((data) => {
-          console.log("fetched course data success ", data);
-        })
-          .catch((error) => {
-            console.error(error);
-          });
-        navigate('/admin/viewCourse');
-      }
-=======
       fetchData().then((data) => {
         console.log("fetched course data success ", data);
       })
@@ -53,7 +38,6 @@ const Course = () => {
         });
       navigate('/admin/viewCourse');
     }
->>>>>>> f22cb4aa351f0e9bea9199623809ffbd40f673c6
   };
 
   const fetchData = async () => {
@@ -85,41 +69,6 @@ const Course = () => {
 
   const validateFields = () => {
     const errors = {};
-<<<<<<< HEAD
-
-    if (!courseId) {
-      errors.courseId = "Course Id is required.";
-    }
-
-    if (!courseName) {
-      errors.courseName = "Course Name is required.";
-    }
-
-    if (!courseDuration) {
-      errors.courseDuration = "Course Duration is required.";
-    }
-
-    if (!courseTiming) {
-      errors.courseTiming = "Course Timing is required.";
-    }
-
-    if (!courseEnrolled) {
-      errors.courseEnrolled = "Course Enrolled is required.";
-    }
-
-    if (!courseDescription) {
-      errors.courseDescription = "Course Description is required.";
-    }
-
-    setValidationErrors(errors);
-    return Object.keys(errors).length === 0;
-  };
-
-  return (
-    <>
-      <NavBar />
-
-=======
 
     if (!courseId) {
       errors.courseId = "Course Id is required.";
@@ -153,7 +102,6 @@ const Course = () => {
     <>
       <Navbar />
 
->>>>>>> f22cb4aa351f0e9bea9199623809ffbd40f673c6
       {popup && (
         <div className="admin-popup-body noHover">
           <div className="admin-popup-overlay"></div>
@@ -168,13 +116,8 @@ const Course = () => {
               }}
             >
               <navigate to="/admin/viewCourse">
-<<<<<<< HEAD
-              Confirm Add
-            </navigate>
-=======
                 Confirm Add
               </navigate>
->>>>>>> f22cb4aa351f0e9bea9199623809ffbd40f673c6
             </button>
             <button
               className="cancel-button"
@@ -189,12 +132,6 @@ const Course = () => {
 
         </div>
       )}
-<<<<<<< HEAD
-
-      <div className="course">
-        <h2 className="head-container">Add Course Details</h2>
-    
-=======
       <button
         className="admin-course-back-to-home"
         type="submit"
@@ -207,7 +144,6 @@ const Course = () => {
       <div className="course">
         <h2 className="admin-course-head-container">Add Course Details</h2>
 
->>>>>>> f22cb4aa351f0e9bea9199623809ffbd40f673c6
         <form>
           <div className="form-group">
             <label htmlFor="courseId" className="label-heading">

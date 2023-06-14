@@ -377,18 +377,11 @@
 }
 
 .admin-student-btn-container{
-<<<<<<< HEAD
-  margin-left:70%;
-=======
->>>>>>> f22cb4aa351f0e9bea9199623809ffbd40f673c6
   display: flex;
   justify-content: flex-end;
   align-items: center;
   margin-top: 40px;
-<<<<<<< HEAD
-=======
   margin-left:70%;
->>>>>>> f22cb4aa351f0e9bea9199623809ffbd40f673c6
 }
 
 .add-academy-btn,

@@ -47,13 +47,6 @@ const NavBar = () => {
           Logout
         </button>
       </div>
-<<<<<<< HEAD
-      <div className="navlinks-container">
-      <NavLink id="adminInstitute" to="/admin/dashboard">Institutes</NavLink>
-        <NavLink id="adminCourse" to="/admin/viewCourse">Courses</NavLink>
-        <NavLink id="adminStudents" to="/admin/Viewstudent">Students</NavLink>
-        <NavLink id="adminFeedback" to="/admin/FeedBack">FeedBack</NavLink>
-=======
 
 
       <div className={`nav-container ${isSidebarOpen ? "show-sidebar" : ""}`}>
@@ -100,7 +93,6 @@ const NavBar = () => {
             </div>
           </div>
         </nav>
->>>>>>> f22cb4aa351f0e9bea9199623809ffbd40f673c6
       </div>
     </div>
   );
