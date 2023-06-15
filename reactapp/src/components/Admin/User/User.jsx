@@ -28,6 +28,7 @@ const student = {
   emailId: "",
   eligibility: "",
   courseId: "",
+  instituteId: "",
   streetName: "",
   areaName: "",
   state: "",
@@ -314,7 +315,9 @@ export const StudentForm = ({ type }) => {
   const navigate = useNavigate();
   const [popup, setPopup] = useState(false);
   const [course, setCourse] = useState([]);
+  const [institute, setInstitute] =useState([]);
   const [coursePopup, setCoursePopup] = useState(false);
+  const [institutePopup, setInstitutePopup] = useState(false);
 
   const { id } = useParams();
   useEffect(() => {
@@ -332,7 +335,15 @@ export const StudentForm = ({ type }) => {
       .catch((error) => {
         console.error(error);
       });
+      fetchInstitute()
+      .then((data) => {
+        console.log("fetched Institute data success ", data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }, [id]);
+  
 
   const fetchData = async () => {
     const response = await fetch(`${baseUrl}/admin/viewStudent`, {
@@ -351,6 +362,18 @@ export const StudentForm = ({ type }) => {
       setFormData(editData);
     }
   };
+  const fetchInstitute = async () => {
+    const response = await fetch(`${baseUrl}/admin/viewInstitute`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${auth.token}`,
+        "Content-type": "application/json",
+      },
+    });
+    const data = await response.json();
+    setInstitute(data);
+  }
+    
 
   const fetchCourse = async () => {
     const response = await fetch(`${baseUrl}/admin/viewCourse`, {
@@ -388,6 +411,7 @@ export const StudentForm = ({ type }) => {
       formData.emailId &&
       formData.eligibility &&
       formData.courseId &&
+      formData.instituteId&&
       formData.streetName &&
       formData.areaName &&
       formData.state &&
@@ -444,6 +468,26 @@ export const StudentForm = ({ type }) => {
                 return (
                   <div key = {eachCourse.courseId} onClick={() => { setFormData({ ...formData, courseId: eachCourse.courseId }); setCoursePopup(false); }}>
                     <h1>{eachCourse.courseId} : {eachCourse.courseName}</h1>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+        )
+        
+      }
+
+      {
+        institutePopup && (
+          <div className="admin-popup-body">
+            <div className="admin-popup-overlay">
+
+            </div>
+            <div className="admin-student-popup">
+              {institute.map((eachInstitute) => {
+                return (
+                  <div key = {eachInstitute.instituteId} onClick={() => { setFormData({ ...formData, instituteId: eachInstitute.instituteId }); setInstitutePopup(false); }}>
+                    <h1>{eachInstitute.instituteId} : {eachInstitute.instituteName}</h1>
                   </div>
                 )
               })}
@@ -720,6 +764,23 @@ export const StudentForm = ({ type }) => {
                 value={formData.courseId}
                 onClick={() => { setCoursePopup(true) }}
               // onChange={(e) => handleInputChange(e, "courseId")}
+              />
+            </div>
+            <div className="instituteId">
+              <label className="form__label" htmlFor="instituteid">
+                {" "}
+                Institute ID{" "}
+              </label>
+              <input
+                type="text"
+                id="instituteId"
+                name="instituteId"
+                className="form__input"
+                placeholder="Enter Your Institute Id"
+                autoComplete="off"
+                value={formData.instituteId}
+                onClick={() => { setInstitutePopup(true) }}
+              
               />
             </div>
             <div className="address-container">
