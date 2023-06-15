@@ -26,7 +26,6 @@ const Course = () => {
     if (isValid) {
       handleSubmit(event).then((data) => {
         console.log(data);
-
       })
         .catch((error) => {
           console.error(error);
