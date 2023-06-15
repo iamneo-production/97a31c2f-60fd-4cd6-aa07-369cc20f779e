@@ -90,7 +90,7 @@ const Login = () => {
 
   return (
     <>
-    <div className='whole1'>
+    <div data-testid="loginBox" className='whole1'>
       <div className="head1">
       <h1>PG ADMISSION</h1>
       </div>
