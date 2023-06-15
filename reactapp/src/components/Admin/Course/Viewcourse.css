@@ -143,11 +143,12 @@
 .search-box {
   display: flex;
   justify-content: center;
-  margin-top: 120px;
+  margin-top: 85px;
 
 }
 
 .search-input {
+  margin-bottom:20px;
   border: 2px solid #ccc;
   border-radius: 5px;
   font-size: 1.1rem;
@@ -156,6 +157,7 @@
 }
 
 .search-btn {
+  margin-bottom:20px;
   background-color: #2A7230;
   border: none;
   border-radius: 5px;
