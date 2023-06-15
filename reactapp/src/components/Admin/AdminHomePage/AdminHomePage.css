@@ -214,7 +214,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 75px;
-  margin-top: 50px;
+  margin-top: 20px;
   margin-bottom: 15px;
 }
 
