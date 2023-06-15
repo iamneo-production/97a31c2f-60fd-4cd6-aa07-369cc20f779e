@@ -1,7 +1,9 @@
+/* Default styles for all screens */
+
 .nav-container {
   width: 250px;
   height: 100vh;
-  padding: 30px 20px;
+  padding: 20px 10px;
   background-color: rgba(33, 33, 33, 0.8);
   position: fixed;
   top: 0;
@@ -15,25 +17,24 @@
 .navlinks-container {
   display: flex;
   flex-direction: column;
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
 .pg-admission-heading {
-  margin-top: 25px;
+  margin-top: 15px;
   color: white;
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 0.2rem;
   cursor: pointer;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-
 }
 
 .nav-container a {
   margin: 10px 0;
   text-decoration: none;
   color: white;
-  font-size: 1.3rem;
+  font-size: 1rem;
   transition: all 0.3s ease-in-out;
   display: flex;
   align-items: center;
@@ -46,49 +47,28 @@
 
 .nav-container a.active {
   font-weight: bold;
-  font-size: 1.4rem;
-
+  font-size: 0.5rem;
 }
-
-/* .nav-container button {
-  border: none;
-  background-color: #2a7230;
-  color: beige;
-  font-size: 1.3rem;
-  padding: 10px 20px;
-  border-radius: 5px;
-  transition: all 0.3s ease-in-out;
-  cursor: pointer;
-  margin-top: 30px;
-}
-
-.nav-container button:hover {
-  background-color: #408946;
-  color: #fff;
-} */
 
 .nav-container .navlink-box.bottom {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  border-radius:10px;
-  cursor:pointer;
-  margin-left:20px;
-
+  border-radius: 10px;
+  cursor: pointer;
+  margin-left: 20px;
 }
 
 .nav-container .navlink-box.bottom button {
   color: white;
-  font-size: 1.3rem;
+  font-size: 0.5rem;
   transition: all 0.3s ease-in-out;
   cursor: pointer;
   display: flex;
   align-items: center;
-  margin-left:10px;
+  margin-left: 10px;
 }
-
-
 
 .show-sidebar {
   transform: translateX(0);
@@ -96,9 +76,9 @@
 
 .fa-bars {
   color: black;
-  font-size: 1.5rem;
+  font-size: 3rem;
   cursor: pointer;
-  position: fixed;
+  position: sticky;
   top: 20px;
   left: 20px;
   z-index: 9999;
@@ -118,15 +98,6 @@
   transition: background-color 0.3s ease-in-out;
 }
 
-/* .nav-container .navlink-box:hover {
-  background-color: #333;
-} */
-
-.nav-container .navlink-box a {
-  margin-left: 10px;
-}
-
-/* top bar */
 .icon-container {
   display: flex;
   align-items: center;
@@ -143,7 +114,7 @@
 }
 
 .icon-container i {
-  font-size: 25px;
+  font-size: 20px;
   margin-right: 10px;
   cursor: pointer;
   transition: margin-left 0.3s ease;
@@ -192,9 +163,8 @@
 
 .icon-container .logout-button i {
   color: red;
-  margin-right: 5px;
+  margin-right: 3px;
 }
-
 
 .icon-container .logout-button:hover {
   transform: translateX(-10px);
@@ -220,3 +190,31 @@
   color: #F5DF99; /* Adjust the color for the Feedback icon */
 }
 
+/* Responsive styles for mobile devices */
+
+@media (max-width: 767px) and (max-width: 890px) {
+  .nav-container {
+    width: 100%;
+    transform: translateX(-100%);
+    padding: 20px;
+  }
+
+  .icon-container {
+    padding: 10px;
+  }
+
+  .fa-bars {
+    top: 10px;
+    left: 10px;
+  }
+
+  .icon-container h1 {
+    font-size: 1.2rem;
+    margin-left: 0;
+    margin-right: 5%;
+  }
+
+  .icon-container i {
+    font-size: 20px;
+  }
+}
