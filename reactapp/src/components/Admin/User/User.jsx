@@ -485,15 +485,16 @@ export const StudentForm = ({ type }) => {
             <div className="admin-popup-overlay"></div>
             <div className="admin-student-popup">
               {institute.map((eachInstitute) => {
+                console.log(eachInstitute);
                 return (
                   <div
                     key={eachInstitute.id}
                     onClick={() => {
-                      setFormData({ ...formData, instituteId: eachInstitute.id });
+                      setFormData({ ...formData, instituteId: eachInstitute.instituteId });
                       setInstitutePopup(false);
                     }}
                   >
-                    <h1>{eachInstitute.id} : {eachInstitute.instituteName}</h1>
+                    <h1>{eachInstitute.instituteId} : {eachInstitute.instituteName}</h1>
                   </div>
                 );
               })}
@@ -789,6 +790,7 @@ export const StudentForm = ({ type }) => {
                 autoComplete="off"
                 value={formData.instituteId}
                 onClick={() => { setInstitutePopup(true) }}
+
 
               />
             </div>
