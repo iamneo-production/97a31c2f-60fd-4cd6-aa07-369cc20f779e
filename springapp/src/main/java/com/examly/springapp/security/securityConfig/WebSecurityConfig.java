@@ -50,6 +50,12 @@ public class WebSecurityConfig {
 		return authconfig.getAuthenticationManager();
 	}
 	
+	private static final String[] PUBLIC_URLS = {
+		"/user/login/**","/user/signup/**","/admin/signup/**","/admin/login/**",
+		"/swagger-ui/**","/v2/api-docs","/swagger-resources/**","/webjars/**","/swagger-ui.html",
+		"/admin/addInstitute/**","/admin/editInstitute/**","/admin/deleteInstitutes/**","/admin/viewInstitutes"
+	};	
+
 	// bean for the security filter chain
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
@@ -58,12 +64,7 @@ public class WebSecurityConfig {
 		http.cors().and().csrf().disable()
 			.exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
 			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-			.authorizeHttpRequests().antMatchers("/user/login/**","/user/signup/**","/admin/signup/**","/admin/login/**").permitAll()
-
-			.antMatchers("/admin/addInstitute/**","/admin/editInstitute/**","/admin/deleteInstitutes/**","/admin/viewInstitutes","/user/studentForm/**","/admin/viewStudent","/admin/editStudent/*","/admin/addStudent/**","/admin/deleteStudent/*","/user/addAdmission/**","/user/deleteAdmission/*","/admin/viewCourse","/admin/deleteCourse/*","/user/addFeedback/**").permitAll()
-
-
-
+			.authorizeHttpRequests().antMatchers(PUBLIC_URLS).permitAll()
 			.anyRequest().authenticated();
 
 		// Set the authentication provider and JWT token filter for the HttpSecurity object
