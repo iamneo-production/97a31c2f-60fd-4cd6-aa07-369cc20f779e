@@ -1,12 +1,12 @@
+package com.examly.springapp.swagger;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
@@ -25,42 +25,44 @@ public class SwaggerConfig implements WebMvcConfigurer {
 	@Bean
 	public Docket api() {
 	    return new Docket(DocumentationType.SWAGGER_2)
-	      .apiInfo(apiInfo())
-	      .securityContexts(Arrays.asList(securityContext()))
-	      .securitySchemes(Arrays.asList(apiKey()))
+	      .apiInfo(apiInfo()) // Set the API information
+	      .securityContexts(Arrays.asList(securityContext())) // Set the security contexts
+	      .securitySchemes(Arrays.asList(apiKey())) // Set the security schemes
 	      .select()
-	      .apis(RequestHandlerSelectors.any())
-	      .paths(PathSelectors.any())
+	      .apis(RequestHandlerSelectors.any()) // Select all request handlers
+	      .paths(PathSelectors.any()) // Select all paths
 	      .build();
 	}
 
 	private ApiInfo apiInfo() {
 	    return new ApiInfo(
-	      "My REST API",
-	      "Some custom description of API.",
-	      "1.0",
-	      "Terms of service",
-	      new Contact("Prakash", "www.virtusa.com", "prakash@gmail.com"),
-	      "License of API",
-	      "API license URL",
-	      Collections.emptyList());
+	      "My REST API", // API title
+	      "Some custom description of API.", // API description
+	      "1.0", // API version
+	      "Terms of service", // Terms of service URL
+	      new Contact("Prakash", "www.virtusa.com", "prakash@gmail.com"), // Contact information
+	      "License of API", // API license
+	      "API license URL", // API license URL
+	      Collections.emptyList()); // Vendor extensions (empty in this case)
 	}
 
 	private ApiKey apiKey() { 
 	    return new ApiKey("JWT", "Authorization", "header"); 
+	    // Create a security scheme with the name "JWT", using the "Authorization" header
 	}
 	
 	private SecurityContext securityContext() {
 	    return SecurityContext.builder()
-	      .securityReferences(List.of(defaultAuth()))
-	      .operationSelector(o -> o.requestMappingPattern().matches("/.*"))
+	      .securityReferences(List.of(defaultAuth())) // Set the default authorization reference
+	      .operationSelector(o -> o.requestMappingPattern().matches("/.*")) // Select all operations
 	      .build();
 	}
 	
 	private SecurityReference defaultAuth() {
 	    return SecurityReference.builder()
-	      .scopes(new AuthorizationScope[0])
-	      .reference("JWT")
+	      .scopes(new AuthorizationScope[0]) // Set empty scopes
+	      .reference("JWT") // Reference the "JWT" security scheme
 	      .build();
 	}
 }
+
