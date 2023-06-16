@@ -49,6 +49,15 @@ body {
   align-items: center;
   font-size: 1.5rem;
 }
+@keyframes animate{
+    0%{
+        background-image: url(hat1.jpeg.jpg);
+    }
+    20%{
+        background-image: url(img4.jpg);
+    }
+}
+
 
 .link1:hover {
   font-weight: bold;

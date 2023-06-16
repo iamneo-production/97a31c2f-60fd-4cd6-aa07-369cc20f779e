@@ -67,6 +67,24 @@
   background-color: #408946;
   color: #fff;
 } */
+.form__input {
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  box-sizing: border-box;
+  font-size: 16px;
+  margin-bottom: 20px;
+  padding: 10px;
+  width: 100%;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.form__label {
+  display: block;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  text-align: left;
+}
 
 .user-nav-container .user-navlink-box .user-bottom {
   position: absolute;
@@ -302,7 +320,7 @@
 }
 
 .bth h5 {
-  margin-top:70px;
+  margin-top: 70px;
   margin-left: 5px;
   color: #4987c4;
   font-size: 16px;
@@ -436,6 +454,7 @@
 .studentDOB,
 .sslc,
 .hsc,
+.instituteName,
 .diploma {
   width: 48%;
 }
@@ -449,7 +468,7 @@
 
 /* button css */
 .user-footer {
-  margin-left:75%;
+  margin-left: 75%;
   display: flex;
   justify-content: flex-end;
   align-items: center;
