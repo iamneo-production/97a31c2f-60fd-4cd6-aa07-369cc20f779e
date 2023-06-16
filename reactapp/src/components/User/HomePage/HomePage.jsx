@@ -14,6 +14,12 @@ const HomePage = () => {
   const [viewdata, setViewdata] = useState([]);
   const [fetchdata, setFetchdata] = useState([]);
   const [search, setSearch] = useState([]);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
   useEffect(() => {
     getdata()
       .then((data) => {
@@ -56,19 +62,70 @@ const HomePage = () => {
 
   return (
     <>
-      <nav className="user-nav-container">
-                <div>
-                    <NavLink to="/Navpage" >
-                      <h2 className="pg-admission-heading">PG Admission</h2>
-                    </NavLink>
-                </div>
-                <div className="user-navlinks-container">
-                    <NavLink to="/Enrolledcourse">EnrolledCourses</NavLink>
-                    <NavLink to="/HomePage">Institutes</NavLink>
-                    <NavLink to="/FeedBack">FeedBack</NavLink>
-                </div>
-                <button data-testid="logout" name='logout' onClick={handleLogout} >Logout</button>
-            </nav>
+      <div>
+        <div className="user-icon-container">
+          <i
+            className={`fa-solid fa-bars ${isSidebarOpen ? "user-icon-hidden" : ""}`}
+            onClick={toggleSidebar}
+          ></i>
+          <NavLink to="/Navpage" className="user-nav-pg">
+            <h1>PG Admission Portal</h1>
+          </NavLink>
+          <NavLink to="/Enrolledcourse" className="user-navlink-buttons">
+            <i className="fa-solid fa-book"></i>
+            EnrolledCourses
+          </NavLink>
+          <NavLink to="/HomePage" className="user-navlink-buttons">
+            <i className="fa-solid fa-university"></i>
+            Institutes
+          </NavLink>
+          <NavLink to="/FeedBack" className="user-navlink-buttons">
+            <i className="fa-solid fa-comment"></i>
+            FeedBack
+          </NavLink>
+          <button data-testid="logout" name='logout' onClick={handleLogout} className="user-logout-button">
+            <i className="fa-solid fa-sign-out"></i>Logout</button>
+        </div>
+
+
+        <div className={`user-nav-container ${isSidebarOpen ? "user-show-sidebar" : ""}`}>
+          <nav>
+            <i
+              className={`fa-solid fa-bars ${isSidebarOpen ? "user-icon-hidden" : ""}`}
+              onClick={toggleSidebar}
+            ></i>
+            <div>
+              <NavLink to="/Navpage">
+                <h2 className="pg-admission-heading">PG Admission</h2>
+              </NavLink>
+            </div>
+            <div className="user-navlinks-container">
+              <div className="user-navlink-box">
+              <i class="fa-solid fa-building-columns"></i>
+                <NavLink  to="/HomePage">
+                  Institutes
+                </NavLink>
+              </div>
+              <div className="user-navlink-box">
+              <i className="fa-solid fa-book"></i>
+                <NavLink  to="/Enrolledcourse">
+                  EnrolledCourses
+                </NavLink>
+              </div>
+              <div className="user-navlink-box">
+                <i class="fa-solid fa-comments"></i>
+                <NavLink  to="/FeedBack">
+                  FeedBack
+                </NavLink>
+              </div>
+              <div className="user-navlink-box user-bottom" onClick={handleLogout}>
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <button data-testid="logout" name='logout'  >Logout</button>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
       <div className="searchsec">
         <input
           type="text"
@@ -80,19 +137,19 @@ const HomePage = () => {
           onChange={(e) => setSearch(e.target.value)}
         />
         <div>
-          <button type="button"  className="searchbtn" onClick={() => handlesearch()}>
+          <button type="button" className="searchbtn" onClick={() => handlesearch()}>
             Search
           </button>
         </div>
       </div>
-      <div id = "userInstituteGrid1" data-testid="instituteName" className="herosec">
-        {viewdata.map((institute,index) => {
+      <div id="userInstituteGrid1" data-testid="instituteName" className="herosec">
+        {viewdata.map((institute, index) => {
           const { instituteId, instituteName, instituteAddress, imageUrl } =
             institute;
           return (
             <div
               className="card"
-              id = {`userInstituteGrid`+(index+1)}
+              id={`userInstituteGrid` + (index + 1)}
               onClick={() => {
                 handle();
               }}

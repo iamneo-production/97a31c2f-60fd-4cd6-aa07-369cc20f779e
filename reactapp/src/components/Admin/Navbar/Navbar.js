@@ -25,20 +25,22 @@ const NavBar = () => {
           className={`fa-solid fa-bars ${isSidebarOpen ? "icon-hidden" : ""}`}
           onClick={toggleSidebar}
         ></i>
-        <h1>PG Admission Portal</h1>
-        <NavLink id="adminInstitute" to="/admin/dashboard">
+        <NavLink to="/Firstpage" className="nav-pg">
+          <h1>PG Admission Portal</h1>
+        </NavLink>
+        <NavLink id="adminInstitute" to="/admin/dashboard" className="navlink-buttons">
           <i className="fa-solid fa-university"></i>
           Institutes
         </NavLink>
-        <NavLink id="adminCourse" to="/admin/viewCourse">
+        <NavLink id="adminCourse" to="/admin/viewCourse" className="navlink-buttons">
           <i className="fa-solid fa-book"></i>
           Courses
         </NavLink>
-        <NavLink id="adminStudents" to="/admin/Viewstudent">
+        <NavLink id="adminStudents" to="/admin/Viewstudent" className="navlink-buttons">
           <i className="fa-solid fa-user-graduate"></i>
           Students
         </NavLink>
-        <NavLink id="adminFeedback" to="/admin/FeedBack">
+        <NavLink id="adminFeedback" to="/admin/FeedBack" className="navlink-buttons">
           <i className="fa-solid fa-comment"></i>
           FeedBack
         </NavLink>
