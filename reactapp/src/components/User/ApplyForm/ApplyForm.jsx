@@ -421,14 +421,14 @@ function ApplyForm() {
               </div>
               <div className="studentDOB">
                 <label className="form__label" htmlFor="studentDOB">
-                  Age{" "}
+                  Date of Birth{" "}
                 </label>
                 <input
                   type="text"
                   name="studentDOB"
                   id="studentDOB"
                   className="form__input"
-                  placeholder="Enter Your age"
+                  placeholder="Enter Your DOB"
                   value={inputData.studentDOB}
                   onChange={handledata}
                 />
