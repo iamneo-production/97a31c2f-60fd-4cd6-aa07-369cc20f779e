@@ -97,20 +97,20 @@ function Admissionmodelpage() {
                             </div>
                             <div className="user-navlinks-container">
                                 <div className="user-navlink-box">
-                                <i class="fa-solid fa-building-columns"></i>
-                                    <NavLink  to="/HomePage">
+                                    <i class="fa-solid fa-building-columns"></i>
+                                    <NavLink to="/HomePage">
                                         Institutes
                                     </NavLink>
                                 </div>
                                 <div className="user-navlink-box">
-                                <i className="fa-solid fa-book"></i>
-                                    <NavLink  to="/Enrolledcourse">
+                                    <i className="fa-solid fa-book"></i>
+                                    <NavLink to="/Enrolledcourse">
                                         EnrolledCourses
                                     </NavLink>
                                 </div>
                                 <div className="user-navlink-box">
                                     <i class="fa-solid fa-comments"></i>
-                                    <NavLink  to="/FeedBack">
+                                    <NavLink to="/FeedBack">
                                         FeedBack
                                     </NavLink>
                                 </div>
@@ -213,8 +213,8 @@ function Admissionmodelpage() {
                                                     <td className='user-table-data'>{studentdetail.phoneNumber2}</td>
                                                 </tr>
                                                 <tr>
-                                                    <th className='user-table-head'>Student DOB:</th>
-                                                    <td className='user-table-data'>{studentdetail.studentDOB}</td>
+                                                    <th className='user-table-head'>Date of Birth :</th>
+                                                    <td className='user-table-data'>{new Date(studentdetail.studentDOB).toLocaleDateString()}</td>
                                                 </tr>
                                                 <tr>
                                                     <th className='user-table-head'>SSLC:</th>

@@ -28,6 +28,7 @@ const student = {
   emailId: "",
   eligibility: "",
   courseId: "",
+  instituteId: "",
   streetName: "",
   areaName: "",
   state: "",
@@ -314,7 +315,9 @@ export const StudentForm = ({ type }) => {
   const navigate = useNavigate();
   const [popup, setPopup] = useState(false);
   const [course, setCourse] = useState([]);
+  const [institute, setInstitute] = useState([]);
   const [coursePopup, setCoursePopup] = useState(false);
+  const [institutePopup, setInstitutePopup] = useState(false);
 
   const { id } = useParams();
   useEffect(() => {
@@ -332,7 +335,15 @@ export const StudentForm = ({ type }) => {
       .catch((error) => {
         console.error(error);
       });
+    fetchInstitute()
+      .then((data) => {
+        console.log("fetched Institute data success ", data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }, [id]);
+
 
   const fetchData = async () => {
     const response = await fetch(`${baseUrl}/admin/viewStudent`, {
@@ -352,6 +363,8 @@ export const StudentForm = ({ type }) => {
     }
   };
 
+
+
   const fetchCourse = async () => {
     const response = await fetch(`${baseUrl}/admin/viewCourse`, {
       method: "GET",
@@ -362,6 +375,17 @@ export const StudentForm = ({ type }) => {
     });
     const data = await response.json();
     setCourse(data);
+  }
+  const fetchInstitute = async () => {
+    const response = await fetch(`${baseUrl}/admin/viewInstitutes`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${auth.token}`,
+        "Content-type": "application/json",
+      },
+    });
+    const data = await response.json();
+    setInstitute(data);
   }
 
   const handleInputChange = (e, key) => {
@@ -375,7 +399,7 @@ export const StudentForm = ({ type }) => {
   const handleFormAdd = (e) => {
     e.preventDefault();
     console.log(formData);
-    if(formData.firstName &&
+    if (formData.firstName &&
       formData.lastName &&
       formData.fatherName &&
       formData.motherName &&
@@ -388,15 +412,16 @@ export const StudentForm = ({ type }) => {
       formData.emailId &&
       formData.eligibility &&
       formData.courseId &&
+      formData.instituteId &&
       formData.streetName &&
       formData.areaName &&
       formData.state &&
       formData.pincode &&
       formData.nationality
-      ){ setPopup(true);}
-      else{
-        alert("All fields are mandatory")
-      }
+    ) { setPopup(true); }
+    else {
+      alert("All fields are mandatory")
+    }
   };
 
   const addStudent = async () => {
@@ -442,7 +467,7 @@ export const StudentForm = ({ type }) => {
             <div className="admin-student-popup">
               {course.map((eachCourse) => {
                 return (
-                  <div key = {eachCourse.courseId} onClick={() => { setFormData({ ...formData, courseId: eachCourse.courseId }); setCoursePopup(false); }}>
+                  <div key={eachCourse.courseId} onClick={() => { setFormData({ ...formData, courseId: eachCourse.courseId }); setCoursePopup(false); }}>
                     <h1>{eachCourse.courseId} : {eachCourse.courseName}</h1>
                   </div>
                 )
@@ -450,7 +475,36 @@ export const StudentForm = ({ type }) => {
             </div>
           </div>
         )
+
       }
+
+
+      {
+        institutePopup && (
+          <div className="admin-popup-body">
+            <div className="admin-popup-overlay"></div>
+            <div className="admin-student-popup">
+              {institute.map((eachInstitute) => {
+                console.log(eachInstitute);
+                return (
+                  <div
+                    key={eachInstitute.id}
+                    onClick={() => {
+                      setFormData({ ...formData, instituteId: eachInstitute.instituteId });
+                      setInstitutePopup(false);
+                    }}
+                  >
+                    <h1>{eachInstitute.instituteId} : {eachInstitute.instituteName}</h1>
+                  </div>
+                );
+              })}
+
+            </div>
+          </div>
+        )
+      }
+
+
       {
         popup && (
           <div className="admin-popup-body">
@@ -526,6 +580,40 @@ export const StudentForm = ({ type }) => {
       <form className="student-form-container m-2 lg:m-12">
         <div className="studentform p-4 lg:18 ">
           <div className="form-body">
+            <div className="courseId">
+              <label className="form__label" htmlFor="courseid">
+                {" "}
+                Course ID{" "}
+              </label>
+              <input
+                type="text"
+                id="courseId"
+                name="courseId"
+                className="form__input"
+                placeholder="Enter Your Course Id"
+                autoComplete="off"
+                value={formData.courseId}
+                onClick={() => { setCoursePopup(true) }}
+              />
+            </div>
+            <div className="instituteId">
+              <label className="form__label" htmlFor="instituteid">
+                {" "}
+                Institute ID{" "}
+              </label>
+              <input
+                type="text"
+                id="instituteId"
+                name="instituteId"
+                className="form__input"
+                placeholder="Enter Your Institute Id"
+                autoComplete="off"
+                value={formData.instituteId}
+                onClick={() => { setInstitutePopup(true) }}
+
+
+              />
+            </div>
             <div className="username" >
               <label className="form__label" htmlFor="firstName">
                 {" "}
@@ -678,7 +766,7 @@ export const StudentForm = ({ type }) => {
             <div className="emailId">
               <label className="form__label" htmlFor="emailId">
                 {" "}
-                email{" "}
+                E-Mail{" "}
               </label>
               <input
                 type="input"
@@ -693,7 +781,7 @@ export const StudentForm = ({ type }) => {
             <div className="eligibility">
               <label className="form__label" htmlFor="eligibility">
                 {" "}
-                eligibility{" "}
+                Eligibility{" "}
               </label>
               <input
                 type="text"
@@ -705,23 +793,7 @@ export const StudentForm = ({ type }) => {
                 onChange={(e) => handleInputChange(e, "eligibility")}
               />
             </div>
-            <div className="courseId">
-              <label className="form__label" htmlFor="courseid">
-                {" "}
-                Course ID{" "}
-              </label>
-              <input
-                type="text"
-                id="courseId"
-                name="courseId"
-                className="form__input"
-                placeholder="Enter Your Course Id"
-                autoComplete="off"
-                value={formData.courseId}
-                onClick={() => { setCoursePopup(true) }}
-              // onChange={(e) => handleInputChange(e, "courseId")}
-              />
-            </div>
+
             <div className="address-container">
               <h2>Address Information</h2>
               <div className="address">
@@ -754,7 +826,7 @@ export const StudentForm = ({ type }) => {
                   onChange={(e) => handleInputChange(e, "areaName")}
                 />
               </div>
-              
+
               <div className="address">
                 <label className="form__label" htmlFor="address">
                   {" "}
@@ -804,29 +876,29 @@ export const StudentForm = ({ type }) => {
           </div>
         </div>
         <div className="admin-student-btn-container">
-        {type === "ADD" ? (
-          <button
-            className="add-academy-btn"
-            type="submit"
-            id="addStudent"
-            onClick={(e) => handleFormAdd(e)}
-          >
-            Add Student
-          </button>
-        ) : (
-          <button
-            className="add-academy-btn"
-            type="submit"
-            id="updateStudent"
-            onClick={(e) => handleFormEdit(e)}
-          >
-            Update Student
-          </button>
-        )}
-        <Link
-              to="/admin/Viewstudent"
-              className="admin-btn-secondary">
-              Cancel</Link>
+          {type === "ADD" ? (
+            <button
+              className="add-academy-btn"
+              type="submit"
+              id="addStudent"
+              onClick={(e) => handleFormAdd(e)}
+            >
+              Add Student
+            </button>
+          ) : (
+            <button
+              className="add-academy-btn"
+              type="submit"
+              id="updateStudent"
+              onClick={(e) => handleFormEdit(e)}
+            >
+              Update Student
+            </button>
+          )}
+          <Link
+            to="/admin/Viewstudent"
+            className="admin-btn-secondary">
+            Cancel</Link>
         </div>
       </form>
     </>

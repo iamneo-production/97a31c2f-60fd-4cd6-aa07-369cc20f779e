@@ -393,7 +393,9 @@
   color: #fff;
   margin-right: 20px;
 }
-
+.admin-form-submit-button:hover,
+.admin-btn-secondary:hover {
+}
 .admin-btn-secondary{
   background-color: #fff;
   color: #2A7230;
