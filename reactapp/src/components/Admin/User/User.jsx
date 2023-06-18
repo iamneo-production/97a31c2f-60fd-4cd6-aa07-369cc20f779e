@@ -580,6 +580,40 @@ export const StudentForm = ({ type }) => {
       <form className="student-form-container m-2 lg:m-12">
         <div className="studentform p-4 lg:18 ">
           <div className="form-body">
+            <div className="courseId">
+              <label className="form__label" htmlFor="courseid">
+                {" "}
+                Course ID{" "}
+              </label>
+              <input
+                type="text"
+                id="courseId"
+                name="courseId"
+                className="form__input"
+                placeholder="Enter Your Course Id"
+                autoComplete="off"
+                value={formData.courseId}
+                onClick={() => { setCoursePopup(true) }}
+              />
+            </div>
+            <div className="instituteId">
+              <label className="form__label" htmlFor="instituteid">
+                {" "}
+                Institute ID{" "}
+              </label>
+              <input
+                type="text"
+                id="instituteId"
+                name="instituteId"
+                className="form__input"
+                placeholder="Enter Your Institute Id"
+                autoComplete="off"
+                value={formData.instituteId}
+                onClick={() => { setInstitutePopup(true) }}
+
+
+              />
+            </div>
             <div className="username" >
               <label className="form__label" htmlFor="firstName">
                 {" "}
@@ -732,7 +766,7 @@ export const StudentForm = ({ type }) => {
             <div className="emailId">
               <label className="form__label" htmlFor="emailId">
                 {" "}
-                email{" "}
+                E-Mail{" "}
               </label>
               <input
                 type="input"
@@ -747,7 +781,7 @@ export const StudentForm = ({ type }) => {
             <div className="eligibility">
               <label className="form__label" htmlFor="eligibility">
                 {" "}
-                eligibility{" "}
+                Eligibility{" "}
               </label>
               <input
                 type="text"
@@ -759,41 +793,7 @@ export const StudentForm = ({ type }) => {
                 onChange={(e) => handleInputChange(e, "eligibility")}
               />
             </div>
-            <div className="courseId">
-              <label className="form__label" htmlFor="courseid">
-                {" "}
-                Course ID{" "}
-              </label>
-              <input
-                type="text"
-                id="courseId"
-                name="courseId"
-                className="form__input"
-                placeholder="Enter Your Course Id"
-                autoComplete="off"
-                value={formData.courseId}
-                onClick={() => { setCoursePopup(true) }}
-              // onChange={(e) => handleInputChange(e, "courseId")}
-              />
-            </div>
-            <div className="instituteId">
-              <label className="form__label" htmlFor="instituteid">
-                {" "}
-                Institute ID{" "}
-              </label>
-              <input
-                type="text"
-                id="instituteId"
-                name="instituteId"
-                className="form__input"
-                placeholder="Enter Your Institute Id"
-                autoComplete="off"
-                value={formData.instituteId}
-                onClick={() => { setInstitutePopup(true) }}
 
-
-              />
-            </div>
             <div className="address-container">
               <h2>Address Information</h2>
               <div className="address">

@@ -355,6 +355,7 @@
   transition: border-color 0.2s ease-in-out;
 }
 
+
 .address-container input:focus {
   border-color: #4CAF50;
 }
@@ -367,6 +368,7 @@
 .emailId,
 .eligibility,
 .courseId,
+.instituteId,
 .studentDob {
   width: 48%;
 }
