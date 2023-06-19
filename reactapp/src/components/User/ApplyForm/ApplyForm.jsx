@@ -435,7 +435,7 @@ function ApplyForm() {
               </div>
               <div className="sslc">
                 <label className="form__label" htmlFor="sslc">
-                  sslc{" "}
+                  SSLC{" "}
                 </label>
                 <input
                   type="text"
@@ -449,7 +449,7 @@ function ApplyForm() {
               </div>
               <div className="hsc">
                 <label className="form__label" htmlFor="hsc">
-                  hsc{" "}
+                  HSC{" "}
                 </label>
                 <input
                   type="text"
@@ -463,20 +463,20 @@ function ApplyForm() {
               </div>
               <div className="diploma">
                 <label className="form__label" htmlFor="diploma">
-                  diploma{" "}
+                  UG Percentage{" "}
                 </label>
                 <input
                   type="text"
                   name="diploma"
                   id="diploma"
                   className="form__input"
-                  placeholder="Enter diploma marks"
+                  placeholder="Enter Degree or B-tech Percentage"
                   value={inputData.diploma}
                   onChange={handledata}
                 />
               </div>
               <div className="user-address-container">
-                <h2>Address information</h2>
+                <h2>📍 Address information</h2>
                 <div className="user-address">
                   <label className="form__label" htmlFor="houseNumber">
                     HouseNo{" "}
