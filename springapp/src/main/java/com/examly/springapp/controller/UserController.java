@@ -19,8 +19,11 @@ import javax.security.auth.spi.LoginModule;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UserController {
 
-  
+    @Autowired
     private UserService  userService;
+
+    @Autowired
+    private AdminService  adminService;
     
     public UserController(UserService userService){
         this.userService =  userService;
@@ -50,5 +53,10 @@ public class UserController {
     @GetMapping("user/viewEnrolledCourse")
     public CourseModel viewEnrolledCourses(@RequestParam("studentid") Integer studentid){
         return userService.viewEnrolledCourse(studentid);
+    }
+
+    @GetMapping("user/viewCourse")
+    public List<CourseModel> viewCourse(){      
+        return adminService.getCourse();
     }
 }
