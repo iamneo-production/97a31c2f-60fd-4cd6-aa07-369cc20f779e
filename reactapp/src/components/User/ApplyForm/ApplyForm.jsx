@@ -376,7 +376,7 @@ function ApplyForm() {
               </div>
               <div className="emailId">
                 <label className="form__label" htmlFor="emailId">
-                  Email{" "}
+                  E-mail{" "}
                 </label>
                 <input
                   type="email"
@@ -435,7 +435,7 @@ function ApplyForm() {
               </div>
               <div className="sslc">
                 <label className="form__label" htmlFor="sslc">
-                  sslc{" "}
+                  SSLC{" "}
                 </label>
                 <input
                   type="text"
@@ -449,7 +449,7 @@ function ApplyForm() {
               </div>
               <div className="hsc">
                 <label className="form__label" htmlFor="hsc">
-                  hsc{" "}
+                  HSC{" "}
                 </label>
                 <input
                   type="text"
@@ -463,7 +463,7 @@ function ApplyForm() {
               </div>
               <div className="diploma">
                 <label className="form__label" htmlFor="diploma">
-                  diploma{" "}
+                  Diploma{" "}
                 </label>
                 <input
                   type="text"
