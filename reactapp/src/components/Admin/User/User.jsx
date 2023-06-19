@@ -590,7 +590,7 @@ export const StudentForm = ({ type }) => {
                 id="courseId"
                 name="courseId"
                 className="form__input"
-                placeholder="Enter Your Course Id"
+                placeholder="Select Course Id"
                 autoComplete="off"
                 value={formData.courseId}
                 onClick={() => { setCoursePopup(true) }}
@@ -606,7 +606,7 @@ export const StudentForm = ({ type }) => {
                 id="instituteId"
                 name="instituteId"
                 className="form__input"
-                placeholder="Enter Your Institute Id"
+                placeholder="Select Institute"
                 autoComplete="off"
                 value={formData.instituteId}
                 onClick={() => { setInstitutePopup(true) }}
@@ -795,7 +795,7 @@ export const StudentForm = ({ type }) => {
             </div>
 
             <div className="address-container">
-              <h2>Address Information</h2>
+              <h2>📍 Address Information</h2>
               <div className="address">
                 <label className="form__label" htmlFor="address">
                   {" "}
