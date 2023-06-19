@@ -2,8 +2,10 @@ import { store } from "../store"
 import { baseUrl } from "./authService";
 
 let token ="";
+let role ="";
 store.subscribe( () => {
   token = store.getState().auth.token;
+  role = store.getState().auth.role;
   console.log(token)
 });
 
@@ -21,8 +23,9 @@ export const addCourse = async (newCourse) => {
 };
 
 export const getCourses = async () => {
+  console.log(`${baseUrl}/${role}/viewCourse`);
   try {
-    const response = await fetch(`${baseUrl}/admin/viewCourse`, {
+    const response = await fetch(`${baseUrl}/${role}/viewCourse`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
