@@ -507,6 +507,7 @@
 }
 
 @media (max-width: 768px) {
+
   /*
    .user-nav-container {
     padding: 15px;
@@ -522,6 +523,7 @@
     font-size: 0.9rem;
   } 
   */
+  
 
   .user-applyform-popup {
     max-width: 250px;
@@ -532,7 +534,7 @@
 
     font-size: 16px;
     margin-bottom: 8px;
-    
+
   }
 
   .user-applyform-popup button {
