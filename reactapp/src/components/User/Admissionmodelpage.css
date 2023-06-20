@@ -303,7 +303,7 @@
 }
 
 .bth h5 {
-  margin-top:70px;
+  margin-top: 70px;
   margin-left: 5px;
   color: #4987c4;
   font-size: 16px;
@@ -394,15 +394,18 @@
   margin-bottom: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   /* width:50%; */
+
 }
 
 /* Button Container Styling */
+
 .button-container {
   display: flex;
   justify-content: flex-end;
 }
 
 /* Update Button Styling */
+
 .update-button,
 .delete-button {
   padding: 10px 20px;
@@ -564,8 +567,9 @@
   .user-icon-container .user-navlink-buttons {
     display: none;
   }
+
   .user-icon-container .user-logout-button {
-    display:none;
+    display: none;
   }
 }
 
@@ -594,13 +598,14 @@
 
   .user-icon-container h1 {
     font-size: 1.2rem;
-    margin-left:25px;
+    margin-left: 25px;
   }
 
   .user-icon-container i {
     font-size: 20px;
   }
 }
+
 /* Navbar.css */
 
 /* Mobile Styles */
@@ -756,7 +761,7 @@
   .user-nav-container .user-navlinks-container {
     /* ... */
     margin-top: 10px;
-    height: calc(100vh - 150px); 
+    height: calc(100vh - 150px);
     overflow-y: auto;
   }
 
