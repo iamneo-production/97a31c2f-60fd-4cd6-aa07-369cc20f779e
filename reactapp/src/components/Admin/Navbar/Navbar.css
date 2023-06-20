@@ -135,7 +135,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  padding:20px;
+  padding: 20px;
   background-color: #2A7230;
   z-index: 999;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
@@ -195,13 +195,11 @@
   margin-right: 5px;
 }
 
-
 .icon-container .logout-button:hover {
   transform: translateX(-10px);
   color: #fff;
   text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
 }
-
 
 /* Additional styles for each icon */
 .icon-container a:nth-of-type(2) i {
@@ -219,6 +217,20 @@
 .icon-container a:nth-of-type(5) i {
   color: #F5DF99; /* Adjust the color for the Feedback icon */
 }
+
+.icon-container .navlink-container {
+  display: flex;
+  align-items: center;
+}
+
+.icon-container .navlink-container .navlink-buttons {
+  margin-left: 10px;
+}
+
+.icon-container .navlink-container .logout-button {
+  margin-left: 10px;
+}
+
 
 /* Responsive styles for mobile devices */
 

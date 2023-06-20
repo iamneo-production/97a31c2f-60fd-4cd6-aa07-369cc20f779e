@@ -175,7 +175,7 @@ body {
 }
 
 .last1 span::before {
-  content: "BUILD A BETTER FUTURE!!!";
+  content: "🔅 BUILD A BETTER FUTURE!!!";
   animation-name: line;
   animation-direction: alternate-reverse;
   animation-duration: 6s;
@@ -187,13 +187,13 @@ body {
 
 @keyframes line {
   0% {
-    content: "LET'S GO!!!";
+    content: "YOU ARE IN SAFE HANDS 🤝";
   }
  20% {
-        content: "BUILD A BETTER FUTURE!!!";
+        content: "🔅 BUILD A BETTER FUTURE!!!";
       }
   30% {
-    content: "ALL THE BEST!!!";
+    content: "ALL THE BEST!!!👍";
   }
 }
 
