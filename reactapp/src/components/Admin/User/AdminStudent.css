@@ -93,12 +93,12 @@
 .admin-search-container {
   display: flex;
   justify-content: center;
-  margin-top:85px;
+  margin-top: 85px;
 
 }
 
 .search-input {
-  margin-bottom:20px;
+  margin-bottom: 20px;
   border: 2px solid #ccc;
   border-radius: 5px;
   font-size: 1.1rem;
@@ -107,7 +107,7 @@
 }
 
 .search-btn {
-  margin-bottom:20px;
+  margin-bottom: 20px;
   background-color: #2A7230;
   border: none;
   border-radius: 5px;
@@ -380,15 +380,15 @@
   margin-bottom: 20px;
 }
 
-.admin-student-btn-container{
+.admin-student-btn-container {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   margin-top: 40px;
-  margin-left:70%;
+  margin-left: 70%;
 }
 
-.add-academy-btn,
+.add-student-btn,
 .admin-btn-secondary {
 
   padding: 15px 25px;
@@ -401,21 +401,23 @@
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 
-} 
-.add-academy-btn{
+}
+
+.add-student-btn {
   background-color: #2A7230;
   color: #fff;
   margin-right: 20px;
 
 }
 
-.admin-btn-secondary{
+.admin-btn-secondary {
   background-color: #fff;
   color: #2A7230;
   border: 2px solid #2A7230;
 
 }
-.add-academy-btn:hover,
+
+.add-student-btn:hover,
 .admin-btn-secondary:hover {
   transform: translateY(-5px);
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
@@ -488,7 +490,37 @@
     margin-bottom: 2px;
     margin-left: 10px;
   }
+
+  .add-student-btn,
+  .admin-btn-secondary {
+
+    font-size: 0.9rem;
+    margin-left: 0;
+
+  }
 }
+
+@media (max-width: 1228px)  {
+
+  .add-student-btn,
+  .admin-btn-secondary {
+    font-size: 0.9rem;
+  }
+
+}
+
+
+@media (max-width: 1107px) {
+
+
+  .add-student-btn,
+  .admin-btn-secondary {
+    font-size: 0.8rem;
+  }
+
+
+}
+
 
 @media (max-width:300px) {
   .admin-student-th {

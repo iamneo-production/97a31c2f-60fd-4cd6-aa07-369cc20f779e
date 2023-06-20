@@ -68,25 +68,23 @@ const HomePage = () => {
             className={`fa-solid fa-bars ${isSidebarOpen ? "user-icon-hidden" : ""}`}
             onClick={toggleSidebar}
           ></i>
-          <NavLink to="/Navpage" className="  pl-3 lg:pl-0 user-nav-pg">
+          <NavLink to="/Navpage" className="user-nav-pg">
             <h1>PG Admission Portal</h1>
           </NavLink>
-          <div className="hidden lg:flex ">
-            <NavLink to="/Enrolledcourse" className="user-navlink-buttons px-2">
-              <i className="fa-solid fa-book"></i>
-              EnrolledCourses
-            </NavLink>
-            <NavLink to="/HomePage" className="user-navlink-buttons px-2">
-              <i className="fa-solid fa-university"></i>
-              Institutes
-            </NavLink>
-            <NavLink to="/FeedBack" className="user-navlink-buttons px-2">
-              <i className="fa-solid fa-comment"></i>
-              FeedBack
-            </NavLink>
-            <button data-testid="logout" name='logout' onClick={handleLogout} className="user-logout-button px-2">
-              <i className="fa-solid fa-sign-out"></i>Logout</button>
-          </div>
+          <NavLink to="/Enrolledcourse" className="user-navlink-buttons">
+            <i className="fa-solid fa-book"></i>
+            EnrolledCourses
+          </NavLink>
+          <NavLink to="/HomePage" className="user-navlink-buttons">
+            <i className="fa-solid fa-university"></i>
+            Institutes
+          </NavLink>
+          <NavLink to="/FeedBack" className="user-navlink-buttons">
+            <i className="fa-solid fa-comment"></i>
+            FeedBack
+          </NavLink>
+          <button data-testid="logout" name='logout' onClick={handleLogout} className="user-logout-button">
+            <i className="fa-solid fa-sign-out"></i>Logout</button>
         </div>
 
 
