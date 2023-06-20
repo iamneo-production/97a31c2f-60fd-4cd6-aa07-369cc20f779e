@@ -128,7 +128,7 @@ const EnrolledCourse = () => {
         </Link>
       </div>
       <div id="enrolledCourse" class="course-container">
-        <div class='user-enrolledcourse-headtxt'>
+        <div class='user-ec-headtxt'>
           These Are The Courses You Have Enrolled
         </div>
         <div class="enrolled-courses">
