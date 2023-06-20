@@ -878,7 +878,7 @@ export const StudentForm = ({ type }) => {
         <div className="admin-student-btn-container">
           {type === "ADD" ? (
             <button
-              className="add-academy-btn"
+              className="add-student-btn"
               type="submit"
               id="addStudent"
               onClick={(e) => handleFormAdd(e)}
@@ -887,7 +887,7 @@ export const StudentForm = ({ type }) => {
             </button>
           ) : (
             <button
-              className="add-academy-btn"
+              className="add-student-btn"
               type="submit"
               id="updateStudent"
               onClick={(e) => handleFormEdit(e)}
