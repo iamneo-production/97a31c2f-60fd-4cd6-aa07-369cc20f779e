@@ -7,7 +7,9 @@ import { UserGuard } from '../../AuthGuard/UserGuard';
 
 function Admissionmodelpage() {
     const navigate = useNavigate();
+
     const { auth } = store.getState();
+
     const [studentdetails, setStudentdetails] = useState([]);
 
     const [userPopup, setUserPopup] = useState({ state: false, deleteId: null });
@@ -33,6 +35,8 @@ function Admissionmodelpage() {
                 console.error(error)
             });
     }, [])
+    //fetching data from backend
+
     const fetchstud = async () => {
         const resp = await getStudents();
         console.log("all students response", resp)
@@ -40,6 +44,7 @@ function Admissionmodelpage() {
         console.log("filtered", studreg)
         setStudentdetails(studreg);
     }
+
     const handleDeletestudent = async (id) => {
         try {
             await deletestud(id)

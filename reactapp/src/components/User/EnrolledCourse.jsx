@@ -7,8 +7,11 @@ import CourseService from "../.././api/CourseService"
 
 const EnrolledCourse = () => {
   const navigate = useNavigate();
+
   const [courses, setCourses] = useState([])
+
   const { auth } = store.getState()
+
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -23,6 +26,7 @@ const EnrolledCourse = () => {
   useEffect(() => {
     console.log(auth)
     let courseId;
+
     const fetchStudents = async () => {
       const res = await CourseService.studentDetails();
       console.log("all response students ", res)
@@ -30,6 +34,7 @@ const EnrolledCourse = () => {
       console.log(userReg, " filtered student as user ")
       courseId = userReg.map(user => user.courseId)
       console.log("courseId  ", courseId)
+
       fetchCourses().then((data) => {
         console.log(data);
       })
@@ -97,20 +102,20 @@ const EnrolledCourse = () => {
             </div>
             <div className="user-navlinks-container">
               <div className="user-navlink-box">
-              <i class="fa-solid fa-building-columns"></i>
-                <NavLink  to="/HomePage">
+                <i class="fa-solid fa-building-columns"></i>
+                <NavLink to="/HomePage">
                   Institutes
                 </NavLink>
               </div>
               <div className="user-navlink-box">
-              <i className="fa-solid fa-book"></i>
-                <NavLink  to="/Enrolledcourse">
+                <i className="fa-solid fa-book"></i>
+                <NavLink to="/Enrolledcourse">
                   EnrolledCourses
                 </NavLink>
               </div>
               <div className="user-navlink-box">
                 <i class="fa-solid fa-comments"></i>
-                <NavLink  to="/FeedBack">
+                <NavLink to="/FeedBack">
                   FeedBack
                 </NavLink>
               </div>
@@ -132,6 +137,7 @@ const EnrolledCourse = () => {
           These Are The Courses You Have Enrolled
         </div>
         <div class="enrolled-courses">
+
           {courses && courses.length > 0 ? (
             courses.map((course) => (
               <div key={course.courseId} class="enrolled-course">
@@ -150,4 +156,5 @@ const EnrolledCourse = () => {
     </>
   );
 }
+
 export default EnrolledCourse;

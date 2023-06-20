@@ -6,10 +6,15 @@ import { useEffect, useState } from 'react';
 import { UserGuard } from '../../AuthGuard/UserGuard';
 function Updatepage() {
     const navigate = useNavigate();
+
     const { auth } = store.getState();
+
     const [studentdetail, setStudentdetail] = useState({});
+
     const { id } = useParams();
+
     const [userPopup, setUserPopup] = useState(false);
+
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
     const toggleSidebar = () => {
@@ -41,10 +46,12 @@ function Updatepage() {
         store.dispatch({ type: 'LOGOUT' })
         navigate('/login');
     }
+
     const fetchstud = async () => {
         const data = await getStudents();
         console.log(data)
     }
+
     useEffect(() => {
         console.log(auth)
         const fetchstud = async () => {
@@ -61,6 +68,7 @@ function Updatepage() {
                 console.error(error)
             });
     }, [])
+
     const handleInput = (a, key) => {
         const currentstudentdata = {
             ...studentdetail,
@@ -68,6 +76,7 @@ function Updatepage() {
         currentstudentdata[key] = a.target.value;
         setStudentdetail(currentstudentdata);
     };
+
     const handleupdate = async (a) => {
         a.preventDefault();
         try {
@@ -76,6 +85,7 @@ function Updatepage() {
             console.error(error)
         }
     }
+
     return (
         <UserGuard>
             <div>
@@ -118,20 +128,20 @@ function Updatepage() {
                             </div>
                             <div className="user-navlinks-container">
                                 <div className="user-navlink-box">
-                                <i class="fa-solid fa-building-columns"></i>
-                                    <NavLink  to="/HomePage">
+                                    <i class="fa-solid fa-building-columns"></i>
+                                    <NavLink to="/HomePage">
                                         Institutes
                                     </NavLink>
                                 </div>
                                 <div className="user-navlink-box">
-                                <i className="fa-solid fa-book"></i>
-                                    <NavLink  to="/Enrolledcourse">
+                                    <i className="fa-solid fa-book"></i>
+                                    <NavLink to="/Enrolledcourse">
                                         EnrolledCourses
                                     </NavLink>
                                 </div>
                                 <div className="user-navlink-box">
                                     <i class="fa-solid fa-comments"></i>
-                                    <NavLink  to="/FeedBack">
+                                    <NavLink to="/FeedBack">
                                         FeedBack
                                     </NavLink>
                                 </div>
