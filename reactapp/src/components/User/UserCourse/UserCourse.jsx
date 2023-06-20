@@ -121,8 +121,10 @@ const UserCourse = () => {
       </div>
       <div id="userCourseGrid1" className="usercoursecontainer">
         <div className="user-headtxt">
-          Offered Courses!
-          It's Time To Pick Yours
+        <h1>
+         <i className="fa-solid fa-book"></i>
+          List of Courses
+        </h1>
         </div>
 
         <table className="user-usercourse-table">

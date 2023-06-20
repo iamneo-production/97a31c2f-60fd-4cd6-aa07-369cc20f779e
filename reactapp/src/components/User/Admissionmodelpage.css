@@ -333,9 +333,10 @@
 .user-heading-student h2 {
   margin-bottom: 15px;
   text-align: center;
-  font-size: 1.6rem;
-  color: #4a4848;
+  font-size: 3rem;
+  color:#4a90e2;
   font-weight: bold;
+  font-family:'Times New Roman', Times, serif;
 }
 
 /* Student Details Container */

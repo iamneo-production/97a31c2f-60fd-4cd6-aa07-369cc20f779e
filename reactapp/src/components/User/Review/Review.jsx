@@ -172,6 +172,7 @@ const Review = () => {
       </div>
       <div className="user-review-form">
         <div className='user-review-headtxt'>
+        <i class="fa-solid fa-comment-dots"></i>
           Your Feedback Is Most Important For Us!!
         </div>
         <form className="user-review-form-container">
