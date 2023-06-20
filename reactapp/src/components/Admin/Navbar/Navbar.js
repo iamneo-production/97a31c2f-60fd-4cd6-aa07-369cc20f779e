@@ -26,14 +26,14 @@ const NavBar = () => {
           onClick={toggleSidebar}
         ></i>
         <NavLink to="/Firstpage" className="nav-pg">
-          <h1>PG Admission Portal</h1>
+          <h1><i class="fa-solid fa-graduation-cap"></i>PG Admission Portal</h1>
         </NavLink>
         <NavLink id="adminInstitute" to="/admin/dashboard" className="navlink-buttons">
           <i className="fa-solid fa-university"></i>
           Institutes
         </NavLink>
         <NavLink id="adminCourse" to="/admin/viewCourse" className="navlink-buttons">
-          <i className="fa-solid fa-book"></i>
+        <i class="fa-solid fa-book-atlas"></i>
           Courses
         </NavLink>
         <NavLink id="adminStudents" to="/admin/Viewstudent" className="navlink-buttons">
@@ -45,7 +45,7 @@ const NavBar = () => {
           FeedBack
         </NavLink>
         <button id="logout" type="submit" onClick={navigateToLogout} className="logout-button">
-          <i className="fa-solid fa-sign-out"></i>
+        <i class="fa-solid fa-right-from-bracket"></i>
           Logout
         </button>
       </div>
@@ -59,7 +59,7 @@ const NavBar = () => {
           ></i>
           <div>
             <NavLink to="/Firstpage">
-              <h2 className="pg-admission-heading">PG Admission</h2>
+              <h2 className="pg-admission-heading"><i class="fa-solid fa-graduation-cap"></i> PG Admission</h2>
             </NavLink>
           </div>
           <div className="navlinks-container">
@@ -70,7 +70,7 @@ const NavBar = () => {
               </NavLink>
             </div>
             <div className="navlink-box">
-              <i className="fa-solid fa-book"></i>
+            <i class="fa-solid fa-book-atlas"></i>
               <NavLink id="adminCourse" to="/admin/viewCourse">
                 Courses
               </NavLink>
@@ -88,7 +88,7 @@ const NavBar = () => {
               </NavLink>
             </div>
             <div className="navlink-box bottom" onClick={navigateToLogout}>
-              <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            <i class="fa-solid fa-right-from-bracket"></i>
               <button id="logout" type="submit" >
                 Logout
               </button>

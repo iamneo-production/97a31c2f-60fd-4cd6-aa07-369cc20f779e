@@ -235,7 +235,7 @@ const AdminStudent1 = () => {
         {isLoading && <h4>Loading...</h4>}
         {isError.state && <h4>{isError.msg}</h4>}
         <div className="student-heading"  >
-          <h1>List of Students</h1>
+          <h1> <i class="fa-solid fa-users-line"></i> List of Students</h1>
         </div>
         <table className="admin-student-table">
           <thead>
@@ -570,12 +570,12 @@ export const StudentForm = ({ type }) => {
           navigate("/admin/Viewstudent");
         }}
       >
-        Back to Home
+        <i class="fa-solid fa-house"></i> Back to Home
       </button>
       {type === "ADD" ? (
-        <h1 className="head-container">Add Student Details</h1>
+        <h1 className="head-container" ><i class="fa-solid fa-user-plus"> </i> Add Student Details</h1>
       ) : (
-        <h1 className="head-container">Edit Student Details</h1>
+        <h1 className="head-container"><i class="fa-solid fa-pen-to-square"></i> Edit Student Details</h1>
       )}
       <form className="student-form-container m-2 lg:m-12">
         <div className="studentform p-4 lg:18 ">
@@ -590,7 +590,7 @@ export const StudentForm = ({ type }) => {
                 id="courseId"
                 name="courseId"
                 className="form__input"
-                placeholder="Enter Your Course Id"
+                placeholder="Select Course Id"
                 autoComplete="off"
                 value={formData.courseId}
                 onClick={() => { setCoursePopup(true) }}
@@ -606,7 +606,7 @@ export const StudentForm = ({ type }) => {
                 id="instituteId"
                 name="instituteId"
                 className="form__input"
-                placeholder="Enter Your Institute Id"
+                placeholder="Select Institute"
                 autoComplete="off"
                 value={formData.instituteId}
                 onClick={() => { setInstitutePopup(true) }}
@@ -751,14 +751,14 @@ export const StudentForm = ({ type }) => {
             <div className="diploma">
               <label className="form__label" htmlFor="diploma">
                 {" "}
-                Diploma Marks{" "}
+                UG Percentage{" "}
               </label>
               <input
                 type="text"
                 id="diploma"
                 name="Diploma"
                 className="form__input"
-                placeholder="Enter Your Diploma Marks"
+                placeholder="Enter Degree or B-tech Percentage"
                 value={formData.diploma}
                 onChange={(e) => handleInputChange(e, "diploma")}
               />
@@ -795,7 +795,7 @@ export const StudentForm = ({ type }) => {
             </div>
 
             <div className="address-container">
-              <h2>Address Information</h2>
+              <h2>📍 Address Information</h2>
               <div className="address">
                 <label className="form__label" htmlFor="address">
                   {" "}
@@ -830,7 +830,7 @@ export const StudentForm = ({ type }) => {
               <div className="address">
                 <label className="form__label" htmlFor="address">
                   {" "}
-                  PINCODE{" "}
+                  PinCode{" "}
                 </label>
                 <input
                   type="text"

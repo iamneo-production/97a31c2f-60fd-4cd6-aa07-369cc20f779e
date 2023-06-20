@@ -123,10 +123,10 @@ function Editcourse(props) {
           navigate("/admin/dashboard");
         }}
       >
-        Back to Home
+       <i class="fa-solid fa-house"></i> Back to Home
       </button>
       <div className='course'>
-        <h1 class="admin-course-head-container">Edit Course</h1>
+        <h1 class="admin-course-head-container" ><i class="fa-solid fa-pen-to-square"></i> Edit Course</h1>
         <form>
           <div className="form-group">
             <label htmlFor="courseId" className='label-heading'>Course Id:</label>
