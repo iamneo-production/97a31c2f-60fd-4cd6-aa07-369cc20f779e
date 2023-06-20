@@ -4,6 +4,7 @@
   box-sizing: border-box;
 
 }
+
 /* navbar css */
 .user-nav-container {
   width: 250px;
@@ -223,7 +224,9 @@
 
 
 .user-icon-container a:nth-of-type(4) i {
+  
   color: #F5DF99;
+
   /* Adjust the color for the Feedback icon */
 }
 
@@ -238,7 +241,7 @@
 }
 
 .bth h5 {
-  margin-top:70px;
+  margin-top: 70px;
   margin-left: 5px;
   color: #4987c4;
   font-size: 16px;
@@ -438,8 +441,9 @@
   .user-icon-container .user-navlink-buttons {
     display: none;
   }
+
   .user-icon-container .user-logout-button {
-    display:none;
+    display: none;
   }
 }
 
@@ -468,13 +472,14 @@
 
   .user-icon-container h1 {
     font-size: 1.2rem;
-    margin-left:25px;
+    margin-left: 25px;
   }
 
   .user-icon-container i {
     font-size: 20px;
   }
 }
+
 /* Navbar.css */
 
 /* Mobile Styles */
@@ -630,7 +635,7 @@
   .user-nav-container .user-navlinks-container {
     /* ... */
     margin-top: 10px;
-    height: calc(100vh - 150px); 
+    height: calc(100vh - 150px);
     overflow-y: auto;
   }
 
