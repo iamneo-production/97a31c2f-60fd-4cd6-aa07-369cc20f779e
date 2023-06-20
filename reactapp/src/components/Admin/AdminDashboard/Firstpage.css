@@ -198,11 +198,51 @@ body {
 }
 
 /* Media queries for smaller devices */
-@media only screen and (max-width: 768px) {
+@media (max-width: 1032px) {
+  .top1 {
+    display:block;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .first1 {
+    font-size: 0.6rem;
+  }
+
+  .nv1 h2 {
+    font-size: 1.2rem;
+  }
+
+  .out {
+    font-size: 0.9rem;
+  }
+
+  .txt1 p {
+    margin-top: 150px;
+    font-size: 1.7rem;
+  }
+
+  .txt1 h2 {
+    font-size: 1.8rem;
+  }
+
+  .txt1 h4 {
+    font-size: 1.5rem;
+  }
+
+}
+
+
+
+@media only screen and (max-width: 768px) and (min-width: 481px) {
   .top1 {
     flex-direction: column;
     font-size: 0.9rem;
-    padding: 0 16px;
+    padding: 0;
   }
 
   .anime {
@@ -215,7 +255,6 @@ body {
 
   .first1 {
     font-size: 1.2rem;
-    flex-direction: column;
   }
 
   .link1:hover {
