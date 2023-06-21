@@ -15,7 +15,7 @@ const Firstpage = () => {
             <div className="nv1" data-testid="user_navbar">
                 <div className='top1'>
                     <div className='anime'>
-                        <h2> <i class="fa-solid fa-graduation-cap"></i> PG Admission</h2>
+                        <h2> <i class="fa-solid fa-graduation-cap fa-beat"></i> PG Admission</h2>
                     </div>
                     <div className='first1'>
                         <div className="link1">
@@ -23,11 +23,11 @@ const Firstpage = () => {
                         </div>
 
                         <div className="link1">
-                            <Link id="adminCourse" to="/admin/viewCourse"> <i className="fa-solid fa-book"></i>  Courses   &nbsp;  &nbsp;  &nbsp;</Link>
+                            <Link id="adminCourse" to="/admin/viewCourse"> <i className="fa-solid fa-book-atlas"></i>  Courses   &nbsp;  &nbsp;  &nbsp;</Link>
                         </div>
 
                         <div className="link1">
-                            <Link id= "adminStudents" to="/admin/Viewstudent"> <i class="fa-solid fa-user-graduate"> </i>Students   &nbsp;  &nbsp;  &nbsp;</Link>
+                            <Link id= "adminStudents" to="/admin/Viewstudent"> <i class="fa-solid fa-user-graduate"> </i> Students   &nbsp;  &nbsp;  &nbsp;</Link>
                         </div>
 
                         <div className="link1">
@@ -35,13 +35,13 @@ const Firstpage = () => {
                         </div>
                     </div>
                     <div className="out">
-                        <button id = "logout" data-testid="logout" name='logout' onClick={handleLogout} > <i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+                        <button id = "logout" data-testid="logout" name='logout' onClick={handleLogout} > <i class="fa-solid fa-right-from-bracket fa-beat"></i> Logout</button>
                     </div>
                 </div>
 
                 <div className='txt1'>
                  <p> <i class="fa-solid fa-earth-americas"></i> WELCOME TO PG ADMISSION PORTAL </p>
-                    <h4><i class="fa-solid fa-sun"></i> Bright Future Ahead </h4>
+                    <h4><i class="fa-solid fa-sun"></i>  Bright Future Ahead </h4>
                 </div>
                 <div className='last1'>
                     <h1><span> </span></h1>
