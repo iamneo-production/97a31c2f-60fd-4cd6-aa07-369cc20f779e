@@ -75,7 +75,7 @@ const Status = () => {
                 </div>
                 <div className='bth'>
                     <Link to="/HomePage">
-                        <h5>Back To Home</h5>
+                        <h5><i class="fa-solid fa-house"></i> Back To Home</h5>
                     </Link>
                 </div>
 
