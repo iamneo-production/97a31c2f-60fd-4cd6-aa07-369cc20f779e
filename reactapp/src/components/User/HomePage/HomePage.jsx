@@ -69,7 +69,7 @@ const HomePage = () => {
             onClick={toggleSidebar}
           ></i>
           <NavLink to="/Navpage" className="user-nav-pg">
-            <h1>PG Admission Portal</h1>
+            <h1><i class="fa-solid fa-graduation-cap"></i> PG Admission Portal</h1>
           </NavLink>
           <NavLink to="/Enrolledcourse" className="user-navlink-buttons">
             <i className="fa-solid fa-book"></i>
@@ -96,7 +96,7 @@ const HomePage = () => {
             ></i>
             <div>
               <NavLink to="/Navpage">
-                <h2 className="pg-admission-heading">PG Admission</h2>
+                <h2 className="pg-admission-heading"><i class="fa-solid fa-graduation-cap"></i> PG Admission</h2>
               </NavLink>
             </div>
             <div className="user-navlinks-container">
@@ -144,8 +144,8 @@ const HomePage = () => {
       </div>
       <div className=" userstudent-heading"  >
         <h1> 
-          <i class="fa-solid fa-building-columns"></i>
-           Click On Your Dream Institute
+          
+        <i class="fa-solid fa-building-columns"></i> Click On Your Dream Institute
          </h1>
       </div>
       <div id="userInstituteGrid1" data-testid="instituteName" className="herosec">

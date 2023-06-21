@@ -103,12 +103,13 @@ body {
 .nv {
     height: 100vh;
     width: 100%;
-    background-image: url(usbg.jpg);
+    background-image: url(ussbg.jpg);
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: 0%;
     animation-name: uimg;
     animation-direction: alternate-reverse;
-    animation-duration: 10s;
+    animation-duration: 5s;
     animation-fill-mode: forwards;
     animation-iteration-count: infinite;
     animation-play-state: running;
@@ -116,18 +117,18 @@ body {
 }
 @keyframes uimg{
     0%{
-        background-image: url(usbg.jpg);
+        background-image:url(ussbg.jpg);
     }
     20%{
-        background-image:url(ussbg.jpg);
+        background-image: url(back3.jpg);
     }
 }
 
 
 
 .txt p {
-    margin-top: 30px;
-    color:darkslateblue;
+    margin-top: 3%;
+    color:rgb(48, 21, 219);
     text-align: center;
     margin-left: 12%;
     font-style: italic;
@@ -153,7 +154,7 @@ body {
 
 .txt h4 {
     font-size: 2rem;
-    color:cadetblue;
+    color:rgba(238, 7, 7, 0.892);
     margin-left: 12%;
     text-align: center;
     font-family: cursive;
@@ -189,7 +190,7 @@ body {
 }
 
 span::before {
-    content: "BUILD A BETTER FUTURE!!!";
+    content: "🔆BUILD A BETTER FUTURE!!!🔆";
     animation-name: line;
     animation-direction: alternate-reverse;
     animation-duration: 6s;
@@ -201,15 +202,15 @@ span::before {
 
 @keyframes line {
     0% {
-        content: "LET'S GO!!!";
+        content: "🏃‍♀️🏃‍♂️LET'S GO!!!🏃‍♂️";
     }
 
     10% {
-        content: "BUILD A BETTER FUTURE!!!";
+        content: "🔆BUILD A BETTER FUTURE!!!🔆";
     }
 
     20% {
-        content: "ALL THE BEST!!!";
+        content: "ALL THE BEST!!!👍";
     }
 
 }
