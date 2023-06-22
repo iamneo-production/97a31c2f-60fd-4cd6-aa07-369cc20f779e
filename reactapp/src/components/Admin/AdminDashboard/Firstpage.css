@@ -110,7 +110,7 @@ body {
   20% {
     background-image: url(img4.jpg);
   }
-  /* ... */
+  
 }
 
 .txt1 p {
@@ -176,9 +176,7 @@ body {
 
 .last1, .admin-span-class-1::before {
   content: "🔅 BUILD A BETTER FUTURE!!!";
-  /*
-   animation-name: line;
-   */
+  
   animation-name:admin;
   animation-direction: alternate-reverse;
   animation-duration: 6s;
