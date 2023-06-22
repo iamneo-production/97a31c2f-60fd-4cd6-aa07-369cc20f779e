@@ -129,12 +129,12 @@ const EnrolledCourse = () => {
       </div>
       <div className="bth">
         <Link to="/HomePage">
-          <h5>Back To Home</h5>
+          <h5><i class="fa-solid fa-house"></i> Back To Home</h5>
         </Link>
       </div>
       <div id="enrolledCourse" class="course-container">
-        <div class='user-enrolledcourse-headtxt'>
-          These Are The Courses You Have Enrolled
+        <div class='user-ec-headtxt'>
+        <i class="fa-solid fa-cash-register"></i> Registered Courses
         </div>
         <div class="enrolled-courses">
 

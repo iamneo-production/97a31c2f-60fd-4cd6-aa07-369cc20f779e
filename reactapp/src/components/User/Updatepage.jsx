@@ -185,9 +185,9 @@ function Updatepage() {
                     )
                 }
                 <div className="bth">
-                    <Link to="/HomePage"><h5>Back To Home</h5></Link>
+                    <Link to="/HomePage"><h5><i class="fa-solid fa-house"></i> Back To Home</h5></Link>
                 </div>
-                <div className='user-update-heading'><h2>Student Details</h2>
+                <div className='user-update-heading'><h2> <i class="fa-solid fa-pen-to-square"></i> Edit Details</h2>
                 </div>
                 <form className="user-updatepage-form">
                     <div key={studentdetail.id} className="user-enrolled-course">
@@ -314,7 +314,7 @@ function Updatepage() {
                                     />
                                 </div>
                                 <div className="user-update-address-container">
-                                    <h2>Address information</h2>
+                                    <h2>📍 Address information</h2>
                                     <div className="user-address">
                                         <label className="user__label">Enter House Number:</label>
                                         <input

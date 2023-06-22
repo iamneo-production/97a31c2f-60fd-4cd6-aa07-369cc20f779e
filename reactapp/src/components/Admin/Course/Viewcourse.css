@@ -98,7 +98,9 @@
 }
 
 .add-course-btn:hover {
-  width: 165px;
+
+  width: 160px;
+
 }
 
 .add-course-btn .icon {

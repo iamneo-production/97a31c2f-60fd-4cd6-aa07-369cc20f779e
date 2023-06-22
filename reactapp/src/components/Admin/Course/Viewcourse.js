@@ -132,8 +132,8 @@ function Viewcourse() {
       <div>
         <h1
           class="course-heading"
-          id="courseGrid1">
-          List of Courses
+          id="courseGrid1"> 
+         <i className="fa-solid fa-book"></i> List of Courses
         </h1>
         {courses && courses.length > 0 ? (
           <div className="courses-grid">

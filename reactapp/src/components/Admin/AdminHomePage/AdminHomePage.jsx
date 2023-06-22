@@ -198,7 +198,7 @@ const Adminacademy = () => {
         {isLoading && <h4>Loading...</h4>}
         {isError.state && <h4>{isError.msg}</h4>}
         <div className="student-heading"  >
-          <h1>List of Institutes</h1>
+          <h1> <i class="fa-solid fa-building-columns"></i> List of Institutes</h1>
         </div>
         <div className="academy-display-container" data-testid="instituteName" >
           {academyData.map((eachAcademy, index) => {
@@ -414,13 +414,13 @@ export const AcademyForm = ({ type }) => {
           navigate("/admin/dashboard");
         }}
       >
-        Back to Home
+       <i class="fa-solid fa-house"></i> Back to Home
       </button>
       <div className="admin-academy-form">
         {type === "ADD" ? (
           <h1 className="admin-institute-head-container">Add Academy Details</h1>
         ) : (
-          <h1 className="admin-institute-head-container">Edit Academy Details</h1>
+          <h1 className="admin-institute-head-container"> <i class="fa-solid fa-pen-to-square"></i> Edit Academy Details</h1>
         )}
         <form className="admin-academy-form-container">
           <div className="form-group">

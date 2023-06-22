@@ -68,25 +68,23 @@ const HomePage = () => {
             className={`fa-solid fa-bars ${isSidebarOpen ? "user-icon-hidden" : ""}`}
             onClick={toggleSidebar}
           ></i>
-          <NavLink to="/Navpage" className="  pl-3 lg:pl-0 user-nav-pg">
-            <h1>PG Admission Portal</h1>
+          <NavLink to="/Navpage" className="user-nav-pg">
+            <h1><i class="fa-solid fa-graduation-cap"></i> PG Admission Portal</h1>
           </NavLink>
-          <div className="hidden lg:flex ">
-          <NavLink to="/Enrolledcourse" className="user-navlink-buttons px-2">
+          <NavLink to="/Enrolledcourse" className="user-navlink-buttons">
             <i className="fa-solid fa-book"></i>
             EnrolledCourses
           </NavLink>
-          <NavLink to="/HomePage" className="user-navlink-buttons px-2">
+          <NavLink to="/HomePage" className="user-navlink-buttons">
             <i className="fa-solid fa-university"></i>
             Institutes
           </NavLink>
-          <NavLink to="/FeedBack" className="user-navlink-buttons px-2">
+          <NavLink to="/FeedBack" className="user-navlink-buttons">
             <i className="fa-solid fa-comment"></i>
             FeedBack
           </NavLink>
-          <button data-testid="logout" name='logout' onClick={handleLogout} className="user-logout-button px-2">
+          <button data-testid="logout" name='logout' onClick={handleLogout} className="user-logout-button">
             <i className="fa-solid fa-sign-out"></i>Logout</button>
-          </div>
         </div>
 
 
@@ -98,25 +96,25 @@ const HomePage = () => {
             ></i>
             <div>
               <NavLink to="/Navpage">
-                <h2 className="pg-admission-heading">PG Admission</h2>
+                <h2 className="pg-admission-heading"><i class="fa-solid fa-graduation-cap"></i> PG Admission</h2>
               </NavLink>
             </div>
             <div className="user-navlinks-container">
               <div className="user-navlink-box">
-              <i class="fa-solid fa-building-columns"></i>
-                <NavLink  to="/HomePage">
+                <i class="fa-solid fa-building-columns"></i>
+                <NavLink to="/HomePage">
                   Institutes
                 </NavLink>
               </div>
               <div className="user-navlink-box">
-              <i className="fa-solid fa-book"></i>
-                <NavLink  to="/Enrolledcourse">
+                <i className="fa-solid fa-book"></i>
+                <NavLink to="/Enrolledcourse">
                   EnrolledCourses
                 </NavLink>
               </div>
               <div className="user-navlink-box">
                 <i class="fa-solid fa-comments"></i>
-                <NavLink  to="/FeedBack">
+                <NavLink to="/FeedBack">
                   FeedBack
                 </NavLink>
               </div>
@@ -143,6 +141,12 @@ const HomePage = () => {
             Search
           </button>
         </div>
+      </div>
+      <div className=" userstudent-heading"  >
+        <h1> 
+          
+        <i class="fa-solid fa-building-columns"></i> Click On Your Dream Institute
+         </h1>
       </div>
       <div id="userInstituteGrid1" data-testid="instituteName" className="herosec">
         {viewdata.map((institute, index) => {
