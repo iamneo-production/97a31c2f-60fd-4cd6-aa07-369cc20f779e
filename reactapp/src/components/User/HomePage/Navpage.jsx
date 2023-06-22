@@ -41,8 +41,6 @@ const Navpage = () => {
                 </div>
                 <div className='last'>
                     <h1><span className="span-class-1"> </span></h1>
-                </div>
-                <div className="last2">
                     <h1><span className="span-class-2"></span></h1>
                 </div>
             </div>
