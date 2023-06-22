@@ -41,7 +41,7 @@ const Navpage = () => {
                 </div>
                 <div className='last'>
                     <h1><span className="span-class-1"> </span></h1>
-                    <h1><span className="span-class-2"></span></h1>
+                    <h2><span className="span-class-2"></span></h2>
                 </div>
             </div>
         </>
