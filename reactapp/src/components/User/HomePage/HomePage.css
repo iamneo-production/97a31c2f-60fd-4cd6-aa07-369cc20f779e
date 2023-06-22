@@ -25,6 +25,15 @@
   flex-direction: column;
   margin-top: 10px;
 }
+.userstudent-heading{
+  color:#4a8dd0;
+  text-align: center;
+  margin-top: 15px;
+  font-size: 3rem;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bold;
+
+}
 
 .pg-admission-heading {
   margin-top: 25px;

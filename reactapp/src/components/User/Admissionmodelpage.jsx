@@ -166,11 +166,11 @@ function Admissionmodelpage() {
                 }
                 <div className="bth">
                     <Link to="/Enrolledcourse">
-                        <h5>Back</h5>
+                        <h5><i class="fa-solid fa-house"></i> Back to Home</h5>
                     </Link>
                 </div>
                 <div>
-                    <h2 className='user-heading-student' align="center"><h2>STUDENT DETAILS</h2></h2>
+                    <h2 className='user-heading-student' align="center"><h2><i class="fa-solid fa-user"></i>  STUDENT DETAILS  </h2></h2>
                 </div>
                 <div className="student-details-container">
                     {studentdetails && studentdetails.length > 0 ? (

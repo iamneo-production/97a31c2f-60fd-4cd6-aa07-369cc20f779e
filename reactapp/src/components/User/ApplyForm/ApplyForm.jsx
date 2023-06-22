@@ -262,11 +262,11 @@ function ApplyForm() {
       )}
       <div className="bth">
         <Link to="/HomePage">
-          <h5>Back To Home</h5>
+          <h5><i class="fa-solid fa-house"></i> Back To Home</h5>
         </Link>
       </div>
       <div className="user-applyform-headtxt">
-        Here You Go! Fill Up The Form And Enroll Now
+      <i class="fa-regular fa-file-lines fa-fade"></i> Here You Go! Fill Up The Form And Enroll Now
       </div>
 
       <form className="info">

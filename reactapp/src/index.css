@@ -35,13 +35,15 @@ code {
 }
 
 /* background image for login and signup */
-.whole1 {
+.whole2{
   font-family: sans-serif;
   background-image: url(./components/Auth/Login/back.jpg);
-  background-repeat: repeat-y;
-  background-size: 100% auto;
+  background-repeat:no-repeat;
+  background-attachment: scroll;
+  background-size:  cover;
   width: 100%;
-  min-height: 100vh; 
-  object-fit: cover;
+  height: 100%; 
+  
 }
+
 

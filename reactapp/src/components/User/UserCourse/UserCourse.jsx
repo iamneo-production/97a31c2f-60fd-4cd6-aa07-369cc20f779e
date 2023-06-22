@@ -116,13 +116,15 @@ const UserCourse = () => {
       </div>
       <div className="bth">
         <Link to="/HomePage">
-          <h5>Back To Home</h5>
+          <h5><i class="fa-solid fa-house"></i> Back To Home</h5>
         </Link>
       </div>
       <div id="userCourseGrid1" className="usercoursecontainer">
         <div className="user-headtxt">
-          Offered Courses!
-          It's Time To Pick Yours
+        <h1>
+         
+      List of Courses<i class="fa-solid fa-person-military-pointing"></i>
+        </h1>
         </div>
 
         <table className="user-usercourse-table">
@@ -132,7 +134,7 @@ const UserCourse = () => {
               <th className="user-usercourse-th">Course Name</th>
               <th className="user-usercourse-th">Course Description</th>
               <th className="user-usercourse-th">Course Duration</th>
-              <th className="user-usercourse-th">Click Me</th>
+              <th className="user-usercourse-th"><i class="fa-solid fa-hand-point-down fa-beat"></i></th>
             </tr>
           </thead>
         </table>
