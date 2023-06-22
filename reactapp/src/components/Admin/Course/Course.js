@@ -139,7 +139,7 @@ const Course = () => {
           navigate("/admin/dashboard");
         }}
       >
-        Back to Home
+        <i class="fa-solid fa-house"></i> Back to Home
       </button>
       <div className="course">
         <h2 className="admin-course-head-container">Add Course Details</h2>

@@ -53,7 +53,7 @@ public class WebSecurityConfig {
 	private static final String[] PUBLIC_URLS = {
 		"/user/login/**","/user/signup/**","/admin/signup/**","/admin/login/**",
 		"/swagger-ui/**","/v2/api-docs","/v3/api-docs","/swagger-resources/**","/webjars/**","/swagger-ui.html","/configuration/ui","/configuration/**",
-		"/admin/addInstitute/**","/admin/editInstitute/**","/admin/deleteInstitutes/**","/admin/viewInstitutes","/user/deleteAdmission/**"
+		"/admin/addInstitute/**","/admin/editInstitute/**","/admin/deleteInstitutes/**","/admin/viewInstitutes"
 	};	
 
 	// bean for the security filter chain

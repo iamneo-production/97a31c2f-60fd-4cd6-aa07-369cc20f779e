@@ -393,9 +393,7 @@
   color: #fff;
   margin-right: 20px;
 }
-.admin-form-submit-button:hover,
-.admin-btn-secondary:hover {
-}
+
 .admin-btn-secondary{
   background-color: #fff;
   color: #2A7230;
@@ -520,7 +518,9 @@
   }
 
   .admin-add-academy-button:hover {
-    width: 100px;
+
+    width: 115px;
+
   }
 
   .admin-add-academy-button .admin-add-institute-icon {
@@ -556,7 +556,7 @@
     font-size: 0.9rem;
   }
 
-  .admin-form-submit-button {
+  .admin-form-submit-button, .admin-btn-secondary {
     font-size: 0.9rem;
     margin-left: 0;
   }

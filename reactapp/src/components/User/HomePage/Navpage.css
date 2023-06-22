@@ -22,14 +22,14 @@ body {
 
 .nv h2 {
     font-size: 2rem;
-    color:black;
+    color: black;
     font-weight: bolder;
 
 
 }
 
 .first {
-    color:rebeccapurple;
+    color: rebeccapurple;
     display: flex;
     justify-content: space-equally;
     align-items: center;
@@ -38,7 +38,7 @@ body {
 .link:hover {
     font-weight: bold;
     font-size: 2rem;
-    color:midnightblue;
+    color: midnightblue;
 }
 
 .out {
@@ -103,33 +103,41 @@ body {
 .nv {
     height: 100vh;
     width: 100%;
-    background-image: url(usbg.jpg);
+    background-image: url(ussbg.jpg);
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: 0%;
     animation-name: uimg;
     animation-direction: alternate-reverse;
-    animation-duration: 10s;
+    animation-duration: 5s;
     animation-fill-mode: forwards;
     animation-iteration-count: infinite;
     animation-play-state: running;
     animation-timing-function: ease-in-out;
 }
-@keyframes uimg{
-    0%{
-        background-image: url(usbg.jpg);
+
+@keyframes uimg {
+    0% {
+        background-image: url(ussbg.jpg);
     }
-    20%{
-        background-image:url(ussbg.jpg);
+
+    20% {
+        background-image: url(back3.jpg);
     }
 }
 
 
 
 .txt p {
-    margin-top: 30px;
-    color:darkslateblue;
+    margin-top: 3%;
+    /* 
+    color:rgb(48, 21, 219);
+     */
+    color: #0E2954;
     text-align: center;
-    margin-left: 12%;
+    /*
+     margin-left: 12%; 
+    */
     font-style: italic;
     font-size: 3rem;
     font-weight: bolder;
@@ -153,8 +161,13 @@ body {
 
 .txt h4 {
     font-size: 2rem;
-    color:cadetblue;
-    margin-left: 12%;
+    /* 
+    color:rgba(238, 7, 7, 0.892); 
+    */
+    color: #1F6E8C;
+    /*
+     margin-left: 12%; 
+     */
     text-align: center;
     font-family: cursive;
 }
@@ -170,7 +183,7 @@ body {
 }
 
 .addon p {
-    color:black;
+    color: black;
     font-weight: lighter;
     font-size: 1.7rem;
     margin-left: 9%;
@@ -180,7 +193,7 @@ body {
 
 .last h1 {
     color: black;
-    padding-top: 10%;
+    padding-top: 20%;
     margin-left: 0;
     text-align: center;
     font-size: 2rem;
@@ -188,32 +201,67 @@ body {
     font-weight: bolder;
 }
 
-span::before {
-    content: "BUILD A BETTER FUTURE!!!";
-    animation-name: line;
+.last h2 {
+    color: black;
+    margin-left: 0;
+    text-align: center;
+    font-size: 2rem;
+    font-family: cursive;
+    font-weight: bolder;
+}
+
+.span-class-1::before {
+    content: "🔆BUILD A BETTER FUTURE!!!🔆";
+    animation-name: user;
     animation-direction: alternate-reverse;
-    animation-duration: 6s;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-play-state: running;
+    animation-timing-function: ease-in-out;
+    position: relative;
+    right: 30%;
+}
+
+.span-class-2::before {
+    content: "ALL THE BEST!!!👍";
+    animation-name: user2;
+    position: relative;
+    left: 31%;
+    animation-direction: alternate-reverse;
+    animation-duration: 3s;
     animation-fill-mode: forwards;
     animation-iteration-count: infinite;
     animation-play-state: running;
     animation-timing-function: ease-in-out;
 }
 
-@keyframes line {
+@keyframes user {
     0% {
-        content: "LET'S GO!!!";
+        content: "LET'S GO!!!🏃‍♂️";
+    
     }
 
     10% {
-        content: "BUILD A BETTER FUTURE!!!";
+        content: "🔆BUILD A BETTER FUTURE!!!🔆";
+        
     }
 
-    20% {
-        content: "ALL THE BEST!!!";
-    }
 
 }
 
+@keyframes user2 {
+
+    0% {
+        content: "LET'S GO!!!🏃‍♂️";
+        
+    }
+
+    10% {
+        content: "🔆BUILD A BETTER FUTURE!!!🔆";
+        
+    }
+}
 
 @media only screen and (max-width: 768px) {
     .link {
@@ -257,7 +305,7 @@ span::before {
         padding-top: 1%;
     }
 
-    span::before {
+    span-class-1::before {
         font-size: 1rem;
     }
 }
@@ -303,7 +351,9 @@ span::before {
         padding-top: 1%;
     }
 
-    span::before {
+
+
+    span-class-1::before {
         font-size: 14px;
     }
 }
@@ -349,7 +399,8 @@ span::before {
         padding-top: 1%;
     }
 
-    span::before {
+
+    span-class-1::before {
         font-size: 22px;
     }
 }

@@ -37,7 +37,7 @@ const Review = () => {
       <Navbar />
 
 
-      <h1 className="student-heading mt-20">Platform Feedback By Users</h1>
+      <h1 className="student-heading mt-20"> <i class="fa-solid fa-comment-dots"></i> Feedback </h1>
 
       <div className="overflow-x-auto">
         <table className="min-w-full divide-y divide-gray-200">
@@ -76,7 +76,7 @@ const Review = () => {
                     className="bg-red-400 text-white px-3 py-2 my-2 rounded-lg hover:bg-red-700"
                     onClick={() => handleDelete(item)}
                   >
-                    Delete
+                    <i class="fa-regular fa-trash-can"></i>
                   </button>
                 </td>
               </tr>
