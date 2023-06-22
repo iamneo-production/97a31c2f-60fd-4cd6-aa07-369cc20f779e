@@ -463,11 +463,7 @@ function ApplyForm() {
               </div>
               <div className="diploma">
                 <label className="form__label" htmlFor="diploma">
-<<<<<<< HEAD
-                  Diploma{" "}
-=======
                   UG Percentage{" "}
->>>>>>> 4e237e842dd01645e66fd85b91053d6e5fc988df
                 </label>
                 <input
                   type="text"
