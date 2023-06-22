@@ -110,7 +110,7 @@ body {
   20% {
     background-image: url(img4.jpg);
   }
-  /* ... */
+  
 }
 
 .txt1 p {
@@ -174,9 +174,10 @@ body {
   font-weight: bolder;
 }
 
-.last1 span::before {
+.last1, .admin-span-class-1::before {
   content: "🔅 BUILD A BETTER FUTURE!!!";
-  animation-name: line;
+  
+  animation-name:admin;
   animation-direction: alternate-reverse;
   animation-duration: 6s;
   animation-fill-mode: forwards;
@@ -185,7 +186,7 @@ body {
   animation-timing-function: ease-in-out;
 }
 
-@keyframes line {
+@keyframes admin {
   0% {
     content: "YOU ARE IN SAFE HANDS 🤝";
   }
@@ -293,7 +294,7 @@ body {
     padding-top: 5%;
   }
 
-  .last1 span::before {
+  .last1 .admin-span-class-1::before {
     font-size: 1rem;
   }
 }
