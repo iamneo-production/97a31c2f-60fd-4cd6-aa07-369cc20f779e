@@ -40,7 +40,8 @@ const Navpage = () => {
                     <h4><i class="fa-brands fa-pied-piper-alt"></i> Bright Future Ahead </h4>
                 </div>
                 <div className='last'>
-                    <h1><span> </span></h1>
+                    <h1><span className="span-class-1"> </span></h1>
+                    <h2><span className="span-class-2"></span></h2>
                 </div>
             </div>
         </>

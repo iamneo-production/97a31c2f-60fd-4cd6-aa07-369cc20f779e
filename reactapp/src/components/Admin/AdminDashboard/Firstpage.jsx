@@ -44,7 +44,7 @@ const Firstpage = () => {
                     <h4><i class="fa-solid fa-sun"></i>  Bright Future Ahead </h4>
                 </div>
                 <div className='last1'>
-                    <h1><span> </span></h1>
+                    <h1><span className="admin-span-class-1"> </span></h1>
                 </div>
             </div>
         
