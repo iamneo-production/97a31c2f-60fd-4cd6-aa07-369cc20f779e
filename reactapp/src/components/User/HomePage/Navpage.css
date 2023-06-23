@@ -106,10 +106,10 @@ body {
     background-image: url(ussbg.jpg);
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: 0%;
+    background-position: 0cqmin;
     animation-name: uimg;
     animation-direction: alternate-reverse;
-    animation-duration: 5s;
+    animation-duration: 15s;
     animation-fill-mode: forwards;
     animation-iteration-count: infinite;
     animation-play-state: running;
