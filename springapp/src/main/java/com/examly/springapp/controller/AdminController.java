@@ -57,13 +57,13 @@ public class AdminController {
     }
 
     @DeleteMapping("admin/deleteStudent/{id}")
-    private String deleteStudent(Principal principal, @PathVariable("id") Integer studentid ){
+    public String deleteStudent(Principal principal, @PathVariable("id") Integer studentid ){
         checkAdminAuthority(principal); 
         return adminService.deleteStudent(studentid);
     }
 
     @PutMapping("admin/editStudent/{id}")
-    private String editStudent(Principal principal, @PathVariable("id") Integer studentid, @RequestBody StudentModel updatedStudent ){
+    public String editStudent(Principal principal, @PathVariable("id") Integer studentid, @RequestBody StudentModel updatedStudent ){
         checkAdminAuthority(principal); 
         return adminService.editStudent(studentid, updatedStudent);
     }
@@ -82,13 +82,13 @@ public class AdminController {
     }
 
     @DeleteMapping("admin/deleteCourse/{id}")
-    private String deleteCourse(Principal principal, @PathVariable("id") Integer courseId ){
+    public String deleteCourse(Principal principal, @PathVariable("id") Integer courseId ){
         checkAdminAuthority(principal); 
         return adminService.deleteCourse(courseId);
     }
 
     @PutMapping("admin/editCourse/{id}")
-    private String editCourse(Principal principal, @PathVariable("id") Integer courseId, @RequestBody CourseModel courseModel ){
+    public String editCourse(Principal principal, @PathVariable("id") Integer courseId, @RequestBody CourseModel courseModel ){
         checkAdminAuthority(principal); 
         return adminService.editCourse(courseId, courseModel);
     }
@@ -106,12 +106,12 @@ public class AdminController {
     }
 
     @DeleteMapping("admin/deleteInstitutes")
-    private String deleteInstitute(@RequestParam("id") Integer instituteId) {
+    public String deleteInstitute(@RequestParam("id") Integer instituteId) {
         return adminService.deleteInstitute(instituteId);
     }
 
     @PutMapping("admin/editInstitute")
-    private String editInstitute(@RequestParam("instituteId") Integer instituteId, @RequestBody InstituteModel updatedInstitute){
+    public String editInstitute(@RequestParam("instituteId") Integer instituteId, @RequestBody InstituteModel updatedInstitute){
         return adminService.editInstitute(instituteId, updatedInstitute);
     }
 
