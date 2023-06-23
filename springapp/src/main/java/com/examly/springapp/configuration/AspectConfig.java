@@ -15,7 +15,7 @@ public class AspectConfig {
 
     Logger logger = LoggerFactory.getLogger(AspectConfig.class);
     
-    @Pointcut(value = "execution(* com.examly.springapp.*.*.*(..)) && !execution(* com.examly.springapp.controller.AuthController.*(..))")
+    @Pointcut(value = "execution(* com.examly.springapp.*.*.*(..))  ")
     private void loggingController()   
     {
     }
