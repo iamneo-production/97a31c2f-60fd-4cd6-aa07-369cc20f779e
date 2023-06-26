@@ -91,7 +91,7 @@ const AdminStudent1 = () => {
     setIsLoading(true);
     setIsError({ state: false, msg: "" });
     try {
-      const response = await fetch(`${baseUrl}/admin/viewStudent`, {
+      const response = await fetch(`${baseUrl}/admin/student`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${auth.token}`,
@@ -118,7 +118,7 @@ const AdminStudent1 = () => {
 
   async function fetchCourseName() {
     try {
-      const response = await fetch(`${baseUrl}/admin/viewCourse`, {
+      const response = await fetch(`${baseUrl}/admin/courses`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${auth.token}`,
@@ -346,7 +346,7 @@ export const StudentForm = ({ type }) => {
 
 
   const fetchData = async () => {
-    const response = await fetch(`${baseUrl}/admin/viewStudent`, {
+    const response = await fetch(`${baseUrl}/admin/student`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${auth.token}`,
@@ -366,7 +366,7 @@ export const StudentForm = ({ type }) => {
 
 
   const fetchCourse = async () => {
-    const response = await fetch(`${baseUrl}/admin/viewCourse`, {
+    const response = await fetch(`${baseUrl}/admin/courses`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${auth.token}`,
@@ -377,7 +377,7 @@ export const StudentForm = ({ type }) => {
     setCourse(data);
   }
   const fetchInstitute = async () => {
-    const response = await fetch(`${baseUrl}/admin/viewInstitutes`, {
+    const response = await fetch(`${baseUrl}/admin/institute`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${auth.token}`,
