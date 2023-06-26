@@ -53,6 +53,7 @@ const AdminStudent1 = () => {
 
   const [studentData, setStudentData] = useState([]);
 
+
   const [course1, setCourse1] = useState([]);
 
   const [isLoading, setIsLoading] = useState(false);
@@ -60,6 +61,10 @@ const AdminStudent1 = () => {
   const [isError, setIsError] = useState({ state: false, msg: "" });
 
   const [searchTerm, setSearchTerm] = useState("");
+
+  const [ViewStudentData, setViewStudentData] = useState(false);
+
+  const [passStudentData, setPassStudentData] = useState({});
 
   const navigate = useNavigate();
 
@@ -100,8 +105,10 @@ const AdminStudent1 = () => {
       });
       const data = await response.json();
       console.log(data);
-      setFetchedStudentData(data);
-      setStudentData(data);
+      const userDatabase = await fetchUserDatabase();
+      setFetchedStudentData(data.concat(userDatabase));
+      setStudentData(data.concat(userDatabase));
+      console.log(data.concat(userDatabase), ".....................")
       setIsLoading(false);
       setIsError({ state: false, msg: "" });
       if (response.status === 400) {
@@ -115,6 +122,25 @@ const AdminStudent1 = () => {
       });
     }
   };
+
+  async function fetchUserDatabase() {
+    try {
+      const response = await fetch(`${baseUrl}/user/viewAdmission`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${auth.token}`,
+          "Content-type": "application/json",
+        },
+      });
+
+      const data = await response.json();
+      console.log(data);
+      return data;
+
+    } catch (error) {
+      console.error("Error fetching user databse data:", error);
+    }
+  }
 
   async function fetchCourseName() {
     try {
@@ -167,145 +193,296 @@ const AdminStudent1 = () => {
     navigate(`/admin/editStudent/${id}`);
   };
 
+  const handleView = (Stude) => {
+    console.log(Stude)
+    setViewStudentData(true);
+    setPassStudentData(Stude);
+  }
+
+  const handleBackList = () => {
+    setViewStudentData(false)
+    setPassStudentData({})
+  }
+
+  const StudentComponent = () => {
+    return (
+      <>
+        <div className="p-4 px-4 mx-10 mt-12  rounded-xl">
+          <div className="flex justify-center text-green-500">
+            <h2 className="text-2xl fa-solid fa-users-line mt-4 mb-4 ">Student Details</h2>
+          </div>
+          <div className="grid md:grid-cols-2 grid-cols-1 gap-4">
+            <div>
+              <div className="flex">
+                <p className="font-bold">ID:</p>
+                <p>{passStudentData.id}</p>
+              </div>
+              <div className="flex">
+                <p className="font-bold">Student ID Number:</p>
+                <p>{passStudentData.studentIdNumber}</p>
+              </div>
+              <div className="flex">
+                <p className="font-bold">First Name:</p>
+                <p>{passStudentData.firstName}</p>
+              </div>
+              <div className="flex">
+                <p className="font-bold">Last Name:</p>
+                <p>{passStudentData.lastName}</p>
+              </div>
+              <div className="flex">
+                <p className="font-bold">Email ID: </p>
+                <p>{passStudentData.emailId}</p>
+              </div>
+
+              <div className="flex">
+                <p className="font-bold">Course ID: </p>
+                <p>{passStudentData.courseId}</p>
+              </div>
+
+
+
+            </div>
+
+            <div>
+
+              <div className="flex">
+                <p className="font-bold">Student DOB:</p>
+                <p>{new Date(passStudentData.studentDOB).toLocaleDateString()}</p>
+              </div>
+              <div className="flex">
+                <p className="font-bold">Father's Name: </p>
+                <p>{passStudentData.fatherName}</p>
+              </div>
+              <div className="flex">
+                <p className="font-bold">Mother's Name:</p>
+                <p>{passStudentData.motherName}</p>
+              </div>
+              <div className="flex">
+                <p className="font-bold">Phone Number 1:</p>
+                <p>{passStudentData.phoneNumber1}</p>
+              </div>
+              <div className="flex">
+                <p className="font-bold">Phone Number 2:</p>
+                <p>{passStudentData.phoneNumber2}</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 grid-cols-1  gap-4 mt-4">
+            <div>
+              <div className="flex">
+                <p className="font-bold">SSLC:</p>
+                <p>{passStudentData.sslc}</p>
+              </div>
+
+              <div className="flex">
+                <p className="font-bold">HSC:</p>
+                <p>{passStudentData.hsc}</p>
+              </div>
+              <div className="flex">
+                <p className="font-bold">Diploma: </p>
+                <p>{passStudentData.diploma ? "Yes" : "No"}</p>
+              </div>
+
+            </div>
+
+            <div>
+              <div className="flex">
+                <p className="font-bold">House Number:</p>
+                <p>{passStudentData.houseNumber}</p>
+              </div>
+              <div className="flex">
+                <p className="font-bold">Street Name:</p>
+                <p>{passStudentData.streetName}</p>
+              </div>
+              <div className="flex">
+                <p className="font-bold ">Area Name</p>
+                <p >: {passStudentData.areaName}</p>
+              </div>
+              <div className="flex">
+                <p className="font-bold">State:</p>
+                <p>{passStudentData.state}</p>
+              </div>
+
+              <div className="flex">
+                <p className="font-bold">Pincode:</p>
+                <p>{passStudentData.pincode}</p>
+              </div>
+              <div className="flex">
+                <p className="font-bold">Nationality:</p>
+                <p>{passStudentData.nationality}</p>
+              </div>
+
+
+            </div>
+          </div>
+
+          {/* /back button */}
+          <button onClick={handleBackList} className="md:mx-10 mt-2 px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white rounded-xl mb-32">
+            back
+          </button>
+        </div>
+
+      </>
+    )
+  }
+
   return (
     <>
       <Navbar />
 
-      {
-        popup.state && (
-          <div className="admin-popup-body noHover">
-            <div className="admin-popup-overlay">
+      {!ViewStudentData &&
+        <>
+          {
+            popup.state && (
+              <div className="admin-popup-body noHover">
+                <div className="admin-popup-overlay">
 
-            </div>
-            <div className="admin-student-popup">
-              <h1>Are you sure to delete the data ?</h1>
-              <button
-                className="admin-student-confirm-btn"
-                type="submit"
-                onClick={() => {
-                  deleteStudent(popup.deleteId)
-                    .then((data) => {
-                      console.log("delete student data success ", data);
-                    })
-                    .catch((error) => {
-                      console.error(error);
-                    });
-                  setPopup({
-                    state: false,
-                    deleteId: null
-                  });
-                }}
-              >
-                Confirm Delete
-              </button>
-              <button
-                className="admin-student-cancel-btn"
-                type="submit"
-                onClick={() => {
-                  setPopup({
-                    state: false,
-                    deleteId: null
-                  });
-                }}
-              >
-                Cancel
-              </button>
-            </div>
-          </div>
-        )
-      }
-      <div className="admin-student-container">
-        <div className="admin-search-container">
-          <input
-            type="text"
-            name="search"
-            className="search-input"
-            value={searchTerm}
-            placeholder="Type here to Search Student"
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-          <button
-            type="button"
-            className="search-btn"
-            onClick={() => filterStudentData()}
-          >
-            Search
-          </button>
-        </div>
-        {isLoading && <h4>Loading...</h4>}
-        {isError.state && <h4>{isError.msg}</h4>}
-        <div className="student-heading"  >
-          <h1> <i class="fa-solid fa-users-line"></i> List of Students</h1>
-        </div>
-        <table className="admin-student-table">
-          <thead>
-            <tr>
-              <th className="admin-student-th">Student ID</th>
-              <th data-testid="userName" className="admin-student-th">Name</th>
-              <th data-testid="qualification" className="admin-student-th">Course Name</th>
-              <th data-testid="mobile" className="admin-student-th">Phone Number</th>
-              <th className="admin-student-th">Actions</th>
-            </tr>
-          </thead>
-        </table>
-        <div className="student-display-container">
-          {studentData.map((student1) => {
-            const { studentId, firstName, phoneNumber1, courseId, lastName } =
-              student1;
-            const course = course1.find((eachCourse) => {
-              return eachCourse.courseId == courseId;
-            });
-            console.log(course);
-
-            return (
-              <>
-                <div className="student-card-info">
-                  <table className="admin-student-table">
-                    <tbody>
-                      <tr>
-                        <td className="admin-student-td">{studentId}</td>
-                        <td className="admin-student-td">{firstName + " " + lastName}</td>
-                        <td className="admin-student-td">{(course != null) ? course.courseName : "Course Not Found"}</td>
-                        <td className="admin-student-td">{phoneNumber1}</td>
-                        <td className="admin-student-td">
-                          <button
-                            type="submit"
-                            id="editStudent"
-                            className="edit-btn"
-                            onClick={() => handleEdit(studentId)}
-                          >
-                            <i className="fa-regular fa-pen-to-square"></i>
-                          </button>
-                          <button
-                            type="submit"
-                            id="deleteStudent"
-                            className="delete-btn"
-                            onClick={() => handleDelete(studentId)}
-                          >
-                            <i className="fa-regular fa-trash-can"></i>
-                          </button>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
                 </div>
-              </>
-            );
-          })}
-        </div>
-        <NavLink
-          exact="true"
-          to="/admin/addStudent"
-          className="nav-link"
-          id="addStudent"
-          activeclassname="active">
-          <div className="admin-add-student-button">
-            <div className='admin-add-student-icon' >
-              <i className="fa-solid fa-circle-plus"></i>
+                <div className="admin-student-popup">
+                  <h1>Are you sure to delete the data ?</h1>
+                  <button
+                    className="admin-student-confirm-btn"
+                    type="submit"
+                    onClick={() => {
+                      deleteStudent(popup.deleteId)
+                        .then((data) => {
+                          console.log("delete student data success ", data);
+                        })
+                        .catch((error) => {
+                          console.error(error);
+                        });
+                      setPopup({
+                        state: false,
+                        deleteId: null
+                      });
+                    }}
+                  >
+                    Confirm Delete
+                  </button>
+                  <button
+                    className="admin-student-cancel-btn"
+                    type="submit"
+                    onClick={() => {
+                      setPopup({
+                        state: false,
+                        deleteId: null
+                      });
+                    }}
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            )
+          }
+          <div className="admin-student-container">
+            <div className="admin-search-container">
+              <input
+                type="text"
+                name="search"
+                className="search-input"
+                value={searchTerm}
+                placeholder="Type here to Search Student"
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+              <button
+                type="button"
+                className="search-btn"
+                onClick={() => filterStudentData()}
+              >
+                Search
+              </button>
             </div>
+            {isLoading && <h4>Loading...</h4>}
+            {isError.state && <h4>{isError.msg}</h4>}
+            <div className="student-heading"  >
+              <h1> <i class="fa-solid fa-users-line"></i> List of Students</h1>
+            </div>
+            <table className="admin-student-table">
+              <thead>
+                <tr>
+                  <th className="admin-student-th">Student ID</th>
+                  <th data-testid="userName" className="admin-student-th">Name</th>
+                  <th data-testid="qualification" className="admin-student-th">Course Name</th>
+                  <th data-testid="mobile" className="admin-student-th">Phone Number</th>
+                  <th className="admin-student-th">Actions</th>
+                </tr>
+              </thead>
+            </table>
+            <div className="student-display-container">
+              {studentData.map((student1, index) => {
+                const { studentId, firstName, phoneNumber1, courseId, lastName } =
+                  student1;
+                const course = course1.find((eachCourse) => {
+                  return eachCourse.courseId == courseId;
+                });
+                console.log(index);
+
+                return (
+                  <>
+                    <div className="student-card-info">
+                      <table className="admin-student-table">
+                        <tbody>
+                          <tr>
+                            <td className="admin-student-td">{index + 1}</td>
+                            <td className="admin-student-td">{firstName + " " + lastName}</td>
+                            <td className="admin-student-td">{(course != null) ? course.courseName : "Course Not Found"}</td>
+                            <td className="admin-student-td">{phoneNumber1}</td>
+                            <td className="admin-student-td">
+                              {!student1.id &&
+                                <>
+                                  <button
+                                    type="submit"
+                                    id="editStudent"
+                                    className="edit-btn"
+                                    onClick={() => handleEdit(studentId)}>
+                                    <i className="fa-regular fa-pen-to-square"></i>
+                                  </button>
+
+                                  <button
+                                    type="submit"
+                                    id="deleteStudent"
+                                    className="delete-btn"
+                                    onClick={() => handleDelete(studentId)}
+                                  >
+                                    <i className="fa-regular fa-trash-can"></i>
+                                  </button>
+
+                                </>
+                              }
+                              {student1.id &&
+                                <button onClick={() => handleView(student1)} className="mx-auto bg-blue-400 px-8 py-3 rounded-xl text-white hover:bg-blue-700">
+                                  view
+                                </button>
+                              }
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </>
+                );
+              })}
+            </div>
+            <NavLink
+              exact="true"
+              to="/admin/addStudent"
+              className="nav-link"
+              id="addStudent"
+              activeclassname="active">
+              <div className="admin-add-student-button">
+                <div className='admin-add-student-icon' >
+                  <i className="fa-solid fa-circle-plus"></i>
+                </div>
+              </div>
+            </NavLink>
           </div>
-        </NavLink>
-      </div>
+        </>
+      }
+
+      {ViewStudentData && <StudentComponent />}
+
     </>
   );
 };
