@@ -22,14 +22,14 @@ body {
 
 .nv h2 {
     font-size: 2rem;
-    color: black;
+    color:honeydew;
     font-weight: bolder;
 
 
 }
 
 .first {
-    color: rebeccapurple;
+    color:burlywood;
     display: flex;
     justify-content: space-equally;
     align-items: center;
@@ -38,7 +38,7 @@ body {
 .link:hover {
     font-weight: bold;
     font-size: 2rem;
-    color: midnightblue;
+    color:darkkhaki;
 }
 
 .out {
@@ -103,13 +103,15 @@ body {
 .nv {
     height: 100vh;
     width: 100%;
-    background-image: url(ussbg.jpg);
+    background-image: url(dbbg1.jpg);
     background-size: cover;
     background-repeat: no-repeat;
+
     background-position: 0cqmin;
     animation-name: uimg;
     animation-direction: alternate-reverse;
     animation-duration: 15s;
+
     animation-fill-mode: forwards;
     animation-iteration-count: infinite;
     animation-play-state: running;
@@ -118,11 +120,11 @@ body {
 
 @keyframes uimg {
     0% {
-        background-image: url(ussbg.jpg);
+        background-image: url(dbbg1.jpg);
     }
 
     20% {
-        background-image: url(back3.jpg);
+        background-image: url(dbbg2.jpg);
     }
 }
 
@@ -133,7 +135,7 @@ body {
     /* 
     color:rgb(48, 21, 219);
      */
-    color: #0E2954;
+    color:lightgoldenrodyellow;
     text-align: center;
     /*
      margin-left: 12%; 
@@ -164,7 +166,7 @@ body {
     /* 
     color:rgba(238, 7, 7, 0.892); 
     */
-    color: #1F6E8C;
+    color:wheat;
     /*
      margin-left: 12%; 
      */
@@ -173,7 +175,7 @@ body {
 }
 
 .addon h1 {
-    color: lightcyan;
+    color:wheat;
     padding-top: 3%;
     margin-left: 7%;
     font-size: 2rem;
@@ -212,6 +214,7 @@ body {
 
 .span-class-1::before {
     content: "🔆BUILD A BETTER FUTURE!!!🔆";
+    color:lightcoral;
     animation-name: user;
     animation-direction: alternate-reverse;
     animation-duration: 3s;
@@ -220,21 +223,12 @@ body {
     animation-play-state: running;
     animation-timing-function: ease-in-out;
     position: relative;
-    right: 30%;
+    right: 3%;
+    padding-top: 20%;
+    margin-top: 15%;
 }
 
-.span-class-2::before {
-    content: "ALL THE BEST!!!👍";
-    animation-name: user2;
-    position: relative;
-    left: 31%;
-    animation-direction: alternate-reverse;
-    animation-duration: 3s;
-    animation-fill-mode: forwards;
-    animation-iteration-count: infinite;
-    animation-play-state: running;
-    animation-timing-function: ease-in-out;
-}
+
 
 @keyframes user {
     0% {
@@ -250,18 +244,6 @@ body {
 
 }
 
-@keyframes user2 {
-
-    0% {
-        content: "LET'S GO!!!🏃‍♂️";
-        
-    }
-
-    10% {
-        content: "🔆BUILD A BETTER FUTURE!!!🔆";
-        
-    }
-}
 
 @media only screen and (max-width: 768px) {
     .link {
