@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "7.16.5",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
@@ -15,8 +16,7 @@
     "react-router-dom": "^6.11.2",
     "react-scripts": "^5.0.1",
     "redux": "^4.2.1",
-    "web-vitals": "^1.1.1",
-    "@babel/plugin-proposal-private-property-in-object": "7.16.5"
+    "web-vitals": "^1.1.1"
   },
   "scripts": {
     "start": "PORT=8081 react-scripts start",
