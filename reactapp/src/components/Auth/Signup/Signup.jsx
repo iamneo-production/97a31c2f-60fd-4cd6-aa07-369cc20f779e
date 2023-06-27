@@ -70,7 +70,7 @@ const Signup = () => {
   return (
     <section className="whole2">
       <div className="flex flex-col ml-6 md:ml-20 px-2 md:px-6 py-4 md:py-8 lg:pt-0 lg:pb-4">
-        <div className="flex mx-auto items-center mb-4 text-3xl md:text-4xl font-semibold text-white md:font-bold md:mt-4">
+        <div className="flex mx-auto items-center mb-4 text-3xl md:text-4xl font-semibold text-white shadow md:mt-2 md:font-bold md:mt-4">
           PG Admission 
         </div>
         <div
@@ -106,7 +106,7 @@ const Signup = () => {
                   htmlFor="email"
                   className="block mb-1 text-sm font-medium text-gray-900"
                 >
-                  Your email
+                  Your email:
                 </label>
                 <input
                   type="email"
@@ -128,7 +128,7 @@ const Signup = () => {
                   htmlFor="username"
                   className="block mb-1 text-sm font-medium text-gray-900"
                 >
-                  Username
+                  Username:
                 </label>
                 <input
                   type="text"
@@ -150,7 +150,7 @@ const Signup = () => {
                   htmlFor="mobileNumber"
                   className="block mb-1 text-sm font-medium text-gray-900"
                 >
-                  Mobile Number
+                  Mobile Number:
                 </label>
                 <input
                   type="text"
@@ -174,7 +174,7 @@ const Signup = () => {
                   htmlFor="password"
                   className="block mb-1 text-sm font-medium text-gray-900"
                 >
-                  Password
+                  Password:
                 </label>
                 <input
                   type="password"
@@ -197,7 +197,7 @@ const Signup = () => {
                   htmlFor="confirmPassword"
                   className="block mb-1 text-sm font-medium text-gray-900"
                 >
-                  Confirm Password
+                  Confirm Password:
                 </label>
                 <input
                   type="password"
@@ -231,7 +231,7 @@ const Signup = () => {
                 <div className="text-red-500">{errors.custom.message}</div>
               )}
 
-              <p className="text-sm font-light text-gray-500">
+              <p className="text-sm font-light text-black-500">
                 Already a user?{" "}
                 <Link
                   to="/login"
