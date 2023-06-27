@@ -204,11 +204,6 @@ const AdminStudent1 = () => {
     setPassStudentData({})
   }
 
-  const StudentComponent = () => {
-    return (
-      <ViewStudent handleBackList={handleBackList} passStudentData={passStudentData}  />
-    )
-  }
 
   return (
     <>
@@ -363,7 +358,7 @@ const AdminStudent1 = () => {
         </>
       }
 
-      {ViewStudentData && <StudentComponent />}
+      {ViewStudentData &&  <ViewStudent handleBackList={handleBackList} passStudentData={passStudentData}  />}
 
     </>
   );
