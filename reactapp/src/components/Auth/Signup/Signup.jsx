@@ -71,11 +71,11 @@ const Signup = () => {
     <section className="whole2">
       <div className="flex flex-col ml-6 md:ml-20 px-2 md:px-6 py-4 md:py-8 lg:pt-0 lg:pb-4">
         <div className="flex mx-auto items-center mb-4 text-3xl md:text-4xl font-semibold text-white md:font-bold md:mt-4">
-          PG Admission Portal
+          PG Admission 
         </div>
         <div
           data-testid="signupBox"
-          className="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0"
+          className="w-full bg-transparent border border-solid  rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0"
         >
           <div className="p-4 md:p-6 space-y-2 md:space-y-4">
             <h1 className="text-xl md:text-2xl font-bold leading-tight tracking-tight text-gray-900">
