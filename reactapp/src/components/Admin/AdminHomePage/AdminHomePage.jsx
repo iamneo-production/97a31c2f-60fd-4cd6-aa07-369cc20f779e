@@ -80,7 +80,7 @@ const Adminacademy = () => {
     setIsLoading(true);
     setIsError({ state: false, msg: "" });
     try {
-      const response = await fetch(`${baseUrl}/admin/viewInstitutes`, {
+      const response = await fetch(`${baseUrl}/admin/institute`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${auth.token}`,
@@ -278,7 +278,7 @@ export const AcademyForm = ({ type }) => {
   }, [id]);
 
   const fetchData = async () => {
-    const response = await fetch(`${baseUrl}/admin/viewInstitutes`, {
+    const response = await fetch(`${baseUrl}/admin/institute`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${auth.token}`,

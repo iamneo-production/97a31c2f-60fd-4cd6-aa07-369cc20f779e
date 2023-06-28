@@ -29,7 +29,7 @@ function ApplyForm() {
   }, []);
   const fetchInstitutes = async () => {
     try {
-      const response = await fetch(`${baseUrl}/admin/viewInstitutes`, {
+      const response = await fetch(`${baseUrl}/admin/institute`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${auth.token}`,

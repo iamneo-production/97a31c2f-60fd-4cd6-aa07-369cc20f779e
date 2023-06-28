@@ -28,7 +28,7 @@ const UserCourse = () => {
       });
   }, []);
   const getdata = async () => {
-    const response = await fetch(`${baseUrl}/user/viewCourse`, {
+    const response = await fetch(`${baseUrl}/user/courses`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${auth.token}`,
