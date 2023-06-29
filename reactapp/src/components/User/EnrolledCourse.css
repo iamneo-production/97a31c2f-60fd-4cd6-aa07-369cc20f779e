@@ -262,7 +262,9 @@
 }
 
 .bth h5::before {
-  content: '\2190';
+  /*
+   content: '\2190';
+    */
   margin-right: 5px;
 }
 
