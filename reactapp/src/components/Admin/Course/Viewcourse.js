@@ -201,8 +201,15 @@ function Viewcourse() {
             ))}
           </div>
         ) : (
-          <div>No courses found</div>
-        )}
+          <div className="flex justify-center"> 
+              <div class="  loadingio-spinner-double-ring-amot1w4ku1j"><div class="ldio-14cancim8ocq">
+              <div></div>
+              <div></div>
+              <div><div></div></div>
+              <div><div></div></div>
+              </div></div>
+          </div>
+          )}
         <NavLink
           exact="true"
           to="/admin/addCourse"
