@@ -55,7 +55,7 @@ public class UserController {
         return userService.viewEnrolledCourse(studentid);
     }
 
-    @GetMapping("user/viewCourse")
+    @GetMapping("user/courses")
     public List<CourseModel> viewCourse(){      
         return adminService.getCourse();
     }
