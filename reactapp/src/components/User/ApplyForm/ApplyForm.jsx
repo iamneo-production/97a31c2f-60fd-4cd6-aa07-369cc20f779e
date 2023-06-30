@@ -428,7 +428,7 @@ function ApplyForm() {
                   name="studentDOB"
                   id="studentDOB"
                   className="form__input"
-                  placeholder="Enter Your DOB"
+                  placeholder="Enter Your DOB(YYYY-MM-DD)"
                   value={inputData.studentDOB}
                   onChange={handledata}
                 />
