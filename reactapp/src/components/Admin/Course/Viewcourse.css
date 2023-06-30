@@ -490,7 +490,7 @@
   transform: translateZ(0) scale(1);
   backface-visibility: hidden;
   transform-origin: 0 0; /* see note above */
+  box-sizing: content-box; 
 }
-.ldio-14cancim8ocq div { box-sizing: content-box; }
 
 /* loader css end */
