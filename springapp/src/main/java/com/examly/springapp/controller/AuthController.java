@@ -15,12 +15,12 @@ public class AuthController {
 	private AuthService authService;
 	
     @PostMapping("/admin/signup")
-	private ResponseEntity<?> saveAdmin(@RequestBody UserModel userModel  ) {
+	public ResponseEntity<?> saveAdmin(@RequestBody UserModel userModel  ) {
 		return authService.saveAdmin(userModel);
 	}
 	
 	@PostMapping("/user/signup")
-	private ResponseEntity<?> saveUser(@RequestBody UserModel userModel) {
+	public ResponseEntity<?> saveUser(@RequestBody UserModel userModel) {
 		return authService.saveUser(userModel);
 	}
 	

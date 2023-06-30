@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import authService from "../../../api/authService";
-import { Link, Navigate, useNavigate } from "react-router-dom";
-import Validation from "./Validation";
+import { Link, Navigate } from "react-router-dom";
+import Validation from "../../Auth/Signup/Validation";
+import "./Signup.css"; 
 
 const Signup = () => {
   const initialState = {
@@ -29,7 +30,6 @@ const Signup = () => {
   const [errors, setErrors] = useState(initialState.errors);
   const [loader, setLoader] = useState(false);
   const [redirect, setRedirect] = useState(false);
-  const navigate = useNavigate();
 
   // Event handler for input change
   const handleInputChange = (e) => {
@@ -68,24 +68,24 @@ const Signup = () => {
   };
 
   return (
-    <section className="bg-gray-50 ">
-      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto  lg:pt-0  lg:pb-4">
-        <div className="flex items-center mb-6 text-2xl font-semibold text-blue-600 md:font-bold md:mt-4">
+    <section className="whole2">
+      <div className="flex flex-col ml-6 md:ml-20 px-2 md:px-6 py-4 md:py-8 lg:pt-0 lg:pb-4">
+        <div className="flex mx-auto items-center mb-4 text-3xl md:text-4xl font-semibold text-white md:font-bold md:mt-4">
           PG Admission Portal
         </div>
         <div
           data-testid="signupBox"
-          className="w-full bg-white rounded-lg shadow  md:mt-0 sm:max-w-md xl:p-0 "
+          className="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0"
         >
-          <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-            <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl ">
+          <div className="p-4 md:p-6 space-y-2 md:space-y-4">
+            <h1 className="text-xl md:text-2xl font-bold leading-tight tracking-tight text-gray-900">
               Sign up to your account
             </h1>
-            <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-2 md:space-y-4">
               <div>
                 <label
                   htmlFor="userType"
-                  className="block mb-2 text-sm font-medium text-gray-900 "
+                  className="block mb-1 text-sm font-medium text-gray-900"
                 >
                   User Type:
                 </label>
@@ -94,7 +94,7 @@ const Signup = () => {
                   name="userType"
                   value={formData.userRole}
                   onChange={handleInputChange}
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 "
+                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
                 >
                   <option value="user">User</option>
                   <option value="admin">Admin</option>
@@ -104,7 +104,7 @@ const Signup = () => {
               <div>
                 <label
                   htmlFor="email"
-                  className="block mb-2 text-sm font-medium text-gray-900 "
+                  className="block mb-1 text-sm font-medium text-gray-900"
                 >
                   Your email
                 </label>
@@ -115,7 +115,7 @@ const Signup = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 "
+                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
                   placeholder="virtusa@gmail.com"
                 />
                 {errors.email.required && (
@@ -126,7 +126,7 @@ const Signup = () => {
               <div>
                 <label
                   htmlFor="username"
-                  className="block mb-2 text-sm font-medium text-gray-900 "
+                  className="block mb-1 text-sm font-medium text-gray-900"
                 >
                   Username
                 </label>
@@ -137,7 +137,7 @@ const Signup = () => {
                   name="username"
                   value={formData.username}
                   onChange={handleInputChange}
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 "
+                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
                   placeholder="Virtusa"
                 />
                 {errors.username.required && (
@@ -148,7 +148,7 @@ const Signup = () => {
               <div>
                 <label
                   htmlFor="mobileNumber"
-                  className="block mb-2 text-sm font-medium text-gray-900 "
+                  className="block mb-1 text-sm font-medium text-gray-900"
                 >
                   Mobile Number
                 </label>
@@ -159,7 +159,7 @@ const Signup = () => {
                   name="mobileNumber"
                   value={formData.mobileNumber}
                   onChange={handleInputChange}
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 "
+                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
                   placeholder="9710838457"
                 />
                 {errors.mobileNumber.required && (
@@ -172,7 +172,7 @@ const Signup = () => {
               <div>
                 <label
                   htmlFor="password"
-                  className="block mb-2 text-sm font-medium text-gray-900 "
+                  className="block mb-1 text-sm font-medium text-gray-900"
                 >
                   Password
                 </label>
@@ -195,7 +195,7 @@ const Signup = () => {
               <div>
                 <label
                   htmlFor="confirmPassword"
-                  className="block mb-2 text-sm font-medium text-gray-900 "
+                  className="block mb-1 text-sm font-medium text-gray-900"
                 >
                   Confirm Password
                 </label>
@@ -221,24 +221,24 @@ const Signup = () => {
                 type="submit"
                 data-testid="submitButton"
                 id="submitButton"
-                onClick={() => setTimeout(() => {navigate("/login")}, 2000)}
-                className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center "
+                // onClick={() => setTimeout(() => {navigate("/login")}, 2000)}
+                className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
               >
-                sign up
+                Sign up
               </button>
               {loader && <div className="loader mr-auto ml-auto"></div>}
               {errors.custom.required && (
                 <div className="text-red-500">{errors.custom.message}</div>
               )}
 
-              <p className="text-sm font-light text-gray-500 ">
-                All Ready a user?{" "}
+              <p className="text-sm font-light text-gray-500">
+                Already a user?{" "}
                 <Link
                   to="/login"
                   className="text-blue-800 font-semibold"
                   data-testid="signinLink"
                 >
-                  sign in
+                  Sign in
                 </Link>
               </p>
               {redirect && <Navigate to="/login" />}

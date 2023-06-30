@@ -22,14 +22,14 @@ body {
 
 .nv h2 {
     font-size: 2rem;
-    color:black;
+    color:honeydew;
     font-weight: bolder;
 
 
 }
 
 .first {
-    color:rebeccapurple;
+    color:burlywood;
     display: flex;
     justify-content: space-equally;
     align-items: center;
@@ -38,7 +38,7 @@ body {
 .link:hover {
     font-weight: bold;
     font-size: 2rem;
-    color:midnightblue;
+    color:darkkhaki;
 }
 
 .out {
@@ -103,33 +103,43 @@ body {
 .nv {
     height: 100vh;
     width: 100%;
-    background-image: url(usbg.jpg);
+    background-image: url(dbbg1.jpg);
     background-size: cover;
     background-repeat: no-repeat;
+
+    background-position: 0cqmin;
     animation-name: uimg;
     animation-direction: alternate-reverse;
-    animation-duration: 10s;
+    animation-duration: 15s;
+
     animation-fill-mode: forwards;
     animation-iteration-count: infinite;
     animation-play-state: running;
     animation-timing-function: ease-in-out;
 }
-@keyframes uimg{
-    0%{
-        background-image: url(usbg.jpg);
+
+@keyframes uimg {
+    0% {
+        background-image: url(dbbg1.jpg);
     }
-    20%{
-        background-image:url(ussbg.jpg);
+
+    20% {
+        background-image: url(dbbg2.jpg);
     }
 }
 
 
 
 .txt p {
-    margin-top: 30px;
-    color:darkslateblue;
+    margin-top: 3%;
+    /* 
+    color:rgb(48, 21, 219);
+     */
+    color:lightgoldenrodyellow;
     text-align: center;
-    margin-left: 12%;
+    /*
+     margin-left: 12%; 
+    */
     font-style: italic;
     font-size: 3rem;
     font-weight: bolder;
@@ -153,14 +163,19 @@ body {
 
 .txt h4 {
     font-size: 2rem;
-    color:cadetblue;
-    margin-left: 12%;
+    /* 
+    color:rgba(238, 7, 7, 0.892); 
+    */
+    color:wheat;
+    /*
+     margin-left: 12%; 
+     */
     text-align: center;
     font-family: cursive;
 }
 
 .addon h1 {
-    color: lightcyan;
+    color:wheat;
     padding-top: 3%;
     margin-left: 7%;
     font-size: 2rem;
@@ -170,7 +185,7 @@ body {
 }
 
 .addon p {
-    color:black;
+    color: black;
     font-weight: lighter;
     font-size: 1.7rem;
     margin-left: 9%;
@@ -180,7 +195,7 @@ body {
 
 .last h1 {
     color: black;
-    padding-top: 10%;
+    padding-top: 20%;
     margin-left: 0;
     text-align: center;
     font-size: 2rem;
@@ -188,29 +203,44 @@ body {
     font-weight: bolder;
 }
 
-span::before {
-    content: "BUILD A BETTER FUTURE!!!";
-    animation-name: line;
+.last h2 {
+    color: black;
+    margin-left: 0;
+    text-align: center;
+    font-size: 2rem;
+    font-family: cursive;
+    font-weight: bolder;
+}
+
+.span-class-1::before {
+    content: "🔆BUILD A BETTER FUTURE!!!🔆";
+    color:lightcoral;
+    animation-name: user;
     animation-direction: alternate-reverse;
-    animation-duration: 6s;
+    animation-duration: 3s;
     animation-fill-mode: forwards;
     animation-iteration-count: infinite;
     animation-play-state: running;
     animation-timing-function: ease-in-out;
+    position: relative;
+    right: 3%;
+    padding-top: 20%;
+    margin-top: 15%;
 }
 
-@keyframes line {
+
+
+@keyframes user {
     0% {
-        content: "LET'S GO!!!";
+        content: "LET'S GO!!!🏃‍♂️";
+    
     }
 
     10% {
-        content: "BUILD A BETTER FUTURE!!!";
+        content: "🔆BUILD A BETTER FUTURE!!!🔆";
+        
     }
 
-    20% {
-        content: "ALL THE BEST!!!";
-    }
 
 }
 
@@ -257,7 +287,7 @@ span::before {
         padding-top: 1%;
     }
 
-    span::before {
+    span-class-1::before {
         font-size: 1rem;
     }
 }
@@ -303,7 +333,9 @@ span::before {
         padding-top: 1%;
     }
 
-    span::before {
+
+
+    span-class-1::before {
         font-size: 14px;
     }
 }
@@ -349,7 +381,8 @@ span::before {
         padding-top: 1%;
     }
 
-    span::before {
+
+    span-class-1::before {
         font-size: 22px;
     }
 }

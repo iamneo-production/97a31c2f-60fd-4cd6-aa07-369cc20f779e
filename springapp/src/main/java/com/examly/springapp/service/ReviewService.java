@@ -1,5 +1,4 @@
 package com.examly.springapp.service;
-
 import org.springframework.web.bind.annotation.*;
 import com.examly.springapp.repository.*;
 import com.examly.springapp.models.*;
@@ -26,11 +25,12 @@ public class ReviewService {
         return repo.findAll();
     }
 
-    public boolean deleteTask(String id) {
+    public boolean deleteTask(Long id) {
         try {
             Optional<ReviewModel> optionalReview = repo.findById(id);
             if (optionalReview.isPresent()) {
                 repo.deleteById(id);
+
                 return true;
             }
             return false;

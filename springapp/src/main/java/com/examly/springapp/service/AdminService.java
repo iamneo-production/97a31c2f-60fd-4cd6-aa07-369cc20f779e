@@ -54,6 +54,7 @@ public class AdminService {
         student.setDiploma(updatedStudent.getDiploma());
         student.setEligibility(updatedStudent.getEligibility());
         student.setCourseId(updatedStudent.getCourseId());
+        student.setInstituteId(updatedStudent.getInstituteId());
         studentRepository.save(student);
         return "Student details edited";
     }

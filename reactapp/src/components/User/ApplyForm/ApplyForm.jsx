@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useParams, NavLink } from "react-router-dom";
 import "./ApplyForm.css";
 import { useNavigate } from "react-router";
@@ -14,6 +14,39 @@ function ApplyForm() {
   const navigate = useNavigate();
   const { courseId } = useParams();
   const [userPopup, setUserPopup] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [institutes, setInstitutes] = useState([]);
+  const [institutePopup, setInstitutePopup] = useState(false);
+  useEffect(() => {
+    fetchInstitutes()
+      .then((data) => {
+        console.log("fetched institute data success ", data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+
+  }, []);
+  const fetchInstitutes = async () => {
+    try {
+      const response = await fetch(`${baseUrl}/admin/institute`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${auth.token}`,
+          "Content-type": "application/json",
+        },
+      });
+      const data = await response.json();
+      setInstitutes(data);
+      console.log(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
 
   const handlePopup = (e) => {
     e.preventDefault();
@@ -45,6 +78,8 @@ function ApplyForm() {
     state: "",
     pincode: "",
     nationality: "",
+    instituteName: "",
+
   };
   const [inputData, setInputData] = useState(data);
   const [flag, setFlag] = useState(false);
@@ -55,7 +90,7 @@ function ApplyForm() {
   }
   function handleSubmit(e) {
     e.preventDefault();
-   
+
 
     if (
       !inputData.firstName ||
@@ -72,18 +107,19 @@ function ApplyForm() {
       !inputData.pincode ||
       !inputData.nationality ||
       !inputData.sslc ||
+      !inputData.instituteName ||
       !inputData.hsc
     ) {
       alert("All fields are Mandatory");
     } else {
       setFlag(true);
       postdata()
-      .then(() => {
-        console.log("success");
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+        .then(() => {
+          console.log("success");
+        })
+        .catch((error) => {
+          console.error(error);
+        });
       navigate("/Enrolledcourse");
     }
   }
@@ -113,19 +149,70 @@ function ApplyForm() {
         )}
       </pre>
 
-      <nav className="user-nav-container">
-        <div>
-          <NavLink to="/Navpage" >
-            <h2 className="pg-admission-heading">PG Admission</h2>
+      <div>
+        <div className="user-icon-container">
+          <i
+            className={`fa-solid fa-bars ${isSidebarOpen ? "user-icon-hidden" : ""}`}
+            onClick={toggleSidebar}
+          ></i>
+          <NavLink to="/Navpage" className="user-nav-pg">
+            <h1>PG Admission Portal</h1>
           </NavLink>
+          <NavLink to="/Enrolledcourse" className="user-navlink-buttons">
+            <i className="fa-solid fa-book"></i>
+            EnrolledCourses
+          </NavLink>
+          <NavLink to="/HomePage" className="user-navlink-buttons">
+            <i className="fa-solid fa-university"></i>
+            Institutes
+          </NavLink>
+          <NavLink to="/FeedBack" className="user-navlink-buttons">
+            <i className="fa-solid fa-comment"></i>
+            FeedBack
+          </NavLink>
+          <button data-testid="logout" name='logout' onClick={handleLogout} className="user-logout-button">
+            <i className="fa-solid fa-sign-out"></i>Logout</button>
         </div>
-        <div className="user-navlinks-container">
-          <NavLink to="/Enrolledcourse">Enrolledcourse</NavLink>
-          <NavLink to="/HomePage">Institute</NavLink>
-          <NavLink to="/FeedBack">FeedBack</NavLink>
+
+
+        <div className={`user-nav-container ${isSidebarOpen ? "user-show-sidebar" : ""}`}>
+          <nav>
+            <i
+              className={`fa-solid fa-bars ${isSidebarOpen ? "user-icon-hidden" : ""}`}
+              onClick={toggleSidebar}
+            ></i>
+            <div>
+              <NavLink to="/Navpage">
+                <h2 className="pg-admission-heading">PG Admission</h2>
+              </NavLink>
+            </div>
+            <div className="user-navlinks-container">
+              <div className="user-navlink-box">
+                <i class="fa-solid fa-building-columns"></i>
+                <NavLink to="/HomePage">
+                  Institutes
+                </NavLink>
+              </div>
+              <div className="user-navlink-box">
+                <i className="fa-solid fa-book"></i>
+                <NavLink to="/Enrolledcourse">
+                  EnrolledCourses
+                </NavLink>
+              </div>
+              <div className="user-navlink-box">
+                <i class="fa-solid fa-comments"></i>
+                <NavLink to="/FeedBack">
+                  FeedBack
+                </NavLink>
+              </div>
+              <div className="user-navlink-box user-bottom" onClick={handleLogout}>
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <button data-testid="logout" name='logout'  >Logout</button>
+              </div>
+            </div>
+          </nav>
         </div>
-        <button data-testid="logout" name='logout' onClick={handleLogout} >Logout</button>
-      </nav>
+      </div>
       {
         userPopup && (
           <div className="user-popup-body noHover">
@@ -154,16 +241,32 @@ function ApplyForm() {
                 Cancel
               </button>
             </div>
+
           </div>
         )
       }
+      {institutePopup && (
+        <div className="user-popup-body noHover">
+          <div className="user-popup-overlay">
+          </div>
+          <div className="user-applyform-popup">
+            {institutes.map((eachInstitute) => {
+              return (
+                <div key={institutes.instituteId} onClick={() => { setInputData({ ...inputData, instituteName: eachInstitute.instituteName }); setInstitutePopup(false); }}>
+                  <h1>{eachInstitute.instituteId} : {eachInstitute.instituteName}</h1>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      )}
       <div className="bth">
         <Link to="/HomePage">
-          <h5>Back To Home</h5>
+          <h5><i class="fa-solid fa-house"></i> Back To Home</h5>
         </Link>
       </div>
       <div className="user-applyform-headtxt">
-        Here You Go! Fill Up The Form And Enroll Now
+      <i class="fa-regular fa-file-lines fa-fade"></i> Here You Go! Fill Up The Form And Enroll Now
       </div>
 
       <form className="info">
@@ -183,6 +286,7 @@ function ApplyForm() {
                   value={courseId}
                 />
               </div>
+
               <div className="studentIdNumber">
                 <label className="form__label" htmlFor="studentIdNumber">
                   studentIdNumber
@@ -193,6 +297,24 @@ function ApplyForm() {
                   id="lastName"
                   className="form__input"
                   value={auth.id}
+                />
+              </div>
+              <div className="instituteName">
+
+                <label className="form__label" htmlFor="institutename">
+                  {" "}
+                  Institute Name{" "}
+                </label>
+                <input
+                  type="text"
+                  id="instituteName"
+                  name="instituteName"
+                  className="form__input"
+                  placeholder="Enter Your Institue Name"
+                  autoComplete="off"
+                  value={inputData.instituteName}
+                  onClick={() => { setInstitutePopup(true) }}
+
                 />
               </div>
               <div className="username">
@@ -299,21 +421,21 @@ function ApplyForm() {
               </div>
               <div className="studentDOB">
                 <label className="form__label" htmlFor="studentDOB">
-                  Age{" "}
+                  Date of Birth{" "}
                 </label>
                 <input
                   type="text"
                   name="studentDOB"
                   id="studentDOB"
                   className="form__input"
-                  placeholder="Enter Your age"
+                  placeholder="Enter Your DOB"
                   value={inputData.studentDOB}
                   onChange={handledata}
                 />
               </div>
               <div className="sslc">
                 <label className="form__label" htmlFor="sslc">
-                  sslc{" "}
+                  SSLC{" "}
                 </label>
                 <input
                   type="text"
@@ -327,7 +449,7 @@ function ApplyForm() {
               </div>
               <div className="hsc">
                 <label className="form__label" htmlFor="hsc">
-                  hsc{" "}
+                  HSC{" "}
                 </label>
                 <input
                   type="text"
@@ -341,20 +463,20 @@ function ApplyForm() {
               </div>
               <div className="diploma">
                 <label className="form__label" htmlFor="diploma">
-                  diploma{" "}
+                  UG Percentage{" "}
                 </label>
                 <input
                   type="text"
                   name="diploma"
                   id="diploma"
                   className="form__input"
-                  placeholder="Enter diploma marks"
+                  placeholder="Enter Degree or B-tech Percentage"
                   value={inputData.diploma}
                   onChange={handledata}
                 />
               </div>
               <div className="user-address-container">
-                <h2>Address information</h2>
+                <h2>📍 Address information</h2>
                 <div className="user-address">
                   <label className="form__label" htmlFor="houseNumber">
                     HouseNo{" "}

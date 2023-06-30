@@ -4,7 +4,9 @@ import "./AdminHomePage.css";
 import { Navigate } from "react-router";
 import { useNavigate, useParams, NavLink, Link } from "react-router-dom";
 import { baseUrl } from "../../../api/authService";
-import Navbar from "../../Navbar/Navbar";
+import Navbar from "../Navbar/Navbar";
+
+
 
 let auth = "";
 store.subscribe(() => {
@@ -78,7 +80,7 @@ const Adminacademy = () => {
     setIsLoading(true);
     setIsError({ state: false, msg: "" });
     try {
-      const response = await fetch(`${baseUrl}/admin/viewInstitutes`, {
+      const response = await fetch(`${baseUrl}/admin/institute`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${auth.token}`,
@@ -195,6 +197,9 @@ const Adminacademy = () => {
       <div className="admin-academy-container">
         {isLoading && <h4>Loading...</h4>}
         {isError.state && <h4>{isError.msg}</h4>}
+        <div className="student-heading"  >
+          <h1> <i class="fa-solid fa-building-columns"></i> List of Institutes</h1>
+        </div>
         <div className="academy-display-container" data-testid="instituteName" >
           {academyData.map((eachAcademy, index) => {
             const { instituteId, instituteName, instituteAddress, imageUrl } =
@@ -273,7 +278,7 @@ export const AcademyForm = ({ type }) => {
   }, [id]);
 
   const fetchData = async () => {
-    const response = await fetch(`${baseUrl}/admin/viewInstitutes`, {
+    const response = await fetch(`${baseUrl}/admin/institute`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${auth.token}`,
@@ -403,19 +408,19 @@ export const AcademyForm = ({ type }) => {
         )
       }
       <button
-        className="back-to-home"
+        className="admin-institute-back-to-home"
         type="submit"
         onClick={() => {
           navigate("/admin/dashboard");
         }}
       >
-        Back to Home
+       <i class="fa-solid fa-house"></i> Back to Home
       </button>
       <div className="admin-academy-form">
         {type === "ADD" ? (
-          <h1 className="head-container">Add Academy Details</h1>
+          <h1 className="admin-institute-head-container">Add Academy Details</h1>
         ) : (
-          <h1 className="head-container">Edit Academy Details</h1>
+          <h1 className="admin-institute-head-container"> <i class="fa-solid fa-pen-to-square"></i> Edit Academy Details</h1>
         )}
         <form className="admin-academy-form-container">
           <div className="form-group">

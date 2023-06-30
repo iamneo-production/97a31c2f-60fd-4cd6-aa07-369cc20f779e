@@ -1,0 +1,16 @@
+.whole2 {
+    background-image: url("/home/coder/project/workspace/reactapp/src/components/Auth/Login/back.jpg"); 
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    min-height: 100vh;
+  }
+  
+  @media (max-width: 768px) {
+    .whole1 {
+      background-attachment: scroll;
+      background-position: top;
+    }
+  }
+  

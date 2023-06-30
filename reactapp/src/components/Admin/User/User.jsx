@@ -4,7 +4,9 @@ import { Navigate } from "react-router";
 import { useNavigate, useParams, NavLink, Link } from "react-router-dom";
 import { baseUrl } from "../../../api/authService";
 import './AdminStudent.css';
-import Navbar from "../../Navbar/Navbar";
+import Navbar from "../Navbar/Navbar";
+import ViewStudent from "./ViewStudent";
+
 
 let auth = "";
 store.subscribe(() => {
@@ -27,6 +29,7 @@ const student = {
   emailId: "",
   eligibility: "",
   courseId: "",
+  instituteId: "",
   streetName: "",
   areaName: "",
   state: "",
@@ -51,6 +54,7 @@ const AdminStudent1 = () => {
 
   const [studentData, setStudentData] = useState([]);
 
+
   const [course1, setCourse1] = useState([]);
 
   const [isLoading, setIsLoading] = useState(false);
@@ -58,6 +62,10 @@ const AdminStudent1 = () => {
   const [isError, setIsError] = useState({ state: false, msg: "" });
 
   const [searchTerm, setSearchTerm] = useState("");
+
+  const [ViewStudentData, setViewStudentData] = useState(false);
+
+  const [passStudentData, setPassStudentData] = useState({});
 
   const navigate = useNavigate();
 
@@ -89,7 +97,7 @@ const AdminStudent1 = () => {
     setIsLoading(true);
     setIsError({ state: false, msg: "" });
     try {
-      const response = await fetch(`${baseUrl}/admin/viewStudent`, {
+      const response = await fetch(`${baseUrl}/admin/student`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${auth.token}`,
@@ -98,8 +106,9 @@ const AdminStudent1 = () => {
       });
       const data = await response.json();
       console.log(data);
-      setFetchedStudentData(data);
-      setStudentData(data);
+      const userDatabase = await fetchUserDatabase();
+      setFetchedStudentData(data.concat(userDatabase));
+      setStudentData(data.concat(userDatabase));
       setIsLoading(false);
       setIsError({ state: false, msg: "" });
       if (response.status === 400) {
@@ -114,9 +123,28 @@ const AdminStudent1 = () => {
     }
   };
 
+  async function fetchUserDatabase() {
+    try {
+      const response = await fetch(`${baseUrl}/user/viewAdmission`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${auth.token}`,
+          "Content-type": "application/json",
+        },
+      });
+
+      const data = await response.json();
+      console.log(data);
+      return data;
+
+    } catch (error) {
+      console.error("Error fetching user databse data:", error);
+    }
+  }
+
   async function fetchCourseName() {
     try {
-      const response = await fetch(`${baseUrl}/admin/viewCourse`, {
+      const response = await fetch(`${baseUrl}/admin/courses`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${auth.token}`,
@@ -165,145 +193,173 @@ const AdminStudent1 = () => {
     navigate(`/admin/editStudent/${id}`);
   };
 
+  const handleView = (Stude) => {
+    console.log(Stude)
+    setViewStudentData(true);
+    setPassStudentData(Stude);
+  }
+
+  const handleBackList = () => {
+    setViewStudentData(false)
+    setPassStudentData({})
+  }
+
+
   return (
     <>
       <Navbar />
 
-      {
-        popup.state && (
-          <div className="admin-popup-body noHover">
-            <div className="admin-popup-overlay">
+      {!ViewStudentData &&
+        <>
+          {
+            popup.state && (
+              <div className="admin-popup-body noHover">
+                <div className="admin-popup-overlay">
 
-            </div>
-            <div className="admin-student-popup">
-              <h1>Are you sure to delete the data ?</h1>
-              <button
-                className="admin-student-confirm-btn"
-                type="submit"
-                onClick={() => {
-                  deleteStudent(popup.deleteId)
-                    .then((data) => {
-                      console.log("delete student data success ", data);
-                    })
-                    .catch((error) => {
-                      console.error(error);
-                    });
-                  setPopup({
-                    state: false,
-                    deleteId: null
-                  });
-                }}
-              >
-                Confirm Delete
-              </button>
-              <button
-                className="admin-student-cancel-btn"
-                type="submit"
-                onClick={() => {
-                  setPopup({
-                    state: false,
-                    deleteId: null
-                  });
-                }}
-              >
-                Cancel
-              </button>
-            </div>
-          </div>
-        )
-      }
-      <div className="admin-student-container">
-        <div className="admin-search-container">
-          <input
-            type="text"
-            name="search"
-            className="search-input"
-            value={searchTerm}
-            placeholder="Type here to Search Student"
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-          <button
-            type="button"
-            className="search-btn"
-            onClick={() => filterStudentData()}
-          >
-            Search
-          </button>
-        </div>
-        {isLoading && <h4>Loading...</h4>}
-        {isError.state && <h4>{isError.msg}</h4>}
-        <div className="student-heading"  >
-          <h1>List of Students</h1>
-        </div>
-        <table className="admin-student-table">
-          <thead>
-            <tr>
-              <th className="admin-student-th">Student ID</th>
-              <th data-testid="userName" className="admin-student-th">Name</th>
-              <th data-testid="qualification" className="admin-student-th">Course Name</th>
-              <th data-testid="mobile" className="admin-student-th">Phone Number</th>
-              <th className="admin-student-th">Actions</th>
-            </tr>
-          </thead>
-        </table>
-        <div className="student-display-container">
-          {studentData.map((student1) => {
-            const { studentId, firstName, phoneNumber1, courseId, lastName } =
-              student1;
-            const course = course1.find((eachCourse) => {
-              return eachCourse.courseId == courseId;
-            });
-            console.log(course);
-
-            return (
-              <>
-                <div className="student-card-info">
-                  <table className="admin-student-table">
-                    <tbody>
-                      <tr>
-                        <td className="admin-student-td">{studentId}</td>
-                        <td className="admin-student-td">{firstName + " " + lastName}</td>
-                        <td className="admin-student-td">{(course != null) ? course.courseName : "Course Not Found"}</td>
-                        <td className="admin-student-td">{phoneNumber1}</td>
-                        <td className="admin-student-td">
-                          <button
-                            type="submit"
-                            id="editStudent"
-                            className="edit-btn"
-                            onClick={() => handleEdit(studentId)}
-                          >
-                            <i className="fa-regular fa-pen-to-square"></i>
-                          </button>
-                          <button
-                            type="submit"
-                            id="deleteStudent"
-                            className="delete-btn"
-                            onClick={() => handleDelete(studentId)}
-                          >
-                            <i className="fa-regular fa-trash-can"></i>
-                          </button>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
                 </div>
-              </>
-            );
-          })}
-        </div>
-        <NavLink
-          exact="true"
-          to="/admin/addStudent"
-          className="nav-link"
-          id="addStudent"
-          activeclassname="active">
-          <div className="admin-add-student-button">
-            <div className='admin-add-student-icon' >
-              <i className="fa-solid fa-circle-plus"></i>
+                <div className="admin-student-popup">
+                  <h1>Are you sure to delete the data ?</h1>
+                  <button
+                    className="admin-student-confirm-btn"
+                    type="submit"
+                    onClick={() => {
+                      deleteStudent(popup.deleteId)
+                        .then((data) => {
+                          console.log("delete student data success ", data);
+                        })
+                        .catch((error) => {
+                          console.error(error);
+                        });
+                      setPopup({
+                        state: false,
+                        deleteId: null
+                      });
+                    }}
+                  >
+                    Confirm Delete
+                  </button>
+                  <button
+                    className="admin-student-cancel-btn"
+                    type="submit"
+                    onClick={() => {
+                      setPopup({
+                        state: false,
+                        deleteId: null
+                      });
+                    }}
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            )
+          }
+          <div className="admin-student-container">
+            <div className="admin-search-container">
+              <input
+                type="text"
+                name="search"
+                className="search-input"
+                value={searchTerm}
+                placeholder="Type here to Search Student"
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+              <button
+                type="button"
+                className="search-btn"
+                onClick={() => filterStudentData()}
+              >
+                Search
+              </button>
             </div>
+            {isLoading && <h4>Loading...</h4>}
+            {isError.state && <h4>{isError.msg}</h4>}
+            <div className="student-heading"  >
+              <h1> <i class="fa-solid fa-users-line"></i> List of Students</h1>
+            </div>
+            <table className="admin-student-table">
+              <thead>
+                <tr>
+                  <th className="admin-student-th">Student ID</th>
+                  <th data-testid="userName" className="admin-student-th">Name</th>
+                  <th data-testid="qualification" className="admin-student-th">Course Name</th>
+                  <th data-testid="mobile" className="admin-student-th">Phone Number</th>
+                  <th className="admin-student-th">Actions</th>
+                </tr>
+              </thead>
+            </table>
+            <div className="student-display-container">
+              {studentData.map((student1, index) => {
+                const { studentId, firstName, phoneNumber1, courseId, lastName } =
+                  student1;
+                const course = course1.find((eachCourse) => {
+                  return eachCourse.courseId == courseId;
+                });
+
+                return (
+                  <>
+                    <div className="student-card-info">
+                      <table className="admin-student-table">
+                        <tbody>
+                          <tr>
+                            <td className="admin-student-td">{index + 1}</td>
+                            <td className="admin-student-td">{firstName + " " + lastName}</td>
+                            <td className="admin-student-td">{(course != null) ? course.courseName : "Course Not Found"}</td>
+                            <td className="admin-student-td">{phoneNumber1}</td>
+                            <td className="admin-student-td">
+                              {!student1.id &&
+                                <>
+                                  <button
+                                    type="submit"
+                                    id="editStudent"
+                                    className="edit-btn"
+                                    onClick={() => handleEdit(studentId)}>
+                                    <i className="fa-regular fa-pen-to-square"></i>
+                                  </button>
+
+                                  <button
+                                    type="submit"
+                                    id="deleteStudent"
+                                    className="delete-btn"
+                                    onClick={() => handleDelete(studentId)}
+                                  >
+                                    <i className="fa-regular fa-trash-can"></i>
+                                  </button>
+
+                                </>
+                              }
+                              {student1.id &&
+                                <button onClick={() => handleView(student1)} className="mx-auto bg-blue-400 px-8 py-3 rounded-xl text-white hover:bg-blue-700">
+                                  view
+                                </button>
+                              }
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </>
+                );
+              })}
+            </div>
+            <NavLink
+              exact="true"
+              to="/admin/addStudent"
+              className="nav-link"
+              id="addStudent"
+              activeclassname="active">
+              <div className="admin-add-student-button">
+                <div className='admin-add-student-icon' >
+                  <i className="fa-solid fa-circle-plus"></i>
+                </div>
+              </div>
+            </NavLink>
           </div>
-        </NavLink>
-      </div>
+        </>
+      }
+
+      {ViewStudentData &&  <ViewStudent handleBackList={handleBackList} passStudentData={passStudentData}  />}
+
     </>
   );
 };
@@ -313,7 +369,9 @@ export const StudentForm = ({ type }) => {
   const navigate = useNavigate();
   const [popup, setPopup] = useState(false);
   const [course, setCourse] = useState([]);
+  const [institute, setInstitute] = useState([]);
   const [coursePopup, setCoursePopup] = useState(false);
+  const [institutePopup, setInstitutePopup] = useState(false);
 
   const { id } = useParams();
   useEffect(() => {
@@ -331,10 +389,18 @@ export const StudentForm = ({ type }) => {
       .catch((error) => {
         console.error(error);
       });
+    fetchInstitute()
+      .then((data) => {
+        console.log("fetched Institute data success ", data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }, [id]);
 
+
   const fetchData = async () => {
-    const response = await fetch(`${baseUrl}/admin/viewStudent`, {
+    const response = await fetch(`${baseUrl}/admin/student`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${auth.token}`,
@@ -351,8 +417,10 @@ export const StudentForm = ({ type }) => {
     }
   };
 
+
+
   const fetchCourse = async () => {
-    const response = await fetch(`${baseUrl}/admin/viewCourse`, {
+    const response = await fetch(`${baseUrl}/admin/courses`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${auth.token}`,
@@ -361,6 +429,17 @@ export const StudentForm = ({ type }) => {
     });
     const data = await response.json();
     setCourse(data);
+  }
+  const fetchInstitute = async () => {
+    const response = await fetch(`${baseUrl}/admin/institute`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${auth.token}`,
+        "Content-type": "application/json",
+      },
+    });
+    const data = await response.json();
+    setInstitute(data);
   }
 
   const handleInputChange = (e, key) => {
@@ -374,7 +453,7 @@ export const StudentForm = ({ type }) => {
   const handleFormAdd = (e) => {
     e.preventDefault();
     console.log(formData);
-    if(formData.firstName &&
+    if (formData.firstName &&
       formData.lastName &&
       formData.fatherName &&
       formData.motherName &&
@@ -387,15 +466,16 @@ export const StudentForm = ({ type }) => {
       formData.emailId &&
       formData.eligibility &&
       formData.courseId &&
+      formData.instituteId &&
       formData.streetName &&
       formData.areaName &&
       formData.state &&
       formData.pincode &&
       formData.nationality
-      ){ setPopup(true);}
-      else{
-        alert("All fields are mandatory")
-      }
+    ) { setPopup(true); }
+    else {
+      alert("All fields are mandatory")
+    }
   };
 
   const addStudent = async () => {
@@ -441,7 +521,7 @@ export const StudentForm = ({ type }) => {
             <div className="admin-student-popup">
               {course.map((eachCourse) => {
                 return (
-                  <div key = {eachCourse.courseId} onClick={() => { setFormData({ ...formData, courseId: eachCourse.courseId }); setCoursePopup(false); }}>
+                  <div key={eachCourse.courseId} onClick={() => { setFormData({ ...formData, courseId: eachCourse.courseId }); setCoursePopup(false); }}>
                     <h1>{eachCourse.courseId} : {eachCourse.courseName}</h1>
                   </div>
                 )
@@ -449,7 +529,36 @@ export const StudentForm = ({ type }) => {
             </div>
           </div>
         )
+
       }
+
+
+      {
+        institutePopup && (
+          <div className="admin-popup-body">
+            <div className="admin-popup-overlay"></div>
+            <div className="admin-student-popup">
+              {institute.map((eachInstitute) => {
+                console.log(eachInstitute);
+                return (
+                  <div
+                    key={eachInstitute.id}
+                    onClick={() => {
+                      setFormData({ ...formData, instituteId: eachInstitute.instituteId });
+                      setInstitutePopup(false);
+                    }}
+                  >
+                    <h1>{eachInstitute.instituteId} : {eachInstitute.instituteName}</h1>
+                  </div>
+                );
+              })}
+
+            </div>
+          </div>
+        )
+      }
+
+
       {
         popup && (
           <div className="admin-popup-body">
@@ -515,16 +624,50 @@ export const StudentForm = ({ type }) => {
           navigate("/admin/Viewstudent");
         }}
       >
-        Back to Home
+        <i class="fa-solid fa-house"></i> Back to Home
       </button>
       {type === "ADD" ? (
-        <h1 className="head-container">Add Student Details</h1>
+        <h1 className="head-container" ><i class="fa-solid fa-user-plus"> </i> Add Student Details</h1>
       ) : (
-        <h1 className="head-container">Edit Student Details</h1>
+        <h1 className="head-container"><i class="fa-solid fa-pen-to-square"></i> Edit Student Details</h1>
       )}
       <form className="student-form-container m-2 lg:m-12">
         <div className="studentform p-4 lg:18 ">
           <div className="form-body">
+            <div className="courseId">
+              <label className="form__label" htmlFor="courseid">
+                {" "}
+                Course ID{" "}
+              </label>
+              <input
+                type="text"
+                id="courseId"
+                name="courseId"
+                className="form__input"
+                placeholder="Select Course Id"
+                autoComplete="off"
+                value={formData.courseId}
+                onClick={() => { setCoursePopup(true) }}
+              />
+            </div>
+            <div className="instituteId">
+              <label className="form__label" htmlFor="instituteid">
+                {" "}
+                Institute ID{" "}
+              </label>
+              <input
+                type="text"
+                id="instituteId"
+                name="instituteId"
+                className="form__input"
+                placeholder="Select Institute"
+                autoComplete="off"
+                value={formData.instituteId}
+                onClick={() => { setInstitutePopup(true) }}
+
+
+              />
+            </div>
             <div className="username" >
               <label className="form__label" htmlFor="firstName">
                 {" "}
@@ -662,14 +805,14 @@ export const StudentForm = ({ type }) => {
             <div className="diploma">
               <label className="form__label" htmlFor="diploma">
                 {" "}
-                Diploma Marks{" "}
+                UG Percentage{" "}
               </label>
               <input
                 type="text"
                 id="diploma"
                 name="Diploma"
                 className="form__input"
-                placeholder="Enter Your Diploma Marks"
+                placeholder="Enter Degree or B-tech Percentage"
                 value={formData.diploma}
                 onChange={(e) => handleInputChange(e, "diploma")}
               />
@@ -677,7 +820,7 @@ export const StudentForm = ({ type }) => {
             <div className="emailId">
               <label className="form__label" htmlFor="emailId">
                 {" "}
-                email{" "}
+                E-Mail{" "}
               </label>
               <input
                 type="input"
@@ -692,7 +835,7 @@ export const StudentForm = ({ type }) => {
             <div className="eligibility">
               <label className="form__label" htmlFor="eligibility">
                 {" "}
-                eligibility{" "}
+                Eligibility{" "}
               </label>
               <input
                 type="text"
@@ -704,25 +847,9 @@ export const StudentForm = ({ type }) => {
                 onChange={(e) => handleInputChange(e, "eligibility")}
               />
             </div>
-            <div className="courseId">
-              <label className="form__label" htmlFor="courseid">
-                {" "}
-                Course ID{" "}
-              </label>
-              <input
-                type="text"
-                id="courseId"
-                name="courseId"
-                className="form__input"
-                placeholder="Enter Your Course Id"
-                autoComplete="off"
-                value={formData.courseId}
-                onClick={() => { setCoursePopup(true) }}
-              // onChange={(e) => handleInputChange(e, "courseId")}
-              />
-            </div>
+
             <div className="address-container">
-              <h2>Address Information</h2>
+              <h2>📍 Address Information</h2>
               <div className="address">
                 <label className="form__label" htmlFor="address">
                   {" "}
@@ -753,11 +880,11 @@ export const StudentForm = ({ type }) => {
                   onChange={(e) => handleInputChange(e, "areaName")}
                 />
               </div>
-              
+
               <div className="address">
                 <label className="form__label" htmlFor="address">
                   {" "}
-                  PINCODE{" "}
+                  PinCode{" "}
                 </label>
                 <input
                   type="text"
@@ -802,30 +929,30 @@ export const StudentForm = ({ type }) => {
             </div>
           </div>
         </div>
-        <div className="admin-student-btn-container ml-[30%] lg:ml-[70%]">
-        {type === "ADD" ? (
-          <button
-            className="bg-green-500  text-white px-4 py-2 rounded-xl hover:bg-green-700 "
-            type="submit"
-            id="addStudent"
-            onClick={(e) => handleFormAdd(e)}
-          >
-            Add Student
-          </button>
-        ) : (
-          <button
-            className="bg-green-500  text-white px-4 py-2 rounded-xl hover:bg-green-700"
-            type="submit"
-            id="updateStudent"
-            onClick={(e) => handleFormEdit(e)}
-          >
-            Update Student
-          </button>
-        )}
-        <Link
-              to="/admin/Viewstudent"
-              className="ml-2 bg-red-500  text-white px-4 py-2 rounded-xl hover:bg-red-700">
-              Cancel</Link>
+        <div className="admin-student-btn-container">
+          {type === "ADD" ? (
+            <button
+              className="add-student-btn"
+              type="submit"
+              id="addStudent"
+              onClick={(e) => handleFormAdd(e)}
+            >
+              Add Student
+            </button>
+          ) : (
+            <button
+              className="add-student-btn"
+              type="submit"
+              id="updateStudent"
+              onClick={(e) => handleFormEdit(e)}
+            >
+              Update Student
+            </button>
+          )}
+          <Link
+            to="/admin/Viewstudent"
+            className="admin-btn-secondary">
+            Cancel</Link>
         </div>
       </form>
     </>

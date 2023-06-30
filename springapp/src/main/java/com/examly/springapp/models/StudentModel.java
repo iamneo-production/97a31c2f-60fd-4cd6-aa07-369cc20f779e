@@ -43,4 +43,5 @@ public class StudentModel {
     private Integer diploma;
     private String eligibility;  
     private String courseId;  
+    private String instituteId;
 }

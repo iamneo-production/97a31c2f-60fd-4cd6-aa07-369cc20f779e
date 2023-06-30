@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { getCourses, deleteCourse } from "../../../api/courseApi.js";
 import "../Course/Viewcourse.css";
-import Navbar from "../../Navbar/Navbar.jsx";
+import Navbar from "../Navbar/Navbar";
+
 
 
 function Viewcourse() {
@@ -131,8 +132,8 @@ function Viewcourse() {
       <div>
         <h1
           class="course-heading"
-          id="courseGrid1">
-          List of Courses
+          id="courseGrid1"> 
+         <i className="fa-solid fa-book"></i> List of Courses
         </h1>
         {courses && courses.length > 0 ? (
           <div className="courses-grid">
