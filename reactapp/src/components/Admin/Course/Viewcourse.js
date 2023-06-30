@@ -15,14 +15,15 @@ function Viewcourse() {
     deleteId: null
   });
 
+  const fetchData = async () => {
+    const data = await getCourses();
+    console.log(data)
+    return data;
+  };
   useEffect(() => {
-    const fetchData = async () => {
-      const data = await getCourses();
-      console.log(data)
-      setCourses(data);
-    };
     fetchData().then((data) => {
-      console.log(data)
+      setCourses(data);
+      console.log(data,".....1st time use effect")
     })
       .catch((error) => {
         console.error(error);
