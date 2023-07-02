@@ -7,11 +7,13 @@ const Review = () => {
   const [data, setData] = useState([]);
   const [showConfirmDelete, setShowConfirmDelete] = useState(false);
   const [deleteItem, setDeleteItem] = useState(null);
+  const [loader, setLoader] = useState(true)
 
   useEffect(() => {
     getReviews()
       .then((res) => setData(res))
       .catch((err) => console.log(err));
+    setLoader(false)
   }, []);
 
   const handleDelete = (item) => {
@@ -39,7 +41,16 @@ const Review = () => {
 
       <h1 className="student-heading mt-20"> <i class="fa-solid fa-comment-dots"></i> Feedback </h1>
 
-      <div className="overflow-x-auto">
+      { loader && 
+      <div className='flex justify-center'>
+        <div class="loadingio-spinner-double-ring-amot1w4ku1j"><div class="ldio-14cancim8ocq">
+        <div></div>
+        <div></div>
+        <div><div></div></div>
+        <div><div></div></div>
+        </div></div>
+      </div> }
+      { ! loader && <div className="overflow-x-auto">
         <table className="min-w-full divide-y divide-gray-200">
           <thead>
             <tr>
@@ -84,6 +95,7 @@ const Review = () => {
           </tbody>
         </table>
       </div>
+      }
 
       {showConfirmDelete && (
         <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
@@ -107,6 +119,7 @@ const Review = () => {
           </div>
         </div>
       )}
+
     </>
   );
 };

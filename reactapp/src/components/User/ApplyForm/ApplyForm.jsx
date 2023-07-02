@@ -79,7 +79,7 @@ function ApplyForm() {
     pincode: "",
     nationality: "",
     instituteName: "",
-
+    status: "pending",
   };
   const [inputData, setInputData] = useState(data);
   const [flag, setFlag] = useState(false);
