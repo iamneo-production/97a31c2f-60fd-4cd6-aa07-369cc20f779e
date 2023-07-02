@@ -107,7 +107,6 @@ export const ApproveUser = () => {
                             const course = courses.find((eachCourse) => {
                               return eachCourse.courseId === courseId;
                             });
-                          //   console.log(course);
           
                             return (
                               <>

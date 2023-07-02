@@ -40,7 +40,6 @@ const EnrolledCourse = () => {
     const fetchCourses = async () => {
         const res = await getCourses();
         console.log(res, " res")
-      const userCourses = res
       const userCoursesWithStatus = [];
       for (let i = 0; i < courseId.length; i++) {
         const matchingCourse = res.find(course => course.courseId === courseId[i][0]);
