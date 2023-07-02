@@ -58,6 +58,6 @@ export const deletestud = async (id) => {
     console.error(error);
   }
 }
-const Studentservice = { getStudents };
+const Studentservice = { getStudents,editstudent,deletestud };
 export default Studentservice;
 

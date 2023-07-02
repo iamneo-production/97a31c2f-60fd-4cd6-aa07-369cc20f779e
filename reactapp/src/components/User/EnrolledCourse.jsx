@@ -21,39 +21,50 @@ const EnrolledCourse = () => {
   }
 
   useEffect(() => {
-    console.log(auth)
     let courseId;
     const fetchStudents = async () => {
-      const res = await CourseService.studentDetails();
-      console.log("all response students ", res)
-      const userReg = res.filter(student => student.studentIdNumber === auth.id)
-      console.log(userReg, " filtered student as user ")
-      courseId = userReg.map(user => user.courseId)
-      console.log("courseId  ", courseId)
-      fetchCourses().then((data) => {
-        console.log(data);
-      })
-        .catch((error) => {
-          console.error(error);
-        });
+        const res = await CourseService.studentDetails();
+        console.log("all response students ", res)
+        const userReg = res.filter(student => student.studentIdNumber === auth.id)
+        console.log(userReg, " filtered student as users ")
+        courseId = userReg.map(user => [user.courseId,user.status])
+        console.log("courseId & status ", courseId)
+        fetchCourses().then((data) => {
+            console.log(data);
+        })
+            .catch((error) => {
+                console.error(error);
+            });
     }
 
     const fetchCourses = async () => {
-      const res = await getCourses();
-      console.log(res, " res")
-      const userCourses = res.filter(course => courseId.includes(course.courseId))
-      console.log(userCourses, " courres")
-      setCourses(userCourses)
+        const res = await getCourses();
+        console.log(res, " res")
+      const userCourses = res
+      const userCoursesWithStatus = [];
+      for (let i = 0; i < courseId.length; i++) {
+        const matchingCourse = res.find(course => course.courseId === courseId[i][0]);
+      
+        if (matchingCourse) {
+          const courseWithStatus = { ...matchingCourse, status: courseId[i][1] };
+          userCoursesWithStatus.push(courseWithStatus);
+        }
+      }
+        // .filter(course => courseId[0].includes(course.courseId))
+        // .map(course => ({ ...course, status: courseId[1] }));
+            // const userCourses = res.map(course => courseId[0].includes(course.courseId) ?   )
+        console.log(userCoursesWithStatus, " courres")
+        setCourses(userCoursesWithStatus)
     }
 
 
     fetchStudents().then((data) => {
-      console.log(data);
+        console.log(data);
     })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, [])
+        .catch((error) => {
+            console.error(error);
+        });
+}, [])
 
 
   return (
@@ -139,7 +150,10 @@ const EnrolledCourse = () => {
                 <p>Course Name: {course.courseName}</p>
                 <p>Course Duration: {course.courseDuration}</p>
                 <p>Course Description: {course.courseDescription}</p>
+                <div className='flex'>
+                <p className="my-learning-button !bg-orange-500">Status: {course.status}</p>
                 <Link to="/Admissionmodelpage"><button class="my-learning-button">My Learning</button></Link>
+                </div>
               </div>
             ))
           ) : (
