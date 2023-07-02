@@ -5,6 +5,7 @@ import { useNavigate, useParams, NavLink, Link } from "react-router-dom";
 import { baseUrl } from "../../../api/authService";
 import './AdminStudent.css';
 import Navbar from "../Navbar/Navbar";
+import ViewStudent from "./ViewStudent";
 
 
 let auth = "";
@@ -53,13 +54,18 @@ const AdminStudent1 = () => {
 
   const [studentData, setStudentData] = useState([]);
 
+
   const [course1, setCourse1] = useState([]);
 
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const [isError, setIsError] = useState({ state: false, msg: "" });
 
   const [searchTerm, setSearchTerm] = useState("");
+
+  const [ViewStudentData, setViewStudentData] = useState(false);
+
+  const [passStudentData, setPassStudentData] = useState({});
 
   const navigate = useNavigate();
 
@@ -91,7 +97,7 @@ const AdminStudent1 = () => {
     setIsLoading(true);
     setIsError({ state: false, msg: "" });
     try {
-      const response = await fetch(`${baseUrl}/admin/viewStudent`, {
+      const response = await fetch(`${baseUrl}/admin/student`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${auth.token}`,
@@ -100,8 +106,9 @@ const AdminStudent1 = () => {
       });
       const data = await response.json();
       console.log(data);
-      setFetchedStudentData(data);
-      setStudentData(data);
+      const userDatabase = await fetchUserDatabase();
+      setFetchedStudentData(data.concat(userDatabase));
+      setStudentData(data.concat(userDatabase));
       setIsLoading(false);
       setIsError({ state: false, msg: "" });
       if (response.status === 400) {
@@ -116,9 +123,28 @@ const AdminStudent1 = () => {
     }
   };
 
+  async function fetchUserDatabase() {
+    try {
+      const response = await fetch(`${baseUrl}/user/viewAdmission`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${auth.token}`,
+          "Content-type": "application/json",
+        },
+      });
+
+      const data = await response.json();
+      console.log(data);
+      return data;
+
+    } catch (error) {
+      console.error("Error fetching user databse data:", error);
+    }
+  }
+
   async function fetchCourseName() {
     try {
-      const response = await fetch(`${baseUrl}/admin/viewCourse`, {
+      const response = await fetch(`${baseUrl}/admin/courses`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${auth.token}`,
@@ -167,145 +193,188 @@ const AdminStudent1 = () => {
     navigate(`/admin/editStudent/${id}`);
   };
 
+  const handleView = (Stude) => {
+    console.log(Stude)
+    setViewStudentData(true);
+    setPassStudentData(Stude);
+  }
+
+  const handleBackList = () => {
+    setViewStudentData(false)
+    setPassStudentData({})
+  }
+
+
   return (
     <>
       <Navbar />
 
-      {
-        popup.state && (
-          <div className="admin-popup-body noHover">
-            <div className="admin-popup-overlay">
+      {!ViewStudentData &&
+        <>
+          {
+            popup.state && (
+              <div className="admin-popup-body noHover">
+                <div className="admin-popup-overlay">
 
-            </div>
-            <div className="admin-student-popup">
-              <h1>Are you sure to delete the data ?</h1>
-              <button
-                className="admin-student-confirm-btn"
-                type="submit"
-                onClick={() => {
-                  deleteStudent(popup.deleteId)
-                    .then((data) => {
-                      console.log("delete student data success ", data);
-                    })
-                    .catch((error) => {
-                      console.error(error);
-                    });
-                  setPopup({
-                    state: false,
-                    deleteId: null
-                  });
-                }}
-              >
-                Confirm Delete
-              </button>
-              <button
-                className="admin-student-cancel-btn"
-                type="submit"
-                onClick={() => {
-                  setPopup({
-                    state: false,
-                    deleteId: null
-                  });
-                }}
-              >
-                Cancel
-              </button>
-            </div>
-          </div>
-        )
-      }
-      <div className="admin-student-container">
-        <div className="admin-search-container">
-          <input
-            type="text"
-            name="search"
-            className="search-input"
-            value={searchTerm}
-            placeholder="Type here to Search Student"
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-          <button
-            type="button"
-            className="search-btn"
-            onClick={() => filterStudentData()}
-          >
-            Search
-          </button>
-        </div>
-        {isLoading && <h4>Loading...</h4>}
-        {isError.state && <h4>{isError.msg}</h4>}
-        <div className="student-heading"  >
-          <h1> <i class="fa-solid fa-users-line"></i> List of Students</h1>
-        </div>
-        <table className="admin-student-table">
-          <thead>
-            <tr>
-              <th className="admin-student-th">Student ID</th>
-              <th data-testid="userName" className="admin-student-th">Name</th>
-              <th data-testid="qualification" className="admin-student-th">Course Name</th>
-              <th data-testid="mobile" className="admin-student-th">Phone Number</th>
-              <th className="admin-student-th">Actions</th>
-            </tr>
-          </thead>
-        </table>
-        <div className="student-display-container">
-          {studentData.map((student1) => {
-            const { studentId, firstName, phoneNumber1, courseId, lastName } =
-              student1;
-            const course = course1.find((eachCourse) => {
-              return eachCourse.courseId == courseId;
-            });
-            console.log(course);
-
-            return (
-              <>
-                <div className="student-card-info">
-                  <table className="admin-student-table">
-                    <tbody>
-                      <tr>
-                        <td className="admin-student-td">{studentId}</td>
-                        <td className="admin-student-td">{firstName + " " + lastName}</td>
-                        <td className="admin-student-td">{(course != null) ? course.courseName : "Course Not Found"}</td>
-                        <td className="admin-student-td">{phoneNumber1}</td>
-                        <td className="admin-student-td">
-                          <button
-                            type="submit"
-                            id="editStudent"
-                            className="edit-btn"
-                            onClick={() => handleEdit(studentId)}
-                          >
-                            <i className="fa-regular fa-pen-to-square"></i>
-                          </button>
-                          <button
-                            type="submit"
-                            id="deleteStudent"
-                            className="delete-btn"
-                            onClick={() => handleDelete(studentId)}
-                          >
-                            <i className="fa-regular fa-trash-can"></i>
-                          </button>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
                 </div>
-              </>
-            );
-          })}
-        </div>
-        <NavLink
-          exact="true"
-          to="/admin/addStudent"
-          className="nav-link"
-          id="addStudent"
-          activeclassname="active">
-          <div className="admin-add-student-button">
-            <div className='admin-add-student-icon' >
-              <i className="fa-solid fa-circle-plus"></i>
+                <div className="admin-student-popup">
+                  <h1>Are you sure to delete the data ?</h1>
+                  <button
+                    className="admin-student-confirm-btn"
+                    type="submit"
+                    onClick={() => {
+                      deleteStudent(popup.deleteId)
+                        .then((data) => {
+                          console.log("delete student data success ", data);
+                        })
+                        .catch((error) => {
+                          console.error(error);
+                        });
+                      setPopup({
+                        state: false,
+                        deleteId: null
+                      });
+                    }}
+                  >
+                    Confirm Delete
+                  </button>
+                  <button
+                    className="admin-student-cancel-btn"
+                    type="submit"
+                    onClick={() => {
+                      setPopup({
+                        state: false,
+                        deleteId: null
+                      });
+                    }}
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            )
+          }
+          <div className="admin-student-container">
+            <div className="admin-search-container">
+              <input
+                type="text"
+                name="search"
+                className="search-input"
+                value={searchTerm}
+                placeholder="Type here to Search Student"
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+              <button
+                type="button"
+                className="search-btn"
+                onClick={() => filterStudentData()}
+              >
+                Search
+              </button>
             </div>
+            {isError.state && <h4>{isError.msg}</h4>}
+            <div className="student-heading"  >
+              <h1> <i className="fa-solid fa-users-line"></i> List of Students</h1>
+            </div>
+            {isLoading && <>
+              <div className="flex justify-center">
+                  <div className="loadingio-spinner-double-ring-amot1w4ku1j"><div className="ldio-14cancim8ocq">
+                  <div></div>
+                  <div></div>
+                  <div><div></div></div>
+                  <div><div></div></div>
+                  </div></div>
+              </div>
+            </>}
+
+            { ! isLoading && 
+            <>
+              <table className="admin-student-table">
+                  <thead>
+                    <tr>
+                      <th className="admin-student-th">Student ID</th>
+                      <th data-testid="userName" className="admin-student-th">Name</th>
+                      <th data-testid="qualification" className="admin-student-th">Course Name</th>
+                      <th data-testid="mobile" className="admin-student-th">Phone Number</th>
+                      <th className="admin-student-th">Actions</th>
+                    </tr>
+                  </thead>
+                </table>
+                <div className="student-display-container">
+                  {studentData.map((student1, index) => {
+                    const { studentId, firstName, phoneNumber1, courseId, lastName } =
+                      student1;
+                    const course = course1.find((eachCourse) => {
+                      return eachCourse.courseId == courseId;
+                    });
+
+                    return (
+                      <>
+                        <div className="student-card-info">
+                          <table className="admin-student-table">
+                            <tbody>
+                              <tr>
+                                <td className="admin-student-td">{index + 1}</td>
+                                <td className="admin-student-td">{firstName + " " + lastName}</td>
+                                <td className="admin-student-td">{(course != null) ? course.courseName : "Course Not Found"}</td>
+                                <td className="admin-student-td">{phoneNumber1}</td>
+                                <td className="admin-student-td">
+                                  {!student1.id &&
+                                    <>
+                                      <button
+                                        type="submit"
+                                        id="editStudent"
+                                        className="edit-btn"
+                                        onClick={() => handleEdit(studentId)}>
+                                        <i className="fa-regular fa-pen-to-square"></i>
+                                      </button>
+
+                                      <button
+                                        type="submit"
+                                        id="deleteStudent"
+                                        className="delete-btn"
+                                        onClick={() => handleDelete(studentId)}
+                                      >
+                                        <i className="fa-regular fa-trash-can"></i>
+                                      </button>
+
+                                    </>
+                                  }
+                                  {student1.id &&
+                                    <button onClick={() => handleView(student1)} className="mx-auto bg-blue-400 px-8 py-3 rounded-xl text-white hover:bg-blue-700">
+                                      view
+                                    </button>
+                                  }
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </>
+                    );
+                  })}
+                </div>
+            </>
+            }
+
+            <NavLink
+              exact="true"
+              to="/admin/addStudent"
+              className="nav-link"
+              id="addStudent"
+              activeclassname="active">
+              <div className="admin-add-student-button">
+                <div className='admin-add-student-icon' >
+                  <i className="fa-solid fa-circle-plus"></i>
+                </div>
+              </div>
+            </NavLink>
           </div>
-        </NavLink>
-      </div>
+        </>
+      }
+
+      {ViewStudentData &&  <ViewStudent handleBackList={handleBackList} passStudentData={passStudentData}  />}
+
     </>
   );
 };
@@ -346,7 +415,7 @@ export const StudentForm = ({ type }) => {
 
 
   const fetchData = async () => {
-    const response = await fetch(`${baseUrl}/admin/viewStudent`, {
+    const response = await fetch(`${baseUrl}/admin/student`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${auth.token}`,
@@ -366,7 +435,7 @@ export const StudentForm = ({ type }) => {
 
 
   const fetchCourse = async () => {
-    const response = await fetch(`${baseUrl}/admin/viewCourse`, {
+    const response = await fetch(`${baseUrl}/admin/courses`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${auth.token}`,
@@ -377,7 +446,7 @@ export const StudentForm = ({ type }) => {
     setCourse(data);
   }
   const fetchInstitute = async () => {
-    const response = await fetch(`${baseUrl}/admin/viewInstitutes`, {
+    const response = await fetch(`${baseUrl}/admin/institute`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${auth.token}`,

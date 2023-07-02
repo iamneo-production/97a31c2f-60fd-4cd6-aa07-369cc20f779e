@@ -40,12 +40,12 @@ public class UserController {
     }
 
     @DeleteMapping("user/deleteAdmission/{id}")
-    private String deleteAdmission(@PathVariable("id") Integer admissionid ){
+    public String deleteAdmission(@PathVariable("id") Integer admissionid ){
         return userService.deleteAdmission(admissionid);
     }
 
     @PutMapping("user/editAdmission/{id}")
-    private String editAdmission(@PathVariable("id") Integer admissionid, @RequestBody AdmissionModel updatedAdmission){
+    public String editAdmission(@PathVariable("id") Integer admissionid, @RequestBody AdmissionModel updatedAdmission){
         return userService.editAdmission(admissionid,updatedAdmission);
     }
 
@@ -55,7 +55,7 @@ public class UserController {
         return userService.viewEnrolledCourse(studentid);
     }
 
-    @GetMapping("user/viewCourse")
+    @GetMapping("user/courses")
     public List<CourseModel> viewCourse(){      
         return adminService.getCourse();
     }

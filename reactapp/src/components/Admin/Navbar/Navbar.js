@@ -82,6 +82,12 @@ const NavBar = () => {
               </NavLink>
             </div>
             <div className="navlink-box">
+              <i className="fa-solid fa-users"></i>
+              <NavLink id="adminStudents" to="/admin/Viewstudent">
+                Studen
+              </NavLink>
+            </div>
+            <div className="navlink-box">
               <i class="fa-solid fa-comments"></i>
               <NavLink id="adminFeedback" to="/admin/FeedBack">
                 FeedBack
