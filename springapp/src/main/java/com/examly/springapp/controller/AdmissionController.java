@@ -4,6 +4,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.examly.springapp.models.*;
 import org.springframework.http.*;
+
+import java.security.Principal;
 import java.util.*;
 import com.examly.springapp.service.*;
 
@@ -20,4 +22,9 @@ public class AdmissionController{
         return adminService.getStudent();
     }
 
+    @PostMapping("/admin/addreason")
+    public String addReason(@RequestBody AdmissionModel admissionModel){
+       return adminService.addReason(admissionModel);
+        
+    }
 }
