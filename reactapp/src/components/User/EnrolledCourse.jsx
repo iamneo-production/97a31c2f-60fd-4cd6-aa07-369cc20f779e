@@ -81,7 +81,7 @@ const EnrolledCourse = () => {
             onClick={toggleSidebar}
           ></i>
           <NavLink to="/Navpage" className="user-nav-pg">
-            <h1>PG Admission Portal</h1>
+           <h1><i class="fa-solid fa-graduation-cap"></i> PG Admission Portal</h1>
           </NavLink>
           <NavLink to="/HomePage" className="user-navlink-buttons">
             <i className="fa-solid fa-university"></i>
@@ -108,7 +108,7 @@ const EnrolledCourse = () => {
             ></i>
             <div>
               <NavLink to="/Navpage">
-                <h2 className="pg-admission-heading">PG Admission</h2>
+                <h2 className="pg-admission-heading"><i class="fa-solid fa-graduation-cap"></i> PG Admission</h2>
               </NavLink>
             </div>
             <div className="user-navlinks-container">
