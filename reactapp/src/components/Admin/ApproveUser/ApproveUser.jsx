@@ -1,11 +1,12 @@
+
 import React, { useEffect, useState } from 'react'
+
 import Navbar from "../Navbar/Navbar";
 import Studentservice from '../../../api/Studentservice';
 import ViewStudent from './ViewStudent';
 import { getCourses } from "../../../api/courseApi"
 
 export const ApproveUser = () => {
-
   const [data, setdata] = useState([])
   const [loading, setloading] = useState(true)
   const [viewStudent, setviewStudent] = useState(false)
@@ -203,5 +204,6 @@ export const ApproveUser = () => {
         <ViewStudent studentDetail={studentDetail} setviewStudent={setviewStudent} />}
 
     </>
+
   )
 }
