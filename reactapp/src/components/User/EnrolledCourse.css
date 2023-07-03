@@ -254,6 +254,44 @@
   border: 2px solid #4987c4;
 }
 
+/* EnrolledCourse.css */
+
+/* ... your existing CSS styles ... */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-container {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.modal-close-btn {
+  margin-top: 16px;
+  padding: 8px 16px;
+  background-color: #ccc;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* ... any other CSS styles ... */
 
 .bth h5:hover {
   background-color: #4a90e2;

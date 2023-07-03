@@ -1,17 +1,11 @@
 package com.examly.springapp.controller;
 import org.springframework.web.bind.annotation.*;
-import com.examly.springapp.repository.*;
 import com.examly.springapp.service.*;
 import com.examly.springapp.models.*;
-import com.examly.springapp.models.*;
 import org.springframework.http.*;
-import org.springframework.stereotype.*;
 import org.springframework.beans.factory.annotation.*;
-import org.springframework.http.*;
 import java.util.*;
-import org.springframework.web.bind.annotation.*;
 
-import javax.security.auth.spi.LoginModule;
 
 
 @RestController
@@ -45,7 +39,7 @@ public class UserController {
     }
 
     @PutMapping("user/editAdmission/{id}")
-    public String editAdmission(@PathVariable("id") Integer admissionid, @RequestBody AdmissionModel updatedAdmission){
+    public ResponseEntity<?> editAdmission(@PathVariable("id") Integer admissionid, @RequestBody AdmissionModel updatedAdmission){
         return userService.editAdmission(admissionid,updatedAdmission);
     }
 
@@ -55,7 +49,7 @@ public class UserController {
         return userService.viewEnrolledCourse(studentid);
     }
 
-    @GetMapping("user/viewCourse")
+    @GetMapping("user/courses")
     public List<CourseModel> viewCourse(){      
         return adminService.getCourse();
     }
