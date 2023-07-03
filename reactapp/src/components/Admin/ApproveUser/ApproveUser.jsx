@@ -139,7 +139,7 @@ export const ApproveUser = () => {
 
                   return (
                    
-                      <tr className="bg-white border-b   hover:bg-gray-50 ">
+                      <tr key={student1.id} className="bg-white border-b   hover:bg-gray-50 ">
 
                         <td className="text-xl py-6 text-center ">
                           {studentIdNumber}
