@@ -1,68 +1,71 @@
 import React, { useEffect, useState } from 'react';
-import './EnrolledCourse.css'
+import './EnrolledCourse.css';
 import { store } from '../../store';
 import { useNavigate, Link, NavLink } from 'react-router-dom';
 import { getCourses } from '../../api/courseApi';
-import CourseService from "../.././api/CourseService"
+import CourseService from '../../api/CourseService';
 
 const EnrolledCourse = () => {
   const navigate = useNavigate();
-  const [courses, setCourses] = useState([])
-  const { auth } = store.getState()
+  const [courses, setCourses] = useState([]);
+  const { auth } = store.getState();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [selectedCourse, setSelectedCourse] = useState(null); // To store the selected course for showing explanation
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
   const handleLogout = () => {
-    store.dispatch({ type: 'LOGOUT' })
+    store.dispatch({ type: 'LOGOUT' });
     navigate('/login');
-  }
+  };
 
   useEffect(() => {
     let courseId;
     const fetchStudents = async () => {
       const res = await CourseService.studentDetails();
-      console.log("all response students ", res)
-      const userReg = res.filter(student => student.studentIdNumber === auth.id)
-      console.log(userReg, " filtered student as users ")
-      courseId = userReg.map(user => [user.courseId, user.status])
-      console.log("courseId & status ", courseId)
-      fetchCourses().then((data) => {
-        console.log(data);
-      })
-        .catch((error) => {
+      console.log('all response students ', res);
+      const userReg = res.filter(student => student.studentIdNumber === auth.id);
+      console.log(userReg, ' filtered student as users ');
+      courseId = userReg.map(user => [user.courseId, user.status]);
+      console.log('courseId & status ', courseId);
+      fetchCourses(courseId)
+        .then(data => {
+          console.log(data);
+        })
+        .catch(error => {
           console.error(error);
         });
-    }
+    };
 
-    const fetchCourses = async () => {
+    const fetchCourses = async courseIdList => {
       const res = await getCourses();
-      console.log(res, " res")
+      console.log(res, ' res');
       const userCoursesWithStatus = [];
-      for (let i = 0; i < courseId.length; i++) {
-        const matchingCourse = res.find(course => course.courseId === courseId[i][0]);
-      
+      for (let i = 0; i < courseIdList.length; i++) {
+        const matchingCourse = res.find(course => course.courseId === courseIdList[i][0]);
+
         if (matchingCourse) {
-          const courseWithStatus = { ...matchingCourse, status: courseId[i][1] };
+          const courseWithStatus = { ...matchingCourse, status: courseIdList[i][1] };
           userCoursesWithStatus.push(courseWithStatus);
         }
       }
-      console.log(userCoursesWithStatus, " courres")
-      setCourses(userCoursesWithStatus)
-    }
+      console.log(userCoursesWithStatus, ' courres');
+      setCourses(userCoursesWithStatus);
+      return userCoursesWithStatus;
+    };
 
-
-    fetchStudents().then((data) => {
-      console.log(data);
-    })
-      .catch((error) => {
+    fetchStudents()
+      .then(data => {
+        console.log(data);
+      })
+      .catch(error => {
         console.error(error);
       });
-  }, [])
+  }, []);
 
-  const getColor = (status) => {
+  const getColor = status => {
     if (status === 'pending') {
       return 'yellow';
     } else if (status === 'Approved') {
@@ -72,10 +75,20 @@ const EnrolledCourse = () => {
     }
   };
 
+  const handleStatusClick = course => {
+    if (course.status === 'Rejected') {
+      setSelectedCourse(course);
+    }
+  };
+
+  const handleCloseModal = () => {
+    setSelectedCourse(null);
+  };
+
   return (
     <>
       <div>
-        <div className="user-icon-container">
+      <div className="user-icon-container">
           <i
             className={`fa-solid fa-bars ${isSidebarOpen ? "user-icon-hidden" : ""}`}
             onClick={toggleSidebar}
@@ -140,26 +153,33 @@ const EnrolledCourse = () => {
       </div>
       <div className="bth">
         <Link to="/HomePage">
-          <h5><i class="fa-solid fa-house"></i> Back To Home</h5>
+          <h5>
+            <i class="fa-solid fa-house"></i> Back To Home
+          </h5>
         </Link>
       </div>
       <div id="enrolledCourse" class="course-container">
-        <div class='user-ec-headtxt'>
-        <i class="fa-solid fa-cash-register"></i> Registered Courses
+        <div class="user-ec-headtxt">
+          <i class="fa-solid fa-cash-register"></i> Registered Courses
         </div>
         <div class="enrolled-courses">
           {courses && courses.length > 0 ? (
-            courses.map((course) => (
+            courses.map(course => (
               <div key={course.courseId} class="enrolled-course">
                 <p>Course id: {course.courseId}</p>
                 <p>Course Name: {course.courseName}</p>
                 <p>Course Duration: {course.courseDuration}</p>
                 <p>Course Description: {course.courseDescription}</p>
-                <div className='flex'>
-                  <p className={`my-learning-button !bg-${
-                    getColor(course.status)
-                }-500`} >Status: {course.status}</p>
-                <Link to="/Admissionmodelpage"><button class="my-learning-button">My Learning</button></Link>
+                <div className="flex">
+                  <p
+                    className={`my-learning-button !bg-${getColor(course.status)}-500`}
+                    onClick={() => handleStatusClick(course)}
+                  >
+                    Status: {course.status}
+                  </p>
+                  <Link to="/Admissionmodelpage">
+                    <button class="my-learning-button">My Learning</button>
+                  </Link>
                 </div>
               </div>
             ))
@@ -168,7 +188,23 @@ const EnrolledCourse = () => {
           )}
         </div>
       </div>
+
+      {/* Rejection Explanation Modal */}
+      {selectedCourse && (
+        <div className="modal-overlay">
+          <div className="modal-container">
+            <div className="modal-content">
+              <h3>Rejection Explanation</h3>
+              <p>{selectedCourse.rejectionExplanation}</p>
+              <button className="modal-close-btn" onClick={handleCloseModal}>
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
-}
+};
+
 export default EnrolledCourse;
