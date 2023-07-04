@@ -73,10 +73,7 @@ public class AdminController {
         return adminService.getStudent();
     }
 
-    @GetMapping("/admin/admission")
-    public List<StudentModel> viewAdmission(Principal principal){   
-        return adminService.getStudent();
-    }
+    
 
     @PostMapping("admin/addCourse")
     public String saveNewUser(Principal principal, @RequestBody CourseModel courseModel){

@@ -15,14 +15,15 @@ function Viewcourse() {
     deleteId: null
   });
 
+  const fetchData = async () => {
+    const data = await getCourses();
+    console.log(data)
+    return data;
+  };
   useEffect(() => {
-    const fetchData = async () => {
-      const data = await getCourses();
-      console.log(data)
-      setCourses(data);
-    };
     fetchData().then((data) => {
-      console.log(data)
+      setCourses(data);
+      console.log(data,".....1st time use effect")
     })
       .catch((error) => {
         console.error(error);
@@ -200,8 +201,15 @@ function Viewcourse() {
             ))}
           </div>
         ) : (
-          <div>No courses found</div>
-        )}
+          <div className="flex justify-center"> 
+              <div class="  loadingio-spinner-double-ring-amot1w4ku1j"><div class="ldio-14cancim8ocq">
+              <div></div>
+              <div></div>
+              <div><div></div></div>
+              <div><div></div></div>
+              </div></div>
+          </div>
+          )}
         <NavLink
           exact="true"
           to="/admin/addCourse"
