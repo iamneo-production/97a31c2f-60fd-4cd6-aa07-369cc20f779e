@@ -53,4 +53,9 @@ public class UserController {
     public List<CourseModel> viewCourse(){      
         return adminService.getCourse();
     }
+
+    @GetMapping("user/filter/status")
+    public ResponseEntity<?> filterByStatus(@RequestParam("status") String status){
+        return userService.filterByStatus(status);
+    }
 }

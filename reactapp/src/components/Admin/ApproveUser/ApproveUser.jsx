@@ -95,7 +95,7 @@ export const ApproveUser = () => {
   };
 
   return (
-    <>
+    <AdminGuard>
       <Navbar></Navbar>
 
       <div className="student-heading mt-20">

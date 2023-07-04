@@ -15,4 +15,6 @@ public interface AdmissionRepo extends JpaRepository<AdmissionModel,Integer> {
     AdmissionModel findByStudentIdNumber(Integer id);
     void deleteById(Integer id);
     Optional<AdmissionModel> findByStudentIdNumberAndCourseId(Integer studentIdNumber,Integer courseId);
+    List<AdmissionModel> findByStatus(String status);
+
 }

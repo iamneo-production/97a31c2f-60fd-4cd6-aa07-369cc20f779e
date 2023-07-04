@@ -102,4 +102,12 @@ public class UserService {
         }
 
     }
+
+    public ResponseEntity<?> filterByStatus(String status) {
+        List<AdmissionModel> admission = admissionR.findByStatus(status);
+        if(admission.isEmpty()){
+            return ResponseEntity.ok("No admission found");
+        }
+        return ResponseEntity.ok(admission);
+    }
 }
