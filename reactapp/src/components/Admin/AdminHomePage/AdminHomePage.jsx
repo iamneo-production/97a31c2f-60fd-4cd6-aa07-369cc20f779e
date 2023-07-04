@@ -259,9 +259,11 @@ const Adminacademy = () => {
 export const AcademyForm = ({ type }) => {
   const [formData, setFormData] = useState(initialData);
 
-  const[error, setError]=useState(false);
+  const [error, setError] = useState(false);
 
   const [popup, setPopup] = useState(false);
+
+  const [selectedImage, setSelectedImage] = useState(null);
 
   const navigate = useNavigate();
 
@@ -306,14 +308,18 @@ export const AcademyForm = ({ type }) => {
   const handleFormAdd = (e) => {
     e.preventDefault();
     console.log(formData);
-    if(formData.instituteName){
-    setPopup(true);
+    if (formData.instituteName) {
+      setPopup(true);
     }
-    else{
+    else {
       setError(true);
     }
   };
-  
+  const handleImageUpload = (event) => {
+    const file = event.target.files[0];
+    setSelectedImage(URL.createObjectURL(file));
+  };
+
 
   const addAcademy = async () => {
     const response = await fetch(`${baseUrl}/admin/addInstitute`, {
@@ -405,6 +411,7 @@ export const AcademyForm = ({ type }) => {
               </button>
             </div>
           </div>
+
         )
       }
       <button
@@ -414,7 +421,7 @@ export const AcademyForm = ({ type }) => {
           navigate("/admin/dashboard");
         }}
       >
-       <i class="fa-solid fa-house"></i> Back to Home
+        <i class="fa-solid fa-house"></i> Back to Home
       </button>
       <div className="admin-academy-form">
         {type === "ADD" ? (
@@ -426,17 +433,17 @@ export const AcademyForm = ({ type }) => {
           <div className="form-group">
             <label className="label-heading">Academy Name : </label>
             <input
-            type="text"
-            id="academyName"
-            name="academyName"
-            value={formData.instituteName}
-            placeholder="Enter Academy Name"
-            onChange={(e) => handleChange(e, "instituteName")}
-            required
-           />
-           {!formData.instituteName && (
-            <div className="validation-message"></div>
-           )}
+              type="text"
+              id="academyName"
+              name="academyName"
+              value={formData.instituteName}
+              placeholder="Enter Academy Name"
+              onChange={(e) => handleChange(e, "instituteName")}
+              required
+            />
+            {!formData.instituteName && (
+              <div className="validation-message"></div>
+            )}
           </div>
           <div className="form-group">
             <label className="label-heading">Contact Number : </label>
@@ -472,6 +479,10 @@ export const AcademyForm = ({ type }) => {
               onChange={(e) => handleChange(e, "email")}
             />
           </div>
+          <div>
+            <input type="file" onChange={handleImageUpload} />
+            {selectedImage && <img src={selectedImage} alt="Selected" />}
+          </div>
           <div className="form-group">
             <label className="label-heading">Academy Location : </label>
             <input
@@ -498,31 +509,31 @@ export const AcademyForm = ({ type }) => {
           </div>
           {error && <div className="errorfields"> All Fileds Requried</div>}
           <div className="admin-institute-btn-container">
-          {type === "ADD" ? (
-            <button
-              className="admin-form-submit-button"
-              type="submit"
-              id="addAcademy"
-              onClick={(e) => handleFormAdd(e)}
-            >
-              Add Academy
-            </button>
-          ) : (
-            <button
-              className="admin-form-submit-button"
-              type="submit"
-              id="updateAcademy"
-              onClick={(e) => handleFormEdit(e)}
-            >
-              Update Academy
-            </button>
-            
-          )}
-           <Link
+            {type === "ADD" ? (
+              <button
+                className="admin-form-submit-button"
+                type="submit"
+                id="addAcademy"
+                onClick={(e) => handleFormAdd(e)}
+              >
+                Add Academy
+              </button>
+            ) : (
+              <button
+                className="admin-form-submit-button"
+                type="submit"
+                id="updateAcademy"
+                onClick={(e) => handleFormEdit(e)}
+              >
+                Update Academy
+              </button>
+
+            )}
+            <Link
               to="/admin/dashboard"
               className="admin-btn-secondary">
               Cancel</Link>
-              </div>
+          </div>
         </form>
       </div>
     </>
