@@ -123,6 +123,10 @@ export const ApproveUser = () => {
 
       {!loading && !viewStudent && (
         <>
+          <div className="student-heading mt-20"  >
+            <h1> <i className="fa-solid fa-users-line"></i> List of Applications</h1>
+          </div>
+
           {/* table */}
           <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
             <div className="flex items-center justify-between pb-4"></div>
