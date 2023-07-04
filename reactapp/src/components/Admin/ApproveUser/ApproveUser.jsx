@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import Navbar from "../Navbar/Navbar";
+import axios from 'axios';
+import Navbar from '../Navbar/Navbar';
 import Studentservice from '../../../api/Studentservice';
 import ViewStudent from './ViewStudent';
-import { getCourses } from "../../../api/courseApi";
+import { getCourses } from '../../../api/courseApi';
 
 export const ApproveUser = () => {
   const [data, setdata] = useState([]);
@@ -10,12 +11,12 @@ export const ApproveUser = () => {
   const [viewStudent, setviewStudent] = useState(false);
   const [studentDetail, setStudentDetail] = useState({});
   const [courses, setCourses] = useState([]);
-  const [rejectReason, setRejectReason] = useState("");
+  const [rejectReason, setRejectReason] = useState('');
 
   useEffect(() => {
     Studentservice.getStudents()
       .then((res) => {
-        console.log(res, "logged data");
+        console.log(res, 'logged data');
         setdata(res);
       })
       .catch((err) => {
@@ -34,15 +35,17 @@ export const ApproveUser = () => {
   }, []);
 
   const handleApprove = (student1) => {
-    console.log("Approve");
-    const student = { ...student1, status: "Approved" };
+    console.log('Approve');
+    const student = { ...student1, status: 'Approved' };
     console.log(student);
     Studentservice.editstudent(student1.id, student)
       .then(() => {
-        console.log(data, "before mapping");
+        console.log(data, 'before mapping');
         let temp = data.map((student2) => (student2.id === student1.id ? student : student2));
-        console.log(temp, "we mapped data");
+        console.log(temp, 'we mapped data');
         setdata(temp);
+        // Save the data to the database
+        handleSaveData(student);
       })
       .catch((err) => {
         console.log(err);
@@ -50,33 +53,45 @@ export const ApproveUser = () => {
   };
 
   const handleViewStudent = (student1) => {
-    console.log("View Student");
+    console.log('View Student');
     setStudentDetail(student1);
     setviewStudent(true);
   };
 
   const handleReject = (student1) => {
-    console.log("Reject");
+    console.log('Reject');
 
-    const reason = prompt("Enter the reason for rejection:");
-    if (reason === null || reason.trim() === "") {
-      alert("Please enter a reason for rejection.");
+    const reason = prompt('Enter the reason for rejection:');
+    if (reason === null || reason.trim() === '') {
+      alert('Please enter a reason for rejection.');
       return;
     }
 
-    const student = { ...student1, status: "Rejected", reason };
+    const student = { ...student1, status: 'Rejected', reason };
     console.log(student);
 
     Studentservice.editstudent(student1.id, student)
-      .then((res) => {
-        console.log(res, "before mapping");
+      .then(() => {
+        console.log(data, 'before mapping');
         let temp = data.map((student2) => (student2.id === student1.id ? student : student2));
-        console.log(temp, "we mapped data");
+        console.log(temp, 'we mapped data');
         setdata(temp);
+        // Save the data to the database
+        handleSaveData(student);
       })
       .catch((err) => {
         console.log(err);
       });
+  };
+
+  const handleSaveData = async (student) => {
+    try {
+      // Assuming the backend API endpoint is available at '/admin/addreason'
+      const response = await axios.post('https://8080-deacebeebcbbfafccdddedcceaefeeadb.project.examly.io/admin/addreason', student);
+      console.log('Data saved successfully!', response.data);
+    } catch (error) {
+      console.error('Error saving data:', error);
+    }
   };
 
   return (

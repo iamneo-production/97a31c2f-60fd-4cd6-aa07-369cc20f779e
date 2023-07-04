@@ -38,5 +38,6 @@ public class AdmissionModel {
     private Integer hsc;
     private Integer diploma;
     private String status;
+    private String reason;
     
 }
