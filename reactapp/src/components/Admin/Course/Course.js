@@ -151,7 +151,7 @@ const Course = () => {
             </label>
             <input
               id="courseId"
-              type="text"
+              type="number"
               placeholder="Enter courseId"
               value={courseId}
               onChange={(event) => setCourseId(event.target.value)}
@@ -187,7 +187,7 @@ const Course = () => {
             </label>
             <input
               id="courseDuration"
-              type="text"
+              type="number"
               placeholder="Enter courseDuration"
               value={courseDuration}
               onChange={(event) => setCourseDuration(event.target.value)}
@@ -223,7 +223,7 @@ const Course = () => {
             </label>
             <input
               id="courseEnrolled"
-              type="text"
+              type="number"
               placeholder="courseEnrolled"
               value={courseEnrolled}
               onChange={(event) => setCourseEnrolled(event.target.value)}

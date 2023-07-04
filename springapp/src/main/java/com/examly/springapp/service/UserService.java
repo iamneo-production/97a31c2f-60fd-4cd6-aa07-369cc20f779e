@@ -1,12 +1,10 @@
 package com.examly.springapp.service;
-import org.springframework.web.bind.annotation.*;
 import com.examly.springapp.repository.*;
 import com.examly.springapp.models.*;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.*;
 import java.util.*;
-import javax.lang.model.type.NullType;
 
 @Service
 public class UserService {
@@ -58,7 +56,7 @@ public class UserService {
         return "Admission not Found";
     }
 
-    public String editAdmission(Integer id, AdmissionModel updatedAdmission){
+    public ResponseEntity<?>  editAdmission(Integer id, AdmissionModel updatedAdmission){
         Optional<AdmissionModel> admissionmodel=admissionR.findById(id);
         if(admissionmodel.isPresent()){
         AdmissionModel admission = admissionmodel.get();
@@ -81,10 +79,11 @@ public class UserService {
         admission.setSslc(updatedAdmission.getSslc());
         admission.setHsc(updatedAdmission.getHsc());
         admission.setDiploma(updatedAdmission.getDiploma());
+        admission.setStatus(updatedAdmission.getStatus());
         admissionR.save(admission);
-            return "Admission details edited";
+        return  ResponseEntity.ok(admission);
         }
-        return "Admission not Found";
+        return ResponseEntity.ok("Admission not Found");
     }
 
 

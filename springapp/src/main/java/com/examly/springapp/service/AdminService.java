@@ -20,11 +20,14 @@ public class AdminService {
     @Autowired
     private InstituteRepository instituteRepository;
 
-    public AdminService(StudentRepository studentRepository,CourseRepository courseRepository,InstituteRepository instituteRepository){
-        this.studentRepository = studentRepository;
-        this.courseRepository = courseRepository;
-        this.instituteRepository = instituteRepository; 
-    }
+    @Autowired
+    private AdmissionRepo admissionRepo;
+
+    // public AdminService(StudentRepository studentRepository,CourseRepository courseRepository,InstituteRepository instituteRepository){
+    //     this.studentRepository = studentRepository;
+    //     this.courseRepository = courseRepository;
+    //     this.instituteRepository = instituteRepository; 
+    // }
 
     public void addStudent(StudentModel studentModel){
         studentRepository.save(studentModel);
@@ -166,6 +169,16 @@ public class AdminService {
     public List<InstituteModel> getInstitutes(){
       return instituteRepository.findAll();
     }
+
+    public String addReason(AdmissionModel admissionModel){
+        Optional<AdmissionModel> admissionModel1 = admissionRepo.findByStudentIdNumberAndCourseId(admissionModel.getStudentIdNumber(),admissionModel.getCourseId());
+        if(admissionModel1.isPresent()){
+            admissionModel1.get().setReason(admissionModel.getReason());
+            admissionRepo.save(admissionModel1.get());
+            return "ReasonAdded";
+        }
+        return "Course not Found";
+    } 
 
 
 }
