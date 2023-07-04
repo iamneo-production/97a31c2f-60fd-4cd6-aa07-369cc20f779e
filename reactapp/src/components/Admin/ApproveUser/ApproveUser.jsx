@@ -4,6 +4,7 @@ import Studentservice from '../../../api/Studentservice';
 import ViewStudent from './ViewStudent';
 import { getCourses } from "../../../api/courseApi"
 import {getFilters} from "../../../api/FilterService";
+import {AdminGuard} from "../../../AuthGuard/AdminGuard";
 
 export const ApproveUser = () => {
 
@@ -14,6 +15,7 @@ export const ApproveUser = () => {
   const [courses, setCourses] = useState([])
   const [viewFilter, setViewFilter] = useState(false)
   const [selectedAction, setSelectedAction] = useState("");
+  const [clearFilter,  setClearFilter] = useState(true);
 
 
   useEffect(() => {
@@ -31,7 +33,7 @@ export const ApproveUser = () => {
     })
     setloading(false);
 
-  }, [])
+  }, [clearFilter])
 
 
   const handleApprove = (student1) => {
@@ -76,19 +78,11 @@ export const ApproveUser = () => {
     setViewFilter(!viewFilter);
   }
 
-  const filterStyle = {
-    position: "absolute",
-    top: "40px",
-    right: "0px",
-    zIndex: "10",
-    width: "10rem",
-    overflowY: "auto",
-    overflowX: "hidden",
-  }
 
   const handleActionChange = (event) => {
     setSelectedAction(event.target.value);
     console.log(event.target.value);
+    hadleToggle()
     setloading(true)
     getFilters(event.target.value).then((res) => {
       setdata(res);
@@ -96,9 +90,14 @@ export const ApproveUser = () => {
     setloading(false)
   };
 
+  const handleClear = () => {
+    setClearFilter(!clearFilter)
+    setSelectedAction("")
+  }
+
 
   return (
-    <>
+    <AdminGuard>
       <Navbar></Navbar>
 
       {loading && <div className="flex justify-center">
@@ -119,13 +118,16 @@ export const ApproveUser = () => {
           <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
             <div className="flex bg-green-40 items-center justify-between  pb-12">
               <div className='bg-red'>
-                <button onClick={hadleToggle} id="dropdownRadioButton" data-dropdown-toggle="dropdownRadio" className="inline-flex bg-blue-500 text-white right-0 text-xl absolute items-center text-gray-500 border border-gray-300  hover:bg-blue-600  font-medium rounded-lg text-sm px-3 py-1.5 mr-4 " type="button">
+                <button onClick={hadleToggle} id="dropdownRadioButton" data-dropdown-toggle="dropdownRadio" className="inline-flex bg-blue-500 text-white right-40 text-xl absolute items-center text-gray-500 border border-gray-300  hover:bg-blue-600  font-medium rounded-lg text-sm px-3 py-1.5 mr-4 " type="button">
                    Filter
                   <svg className="w-3 h-3 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                </button>
+                <button onClick={handleClear} className="inline-flex bg-red-500 text-white right-0 text-xl absolute items-center text-gray-500 border border-gray-300  hover:bg-red-600  font-medium rounded-lg text-sm px-3 py-1.5 mr-4 " type="button">
+                   clear filter
+               </button>
                 {/* <!-- Dropdown menu --> */}
               { viewFilter && 
-                 <div id="dropdownRadio" style={filterStyle} className="z-10  w-48 bg-gray-200  divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" data-popper-reference-hidden="" data-popper-escaped="" data-popper-placement="top" >
+                 <div id="dropdownRadio" className=" absolute top-12 right-0 z-10 w-20 h-42 overflow-y-auto overflow-x-hidden z-10  w-48 bg-gray-200 mr-36   divide-y divide-gray-100 rounded-lg shadow " data-popper-reference-hidden="" data-popper-escaped="" data-popper-placement="top" >
                  <ul className="p-3 space-y-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownRadioButton">
                      <li>
                          <div className="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
@@ -151,7 +153,7 @@ export const ApproveUser = () => {
                 }
               </div>
             </div>
-            <table className="w-full text-sm text-left text-gray-700 h-40 ">
+            <table className="w-full text-sm text-left text-gray-700 h-44 ">
               <thead className="text-xs text-white uppercase bg-gray-500 ">
                 <tr  className=''>
                   <th scope="col" className="px-6 py-6 text-xl">
@@ -255,6 +257,6 @@ export const ApproveUser = () => {
       {viewStudent &&
         <ViewStudent studentDetail={studentDetail} setviewStudent={setviewStudent} />}
 
-    </>
+    </AdminGuard>
   )
 }
