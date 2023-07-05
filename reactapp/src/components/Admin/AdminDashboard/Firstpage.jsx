@@ -29,7 +29,11 @@ const Firstpage = () => {
                         <div className="link1">
                             <Link id= "adminStudents" to="/admin/Viewstudent"> <i class="fa-solid fa-user-graduate"> </i> Students   &nbsp;  &nbsp;  &nbsp;</Link>
                         </div>
-
+                    
+                        <div className="link1">
+                            <Link id= "adminApprove" to="/admin/approveUser"> <i class="fa-solid fa-user-graduate"> </i> Student Approve   &nbsp;  &nbsp;  &nbsp;</Link>
+                        </div>
+                    
                         <div className="link1">
                             <Link to="/admin/FeedBack"> <i class="fa-solid fa-comment-dots"></i> FeedBack</Link>
                         </div>
