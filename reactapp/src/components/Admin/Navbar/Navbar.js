@@ -91,7 +91,7 @@ const NavBar = () => {
               <i className="fa-solid fa-users"></i>
               <NavLink id="adminApprove" to="/admin/approveUser">
 
-              online Applications
+              Online Applications
 
               </NavLink>
             </div>
