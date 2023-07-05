@@ -31,7 +31,9 @@ const Firstpage = () => {
                         </div>
                     
                         <div className="link1">
+
                             <Link id= "adminApprove" to="/admin/approveUser"> <i class="fa-solid fa-user-graduate"> </i> Online Applications &nbsp;  &nbsp;  &nbsp;</Link>
+
                         </div>
                     
                         <div className="link1">
