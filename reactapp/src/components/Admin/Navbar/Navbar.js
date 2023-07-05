@@ -42,7 +42,7 @@ const NavBar = () => {
         </NavLink>
         <NavLink id="adminApprove" to="/admin/approveUser" className="navlink-buttons">
           <i className="fa-solid fa-user-graduate"></i>
-          Student Approve
+          Online Applications
         </NavLink>
         <NavLink id="adminFeedback" to="/admin/FeedBack" className="navlink-buttons">
           <i className="fa-solid fa-comment"></i>
@@ -88,7 +88,7 @@ const NavBar = () => {
             <div className="navlink-box">
               <i className="fa-solid fa-users"></i>
               <NavLink id="adminApprove" to="/admin/approveUser">
-                 Student Approve
+              online Applications
               </NavLink>
             </div>
             <div className="navlink-box">
