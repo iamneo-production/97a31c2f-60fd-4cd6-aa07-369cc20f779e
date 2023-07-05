@@ -31,6 +31,7 @@ export const ApproveUser = () => {
     }).catch((err) => {
       console.log(err);
     })
+
     setSelectedAction("")
     setloading(false);
 
@@ -75,6 +76,7 @@ export const ApproveUser = () => {
       })
   }
 
+
   const hadleToggle = () => { 
     setViewFilter(!viewFilter);
   }
@@ -117,8 +119,10 @@ export const ApproveUser = () => {
             <h1> <i className="fa-solid fa-users-line"></i> List of Applications</h1>
           </div>
           <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+
             <div className="flex  items-center justify-between  pb-12">
               <div>
+
                 <button onClick={hadleToggle} id="dropdownRadioButton" data-dropdown-toggle="dropdownRadio" className="inline-flex bg-blue-500 text-white right-40 text-xl absolute items-center text-gray-500 border border-gray-300  hover:bg-blue-600  font-medium rounded-lg text-sm px-3 py-1.5 mr-4 " type="button">
                    Filter
                   <svg className="w-3 h-3 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
@@ -153,8 +157,9 @@ export const ApproveUser = () => {
                  </div>
                 }
               </div>
-          </div>
-          
+
+            </div>
+
             <table className="w-full text-sm text-left text-gray-700 h-44 ">
               <thead className="text-xs text-white uppercase bg-gray-500 ">
                 <tr  className=''>
@@ -179,7 +184,9 @@ export const ApproveUser = () => {
                 </tr>
             </thead>
             <tbody>
+
               {data &&
+
                 data.map((student1) => {
                   const { studentIdNumber, firstName, phoneNumber1, courseId, lastName, status } = student1;
                   let color;
@@ -245,7 +252,9 @@ export const ApproveUser = () => {
                     
                   );
                 })
+
                }
+
               </tbody>
           </table>
           { !data && <h1 className='text-3xl  w-full text-center  mb-20 font-bold '>
