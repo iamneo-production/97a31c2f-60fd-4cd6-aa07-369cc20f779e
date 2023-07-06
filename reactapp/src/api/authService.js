@@ -1,5 +1,9 @@
 // Define the base URL for the API requests
+<<<<<<< HEAD
 export const baseUrl = "https://8080-fccfeeaccfaaabbebcbbfafccdddedcceaefeeadb.project.examly.io";
+=======
+export const baseUrl = "https://8080-fcffeccfcdbefebcbbfafccdddedcceaefeeadb.project.examly.io";
+>>>>>>> 3d68c7b2275a141a7410502517ed6ed312e353f1
 // Define a function to register a user
 const register = async (data) => {
   // Format the user data
