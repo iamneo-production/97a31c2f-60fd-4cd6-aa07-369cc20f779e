@@ -194,24 +194,12 @@ const Adminacademy = () => {
           Search
         </button>
       </div>
-
       <div className="admin-academy-container">
-        {/* loading effect */}
-        {isLoading && 
-        <>
-          <div class="loadingio-spinner-double-ring-amot1w4ku1j"><div class="ldio-14cancim8ocq">
-          <div></div>
-          <div></div>
-          <div><div></div></div>
-          <div><div></div></div>
-          </div></div>
-        </>
-         }
-
+        {isLoading && <h4>Loading...</h4>}
         {isError.state && <h4>{isError.msg}</h4>}
-        {! isLoading && <div className="student-heading"  >
+        <div className="student-heading"  >
           <h1> <i class="fa-solid fa-building-columns"></i> List of Institutes</h1>
-        </div>}
+        </div>
         <div className="academy-display-container" data-testid="instituteName" >
           {academyData.map((eachAcademy, index) => {
             const { instituteId, instituteName, instituteAddress, imageUrl } =
