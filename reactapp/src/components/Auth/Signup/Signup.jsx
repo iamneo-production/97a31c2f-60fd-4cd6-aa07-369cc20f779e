@@ -78,7 +78,7 @@ const Signup = () => {
           className="w-full bg-transparent border border-solid  rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0"
         >
           <div className="p-4 md:p-6 space-y-2 md:space-y-4">
-            <h1 className="text-xl md:text-2xl font-bold leading-tight tracking-tight text-gray-900">
+            <h1 className="text-xl md:text-2xl font-bold leading-tight tracking-tight text-white-900">
               Sign up to your account
             </h1>
             <form onSubmit={handleSubmit} className="space-y-2 md:space-y-4">
