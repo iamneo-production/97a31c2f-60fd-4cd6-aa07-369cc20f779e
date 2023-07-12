@@ -5,11 +5,12 @@
     background-position: center;
     position: relative;
     min-height: 100vh;
+    background-attachment: fixed;
   }
   
   @media (max-width: 768px) {
     .whole1 {
-      background-attachment: scroll;
+      background-attachment: fixed;
       background-position: top;
     }
   }
