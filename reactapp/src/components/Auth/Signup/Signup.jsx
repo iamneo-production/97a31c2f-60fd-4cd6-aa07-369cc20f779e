@@ -78,14 +78,14 @@ const Signup = () => {
           className="w-full bg-transparent border border-solid  rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0"
         >
           <div className="p-4 md:p-6 space-y-2 md:space-y-4">
-            <h1 className="text-xl md:text-2xl font-bold leading-tight tracking-tight text-white-900">
+          <h1 className="text-xl md:text-2xl font-bold leading-tight tracking-tight text-white">
               Sign up to your account
             </h1>
             <form onSubmit={handleSubmit} className="space-y-2 md:space-y-4">
               <div>
                 <label
                   htmlFor="userType"
-                  className="block mb-1 text-sm font-medium text-gray-900"
+                  className="block mb-1 text-sm font-medium text-white"
                 >
                   User Type:
                 </label>
@@ -104,7 +104,7 @@ const Signup = () => {
               <div>
                 <label
                   htmlFor="email"
-                  className="block mb-1 text-sm font-medium text-gray-900"
+                  className="block mb-1 text-sm font-medium text-white"
                 >
                   Your email:
                 </label>
@@ -126,7 +126,7 @@ const Signup = () => {
               <div>
                 <label
                   htmlFor="username"
-                  className="block mb-1 text-sm font-medium text-gray-900"
+                  className="block mb-1 text-sm font-medium text-white"
                 >
                   Username:
                 </label>
@@ -148,7 +148,7 @@ const Signup = () => {
               <div>
                 <label
                   htmlFor="mobileNumber"
-                  className="block mb-1 text-sm font-medium text-gray-900"
+                  className="block mb-1 text-sm font-medium text-white"
                 >
                   Mobile Number:
                 </label>
@@ -172,7 +172,7 @@ const Signup = () => {
               <div>
                 <label
                   htmlFor="password"
-                  className="block mb-1 text-sm font-medium text-gray-900"
+                  className="block mb-1 text-sm font-medium text-white"
                 >
                   Password:
                 </label>
@@ -195,7 +195,7 @@ const Signup = () => {
               <div>
                 <label
                   htmlFor="confirmPassword"
-                  className="block mb-1 text-sm font-medium text-gray-900"
+                  className="block mb-1 text-sm font-medium text-white"
                 >
                   Confirm Password:
                 </label>
@@ -231,7 +231,7 @@ const Signup = () => {
                 <div className="text-red-500">{errors.custom.message}</div>
               )}
 
-              <p className="text-sm font-light text-black-500">
+              <p className="block mb-1 text-sm font-medium text-white">
                 Already a user?{" "}
                 <Link
                   to="/login"
