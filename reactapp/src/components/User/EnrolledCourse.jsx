@@ -26,18 +26,6 @@ const EnrolledCourse = () => {
 
     const fetchStudents = async () => {
       const res = await CourseService.studentDetails();
-<<<<<<< HEAD
-      console.log("all response students ", res)
-      const userReg = res.filter(student => student.studentIdNumber === auth.id)
-      console.log(userReg, " filtered student as user ")
-      courseId = userReg.map(user => user.courseId)
-      console.log("courseId  ", courseId)
-
-      fetchCourses().then((data) => {
-        console.log(data);
-      })
-        .catch((error) => {
-=======
       console.log('all response students ', res);
       const userReg = res.filter(student => student.studentIdNumber === auth.id);
       console.log(userReg, ' filtered student as users ');
@@ -48,7 +36,6 @@ const EnrolledCourse = () => {
           console.log(data);
         })
         .catch(error => {
->>>>>>> f023361155b828f60b2fca047c9497615e72e4d4
           console.error(error);
         });
     };
@@ -220,12 +207,6 @@ const EnrolledCourse = () => {
       )}
     </>
   );
-<<<<<<< HEAD
-}
-
-export default EnrolledCourse;
-=======
 };
 
 export default EnrolledCourse;
->>>>>>> f023361155b828f60b2fca047c9497615e72e4d4
