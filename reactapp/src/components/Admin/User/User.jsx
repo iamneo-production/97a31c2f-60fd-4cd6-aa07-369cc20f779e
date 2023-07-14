@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { store } from "../../../store";
 import { Navigate } from "react-router";
 import { useNavigate, useParams, NavLink, Link } from "react-router-dom";
 import { baseUrl } from "../../../api/authService";
 import './AdminStudent.css';
 import Navbar from "../Navbar/Navbar";
+import emailjs from '@emailjs/browser';
 
 
 let auth = "";
@@ -67,6 +68,8 @@ const AdminStudent1 = () => {
     state: false,
     deleteId: null
   });
+  
+  
 
   useEffect(() => {
     fetchCourseName()
@@ -334,6 +337,8 @@ export const StudentForm = ({ type }) => {
   const [coursePopup, setCoursePopup] = useState(false);
   const [institutePopup, setInstitutePopup] = useState(false);
 
+  const form = useRef();
+
   const { id } = useParams();
   useEffect(() => {
     fetchData()
@@ -437,6 +442,12 @@ export const StudentForm = ({ type }) => {
     else {
       alert("All fields are mandatory")
     }
+    emailjs.sendForm('service_lmsokkj', 'template_6k92fc5', form.current, 'ryVJfM_L3_9s5b_X6')
+    .then((result) => {
+        console.log(result.text);
+    }, (error) => {
+        console.log(error.text);
+    });
   };
 
   const addStudent = async () => {
@@ -592,7 +603,7 @@ export const StudentForm = ({ type }) => {
       ) : (
         <h1 className="head-container"><i class="fa-solid fa-pen-to-square"></i> Edit Student Details</h1>
       )}
-      <form className="student-form-container m-2 lg:m-12">
+      <form className="student-form-container m-2 lg:m-12" ref={form} >
         <div className="studentform p-4 lg:18 ">
           <div className="form-body">
             <div className="courseId">

@@ -51,38 +51,38 @@ const Review = () => {
         </div></div>
       </div> }
       { ! loader && <div className="overflow-x-auto">
-        <table className="min-w-full divide-y divide-gray-200">
+        <table className="min-w-full divide-y text-white bg-gray-500 text-xl   divide-gray-200">
           <thead>
             <tr>
-              <th className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-6   font-medium  uppercase tracking-wider">
                 ID
               </th>
-              <th data-testid="userName" className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th data-testid="userName" className="  font-medium  uppercase tracking-wider">
                 Name
               </th>
-              <th className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="    font-medium  uppercase tracking-wider">
                 Number
               </th>
-              <th className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-6    font-medium  uppercase tracking-wider">
                 Email
               </th>
-              <th data-testid="comments" className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th data-testid="comments" className="px-6 py-3    font-medium  uppercase tracking-wider">
                 Comments
               </th>
-              <th className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Action
+              <th className="px-6 py-3   font-medium  uppercase tracking-wider">
+                Action 
               </th>
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
             {data.map((item) => (
-              <tr key={item.id}>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.id}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.name}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.number}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.email}</td>
-                <td className="px-6 py-4 whitespace-wrap break-words text-sm text-gray-500">{item.comments}</td>
-                <td>
+              <tr key={item.id} className='hover:bg-gray-50'>
+                <td className="px-6 py-4 whitespace-nowrap text-md text-gray-500">{item.id}</td>
+                <td className="px-6 py-4 whitespace-nowrap text-md font-bold text-black">{item.name}</td>
+                <td className="px-6 py-4 whitespace-nowrap text-md text-gray-500">{item.number}</td>
+                <td className="px-6 py-4 whitespace-nowrap text-md text-gray-500">{item.email}</td>
+                <td className="px-6 py-4 whitespace-wrap break-words text-md text-gray-500">{item.comments}</td>
+                <td className='flex justify-center '>
                   <button
                     className="bg-red-400 text-white px-3 py-2 my-2 rounded-lg hover:bg-red-700"
                     onClick={() => handleDelete(item)}
@@ -97,6 +97,7 @@ const Review = () => {
       </div>
       }
 
+      {/* pop up for delete */}
       {showConfirmDelete && (
         <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
           <div className="bg-white p-6 rounded-lg">
