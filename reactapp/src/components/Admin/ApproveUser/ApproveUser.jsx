@@ -3,6 +3,8 @@ import Navbar from "../Navbar/Navbar";
 import Studentservice from '../../../api/Studentservice';
 import ViewStudent from './ViewStudent';
 import { getCourses } from "../../../api/courseApi"
+import {getFilters} from "../../../api/FilterService";
+import {AdminGuard} from "../../../AuthGuard/AdminGuard";
 
 export const ApproveUser = () => {
 
@@ -11,6 +13,10 @@ export const ApproveUser = () => {
   const [viewStudent, setviewStudent] = useState(false)
   const [studentDetail, setStudentDetail] = useState({})
   const [courses, setCourses] = useState([])
+  const [viewFilter, setViewFilter] = useState(false)
+  const [selectedAction, setSelectedAction] = useState("");
+  const [clearFilter,  setClearFilter] = useState(true);
+
 
   useEffect(() => {
     Studentservice.getStudents().then((res) => {
@@ -25,9 +31,11 @@ export const ApproveUser = () => {
     }).catch((err) => {
       console.log(err);
     })
+
+    setSelectedAction("")
     setloading(false);
 
-  }, [])
+  }, [clearFilter])
 
 
   const handleApprove = (student1) => {
@@ -58,8 +66,8 @@ export const ApproveUser = () => {
     const student = { ...student1, status: "Rejected" };
     console.log(student);
     Studentservice.editstudent(student1.id, student)
-      .then((res) => {
-        console.log(res, "before mapping");
+      .then(() => {
+        console.log(data, "before mapping");
         let temp = data.map((student2) => student2.id === student1.id ? student : student2)
         console.log(temp, "we mapped data");
         setdata(data.map((student2) => student2.id === student1.id ? student : student2));
@@ -69,13 +77,31 @@ export const ApproveUser = () => {
   }
 
 
-  return (
-    <>
-      <Navbar></Navbar>
+  const hadleToggle = () => { 
+    setViewFilter(!viewFilter);
+  }
 
-      <div className="student-heading mt-20"  >
-        <h1> <i className="fa-solid fa-users-line"></i> List of Applications</h1>
-      </div>
+
+  const handleActionChange = (event) => {
+    setSelectedAction(event.target.value);
+    console.log(event.target.value);
+    hadleToggle()
+    setloading(true)
+    getFilters(event.target.value).then((res) => {
+      setdata(res);
+    })
+    setloading(false)
+  };
+
+  const handleClear = () => {
+    setClearFilter(!clearFilter)
+    setSelectedAction("")
+  }
+
+
+  return (
+    <AdminGuard>
+      <Navbar></Navbar>
 
       {loading && <div className="flex justify-center">
         <div className="loadingio-spinner-double-ring-amot1w4ku1j"><div className="ldio-14cancim8ocq">
@@ -88,19 +114,55 @@ export const ApproveUser = () => {
 
       {!loading && !viewStudent &&
         <>
-          {/* table */}
-
+          {/* table */}     
+          <div className="student-heading mt-20"  >
+            <h1> <i className="fa-solid fa-users-line"></i> List of Applications</h1>
+          </div>
           <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-            <div className="flex items-center justify-between pb-4">
+
+            <div className="flex  items-center justify-between  pb-12">
               <div>
-               
+
+                <button onClick={hadleToggle} id="dropdownRadioButton" data-dropdown-toggle="dropdownRadio" className="inline-flex bg-blue-500 text-white right-40 text-xl absolute items-center text-gray-500 border border-gray-300  hover:bg-blue-600  font-medium rounded-lg text-sm px-3 py-1.5 mr-4 " type="button">
+                   Filter
+                  <svg className="w-3 h-3 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+               </button>
+                <button onClick={handleClear} className="inline-flex bg-red-500 text-white right-0 text-xl absolute items-center text-gray-500 border border-gray-300  hover:bg-red-600  font-medium rounded-lg text-sm px-3 py-1.5 mr-4 " type="button">
+                   clear filter
+               </button>
+                {/* <!-- Dropdown menu --> */}
+              { viewFilter && 
+                 <div id="dropdownRadio" className=" absolute top-12 right-0 z-10 w-20 h-42 overflow-y-auto overflow-x-hidden z-10  w-48 bg-gray-200 mr-36   divide-y divide-gray-100 rounded-lg shadow " data-popper-reference-hidden="" data-popper-escaped="" data-popper-placement="top" >
+                 <ul className="p-3 space-y-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownRadioButton">
+                     <li>
+                         <div className="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                             <input id="filter-radio-example-1" checked={selectedAction === "approved"} onChange={handleActionChange} type="radio"  value="approved" name="filter-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                             <label for="filter-radio-example-1" className="w-full ml-2  text-xl font-medium text-gray-900 rounded dark:text-gray-300">Approved</label>
+                         </div>
+                     </li>
+                     <li>
+                         <div className="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                             <input id="filter-radio-example-2" checked={selectedAction === "rejected"} onChange={handleActionChange} type="radio" value="rejected" name="filter-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+                             <label for="filter-radio-example-2" className="w-full ml-2 text-xl font-medium text-gray-900 rounded dark:text-gray-300">Rejected</label>
+                         </div>
+                     </li>
+                     <li>
+                         <div className="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                             <input id="filter-radio-example-3" checked={selectedAction === "pending"} onChange={handleActionChange}   type="radio" value="pending" name="filter-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                             <label for="filter-radio-example-3" className="w-full ml-2 text-xl font-medium text-gray-900 rounded dark:text-gray-300">pending</label>
+                         </div>
+                     </li>
+                  
+                 </ul>
+                 </div>
+                }
               </div>
-              
+
             </div>
-            <table className="w-full text-sm text-left text-gray-700 ">
+
+            <table className="w-full text-sm text-left text-gray-700 h-44 ">
               <thead className="text-xs text-white uppercase bg-gray-500 ">
                 <tr  className=''>
-                 
                   <th scope="col" className="px-6 py-6 text-xl">
                     Student ID
                   </th>
@@ -122,24 +184,26 @@ export const ApproveUser = () => {
                 </tr>
             </thead>
             <tbody>
-              {data.length > 0 ?
+
+              {data &&
+
                 data.map((student1) => {
                   const { studentIdNumber, firstName, phoneNumber1, courseId, lastName, status } = student1;
                   let color;
-                  if (status === "pending") {
-                    color = "yellow";
-                  } else if (status === "Approved") {
-                    color = "green";
-                  } else {
-                    color = "red";
-                  }
+                    if (status === "pending") {
+                      color = "yellow";
+                    } else if (status === "Approved") {
+                      color = "green";
+                    } else {
+                      color = "red";
+                    }
                   const course = courses.find((eachCourse) => {
                     return eachCourse.courseId === courseId;
                   });
 
                   return (
                    
-                      <tr key={student1.id} className="bg-white border-b   hover:bg-gray-50 ">
+                      <tr key={student1.div} className="bg-white border-b   hover:bg-gray-50 ">
 
                         <td className="text-xl py-6 text-center ">
                           {studentIdNumber}
@@ -188,9 +252,14 @@ export const ApproveUser = () => {
                     
                   );
                 })
-                : <h1>No Data Found</h1>}
+
+               }
+
               </tbody>
-            </table>
+          </table>
+          { !data && <h1 className='text-3xl  w-full text-center  mb-20 font-bold '>
+                  No Student Found 
+                </h1>}
           </div>
 
           {/* end */}
@@ -202,6 +271,6 @@ export const ApproveUser = () => {
       {viewStudent &&
         <ViewStudent studentDetail={studentDetail} setviewStudent={setviewStudent} />}
 
-    </>
+    </AdminGuard>
   )
 }
