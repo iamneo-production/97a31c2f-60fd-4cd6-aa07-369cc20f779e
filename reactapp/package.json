@@ -8,7 +8,6 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
-    "axios": "^1.4.0",
     "canvas": "^2.11.2",
     "emailjs-com": "^3.2.0",
     "history": "^5.3.0",
