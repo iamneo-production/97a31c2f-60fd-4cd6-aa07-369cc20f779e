@@ -68,11 +68,12 @@ public class AdminController {
         return adminService.editStudent(studentid, updatedStudent);
     }
 
-    @GetMapping("admin/viewStudent")
+    @GetMapping("/admin/student")
     public List<StudentModel> viewStudent(Principal principal){   
-        checkAdminAuthority(principal); 
         return adminService.getStudent();
     }
+
+    
 
     @PostMapping("admin/addCourse")
     public String saveNewUser(Principal principal, @RequestBody CourseModel courseModel){
@@ -93,10 +94,9 @@ public class AdminController {
         return adminService.editCourse(courseId, courseModel);
     }
 
-    @GetMapping("admin/viewCourse")
+    @GetMapping("/admin/courses")
     public List<CourseModel> viewCourse(Principal principal){      
-        checkAdminAuthority(principal);    
-         return adminService.getCourse();
+        return adminService.getCourse();
     }
 
     @PostMapping("admin/addInstitute")
@@ -115,7 +115,7 @@ public class AdminController {
         return adminService.editInstitute(instituteId, updatedInstitute);
     }
 
-    @GetMapping("admin/viewInstitutes")
+    @GetMapping("/admin/institute")
     public List<InstituteModel> viewInstitutes(){         
          return adminService.getInstitutes();
     }

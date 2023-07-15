@@ -23,9 +23,9 @@ export const addCourse = async (newCourse) => {
 };
 
 export const getCourses = async () => {
-  console.log(`${baseUrl}/${role}/viewCourse`);
+  console.log(`${baseUrl}/${role}/courses`);
   try {
-    const response = await fetch(`${baseUrl}/${role}/viewCourse`, {
+    const response = await fetch(`${baseUrl}/${role}/courses`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

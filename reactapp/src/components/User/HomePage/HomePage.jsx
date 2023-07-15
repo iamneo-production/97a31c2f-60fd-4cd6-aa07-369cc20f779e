@@ -5,16 +5,27 @@ import { store } from "../../../store";
 import "./HomePage.css";
 import { baseUrl } from "../../../api/authService";
 
+// Define a loader spinner component
+const LoaderSpinner = () => {
+  return (
+    <div className="loader-container">
+      <div className="loader"></div>
+    </div>
+  );
+};
+
 let auth = "";
 store.subscribe(() => {
   auth = store.getState().auth;
   console.log(auth);
 });
+
 const HomePage = () => {
   const [viewdata, setViewdata] = useState([]);
   const [fetchdata, setFetchdata] = useState([]);
   const [search, setSearch] = useState([]);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true); // State to manage loading status
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -24,14 +35,17 @@ const HomePage = () => {
     getdata()
       .then((data) => {
         console.log(data);
+        setIsLoading(false); // Set loading to false once data is fetched
       })
       .catch((error) => {
         console.error(error);
+        setIsLoading(false); // Set loading to false in case of an error
       });
   }, []);
+
   const navigate = useNavigate();
   const getdata = async () => {
-    const response = await fetch(`${baseUrl}/admin/viewInstitutes`, {
+    const response = await fetch(`${baseUrl}/admin/institute`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${auth.token}`,
@@ -62,6 +76,7 @@ const HomePage = () => {
 
   return (
     <>
+    {isLoading && <LoaderSpinner />}
       <div>
         <div className="user-icon-container">
           <i

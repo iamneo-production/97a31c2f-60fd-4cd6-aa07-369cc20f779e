@@ -16,8 +16,9 @@ public class AspectConfig {
     Logger logger = LoggerFactory.getLogger(AspectConfig.class);
     
     @Pointcut(value = "execution(* com.examly.springapp.*.*.*(..))  ")
-    private void loggingController()   
-    {
+    private void loggingController() {
+        // No implementation
+        // it serves as a pointcut declaration for the Aspect-oriented Programming (AOP) configuration.
     }
     
     @Around("loggingController()")
