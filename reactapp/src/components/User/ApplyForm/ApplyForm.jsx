@@ -44,7 +44,7 @@ function ApplyForm() {
       console.error(error);
     }
   };
-  const form = useRef();
+  
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
@@ -84,6 +84,8 @@ function ApplyForm() {
   };
   const [inputData, setInputData] = useState(data);
   const [flag, setFlag] = useState(false);
+  const form = useRef();
+
   function handledata(e) {
     console.log(e.target.id);
     setInputData({ ...inputData, [e.target.name]: e.target.value });
