@@ -1,8 +1,8 @@
 package com.examly.springapp.configuration;
 
-import org.aspectj.lang.ProceedingJoinPoint;  
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Around;  
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Pointcut;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,13 +14,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class AspectConfig {
 
     Logger logger = LoggerFactory.getLogger(AspectConfig.class);
-    
+
     @Pointcut(value = "execution(* com.examly.springapp.*.*.*(..))  ")
     private void loggingController() {
-        // No implementation
-        // it serves as a pointcut declaration for the Aspect-oriented Programming (AOP) configuration.
+        // No implementation , it serves as a pointcut declaration for the AOP configuration.
     }
-    
+
     @Around("loggingController()")
     public Object logController(ProceedingJoinPoint pjp) throws Throwable {
 
