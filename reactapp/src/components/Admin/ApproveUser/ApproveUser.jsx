@@ -15,16 +15,22 @@ export const ApproveUser = () => {
   const [courses, setCourses] = useState([])
   const [viewFilter, setViewFilter] = useState(false)
   const [selectedAction, setSelectedAction] = useState("");
-  const [clearFilter,  setClearFilter] = useState(true);
-
+  const [clearFilter, setClearFilter] = useState(true);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [totalPages, setTotalPages] = useState(0);
+  const [pageSize, setPageSize] = useState(5);
 
   useEffect(() => {
-    Studentservice.getStudents().then((res) => {
+    setloading(true)
+
+    Studentservice.getStudentsWithPagination( currentPage , pageSize).then((res) => { 
       console.log(res, "logged data");
-      setdata(res);
-    }).catch((err) => {
+      setdata(res.content);
+      setTotalPages(res.totalPages);
+    }).catch((err) => { 
       console.log(err);
     })
+
 
     getCourses().then((res) => {
       setCourses(res);
@@ -35,7 +41,7 @@ export const ApproveUser = () => {
     setSelectedAction("")
     setloading(false);
 
-  }, [clearFilter])
+  }, [clearFilter, currentPage, pageSize])
 
 
   const handleApprove = (student1) => {
@@ -96,7 +102,16 @@ export const ApproveUser = () => {
   const handleClear = () => {
     setClearFilter(!clearFilter)
     setSelectedAction("")
+    setViewFilter(false)
   }
+
+  const handleNextPage = () => {
+    setCurrentPage((prevPage) => prevPage + 1);
+  };
+
+  const handlePrevPage = () => {
+    setCurrentPage((prevPage) => prevPage - 1);
+  };
 
 
   return (
@@ -121,7 +136,13 @@ export const ApproveUser = () => {
           <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
 
             <div className="flex  items-center justify-between  pb-12">
-              <div>
+            <div>
+              
+              <label className='ml-4 mr-2' htmlFor="">Page size</label>
+              <input type="number" min="1" max="50"
+                className="border-2 w-20  border-gray-300  h-10 px-5  rounded-lg text-sm focus:outline-none"
+                onChange={(e) => setPageSize(e.target.value)} value={pageSize}
+                 />
 
                 <button onClick={hadleToggle} id="dropdownRadioButton" data-dropdown-toggle="dropdownRadio" className="inline-flex bg-blue-500 text-white right-40 text-xl absolute items-center text-gray-500 border border-gray-300  hover:bg-blue-600  font-medium rounded-lg text-sm px-3 py-1.5 mr-4 " type="button">
                    Filter
@@ -133,23 +154,23 @@ export const ApproveUser = () => {
                 {/* <!-- Dropdown menu --> */}
               { viewFilter && 
                  <div id="dropdownRadio" className=" absolute top-12 right-0 z-10 w-20 h-42 overflow-y-auto overflow-x-hidden z-10  w-48 bg-gray-200 mr-36   divide-y divide-gray-100 rounded-lg shadow " data-popper-reference-hidden="" data-popper-escaped="" data-popper-placement="top" >
-                 <ul className="p-3 space-y-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownRadioButton">
+                 <ul className="p-3 space-y-1 text-sm text-gray-700 " aria-labelledby="dropdownRadioButton">
                      <li>
-                         <div className="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-                             <input id="filter-radio-example-1" checked={selectedAction === "approved"} onChange={handleActionChange} type="radio"  value="approved" name="filter-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                             <label for="filter-radio-example-1" className="w-full ml-2  text-xl font-medium text-gray-900 rounded dark:text-gray-300">Approved</label>
+                         <div className="flex items-center p-2 rounded hover:bg-gray-100 ">
+                             <input id="filter-radio-example-1" checked={selectedAction === "approved"} onChange={handleActionChange} type="radio"  value="approved" name="filter-radio" className="w-4 h-4  bg-gray-100 border-gray-300 focus:ring-blue-500  focus:ring-2 " />
+                             <label for="filter-radio-example-1" className="w-full ml-2  text-black text-xl font-medium  rounded ">Approved</label>
                          </div>
                      </li>
                      <li>
-                         <div className="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-                             <input id="filter-radio-example-2" checked={selectedAction === "rejected"} onChange={handleActionChange} type="radio" value="rejected" name="filter-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
-                             <label for="filter-radio-example-2" className="w-full ml-2 text-xl font-medium text-gray-900 rounded dark:text-gray-300">Rejected</label>
+                         <div className="flex items-center p-2 rounded hover:bg-gray-100 ">
+                             <input id="filter-radio-example-2" checked={selectedAction === "rejected"} onChange={handleActionChange} type="radio" value="rejected" name="filter-radio" className="w-4 h-4  bg-gray-100 border-gray-300 focus:ring-blue-500  focus:ring-2  "/>
+                             <label for="filter-radio-example-2" className="w-full ml-2 text-xl font-medium text-black rounded ">Rejected</label>
                          </div>
                      </li>
                      <li>
-                         <div className="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-                             <input id="filter-radio-example-3" checked={selectedAction === "pending"} onChange={handleActionChange}   type="radio" value="pending" name="filter-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                             <label for="filter-radio-example-3" className="w-full ml-2 text-xl font-medium text-gray-900 rounded dark:text-gray-300">pending</label>
+                         <div className="flex items-center p-2 rounded hover:bg-gray-100 ">
+                             <input id="filter-radio-example-3" checked={selectedAction === "pending"} onChange={handleActionChange}   type="radio" value="pending" name="filter-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500  focus:ring-2  " />
+                             <label for="filter-radio-example-3" className="w-full ml-2 text-xl font-medium text-gray-900 rounded ">pending</label>
                          </div>
                      </li>
                   
@@ -257,6 +278,21 @@ export const ApproveUser = () => {
 
               </tbody>
           </table>
+
+          {/* pagination  */}
+          {data &&
+            <div className='my-5 flex justify-center'>
+                <button className={`bg-blue-500 text-white w-20 px-2 py-2 rounded hover:bg-blue-700 mr-4 ${currentPage === 0 && "cursor-not-allowed hover:bg-blue-500" }`} onClick={handlePrevPage} disabled={currentPage === 0}  >
+                  Previous
+                </button>
+                <button className={`bg-blue-500 text-white w-20 px-2 py-2 rounded hover:bg-blue-700 ${currentPage === totalPages - 1 && "cursor-not-allowed hover:bg-blue-500" }`}
+                  onClick={handleNextPage}
+                  disabled={currentPage === totalPages - 1}
+                >
+                  Next
+                </button>
+            </div>
+          }
           { !data && <h1 className='text-3xl  w-full text-center  mb-20 font-bold '>
                   No Student Found 
                 </h1>}
