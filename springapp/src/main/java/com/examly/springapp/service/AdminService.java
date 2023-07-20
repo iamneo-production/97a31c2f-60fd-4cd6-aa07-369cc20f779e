@@ -174,7 +174,7 @@ public class AdminService {
         return "Course not Found";
     }
 
-    public ResponseEntity<?> getAdmission(int page, int pageSize, String sortBy) {
+    public ResponseEntity<?> getAdmission(int page, int pageSize) {
         return ResponseEntity.ok(admissionRepo.findAll(PageRequest.of(page, pageSize)));
     }
 

@@ -122,7 +122,7 @@ public class AdminController {
             @RequestParam(defaultValue = "10") int pageSize,
             @RequestParam(defaultValue = "id") String sortBy, Principal principal) {
         checkAdminAuthority(principal);
-        return adminService.getAdmission(page, pageSize, sortBy);
+        return adminService.getAdmission(page, pageSize);
     }
 
     @GetMapping("admin/filter/status")
