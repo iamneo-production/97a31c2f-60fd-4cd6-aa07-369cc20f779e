@@ -21,44 +21,43 @@ import com.examly.springapp.security.securityServices.UserDetailsServiceImpl;
 @EnableMethodSecurity
 public class WebSecurityConfig {
 
-    @Autowired
+	@Autowired
 	UserDetailsServiceImpl userDetailsServiceImpl;
-	
+
 	@Autowired
 	private AuthEntryPoint unauthorizedHandler;
-	
+
 	@Bean
 	public AuthTokenFilter authenticatioJwTokenFilter() {
 		return new AuthTokenFilter();
 	}
-	
+
 	@Bean
 	public PasswordEncoder passwordEncoder() {
-	    return new BCryptPasswordEncoder();
+		return new BCryptPasswordEncoder();
 	}
-	
+
 	@Bean
 	public DaoAuthenticationProvider authenticationProvider() {
-		DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider() ;
+		DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
 		authProvider.setUserDetailsService(userDetailsServiceImpl);
 		authProvider.setPasswordEncoder(passwordEncoder());
 		return authProvider;
 	}
-	
+
 	@Bean
-	public AuthenticationManager authenticationManager(AuthenticationConfiguration authconfig) throws Exception{
+	public AuthenticationManager authenticationManager(AuthenticationConfiguration authconfig) throws Exception {
 		return authconfig.getAuthenticationManager();
 	}
-	
-	private static final String[] PUBLIC_URLS = {
-		"/user/login/**","/user/signup/**","/admin/signup/**","/admin/login/**",
-		"/swagger-ui/**","/v2/api-docs","/v3/api-docs","/swagger-resources/**","/webjars/**","/swagger-ui.html","/configuration/ui","/configuration/**",
-		"/admin/institute","/admin/courses","/admin/student","/admin/admission",
-	};	
+
+	private static final String[] PUBLIC_URLS = { "/user/login/**", "/user/signup/**", "/admin/signup/**",
+			"/admin/login/**", "/swagger-ui/**", "/v2/api-docs", "/v3/api-docs", "/swagger-resources/**", "/webjars/**",
+			"/swagger-ui.html", "/configuration/ui", "/configuration/**", "/admin/institute", "/admin/courses",
+			"/admin/student", "/admin/admission", };
 
 	// bean for the security filter chain
 	@Bean
-	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
+	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
 		// Configure the HttpSecurity
 		http.cors().and().csrf().disable()
@@ -67,12 +66,12 @@ public class WebSecurityConfig {
 			.authorizeHttpRequests().antMatchers(PUBLIC_URLS).permitAll()
 			.anyRequest().authenticated();
 
-		// Set the authentication provider and JWT token filter for the HttpSecurity object
+		// Set the authentication provider and JWT token filter for the HttpSecurity
+		// object
 		http.authenticationProvider(authenticationProvider());
-		http.addFilterBefore(authenticatioJwTokenFilter(), UsernamePasswordAuthenticationFilter.class );
-		
+		http.addFilterBefore(authenticatioJwTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+
 		return http.build();
 	}
 
-    
 }
