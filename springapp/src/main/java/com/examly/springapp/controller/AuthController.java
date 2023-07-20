@@ -26,13 +26,13 @@ public class AuthController {
 	}
 
 	@PostMapping("/admin/login")
-	public ResponseEntity<?> authenticateAdmin(@RequestBody LoginRequest LoginRequest) {
-		return authService.login(LoginRequest);
+	public ResponseEntity<?> authenticateAdmin(@RequestBody LoginRequest loginRequest) {
+		return authService.login(loginRequest);
 	}
 
 	@PostMapping("/user/login")
-	public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest LoginRequest) {
-		return authService.login(LoginRequest);
+	public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest) {
+		return authService.login(loginRequest);
 	}
 
 	@GetMapping("/details")
