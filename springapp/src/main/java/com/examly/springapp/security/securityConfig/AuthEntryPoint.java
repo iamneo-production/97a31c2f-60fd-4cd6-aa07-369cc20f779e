@@ -25,15 +25,16 @@ public class AuthEntryPoint implements AuthenticationEntryPoint {
 
     // Override the commence method of the AuthenticationEntryPoint interface
     @Override
-    public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
-        
+    public void commence(HttpServletRequest request, HttpServletResponse response,
+            AuthenticationException authException) throws IOException, ServletException {
+
         logger.error("Unauthorized error: {}", authException.getMessage());
 
         // Set the response content type to JSON
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
         // Set the response status code to 401 (unauthorized)
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-        
+
         final Map<String, Object> body = new HashMap<>();
         body.put("status", HttpServletResponse.SC_UNAUTHORIZED);
         body.put("error", "Unauthorized");

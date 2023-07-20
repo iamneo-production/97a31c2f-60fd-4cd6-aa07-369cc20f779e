@@ -12,33 +12,29 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class UserDetailsImpl implements UserDetails {
 
-    private String email;
+	private String email;
 	private String userName;
 	private String mobileNumber;
 	@JsonIgnore
 	private String password;
-    private Collection<? extends GrantedAuthority> authorities;
-	
-	
-	public UserDetailsImpl(String email, String userName, String mobileNumber, String password, 
-		     Collection<? extends GrantedAuthority> authorities) {
+	private Collection<? extends GrantedAuthority> authorities;
+
+	public UserDetailsImpl(String email, String userName, String mobileNumber, String password,
+			Collection<? extends GrantedAuthority> authorities) {
 		super();
 		this.email = email;
 		this.userName = userName;
 		this.mobileNumber = mobileNumber;
 		this.password = password;
-		this.authorities= authorities;
+		this.authorities = authorities;
 	}
-	
-	// A static factory method to create a UserDetailsImpl object from a UserModel object
+
+	// A static factory method to create a UserDetailsImpl object from a UserModel
+	// object
 	public static UserDetailsImpl build(UserModel userModel) {
 		GrantedAuthority authority = new SimpleGrantedAuthority(userModel.getUserRole().toString());
-		return new UserDetailsImpl(
-				userModel.getEmail(), 
-				userModel.getUsername(),
-				userModel.getMobileNumber(), 
-				userModel.getPassword(), 
-				Collections.singleton(authority));
+		return new UserDetailsImpl(userModel.getEmail(), userModel.getUsername(), userModel.getMobileNumber(),
+				userModel.getPassword(), Collections.singleton(authority));
 	}
 
 	@Override
@@ -50,15 +46,15 @@ public class UserDetailsImpl implements UserDetails {
 	public String getUsername() {
 		return email;
 	}
-	
+
 	public String getName() {
 		return userName;
 	}
-	
+
 	public String mobileNumber() {
 		return mobileNumber;
 	}
-	
+
 	@Override
 	public boolean isAccountNonExpired() {
 		return true;
@@ -83,5 +79,5 @@ public class UserDetailsImpl implements UserDetails {
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return authorities;
 	}
-    
+
 }
