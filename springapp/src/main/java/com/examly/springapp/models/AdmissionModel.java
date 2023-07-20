@@ -1,4 +1,5 @@
 package com.examly.springapp.models;
+
 import javax.persistence.Table;
 import javax.persistence.*;
 import java.util.*;
@@ -6,7 +7,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 
 @Entity
 @Data
@@ -27,7 +27,7 @@ public class AdmissionModel {
     private String phoneNumber1;
     private String phoneNumber2;
     private String emailId;
-    private Date  studentDOB;
+    private Date studentDOB;
     private String houseNumber;
     private String streetName;
     private String areaName;
@@ -39,5 +39,5 @@ public class AdmissionModel {
     private Integer diploma;
     private String status;
     private String reason;
-    
+
 }
