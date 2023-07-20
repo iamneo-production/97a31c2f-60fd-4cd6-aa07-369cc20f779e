@@ -8,8 +8,8 @@ store.subscribe(() => {
 
 export const getFilters = async (status) => { 
     try {
-        console.log(`${baseUrl}/user/filter/status?status=${status}`);
-        const response = await fetch(`${baseUrl}/user/filter/status?status=${status}`, {
+        console.log(`${baseUrl}/admin/filter/status?status=${status}`);
+        const response = await fetch(`${baseUrl}/admin/filter/status?status=${status}`, {
         method: 'GET',
         headers: {
             "Content-Type": "application/json",

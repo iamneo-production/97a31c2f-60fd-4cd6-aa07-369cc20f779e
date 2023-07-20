@@ -72,9 +72,9 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  border-radius:10px;
-  cursor:pointer;
-  margin-left:20px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-left: 20px;
 
 }
 
@@ -85,7 +85,7 @@
   cursor: pointer;
   display: flex;
   align-items: center;
-  margin-left:10px;
+  margin-left: 10px;
 }
 
 
@@ -203,19 +203,23 @@
 
 /* Additional styles for each icon */
 .icon-container a:nth-of-type(2) i {
-  color: #ffab40; /* Adjust the color for the Institute icon */
+  color: #ffab40;
+  /* Adjust the color for the Institute icon */
 }
 
 .icon-container a:nth-of-type(3) i {
-  color: #29b6f6; /* Adjust the color for the Course icon */
+  color: #29b6f6;
+  /* Adjust the color for the Course icon */
 }
 
 .icon-container a:nth-of-type(4) i {
-  color: #ff4081; /* Adjust the color for the Student icon */
+  color: #ff4081;
+  /* Adjust the color for the Student icon */
 }
 
 .icon-container a:nth-of-type(5) i {
-  color: #F5DF99; /* Adjust the color for the Feedback icon */
+  color: #F5DF99;
+  /* Adjust the color for the Feedback icon */
 }
 
 .icon-container .navlink-container {
@@ -238,8 +242,9 @@
   .icon-container .navlink-buttons {
     display: none;
   }
+
   .icon-container .logout-button {
-    display:none;
+    display: none;
   }
 }
 
@@ -268,13 +273,14 @@
 
   .icon-container h1 {
     font-size: 1.2rem;
-    margin-left:25px;
+    margin-left: 25px;
   }
 
   .icon-container i {
     font-size: 20px;
   }
 }
+
 /* Navbar.css */
 
 /* Mobile Styles */
@@ -420,19 +426,23 @@
 
   /* Additional styles for each icon */
   .icon-container a:nth-of-type(2) i {
-    color: #ffab40; /* Adjust the color for the Institute icon */
+    color: #ffab40;
+    /* Adjust the color for the Institute icon */
   }
 
   .icon-container a:nth-of-type(3) i {
-    color: #29b6f6; /* Adjust the color for the Course icon */
+    color: #29b6f6;
+    /* Adjust the color for the Course icon */
   }
 
   .icon-container a:nth-of-type(4) i {
-    color: #ff4081; /* Adjust the color for the Student icon */
+    color: #ff4081;
+    /* Adjust the color for the Student icon */
   }
 
   .icon-container a:nth-of-type(5) i {
-    color: #F5DF99; /* Adjust the color for the Feedback icon */
+    color: #F5DF99;
+    /* Adjust the color for the Feedback icon */
   }
 }
 
@@ -447,7 +457,8 @@
   .nav-container .navlinks-container {
     /* ... */
     margin-top: 10px;
-    height: calc(100vh - 150px); /* Adjust the height as needed */
+    height: calc(100vh - 150px);
+    /* Adjust the height as needed */
     overflow-y: auto;
   }
 

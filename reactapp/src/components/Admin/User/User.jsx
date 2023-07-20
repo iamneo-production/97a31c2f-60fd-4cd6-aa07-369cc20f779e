@@ -68,8 +68,8 @@ const AdminStudent1 = () => {
     state: false,
     deleteId: null
   });
-  
-  
+
+
 
   useEffect(() => {
     fetchCourseName()
@@ -240,76 +240,76 @@ const AdminStudent1 = () => {
           <h1> <i class="fa-solid fa-users-line"></i> List of Students</h1>
         </div>
         {isLoading && <>
-              <div className="flex justify-center">
-                  <div className="loadingio-spinner-double-ring-amot1w4ku1j"><div className="ldio-14cancim8ocq">
-                  <div></div>
-                  <div></div>
-                  <div><div></div></div>
-                  <div><div></div></div>
-                  </div></div>
-              </div>
-            </>}
+          <div className="flex justify-center">
+            <div className="loadingio-spinner-double-ring-amot1w4ku1j"><div className="ldio-14cancim8ocq">
+              <div></div>
+              <div></div>
+              <div><div></div></div>
+              <div><div></div></div>
+            </div></div>
+          </div>
+        </>}
 
-            { ! isLoading &&
-            <>
-                <table className="admin-student-table">
-                <thead>
-                  <tr>
-                    <th className="admin-student-th">Student ID</th>
-                    <th data-testid="userName" className="admin-student-th">Name</th>
-                    <th data-testid="qualification" className="admin-student-th">Course Name</th>
-                    <th data-testid="mobile" className="admin-student-th">Phone Number</th>
-                    <th className="admin-student-th">Actions</th>
-                  </tr>
-                </thead>
-              </table>
-              <div className="student-display-container">
-                {studentData.map((student1) => {
-                  const { studentId, firstName, phoneNumber1, courseId, lastName } =
-                    student1;
-                  const course = course1.find((eachCourse) => {
-                    return eachCourse.courseId == courseId;
-                  });
-                  console.log(course);
+        {!isLoading &&
+          <>
+            <table className="admin-student-table">
+              <thead>
+                <tr>
+                  <th className="admin-student-th">Student ID</th>
+                  <th data-testid="userName" className="admin-student-th">Name</th>
+                  <th data-testid="qualification" className="admin-student-th">Course Name</th>
+                  <th data-testid="mobile" className="admin-student-th">Phone Number</th>
+                  <th className="admin-student-th">Actions</th>
+                </tr>
+              </thead>
+            </table>
+            <div className="student-display-container">
+              {studentData.map((student1) => {
+                const { studentId, firstName, phoneNumber1, courseId, lastName } =
+                  student1;
+                const course = course1.find((eachCourse) => {
+                  return eachCourse.courseId == courseId;
+                });
+                console.log(course);
 
-                  return (
-                    <>
-                      <div className="student-card-info">
-                        <table className="admin-student-table">
-                          <tbody>
-                            <tr>
-                              <td className="admin-student-td">{studentId}</td>
-                              <td className="admin-student-td">{firstName + " " + lastName}</td>
-                              <td className="admin-student-td">{(course != null) ? course.courseName : "Course Not Found"}</td>
-                              <td className="admin-student-td">{phoneNumber1}</td>
-                              <td className="admin-student-td">
-                                <button
-                                  type="submit"
-                                  id="editStudent"
-                                  className="edit-btn"
-                                  onClick={() => handleEdit(studentId)}
-                                >
-                                  <i className="fa-regular fa-pen-to-square"></i>
-                                </button>
-                                <button
-                                  type="submit"
-                                  id="deleteStudent"
-                                  className="delete-btn"
-                                  onClick={() => handleDelete(studentId)}
-                                >
-                                  <i className="fa-regular fa-trash-can"></i>
-                                </button>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </>
-                  );
-                })}
-              </div>
-        </>
-            }
+                return (
+                  <>
+                    <div className="student-card-info">
+                      <table className="admin-student-table">
+                        <tbody>
+                          <tr>
+                            <td className="admin-student-td">{studentId}</td>
+                            <td className="admin-student-td">{firstName + " " + lastName}</td>
+                            <td className="admin-student-td">{(course != null) ? course.courseName : "Course Not Found"}</td>
+                            <td className="admin-student-td">{phoneNumber1}</td>
+                            <td className="admin-student-td">
+                              <button
+                                type="submit"
+                                id="editStudent"
+                                className="edit-btn"
+                                onClick={() => handleEdit(studentId)}
+                              >
+                                <i className="fa-regular fa-pen-to-square"></i>
+                              </button>
+                              <button
+                                type="submit"
+                                id="deleteStudent"
+                                className="delete-btn"
+                                onClick={() => handleDelete(studentId)}
+                              >
+                                <i className="fa-regular fa-trash-can"></i>
+                              </button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </>
+                );
+              })}
+            </div>
+          </>
+        }
 
         <NavLink
           exact="true"
@@ -443,11 +443,11 @@ export const StudentForm = ({ type }) => {
       alert("All fields are mandatory")
     }
     emailjs.sendForm('service_lmsokkj', 'template_6k92fc5', form.current, 'ryVJfM_L3_9s5b_X6')
-    .then((result) => {
+      .then((result) => {
         console.log(result.text);
-    }, (error) => {
+      }, (error) => {
         console.log(error.text);
-    });
+      });
   };
 
   const addStudent = async () => {
@@ -750,7 +750,7 @@ export const StudentForm = ({ type }) => {
                 SSLC Marks{" "}
               </label>
               <input
-                type="text"
+                type="number"
                 id="SSLC"
                 name="SSLC"
                 className="form__input"
@@ -765,7 +765,7 @@ export const StudentForm = ({ type }) => {
                 HSC Marks{" "}
               </label>
               <input
-                type="input"
+                type="number"
                 id="HSC"
                 name="HSC"
                 className="form__input"
@@ -780,7 +780,7 @@ export const StudentForm = ({ type }) => {
                 UG Percentage{" "}
               </label>
               <input
-                type="text"
+                type="number"
                 id="diploma"
                 name="Diploma"
                 className="form__input"
@@ -859,7 +859,7 @@ export const StudentForm = ({ type }) => {
                   PinCode{" "}
                 </label>
                 <input
-                  type="text"
+                  type="number"
                   id="address"
                   name="address"
                   className="form__input"
