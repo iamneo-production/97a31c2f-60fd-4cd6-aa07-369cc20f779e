@@ -1,10 +1,21 @@
 package com.examly.springapp.service;
-import com.examly.springapp.repository.*;
-import com.examly.springapp.models.*;
-import org.springframework.http.*;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.beans.factory.annotation.*;
-import java.util.*;
+
+import com.examly.springapp.dto.ERole;
+import com.examly.springapp.models.AdminModel;
+import com.examly.springapp.models.AdmissionModel;
+import com.examly.springapp.models.CourseModel;
+import com.examly.springapp.models.UserModel;
+import com.examly.springapp.repository.AdminRepository;
+import com.examly.springapp.repository.AdmissionRepo;
+import com.examly.springapp.repository.CourseRepository;
+import com.examly.springapp.repository.UserRepository;
 
 @Service
 public class UserService {
@@ -21,93 +32,85 @@ public class UserService {
     @Autowired
     private CourseRepository courseRepository;
 
-
-    public String saveUser(UserModel userModel){
+    public String saveUser(UserModel userModel) {
         if (userRepository.existsByEmail(userModel.getEmail())) {
-			return "Email is already exists";
-		}
-        if(userModel.getUserRole().equals(ERole.user)){
+            return "Email is already exists";
+        }
+        if (userModel.getUserRole().equals(ERole.user)) {
             userRepository.save(userModel);
-            return "User added"; 
+            return "User added";
         } else {
             return "User Role is incorrect";
         }
-      
-     }
- 
-    public String saveAdmin(AdminModel adminModel){
+
+    }
+
+    public String saveAdmin(AdminModel adminModel) {
         adminRepository.save(adminModel);
         return "Admin added";
     }
-    
-    public void addAdmission(AdmissionModel admissionModel){
+
+    public void addAdmission(AdmissionModel admissionModel) {
         admissionR.save(admissionModel);
     }
 
-     public List<AdmissionModel> getAdmission(){
+    public List<AdmissionModel> getAdmission() {
         return admissionR.findAll();
     }
-    public String deleteAdmission(Integer id){
-        Optional<AdmissionModel> admissionmodel=admissionR.findById(id);
-        if(admissionmodel.isPresent()){
+
+    public String deleteAdmission(Integer id) {
+        Optional<AdmissionModel> admissionmodel = admissionR.findById(id);
+        if (admissionmodel.isPresent()) {
             admissionR.deleteById(id);
             return "Admission details deleted";
         }
         return "Admission not Found";
     }
 
-    public ResponseEntity<?>  editAdmission(Integer id, AdmissionModel updatedAdmission){
-        Optional<AdmissionModel> admissionmodel=admissionR.findById(id);
-        if(admissionmodel.isPresent()){
-        AdmissionModel admission = admissionmodel.get();
-        admission.setCourseId(updatedAdmission.getCourseId());
-        admission.setStudentIdNumber(updatedAdmission.getStudentIdNumber());
-        admission.setFirstName(updatedAdmission.getFirstName());
-        admission.setLastName(updatedAdmission.getLastName());
-        admission.setFatherName(updatedAdmission.getFatherName());
-        admission.setPhoneNumber1(updatedAdmission.getPhoneNumber1());
-        admission.setMotherName(updatedAdmission.getMotherName());
-        admission.setPhoneNumber2(updatedAdmission.getPhoneNumber2());
-        admission.setEmailId(updatedAdmission.getEmailId());
-        admission.setStudentDOB(updatedAdmission.getStudentDOB());
-        admission.setHouseNumber(updatedAdmission.getHouseNumber());
-        admission.setStreetName(updatedAdmission.getStreetName());
-        admission.setAreaName(updatedAdmission.getAreaName());
-        admission.setState(updatedAdmission.getState());
-        admission.setPincode(updatedAdmission.getPincode());
-        admission.setNationality(updatedAdmission.getNationality());
-        admission.setSslc(updatedAdmission.getSslc());
-        admission.setHsc(updatedAdmission.getHsc());
-        admission.setDiploma(updatedAdmission.getDiploma());
-        admission.setStatus(updatedAdmission.getStatus());
-        admissionR.save(admission);
-        return  ResponseEntity.ok(admission);
+    public ResponseEntity<?> editAdmission(Integer id, AdmissionModel updatedAdmission) {
+        Optional<AdmissionModel> admissionmodel = admissionR.findById(id);
+        if (admissionmodel.isPresent()) {
+            AdmissionModel admission = admissionmodel.get();
+
+            admission.setCourseId(updatedAdmission.getCourseId());
+            admission.setStudentIdNumber(updatedAdmission.getStudentIdNumber());
+            admission.setFirstName(updatedAdmission.getFirstName());
+            admission.setLastName(updatedAdmission.getLastName());
+            admission.setFatherName(updatedAdmission.getFatherName());
+            admission.setPhoneNumber1(updatedAdmission.getPhoneNumber1());
+            admission.setMotherName(updatedAdmission.getMotherName());
+            admission.setPhoneNumber2(updatedAdmission.getPhoneNumber2());
+            admission.setEmailId(updatedAdmission.getEmailId());
+            admission.setStudentDOB(updatedAdmission.getStudentDOB());
+            admission.setHouseNumber(updatedAdmission.getHouseNumber());
+            admission.setStreetName(updatedAdmission.getStreetName());
+            admission.setAreaName(updatedAdmission.getAreaName());
+            admission.setState(updatedAdmission.getState());
+            admission.setPincode(updatedAdmission.getPincode());
+            admission.setNationality(updatedAdmission.getNationality());
+            admission.setSslc(updatedAdmission.getSslc());
+            admission.setHsc(updatedAdmission.getHsc());
+            admission.setDiploma(updatedAdmission.getDiploma());
+            admission.setStatus(updatedAdmission.getStatus());
+            admissionR.save(admission);
+            return ResponseEntity.ok(admission);
         }
         return ResponseEntity.ok("Admission not Found");
     }
 
-
-    public CourseModel viewEnrolledCourse(Integer studentId){
+    public CourseModel viewEnrolledCourse(Integer studentId) {
         AdmissionModel admissionmodel = admissionR.findByStudentIdNumber(studentId);
-        if(courseRepository.existsByCourseId(admissionmodel.getCourseId())){
-            Optional<CourseModel> course =  courseRepository.findBycourseId(admissionmodel.getCourseId());
-            if(course.isPresent()){
+        if (courseRepository.existsByCourseId(admissionmodel.getCourseId())) {
+            Optional<CourseModel> course = courseRepository.findBycourseId(admissionmodel.getCourseId());
+            if (course.isPresent()) {
                 return course.get();
             } else {
                 return null;
             }
-        }
-        else{
+        } else {
             return null;
         }
 
     }
 
-    public ResponseEntity<?> filterByStatus(String status) {
-        List<AdmissionModel> admission = admissionR.findByStatus(status);
-        if(admission.isEmpty()){
-            return ResponseEntity.ok("No admission found");
-        }
-        return ResponseEntity.ok(admission);
-    }
 }
