@@ -3,6 +3,7 @@ package com.examly.springapp.controller;
 import org.springframework.web.bind.annotation.*;
 import com.examly.springapp.models.*;
 import com.examly.springapp.service.authenticationService.AuthService;
+import com.examly.springapp.dto.LoginRequest;
 import org.springframework.http.*;
 import java.security.Principal;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,32 +12,32 @@ import org.springframework.beans.factory.annotation.Autowired;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class AuthController {
 
-    @Autowired
+	@Autowired
 	private AuthService authService;
-	
-    @PostMapping("/admin/signup")
-	public ResponseEntity<?> saveAdmin(@RequestBody UserModel userModel  ) {
+
+	@PostMapping("/admin/signup")
+	public ResponseEntity<?> saveAdmin(@RequestBody UserModel userModel) {
 		return authService.saveAdmin(userModel);
 	}
-	
+
 	@PostMapping("/user/signup")
 	public ResponseEntity<?> saveUser(@RequestBody UserModel userModel) {
 		return authService.saveUser(userModel);
 	}
-	
+
 	@PostMapping("/admin/login")
-	public ResponseEntity<?> authenticateAdmin(@RequestBody LoginModel loginModel){
-		return authService.login(loginModel);
+	public ResponseEntity<?> authenticateAdmin(@RequestBody LoginRequest LoginRequest) {
+		return authService.login(LoginRequest);
 	}
-	
+
 	@PostMapping("/user/login")
-	public ResponseEntity<?> authenticateUser(@RequestBody LoginModel loginModel) {
-		return authService.login(loginModel);
+	public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest LoginRequest) {
+		return authService.login(LoginRequest);
 	}
 
 	@GetMapping("/details")
 	public ResponseEntity<?> getUserDetails(Principal principal) {
 		return authService.getUserDetails(principal);
-    }
+	}
 
 }
