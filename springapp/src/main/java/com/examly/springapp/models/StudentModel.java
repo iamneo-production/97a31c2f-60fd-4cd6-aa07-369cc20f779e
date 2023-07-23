@@ -1,8 +1,6 @@
-
 package com.examly.springapp.models;
-import java.lang.annotation.Inherited;
+
 import java.sql.Date;
-import javax.annotation.processing.Generated;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -41,7 +39,7 @@ public class StudentModel {
     private Integer sslc;
     private Integer hsc;
     private Integer diploma;
-    private String eligibility;  
-    private String courseId;  
+    private String eligibility;
+    private String courseId;
     private String instituteId;
 }

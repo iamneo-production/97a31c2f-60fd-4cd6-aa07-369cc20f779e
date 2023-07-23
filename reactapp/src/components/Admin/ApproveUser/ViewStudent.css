@@ -14,7 +14,8 @@
   margin-bottom: 20px;
   font-size: 24px;
   font-weight: bold;
-  color: #1a237e; /* Dark Blue */
+  color: #1a237e;
+  /* Dark Blue */
 }
 
 .student-details-form {
@@ -53,7 +54,8 @@
 .student-details-button {
   margin-top: 20px;
   padding: 10px 20px;
-  background-color: #1565c0; /* Darker Blue */
+  background-color: #1565c0;
+  /* Darker Blue */
   color: white;
   border: none;
   border-radius: 8px;
@@ -62,5 +64,6 @@
 }
 
 .student-details-button:hover {
-  background-color: #0d47a1; /* Even Darker Blue on hover */
+  background-color: #0d47a1;
+  /* Even Darker Blue on hover */
 }
