@@ -89,13 +89,13 @@ const EnrolledCourse = () => {
   return (
     <>
       <div>
-      <div className="user-icon-container">
+        <div className="user-icon-container">
           <i
             className={`fa-solid fa-bars ${isSidebarOpen ? "user-icon-hidden" : ""}`}
             onClick={toggleSidebar}
           ></i>
           <NavLink to="/Navpage" className="user-nav-pg">
-           <h1><i class="fa-solid fa-graduation-cap"></i> PG Admission Portal</h1>
+            <h1><i class="fa-solid fa-graduation-cap"></i> PG Admission Portal</h1>
           </NavLink>
           <NavLink to="/HomePage" className="user-navlink-buttons">
             <i className="fa-solid fa-university"></i>
@@ -180,7 +180,7 @@ const EnrolledCourse = () => {
                     Status: {course.status}
                   </p>
                   <Link to="/Admissionmodelpage">
-                    <button class="my-learning-button">My Learning</button>
+                    <button class="my-learning-button">View Application</button>
                   </Link>
                 </div>
               </div>
