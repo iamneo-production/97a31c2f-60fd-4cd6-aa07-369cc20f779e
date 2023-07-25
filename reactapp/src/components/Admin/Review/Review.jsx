@@ -1,5 +1,5 @@
-import React, { useState,useEffect } from 'react';
-import { getReviews,deleteReviews } from '../../../api/ReviewService';
+import React, { useState, useEffect } from 'react';
+import { getReviews, deleteReviews } from '../../../api/ReviewService';
 import Navbar from "../Navbar/Navbar";
 
 
@@ -41,16 +41,16 @@ const Review = () => {
 
       <h1 className="student-heading mt-20"> <i class="fa-solid fa-comment-dots"></i> Feedback </h1>
 
-      { loader && 
-      <div className='flex justify-center'>
-        <div class="loadingio-spinner-double-ring-amot1w4ku1j"><div class="ldio-14cancim8ocq">
-        <div></div>
-        <div></div>
-        <div><div></div></div>
-        <div><div></div></div>
-        </div></div>
-      </div> }
-      { ! loader && <div className="overflow-x-auto">
+      {loader &&
+        <div className='flex justify-center'>
+          <div class="loadingio-spinner-double-ring-amot1w4ku1j"><div class="ldio-14cancim8ocq">
+            <div></div>
+            <div></div>
+            <div><div></div></div>
+            <div><div></div></div>
+          </div></div>
+        </div>}
+      {!loader && <div className="overflow-x-auto">
         <table className="min-w-full divide-y text-white bg-gray-500 text-xl   divide-gray-200">
           <thead>
             <tr>
@@ -70,7 +70,7 @@ const Review = () => {
                 Comments
               </th>
               <th className="px-6 py-3   font-medium  uppercase tracking-wider">
-                Action 
+                Action
               </th>
             </tr>
           </thead>
