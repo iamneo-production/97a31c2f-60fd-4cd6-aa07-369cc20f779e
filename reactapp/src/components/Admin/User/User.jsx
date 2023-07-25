@@ -256,7 +256,7 @@ const AdminStudent1 = () => {
                 <thead>
                   <tr>
                     <th className="admin-student-th">Student ID</th>
-                    <th data-testid="userName" className="admin-student-th">Name</th>
+                    <th  className="admin-student-th">Name</th>
                     <th data-testid="qualification" className="admin-student-th">Course Name</th>
                     <th data-testid="mobile" className="admin-student-th">Phone Number</th>
                     <th className="admin-student-th">Actions</th>
@@ -640,7 +640,7 @@ export const StudentForm = ({ type }) => {
 
               />
             </div>
-            <div className="username" >
+            <div data-testid="userName" className="username" >
               <label className="form__label" htmlFor="firstName">
                 {" "}
                 First Name{" "}
