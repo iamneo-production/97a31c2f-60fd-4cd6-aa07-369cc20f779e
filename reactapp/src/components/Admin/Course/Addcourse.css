@@ -204,8 +204,8 @@
 
 /* all fields mandotory css */
 
-.validation-message{
-  color:red;
+.validation-message {
+  color: red;
 }
 
 @media (max-width: 768px) {

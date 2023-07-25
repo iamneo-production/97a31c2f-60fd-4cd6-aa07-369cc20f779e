@@ -1,4 +1,4 @@
-package com.examly.springapp.models;
+package com.examly.springapp.dto;
 
 public enum ERole {
     user,
