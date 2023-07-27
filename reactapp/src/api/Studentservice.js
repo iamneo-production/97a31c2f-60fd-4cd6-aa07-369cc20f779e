@@ -46,11 +46,11 @@ export const deletestud = async (id) => {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": "Bearer" + token
+        "Authorization": "Bearer " + token
       },
     });
     if (!responses.ok) {
-      throw new Error(`Failed to delete the student${id}`);
+      throw new Error(`Failed to delete the student ${id}`);
     }
     return "Student Deleted";
   }
@@ -58,6 +58,24 @@ export const deletestud = async (id) => {
     console.error(error);
   }
 }
-const Studentservice = { getStudents };
+
+// get students with pagination
+export const getStudentsWithPagination = async (pageNo, pageSize) => { 
+  try {
+    const response = await fetch(`${baseUrl}/admin/viewAdmission?page=${pageNo}&pageSize=${pageSize}&sortBy=id`, {
+      method: 'GET',
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`,
+      },
+    });
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+const Studentservice = { getStudents,editstudent,deletestud, getStudentsWithPagination };
 export default Studentservice;
 

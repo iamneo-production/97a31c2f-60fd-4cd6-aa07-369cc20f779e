@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link, useParams, NavLink } from "react-router-dom";
 import "./ApplyForm.css";
 import { useNavigate } from "react-router";
 import { store } from "../../../store";
 import { baseUrl } from "../../../api/authService";
+import emailjs from '@emailjs/browser';
 
 let auth = "";
 store.subscribe(() => {
@@ -43,7 +44,7 @@ function ApplyForm() {
       console.error(error);
     }
   };
-
+  const form = useRef();
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
@@ -79,7 +80,7 @@ function ApplyForm() {
     pincode: "",
     nationality: "",
     instituteName: "",
-
+    status: "pending",
   };
   const [inputData, setInputData] = useState(data);
   const [flag, setFlag] = useState(false);
@@ -122,6 +123,12 @@ function ApplyForm() {
         });
       navigate("/Enrolledcourse");
     }
+    emailjs.sendForm('service_lmsokkj', 'template_6k92fc5', form.current, 'ryVJfM_L3_9s5b_X6')
+    .then((result) => {
+        console.log(result.text);
+    }, (error) => {
+        console.log(error.text);
+    });
   }
   const postdata = async () => {
     await fetch(`${baseUrl}/user/addAdmission`, {
@@ -269,7 +276,7 @@ function ApplyForm() {
       <i class="fa-regular fa-file-lines fa-fade"></i> Here You Go! Fill Up The Form And Enroll Now
       </div>
 
-      <form className="info">
+      <form className="info" ref={form}>
 
         <div className="user-student-form-container">
           <div className="user-student-form">

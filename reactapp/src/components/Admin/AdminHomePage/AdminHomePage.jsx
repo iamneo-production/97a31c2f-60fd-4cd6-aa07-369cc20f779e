@@ -194,12 +194,24 @@ const Adminacademy = () => {
           Search
         </button>
       </div>
+
       <div className="admin-academy-container">
-        {isLoading && <h4>Loading...</h4>}
+        {/* loading effect */}
+        {isLoading &&
+          <>
+            <div class="loadingio-spinner-double-ring-amot1w4ku1j"><div class="ldio-14cancim8ocq">
+              <div></div>
+              <div></div>
+              <div><div></div></div>
+              <div><div></div></div>
+            </div></div>
+          </>
+        }
+
         {isError.state && <h4>{isError.msg}</h4>}
-        <div className="student-heading"  >
+        {!isLoading && <div className="student-heading"  >
           <h1> <i class="fa-solid fa-building-columns"></i> List of Institutes</h1>
-        </div>
+        </div>}
         <div className="academy-display-container" data-testid="instituteName" >
           {academyData.map((eachAcademy, index) => {
             const { instituteId, instituteName, instituteAddress, imageUrl } =
@@ -259,7 +271,7 @@ const Adminacademy = () => {
 export const AcademyForm = ({ type }) => {
   const [formData, setFormData] = useState(initialData);
 
-  const[error, setError]=useState(false);
+  const [error, setError] = useState(false);
 
   const [popup, setPopup] = useState(false);
 
@@ -306,14 +318,14 @@ export const AcademyForm = ({ type }) => {
   const handleFormAdd = (e) => {
     e.preventDefault();
     console.log(formData);
-    if(formData.instituteName){
-    setPopup(true);
+    if (formData.instituteName) {
+      setPopup(true);
     }
-    else{
+    else {
       setError(true);
     }
   };
-  
+
 
   const addAcademy = async () => {
     const response = await fetch(`${baseUrl}/admin/addInstitute`, {
@@ -414,7 +426,7 @@ export const AcademyForm = ({ type }) => {
           navigate("/admin/dashboard");
         }}
       >
-       <i class="fa-solid fa-house"></i> Back to Home
+        <i class="fa-solid fa-house"></i> Back to Home
       </button>
       <div className="admin-academy-form">
         {type === "ADD" ? (
@@ -426,17 +438,17 @@ export const AcademyForm = ({ type }) => {
           <div className="form-group">
             <label className="label-heading">Academy Name : </label>
             <input
-            type="text"
-            id="academyName"
-            name="academyName"
-            value={formData.instituteName}
-            placeholder="Enter Academy Name"
-            onChange={(e) => handleChange(e, "instituteName")}
-            required
-           />
-           {!formData.instituteName && (
-            <div className="validation-message"></div>
-           )}
+              type="text"
+              id="academyName"
+              name="academyName"
+              value={formData.instituteName}
+              placeholder="Enter Academy Name"
+              onChange={(e) => handleChange(e, "instituteName")}
+              required
+            />
+            {!formData.instituteName && (
+              <div className="validation-message"></div>
+            )}
           </div>
           <div className="form-group">
             <label className="label-heading">Contact Number : </label>
@@ -498,31 +510,31 @@ export const AcademyForm = ({ type }) => {
           </div>
           {error && <div className="errorfields"> All Fileds Requried</div>}
           <div className="admin-institute-btn-container">
-          {type === "ADD" ? (
-            <button
-              className="admin-form-submit-button"
-              type="submit"
-              id="addAcademy"
-              onClick={(e) => handleFormAdd(e)}
-            >
-              Add Academy
-            </button>
-          ) : (
-            <button
-              className="admin-form-submit-button"
-              type="submit"
-              id="updateAcademy"
-              onClick={(e) => handleFormEdit(e)}
-            >
-              Update Academy
-            </button>
-            
-          )}
-           <Link
+            {type === "ADD" ? (
+              <button
+                className="admin-form-submit-button"
+                type="submit"
+                id="addAcademy"
+                onClick={(e) => handleFormAdd(e)}
+              >
+                Add Academy
+              </button>
+            ) : (
+              <button
+                className="admin-form-submit-button"
+                type="submit"
+                id="updateAcademy"
+                onClick={(e) => handleFormEdit(e)}
+              >
+                Update Academy
+              </button>
+
+            )}
+            <Link
               to="/admin/dashboard"
               className="admin-btn-secondary">
               Cancel</Link>
-              </div>
+          </div>
         </form>
       </div>
     </>

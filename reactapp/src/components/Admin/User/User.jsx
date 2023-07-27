@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { store } from "../../../store";
 import { Navigate } from "react-router";
 import { useNavigate, useParams, NavLink, Link } from "react-router-dom";
 import { baseUrl } from "../../../api/authService";
 import './AdminStudent.css';
 import Navbar from "../Navbar/Navbar";
-import ViewStudent from "./ViewStudent";
+import emailjs from '@emailjs/browser';
 
 
 let auth = "";
@@ -54,18 +54,13 @@ const AdminStudent1 = () => {
 
   const [studentData, setStudentData] = useState([]);
 
-
   const [course1, setCourse1] = useState([]);
 
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const [isError, setIsError] = useState({ state: false, msg: "" });
 
   const [searchTerm, setSearchTerm] = useState("");
-
-  const [ViewStudentData, setViewStudentData] = useState(false);
-
-  const [passStudentData, setPassStudentData] = useState({});
 
   const navigate = useNavigate();
 
@@ -73,6 +68,8 @@ const AdminStudent1 = () => {
     state: false,
     deleteId: null
   });
+
+
 
   useEffect(() => {
     fetchCourseName()
@@ -106,9 +103,8 @@ const AdminStudent1 = () => {
       });
       const data = await response.json();
       console.log(data);
-      const userDatabase = await fetchUserDatabase();
-      setFetchedStudentData(data.concat(userDatabase));
-      setStudentData(data.concat(userDatabase));
+      setFetchedStudentData(data);
+      setStudentData(data);
       setIsLoading(false);
       setIsError({ state: false, msg: "" });
       if (response.status === 400) {
@@ -122,25 +118,6 @@ const AdminStudent1 = () => {
       });
     }
   };
-
-  async function fetchUserDatabase() {
-    try {
-      const response = await fetch(`${baseUrl}/user/viewAdmission`, {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${auth.token}`,
-          "Content-type": "application/json",
-        },
-      });
-
-      const data = await response.json();
-      console.log(data);
-      return data;
-
-    } catch (error) {
-      console.error("Error fetching user databse data:", error);
-    }
-  }
 
   async function fetchCourseName() {
     try {
@@ -193,90 +170,88 @@ const AdminStudent1 = () => {
     navigate(`/admin/editStudent/${id}`);
   };
 
-  const handleView = (Stude) => {
-    console.log(Stude)
-    setViewStudentData(true);
-    setPassStudentData(Stude);
-  }
-
-  const handleBackList = () => {
-    setViewStudentData(false)
-    setPassStudentData({})
-  }
-
-
   return (
     <>
       <Navbar />
 
-      {!ViewStudentData &&
-        <>
-          {
-            popup.state && (
-              <div className="admin-popup-body noHover">
-                <div className="admin-popup-overlay">
+      {
+        popup.state && (
+          <div className="admin-popup-body noHover">
+            <div className="admin-popup-overlay">
 
-                </div>
-                <div className="admin-student-popup">
-                  <h1>Are you sure to delete the data ?</h1>
-                  <button
-                    className="admin-student-confirm-btn"
-                    type="submit"
-                    onClick={() => {
-                      deleteStudent(popup.deleteId)
-                        .then((data) => {
-                          console.log("delete student data success ", data);
-                        })
-                        .catch((error) => {
-                          console.error(error);
-                        });
-                      setPopup({
-                        state: false,
-                        deleteId: null
-                      });
-                    }}
-                  >
-                    Confirm Delete
-                  </button>
-                  <button
-                    className="admin-student-cancel-btn"
-                    type="submit"
-                    onClick={() => {
-                      setPopup({
-                        state: false,
-                        deleteId: null
-                      });
-                    }}
-                  >
-                    Cancel
-                  </button>
-                </div>
-              </div>
-            )
-          }
-          <div className="admin-student-container">
-            <div className="admin-search-container">
-              <input
-                type="text"
-                name="search"
-                className="search-input"
-                value={searchTerm}
-                placeholder="Type here to Search Student"
-                onChange={(e) => setSearchTerm(e.target.value)}
-              />
+            </div>
+            <div className="admin-student-popup">
+              <h1>Are you sure to delete the data ?</h1>
               <button
-                type="button"
-                className="search-btn"
-                onClick={() => filterStudentData()}
+                className="admin-student-confirm-btn"
+                type="submit"
+                onClick={() => {
+                  deleteStudent(popup.deleteId)
+                    .then((data) => {
+                      console.log("delete student data success ", data);
+                    })
+                    .catch((error) => {
+                      console.error(error);
+                    });
+                  setPopup({
+                    state: false,
+                    deleteId: null
+                  });
+                }}
               >
-                Search
+                Confirm Delete
+              </button>
+              <button
+                className="admin-student-cancel-btn"
+                type="submit"
+                onClick={() => {
+                  setPopup({
+                    state: false,
+                    deleteId: null
+                  });
+                }}
+              >
+                Cancel
               </button>
             </div>
-            {isLoading && <h4>Loading...</h4>}
-            {isError.state && <h4>{isError.msg}</h4>}
-            <div className="student-heading"  >
-              <h1> <i class="fa-solid fa-users-line"></i> List of Students</h1>
-            </div>
+          </div>
+        )
+      }
+      <div className="admin-student-container">
+        <div className="admin-search-container">
+          <input
+            type="text"
+            name="search"
+            className="search-input"
+            value={searchTerm}
+            placeholder="Type here to Search Student"
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <button
+            type="button"
+            className="search-btn"
+            onClick={() => filterStudentData()}
+          >
+            Search
+          </button>
+        </div>
+        {isError.state && <h4>{isError.msg}</h4>}
+        <div className="student-heading"  >
+          <h1> <i class="fa-solid fa-users-line"></i> List of Students</h1>
+        </div>
+        {isLoading && <>
+          <div className="flex justify-center">
+            <div className="loadingio-spinner-double-ring-amot1w4ku1j"><div className="ldio-14cancim8ocq">
+              <div></div>
+              <div></div>
+              <div><div></div></div>
+              <div><div></div></div>
+            </div></div>
+          </div>
+        </>}
+
+        {!isLoading &&
+          <>
             <table className="admin-student-table">
               <thead>
                 <tr>
@@ -289,12 +264,13 @@ const AdminStudent1 = () => {
               </thead>
             </table>
             <div className="student-display-container">
-              {studentData.map((student1, index) => {
+              {studentData.map((student1) => {
                 const { studentId, firstName, phoneNumber1, courseId, lastName } =
                   student1;
                 const course = course1.find((eachCourse) => {
                   return eachCourse.courseId == courseId;
                 });
+                console.log(course);
 
                 return (
                   <>
@@ -302,37 +278,27 @@ const AdminStudent1 = () => {
                       <table className="admin-student-table">
                         <tbody>
                           <tr>
-                            <td className="admin-student-td">{index + 1}</td>
+                            <td className="admin-student-td">{studentId}</td>
                             <td className="admin-student-td">{firstName + " " + lastName}</td>
                             <td className="admin-student-td">{(course != null) ? course.courseName : "Course Not Found"}</td>
                             <td className="admin-student-td">{phoneNumber1}</td>
                             <td className="admin-student-td">
-                              {!student1.id &&
-                                <>
-                                  <button
-                                    type="submit"
-                                    id="editStudent"
-                                    className="edit-btn"
-                                    onClick={() => handleEdit(studentId)}>
-                                    <i className="fa-regular fa-pen-to-square"></i>
-                                  </button>
-
-                                  <button
-                                    type="submit"
-                                    id="deleteStudent"
-                                    className="delete-btn"
-                                    onClick={() => handleDelete(studentId)}
-                                  >
-                                    <i className="fa-regular fa-trash-can"></i>
-                                  </button>
-
-                                </>
-                              }
-                              {student1.id &&
-                                <button onClick={() => handleView(student1)} className="mx-auto bg-blue-400 px-8 py-3 rounded-xl text-white hover:bg-blue-700">
-                                  view
-                                </button>
-                              }
+                              <button
+                                type="submit"
+                                id="editStudent"
+                                className="edit-btn"
+                                onClick={() => handleEdit(studentId)}
+                              >
+                                <i className="fa-regular fa-pen-to-square"></i>
+                              </button>
+                              <button
+                                type="submit"
+                                id="deleteStudent"
+                                className="delete-btn"
+                                onClick={() => handleDelete(studentId)}
+                              >
+                                <i className="fa-regular fa-trash-can"></i>
+                              </button>
                             </td>
                           </tr>
                         </tbody>
@@ -342,24 +308,22 @@ const AdminStudent1 = () => {
                 );
               })}
             </div>
-            <NavLink
-              exact="true"
-              to="/admin/addStudent"
-              className="nav-link"
-              id="addStudent"
-              activeclassname="active">
-              <div className="admin-add-student-button">
-                <div className='admin-add-student-icon' >
-                  <i className="fa-solid fa-circle-plus"></i>
-                </div>
-              </div>
-            </NavLink>
+          </>
+        }
+
+        <NavLink
+          exact="true"
+          to="/admin/addStudent"
+          className="nav-link"
+          id="addStudent"
+          activeclassname="active">
+          <div className="admin-add-student-button">
+            <div className='admin-add-student-icon' >
+              <i className="fa-solid fa-circle-plus"></i>
+            </div>
           </div>
-        </>
-      }
-
-      {ViewStudentData &&  <ViewStudent handleBackList={handleBackList} passStudentData={passStudentData}  />}
-
+        </NavLink>
+      </div>
     </>
   );
 };
@@ -372,6 +336,8 @@ export const StudentForm = ({ type }) => {
   const [institute, setInstitute] = useState([]);
   const [coursePopup, setCoursePopup] = useState(false);
   const [institutePopup, setInstitutePopup] = useState(false);
+
+  const form = useRef();
 
   const { id } = useParams();
   useEffect(() => {
@@ -476,6 +442,12 @@ export const StudentForm = ({ type }) => {
     else {
       alert("All fields are mandatory")
     }
+    emailjs.sendForm('service_lmsokkj', 'template_6k92fc5', form.current, 'ryVJfM_L3_9s5b_X6')
+      .then((result) => {
+        console.log(result.text);
+      }, (error) => {
+        console.log(error.text);
+      });
   };
 
   const addStudent = async () => {
@@ -631,7 +603,7 @@ export const StudentForm = ({ type }) => {
       ) : (
         <h1 className="head-container"><i class="fa-solid fa-pen-to-square"></i> Edit Student Details</h1>
       )}
-      <form className="student-form-container m-2 lg:m-12">
+      <form className="student-form-container m-2 lg:m-12" ref={form} >
         <div className="studentform p-4 lg:18 ">
           <div className="form-body">
             <div className="courseId">
@@ -778,7 +750,7 @@ export const StudentForm = ({ type }) => {
                 SSLC Marks{" "}
               </label>
               <input
-                type="text"
+                type="number"
                 id="SSLC"
                 name="SSLC"
                 className="form__input"
@@ -793,7 +765,7 @@ export const StudentForm = ({ type }) => {
                 HSC Marks{" "}
               </label>
               <input
-                type="input"
+                type="number"
                 id="HSC"
                 name="HSC"
                 className="form__input"
@@ -808,7 +780,7 @@ export const StudentForm = ({ type }) => {
                 UG Percentage{" "}
               </label>
               <input
-                type="text"
+                type="number"
                 id="diploma"
                 name="Diploma"
                 className="form__input"
@@ -887,7 +859,7 @@ export const StudentForm = ({ type }) => {
                   PinCode{" "}
                 </label>
                 <input
-                  type="text"
+                  type="number"
                   id="address"
                   name="address"
                   className="form__input"

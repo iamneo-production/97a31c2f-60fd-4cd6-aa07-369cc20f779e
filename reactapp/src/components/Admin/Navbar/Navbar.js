@@ -29,23 +29,29 @@ const NavBar = () => {
           <h1><i class="fa-solid fa-graduation-cap"></i>PG Admission Portal</h1>
         </NavLink>
         <NavLink id="adminInstitute" to="/admin/dashboard" className="navlink-buttons">
-        <i class="fa-solid fa-building-columns "> </i>
-        Institutes
+          <i class="fa-solid fa-building-columns "> </i>
+          Institutes
         </NavLink>
         <NavLink id="adminCourse" to="/admin/viewCourse" className="navlink-buttons">
-        <i class="fa-solid fa-book-atlas"></i>
+          <i class="fa-solid fa-book-atlas"></i>
           Courses
         </NavLink>
         <NavLink id="adminStudents" to="/admin/Viewstudent" className="navlink-buttons">
           <i className="fa-solid fa-user-graduate"></i>
           Students
         </NavLink>
+        <NavLink id="adminApprove" to="/admin/approveUser" className="navlink-buttons">
+          <i className="fa-solid fa-user-graduate"></i>
+
+          Online Applications
+
+        </NavLink>
         <NavLink id="adminFeedback" to="/admin/FeedBack" className="navlink-buttons">
           <i className="fa-solid fa-comment"></i>
           FeedBack
         </NavLink>
         <button id="logout" type="submit" onClick={navigateToLogout} className="logout-button">
-        <i class="fa-solid fa-right-from-bracket"></i>
+          <i class="fa-solid fa-right-from-bracket"></i>
           Logout
         </button>
       </div>
@@ -70,7 +76,7 @@ const NavBar = () => {
               </NavLink>
             </div>
             <div className="navlink-box">
-            <i class="fa-solid fa-book-atlas"></i>
+              <i class="fa-solid fa-book-atlas"></i>
               <NavLink id="adminCourse" to="/admin/viewCourse">
                 Courses
               </NavLink>
@@ -82,13 +88,21 @@ const NavBar = () => {
               </NavLink>
             </div>
             <div className="navlink-box">
+              <i className="fa-solid fa-users"></i>
+              <NavLink id="adminApprove" to="/admin/approveUser">
+
+                Online Applications
+
+              </NavLink>
+            </div>
+            <div className="navlink-box">
               <i class="fa-solid fa-comments"></i>
               <NavLink id="adminFeedback" to="/admin/FeedBack">
                 FeedBack
               </NavLink>
             </div>
             <div className="navlink-box bottom" onClick={navigateToLogout}>
-            <i class="fa-solid fa-right-from-bracket"></i>
+              <i class="fa-solid fa-right-from-bracket"></i>
               <button id="logout" type="submit" >
                 Logout
               </button>

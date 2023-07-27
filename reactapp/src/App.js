@@ -20,6 +20,7 @@ import UserFeedbackPage from './pages/User/UserFeedbackPage';
 import CourseAppliedView from './pages/User/Course/CourseAppliedView';
 import CourseApplyEdit from './pages/User/Course/CourseApplyEdit';
 import AdminReviewPage from './pages/Admin/AdminReviewPage';
+import { ApproveUser } from './components/Admin/ApproveUser/ApproveUser';
 
 function App() {
   
@@ -44,6 +45,7 @@ function App() {
         <Route path="/admin/editStudent/:id" element={<EditStudent/>}/>
 
         <Route path="/admin/FeedBack" element={<AdminReviewPage/>}/> 
+        <Route path="/admin/approveUser" element={<ApproveUser/>}/> 
 
         <Route path="/Navpage"  element={<UserLandingPage/>} />
         <Route path="/HomePage" element={<UserInstitutePage />} />

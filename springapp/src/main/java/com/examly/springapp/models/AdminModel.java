@@ -1,12 +1,11 @@
 package com.examly.springapp.models;
 
-import java.lang.annotation.Inherited;
-
-import javax.annotation.processing.Generated;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.*;
+
+import com.examly.springapp.dto.ERole;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,7 +1,5 @@
 package com.examly.springapp.models;
-import java.lang.annotation.Inherited;
 
-import javax.annotation.processing.Generated;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -12,8 +10,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
-
 @Data
 @Builder
 @AllArgsConstructor
@@ -21,7 +17,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "Review")
 public class ReviewModel {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column
@@ -34,10 +30,5 @@ public class ReviewModel {
 	private String email;
 	@Column
 	private String comments;
-	
-	
-	
-	
-	
-	
+
 }

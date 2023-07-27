@@ -1,0 +1,69 @@
+/* CSS for ViewStudent Component */
+
+.student-details-container {
+  padding: 20px;
+  margin: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f7f7f7;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.student-details-container h2 {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #1a237e;
+  /* Dark Blue */
+}
+
+.student-details-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.student-details-row {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.student-details-label {
+  min-width: 150px;
+  font-weight: bold;
+}
+
+.student-details-data {
+  flex: 1;
+  font-size: 16px;
+}
+
+.student-details-id {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.student-details-id input {
+  width: 100px;
+}
+
+.student-details-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #1565c0;
+  /* Darker Blue */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.student-details-button:hover {
+  background-color: #0d47a1;
+  /* Even Darker Blue on hover */
+}
