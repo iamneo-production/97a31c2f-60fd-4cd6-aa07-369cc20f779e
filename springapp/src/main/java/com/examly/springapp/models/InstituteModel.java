@@ -19,7 +19,11 @@ public class InstituteModel {
     @Column(unique = true)
     private String email;
     private String imageUrl;
-    
+
+    public InstituteModel() {
+        // default constructor institute model
+    }
+
     public Integer getInstituteId() {
         return instituteId;
     }

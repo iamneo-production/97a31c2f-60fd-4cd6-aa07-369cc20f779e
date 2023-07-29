@@ -33,6 +33,10 @@ public class AdmissionModel {
     private String status;
     private String reason;
 
+    public AdmissionModel() {
+        // default constructor admission model
+    }
+
     public Integer getId() {
         return id;
     }

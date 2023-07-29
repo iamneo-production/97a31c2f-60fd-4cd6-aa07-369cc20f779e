@@ -31,6 +31,10 @@ public class CourseModel {
         this.courseEnrolled = courseEnrolled;
     }
 
+    public CourseModel() {
+        // default constructor course model
+    }
+
     public Integer getId() {
         return id;
     }

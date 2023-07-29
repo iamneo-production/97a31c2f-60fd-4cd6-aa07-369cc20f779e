@@ -9,8 +9,8 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "Student")
-
 public class StudentModel {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer studentId;
@@ -34,7 +34,7 @@ public class StudentModel {
     private String eligibility;
     private String courseId;
     private String instituteId;
-    
+
     public Integer getStudentId() {
         return studentId;
     }

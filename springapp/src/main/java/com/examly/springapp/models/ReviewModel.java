@@ -29,7 +29,11 @@ public class ReviewModel {
 		this.email = email;
 		this.comments = comments;
 	}
-	
+
+	public ReviewModel() {
+		// default constructor review model
+	}
+
 	public long getId() {
 		return id;
 	}
