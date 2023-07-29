@@ -31,7 +31,7 @@ public class AdminModel {
 
     
     public AdminModel() {
-        // default constructor
+        // default constructor admin model
     }
 
     public Long getId() {

@@ -34,7 +34,7 @@ public class AdmissionModel {
     private String reason;
 
     public AdmissionModel() {
-        // default constructor
+        // default constructor admission model
     }
 
     public Integer getId() {

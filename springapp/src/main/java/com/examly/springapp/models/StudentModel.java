@@ -9,8 +9,8 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "Student")
-
 public class StudentModel {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer studentId;

@@ -32,7 +32,7 @@ public class UserModel {
     }
 
     public UserModel() {
-        // default constructor
+        // default constructor user model
     }
 
     public Long getId() {
