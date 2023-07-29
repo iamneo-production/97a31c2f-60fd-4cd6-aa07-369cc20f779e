@@ -1,5 +1,5 @@
 import {AdminGuard} from '../../AuthGuard/AdminGuard';
-import Firstpage from '../../components/Admin/AdminDashboard/Firstpage'
+import Firstpage from '../../components/Admin/AdminDashboard/AdminDashboard'
 
 const LandingPage = () => {
     return (

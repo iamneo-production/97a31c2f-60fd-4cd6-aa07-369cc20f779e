@@ -1,0 +1,308 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.top1 {
+  color: aliceblue;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  padding: 0 8px;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.anime {
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  text-align: center;
+  animation-name: disc;
+  animation-iteration-count: infinite;
+  animation-duration: 10s;
+  animation-play-state: running;
+}
+
+@keyframes disc {
+  0% {
+    color: skyblue;
+  }
+
+  /* ... */
+  100% {
+    color: lightpink;
+  }
+}
+
+.nv1 h2 {
+  font-size: 2rem;
+  color: azure;
+  font-weight: bolder;
+}
+
+.first1 {
+  color: white;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  font-size: 1.5rem;
+}
+
+@keyframes animate {
+  0% {
+    background-image: url(hat1.jpeg.jpg);
+  }
+
+  20% {
+    background-image: url(img4.jpg);
+  }
+}
+
+
+.link1:hover {
+  font-weight: bold;
+  font-size: 2rem;
+  color: lightpink;
+}
+
+.out {
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  text-align: center;
+  animation-name: color;
+  animation-iteration-count: infinite;
+  animation-duration: 10s;
+  animation-play-state: running;
+}
+
+@keyframes color {
+  0% {
+    color: skyblue;
+  }
+
+  /* ... */
+  100% {
+    color: lightpink;
+  }
+}
+
+.nv1 {
+  height: 100vh;
+  width: 100%;
+  background-image: url(hat1.jpeg.jpg);
+  opacity: 1;
+  background-size: cover;
+  background-repeat: no-repeat;
+  animation-name: animate;
+  animation-direction: alternate-reverse;
+  animation-duration: 10s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-play-state: running;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes animate {
+  0% {
+    background-image: url(hat1.jpeg.jpg);
+  }
+
+  20% {
+    background-image: url(img4.jpg);
+  }
+
+}
+
+.txt1 p {
+  margin-top: 200px;
+  color: azure;
+  text-align: center;
+  margin-left: 0;
+  font-style: italic;
+  font-size: 3rem;
+  font-weight: bolder;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  padding-top: 1%;
+  text-decoration: none;
+}
+
+.txt1 h2 {
+  color: white;
+  margin-left: 0;
+  text-align: center;
+  font-style: oblique;
+  font-size: 2.8rem;
+  font-weight: bold;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding-top: 0%;
+  text-decoration: none;
+}
+
+.txt1 h4 {
+  font-size: 2.1rem;
+  color: skyblue;
+  margin-left: 0%;
+  text-align: center;
+  font-family: cursive;
+}
+
+.addon h1 {
+  color: white;
+  padding-top: 3%;
+  margin-left: 7%;
+  font-size: 2rem;
+  font-weight: bold;
+  font-style: italic;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.addon p {
+  color: whitesmoke;
+  font-weight: lighter;
+  font-size: 1.7rem;
+  margin-left: 9%;
+  font-style: italic;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.last1 h1 {
+  color: lightpink;
+  padding-top: 7%;
+  text-align: center;
+  font-size: 2rem;
+  font-family: cursive;
+  font-weight: bolder;
+}
+
+.last1,
+.admin-span-class-1::before {
+  content: "🔅 BUILD A BETTER FUTURE!!!";
+
+  animation-name: admin;
+  animation-direction: alternate-reverse;
+  animation-duration: 6s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-play-state: running;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes admin {
+  0% {
+    content: "YOU ARE IN SAFE HANDS 🤝";
+  }
+
+  20% {
+    content: "🔅 BUILD A BETTER FUTURE!!!";
+  }
+
+  30% {
+    content: "ALL THE BEST!!!👍";
+  }
+}
+
+/* Media queries for smaller devices */
+@media (max-width: 1032px) {
+  .top1 {
+    display: block;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .first1 {
+    font-size: 0.6rem;
+  }
+
+  .nv1 h2 {
+    font-size: 1.2rem;
+  }
+
+  .out {
+    font-size: 0.9rem;
+  }
+
+  .txt1 p {
+    margin-top: 150px;
+    font-size: 1.7rem;
+  }
+
+  .txt1 h2 {
+    font-size: 1.8rem;
+  }
+
+  .txt1 h4 {
+    font-size: 1.5rem;
+  }
+
+}
+
+
+
+@media only screen and (max-width: 768px) and (min-width: 481px) {
+  .top1 {
+    flex-direction: column;
+    font-size: 0.9rem;
+    padding: 0;
+  }
+
+  .anime {
+    font-size: 1.2rem;
+  }
+
+  .nv1 h2 {
+    font-size: 1.5rem;
+  }
+
+  .first1 {
+    font-size: 1.2rem;
+  }
+
+  .link1:hover {
+    font-size: 1.5rem;
+  }
+
+  .out {
+    font-size: 1.2rem;
+  }
+
+  .txt1 p {
+    margin-top: 80px;
+    font-size: 2rem;
+  }
+
+  .txt1 h2 {
+    font-size: 1.8rem;
+  }
+
+  .txt1 h4 {
+    font-size: 1.5rem;
+  }
+
+  .addon h1 {
+    font-size: 1.5rem;
+    margin-left: 5%;
+  }
+
+  .addon p {
+    font-size: 1.2rem;
+    margin-left: 7%;
+  }
+
+  .last1 h1 {
+    font-size: 1.5rem;
+    padding-top: 5%;
+  }
+
+  .last1 .admin-span-class-1::before {
+    font-size: 1rem;
+  }
+}
