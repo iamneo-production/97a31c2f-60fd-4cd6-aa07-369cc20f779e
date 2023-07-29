@@ -640,7 +640,7 @@ export const StudentForm = ({ type }) => {
 
               />
             </div>
-            <div className="username" >
+            <div data-testid="userName" className="username" >
               <label className="form__label" htmlFor="firstName">
                 {" "}
                 First Name{" "}

@@ -38,6 +38,7 @@ class SpringappApplicationTests {
     
     @Test
     public void testGetCoursesById() throws Exception {
+    	Long Id=1L;
     	
         mockMvc.perform(get("/admin/courses").param("id", "1"))
         .andExpect(MockMvcResultMatchers.status().isOk())
@@ -60,6 +61,7 @@ class SpringappApplicationTests {
     
     @Test
     public void testGetStudentById() throws Exception {
+    	Long Id=1L;
     	
         mockMvc.perform(get("/admin/student").param("id", "1"))
         .andExpect(MockMvcResultMatchers.status().isOk())
@@ -71,6 +73,7 @@ class SpringappApplicationTests {
     
     @Test
     public void testGetInstituteById() throws Exception {
+    	Long Id=1L;
     	
         mockMvc.perform(get("/admin/institute").param("id", "1"))
         .andExpect(MockMvcResultMatchers.status().isOk())
@@ -104,6 +107,7 @@ class SpringappApplicationTests {
     
     @Test
     public void testGetAdmissionById() throws Exception {
+    	Long Id=1L;
     	
         mockMvc.perform(get("/admin/admission").param("id", "1"))
         .andExpect(MockMvcResultMatchers.status().isOk())
