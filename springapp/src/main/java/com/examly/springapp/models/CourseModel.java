@@ -22,7 +22,6 @@ public class CourseModel {
     private String courseTiming;
     private Integer courseEnrolled;
 
-
     public Integer getId() {
         return id;
     }
@@ -79,6 +78,7 @@ public class CourseModel {
         this.courseEnrolled = courseEnrolled;
     }
 
+
     public CourseModel(Integer id, Integer courseId, String courseName, String courseDescription,
             Integer courseDuration, String courseTiming, Integer courseEnrolled) {
         this.id = id;
@@ -92,5 +92,6 @@ public class CourseModel {
 
     public CourseModel() {
     }
+
 
 }

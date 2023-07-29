@@ -19,7 +19,7 @@ public class InstituteModel {
     @Column(unique = true)
     private String email;
     private String imageUrl;
-    
+
     public Integer getInstituteId() {
         return instituteId;
     }
@@ -76,7 +76,6 @@ public class InstituteModel {
         this.imageUrl = imageUrl;
     }
 
-
     
     public InstituteModel(Integer instituteId, String instituteName, String instituteDescription,
             String instituteAddress, String mobile, String email, String imageUrl) {
@@ -91,6 +90,7 @@ public class InstituteModel {
 
     public InstituteModel() {
     }
+
 
     
 }

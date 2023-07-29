@@ -9,8 +9,8 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "Student")
-
 public class StudentModel {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer studentId;
@@ -35,7 +35,7 @@ public class StudentModel {
     private String courseId;
    
     private String instituteId;
-    
+
     public Integer getStudentId() {
         return studentId;
     }
@@ -163,6 +163,7 @@ public class StudentModel {
         this.instituteId = instituteId;
     }
 
+
     public StudentModel(Integer studentId, String firstName, String lastName, String fatherName, String motherName,
             String phoneNumber1, String phoneNumber2, String emailId, Date studentDOB, String houseNumber,
             String streetName, String areaName, String state, Integer pincode, String nationality, Integer sslc,
@@ -191,4 +192,5 @@ public class StudentModel {
     }
     public StudentModel() {
     }
+
 }

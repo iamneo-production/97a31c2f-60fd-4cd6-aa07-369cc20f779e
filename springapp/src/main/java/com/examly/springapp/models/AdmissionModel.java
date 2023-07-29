@@ -35,6 +35,7 @@ public class AdmissionModel {
     private String status;
     private String reason;
 
+
     public Integer getId() {
         return id;
     }
@@ -212,7 +213,6 @@ public class AdmissionModel {
     }
 
     
-
     public AdmissionModel(Integer id, Integer courseId, Integer studentIdNumber, String firstName, String lastName,
             String fatherName, String motherName, String phoneNumber1, String phoneNumber2, String emailId,
             Date studentDOB, String houseNumber, String streetName, String areaName, String state, Integer pincode,
@@ -243,6 +243,7 @@ public class AdmissionModel {
 
     public AdmissionModel() {
     }
+
 
     
 

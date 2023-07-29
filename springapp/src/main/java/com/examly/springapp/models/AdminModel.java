@@ -61,6 +61,7 @@ public class AdminModel {
         this.userRole = userRole;
     }
     
+
     public AdminModel(Long id, String email, String password, String mobileNumber, ERole userRole) {
         this.id = id;
         this.email = email;
@@ -72,4 +73,5 @@ public class AdminModel {
     public AdminModel() {
         // default constructor admin model
     }
+
 }

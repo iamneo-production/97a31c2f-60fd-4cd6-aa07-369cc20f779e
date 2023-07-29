@@ -70,6 +70,7 @@ public class UserModel {
         this.userRole = userRole;
     }
 
+
     public UserModel(Long id, String email, String username, String password, String mobileNumber, ERole userRole) {
         this.id = id;
         this.email = email;
@@ -81,5 +82,6 @@ public class UserModel {
 
     public UserModel() {
     }
+
     
 }
