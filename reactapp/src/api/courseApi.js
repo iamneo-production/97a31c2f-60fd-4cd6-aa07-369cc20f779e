@@ -50,7 +50,7 @@ export const editCourse = async (id, updatedCourse) => {
     });
 
     if (!response.ok) {
-      throw new Error("Failed to update course.");
+      throw new Error("Failed  to update course.");
     }
 
     const data = await response.json();

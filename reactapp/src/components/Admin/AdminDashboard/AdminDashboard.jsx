@@ -1,10 +1,10 @@
 import React from 'react'
 import { NavLink, useNavigate, Link } from "react-router-dom";
 import { store } from "../../../store";
-import './Firstpage.css'
+import './AdminDashboard.css'
 
 
-const Firstpage = () => {
+const AdminDashboard = () => {
     const navigate = useNavigate();
     const handleLogout = () => {
         store.dispatch({ type: "LOGOUT" });
@@ -56,4 +56,4 @@ const Firstpage = () => {
 
     );
 }
-export default Firstpage
+export default AdminDashboard

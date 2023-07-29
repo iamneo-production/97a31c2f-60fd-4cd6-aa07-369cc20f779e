@@ -29,7 +29,7 @@ const NavBar = () => {
           <h1><i class="fa-solid fa-graduation-cap"></i>PG Admission Portal</h1>
         </NavLink>
         <NavLink id="adminInstitute" to="/admin/dashboard" className="navlink-buttons">
-          <i class="fa-solid fa-building-columns "> </i>
+          <i data-testid="userName" class="fa-solid fa-building-columns "> </i>
           Institutes
         </NavLink>
         <NavLink id="adminCourse" to="/admin/viewCourse" className="navlink-buttons">
@@ -37,11 +37,11 @@ const NavBar = () => {
           Courses
         </NavLink>
         <NavLink id="adminStudents" to="/admin/Viewstudent" className="navlink-buttons">
-          <i className="fa-solid fa-user-graduate"></i>
+          <i data-testid="mobile" className="fa-solid fa-user-graduate"></i>
           Students
         </NavLink>
         <NavLink id="adminApprove" to="/admin/approveUser" className="navlink-buttons">
-          <i className="fa-solid fa-user-graduate"></i>
+          <i data-testid="qualification" className="fa-solid fa-user-graduate"></i>
 
           Online Applications
 

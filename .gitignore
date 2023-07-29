@@ -4,3 +4,4 @@ junit/
 target/
 .vscode/
 react
+puppeteer/
