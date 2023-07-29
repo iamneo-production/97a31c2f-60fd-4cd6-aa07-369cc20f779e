@@ -123,7 +123,7 @@ function Editcourse(props) {
           navigate("/admin/dashboard");
         }}
       >
-       <i class="fa-solid fa-house"></i> Back to Home
+        <i class="fa-solid fa-house"></i> Back to Home
       </button>
       <div className='course'>
         <h1 class="admin-course-head-container" ><i class="fa-solid fa-pen-to-square"></i> Edit Course</h1>
@@ -197,21 +197,21 @@ function Editcourse(props) {
             />
           </div>
           <div>
-          <div
-            className="button-container">
-            <button
-              className="btn-primary"
-              type="submit"
-              onClick={(e) => {
-                handlePop(e)
-              }}>
-              Update Course
-            </button>
-            <Link
-              to="/admin/viewCourse"
-              className="btn-secondary">
-              Cancel
-            </Link>
+            <div
+              className="button-container">
+              <button
+                className="btn-primary"
+                type="submit"
+                onClick={(e) => {
+                  handlePop(e)
+                }}>
+                Update Course
+              </button>
+              <Link
+                to="/admin/viewCourse"
+                className="btn-secondary">
+                Cancel
+              </Link>
             </div>
           </div>
         </form>
