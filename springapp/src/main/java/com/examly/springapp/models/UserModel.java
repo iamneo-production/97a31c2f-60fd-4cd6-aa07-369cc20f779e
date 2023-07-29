@@ -22,19 +22,6 @@ public class UserModel {
     @Enumerated(EnumType.STRING)
     private ERole userRole;
 
-    public UserModel(Long id, String email, String username, String password, String mobileNumber, ERole userRole) {
-        this.id = id;
-        this.email = email;
-        this.username = username;
-        this.password = password;
-        this.mobileNumber = mobileNumber;
-        this.userRole = userRole;
-    }
-
-    public UserModel() {
-        // default constructor user model
-    }
-
     public Long getId() {
         return id;
     }
@@ -83,6 +70,18 @@ public class UserModel {
         this.userRole = userRole;
     }
 
-    
+
+    public UserModel(Long id, String email, String username, String password, String mobileNumber, ERole userRole) {
+        this.id = id;
+        this.email = email;
+        this.username = username;
+        this.password = password;
+        this.mobileNumber = mobileNumber;
+        this.userRole = userRole;
+    }
+
+    public UserModel() {
+    }
+
     
 }

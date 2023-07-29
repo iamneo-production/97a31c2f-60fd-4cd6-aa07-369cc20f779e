@@ -20,10 +20,6 @@ public class InstituteModel {
     private String email;
     private String imageUrl;
 
-    public InstituteModel() {
-        // default constructor institute model
-    }
-
     public Integer getInstituteId() {
         return instituteId;
     }
@@ -79,6 +75,22 @@ public class InstituteModel {
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
+
+    
+    public InstituteModel(Integer instituteId, String instituteName, String instituteDescription,
+            String instituteAddress, String mobile, String email, String imageUrl) {
+        this.instituteId = instituteId;
+        this.instituteName = instituteName;
+        this.instituteDescription = instituteDescription;
+        this.instituteAddress = instituteAddress;
+        this.mobile = mobile;
+        this.email = email;
+        this.imageUrl = imageUrl;
+    }
+
+    public InstituteModel() {
+    }
+
 
     
 }

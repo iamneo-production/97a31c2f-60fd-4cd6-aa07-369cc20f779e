@@ -21,19 +21,6 @@ public class AdminModel {
     @Enumerated(EnumType.STRING)
     private ERole userRole;
 
-    public AdminModel(Long id, String email, String password, String mobileNumber, ERole userRole) {
-        this.id = id;
-        this.email = email;
-        this.password = password;
-        this.mobileNumber = mobileNumber;
-        this.userRole = userRole;
-    }
-
-    
-    public AdminModel() {
-        // default constructor admin model
-    }
-
     public Long getId() {
         return id;
     }
@@ -74,4 +61,17 @@ public class AdminModel {
         this.userRole = userRole;
     }
     
+
+    public AdminModel(Long id, String email, String password, String mobileNumber, ERole userRole) {
+        this.id = id;
+        this.email = email;
+        this.password = password;
+        this.mobileNumber = mobileNumber;
+        this.userRole = userRole;
+    }
+
+    public AdminModel() {
+        // default constructor admin model
+    }
+
 }

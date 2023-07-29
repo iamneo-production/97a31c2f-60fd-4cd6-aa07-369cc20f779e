@@ -263,7 +263,7 @@ function Updatepage() {
                                         className="user__input"
                                         name="studentDOB"
                                         value={studentdetail.studentDOB}
-                                        placeholder="Enter Student DOB"
+                                        placeholder="Enter Student DOB(YYYY-MM-DD)"
                                         onChange={(a) => handleInput(a, "studentDOB")}
                                     />
                                 </div>
