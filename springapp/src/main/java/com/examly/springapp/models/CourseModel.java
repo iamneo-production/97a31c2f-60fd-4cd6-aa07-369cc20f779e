@@ -32,6 +32,7 @@ public class CourseModel {
     }
 
     public CourseModel() {
+        // default constructor
     }
 
     public Integer getId() {

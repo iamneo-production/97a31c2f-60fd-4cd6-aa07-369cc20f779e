@@ -32,6 +32,7 @@ public class UserModel {
     }
 
     public UserModel() {
+        // default constructor
     }
 
     public Long getId() {

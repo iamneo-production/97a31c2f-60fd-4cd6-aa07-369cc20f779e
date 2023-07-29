@@ -31,6 +31,7 @@ public class ReviewModel {
 	}
 
 	public ReviewModel() {
+		// default constructor
 	}
 
 	public long getId() {

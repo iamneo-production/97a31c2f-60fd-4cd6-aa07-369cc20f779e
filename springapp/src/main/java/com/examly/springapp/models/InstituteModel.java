@@ -21,6 +21,7 @@ public class InstituteModel {
     private String imageUrl;
 
     public InstituteModel() {
+        // default constructor
     }
 
     public Integer getInstituteId() {
