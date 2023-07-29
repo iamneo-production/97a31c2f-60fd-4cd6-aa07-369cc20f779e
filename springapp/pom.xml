@@ -34,10 +34,6 @@
 			<scope>runtime</scope>
 		</dependency>
 
-<<<<<<< HEAD
-		<!-- test case -->
-=======
->>>>>>> e03ce7d21aa3f605d499fdfc6cb114a4346cf49f
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
