@@ -33,6 +33,7 @@ public class StudentModel {
     private Integer diploma;
     private String eligibility;
     private String courseId;
+   
     private String instituteId;
     
     public Integer getStudentId() {
@@ -162,5 +163,32 @@ public class StudentModel {
         this.instituteId = instituteId;
     }
 
-    
+    public StudentModel(Integer studentId, String firstName, String lastName, String fatherName, String motherName,
+            String phoneNumber1, String phoneNumber2, String emailId, Date studentDOB, String houseNumber,
+            String streetName, String areaName, String state, Integer pincode, String nationality, Integer sslc,
+            Integer hsc, Integer diploma, String eligibility, String courseId, String instituteId) {
+        this.studentId = studentId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.fatherName = fatherName;
+        this.motherName = motherName;
+        this.phoneNumber1 = phoneNumber1;
+        this.phoneNumber2 = phoneNumber2;
+        this.emailId = emailId;
+        this.studentDOB = studentDOB;
+        this.houseNumber = houseNumber;
+        this.streetName = streetName;
+        this.areaName = areaName;
+        this.state = state;
+        this.pincode = pincode;
+        this.nationality = nationality;
+        this.sslc = sslc;
+        this.hsc = hsc;
+        this.diploma = diploma;
+        this.eligibility = eligibility;
+        this.courseId = courseId;
+        this.instituteId = instituteId;
+    }
+    public StudentModel() {
+    }
 }

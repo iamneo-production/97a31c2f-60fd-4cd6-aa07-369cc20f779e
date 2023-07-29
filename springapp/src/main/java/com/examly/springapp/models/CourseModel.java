@@ -17,19 +17,11 @@ public class CourseModel {
     private String courseName;
     private String courseDescription;
     private Integer courseDuration;
+    
+
     private String courseTiming;
     private Integer courseEnrolled;
 
-    public CourseModel(Integer id, Integer courseId, String courseName, String courseDescription,
-            Integer courseDuration, String courseTiming, Integer courseEnrolled) {
-        this.id = id;
-        this.courseId = courseId;
-        this.courseName = courseName;
-        this.courseDescription = courseDescription;
-        this.courseDuration = courseDuration;
-        this.courseTiming = courseTiming;
-        this.courseEnrolled = courseEnrolled;
-    }
 
     public Integer getId() {
         return id;
@@ -87,8 +79,18 @@ public class CourseModel {
         this.courseEnrolled = courseEnrolled;
     }
 
-    
+    public CourseModel(Integer id, Integer courseId, String courseName, String courseDescription,
+            Integer courseDuration, String courseTiming, Integer courseEnrolled) {
+        this.id = id;
+        this.courseId = courseId;
+        this.courseName = courseName;
+        this.courseDescription = courseDescription;
+        this.courseDuration = courseDuration;
+        this.courseTiming = courseTiming;
+        this.courseEnrolled = courseEnrolled;
+    }
 
-    
+    public CourseModel() {
+    }
 
 }

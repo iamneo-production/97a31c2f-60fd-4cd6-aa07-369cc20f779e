@@ -9,6 +9,8 @@ import javax.persistence.*;
 @Table(name = "Review")
 public class ReviewModel {
 
+	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column
@@ -22,13 +24,6 @@ public class ReviewModel {
 	@Column
 	private String comments;
 
-	public ReviewModel(long id, String name, String number, String email, String comments) {
-		this.id = id;
-		this.name = name;
-		this.number = number;
-		this.email = email;
-		this.comments = comments;
-	}
 	
 	public long getId() {
 		return id;
@@ -67,5 +62,14 @@ public class ReviewModel {
 				+ number + "]";
 	}
 
+	public ReviewModel(long id, String name, String number, String email, String comments) {
+		this.id = id;
+		this.name = name;
+		this.number = number;
+		this.email = email;
+		this.comments = comments;
+	}
+	public ReviewModel() {
+	}
 
 }
