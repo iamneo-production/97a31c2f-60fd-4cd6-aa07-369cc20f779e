@@ -33,6 +33,9 @@ public class AdmissionModel {
     private String status;
     private String reason;
 
+    public AdmissionModel() {
+    }
+
     public Integer getId() {
         return id;
     }

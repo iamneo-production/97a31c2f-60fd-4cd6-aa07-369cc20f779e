@@ -34,7 +34,7 @@ public class StudentModel {
     private String eligibility;
     private String courseId;
     private String instituteId;
-    
+
     public Integer getStudentId() {
         return studentId;
     }

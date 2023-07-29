@@ -29,6 +29,10 @@ public class AdminModel {
         this.userRole = userRole;
     }
 
+    
+    public AdminModel() {
+    }
+
     public Long getId() {
         return id;
     }
