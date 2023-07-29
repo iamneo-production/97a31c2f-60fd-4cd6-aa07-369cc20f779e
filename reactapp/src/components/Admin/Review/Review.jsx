@@ -57,7 +57,7 @@ const Review = () => {
               <th className="px-6 py-6   font-medium  uppercase tracking-wider">
                 ID
               </th>
-              <th data-testid="userName" className="  font-medium  uppercase tracking-wider">
+              <th  className="  font-medium  uppercase tracking-wider">
                 Name
               </th>
               <th className="    font-medium  uppercase tracking-wider">
