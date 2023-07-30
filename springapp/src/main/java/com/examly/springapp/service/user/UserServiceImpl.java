@@ -1,4 +1,4 @@
-package com.examly.springapp.service;
+package com.examly.springapp.service.user;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,7 +18,7 @@ import com.examly.springapp.repository.CourseRepository;
 import com.examly.springapp.repository.UserRepository;
 
 @Service
-public class UserService {
+public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
@@ -32,11 +32,12 @@ public class UserService {
     @Autowired
     private CourseRepository courseRepository;
 
+    @Override
     public String saveUser(UserModel userModel) {
         if (userRepository.existsByEmail(userModel.getEmail())) {
             return "Email is already exists";
         }
-        if (userModel.getUserRole().equals(ERole.user)) {
+        if (userModel.getUserRole().equals(ERole.USER)) {
             userRepository.save(userModel);
             return "User added";
         } else {
@@ -45,19 +46,23 @@ public class UserService {
 
     }
 
+    @Override
     public String saveAdmin(AdminModel adminModel) {
         adminRepository.save(adminModel);
         return "Admin added";
     }
 
+    @Override
     public void addAdmission(AdmissionModel admissionModel) {
         admissionR.save(admissionModel);
     }
 
+    @Override
     public List<AdmissionModel> getAdmission() {
         return admissionR.findAll();
     }
 
+    @Override
     public String deleteAdmission(Integer id) {
         Optional<AdmissionModel> admissionmodel = admissionR.findById(id);
         if (admissionmodel.isPresent()) {
@@ -67,6 +72,7 @@ public class UserService {
         return "Admission not Found";
     }
 
+    @Override
     public ResponseEntity<?> editAdmission(Integer id, AdmissionModel updatedAdmission) {
         Optional<AdmissionModel> admissionmodel = admissionR.findById(id);
         if (admissionmodel.isPresent()) {
@@ -98,6 +104,7 @@ public class UserService {
         return ResponseEntity.ok("Admission not Found");
     }
 
+    @Override
     public CourseModel viewEnrolledCourse(Integer studentId) {
         AdmissionModel admissionmodel = admissionR.findByStudentIdNumber(studentId);
         if (courseRepository.existsByCourseId(admissionmodel.getCourseId())) {
@@ -113,4 +120,5 @@ public class UserService {
 
     }
 
+    
 }

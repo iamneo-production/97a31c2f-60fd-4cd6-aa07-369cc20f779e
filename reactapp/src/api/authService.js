@@ -1,6 +1,9 @@
 // Define the base URL for the API requests
 export const baseUrl = "https://8080-deacebeebcbbfafccddecaeebaeccc.project.examly.io";
 
+
+
+
 // Define a function to register a user
 const register = async (data) => {
   // Format the user data
@@ -14,7 +17,7 @@ const register = async (data) => {
     console.log("formated Data",formatData);
   
   // Send a POST request to the appropriate endpoint based on user role
-  if (formatData.userRole === "admin") {
+  if (formatData.userRole === "ADMIN") {
     const response = await fetch(`${baseUrl}/admin/signup`, {
       method: "POST",
       headers: {

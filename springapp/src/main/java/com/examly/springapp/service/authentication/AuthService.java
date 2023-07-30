@@ -1,4 +1,4 @@
-package com.examly.springapp.service.authenticationService;
+package com.examly.springapp.service.authentication;
 
 import java.security.Principal;
 import org.springframework.http.ResponseEntity;

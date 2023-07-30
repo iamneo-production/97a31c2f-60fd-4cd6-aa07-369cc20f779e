@@ -24,8 +24,9 @@ export const addCourse = async (newCourse) => {
 
 export const getCourses = async () => {
   console.log(`${baseUrl}/${role}/courses`);
+  const newRole = role == "ADMIN" ? "admin":"user"
   try {
-    const response = await fetch(`${baseUrl}/${role}/courses`, {
+    const response = await fetch(`${baseUrl}/${newRole}/courses`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -33,6 +34,7 @@ export const getCourses = async () => {
       },
     });
     const data = await response.json();
+    console.log(data);
     return data;
   } catch (error) {
     console.error(error);
@@ -50,10 +52,11 @@ export const editCourse = async (id, updatedCourse) => {
     });
 
     if (!response.ok) {
-      throw new Error("Failed to update course.");
+      throw new Error("Failed  to update course.");
     }
 
     const data = await response.json();
+    console.log(data);
     return data;
   } catch (error) {
     console.error(`Error updating course: ${error}`);

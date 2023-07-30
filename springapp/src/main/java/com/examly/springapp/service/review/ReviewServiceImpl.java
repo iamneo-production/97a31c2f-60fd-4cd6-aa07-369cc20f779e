@@ -1,17 +1,21 @@
-package com.examly.springapp.service;
+package com.examly.springapp.service.review;
 
-import com.examly.springapp.repository.*;
-import com.examly.springapp.models.*;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.beans.factory.annotation.*;
-import java.util.*;
+
+import com.examly.springapp.models.ReviewModel;
+import com.examly.springapp.repository.ReviewRepository;
 
 @Service
-public class ReviewService {
-
+public class ReviewServiceImpl implements ReviewService{
+    
     @Autowired
     private ReviewRepository repo;
 
+    @Override
     public ReviewModel addTask(ReviewModel mod) {
         try {
             return repo.save(mod);
@@ -20,10 +24,12 @@ public class ReviewService {
         }
     }
 
+    @Override
     public List<ReviewModel> getTask() {
         return repo.findAll();
     }
 
+    @Override
     public boolean deleteTask(Long id) {
         try {
             Optional<ReviewModel> optionalReview = repo.findById(id);
