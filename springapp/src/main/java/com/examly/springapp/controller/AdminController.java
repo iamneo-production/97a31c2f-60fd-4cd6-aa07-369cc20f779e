@@ -1,7 +1,7 @@
 package com.examly.springapp.controller;
 
 import org.springframework.web.bind.annotation.*;
-import com.examly.springapp.service.*;
+import com.examly.springapp.service.admin.AdminService;
 import com.examly.springapp.models.*;
 import org.springframework.http.*;
 import org.springframework.beans.factory.annotation.*;
