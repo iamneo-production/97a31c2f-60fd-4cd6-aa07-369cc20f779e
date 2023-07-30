@@ -1,7 +1,7 @@
 // Define the base URL for the API requests
 
 
-export const baseUrl = "https://8080-fcffeccfcdbefebcbbfafccdddedcceaefeeadb.project.examly.io";
+export const baseUrl = "https://8080-deacebeebcbbfafccddecaeebaeccc.project.examly.io";
 
 
 
