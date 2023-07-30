@@ -90,8 +90,7 @@ For documentation, the backend enables Swagger, so after running the project, vi
 - [@shaiksafeena](https://github.com/shaiksafeena)
 - [@AdapaYashaswi](https://github.com/AdapaYashaswi)
 - [@KallipudiGowtham](https://github.com/KallipudiGowtham)
-- [@KallipudiGowtham](https://github.com/sairaghavboggarapu)
-- [@sairaghavboggarapu](https://github.com/KallipudiGowtham)
+- [@sairaghavboggarapu](https://github.com/sairaghavboggarapu)
 - [@Vishva1808](https://github.com/Vishva1808)
 - [@SharavananS06](https://github.com/SharavananS06)
 
