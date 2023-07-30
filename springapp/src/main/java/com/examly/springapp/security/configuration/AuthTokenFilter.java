@@ -1,4 +1,4 @@
-package com.examly.springapp.security.securityConfig;
+package com.examly.springapp.security.configuration;
 
 import java.io.IOException;
 
@@ -17,7 +17,7 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.examly.springapp.security.securityServices.UserDetailsServiceImpl;
+import com.examly.springapp.security.services.UserDetailsServiceImpl;
 
 public class AuthTokenFilter extends OncePerRequestFilter {
 

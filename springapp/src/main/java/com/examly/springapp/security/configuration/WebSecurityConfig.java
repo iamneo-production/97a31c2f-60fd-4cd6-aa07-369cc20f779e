@@ -1,4 +1,4 @@
-package com.examly.springapp.security.securityConfig;
+package com.examly.springapp.security.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -14,7 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import com.examly.springapp.security.securityServices.UserDetailsServiceImpl;
+import com.examly.springapp.security.services.UserDetailsServiceImpl;
 
 // configuration for the web security
 @Configuration
@@ -66,8 +66,7 @@ public class WebSecurityConfig {
 			.authorizeHttpRequests().antMatchers(PUBLIC_URLS).permitAll()
 			.anyRequest().authenticated();
 
-		// Set the authentication provider and JWT token filter for the HttpSecurity
-		// object
+		// Set the authentication provider and JWT token filter for the HttpSecurity object
 		http.authenticationProvider(authenticationProvider());
 		http.addFilterBefore(authenticatioJwTokenFilter(), UsernamePasswordAuthenticationFilter.class);
 
