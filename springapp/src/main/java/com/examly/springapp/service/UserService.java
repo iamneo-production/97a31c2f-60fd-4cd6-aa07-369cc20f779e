@@ -36,7 +36,7 @@ public class UserService {
         if (userRepository.existsByEmail(userModel.getEmail())) {
             return "Email is already exists";
         }
-        if (userModel.getUserRole().equals(ERole.user)) {
+        if (userModel.getUserRole().equals(ERole.USER)) {
             userRepository.save(userModel);
             return "User added";
         } else {

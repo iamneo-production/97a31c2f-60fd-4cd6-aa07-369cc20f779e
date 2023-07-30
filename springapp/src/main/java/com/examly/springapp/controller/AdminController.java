@@ -33,7 +33,7 @@ public class AdminController {
         GrantedAuthority firstAuthority = authorities.iterator().next();
         String authorityName = firstAuthority.getAuthority();
 
-        if (!authorityName.equals("admin")) {
+        if (!authorityName.equals("ADMIN")) {
             throw new UnauthorizedException();
         }
     }

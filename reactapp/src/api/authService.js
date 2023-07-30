@@ -19,7 +19,7 @@ const register = async (data) => {
     console.log("formated Data",formatData);
   
   // Send a POST request to the appropriate endpoint based on user role
-  if (formatData.userRole === "admin") {
+  if (formatData.userRole === "ADMIN") {
     const response = await fetch(`${baseUrl}/admin/signup`, {
       method: "POST",
       headers: {
