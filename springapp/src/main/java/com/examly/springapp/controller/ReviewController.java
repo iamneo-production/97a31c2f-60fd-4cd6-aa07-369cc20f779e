@@ -1,7 +1,7 @@
 package com.examly.springapp.controller;
 
 import org.springframework.web.bind.annotation.*;
-import com.examly.springapp.service.*;
+import com.examly.springapp.service.review.ReviewService;
 import com.examly.springapp.models.*;
 
 import org.springframework.http.*;

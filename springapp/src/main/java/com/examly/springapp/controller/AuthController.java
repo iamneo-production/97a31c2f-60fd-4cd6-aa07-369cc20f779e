@@ -2,7 +2,7 @@ package com.examly.springapp.controller;
 
 import org.springframework.web.bind.annotation.*;
 import com.examly.springapp.models.*;
-import com.examly.springapp.service.authenticationService.AuthService;
+import com.examly.springapp.service.authentication.AuthService;
 import com.examly.springapp.dto.LoginRequest;
 import org.springframework.http.*;
 import java.security.Principal;
