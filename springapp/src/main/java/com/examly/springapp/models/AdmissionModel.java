@@ -21,6 +21,8 @@ public class AdmissionModel {
     private String phoneNumber2;
     private String emailId;
     private Date studentDOB;
+   
+
     private String houseNumber;
     private String streetName;
     private String areaName;
@@ -33,9 +35,6 @@ public class AdmissionModel {
     private String status;
     private String reason;
 
-    public AdmissionModel() {
-        // default constructor admission model
-    }
 
     public Integer getId() {
         return id;
@@ -214,6 +213,37 @@ public class AdmissionModel {
     }
 
     
+    public AdmissionModel(Integer id, Integer courseId, Integer studentIdNumber, String firstName, String lastName,
+            String fatherName, String motherName, String phoneNumber1, String phoneNumber2, String emailId,
+            Date studentDOB, String houseNumber, String streetName, String areaName, String state, Integer pincode,
+            String nationality, Integer sslc, Integer hsc, Integer diploma, String status, String reason) {
+        this.id = id;
+        this.courseId = courseId;
+        this.studentIdNumber = studentIdNumber;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.fatherName = fatherName;
+        this.motherName = motherName;
+        this.phoneNumber1 = phoneNumber1;
+        this.phoneNumber2 = phoneNumber2;
+        this.emailId = emailId;
+        this.studentDOB = studentDOB;
+        this.houseNumber = houseNumber;
+        this.streetName = streetName;
+        this.areaName = areaName;
+        this.state = state;
+        this.pincode = pincode;
+        this.nationality = nationality;
+        this.sslc = sslc;
+        this.hsc = hsc;
+        this.diploma = diploma;
+        this.status = status;
+        this.reason = reason;
+    }
+
+    public AdmissionModel() {
+    }
+
 
     
 
