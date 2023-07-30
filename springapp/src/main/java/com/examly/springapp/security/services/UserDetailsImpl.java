@@ -1,4 +1,4 @@
-package com.examly.springapp.security.securityServices;
+package com.examly.springapp.security.services;
 
 import java.util.Collection;
 import java.util.Collections;

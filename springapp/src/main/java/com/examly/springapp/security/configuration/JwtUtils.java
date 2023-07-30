@@ -1,4 +1,4 @@
-package com.examly.springapp.security.securityConfig;
+package com.examly.springapp.security.configuration;
 
 import java.util.Date;
 
@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
-import com.examly.springapp.security.securityServices.UserDetailsImpl;
+import com.examly.springapp.security.services.UserDetailsImpl;
 
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
@@ -36,7 +36,9 @@ public class JwtUtils {
 
 		// Build the JWT token with user's username, issue date, expiration time, and
 		// the secret key
-		return Jwts.builder().setSubject(userPrincipal.getUsername()).setIssuedAt(new Date())
+		return Jwts.builder()
+				.setSubject(userPrincipal.getUsername())
+				.setIssuedAt(new Date())
 				.setExpiration(new Date((new Date()).getTime() + jwtExpirationMs))
 				.signWith(SignatureAlgorithm.HS512, jwtSecret).compact();
 	}
@@ -45,7 +47,9 @@ public class JwtUtils {
 	public String getUserNameFromJwtToken(String token) {
 		// Parse the token to get the claims, and return the subject (username) from the
 		// claims
-		return Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody().getSubject();
+		return Jwts.parser()
+			   .setSigningKey(jwtSecret)
+			   .parseClaimsJws(token).getBody().getSubject();
 	}
 
 	// Validate a JWT token

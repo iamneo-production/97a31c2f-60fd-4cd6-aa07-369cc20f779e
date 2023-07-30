@@ -1,4 +1,4 @@
-package com.examly.springapp.service.authenticationService;
+package com.examly.springapp.service.authentication;
 
 import java.security.Principal;
 import java.util.HashMap;
@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 
 import com.examly.springapp.models.UserModel;
 import com.examly.springapp.repository.UserRepository;
-import com.examly.springapp.security.securityConfig.JwtUtils;
+import com.examly.springapp.security.configuration.JwtUtils;
 import com.examly.springapp.dto.ERole;
 import com.examly.springapp.dto.LoginRequest;
 
