@@ -1,4 +1,4 @@
-package com.examly.springapp.security.securityConfig;
+package com.examly.springapp.security.configuration;
 
 import java.io.IOException;
 import java.util.HashMap;

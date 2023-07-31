@@ -1,4 +1,4 @@
-package com.examly.springapp.service.authenticationService;
+package com.examly.springapp.service.authentication;
 
 import java.security.Principal;
 import java.util.HashMap;
@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 
 import com.examly.springapp.models.UserModel;
 import com.examly.springapp.repository.UserRepository;
-import com.examly.springapp.security.securityConfig.JwtUtils;
+import com.examly.springapp.security.configuration.JwtUtils;
 import com.examly.springapp.dto.ERole;
 import com.examly.springapp.dto.LoginRequest;
 
@@ -50,7 +50,7 @@ public class AuthServiceImpl implements AuthService {
 		user.setEmail(userModel.getEmail());
 		user.setUsername(userModel.getUsername());
 		user.setMobileNumber(userModel.getMobileNumber());
-		user.setUserRole(ERole.user);
+		user.setUserRole(ERole.USER);
 		user.setPassword(encoder.encode(userModel.getPassword()));
 
 		// Save user to the database and return response
@@ -71,7 +71,7 @@ public class AuthServiceImpl implements AuthService {
 		user.setEmail(userModel.getEmail());
 		user.setUsername(userModel.getUsername());
 		user.setMobileNumber(userModel.getMobileNumber());
-		user.setUserRole(ERole.admin);
+		user.setUserRole(ERole.ADMIN);
 		user.setPassword(encoder.encode(userModel.getPassword()));
 
 		// Save user to the database and return response

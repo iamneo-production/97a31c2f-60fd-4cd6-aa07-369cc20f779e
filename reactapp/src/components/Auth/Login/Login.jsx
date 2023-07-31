@@ -81,7 +81,7 @@ const Login = () => {
 
   if (auth.token) {
     const role = auth.role
-    if (role === 'admin') {
+    if (role === 'ADMIN') {
       return <Navigate to="/Firstpage" />
     } else {
       return <Navigate to="/Navpage" />

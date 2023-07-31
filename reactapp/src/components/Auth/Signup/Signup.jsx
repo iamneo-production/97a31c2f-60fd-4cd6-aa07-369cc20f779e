@@ -11,7 +11,7 @@ const Signup = () => {
       mobileNumber: "",
       password: "",
       username: "",
-      userType: "user",
+      userType: "USER",
       confirmPassword: "",
     },
     errors: {
@@ -96,10 +96,10 @@ const Signup = () => {
                   onChange={handleInputChange}
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
                 >
-                  <option value="user">User</option>
-                  <option value="admin">Admin</option>
+                  <option value="USER">User</option>
+                  <option value="ADMIN">Admin</option>
                 </select>
-              </div>
+              </div>  
 
               <div>
                 <label

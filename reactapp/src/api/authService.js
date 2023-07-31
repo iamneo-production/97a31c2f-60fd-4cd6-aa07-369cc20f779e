@@ -1,7 +1,11 @@
 // Define the base URL for the API requests
 
 
+<<<<<<< HEAD
 export const baseUrl = "https://8080-fccfeeaccfaaabbebcbbfafccdddedcceaefeeadb.project.examly.io";
+=======
+export const baseUrl = "https://8080-fcffeccfcdbefebcbbfafccdddedcceaefeeadb.project.examly.io";
+>>>>>>> f20b2697cc63c3c84e487f1864722cc3640ce1d3
 
 
 
@@ -19,7 +23,7 @@ const register = async (data) => {
     console.log("formated Data",formatData);
   
   // Send a POST request to the appropriate endpoint based on user role
-  if (formatData.userRole === "admin") {
+  if (formatData.userRole === "ADMIN") {
     const response = await fetch(`${baseUrl}/admin/signup`, {
       method: "POST",
       headers: {
